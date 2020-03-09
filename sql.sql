@@ -29,7 +29,7 @@ CREATE TABLE `category`
     PRIMARY KEY (ctgr_id)
 )COMMENT '분류';
 ALTER TABLE `category`
-    ADD CONSTRAINT FK_category_ctgr_id FOREIGN KEY (ctgr_idref)
+    ADD CONSTRAINT FK_category_category_ctgr_id FOREIGN KEY (ctgr_idref)
         REFERENCES `category` (ctgr_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `product`
@@ -43,7 +43,7 @@ CREATE TABLE `product`
     PRIMARY KEY (prdt_id)
 )COMMENT '상품'; 
 ALTER TABLE `product`
-    ADD CONSTRAINT FK_category_ctgr_id FOREIGN KEY (prdt_ctgr_id)
+    ADD CONSTRAINT FK_product_category_ctgr_id FOREIGN KEY (prdt_ctgr_id)
         REFERENCES `category` (ctgr_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `cart`
@@ -55,10 +55,10 @@ CREATE TABLE `cart`
     PRIMARY KEY (ct_id)
 )COMMENT '장바구니';
 ALTER TABLE `cart`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (ct_mb_id)
+    ADD CONSTRAINT FK_cart_member_mb_id FOREIGN KEY (ct_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `cart`
-    ADD CONSTRAINT FK_product_prdt_id FOREIGN KEY (ct_prdt_id)
+    ADD CONSTRAINT FK_cart_product_prdt_id FOREIGN KEY (ct_prdt_id)
         REFERENCES `product` (prdt_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `order`
@@ -78,7 +78,7 @@ CREATE TABLE `order`
     PRIMARY KEY (ord_id)
 )COMMENT '주문';
 ALTER TABLE `order`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (ord_mb_id)
+    ADD CONSTRAINT FK_order_member_mb_id FOREIGN KEY (ord_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `order_detail`
@@ -91,10 +91,10 @@ CREATE TABLE `order_detail`
     PRIMARY KEY (orddetail_id)
 )COMMENT '주문상세';
 ALTER TABLE `order_detail`
-    ADD CONSTRAINT FK_product_prdt_id FOREIGN KEY (orddetail_prdt_id)
+    ADD CONSTRAINT FK_order_detail_product_prdt_id FOREIGN KEY (orddetail_prdt_id)
         REFERENCES `product` (prdt_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `order_detail`
-    ADD CONSTRAINT FK_order_ord_id FOREIGN KEY (orddetail_ord_id)
+    ADD CONSTRAINT FK_order_detail_order_ord_id FOREIGN KEY (orddetail_ord_id)
         REFERENCES `order` (ord_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `delivery`
@@ -105,7 +105,7 @@ CREATE TABLE `delivery`
     PRIMARY KEY (dlvr_id)
 )COMMENT '택배';
 ALTER TABLE `delivery`
-    ADD CONSTRAINT FK_order_ord_id FOREIGN KEY (dlvr_ord_id)
+    ADD CONSTRAINT FK_delivery_order_ord_id FOREIGN KEY (dlvr_ord_id)
         REFERENCES `order` (ord_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `payment`
@@ -118,10 +118,10 @@ CREATE TABLE `payment`
     PRIMARY KEY (pmt_id)
 )COMMENT '결제';
 ALTER TABLE `payment`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (pmt_mb_id)
+    ADD CONSTRAINT FK_payment_member_mb_id FOREIGN KEY (pmt_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `payment`
-    ADD CONSTRAINT FK_order_ord_id FOREIGN KEY (pmt_ord_id)
+    ADD CONSTRAINT FK_payment_order_ord_id FOREIGN KEY (pmt_ord_id)
         REFERENCES `order` (ord_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `coupon`
@@ -141,10 +141,10 @@ CREATE TABLE `coupon_list`
     PRIMARY KEY (cplist_id)
 )COMMENT '쿠폰목록';
 ALTER TABLE `coupon_list`
-    ADD CONSTRAINT FK_coupon_cp_id FOREIGN KEY (cplist_cp_id)
+    ADD CONSTRAINT FK_coupon_list_coupon_cp_id FOREIGN KEY (cplist_cp_id)
         REFERENCES `coupon` (cp_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `coupon_list`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (cplist_mb_id)
+    ADD CONSTRAINT FK_coupon_list_member_mb_id FOREIGN KEY (cplist_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `point`
@@ -155,7 +155,7 @@ CREATE TABLE `point`
     PRIMARY KEY (pt_id)
 )COMMENT '적립금';
 ALTER TABLE `point`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (pt_mb_id)
+    ADD CONSTRAINT FK_point_member_mb_id FOREIGN KEY (pt_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `question`
@@ -174,7 +174,7 @@ CREATE TABLE `question`
     PRIMARY KEY (qst_id)
 )COMMENT '문의';
 ALTER TABLE `question`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (qst_mb_id)
+    ADD CONSTRAINT FK_question_member_mb_id FOREIGN KEY (qst_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `review`
@@ -190,7 +190,7 @@ CREATE TABLE `review`
     PRIMARY KEY (rv_id)
 )COMMENT '후기';
 ALTER TABLE `review`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (rv_mb_id)
+    ADD CONSTRAINT FK_review_member_mb_id FOREIGN KEY (rv_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `review_comment`
@@ -206,8 +206,8 @@ CREATE TABLE `review_comment`
     PRIMARY KEY (rvcmt_id)
 )COMMENT '후기_댓글';
 ALTER TABLE `review_comment`
-    ADD CONSTRAINT FK_review_rv_id FOREIGN KEY (rvcmt_rv_id)
-        REFERENCES `review` (rv_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+    ADD CONSTRAINT FK_review_comment_review_rv_id FOREIGN KEY (rvcmt_rv_id)
+        REFERENCES `review` (rv_id) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 CREATE TABLE `product_detail`
 (
@@ -218,13 +218,13 @@ CREATE TABLE `product_detail`
     PRIMARY KEY (prdtdetail_id)
 )COMMENT '상품상세';
 ALTER TABLE `product_detail`
-    ADD CONSTRAINT FK_product_prdt_id FOREIGN KEY (prdtdetail_prdt_id)
+    ADD CONSTRAINT FK_product_detail_product_prdt_id FOREIGN KEY (prdtdetail_prdt_id)
         REFERENCES `product` (prdt_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `product_detail`
-    ADD CONSTRAINT FK_question_qst_id FOREIGN KEY (prdtdetail_qst_id)
+    ADD CONSTRAINT FK_product_detail_question_qst_id FOREIGN KEY (prdtdetail_qst_id)
         REFERENCES `question` (qst_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `product_detail`
-    ADD CONSTRAINT FK_review_rv_id FOREIGN KEY (prdtdetail_rv_id)
+    ADD CONSTRAINT FK_product_detail_review_rv_id FOREIGN KEY (prdtdetail_rv_id)
         REFERENCES `review` (rv_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `qa`
@@ -240,7 +240,7 @@ CREATE TABLE `qa`
     PRIMARY KEY (qa_id)
 )COMMENT 'Q&A';
 ALTER TABLE `qa`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (qa_mb_id)
+    ADD CONSTRAINT FK_qa_member_mb_id FOREIGN KEY (qa_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 CREATE TABLE `qa_comment`
@@ -256,8 +256,8 @@ CREATE TABLE `qa_comment`
     PRIMARY KEY (qacmt_id)
 )COMMENT 'Q&A_댓글';
 ALTER TABLE `qa_comment`
-    ADD CONSTRAINT FK_qa_qa_id FOREIGN KEY (qacmt_qa_id)
-        REFERENCES qa (qa_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+    ADD CONSTRAINT FK_qa_comment_qa_qa_id FOREIGN KEY (qacmt_qa_id)
+        REFERENCES qa (qa_id) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 CREATE TABLE `notice`
 (
@@ -303,8 +303,8 @@ CREATE TABLE `reserve`
     PRIMARY KEY (rsv_id)
 )COMMENT '예약';
 ALTER TABLE `reserve`
-    ADD CONSTRAINT FK_service_svc_id FOREIGN KEY (rsv_svc_id)
+    ADD CONSTRAINT FK_reserve_service_svc_id FOREIGN KEY (rsv_svc_id)
         REFERENCES `service` (svc_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `reserve`
-    ADD CONSTRAINT FK_member_mb_id FOREIGN KEY (rsv_mb_id)
+    ADD CONSTRAINT FK_reserve_member_mb_id FOREIGN KEY (rsv_mb_id)
         REFERENCES `member` (mb_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
