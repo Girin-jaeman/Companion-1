@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`member` (
   `mb_addr1` VARCHAR(20) NOT NULL COMMENT '주소1',
   `mb_addr2` VARCHAR(100) NOT NULL COMMENT '주소2',
   `mb_addr3` VARCHAR(100) NOT NULL COMMENT '주소3',
+  `mb_code` INT NULL DEFAULT '2' COMMENT '구분코드',
   PRIMARY KEY (`mb_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -183,21 +184,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = '택배';
-
-
--- -----------------------------------------------------
--- Table `companion`.`emp`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `companion`.`emp` (
-  `emp_id` VARCHAR(20) NOT NULL COMMENT '직원아이디',
-  `emp_pw` VARCHAR(30) NOT NULL COMMENT '비밀번호',
-  `emp_name` VARCHAR(10) NOT NULL COMMENT '이름',
-  `emp_phone` VARCHAR(13) NOT NULL COMMENT '휴대전화',
-  PRIMARY KEY (`emp_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin
-COMMENT = '직원';
 
 
 -- -----------------------------------------------------
