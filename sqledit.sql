@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`category` (
   `ctgr_idref` VARCHAR(10) NULL DEFAULT NULL COMMENT '분류코드참조',
   `ctgr_name` VARCHAR(30) NOT NULL COMMENT '분류명',
   PRIMARY KEY (`ctgr_id`),
-  INDEX `FK_category_category_ctgr_id` (`ctgr_idref` ASC) VISIBLE,
+  INDEX `FK_category_category_ctgr_id` (`ctgr_idref` ASC),
   CONSTRAINT `FK_category_category_ctgr_id`
     FOREIGN KEY (`ctgr_idref`)
     REFERENCES `companion`.`category` (`ctgr_id`))
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`product` (
   `prdt_img` VARCHAR(100) NULL COMMENT '이미지',
   `prdt_ctgr_id` VARCHAR(45) NOT NULL COMMENT '분류번호',
   PRIMARY KEY (`prdt_id`),
-  INDEX `FK_product_category_ctgr_id` (`prdt_ctgr_id` ASC) VISIBLE,
+  INDEX `FK_product_category_ctgr_id` (`prdt_ctgr_id` ASC),
   CONSTRAINT `FK_product_category_ctgr_id`
     FOREIGN KEY (`prdt_ctgr_id`)
     REFERENCES `companion`.`category` (`ctgr_id`))
@@ -88,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`cart` (
   `ct_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   `ct_prdt_id` VARCHAR(10) NOT NULL COMMENT '상품코드',
   PRIMARY KEY (`ct_id`, `ct_prdt_id`, `ct_mb_id`),
-  INDEX `FK_cart_member_mb_id` (`ct_mb_id` ASC) VISIBLE,
-  INDEX `FK_cart_product_prdt_id` (`ct_prdt_id` ASC) VISIBLE,
+  INDEX `FK_cart_member_mb_id` (`ct_mb_id` ASC),
+  INDEX `FK_cart_product_prdt_id` (`ct_prdt_id` ASC),
   CONSTRAINT `FK_cart_member_mb_id`
     FOREIGN KEY (`ct_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`),
@@ -125,8 +125,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`coupon_list` (
   `cplist_cp_id` INT(11) NOT NULL COMMENT '쿠폰코드',
   `cplist_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`cplist_id`),
-  INDEX `FK_coupon_list_coupon_cp_id` (`cplist_cp_id` ASC) VISIBLE,
-  INDEX `FK_coupon_list_member_mb_id` (`cplist_mb_id` ASC) VISIBLE,
+  INDEX `FK_coupon_list_coupon_cp_id` (`cplist_cp_id` ASC),
+  INDEX `FK_coupon_list_member_mb_id` (`cplist_mb_id` ASC),
   CONSTRAINT `FK_coupon_list_coupon_cp_id`
     FOREIGN KEY (`cplist_cp_id`)
     REFERENCES `companion`.`coupon` (`cp_id`),
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`order` (
   `ord_state` VARCHAR(10) NOT NULL DEFAULT '결제대기' COMMENT '주문상태',
   `ord_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`ord_id`, `ord_mb_id`),
-  INDEX `FK_order_member_mb_id` (`ord_mb_id` ASC) VISIBLE,
+  INDEX `FK_order_member_mb_id` (`ord_mb_id` ASC),
   CONSTRAINT `FK_order_member_mb_id`
     FOREIGN KEY (`ord_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`))
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`delivery` (
   `dlvr_number` VARCHAR(30) NOT NULL COMMENT '송장번호',
   `dlvr_ord_id` INT(11) NOT NULL COMMENT '주문번호',
   PRIMARY KEY (`dlvr_id`, `dlvr_ord_id`),
-  INDEX `FK_delivery_order_ord_id` (`dlvr_ord_id` ASC) VISIBLE,
+  INDEX `FK_delivery_order_ord_id` (`dlvr_ord_id` ASC),
   CONSTRAINT `FK_delivery_order_ord_id`
     FOREIGN KEY (`dlvr_ord_id`)
     REFERENCES `companion`.`order` (`ord_id`))
@@ -244,8 +244,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`order_detail` (
   `orddetail_prdt_id` VARCHAR(10) NOT NULL COMMENT '상품코드',
   `orddetail_ord_id` INT(11) NOT NULL COMMENT '주문번호',
   PRIMARY KEY (`orddetail_id`, `orddetail_ord_id`, `orddetail_prdt_id`),
-  INDEX `FK_order_detail_product_prdt_id` (`orddetail_prdt_id` ASC) VISIBLE,
-  INDEX `FK_order_detail_order_ord_id` (`orddetail_ord_id` ASC) VISIBLE,
+  INDEX `FK_order_detail_product_prdt_id` (`orddetail_prdt_id` ASC),
+  INDEX `FK_order_detail_order_ord_id` (`orddetail_ord_id` ASC),
   CONSTRAINT `FK_order_detail_order_ord_id`
     FOREIGN KEY (`orddetail_ord_id`)
     REFERENCES `companion`.`order` (`ord_id`),
@@ -268,8 +268,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment` (
   `pmt_ord_id` INT(11) NOT NULL COMMENT '주문번호',
   `pmt_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`pmt_id`, `pmt_ord_id`, `pmt_mb_id`),
-  INDEX `FK_payment_member_mb_id` (`pmt_mb_id` ASC) VISIBLE,
-  INDEX `FK_payment_order_ord_id` (`pmt_ord_id` ASC) VISIBLE,
+  INDEX `FK_payment_member_mb_id` (`pmt_mb_id` ASC),
+  INDEX `FK_payment_order_ord_id` (`pmt_ord_id` ASC),
   CONSTRAINT `FK_payment_member_mb_id`
     FOREIGN KEY (`pmt_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`),
@@ -290,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`point` (
   `pt_money` INT(11) NOT NULL COMMENT '적립금액',
   `pt_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`pt_id`, `pt_mb_id`),
-  INDEX `FK_point_member_mb_id` (`pt_mb_id` ASC) VISIBLE,
+  INDEX `FK_point_member_mb_id` (`pt_mb_id` ASC),
   CONSTRAINT `FK_point_member_mb_id`
     FOREIGN KEY (`pt_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`))
@@ -317,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `qst_depth` INT(11) NOT NULL COMMENT '글깊이',
   `qst_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`qst_id`, `qst_mb_id`),
-  INDEX `FK_question_member_mb_id` (`qst_mb_id` ASC) VISIBLE,
+  INDEX `FK_question_member_mb_id` (`qst_mb_id` ASC),
   CONSTRAINT `FK_question_member_mb_id`
     FOREIGN KEY (`qst_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`))
@@ -340,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`review` (
   `rv_img` VARCHAR(100) NULL COMMENT '이미지',
   `rv_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`rv_id`, `rv_mb_id`),
-  INDEX `FK_review_member_mb_id` (`rv_mb_id` ASC) VISIBLE,
+  INDEX `FK_review_member_mb_id` (`rv_mb_id` ASC),
   CONSTRAINT `FK_review_member_mb_id`
     FOREIGN KEY (`rv_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`))
@@ -359,9 +359,9 @@ CREATE TABLE IF NOT EXISTS `companion`.`product_detail` (
   `prdtdetail_qst_id` INT(11) NULL DEFAULT NULL COMMENT '문의글번호',
   `prdtdetail_rv_id` INT(11) NULL DEFAULT NULL COMMENT '후기글번호',
   PRIMARY KEY (`prdtdetail_id`, `prdtdetail_prdt_id`),
-  INDEX `FK_product_detail_product_prdt_id` (`prdtdetail_prdt_id` ASC) VISIBLE,
-  INDEX `FK_product_detail_question_qst_id` (`prdtdetail_qst_id` ASC) VISIBLE,
-  INDEX `FK_product_detail_review_rv_id` (`prdtdetail_rv_id` ASC) VISIBLE,
+  INDEX `FK_product_detail_product_prdt_id` (`prdtdetail_prdt_id` ASC),
+  INDEX `FK_product_detail_question_qst_id` (`prdtdetail_qst_id` ASC),
+  INDEX `FK_product_detail_review_rv_id` (`prdtdetail_rv_id` ASC),
   CONSTRAINT `FK_product_detail_product_prdt_id`
     FOREIGN KEY (`prdtdetail_prdt_id`)
     REFERENCES `companion`.`product` (`prdt_id`),
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`qa` (
   `qa_img` VARCHAR(100) NULL COMMENT '이미지',
   `qa_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`qa_id`, `qa_mb_id`),
-  INDEX `FK_qa_member_mb_id` (`qa_mb_id` ASC) VISIBLE,
+  INDEX `FK_qa_member_mb_id` (`qa_mb_id` ASC),
   CONSTRAINT `FK_qa_member_mb_id`
     FOREIGN KEY (`qa_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`))
@@ -413,7 +413,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`qa_comment` (
   `qacmt_depth` INT(11) NOT NULL COMMENT '댓글깊이',
   `qacmt_qa_id` INT(11) NOT NULL COMMENT '게시글번호',
   PRIMARY KEY (`qacmt_id`, `qacmt_qa_id`),
-  INDEX `FK_qa_comment_qa_qa_id` (`qacmt_qa_id` ASC) VISIBLE,
+  INDEX `FK_qa_comment_qa_qa_id` (`qacmt_qa_id` ASC),
   CONSTRAINT `FK_qa_comment_qa_qa_id`
     FOREIGN KEY (`qacmt_qa_id`)
     REFERENCES `companion`.`qa` (`qa_id`)
@@ -453,8 +453,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`reserve` (
   `rsv_svc_id` VARCHAR(10) NOT NULL COMMENT '서비스코드',
   `rsv_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
   PRIMARY KEY (`rsv_id`, `rsv_mb_id`),
-  INDEX `FK_reserve_service_svc_id` (`rsv_svc_id` ASC) VISIBLE,
-  INDEX `FK_reserve_member_mb_id` (`rsv_mb_id` ASC) VISIBLE,
+  INDEX `FK_reserve_service_svc_id` (`rsv_svc_id` ASC),
+  INDEX `FK_reserve_member_mb_id` (`rsv_mb_id` ASC),
   CONSTRAINT `FK_reserve_member_mb_id`
     FOREIGN KEY (`rsv_mb_id`)
     REFERENCES `companion`.`member` (`mb_id`),
@@ -480,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`review_comment` (
   `rvcmt_depth` INT(11) NOT NULL COMMENT '댓글깊이',
   `rvcmt_rv_id` INT(11) NOT NULL COMMENT '게시글번호',
   PRIMARY KEY (`rvcmt_id`, `rvcmt_rv_id`),
-  INDEX `FK_review_comment_review_rv_id` (`rvcmt_rv_id` ASC) VISIBLE,
+  INDEX `FK_review_comment_review_rv_id` (`rvcmt_rv_id` ASC),
   CONSTRAINT `FK_review_comment_review_rv_id`
     FOREIGN KEY (`rvcmt_rv_id`)
     REFERENCES `companion`.`review` (`rv_id`)
