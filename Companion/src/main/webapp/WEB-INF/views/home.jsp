@@ -1,226 +1,176 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" pageEncoding="utf-8"%>
-<c:url value="/" var="root"></c:url>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>컴페니온::Companion</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" type="text/css" href="${root}css/bootstrap.css">
-    <script type="text/javascript" src="${root }js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="${root }js/bootstrap.js"></script>
-    <style type="text/css">
-
-/*header css start*/    
-    	.navbar navbar-default navbar-fixed-top{
-    	height: 18px;
-        z-index: 1;
-    	}
-    	.navbar navbar-default{
-    	position : sticky;
-        top:51px;
-    	}
-
-    	#navbar-fix-top{
-    	position: sticky; 
-        background-color: #CEB69B;
-    	font-size: 12sx;
-    	margin: 0px;
-    	}
-
-    	#navbar-fix-top>div{
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-   		}
-   		
-    	#navbar-fix-top>div>ul{
-        margin-right: 10px;
-        padding: 0px;
-    	
-    	}
-    	#navbar-fix-top>div>ul>li{
-    	}
-    	#navbar-fix-top>div>ul>li>a{
-    	color: white;
-    	}
-    	
-		#bs-example-navbar-collapse-1{
-    	margin: 0px;
-		padding: 0px;
-    	background-color: #B08562;
-    	
-    	}
-    	
-    	.navbar-brand {
-	    float: left;
-	    padding: 10px;
-	    height: 100px;
-		}
-		#bs-example-navbar-collapse-1>ul{
-		float:right;
-		margin-right:25px;
-		}
-		#bs-example-navbar-collapse-1>ul>li{
-		margin-top: 27px;
-		line-height: 100px;
-		text-align: center;
-    	}
-		#bs-example-navbar-collapse-1>ul>li>a{
-		font-size: 30px;
-		color: white;
-		}
-/*header css end*/ 	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- add reset css -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+		<!-- add Bootstrap core CSS -->
+		<link rel="stylesheet" type="text/css" href="${root }css/bootstrap/bootstrap.css">
+		<!-- add main css -->
+		<link rel="stylesheet" type="text/css" href="${root }css/main.css">
+		<!-- add jquery-1.12.4 -->
+		<script type="text/javascript" src="${root }js/jquery-1.12.4.js"></script>
+		<!-- add Bootstrap core js -->
+		<script type="text/javascript" src="${root }js/bootstrap/bootstrap.js"></script>
+		<title>Companion</title>
+	</head>
+	<body>
+	<!-- header -->
+	<header class="header">
+		<div class="container-fluid">
+			
+		</div>
+	</header>
 	
-/*container css start*/ 	
-.container {
-		height: 1000px;
-		}
-    	/* The sidebar menu */
-.sidenav {
-  height: 1000px; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 153px; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Style page content */
-.main {
-  height: 600px;
-  margin-left: 160px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
-}
-/*container css end*/ 	
-
-		#footer{
-		width: 100%;
-		height: 100px;
-		background-color: #644831;
-		margin-top: 200px;
-		color: white;
-		font-size: 12px;
-		}
-		#footer>table>tr>td{
-		text-align:center;
-		line-height: 100px;
-		}
-    </style>
-</head>
-<body>
-<!-- header start -->
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar-fix-top">
-    <div class="header-fix" id="fix-top">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원가입</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-</nav>
-
-<nav class="navbar navbar-default">
-<!--   <div class="container-fluid"> -->
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <a class="navbar-brand" href="#">
-	 	<img alt="Brand" src="${root }imgs/dog1.png">
-	  </a>
-      <ul class="nav navbar-nav">
-        <li><a href="#">주문하기</a></li>
-        <li><a href="#">예약하기</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호텔소개 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">이용안내</a></li>
-            <li><a href="#">위치안내</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">룸 소개</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">돌보미 소개</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">알림 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">공지사항</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">이벤트</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-<!--   </div>/.container-fluid -->
-</nav>
-<!-- header end -->
-<!-- content start -->
-<div class="container">
-<!-- Side navigation -->
-<div class="sidenav">
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<!-- Page content -->
-<div class="main">
-  ...
-</div>
-
-
-
-<!-- content end -->	    
-</div>
-<!-- footer start -->	
-<div id="footer" >       
-	<table>
-		<tr>
-		<td>
-		상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-0000-0000 | 이메일 : companion@companion.com<br />
-		주소 : 서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000 호스팅제공자 : ㈜Companion<br />
-		[홈페이지 이용약관] [개인정보취급방침]<br />
-		Copyright ⓒ 2020 COMPANION All rights reserved.
-		</td>
-		</tr>
-	</table>   
-</div>	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar">1</span>
+				<span class="icon-bar">2</span>
+				<span class="icon-bar">3</span>
+			  </button>
+			  <a class="navbar-brand" href="#">Companion</a>
+			</div>
+		
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <form class="navbar-form navbar-left">
+				<div class="form-group">
+				  <input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			  </form>
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="#">쇼핑하기</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호텔서비스 <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="#">예약하기</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">이용안내</a></li>
+					<li><a href="#">서비스소개</a></li>
+					<li><a href="#">돌보미소개</a></li>
+					<li><a href="#">호텔위치</a></li>
+				  </ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">알림 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+					  <li><a href="#">이벤트</a></li>
+					  <li><a href="#">공지사항</a></li>
+					  <li><a href="#">Q&A</a></li>
+					</ul>
+				  </li>
+			  </ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+			
+		  <div class="container-fluid sign-group">
+		  <button type="button" class="btn btn-default navbar-btn navbar-left">로그인</button>
+		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입</a></p>
+		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">아이디찾기</a></p>
+		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">비밀번호찾기</a></p>
+		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입 후 첫 주문시 1000원 할인 쿠폰 지급</a></p>
+		</div><!-- /.container-fluid -->
+	</nav>
 	
-<!-- footer end -->	
-</body>
-
-</html>
+	<div class="navleft">
+		<h1>왼쪽</h1>
+		<h1>왼쪽</h1>
+		<h1>왼쪽</h1>
+		<h1>왼쪽</h1>
+		<h1>왼쪽</h1>
+	</div>
+	<!-- section -->
+	<section class="section">
+		<div class="container">
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+			<h1>최재만</h1>
+		</div>
+	</section>
+	
+	<!-- footer -->
+	<footer class="section">
+		<div class="container navbar-inverse">
+					상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-0000-0000 | 이메일 : companion@companion.com<br />
+				주소 : 서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000 호스팅제공자 : ㈜Companion<br />
+				[홈페이지 이용약관] [개인정보취급방침]<br />
+				Copyright ⓒ 2020 COMPANION All rights reserved.
+		</div>
+	</footer>  
+	</body>
+	</html>

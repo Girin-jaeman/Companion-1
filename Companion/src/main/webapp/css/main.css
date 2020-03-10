@@ -1,0 +1,39 @@
+/* COMMON */
+html {
+	position: relative;
+	margin: 0;
+}
+.navbar{
+	padding:0;
+	border-radius: 0;
+	border: 0;
+}
+nav .container-fluid{
+	width: 100%;	
+	margin: 0;
+	padding: 0;
+}
+.sign-group{
+	width:100%;
+	background-color: white;
+	border-bottom: 1px solid #999;
+}
+.sign-group .btn{
+	margin-left: 20px;
+}
+footer {
+    position: relative;
+	width: 100%;
+	text-align: center;
+	color: gray;
+	margin-top: 30px;
+}
+footer .container{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.navleft {
+	position: fixed;
+	float: left;
+}
