@@ -19,10 +19,14 @@
     	height: 18px;
         z-index: 1;
     	}
+    	.navbar navbar-default{
+    	position : sticky;
+        top:51px;
+    	}
 
     	#navbar-fix-top{
     	position: sticky; 
-        background-color: #B5C7D3;
+        background-color: #CEB69B;
     	font-size: 12sx;
     	margin: 0px;
     	}
@@ -39,15 +43,16 @@
     	
     	}
     	#navbar-fix-top>div>ul>li{
-        text-decoration: underline;
     	}
     	#navbar-fix-top>div>ul>li>a{
+    	color: white;
     	}
     	
 		#bs-example-navbar-collapse-1{
     	margin: 0px;
 		padding: 0px;
-    	background-color: #0F4C81;
+    	background-color: #B08562;
+    	
     	}
     	
     	.navbar-brand {
@@ -55,36 +60,68 @@
 	    padding: 10px;
 	    height: 100px;
 		}
-		
+		#bs-example-navbar-collapse-1>ul{
+		float:right;
+		margin-right:25px;
+		}
 		#bs-example-navbar-collapse-1>ul>li{
 		margin-top: 27px;
 		line-height: 100px;
 		text-align: center;
     	}
 		#bs-example-navbar-collapse-1>ul>li>a{
+		font-size: 30px;
 		color: white;
 		}
 /*header css end*/ 	
 	
 /*container css start*/ 	
-		.container {
+.container {
 		height: 1000px;
-		background-color: yellow;
 		}
-    	
-    	.item img{
-    	margin: 0px auto;
-    	}
+    	/* The sidebar menu */
+.sidenav {
+  height: 1000px; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 153px; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  height: 600px;
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
 /*container css end*/ 	
 
 		#footer{
 		width: 100%;
 		height: 100px;
-		background-color: #0F4C81;
+		background-color: #644831;
 		margin-top: 200px;
 		color: white;
 		font-size: 12px;
-		    }
+		}
 		#footer>table>tr>td{
 		text-align:center;
 		line-height: 100px;
@@ -150,60 +187,25 @@
 <!--   </div>/.container-fluid -->
 </nav>
 <!-- header end -->
-	<div class="container">
-	    <div class="row">
-	    	<div class="col-md-12">
 <!-- content start -->
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="${root }imgs/pic1.png" alt="pic1">
-      <div class="carousel-caption">
-        pic1
-      </div>
-    </div>
-    <div class="item">
-      <img src="${root }imgs/pic2.png" alt="pic2">
-      <div class="carousel-caption">
-        pic2
-      </div>
-    </div>
-    <div class="item">
-      <img src="${root }imgs/pic3.png" alt="pic3">
-      <div class="carousel-caption">
-        pic3
-      </div>
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div class="container">
+<!-- Side navigation -->
+<div class="sidenav">
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
-    <h1>컴페니온 인덱스 페이지</h1>
+
+<!-- Page content -->
+<div class="main">
+  ...
+</div>
 
 
 
-
-	    
 <!-- content end -->	    
-	    	</div>
-	    </div>
-	</div>
+</div>
 <!-- footer start -->	
 <div id="footer" >       
 	<table>
