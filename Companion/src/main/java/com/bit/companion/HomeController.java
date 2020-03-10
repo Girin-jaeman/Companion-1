@@ -25,5 +25,5 @@ public class HomeController {
 	public String jinwoo() {
 		return "jinwoo";
 	}
-	
+
 }
