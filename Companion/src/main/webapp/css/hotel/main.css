@@ -23,9 +23,20 @@ nav .container-fluid{
 }
 
 section .container {
+	display: flex;
 	margin-left: 130px;
 }
-
+section .container .reserve--left{
+	width: 40%;
+}
+section .container .reserve--left img{
+	display: block;
+	width: 400px;
+	margin: 0 auto;
+}
+section .container .reserve--right{
+	width: 60%;
+}
 footer {
     position: relative;
 	width: 100%;
