@@ -103,8 +103,12 @@ header .sub-menu {
     display: flex;
     margin-right: 10px;
 }
+header .sub-menu {
+    margin: 0;
+    padding: 0;
+}
 header .sub-menu li a {
-    padding: 8px;
+    padding: 4px;
     display: block;
     font-size: 13px;
     color: #eee;
@@ -113,7 +117,7 @@ header .sub-menu li a:hover {
     color: #658DC6;
 }
 header .inner {
-    height: 150px;
+    height: 100px;
 }
 header .logo {
     display: flex;
@@ -124,12 +128,13 @@ header .logo {
 header .logo a {
     background: url("../img/logo.png");
     width: 150px;
-    height: 150px;
+    height: 100px;
     display: block;
     text-indent: -9999px;
     background-size: cover;
 }
 header .menu-group {
+    padding-top: 10px;
     display: flex;
     align-items: center;
     height: 100%;
@@ -148,10 +153,10 @@ header .main-menu li a:hover {
 }
 
 /* SECTION */
-section .inner{
-    height: 470px;
+section {
+    border-top: 1px solid rgba(0,0,0,.75);
+    box-shadow: 0 0 5px rgba(0,0,0,.75);
 }
-
 
 /* FOOTER */
 footer{
