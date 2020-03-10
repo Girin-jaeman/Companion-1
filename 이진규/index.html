@@ -34,9 +34,14 @@
 
     <!-- reset css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper.min.css">
     
-    <!-- main css -->
+    <!-- add css -->
     <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery-1.12.4.js"></script>
 </head>
 <body>
 <div class="body__container">
@@ -64,6 +69,59 @@
             </div>
         </div>
     </header>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/swiper/andrey-evdokimov-aeqsKGWfY6M-unsplash.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/swiper/jorge-zapata-U0He1sAxww0-unsplash.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/swiper/marnhe-du-plooy-U6u_A5z6mME-unsplash.jpg" alt=""></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Add Navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <section class="section">
+    </section>
+
+    <footer class="section">
+        <div class="inner">
+            <div class="paragraph-group">
+                <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
+                <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
+                <p>호스팅제공자:(주)Companion</p>
+                <br/>
+                <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+                <br/>
+                <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </div>
+<!-- Swiper JS -->
+<script src="js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+var swiper = new Swiper('.swiper-container', {
+    pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+    },
+    navigation:{
+        prevEl:'.swiper-button-prev',
+        nextEl:'.swiper-button-next',
+    },
+    autoplay:{
+        delay:3000,
+    },
+    loop:true,
+    speed:1000,
+});
+</script>
+<script src="js/main.js"></script>
 </body>
 </html>

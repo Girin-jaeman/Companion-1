@@ -83,7 +83,7 @@ moz 모질라 파이어폭스
     position: relative;
 }
 .section .inner{
-    max-width: 980px;
+    max-width: 1024px;
     margin: 0 auto;
     box-sizing: border-box;
     position: relative;
@@ -139,9 +139,60 @@ header .main-menu {
 }
 header .main-menu li a {
     display: block;
-    padding: 10px;
+    padding: 30px;
     color: #eee;
+    font-size: 20px;
 }
 header .main-menu li a:hover {
     color: #658DC6;
+}
+
+/* SECTION */
+section .inner{
+    height: 470px;
+}
+
+
+/* FOOTER */
+footer{
+    border-top: 1px solid rgba(0,0,0,.75);
+    box-shadow: 0 0 5px rgba(0,0,0,.75);
+    background: #0F4C81;
+}
+footer .paragraph-group{
+    font-weight: 500;
+    line-height: 1.5;
+    color: #eee;
+    padding: 10px;
+}
+footer .paragraph-group a{
+    color: #eee;
+}
+
+/* SWIPER */
+.swiper-container {
+    width: 100%;
+    height: 600px;
+  }
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+.swiper-slide img{
+    width: 100%;
 }
