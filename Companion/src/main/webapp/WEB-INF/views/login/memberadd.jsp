@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 		<input type="text" name="mbName" id="mbName" placeholder="name">
 		
 		<label for="mbTel">TEL</label>
-		<input type="text" name="mbTel" id="mbTel" placeholder="ºóÄ­°¡´É">
+		<input type="text" name="mbTel" id="mbTel" placeholder="ì¼ë°˜ì „í™”">
 		
 		<label for="mbPhone">PHONE</label>
 		<input type="text" name="mbPhone" id="mbPhone" placeholder="phone number without -">
@@ -26,19 +26,19 @@
 		<label for="mbEmail">E-MAIL</label>
 		<input type="text" name="mbEmail" id="mbEmail" placeholder="E-mail contains @">
 		
-		<label for="mbAddr1">¿ìÆí¹øÈ£</label>
-		<input type="text" name="mbAddr1" id="mbAddr1" placeholder="5ÀÚ¸® ¼ýÀÚ">
+		<label for="mbAddr1">ìš°íŽ¸ë²ˆí˜¸</label>
+		<input type="text" name="mbAddr1" id="mbAddr1" placeholder="5ê¸€ìž ìˆ«ìž">
 		
-		<label for="mbAddr2">±âº»ÁÖ¼Ò</label>		
-		<input type="text" name="mbAddr2" id="mbAddr2" placeholder="XX½Ã XX±¸ XXµ¿">
+		<label for="mbAddr2">ê¸°ë³¸ì£¼ì†Œ</label>		
+		<input type="text" name="mbAddr2" id="mbAddr2" placeholder="XXì‹œ XXêµ¬ XXë™">
 		
-		<label for="mbAddr3">»ó¼¼ÁÖ¼Ò</label>
-		<input type="text" name="mbAddr3" id="mbAddr3" placeholder="XXX¹øÁö XX XXX¾ÆÆÄÆ® XXXµ¿ XXXÈ£">
+		<label for="mbAddr3">ìƒì„¸ì£¼ì†Œ</label>
+		<input type="text" name="mbAddr3" id="mbAddr3" placeholder="XXXë²ˆì§€ XX XXXì•„íŒŒíŠ¸ XXXë™ XXXí˜¸">
 		
 		<input type="hidden" name="mbCode" id="mbCode" value="2">
 		
-		<button type="submit">°¡ÀÔ</button>
-		<button type="button" onclick="history.back();">µÚ·Î</button>
+		<button type="submit">ê°€ìž…</button>
+		<button type="button" onclick="history.back();">ë’¤ë¡œ</button>
 	</form>
 </body>
 </html>
