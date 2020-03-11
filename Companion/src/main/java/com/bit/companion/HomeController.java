@@ -29,5 +29,9 @@ public class HomeController {
 	public String mypage() {
 		return "mypage";
 	}
+	@RequestMapping(value = "/shoppingcart")
+	public String shoppingcart() {
+		return "shoppingcart";
+	}
 
 }
