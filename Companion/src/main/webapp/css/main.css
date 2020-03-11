@@ -37,3 +37,27 @@ footer .container{
 	position: fixed;
 	float: left;
 }
+.navleft-shop{
+	position: fixed;
+	background-color: #999;
+	float: left;
+	width: 20%;
+}
+.container{
+	padding-left: 200px;
+	margin-right: 0px;
+}
+
+.page_nametag{
+	background-color: #999;
+	width: 100px;
+}
+.pagination{
+	display: block;
+	text-align: center;
+}
+.pagination>li>a{
+	float: none;
+	margin-left: -5px;
+}
+
