@@ -17,6 +17,12 @@
 		<!-- add Bootstrap core js -->
 		<script type="text/javascript" src="${root }js/bootstrap/bootstrap.js"></script>
 		<title>Companion</title>
+		<style type="text/css">
+			.row{
+				padding:0;
+				padding-bottom:0;
+			}
+		</style>
 	</head>
 	<body>
 	<!-- header -->
@@ -76,12 +82,16 @@
 	<!-- section -->
 	<section class="section">
 		<div class="container">
+<<<<<<< HEAD
+			<h1>최재만</h1>
+=======
+>>>>>>> 4acbc8df5f47c36c25c8e2c5f3f7c438e3cb5aef
 		
 		</div>
 	</section>
 	
 	<!-- footer -->
-	<footer class="section">
+	<footer class="navbar-fixed-bottom">
 		<div class="container navbar-inverse">
 				Copyright ⓒ 2020 COMPANION All rights reserved.
 		</div>
