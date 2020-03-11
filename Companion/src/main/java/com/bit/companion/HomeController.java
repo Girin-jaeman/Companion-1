@@ -25,5 +25,13 @@ public class HomeController {
 	public String jinwoo() {
 		return "jinwoo";
 	}
+	@RequestMapping(value = "/mypage")
+	public String mypage() {
+		return "mypage";
+	}
+	@RequestMapping(value = "/shoppingcart")
+	public String shoppingcart() {
+		return "shoppingcart";
+	}
 
 }
