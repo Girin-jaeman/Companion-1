@@ -10,5 +10,6 @@
   	</typeAliases>
   	<mappers>
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminMapper.xml"/>
   	</mappers>
   </configuration>
