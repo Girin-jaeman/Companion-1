@@ -82,10 +82,7 @@
 	<!-- section -->
 	<section class="section">
 		<div class="container">
-<<<<<<< HEAD
 			<h1>최재만</h1>
-=======
->>>>>>> 4acbc8df5f47c36c25c8e2c5f3f7c438e3cb5aef
 		
 		</div>
 	</section>
