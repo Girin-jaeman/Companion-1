@@ -91,7 +91,7 @@
 		  <button type="button" class="btn btn-default navbar-btn navbar-left">000님 환영합니다</button>
 		  <p class="navbar-text navbar-left" id="member"><a href="#" class="navbar-link">회원정보</a></p>
 		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">주문내역</a></p>
-		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">장바구니</a></p>
+		  <p class="navbar-text navbar-left"><a href="shoppingcart" class="navbar-link">장바구니</a></p>
 		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">문의하기</a></p>
 		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">적립금 조회</a></p>
 		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">쿠폰 조회</a></p>
@@ -202,10 +202,10 @@
 		</div><!-- /.modal -->
 			
 <!-- Modal END -->
+	<!-- content -->
 	
 	
-	
-	
+	<!--content  -->
 	<!-- footer -->
 	<footer class="navbar-fixed-bottom">
 		<div class="container navbar-inverse">
