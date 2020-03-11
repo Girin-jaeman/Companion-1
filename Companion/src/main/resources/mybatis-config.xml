@@ -3,15 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
-  <!-- 
-  ex
+
   <configuration>
   	<typeAliases>
-  		<typeAlias alias="empBean" type="com.bit.prj03.model.entity.EmpVo"/>
+  		<typeAlias alias="empBean" type="com.bit.companion.model.entity.order"/>
   	</typeAliases>
   	<mappers>
-  		<mapper resource="mybatis/empMapper.xml"/>
+  		<mapper resource="mybatis.order/orderMapper.xml"/>
   	</mappers>
   </configuration>
-   -->
+
   

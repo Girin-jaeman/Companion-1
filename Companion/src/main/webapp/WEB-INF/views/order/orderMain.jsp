@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
 	<html>
 	
@@ -132,27 +134,34 @@
 						</div>
 					</div>
 				</nav>
-	
-				<h2>Collapsible Sidebar Using Bootstrap 4</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h3>Lorem Ipsum Dolor</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<!--content  -->
+					<table class="table">
+	<thead>
+		<tr>
+			<th>상품코드</th>
+			<th>상품명</th>
+			<th>가격</th>
+			<th>재고</th>
+			<th>분류번호</th>
+		</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${list }" var="bean">
+		<tr>
+			<td><a href="orderMain/${bean.sabun }">${bean.sabun }</a></td>
+			<td><a href="orderMain/${bean.sabun }">${bean.name }</a></td>
+			<td><a href="orderMain/${bean.sabun }">${bean.nalja }</a></td>
+			<td><a href="orderMain/${bean.sabun }">${bean.pay }</a></td>
+			<td><a href="orderMain/${bean.sabun }">${bean.pay }</a></td>
+		</tr>
+	</c:forEach>
+	</tbody>
+</table>
+				<!--content  -->
 			</div>
 		</div>
+	
+				
 	
 		<!-- jQuery CDN - Slim version (=without AJAX) -->
 		<script src="${root}js/jquery-1.12.4.js"></script>
