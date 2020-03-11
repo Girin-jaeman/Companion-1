@@ -3,15 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
-  <!-- 
-  ex
   <configuration>
   	<typeAliases>
-  		<typeAlias alias="empBean" type="com.bit.prj03.model.entity.EmpVo"/>
+  		<!-- <typeAlias alias="hotelBean" type="com.bit.companion.model.entity.hotel.HotelVo"/>  -->
+  		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
   	</typeAliases>
   	<mappers>
-  		<mapper resource="mybatis/empMapper.xml"/>
+  		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
   	</mappers>
   </configuration>
-   -->
-  

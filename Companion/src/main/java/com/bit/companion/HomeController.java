@@ -1,7 +1,5 @@
 package com.bit.companion;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -19,19 +17,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {		
 		return "home";
-	}
-
-	@RequestMapping(value = "/jinwoo")
-	public String jinwoo() {
-		return "jinwoo";
-	}
-	@RequestMapping(value = "/mypage")
-	public String mypage() {
-		return "mypage";
-	}
-	@RequestMapping(value = "/shoppingcart")
-	public String shoppingcart() {
-		return "shoppingcart";
 	}
 
 }
