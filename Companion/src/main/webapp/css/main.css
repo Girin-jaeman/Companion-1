@@ -8,18 +8,17 @@ html {
 	border-radius: 0;
 	border: 0;
 }
-nav .container-fluid{
+.navbar-brand{
+	padding-left: 30px;
+	font-size: 25px;
+}
+.container-fluid{
 	width: 100%;	
 	margin: 0;
 	padding: 0;
 }
-.sign-group{
-	width:100%;
-	background-color: white;
-	border-bottom: 1px solid #999;
-}
-.sign-group .btn{
-	margin-left: 20px;
+.carousel{
+	margin-bottom: 30px;
 }
 footer {
     position: relative;
@@ -28,12 +27,7 @@ footer {
 	color: gray;
 	margin-top: 30px;
 }
-footer .container{
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-.navleft {
-	position: fixed;
-	float: left;
+footer div{
+	height: 60px;
+	line-height: 60px;
 }
