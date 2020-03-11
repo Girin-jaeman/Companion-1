@@ -8,21 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<!-- add reset css -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-		<!-- add Bootstrap core CSS -->
-		<link rel="stylesheet" type="text/css" href="${root }css/bootstrap/bootstrap.css">
-		<!-- add main css -->
-		<link rel="stylesheet" type="text/css" href="${root }css/main.css">
-		<!-- add jquery-1.12.4 -->
-		<script type="text/javascript" src="${root }js/jquery-1.12.4.js"></script>
-		<!-- add Bootstrap core js -->
-		<script type="text/javascript" src="${root }js/bootstrap/bootstrap.js"></script>
 		<title>Companion</title>
-		<style type="text/css">
-			.row{
-				padding:0;
-				padding-bottom:0;
-			}
-		</style>
+		
 	</head>
 	<body>
 	<!-- header -->
@@ -87,11 +74,5 @@
 		</div>
 	</section>
 	
-	<!-- footer -->
-	<footer class="navbar-fixed-bottom">
-		<div class="container navbar-inverse">
-				Copyright ⓒ 2020 COMPANION All rights reserved.
-		</div>
-	</footer>  
 	</body>
 	</html>
