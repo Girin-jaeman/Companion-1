@@ -3,7 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cae7b7a78f76afcc9cb079cac398ec8338b27fc2
 	<bean id="dataSource"
 	class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.gjt.mm.mysql.Driver"/>
@@ -22,4 +25,8 @@
 	class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cae7b7a78f76afcc9cb079cac398ec8338b27fc2
 </beans>

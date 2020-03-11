@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
+<<<<<<< HEAD
 
   <configuration>
   	<typeAliases>
@@ -14,3 +15,15 @@
   </configuration>
 
   
+=======
+  <configuration>
+  	<typeAliases>
+  		<!-- <typeAlias alias="hotelBean" type="com.bit.companion.model.entity.hotel.HotelVo"/>  -->
+  		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
+  	</typeAliases>
+  	<mappers>
+  		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminMapper.xml"/>
+  	</mappers>
+  </configuration>
+>>>>>>> cae7b7a78f76afcc9cb079cac398ec8338b27fc2
