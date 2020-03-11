@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- add reset css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- add Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.css">
+    <!-- add main css -->
+    <link rel="stylesheet" type="text/css" href="../css/hotel/main.css">
+    <!-- add jquery-ui.css -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- add jquery-1.12.4 -->
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <!-- add jquery-ui.js -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- add jquery datepicker 달력 -->
+    <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+    <!-- add Bootstrap core js -->
+    <script type="text/javascript" src="../js/bootstrap/bootstrap.js"></script>
+    <title>Companion::컴패니언</title>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+	<div class="container-fluid">
+		
+	</div>
+</header>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		    <span class="sr-only">Toggle navigation</span>
+		    <span class="icon-bar">1</span>
+		    <span class="icon-bar">2</span>
+		    <span class="icon-bar">3</span>
+		  </button>
+		  <a class="navbar-brand" href="#">Companion</a>
+		</div>
+	
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <form class="navbar-form navbar-left">
+		    <div class="form-group">
+		      <input type="text" class="form-control" placeholder="Search">
+		    </div>
+		    <button type="submit" class="btn btn-default">Submit</button>
+		  </form>
+		  <ul class="nav navbar-nav navbar-right">
+		    <li><a href="#">쇼핑하기</a></li>
+		    <li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호텔서비스 <span class="caret"></span></a>
+		      <ul class="dropdown-menu">
+		        <li><a href="#">예약하기</a></li>
+		        <li role="separator" class="divider"></li>
+		        <li><a href="#">이용안내</a></li>
+		        <li><a href="#">서비스소개</a></li>
+		        <li><a href="#">돌보미소개</a></li>
+		        <li><a href="#">호텔위치</a></li>
+		      </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">알림 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">이벤트</a></li>
+                  <li><a href="#">공지사항</a></li>
+                  <li><a href="#">Q&A</a></li>
+                </ul>
+              </li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+		
+  	<div class="container-fluid sign-group">
+	  <button type="button" class="btn btn-default navbar-btn navbar-left">로그인</button>
+	  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입</a></p>
+	  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">아이디찾기</a></p>
+	  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">비밀번호찾기</a></p>
+	  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입 후 첫 주문시 1000원 할인 쿠폰 지급</a></p>
+	</div><!-- /.container-fluid -->
+</nav>
+
+<!-- section -->
+<section class="section">
+  <div class="row">
+    <div class="navleft col-lg-1.5 col-md-1.5 col-sm-2.5">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">예약하기</a>
+        <a href="#" class="list-group-item">이용안내</a>
+        <a href="#" class="list-group-item">서비스소개</a>
+        <a href="#" class="list-group-item">돌보미소개</a>
+        <a href="#" class="list-group-item">호텔위치</a>
+      </div>
+    </div>
+  	<div class="container col-lg-10.5 col-md-10.5 col-sm-9.5">
+      <!-- 예약하기 설명 -->
+      <div class="reserve--left">
+        <img id="reserveDog" src="../imgs/hotel/reserve_dog.jpg" alt="강아지사진">
+      </div>
+      <!-- 예약하기 form -->
+      <div class="reserve--right">
+        <form class="form-horizontal">
+          <!-- 보호자명 -->
+          <div class="form-group">
+            <label for="companionName" class="col-sm-2 control-label">보호자명</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="companionName" placeholder="보호자명을 입력하세요.">
+            </div>
+          </div>
+          <!-- 반려동물 이름 -->
+          <div class="form-group">
+            <label for="animalName" class="col-sm-2 control-label">반려동물 이름</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="animalName" placeholder="반려동물 이름을 입력하세요.">
+            </div>
+          </div>
+          <!-- 연락처 -->
+          <div class="form-group">
+            <label for="companionNumber" class="col-sm-2 control-label">연락처</label>
+            <div class="col-sm-5">
+              <input type="tel" class="form-control" id="companionNumber" placeholder="010-0000-0000">
+            </div>
+          </div>
+          <!-- Datepicker -->
+          <div class="form-group">
+            <label for="datepicker" class="col-sm-2 control-label">체크인</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="checkIn" id="datepicker" placeholder="체크인 날짜를 선택하세요.">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="datepicker" class="col-sm-2 control-label">체크아웃</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="checkOut" id="datepicker2" placeholder="체크아웃 날짜를 선택하세요.">
+            </div>
+          </div>
+          <!-- 반려동물 품종 -->
+          <div class="form-group">
+            <label for="animalBreed" class="col-sm-2 control-label">반려동물 품종</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" id="animalBreed" placeholder="반려동물 품종을 입력하세요.">
+            </div>
+          </div>
+          <!-- 반려동물 나이 -->
+          <div class="form-group">
+            <label for="animalAge" class="col-sm-2 control-label">반려동물 나이</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control" id="animalAge" placeholder="반려동물 나이를 입력하세요.">
+            </div>
+          </div>
+          <!-- 기타/주의사항 -->
+          <div class="form-group">
+            <label for="etc" class="col-sm-2 control-label">기타/주의사항</label>
+            <div class="col-sm-5">
+              <textarea name="etc" id="etc" cols="50" rows="10" placeholder="기타/주의사항 항목에 대한 내용을 200자 이내로 기재해주세요."></textarea><br/>
+              <span id="counter">(0 / 200)</span>
+            </div>
+          </div>
+          <!-- 개인정보 수집 및 이용 동의 라디오 버튼 -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label>
+                  개인정보 수집 및 이용 동의
+                  <input type="radio" name="agree-radio"> 동의
+                  <input type="radio" name="agree-radio"> 미동의
+                </label>
+              </div>
+            </div>
+          </div>
+  
+          <!-- 예약상담신청 버튼 -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success btn-lg btn-block">예약상담신청</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  	</div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="section row">
+    <div class="container navbar-inverse col-lg-12">
+    				상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-0000-0000 | 이메일 : companion@companion.com<br />
+    			주소 : 서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000 호스팅제공자 : ㈜Companion<br />
+    			[홈페이지 이용약관] [개인정보취급방침]<br />
+    			Copyright ⓒ 2020 COMPANION All rights reserved.
+    	</div>
+  
+</footer>
+</body>
+<script type="text/javascript" src="../js/hotel/main.js"></script>
+</html>

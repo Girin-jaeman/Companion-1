@@ -20,11 +20,6 @@
 	</head>
 	<body>
 	<!-- header -->
-	<header class="header">
-		<div class="container-fluid">
-			
-		</div>
-	</header>
 	
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -32,9 +27,6 @@
 			<div class="navbar-header">
 			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar">1</span>
-				<span class="icon-bar">2</span>
-				<span class="icon-bar">3</span>
 			  </button>
 			  <a class="navbar-brand" href="#">Companion</a>
 			</div>
@@ -84,6 +76,7 @@
 	<!-- section -->
 	<section class="section">
 		<div class="container">
+<<<<<<< HEAD
 		<table class="table">
 			<tr>
 				<td class="row" colspan="7">
@@ -129,6 +122,8 @@
 			</tr>
 <!-- 리스트 호출 끝-->
 		</table>
+=======
+>>>>>>> 4acbc8df5f47c36c25c8e2c5f3f7c438e3cb5aef
 		
 		</div>
 	</section>
@@ -136,9 +131,6 @@
 	<!-- footer -->
 	<footer class="section">
 		<div class="container navbar-inverse">
-					상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-0000-0000 | 이메일 : companion@companion.com<br />
-				주소 : 서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000 호스팅제공자 : ㈜Companion<br />
-				[홈페이지 이용약관] [개인정보취급방침]<br />
 				Copyright ⓒ 2020 COMPANION All rights reserved.
 		</div>
 	</footer>  
