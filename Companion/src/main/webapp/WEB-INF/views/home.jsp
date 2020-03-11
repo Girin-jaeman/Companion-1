@@ -81,85 +81,55 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	
-	<div class="navleft">
-		<h1>왼쪽</h1>
-		<h1>왼쪽</h1>
-		<h1>왼쪽</h1>
-		<h1>왼쪽</h1>
-		<h1>왼쪽</h1>
-	</div>
 	<!-- section -->
 	<section class="section">
 		<div class="container">
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
-			<h1>최재만</h1>
+		<table class="table">
+			<tr>
+				<td class="row" colspan="7">
+					<div class="col-lg-2">상품목록</div>
+					<div class="col-lg-8"></div>
+					<div class="col-lg-2 td_right">
+						<a class="btn btn-default btn-lg" href="#" role="button">등록하기</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="row" colspan="7">
+					<div class="col-lg-1">총 XX건</div>
+					<div class="col-lg-7"></div>
+					<div class="col-lg-4">
+						<form class="navbar-form navbar-left">
+					        <div class="form-group">
+					          <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+					        </div>
+					        <button type="submit" class="btn btn-default">검색</button>
+					    </form>
+					</div>
+				</td>
+			</tr>
+			<tr>
+					<td>번호</td>
+					<td>상품명</td>
+					<td>1차 분류</td>
+					<td>2차 분류</td>
+					<td>가격</td>
+					<td>수량</td>
+					<td>등록일</td>
+			</tr>
+<!-- 리스트 호출 for문-->
+			<tr>
+					<td>1</td>
+					<td>사료</td>
+					<td>강아지</td>
+					<td>사료</td>
+					<td>5000원</td>
+					<td>400</td>
+					<td>2020/01/02</td>
+			</tr>
+<!-- 리스트 호출 끝-->
+		</table>
+		
 		</div>
 	</section>
 	

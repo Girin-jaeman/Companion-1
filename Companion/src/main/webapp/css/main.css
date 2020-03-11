@@ -37,3 +37,9 @@ footer .container{
 	position: fixed;
 	float: left;
 }
+.container {
+	margin-left : 100px;
+}
+.container .table .td_right{
+	text-align : right;
+}

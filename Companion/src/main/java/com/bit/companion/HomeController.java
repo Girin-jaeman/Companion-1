@@ -21,9 +21,5 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/jinwoo")
-	public String jinwoo() {
-		return "jinwoo";
-	}
 
 }
