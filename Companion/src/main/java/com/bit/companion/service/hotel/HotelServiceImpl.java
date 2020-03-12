@@ -23,10 +23,19 @@ public class HotelServiceImpl implements HotelService {
 	public void list(Model model) {
 		try {
 			List<HotelVo> list = hotelDao.selectAll();
-			log.info("list service run..."+list);
+			log.info("list service run...");
 			model.addAttribute("list",list);
 		} catch(SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void insert(HotelVo bean) {
+		try {
+			hotelDao.insertOne(bean);
+		} catch(SQLException e) {
+			
 		}
 	}
 

@@ -24,10 +24,13 @@ public class HotelDaoImpl implements HotelDao {
 	
 	@Override
 	public List<HotelVo> selectAll() throws SQLException {
-		log.info("hoteldao run..."+sqlSession.selectList("hotel.selectAll"));
-		log.info("sqlSession run..."+sqlSession.selectOne("hotel.selectTest"));
 		log.info("sqlSession run..."+sqlSessionFactory);
 		return sqlSession.selectList("hotel.selectAll");
+	}
+
+	@Override
+	public void insertOne(HotelVo bean)  throws SQLException {
+		sqlSession.insert("hotel.insertOne",bean);
 	}
 
 }

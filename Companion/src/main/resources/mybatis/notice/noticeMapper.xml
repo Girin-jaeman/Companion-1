@@ -3,4 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+  <mapper namespace="notice">
+  	<select id="selectAll" resultType="noticeBean">
+  		select * from notice order by ntc_id desc;
+  	</select>
+  	
+  	<select id="selectTotal" resultType="int">
+  		select count(*) from notice;
+  	</select>
+  	
+  	<select id="selectOne" resultType="noticeBean" parameterType="int">
+  		select * from notice where ntc_id=#{value}
+  	</select>
+  </mapper>
+  
   
