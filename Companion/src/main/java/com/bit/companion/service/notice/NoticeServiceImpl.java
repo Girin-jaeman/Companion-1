@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.entity.notice.NoticeVo;
 import com.bit.companion.model.notice.NoticeDao;
 
@@ -16,9 +17,17 @@ public class NoticeServiceImpl implements NoticeService {
 	NoticeDao noticeDao;
 
 	@Override
-	public void list(Model model) {
+	public void list(Model model, int page, int range) {
 		try {
-			List<NoticeVo> list = noticeDao.selectAll();
+			// 전체 게시글 개수
+			int listCnt = noticeDao.selectTotal();
+			
+			// Pagination 객체생성
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page,range,listCnt);
+			
+			List<NoticeVo> list = noticeDao.selectAll(pagination);
+			model.addAttribute("pagination",pagination);
 			model.addAttribute("list",list);
 			model.addAttribute("total",noticeDao.selectTotal());
 		}catch(SQLException e){

@@ -29,6 +29,7 @@
 				<tr>
 					<td>조회수</td>	
 					<td colspan="2">${bean.ntc_cnt }</td>
+					
 				</tr>
 				<tr>
 					<td>작성일</td>	

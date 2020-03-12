@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.entity.notice.NoticeVo;
 
 @Repository
@@ -16,12 +17,12 @@ public class NoticeDaoImpl implements NoticeDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<NoticeVo> selectAll() throws SQLException {
-		return sqlSession.selectList("notice.selectAll");
+	public List<NoticeVo> selectAll(Pagination pagination) throws SQLException {
+		return sqlSession.selectList("notice.selectAll",pagination);
 	}
 
 	@Override
-	public int selectTotal() {
+	public int selectTotal() throws SQLException{
 		return sqlSession.selectOne("notice.selectTotal");
 	}
 
