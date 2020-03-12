@@ -21,8 +21,8 @@ public class OrderServiceImpl implements OrderService {
 
 		List<OrderVo> list;
 		try {
-			list = orderDao.selectAll();
-			model.addAttribute("list",list);
+			list = orderDao.OrderSelectAll();
+			model.addAttribute("orderlist",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

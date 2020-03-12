@@ -12,11 +12,10 @@
 	
 		<title>Collapsible sidebar using Bootstrap 4</title>
 	
-		<!-- Bootstrap CSS CDN -->
+		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/home.css">
-		<%-- <link rel="stylesheet" href="${root}css/main.css"> --%>
 	
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -135,55 +134,55 @@
 						</div>
 					</div>
 				</nav>
-				
-				
-				<!--content  -->
-				
-		<table class="table">
-				<thead>
-					<tr>
-						<th>주문번호</th>
-						<th>주문일</th>
-						<th>총가격</th>
-						<th>수령인</th>
-						<th>수령인 일반전화</th>
-						<th>수령인 후대전화</th>
-						<th>수령인 주소1</th>
-						<th>수령인 주소2</th>
-						<th>수령인 주소3</th>
-						<th>수령인 결제방법</th>
-						<th>수령인 주문상태</th>
-						<th>수령인 회원아이디</th>
-					</tr>
-				</thead>
-					<tbody>
-					<c:forEach items="${orderlist }" var="bean">
-						<tr>
-							<td><a href="#">${bean.ord_id }</a></td>
-							<td><a href="#">${bean.ord_date }</a></td>
-							<td><a href="#">${bean.ord_amount }</a></td>
-							<td><a href="#">${bean.ord_name }</a></td>
-							<td><a href="#">${bean.ord_tel }</a></td>
-							<td><a href="#">${bean.ord_phone }</a></td>
-							<td><a href="#">${bean.ord_addr1 }</a></td>
-							<td><a href="#">${bean.ord_addr2 }</a></td>
-							<td><a href="#">${bean.ord_addr3 }</a></td>
-							<td><a href="#">${bean.ord_type }</a></td>
-							<td><a href="#">${bean.ord_state }</a></td>
-							<td><a href="#">${bean.ord_mb_id }</a></td>
-								</tr>
-							</c:forEach>
-					</tbody>
-		</table> 
+		<!-- content -->
+		<div class="container">
+			  <div class="btn-group" role="group">
+			    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      카테고리
+			    </button>
+			    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+			      <a class="dropdown-item" href="#">사료</a>
+			      <a class="dropdown-item" href="#">간식</a>
+			      <a class="dropdown-item" href="#">외출</a>
+			      <a class="dropdown-item" href="#">미용/목욕</a>
+			      <a class="dropdown-item" href="#">하우스</a>
+			    </div>
+				<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+				  <button type="button" class="btn btn-secondary">추천순</button>
+				  <button type="button" class="btn btn-secondary">판매인기순</button>
+				  <button type="button" class="btn btn-secondary">낮은 가격순</button>
+				  <button type="button" class="btn btn-secondary">높은 가격순</button>
+				  <button type="button" class="btn btn-secondary">상품평순</button>
+				  <button type="button" class="btn btn-secondary">등록일순</button>
+				</div>
+			  </div>
+			  
 		
-		<!--content  -->
 		
+		</div><!-- container end  -->
+		
+					<table class="table">
+						<thead>
+						</thead>
+							<tbody>
+								<c:forEach items="${productlist }" var="bean">
+									<tr>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_id }</a></td>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_name }</a></td>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_price }</a></td>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_stock }</a></td>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_img }</a></td>
+										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_ctgr_id }</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+					</table>  
+
+		<!-- content -->
 			</div>
 		</div>
 	
-				
-	
-		<!-- jQuery CDN - Slim version (=without AJAX) -->
+		<!-- jQuery -->
 		<script src="${root}js/jquery-1.12.4.js"></script>
 		<!-- Popper.JS -->
 		<script src="${root}js/bootstrap/popper.js"></script>
