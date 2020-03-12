@@ -12,6 +12,7 @@ import com.bit.companion.model.order.OrderDao;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+	
 	@Autowired
 	OrderDao orderDao;
 

@@ -1,5 +1,6 @@
 package com.bit.companion.model.order;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,8 +16,8 @@ public class OrderDaoImpl implements OrderDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<OrderVo> selectAll() {
-		return sqlSession.selectList("Order.selectAll");
+	public List<OrderVo> selectAll() throws SQLException{
+		return sqlSession.selectList("order.selectAll");
 	}
 
 }

@@ -16,14 +16,13 @@ import com.bit.companion.service.admin.AdminService;
 import com.bit.companion.service.order.OrderService;
 
 @Controller
-@RequestMapping(value = "/orderMain")
 public class OrderController {
 	
 	@Autowired
 	OrderService orderService;
 	
-	@RequestMapping(value = "/orderMain")
-	public String orderMain(Locale local, Model model) {
+	@RequestMapping(value = "/order/orderMain")
+	public String orderMain(Model model) {
 		orderService.list(model);
 		return "order/orderMain";
 	}
