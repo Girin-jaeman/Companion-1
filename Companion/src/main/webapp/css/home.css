@@ -1,0 +1,24 @@
+/*-------------------CONTENT STYLE--------------------*/
+
+/* ---------------------------------------------------
+    CAROUSEL STYLE
+----------------------------------------------------- */
+
+#carouselExampleInterval {
+    position: relative;
+    height: 415px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.carousel-inner {
+    display: inline-block;
+    overflow: hidden;
+    max-height: 415px;
+    height: 100%;
+}
+.carousel-item img{
+    min-height: 415px;
+}
+
+.textcontent{
+    margin-top: 10px;
+}

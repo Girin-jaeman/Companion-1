@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
 	<html>
 	
@@ -10,10 +12,11 @@
 	
 		<title>Collapsible sidebar using Bootstrap 4</title>
 	
-		<!-- Bootstrap CSS -->
+		<!-- Bootstrap CSS CDN -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/home.css">
+		<%-- <link rel="stylesheet" href="${root}css/main.css"> --%>
 	
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -132,29 +135,50 @@
 						</div>
 					</div>
 				</nav>
-	
-				<h2>Collapsible Sidebar Using Bootstrap 4</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h3>Lorem Ipsum Dolor</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<!--content  -->
+				<table class="table">
+	<thead>
+		<tr>
+			<th>주문번호</th>
+			<th>주문일</th>
+			<th>총가격</th>
+			<th>수령인</th>
+			<th>수령인 일반전화</th>
+			<th>수령인 후대전화</th>
+			<th>수령인 주소1</th>
+			<th>수령인 주소2</th>
+			<th>수령인 주소3</th>
+			<th>수령인 결제방법</th>
+			<th>수령인 주문상태</th>
+			<th>수령인 회원아이디</th>
+		</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${list }" var="bean">
+		<tr>
+			<td><a href="#">${bean.ord_id }</a></td>
+			<td><a href="#">${bean.ord_date }</a></td>
+			<td><a href="#">${bean.ord_amount }</a></td>
+			<td><a href="#">${bean.ord_name }</a></td>
+			<td><a href="#">${bean.ord_tel }</a></td>
+			<td><a href="#">${bean.ord_phone }</a></td>
+			<td><a href="#">${bean.ord_addr1 }</a></td>
+			<td><a href="#">${bean.ord_addr2 }</a></td>
+			<td><a href="#">${bean.ord_addr3 }</a></td>
+			<td><a href="#">${bean.ord_type }</a></td>
+			<td><a href="#">${bean.ord_state }</a></td>
+			<td><a href="#">${bean.ord_mb_id }</a></td>
+		</tr>
+	</c:forEach>
+	</tbody>
+</table> 
+				<!--content  -->
 			</div>
 		</div>
 	
-		<!-- jQuery -->
+				
+	
+		<!-- jQuery CDN - Slim version (=without AJAX) -->
 		<script src="${root}js/jquery-1.12.4.js"></script>
 		<!-- Popper.JS -->
 		<script src="${root}js/bootstrap/popper.js"></script>
