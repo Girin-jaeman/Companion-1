@@ -10,10 +10,10 @@
 	
 		<title>Collapsible sidebar using Bootstrap 4</title>
 	
-		<!-- Bootstrap CSS CDN -->
+		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/main.css">
+		<link rel="stylesheet" href="${root}css/home.css">
 	
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -215,7 +215,7 @@
 			</div>
 		</div>
 	
-		<!-- jQuery CDN - Slim version (=without AJAX) -->
+		<!-- jQuery -->
 		<script src="${root}js/jquery-1.12.4.js"></script>
 		<!-- Popper.JS -->
 		<script src="${root}js/bootstrap/popper.js"></script>
