@@ -13,11 +13,11 @@
 	<form method="post">
 		<div>
 			<label for="title">title</label>
-			<input type="text" name="ntc_title" id="ntc_title" />
+			<input type="text" name="ntc_title" id="ntc_title" placeholder="제목을 입력하세요"/>
 		</div>
 		<div>
 			<label for="content">content</label>
-			<input type="text" name="ntc_content" id="ntc_content"/>
+			<input type="text" name="ntc_content" id="ntc_content" placeholder="내용을 입력하세요"/>
 		</div>
 		<div>
 			<label for="img">img</label>

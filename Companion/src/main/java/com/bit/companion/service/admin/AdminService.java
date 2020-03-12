@@ -6,6 +6,8 @@ import com.bit.companion.model.entity.admin.AdminNoticeVo;
 
 public interface AdminService {
 
+	// 공지사항 리스트
 	void list(Model model);
+	// 공지사항 입력
 	void insert(AdminNoticeVo bean);
 }

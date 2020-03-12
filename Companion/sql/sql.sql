@@ -313,7 +313,6 @@ COMMENT = '적립금';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `qst_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '문의글번호',
-  `qst_product` VARCHAR(10) NOT NULL COMMENT '상품코드',
   `qst_title` VARCHAR(50) NOT NULL COMMENT '제목',
   `qst_content` TEXT NOT NULL COMMENT '내용',
   `qst_date` DATETIME NOT NULL COMMENT '작성일자',
@@ -324,11 +323,16 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `qst_grpord` INT(11) NOT NULL COMMENT '글그룹순서',
   `qst_depth` INT(11) NOT NULL COMMENT '글깊이',
   `qst_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
+  `qst_prdt_id` VARCHAR(10) NOT NULL COMMENT '상품코드',
   PRIMARY KEY (`qst_id`, `qst_mb_id`),
   INDEX `FK_question_member_mb_id` (`qst_mb_id` ASC),
+  INDEX `FK_question_product_prdt_id` (`qst_prdt_id` ASC),
   CONSTRAINT `FK_question_member_mb_id`
     FOREIGN KEY (`qst_mb_id`)
-    REFERENCES `companion`.`member` (`mb_id`))
+    REFERENCES `companion`.`member` (`mb_id`)),
+  CONSTRAINT `FK_question_product_prdt_id`
+    FOREIGN KEY (`qst_prdt_id`)
+    REFERENCES `companion`.`product` (`prdt_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
@@ -340,49 +344,26 @@ COMMENT = '문의';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`review` (
   `rv_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '후기글번호',
-  `rv_product` VARCHAR(10) NOT NULL COMMENT '상품코드',
   `rv_title` VARCHAR(50) NOT NULL COMMENT '제목',
   `rv_content` TEXT NOT NULL COMMENT '내용',
   `rv_date` DATETIME NOT NULL COMMENT '작성일자',
   `rv_cnt` INT(11) NOT NULL DEFAULT '0' COMMENT '조회수',
   `rv_img` VARCHAR(100) NULL COMMENT '이미지',
   `rv_mb_id` VARCHAR(20) NOT NULL COMMENT '회원아이디',
+  `rv_prdt_id` VARCHAR(10) NOT NULL COMMENT '상품코드',
   PRIMARY KEY (`rv_id`, `rv_mb_id`),
   INDEX `FK_review_member_mb_id` (`rv_mb_id` ASC),
+  INDEX `FK_review_product_prdt_id` (`rv_prdt_id` ASC),
   CONSTRAINT `FK_review_member_mb_id`
     FOREIGN KEY (`rv_mb_id`)
-    REFERENCES `companion`.`member` (`mb_id`))
+    REFERENCES `companion`.`member` (`mb_id`)),
+  CONSTRAINT `FK_review_product_prdt_id`
+    FOREIGN KEY (`rv_prdt_id`)
+    REFERENCES `companion`.`product` (`prdt_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = '후기';
-
-
--- -----------------------------------------------------
--- Table `companion`.`product_detail`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `companion`.`product_detail` (
-  `prdtdetail_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '상품상세번호',
-  `prdtdetail_prdt_id` VARCHAR(10) NOT NULL COMMENT '상품코드',
-  `prdtdetail_qst_id` INT(11) NULL DEFAULT NULL COMMENT '문의글번호',
-  `prdtdetail_rv_id` INT(11) NULL DEFAULT NULL COMMENT '후기글번호',
-  PRIMARY KEY (`prdtdetail_id`, `prdtdetail_prdt_id`),
-  INDEX `FK_product_detail_product_prdt_id` (`prdtdetail_prdt_id` ASC),
-  INDEX `FK_product_detail_question_qst_id` (`prdtdetail_qst_id` ASC),
-  INDEX `FK_product_detail_review_rv_id` (`prdtdetail_rv_id` ASC),
-  CONSTRAINT `FK_product_detail_product_prdt_id`
-    FOREIGN KEY (`prdtdetail_prdt_id`)
-    REFERENCES `companion`.`product` (`prdt_id`),
-  CONSTRAINT `FK_product_detail_question_qst_id`
-    FOREIGN KEY (`prdtdetail_qst_id`)
-    REFERENCES `companion`.`question` (`qst_id`),
-  CONSTRAINT `FK_product_detail_review_rv_id`
-    FOREIGN KEY (`prdtdetail_rv_id`)
-    REFERENCES `companion`.`review` (`rv_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin
-COMMENT = '상품상세';
 
 
 -- -----------------------------------------------------
