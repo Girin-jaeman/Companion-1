@@ -7,3 +7,5 @@ Servers/
 *.class
 target/
 자료/
+~$*
+Companion/.factorypath

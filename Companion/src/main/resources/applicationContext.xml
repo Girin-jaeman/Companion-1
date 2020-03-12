@@ -3,13 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 
 	<bean id="dataSource"
 	class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.gjt.mm.mysql.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/class03?useUnicode=true&amp;characterEncoding=utf8"/>
-		<property name="username" value="scott"/>
-		<property name="password" value="tiger"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/companion?useUnicode=true&amp;characterEncoding=utf8"/>
+		<property name="username" value="admin"/>
+		<property name="password" value="admin"/>
 	</bean>
 
 	<bean id="sqlSessionFactory"
@@ -22,5 +21,5 @@
 	class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
- -->
+
 </beans>

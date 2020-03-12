@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="hotel">
+	<select id="selectAll" resultType="hotelBean">
+		select * from reserve
+	</select>
+	
+	<insert id="insertOne" parameterType="hotelBean">
+		insert into reserve (rsv_date,rsv_checkin,rsv_checkout,rsv_type,rsv_age,rsv_msg,rsv_svc_id,rsv_mb_id) 
+		values (now(),#{rsv_checkin},#{rsv_checkout},#{rsv_type},#{rsv_age},#{rsv_msg},'testcode','admin4');
+	</insert>
+</mapper>
