@@ -7,19 +7,11 @@
   	<typeAliases>
   		<typeAlias alias="hotelBean" type="com.bit.companion.model.entity.hotel.HotelVo"/>
   		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
-<<<<<<< HEAD
   		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
-=======
-  		<!-- <typeAlias alias="empBean" type="com.bit.companion.model.entity.order"/>  -->
->>>>>>> 1eb2bfb6224fcb062dd0cefbeb196d4795abf2e8
   	</typeAliases>
   	<mappers>
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
   		<mapper resource="mybatis/admin/adminMapper.xml"/>
-<<<<<<< HEAD
   		<mapper resource="mybatis/order/orderMapper.xml"/>
-=======
-  		<!-- <mapper resource="mybatis/order/orderMapper.xml"/> -->
->>>>>>> 1eb2bfb6224fcb062dd0cefbeb196d4795abf2e8
   	</mappers>
-  </configuration>
+  </configuration>  
