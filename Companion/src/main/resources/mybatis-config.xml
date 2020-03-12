@@ -4,10 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
-  	<!-- <typeAliases>
+  	<typeAliases>
   		<typeAlias alias="hotelBean" type="com.bit.companion.model.entity.hotel.HotelVo"/>
-  	</typeAliases> -->
+  		<typeAlias alias="memberBean" type="com.bit.companion.model.entity.login.MemberVo"/>
+  	</typeAliases> 
   	<mappers>
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
+  		<mapper resource="mybatis/login/memberMapper.xml"/>
   	</mappers>
   </configuration>  
