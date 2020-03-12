@@ -1,12 +1,12 @@
 /* ---------------------------------------------------
-    SIDELOGIN STYLE - login
+    SIDELOGIN STYLE - join
 ----------------------------------------------------- */
-a.login {
+a.join {
     background: #fff !important;
     color: rgb(11, 61, 105) !important;
 }
 
-a.join:hover {
+a.login:hover {
     background: #fff;
     color: rgb(11, 61, 105);
 }
@@ -39,16 +39,16 @@ a.join:hover {
     }
   }
 
-.form-signin {
+.form-join {
   width: 100%;
-  max-width: 330px;
+  max-width: 500px;
   padding: 15px;
   margin: auto;
 }
-.form-signin .checkbox {
+.form-join .checkbox {
   font-weight: 400;
 }
-.form-signin .form-control {
+.form-join .form-control {
   position: relative;
   box-sizing: border-box;
   height: auto;
@@ -56,30 +56,30 @@ a.join:hover {
   font-size: 15px;
   color: rgb(11, 61, 105);
 }
-.form-signin .form-control:focus {
+.form-join .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-join input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
+.form-join input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.form-signin .search{
+.form-join .search{
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
 }
-.form-signin .search a{
+.form-join .search a{
     text-decoration: underline;
     color: rgb(11, 61, 105);
 
 }
-.form-signin .search a:hover{
+.form-join .search a:hover{
     background: rgb(11, 61, 105);
     color: #fff;
     
@@ -88,4 +88,7 @@ a.join:hover {
 .form-signin .search :first-child{
     margin-right: 30px;
     
+}
+.form-controlr{
+  margin-right: 10px;
 }

@@ -18,10 +18,16 @@ public class AdminDaoImpl implements AdminDao {
 	@Autowired
 	SqlSession sqlSession;
 	
+	// notice list - selectAll
 	@Override
 	public List<AdminNoticeVo> selectAll() throws SQLException {
-//		log.info("sqlSession run..."+sqlSession);
 		return sqlSession.selectList("adminNotice.selectAll");
+	}
+
+	// notice add - insertOne
+	@Override
+	public void insertOne(AdminNoticeVo bean) throws SQLException {
+		sqlSession.insert("adminNotice.insertOne",bean);
 	}
 
 }

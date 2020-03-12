@@ -7,5 +7,8 @@ import com.bit.companion.model.entity.admin.AdminNoticeVo;
 
 public interface AdminDao {
 
-		List<AdminNoticeVo> selectAll() throws SQLException;
+	// 공지사항 리스트
+	List<AdminNoticeVo> selectAll() throws SQLException;
+	// 공지사항 입력
+	void insertOne(AdminNoticeVo bean) throws SQLException;
 }

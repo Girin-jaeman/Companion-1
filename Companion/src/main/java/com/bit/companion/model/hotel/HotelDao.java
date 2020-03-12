@@ -9,4 +9,6 @@ public interface HotelDao {
 
 	List<HotelVo> selectAll() throws SQLException;
 
+	void insertOne(HotelVo bean) throws SQLException;
+
 }

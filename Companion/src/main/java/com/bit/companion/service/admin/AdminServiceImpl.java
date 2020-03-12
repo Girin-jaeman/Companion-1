@@ -19,16 +19,24 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	AdminDao adminDao;
 	
+	// notice list - selectall
 	@Override
 	public void list(Model model) {
-//		log.info("list service run..."+adminDao);
 		try {
 			List<AdminNoticeVo> list = adminDao.selectAll();
 			model.addAttribute("list",list);
-//			log.info("list: "+list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+	// notice add - insertOne
+	@Override
+	public void insert(AdminNoticeVo bean) {
+		try {
+			adminDao.insertOne(bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
