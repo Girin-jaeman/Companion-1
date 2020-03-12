@@ -15,7 +15,8 @@
 		<!-- Bootstrap CSS CDN -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/main.css">
+		<link rel="stylesheet" href="${root}css/home.css">
+		<%-- <link rel="stylesheet" href="${root}css/main.css"> --%>
 	
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -135,28 +136,42 @@
 					</div>
 				</nav>
 				<!--content  -->
-					<table class="table">
+				<table class="table">
 	<thead>
 		<tr>
-			<th>상품코드</th>
-			<th>상품명</th>
-			<th>가격</th>
-			<th>재고</th>
-			<th>분류번호</th>
+			<th>주문번호</th>
+			<th>주문일</th>
+			<th>총가격</th>
+			<th>수령인</th>
+			<th>수령인 일반전화</th>
+			<th>수령인 후대전화</th>
+			<th>수령인 주소1</th>
+			<th>수령인 주소2</th>
+			<th>수령인 주소3</th>
+			<th>수령인 결제방법</th>
+			<th>수령인 주문상태</th>
+			<th>수령인 회원아이디</th>
 		</tr>
 	</thead>
 	<tbody>
 	<c:forEach items="${list }" var="bean">
 		<tr>
-			<td><a href="orderMain/${bean.sabun }">${bean.sabun }</a></td>
-			<td><a href="orderMain/${bean.sabun }">${bean.name }</a></td>
-			<td><a href="orderMain/${bean.sabun }">${bean.nalja }</a></td>
-			<td><a href="orderMain/${bean.sabun }">${bean.pay }</a></td>
-			<td><a href="orderMain/${bean.sabun }">${bean.pay }</a></td>
+			<td><a href="#">${bean.ord_id }</a></td>
+			<td><a href="#">${bean.ord_date }</a></td>
+			<td><a href="#">${bean.ord_amount }</a></td>
+			<td><a href="#">${bean.ord_name }</a></td>
+			<td><a href="#">${bean.ord_tel }</a></td>
+			<td><a href="#">${bean.ord_phone }</a></td>
+			<td><a href="#">${bean.ord_addr1 }</a></td>
+			<td><a href="#">${bean.ord_addr2 }</a></td>
+			<td><a href="#">${bean.ord_addr3 }</a></td>
+			<td><a href="#">${bean.ord_type }</a></td>
+			<td><a href="#">${bean.ord_state }</a></td>
+			<td><a href="#">${bean.ord_mb_id }</a></td>
 		</tr>
 	</c:forEach>
 	</tbody>
-</table>
+</table> 
 				<!--content  -->
 			</div>
 		</div>
