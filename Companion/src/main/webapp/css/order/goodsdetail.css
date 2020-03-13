@@ -26,35 +26,27 @@
   text-align: right;
 }
 /* ---------------------------------------------------
-    SHOPDETAIL STYLE
+    GOODSDETAIL STYLE
 ----------------------------------------------------- */
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
+.goodsImg{
+  width: 350px;
+  height: 480px;
+  border: solid 1px teal;
+  padding: 10px;
 }
-.card{
-  max-height: 350px;
-  font-family: 'Do Hyeon', sans-serif;
+.goodsImg>img{
+  min-width: 328px;
+  max-width: 328px;
+  min-height: 460px;
+  max-height: 460px;
 }
-
-.breadcrumb {
-  display: block;
-  overflow: hidden;
+.goodsImgD{
+  border: solid;
+  padding: 10px;
+  width: 370px;
+  height: 3;
 }
-
-.breadcrumb-item {
-  float: left;
+.goodsImgD>img{
+  min-width: 85px;
+  max-width: 85px;
 }
-
-/* .breadcrumb-item:last-child {
-  float: right;
-} */
-
-
-/* .overfBox{
-  border: solid 1px;
-} */
