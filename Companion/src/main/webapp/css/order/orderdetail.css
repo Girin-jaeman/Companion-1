@@ -1,0 +1,54 @@
+/*-------------------CONTENT STYLE--------------------*/
+
+/* ---------------------------------------------------
+    CAROUSEL STYLE
+----------------------------------------------------- */
+
+#carouselExampleInterval {
+    position: relative;
+    height: 650px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.carousel-inner {
+    display: inline-block;
+    overflow: hidden;
+    max-height: 650px;
+    height: 100%;
+}
+.carousel-item img{
+    max-height: 650px;
+}
+
+.textcontent{
+    margin-top: 10px;
+}
+.total-item{
+  text-align: right;
+}
+/* ---------------------------------------------------
+    SHOPDETAIL STYLE
+----------------------------------------------------- */
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+.card{
+  max-height: 350px;
+}
+
+.breadcrumb {
+  display: block;
+  overflow: hidden;
+}
+
+.breadcrumb-item {
+  float: left;
+}
+
+.breadcrumb-item:last-child {
+  float: right;
+}

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/order/orderdetail.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Companion</h3>
+                <strong>BS</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-home"></i>
+                        쇼핑하기
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">사료</a>
+                        </li>
+                        <li>
+                            <a href="#">간식</a>
+                        </li>
+                        <li>
+                            <a href="#">장난감</a>
+                        </li>
+                        <li>
+                            <a href="#">미용/목욕용품</a>
+                        </li>
+                        <li>
+                            <a href="#">화장실/위생용품</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        호텔서비스
+                    </a>
+                    <ul class="collapse list-unstyled" id="hotelSubmenu">
+                        <li>
+                            <a href="#">이용안내</a>
+                        </li>
+                        <li>
+                            <a href="#">예약하기</a>
+                        </li>
+                        <li>
+                            <a href="#">룸미리보기</a>
+                        </li>
+                        <li>
+                            <a href="#">돌보미정보</a>
+                        </li>
+                        <li>
+                            <a href="#">위치정보</a>
+                        </li>
+                    </ul>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        알림
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="#">이벤트</a>
+                        </li>
+                        <li>
+                            <a href="#">Q&A</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        추가
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        추가
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled conn">
+                <li>
+                    <a href="#" class="login">로그인</a>
+                </li>
+                <li>
+                    <a href="#" class="join">회원가입</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>메뉴</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">회원가입</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--main content start-->
+            <div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    쇼핑하기
+                </a>
+                <span>></span>
+                <hr class="mb-4">
+            </div>
+            <div class="maincontent">
+                <!--상품 정렬-->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">추천순</li>
+                        <li class="breadcrumb-item"><a href="#">판매인기순</a></li>
+                        <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="#">상품평순</a></li>
+                    </ol>
+
+                </nav>
+                <!--상품4X4 페이지-->
+                <div class="card-deck">
+                    <div class="card">
+                        <a href="">
+                            <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="">안락스웨터</a></h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">안락스웨터</h5>
+                            <p class="card-text">댕댕이의 꿀잠 보장</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">1,000,000원</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../imgs/hotel/dogcare2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">마약담요</h5>
+                            <p class="card-text">안써본 댕댕이는 있을지도? 한번만 쓴 댕댕이는 없다</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">2,000,000원</small>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+            </div>
+
+
+            <!--main contetn end-->
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="../js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

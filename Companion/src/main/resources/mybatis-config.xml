@@ -10,13 +10,18 @@
   		<typeAlias alias="loginBean" type="com.bit.companion.model.entity.login.LoginVo"/>
   		<!-- <typeAlias alias="empBean" type="com.bit.companion.model.entity.order"/>  -->
   		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
-  	</typeAliases> 
+   		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
+  		<typeAlias alias="productBean" type="com.bit.companion.model.entity.order.ProductVo"/>
+  		<typeAlias alias="noticeBean" type="com.bit.companion.model.entity.notice.NoticeVo"/>
+  	</typeAliases>
   	<mappers>
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
   		<mapper resource="mybatis/login/memberMapper.xml"/>
   		<mapper resource="mybatis/login/loginMapper.xml"/>
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
   		<mapper resource="mybatis/admin/adminMapper.xml"/>
-  		<!-- <mapper resource="mybatis/order/orderMapper.xml"/> -->
+  		<mapper resource="mybatis/order/orderMapper.xml"/>
+  		<mapper resource="mybatis/order/productMapper.xml"/>
+  		<mapper resource="mybatis/notice/noticeMapper.xml"/>
   	</mappers>
-  </configuration>
+  </configuration>  

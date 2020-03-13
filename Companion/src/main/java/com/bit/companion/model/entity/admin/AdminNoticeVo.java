@@ -13,5 +13,4 @@ public class AdminNoticeVo {
 	private String ntc_img;
 	private int ntc_cnt;
 	
-	
 }

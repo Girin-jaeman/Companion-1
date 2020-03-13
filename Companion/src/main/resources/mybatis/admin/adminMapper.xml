@@ -4,7 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="adminNotice">
+
 	<select id="selectAll" resultType="adminNoticeBean">
 	select * from `notice` order by ntc_id desc
 	</select>
+	
+	<insert id="insertOne" parameterType="adminNoticeBean">
+	insert into `notice` values(null,#{ntc_title},#{ntc_content},now(),0,#{ntc_img})
+	</insert>
 </mapper>
