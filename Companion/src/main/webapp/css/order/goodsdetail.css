@@ -30,8 +30,8 @@
 ----------------------------------------------------- */
 .goodsImg{
   width: 350px;
-  height: 480px;
-  border: solid 1px teal;
+  height: 500px;
+ 
   padding: 10px;
 }
 .goodsImg>img{
@@ -40,13 +40,23 @@
   min-height: 460px;
   max-height: 460px;
 }
-.goodsImgD{
-  border: solid;
-  padding: 10px;
-  width: 370px;
-  height: 3;
+
+#descrip{
+ 
+  padding: 15px;
+  height: 500px;
 }
-.goodsImgD>img{
-  min-width: 85px;
-  max-width: 85px;
+.goods-text{
+  
+  height: 180px;
+}
+
+.goods-text>h5{
+  text-align: center;
+}
+
+a{
+  float: right;
+  margin-left: 50px;
+  
 }
