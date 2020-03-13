@@ -1,5 +1,6 @@
 package com.bit.companion.model.mypage;
 
-public interface MypageDao {
+import com.bit.companion.model.entity.mypage.MypageVo;
 
+public interface MypageDao {
 }

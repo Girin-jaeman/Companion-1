@@ -36,7 +36,7 @@ a:focus {
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +57,10 @@ i,
 span {
     display: inline-block;
 }
-
+.carousel{
+    margin: 0px;
+    padding: 0px;
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -156,6 +159,9 @@ a[aria-expanded="true"] {
     background:  rgb(11, 61, 105);
 }
 
+.companion-footer{
+    text-align: center;
+}
 a[data-toggle="collapse"] {
     position: relative;
 }
@@ -229,7 +235,12 @@ a.join:hover {
     min-height: 100vh;
     transition: all 0.3s;
 }
-
+.maincontent {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    margin: auto;
+  }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
