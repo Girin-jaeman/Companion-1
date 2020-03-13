@@ -6,10 +6,10 @@
 <mapper namespace="adminNotice">
 
 	<select id="selectAll" resultType="adminNoticeBean">
-	select * from `notice` order by ntc_id desc
+	select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id
 	</select>
 	
 	<insert id="insertOne" parameterType="adminNoticeBean">
-	insert into `notice` values(null,#{ntc_title},#{ntc_content},now(),0,#{ntc_img})
+	insert into `article` values(0,null,#{member_id},#{article_title},#{article_content},now(),0,#{article_image})
 	</insert>
 </mapper>

@@ -26,15 +26,16 @@
 		<c:forEach items="${list }" var="bean">
 		<!-- param  -->
 		<c:url value="testnoticedetail" var="id">
-			<c:param name="ntc_id" value="${bean.ntc_id }"/>
+			<c:param name="article_id" value="${bean.article_id }"/>
 		</c:url>
 			<tr>
-				<td><a href="${id }">${bean.ntc_id }</a></td>
-				<td><a href="${id }">${bean.ntc_title }</a></td>
-				<td><a href="${id }">${bean.ntc_content }</a></td>
-				<td><a href="${id }">${bean.ntc_date }</a></td>
-				<td><a href="${id }">${bean.ntc_cnt }</a></td>
-				<td><a href="${id }">${bean.ntc_img }</a></td>
+				<td><a href="${id }">${bean.article_id }</a></td>
+				<td><a href="${id }">${bean.member_id }</a></td>
+				<td><a href="${id }">${bean.article_title }</a></td>
+				<td><a href="${id }">${bean.article_content }</a></td>
+				<td><a href="${id }">${bean.article_date }</a></td>
+				<td><a href="${id }">${bean.article_count }</a></td>
+				<td><a href="${id }">${bean.article_image }</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>

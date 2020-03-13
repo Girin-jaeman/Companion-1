@@ -453,10 +453,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment` (
     REFERENCES `companion`.`payment_method` (`payment_method_id`),
   CONSTRAINT `FK_payment_state_payment_2`
     FOREIGN KEY (`payment_state_id`)
-    REFERENCES `companion`.`payment_state` (`payment_state_id`),
-  CONSTRAINT `FK_reserve_payment_5`
-    FOREIGN KEY (`reserve_id`)
-    REFERENCES `companion`.`reserve` (`reserve_id`))
+    REFERENCES `companion`.`payment_state` (`payment_state_id`)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -562,6 +559,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `question_answerdate` DATETIME NULL DEFAULT NULL COMMENT '문의답변일',
   `question_title` VARCHAR(50) NOT NULL COMMENT '문의제목',
   `question_content` TEXT NOT NULL COMMENT '문의내용',
+  `question_image` VARCHAR(200) NULL DEFAULT NULL COMMENT '문의이미지',
   `question_answer` TEXT NULL DEFAULT NULL COMMENT '문의답변내용',
   `question_secret_id` INT(11) NOT NULL DEFAULT '0' COMMENT '문의비밀글id',
   `question_state_id` INT(11) NOT NULL DEFAULT '0' COMMENT '문의상태ID',
