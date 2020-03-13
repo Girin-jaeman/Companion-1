@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="event">
+  	<select id="selectAll" resultType="eventBean">
+  		select ntc_id,ntc_title,ntc_content,ntc_date,ntc_cnt,ntc_img from notice order by ntc_id desc LIMIT #{startList}, #{listSize};
+  	</select>
+  	
+  	<select id="selectTotal" resultType="int">
+  		select count(*) as listCnt from notice;
+  	</select>
+  	
+  	<select id="selectOne" resultType="eventBean" parameterType="int">
+  		select * from notice where ntc_id=#{value}
+  	</select>
+  </mapper>
+  
+  
