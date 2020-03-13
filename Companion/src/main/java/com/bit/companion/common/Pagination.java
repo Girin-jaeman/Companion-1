@@ -1,9 +1,9 @@
 package com.bit.companion.common;
 
-//ÃâÃ³: https://freehoon.tistory.com/112 [ÃÊº¸ °³¹ßÀÚ]
+//ï¿½ï¿½Ã³: https://freehoon.tistory.com/112 [ï¿½Êºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
 public class Pagination {
-	private int listSize = 10;                //ÃÊ±â°ªÀ¸·Î ¸ñ·Ï°³¼ö¸¦ 10À¸·Î ¼ÂÆÃ
-	private int rangeSize = 10;            //ÃÊ±â°ªÀ¸·Î ÆäÀÌÁö¹üÀ§¸¦ 10À¸·Î ¼ÂÆÃ
+	private int listSize = 5;                //ï¿½Ê±â°ªï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private int rangeSize = 5;            //ï¿½Ê±â°ªï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private int page;
 	private int range;
 	private int listCnt;
@@ -14,7 +14,7 @@ public class Pagination {
 	private boolean prev;
 	private boolean next;
 
-	/* »ý¼ºÀÚ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public Pagination() {}
 
 	/* Getter & Setter */
@@ -106,29 +106,36 @@ public class Pagination {
 		this.next = next;
 	}
 	
+	@Override
+	public String toString() {
+		return "Pagination [listSize=" + listSize + ", rangeSize=" + rangeSize + ", page=" + page + ", range=" + range
+				+ ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", startPage=" + startPage + ", startList="
+				+ startList + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + "]";
+	}
+
 	/* pagination */
 	public void pageInfo(int page, int range, int listCnt) {
-		this.page = page; // ÇöÀç ÆäÀÌÁö Á¤º¸
-		this.range = range; // ÇöÀç ÆäÀÌÁö ¹üÀ§ Á¤º¸
-		this.listCnt = listCnt; // °Ô½Ã¹°ÀÇ ÃÑ °³¼ö
+		this.page = page; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		this.range = range; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		this.listCnt = listCnt; // ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
-		//ÀüÃ¼ ÆäÀÌÁö¼ö 
-		this.pageCnt = (int) Math.ceil(listCnt/listSize);
+		//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+		this.pageCnt = (int) Math.ceil(listCnt*1.0/listSize);
 
-		//½ÃÀÛ ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.startPage = (range - 1) * rangeSize + 1 ;
 
-		//³¡ ÆäÀÌÁö
+		//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.endPage = range * rangeSize;
 
-		//°Ô½ÃÆÇ ½ÃÀÛ¹øÈ£
+		//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¹ï¿½È£
 		this.startList = (page - 1) * listSize;
 
-		//ÀÌÀü ¹öÆ° »óÅÂ
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½
 		this.prev = range == 1 ? false : true;
 
-		//´ÙÀ½ ¹öÆ° »óÅÂ
-		this.next = endPage > pageCnt ? false : true;
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½
+		this.next = endPage >= pageCnt ? false : true;
 		if (this.endPage > this.pageCnt) {
 			this.endPage = this.pageCnt;
 			this.next = false;

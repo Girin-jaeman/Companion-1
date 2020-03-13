@@ -27,8 +27,10 @@ public class NoticeServiceImpl implements NoticeService {
 			pagination.pageInfo(page,range,listCnt);
 			
 			List<NoticeVo> list = noticeDao.selectAll(pagination);
-			model.addAttribute("pagination",pagination);
+			
+			// addAttribute
 			model.addAttribute("list",list);
+			model.addAttribute("pagination",pagination);
 			model.addAttribute("total",noticeDao.selectTotal());
 		}catch(SQLException e){
 			
