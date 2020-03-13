@@ -50,16 +50,34 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
-
+                    
+                    
+                    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">회원가입</a>
-                            </li>
-                        </ul>
+                        <c:choose>
+                            <c:when test="${sessionScope.memberVo.member_id==null }">
+                                <ul class="nav navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="${root }login">로그인</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="${root }login/memberadd" class="nav-link">회원가입</a></p>		
+                                    </li>
+                                </ul>
+                            </c:when>
+                            <c:otherwise>
+                                <ul class="nav navbar-nav ml-auto">
+                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="${root }mypagechk">마이페이지</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="${root }logout">로그아웃</a>
+                                    </li>
+                                </ul>
+                            </c:otherwise>
+                            
+                        </c:choose>
                     </div>
                 </div>
             </nav>

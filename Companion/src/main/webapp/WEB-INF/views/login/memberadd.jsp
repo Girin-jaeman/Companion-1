@@ -8,32 +8,32 @@
 </head>
 <body>
 	<form method="post">
-		<label for="mb_id">ID</label>
-		<input type="text" name="mb_id" id="mb_id" placeholder="ID"></br>
+		<label for="member_id">ID</label>
+		<input type="text" name="member_id" id="member_id" placeholder="ID"></br>
 		
-		<label for="mb_pw">PW</label>
-		<input type="password" name="mb_pw" id="mb_pw" placeholder="PW"></br>
+		<label for="member_pw">PW</label>
+		<input type="password" name="member_pw" id="member_pw" placeholder="PW"></br>
 		
-		<label for="mb_name">NAME</label>	
-		<input type="text" name="mb_name" id="mb_name" placeholder="name"></br>
+		<label for="member_name">NAME</label>	
+		<input type="text" name="member_name" id="member_name" placeholder="name"></br>
 		
-		<label for="mb_tel">TEL</label>
-		<input type="text" name="mb_tel" id="mb_tel" placeholder="일반전화"></br>
+		<label for="member_tel">TEL</label>
+		<input type="text" name="member_tel" id="member_tel" placeholder="일반전화"></br>
 		
-		<label for="mb_phone">PHONE</label>
-		<input type="text" name="mb_phone" id="mb_phone" placeholder="phone number without -"></br>
+		<label for="member_phone">PHONE</label>
+		<input type="text" name="member_phone" id="member_phone" placeholder="phone number contains -"></br>
 		
-		<label for="mb_email">E-MAIL</label>
-		<input type="text" name="mb_email" id="mb_email" placeholder="E-mail contains @"></br>
+		<label for="member_email">E-MAIL</label>
+		<input type="text" name="member_email" id="member_email" placeholder="E-mail contains @"></br>
 		
 		<p>
 		
-			<input type="text" name="mb_addr1" id="sample2_postcode" placeholder="5글자 숫자">
+			<input type="text" name="member_addr1" id="sample2_postcode" placeholder="5글자 숫자">
 			<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
 			
-			<input type="text" name="mb_addr2" id="sample2_address" placeholder="주소"></br>
+			<input type="text" name="member_addr2" id="sample2_address" placeholder="주소"></br>
 			
-			<input type="text" name="mb_addr3" id="sample2_detailAddress" placeholder="상세주소"></br></br>
+			<input type="text" name="member_addr3" id="sample2_detailAddress" placeholder="상세주소"></br></br>
 			
 			<input type="hidden" id="sample2_extraAddress" placeholder="참고항목"></br></br>
 			
@@ -44,7 +44,7 @@
 		</p>
 		
 		
-		<input type="hidden" name="mb_code" id="mb_code" value="2">
+		<input type="hidden" name="member_grade" id="member_grade" value="2">
 		
 		<button type="submit">가입</button>
 		<button type="button" onclick="history.back();">뒤로</button>

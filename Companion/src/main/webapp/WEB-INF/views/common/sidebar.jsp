@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 	<!-- Sidebar  -->
         <nav id="sidebar">
@@ -83,15 +84,31 @@
                     </a>
                 </li>
             </ul>
-
-            <ul class="list-unstyled conn">
-                <li>
-                    <a href="#" class="login">로그인</a>
-                </li>
-                <li>
-                    <a href="#" class="join">회원가입</a>
-                </li>
-            </ul>
+            
+                 <c:choose>
+                     <c:when test="${sessionScope.memberVo.member_id==null }">
+                         <ul class="list-unstyled conn">
+                             <li>
+                                 <a class="nav-link" href="${root }login">로그인</a>
+                             </li>
+                             <li>
+                                 <a href="${root }login/memberadd" class="nav-link">회원가입</a></p>		
+                             </li>
+                         </ul>
+                     </c:when>
+                     <c:otherwise>
+                         <ul class="list-unstyled conn">
+                             <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+                             <li>
+                                 <a class="nav-link" href="${root }mypagechk">마이페이지</a>
+                             </li>
+                             <li>
+                                 <a class="nav-link" href="${root }logout">로그아웃</a>
+                             </li>
+                         </ul>
+                     </c:otherwise>
+                 </c:choose>
+                        
             <!-- <ul class="list-unstyled CTAs">
                 <li>
                     <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
