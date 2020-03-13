@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Companion</h3>
-                <strong>BS</strong>
+                <strong>Comp.</strong>
             </div>
 
             <ul class="list-unstyled components">
-                <li class="active">
+                <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
                         쇼핑하기
@@ -26,10 +26,16 @@
                             <a href="#">장난감</a>
                         </li>
                         <li>
-                            <a href="#">미용/목욕용품</a>
+                            <a href="#">미용용품</a>
                         </li>
                         <li>
-                            <a href="#">화장실/위생용품</a>
+                            <a href="#">목욕용품</a>
+                        </li>
+                        <li>
+                            <a href="#">위생용품</a>
+                        </li>
+                        <li>
+                            <a href="#">산책용품</a>
                         </li>
                     </ul>
                 </li>
@@ -71,25 +77,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        추가
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question"></i>
-                        추가
-                    </a>
-                </li>
             </ul>
             
                  <c:choose>
                      <c:when test="${sessionScope.memberVo.member_id==null }">
                          <ul class="list-unstyled conn">
                              <li>
-                                 <a class="nav-link" href="${root }login">로그인</a>
+                                 <a href="${root }login" class="nav-link">로그인</a>
                              </li>
                              <li>
                                  <a href="${root }login/memberadd" class="nav-link">회원가입</a></p>		
@@ -100,23 +94,14 @@
                          <ul class="list-unstyled conn">
                              <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
                              <li>
-                                 <a class="nav-link" href="${root }mypagechk">마이페이지</a>
+                                 <a href="${root }mypagechk" class="nav-link">마이페이지</a>
                              </li>
                              <li>
-                                 <a class="nav-link" href="${root }logout">로그아웃</a>
+                                 <a href="${root }logout" class="nav-link">로그아웃</a>
                              </li>
                          </ul>
                      </c:otherwise>
                  </c:choose>
-                        
-            <!-- <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul> -->
         </nav>
 	<script type="text/javascript">
 		$(document).ready(function () {
