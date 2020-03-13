@@ -20,12 +20,12 @@ public class NoticeController {
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range) {
 		noticeService.list(model,page,range);
-		return "notice/notice";
+		return "notice/notice_list";
 	}
 	
 	@RequestMapping(value = "/detail/{idx}")
-	public String detail(Model model,@PathVariable("idx") int ntc_id) {
-		noticeService.detail(model, ntc_id);
-		return "notice/detail";
+	public String detail(Model model,@PathVariable("idx") int article_id) {
+		noticeService.detail(model, article_id);
+		return "notice/notice_detail";
 	}
 }
