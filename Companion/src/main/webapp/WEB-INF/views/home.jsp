@@ -1,238 +1,262 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<!DOCTYPE html>
-	<html>
-	
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-		<title>Collapsible sidebar using Bootstrap 4</title>
-	
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
-		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/main.css">
-	
-		<!-- Font Awesome JS -->
-		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	
-	</head>
-	
-	<body>
-	<!-- header -->
-	
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-			  </button>
-			  <a class="navbar-brand" href="#">Companion</a>
-			</div>
-		
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			  <form class="navbar-form navbar-left">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			  </form>
-			  <ul class="nav navbar-nav navbar-right">
-				<li><a href="#">쇼핑하기</a></li>
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">호텔서비스 <span class="caret"></span></a>
-				  <ul class="dropdown-menu">
-					<li><a href="#">예약하기</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">이용안내</a></li>
-					<li><a href="#">서비스소개</a></li>
-					<li><a href="#">돌보미소개</a></li>
-					<li><a href="#">호텔위치</a></li>
-				  </ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">알림 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					  <li><a href="#">이벤트</a></li>
-					  <li><a href="#">공지사항</a></li>
-					  <li><a href="#">Q&A</a></li>
-					</ul>
-				  </li>
-			  </ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-		
-	<c:choose>
-		<c:when test="${sessionScope.memberVo.mb_id==null }">
-			 <div class="container-fluid sign-group">
-				  <button type="button" class="btn btn-default navbar-btn navbar-left" onclick="location.href='login'">로그인</button>
-				  <p class="navbar-text navbar-left"><a href="companion/login/memberadd" class="navbar-link">회원가입</a></p>
-				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">아이디찾기</a></p>
-				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">비밀번호찾기</a></p>
-				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입 후 첫 주문시 1000원 할인 쿠폰 지급</a></p>
-			</div><!-- /.container-fluid -->
-		</c:when>
-		<c:otherwise>
-			<p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
-			<button type="button" onclick="location.href='mypagechk'">마이페이지</button>
-			<button type="button" onclick="location.href='logout'">로그아웃</button>
-		</c:otherwise>
-	</c:choose>
-	
-	</nav>
-	
-	
-		<div class="wrapper">
-			<!-- Sidebar  -->
-			<nav id="sidebar">
-				<div class="sidebar-header">
-					<h3>Bootstrap Sidebar</h3>
-					<strong>BS</strong>
-				</div>
-	
-				<ul class="list-unstyled components">
-					<li class="active">
-						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-							<i class="fas fa-home"></i>
-							Home
-						</a>
-						<ul class="collapse list-unstyled" id="homeSubmenu">
-							<li>
-								<a href="#">Home 1</a>
-							</li>
-							<li>
-								<a href="#">Home 2</a>
-							</li>
-							<li>
-								<a href="#">Home 3</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-briefcase"></i>
-							About
-						</a>
-						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-							<i class="fas fa-copy"></i>
-							Pages
-						</a>
-						<ul class="collapse list-unstyled" id="pageSubmenu">
-							<li>
-								<a href="#">Page 1</a>
-							</li>
-							<li>
-								<a href="#">Page 2</a>
-							</li>
-							<li>
-								<a href="#">Page 3</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-image"></i>
-							Portfolio
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-question"></i>
-							FAQ
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-paper-plane"></i>
-							Contact
-						</a>
-					</li>
-				</ul>
-	
-				<ul class="list-unstyled CTAs">
-					<li>
-						<a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-					</li>
-					<li>
-						<a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-					</li>
-				</ul>
-			</nav>
-	
-			<!-- Page Content  -->
-			<div id="content">
-	
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<div class="container-fluid">
-	
-						<button type="button" id="sidebarCollapse" class="btn btn-info">
-							<i class="fas fa-align-left"></i>
-							<span>Toggle Sidebar</span>
-						</button>
-						<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<i class="fas fa-align-justify"></i>
-						</button>
-	
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item active">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-	
-				<h2>Collapsible Sidebar Using Bootstrap 4</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h2>Lorem Ipsum Dolor</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
-				<div class="line"></div>
-	
-				<h3>Lorem Ipsum Dolor</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-		</div>
-	
-		<!-- jQuery -->
-		<script src="${root}js/jquery-1.12.4.js"></script>
-		<!-- Popper.JS -->
-		<script src="${root}js/bootstrap/popper.js"></script>
-		<!-- Bootstrap JS -->
-		<script src="${root}js/bootstrap/bootstrap.js"></script>
-	
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$('#sidebarCollapse').on('click', function () {
-					$('#sidebar').toggleClass('active');
-				});
-			});
-		</script>
-	</body>
-	
-	</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/home.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        
+        <!-- Sidebar  -->
+		<jsp:include page="common/sidebar.jsp"/>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div id="container">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>메뉴</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">회원가입</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="maincontent">
+                <!--carousel-->
+                <div class="row">
+                    <!-- 쇼핑몰 이동하는 캐러셀-->
+                    <div class="col-md-6">
+                        <div class="carosel">
+                            <div id="carouselExampleCaptions1" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleCaptions1" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleCaptions1" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 호텔서비스로 이동하는 캐러셀-->
+                    <div class="col-md-6">
+                        <div class="carosel">
+                            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="#">
+                                            <img src="../imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                        </a>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- test carousel end-->
+                <!-- test main content start-->
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <div class="jumbotron text-dark rounded">
+                            <div class="col-md-6 px-0">
+                                <h1 class="display-4">Title of a longer featured blog post</h1>
+                                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers
+                                    quickly and
+                                    efficiently about what’s most interesting in this post’s contents.</p>
+                                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">쇼핑몰 바로가기 ></a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="jumbotron text-white rounded bg-dark">
+                            <div class="col-md-6 px-0">
+                                <h1 class="display-4">Title of a longer featured blog post</h1>
+                                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers
+                                    quickly and
+                                    efficiently about what’s most interesting in this post’s contents.</p>
+                                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">호텔예약 바로가기 ></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <div
+                            class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <h3 class="mb-0">Featured post</h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a
+                                    natural
+                                    lead-in to
+                                    additional content.</p>
+                                <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg class="bd-placeholder-img" width="200" height="250"
+                                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Thumbnail</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div
+                            class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-success">Design</strong>
+                                <h3 class="mb-0">Post title</h3>
+                                <div class="mb-1 text-muted">Nov 11</div>
+                                <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in
+                                    to
+                                    additional content.</p>
+                                <a href="#" class="stretched-link">Continue reading</a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <svg class="bd-placeholder-img" width="200" height="250"
+                                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                    focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Thumbnail</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <!-- test main contetn end-->
+            <hr class="mb-2">
+            <footer class="companion-footer">
+                    <div class="paragraph-group">
+                        <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
+                        <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
+                        <p>호스팅제공자:(주)Companion</p>
+                        <br/>
+                        <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+                        <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
+                    </div>
+            </footer>
+        </div>
+        
+        </div>
+    
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
