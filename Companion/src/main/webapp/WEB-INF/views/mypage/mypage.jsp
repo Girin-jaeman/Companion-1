@@ -19,13 +19,13 @@
 			<td>상세주소</td>
 		</tr>
 		<tr>
-			<td>${sessionScope.memberVo.mb_name }</td>
-			<td>${sessionScope.memberVo.mb_tel }</td>
-			<td>${sessionScope.memberVo.mb_phone }</td>
-			<td>${sessionScope.memberVo.mb_email }</td>
-			<td>${sessionScope.memberVo.mb_addr1 }</td>
-			<td>${sessionScope.memberVo.mb_addr2 }</td>
-			<td>${sessionScope.memberVo.mb_addr3 }</td>
+			<td>${sessionScope.memberVo.member_name }</td>
+			<td>${sessionScope.memberVo.member_tel }</td>
+			<td>${sessionScope.memberVo.member_phone }</td>
+			<td>${sessionScope.memberVo.member_email }</td>
+			<td>${sessionScope.memberVo.member_addr1 }</td>
+			<td>${sessionScope.memberVo.member_addr2 }</td>
+			<td>${sessionScope.memberVo.member_addr3 }</td>
 		</tr>
 	</table>
 </body>

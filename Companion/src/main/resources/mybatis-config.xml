@@ -8,7 +8,6 @@
   		<typeAlias alias="hotelBean" type="com.bit.companion.model.entity.hotel.HotelVo"/>
   		<typeAlias alias="memberBean" type="com.bit.companion.model.entity.login.MemberVo"/>
   		<typeAlias alias="loginBean" type="com.bit.companion.model.entity.login.LoginVo"/>
-  		<!-- <typeAlias alias="empBean" type="com.bit.companion.model.entity.order"/>  -->
   		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
   		<typeAlias alias="productBean" type="com.bit.companion.model.entity.order.ProductVo"/>
