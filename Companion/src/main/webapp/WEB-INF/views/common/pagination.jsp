@@ -25,7 +25,7 @@
 </head>
 <body>
 <nav aria-label="Page navigation">
-	<ul class="pagination justify-content-center pagination-lg">
+	<ul class="pagination justify-content-center">
 		<c:if test="${param.prev }">
 			<li class="page-item">
 				<a class="page-link" aria-label="Previous" href="#" onClick="fn_prev('${param.page}','${param.range}','${param.rangeSize}')"><span aria-hidden="true">&laquo;</span></a>
@@ -43,7 +43,6 @@
 		</c:if>
 	</ul>
 </nav>
-</body>
 <script type="text/javascript">
  	//이전 버튼 이벤트
     function fn_prev(page, range, rangeSize) {
@@ -72,4 +71,5 @@
     		location.href = url;
     	}
 </script>
+</body>
 </html>
