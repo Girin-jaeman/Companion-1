@@ -19,13 +19,14 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void list(Model model, int page, int range) {
 		try {
-			// 전체 게시글 개수
+			// Total list Count
 			int listCnt = noticeDao.selectTotal();
 			
-			// Pagination 객체생성
+			// Pagination
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(page,range,listCnt);
 			
+			// List
 			List<NoticeVo> list = noticeDao.selectAll(pagination);
 			
 			// addAttribute

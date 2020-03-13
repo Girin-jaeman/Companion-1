@@ -61,6 +61,17 @@ span {
     margin: 0px;
     padding: 0px;
 }
+
+.pagination{
+    justify-content: center;
+}
+.page-item{
+    width: 40px;
+}
+.page-item>a{
+    color:#0F4C81;
+    text-align: center;
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -79,8 +90,8 @@ span {
 }
 
 #sidebar.active {
-    min-width: 80px;
-    max-width: 80px;
+    min-width: 110px;
+    max-width: 110px;
     text-align: center;
 }
 

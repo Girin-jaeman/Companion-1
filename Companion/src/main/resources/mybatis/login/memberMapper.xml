@@ -5,6 +5,6 @@
   
 <mapper namespace="member">
 	<insert id="insertOne" parameterType="memberBean">
-		insert into member (mb_id,mb_pw,mb_name,mb_tel,mb_phone,mb_email,mb_addr1,mb_addr2,mb_addr3,mb_code) values (#{mb_id},#{mb_pw},#{mb_name},#{mb_tel},#{mb_phone},#{mb_email},#{mb_addr1},#{mb_addr2},#{mb_addr3},#{mb_code})
+		insert into member (member_id,member_pw,member_name,member_tel,member_phone,member_email,member_addr1,member_addr2,member_addr3,member_grade) values (#{member_id},#{member_pw},#{member_name},#{member_tel},#{member_phone},#{member_email},#{member_addr1},#{member_addr2},#{member_addr3},#{member_grade})
 	</insert>
 </mapper>

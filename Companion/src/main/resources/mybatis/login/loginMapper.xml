@@ -5,10 +5,10 @@
   
 <mapper namespace="login">
 	<select id="loginChk" resultType="String">
-		select mb_name from member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+		select member_name from member where member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 	<select id="loginInfo" resultType="memberBean">
-		select * from member where mb_id=#{mb_id} and mb_pw=#{mb_pw}
+		select * from member where member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 </mapper>
   
