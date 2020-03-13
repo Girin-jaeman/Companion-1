@@ -25,6 +25,5 @@ public class OrderController {
 	public String orderMain(Model model) {
 		orderService.list(model);
 		return "order/orderMain";
-	}
-	
+	}	
 }

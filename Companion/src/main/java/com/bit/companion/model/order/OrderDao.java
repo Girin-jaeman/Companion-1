@@ -7,6 +7,6 @@ import com.bit.companion.model.entity.order.OrderVo;
 
 public interface OrderDao {
 
-	List<OrderVo> selectAll() throws SQLException;
+	List<OrderVo> OrderSelectAll() throws SQLException;
 	
 }
