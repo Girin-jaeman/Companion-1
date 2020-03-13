@@ -22,7 +22,7 @@
 	<script src="${root}js/bootstrap/popper.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="${root}js/bootstrap/bootstrap.js"></script>
-    <title>Companion::컴패니언::공지사항</title>
+    <title>Companion::컴패니언::이벤트</title>
 </head>
 <body>
 <div class="wrapper">
@@ -62,7 +62,7 @@
 		<!-- Navbar [end] -->
 		<!-- Section [start] -->
 		<section class="section">
-			<h1>공지사항</h1>
+			<h1>이벤트</h1>
 			<span>총 ${total }건</span>
 			<table class="table table-striped">
 	            <thead>
