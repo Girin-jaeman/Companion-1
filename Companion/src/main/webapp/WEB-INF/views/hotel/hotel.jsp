@@ -11,6 +11,40 @@
     <title>Companion::컴패니언::예약하기</title>
 </head>
 <body>
+<div id="map" style="width:500px;height:400px;">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc9be5e3e3a09fa3182e27df9a35a1a6&libraries=clusterer"></script>
+    <script type="text/javascript">
+	    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	    var options = { //지도를 생성할 때 필요한 기본 옵션
+	    	center: new kakao.maps.LatLng(37.499490, 127.029248), //지도의 중심좌표.
+	    	level: 4 //지도의 레벨(확대, 축소 정도)
+	    };
+	    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	    
+	    var clusterer = new kakao.maps.MarkerClusterer({
+	        map: map,
+	        markers: marker,
+	        gridSize: 35,
+	        averageCenter: true,
+	        minLevel: 6,
+	        disableClickZoom: true,
+	        styles: [{
+	            width : '53px', height : '52px',
+	            background: 'url(cluster.png) no-repeat',
+	            color: '#fff',
+	            textAlign: 'center',
+	            lineHeight: '54px'
+	        }]
+	    });
+	    
+	    var marker = new kakao.maps.Marker({
+	        position: new kakao.maps.LatLng( 37.499490, 127.029248 )
+	    });
+
+	    clusterer.addMarker(marker);
+	
+    </script>
+</div>
 <!-- section -->
 <section class="section">
 	<div class="row">

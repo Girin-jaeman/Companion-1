@@ -76,10 +76,10 @@
 	            <tbody>
 	            <c:forEach items="${list }" var="bean">
 	                <tr>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_id }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_date }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_title }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_cnt }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.no }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_date }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_title }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_count }</a></td>
 	                </tr>
 	            </c:forEach>
 	            </tbody>

@@ -19,6 +19,6 @@ public class EventController {
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range) {
 		eventService.list(model,page,range);
-		return "notice/event";
+		return "notice/event_list";
 	}
 }
