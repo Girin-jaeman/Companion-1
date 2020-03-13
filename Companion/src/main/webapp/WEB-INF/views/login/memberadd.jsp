@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
+	<form method="post" autocomplete="off">
 		<label for="member_id">ID</label>
 		<input type="text" name="member_id" id="member_id" placeholder="ID"></br>
 		

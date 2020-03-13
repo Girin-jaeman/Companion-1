@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 	<h1>로그인창</h1>
-	<form name="login" method="post">
+	<form name="login" method="post" autocomplete="off">
 		<label for="member_id">ID</label>
 		<input type="text" name="member_id" id="member_id" placeholder="아이디 입력"></br>
 		
@@ -24,7 +25,7 @@
 	</form>
 	
 	<!-- jQuery -->
-	<script src="${root}js/jquery-1.12.4.js"></script>
+	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#login_btn").click(function(){

@@ -16,16 +16,15 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-//	회원가입시키는 화면
 	@RequestMapping("/login/memberadd")
 	public String list(Model model){
 		return "login/memberadd";
 	}
 	
-//	회원정보를 받아서 db에 넣는 작업
+	
 	@RequestMapping(value="/login/memberadd",method=RequestMethod.POST)
 	public String memberadd(@ModelAttribute MemberVo bean) {
 		memberService.insert(bean);
-		return "redirect:memberadd";
+		return "home";
 	}
 }

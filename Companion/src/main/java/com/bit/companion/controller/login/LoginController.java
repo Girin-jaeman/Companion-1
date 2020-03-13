@@ -17,21 +17,17 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-//	로그인하는 화면
 	@RequestMapping("/login")
 	public String login() {
 		return "login/login";
 	}
 	
-//	로그인 처리하는 작업
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginChk(@ModelAttribute LoginVo bean,HttpSession session) {
 		String result="home";
 		boolean loginChk=loginService.loginChk(bean,session);
-//		성공시
 		if(loginChk) {
 			session.setAttribute("loginChk", loginChk);
-//		실패시
 		}else {
 			session.setAttribute("loginChk", loginChk);
 			result="login/login";
@@ -39,7 +35,6 @@ public class LoginController {
 		return result;
 	}
 	
-//	로그아웃 처리하는 작업
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		loginService.logout(session);
