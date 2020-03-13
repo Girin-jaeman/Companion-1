@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
 	<html>
 	
@@ -66,23 +67,26 @@
 			  </ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
-			
-		  <div class="container-fluid sign-group">
-		  <button type="button" class="btn btn-default navbar-btn navbar-left">로그인</button>
-		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입</a></p>
-		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">아이디찾기</a></p>
-		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">비밀번호찾기</a></p>
-		  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입 후 첫 주문시 1000원 할인 쿠폰 지급</a></p>
-		</div><!-- /.container-fluid -->
+		
+	<c:choose>
+		<c:when test="${sessionScope.memberVo.mb_id==null }">
+			 <div class="container-fluid sign-group">
+				  <button type="button" class="btn btn-default navbar-btn navbar-left" onclick="location.href='login'">로그인</button>
+				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입</a></p>
+				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">아이디찾기</a></p>
+				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">비밀번호찾기</a></p>
+				  <p class="navbar-text navbar-left"><a href="#" class="navbar-link">회원가입 후 첫 주문시 1000원 할인 쿠폰 지급</a></p>
+			</div><!-- /.container-fluid -->
+		</c:when>
+		<c:otherwise>
+			<p>${sessionScope.memberVo.mb_name }님이 로그인 중입니다.</p>
+			<button type="button" onclick="location.href='mypagechk'">마이페이지</button>
+			<button type="button" onclick="location.href='logout'">로그아웃</button>
+		</c:otherwise>
+	</c:choose>
+	
 	</nav>
 	
-	<!-- section -->
-	<section class="section">
-		<div class="container">
-			<h1>최재만</h1>
-		
-		</div>
-	</section>
 	
 		<div class="wrapper">
 			<!-- Sidebar  -->

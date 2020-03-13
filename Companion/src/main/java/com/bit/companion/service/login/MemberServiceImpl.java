@@ -10,11 +10,11 @@ import com.bit.companion.model.login.MemberDao;
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
-	MemberDao memberdao;
+	MemberDao memberDao;
 	
 	@Override
 	public void insert(MemberVo bean) {
-		memberdao.insertOne(bean);
+		memberDao.insertOne(bean);
 	}
 
 }
