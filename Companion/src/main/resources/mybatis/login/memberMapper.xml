@@ -7,4 +7,7 @@
 	<insert id="insertOne" parameterType="memberBean">
 		insert into member (member_id,member_pw,member_name,member_tel,member_phone,member_email,member_addr1,member_addr2,member_addr3,member_grade) values (#{member_id},#{member_pw},#{member_name},#{member_tel},#{member_phone},#{member_email},#{member_addr1},#{member_addr2},#{member_addr3},#{member_grade})
 	</insert>
+	<select id="idChk" parameterType="String" resultType="int">
+		select count(*) from member where member_id=#{member_id}
+	</select>
 </mapper>
