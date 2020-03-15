@@ -23,19 +23,15 @@
 		</thead>
 		<tbody>
 		<!-- forEach start -->
-		<c:forEach items="${list }" var="bean">
-		<!-- param  -->
-		<c:url value="testnoticedetail" var="id">
-			<c:param name="article_id" value="${bean.article_id }"/>
-		</c:url>
+		<c:forEach items="${adminNoticeList }" var="bean">
 			<tr>
-				<td><a href="${id }">${bean.article_id }</a></td>
-				<td><a href="${id }">${bean.member_id }</a></td>
-				<td><a href="${id }">${bean.article_title }</a></td>
-				<td><a href="${id }">${bean.article_content }</a></td>
-				<td><a href="${id }">${bean.article_date }</a></td>
-				<td><a href="${id }">${bean.article_count }</a></td>
-				<td><a href="${id }">${bean.article_image }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_id }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.member_id }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_title }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_content }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_date }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_count }</a></td>
+				<td><a href="testnoticedetail/${bean.article_id }">${bean.article_image }</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>

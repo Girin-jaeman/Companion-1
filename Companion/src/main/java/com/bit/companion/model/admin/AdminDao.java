@@ -9,6 +9,10 @@ public interface AdminDao {
 
 	// 공지사항 리스트
 	List<AdminNoticeVo> selectAll() throws SQLException;
+	
+	// 공지사항 상세
+	AdminNoticeVo selectOne(int article_id) throws SQLException;;
+	
 	// 공지사항 입력
 	void insertOne(AdminNoticeVo bean) throws SQLException;
 }

@@ -21,10 +21,11 @@
 		</div>
 		<div>
 			<label for="img">img</label>
-			<input type="file" name="img" id="img">
+			<input type="file" name="article_image" id="article_image">
 		</div>
 		<div>
-			<button>입력</button>
+			<button type="submit">입력</button>
+			<button type="reset">취소</button>
 		</div>
 	</form>
 </body>

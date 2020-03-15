@@ -19,18 +19,29 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	AdminDao adminDao;
 	
-	// notice list - selectall
+	// 공지사항 리스트 - selectAll
 	@Override
 	public void list(Model model) {
 		try {
 			List<AdminNoticeVo> list = adminDao.selectAll();
-			model.addAttribute("list",list);
+			model.addAttribute("adminNoticeList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// notice add - insertOne
+	// 공지사항 상세 - selectOne
+	@Override
+	public void detail(Model model, int article_id) {
+		try {
+			//count?
+			model.addAttribute("adminNoticeOne", adminDao.selectOne(article_id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 공지사항 입력 - insertOne
 	@Override
 	public void insert(AdminNoticeVo bean) {
 		try {
@@ -39,4 +50,5 @@ public class AdminServiceImpl implements AdminService {
 			e.printStackTrace();
 		}
 	}
+
 }
