@@ -5,6 +5,6 @@ import com.bit.companion.model.entity.login.MemberVo;
 public interface MemberDao {
 
 	void insertOne(MemberVo bean);
-
+	int idChk(String member_id);
 
 }

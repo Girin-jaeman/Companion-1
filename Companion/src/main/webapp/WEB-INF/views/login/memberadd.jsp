@@ -11,7 +11,9 @@
 <body>
 	<form name="memberadd" method="post" autocomplete="off">
 		<label for="member_id">*ID</label>
-		<input type="text" name="member_id" id="member_id" placeholder="ID"></br>
+		<input type="text" name="member_id" id="member_id" placeholder="ID">
+		<button type="button" id="id_chk_btn">중복확인</button></br>
+		
 		
 		<label for="member_pw">*PW</label>
 		<input type="password" name="member_pw" id="member_pw" placeholder="PW"></br>
@@ -175,6 +177,30 @@
 					return;
 				}			
 				document.memberadd.submit();
+			});
+			
+			$("#id_chk_btn").click(function(){
+				var member_id=$("#member_id").val();
+				var userData={"member_id" : member_id};
+				if(member_id==""){
+					alert("아이디를 입력해 주시기 바랍니다.");
+					return;
+				}else{
+					$.ajax({
+						type : "POST",
+						url : "/companion/login/idchk",
+						data : userData,
+						dataType : "json",
+						success : function(result){
+							if(result==0){
+								alert("사용이 가능한 아이디입니다.");
+							}else if(result==1){
+								alert("이미 존재하는 아이디입니다. \n다른 아이디를 사용해 주세요.");
+							}
+						}
+						
+					});
+				}
 			});
 		});
 	</script>

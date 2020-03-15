@@ -17,6 +17,12 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.insertOne(bean);
 	}
 
+	@Override
+	public int idChk(String member_id) {
+		int result=memberDao.idChk(member_id);
+		return result;
+	}
+
 
 	
 }

@@ -17,5 +17,11 @@ public class MemberDaoImpl implements MemberDao {
 		sqlSession.insert("member.insertOne",bean);
 	}
 
+	@Override
+	public int idChk(String member_id) {
+		int result=sqlSession.selectOne("member.idChk",member_id);
+		return result;
+	}
+
 
 }
