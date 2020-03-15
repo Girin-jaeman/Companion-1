@@ -3,78 +3,110 @@ package com.bit.companion.model.entity.notice;
 import java.sql.Date;
 
 public class NoticeVo {
-	private int ntc_id;
-	private String ntc_title;
-	private String ntc_content;
-	private Date ntc_date;
-	private String ntc_img;
-	private int ntc_cnt;
+	private int no;
+	private int board_id;
+	private int article_id;
+	private String member_id;
+	private String article_title;
+	private String article_content;
+	private Date article_date;
+	private int article_count;
+	private String article_image;
 	
 	public NoticeVo() {}
 
-	public NoticeVo(int ntc_id, String ntc_title, String ntc_content, Date ntc_date, String ntc_img, int ntc_cnt) {
+	public NoticeVo(int no, int board_id, int article_id, String member_id, String article_title,
+			String article_content, Date article_date, int article_count, String article_image) {
 		super();
-		this.ntc_id = ntc_id;
-		this.ntc_title = ntc_title;
-		this.ntc_content = ntc_content;
-		this.ntc_date = ntc_date;
-		this.ntc_img = ntc_img;
-		this.ntc_cnt = ntc_cnt;
+		this.no = no;
+		this.board_id = board_id;
+		this.article_id = article_id;
+		this.member_id = member_id;
+		this.article_title = article_title;
+		this.article_content = article_content;
+		this.article_date = article_date;
+		this.article_count = article_count;
+		this.article_image = article_image;
 	}
 
-	public int getNtc_id() {
-		return ntc_id;
+	public int getNo() {
+		return no;
 	}
 
-	public void setNtc_id(int ntc_id) {
-		this.ntc_id = ntc_id;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
-	public String getNtc_title() {
-		return ntc_title;
+	public int getBoard_id() {
+		return board_id;
 	}
 
-	public void setNtc_title(String ntc_title) {
-		this.ntc_title = ntc_title;
+	public void setBoard_id(int board_id) {
+		this.board_id = board_id;
 	}
 
-	public String getNtc_content() {
-		return ntc_content;
+	public int getArticle_id() {
+		return article_id;
 	}
 
-	public void setNtc_content(String ntc_content) {
-		this.ntc_content = ntc_content;
+	public void setArticle_id(int article_id) {
+		this.article_id = article_id;
 	}
 
-	public Date getNtc_date() {
-		return ntc_date;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setNtc_date(Date ntc_date) {
-		this.ntc_date = ntc_date;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
-	public String getNtc_img() {
-		return ntc_img;
+	public String getArticle_title() {
+		return article_title;
 	}
 
-	public void setNtc_img(String ntc_img) {
-		this.ntc_img = ntc_img;
+	public void setArticle_title(String article_title) {
+		this.article_title = article_title;
 	}
 
-	public int getNtc_cnt() {
-		return ntc_cnt;
+	public String getArticle_content() {
+		return article_content;
 	}
 
-	public void setNtc_cnt(int ntc_cnt) {
-		this.ntc_cnt = ntc_cnt;
+	public void setArticle_content(String article_content) {
+		this.article_content = article_content;
+	}
+
+	public Date getArticle_date() {
+		return article_date;
+	}
+
+	public void setArticle_date(Date article_date) {
+		this.article_date = article_date;
+	}
+
+	public int getArticle_count() {
+		return article_count;
+	}
+
+	public void setArticle_count(int article_count) {
+		this.article_count = article_count;
+	}
+
+	public String getArticle_image() {
+		return article_image;
+	}
+
+	public void setArticle_image(String article_image) {
+		this.article_image = article_image;
 	}
 
 	@Override
 	public String toString() {
-		return "NoticeVo [ntc_id=" + ntc_id + ", ntc_title=" + ntc_title + ", ntc_content=" + ntc_content
-				+ ", ntc_date=" + ntc_date + ", ntc_img=" + ntc_img + ", ntc_cnt=" + ntc_cnt + "]";
+		return "NoticeVo [no=" + no + ", board_id=" + board_id + ", article_id=" + article_id + ", member_id="
+				+ member_id + ", article_title=" + article_title + ", article_content=" + article_content
+				+ ", article_date=" + article_date + ", article_count=" + article_count + ", article_image="
+				+ article_image + "]";
 	}
-	
-	
+
 }

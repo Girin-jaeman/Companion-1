@@ -24,24 +24,24 @@
 			<tbody>
 				<tr>
 					<td> 글 제목 </td>
-					<td colspan="2">${bean.ntc_title }</td>
+					<td colspan="2">${bean.article_title }</td>
 				</tr>
 				<tr>
 					<td>조회수</td>	
-					<td colspan="2">${bean.ntc_cnt }</td>
+					<td colspan="2">${bean.article_count }</td>
 					
 				</tr>
 				<tr>
 					<td>작성일</td>	
-					<td colspan="2">${bean.ntc_date }</td>
+					<td colspan="2">${bean.article_date }</td>
 				</tr>
 				<tr>
 					<td>내용</td>	
-					<td colspan="2">${bean.ntc_content }</td>
+					<td colspan="2">${bean.article_content }</td>
 				</tr>
 				<tr>
 					<td>이미지</td>	
-					<td colspan="2">${bean.ntc_img }</td>
+					<td colspan="2">${bean.article_image }</td>
 				</tr>
 			</tbody>
 		</table>	

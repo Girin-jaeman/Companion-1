@@ -27,8 +27,8 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public NoticeVo selectOne(int ntc_id) throws SQLException {
-		return sqlSession.selectOne("notice.selectOne",ntc_id);
+	public NoticeVo selectOne(int article_id) throws SQLException {
+		return sqlSession.selectOne("notice.selectOne",article_id);
 	}
 
 }

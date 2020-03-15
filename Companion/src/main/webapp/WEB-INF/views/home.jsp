@@ -51,9 +51,7 @@
                         <i class="fas fa-align-justify"></i>
                     </button>
                     
-                    
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <c:choose>
                             <c:when test="${sessionScope.memberVo.member_id==null }">
                                 <ul class="nav navbar-nav ml-auto">
@@ -61,7 +59,7 @@
                                         <a class="nav-link" href="${root }login">로그인</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="${root }login/memberadd" class="nav-link">회원가입</a></p>		
+                                        <a href="${root }login/memberadd" class="nav-link">회원가입</a>		
                                     </li>
                                 </ul>
                             </c:when>
@@ -96,17 +94,17 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a href="#">
-                                            <img src="../imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="#">
-                                            <img src="../imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="#">
-                                            <img src="../imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                 </div>
@@ -135,17 +133,17 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a href="#">
-                                            <img src="../imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="#">
-                                            <img src="../imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="#">
-                                            <img src="../imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                            <img src="${root }imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                 </div>

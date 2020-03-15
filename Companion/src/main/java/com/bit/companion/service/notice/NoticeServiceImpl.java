@@ -40,9 +40,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void detail(Model model, int ntc_id) {
+	public void detail(Model model, int article_id) {
 		try {
-			model.addAttribute("bean",noticeDao.selectOne(ntc_id));
+			model.addAttribute("bean",noticeDao.selectOne(article_id));
 		}catch(SQLException e) {
 			
 		}
