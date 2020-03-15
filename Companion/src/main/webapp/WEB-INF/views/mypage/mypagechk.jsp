@@ -10,7 +10,6 @@
 </head>
 <body>
 	<h1>비밀번호를 입력해 주세요.</h1>
-	<h1>${sessionScope.memberVo.member_pw }</h1>
 	<form name="mypagechk" method="post" autocomplete="off">
 		<label for="member_pw">PW</label>
 		<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>

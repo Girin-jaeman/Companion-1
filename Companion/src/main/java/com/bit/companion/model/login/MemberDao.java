@@ -6,4 +6,5 @@ public interface MemberDao {
 
 	void insertOne(MemberVo bean);
 
+
 }

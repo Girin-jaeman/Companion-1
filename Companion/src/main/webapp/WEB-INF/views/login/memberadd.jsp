@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,31 +9,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" autocomplete="off">
-		<label for="member_id">ID</label>
+	<form name="memberadd" method="post" autocomplete="off">
+		<label for="member_id">*ID</label>
 		<input type="text" name="member_id" id="member_id" placeholder="ID"></br>
 		
-		<label for="member_pw">PW</label>
+		<label for="member_pw">*PW</label>
 		<input type="password" name="member_pw" id="member_pw" placeholder="PW"></br>
+
+		<label for="member_pw_chk">*PW확인</label>
+		<input type="password" id="member_pw_chk" placeholder="PW확인"></br>
 		
-		<label for="member_name">NAME</label>	
+		<label for="member_name">*NAME</label>	
 		<input type="text" name="member_name" id="member_name" placeholder="name"></br>
 		
 		<label for="member_tel">TEL</label>
 		<input type="text" name="member_tel" id="member_tel" placeholder="일반전화"></br>
 		
-		<label for="member_phone">PHONE</label>
+		<label for="member_phone">*PHONE</label>
 		<input type="text" name="member_phone" id="member_phone" placeholder="phone number contains -"></br>
 		
-		<label for="member_email">E-MAIL</label>
+		<label for="member_email">*E-MAIL</label>
 		<input type="text" name="member_email" id="member_email" placeholder="E-mail contains @"></br>
 		
+		<label>*ADDRESS</label>
 		<p>
 		
-			<input type="text" name="member_addr1" id="sample2_postcode" placeholder="5글자 숫자">
+			<input type="text" name="member_addr1" id="sample2_postcode" placeholder="5글자 숫자" readonly="readonly">
 			<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
 			
-			<input type="text" name="member_addr2" id="sample2_address" placeholder="주소"></br>
+			<input type="text" name="member_addr2" id="sample2_address" placeholder="주소" readonly="readonly"></br>
 			
 			<input type="text" name="member_addr3" id="sample2_detailAddress" placeholder="상세주소"></br></br>
 			
@@ -46,7 +52,7 @@
 		
 		<input type="hidden" name="member_grade" id="member_grade" value="2">
 		
-		<button type="submit">가입</button>
+		<button type="button" id="memberadd_btn">가입</button>
 		<button type="button" onclick="history.back();">뒤로</button>
 	</form>
 	
@@ -139,6 +145,38 @@
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
 	
+	</script>
+	<script src="${root }js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#memberadd_btn").click(function(){
+				var member_id=$("#member_id").val();
+				var member_pw=$("#member_pw").val();
+				var member_pw_chk=$("#member_pw_chk").val();
+				var member_name=$("#member_name").val();
+				var member_phone=$("#member_phone").val();
+				var member_email=$("#member_email").val();
+				var member_addr1=$("#sample2_postcode").val();
+				var member_addr2=$("#sample2_address").val();
+				var member_addr3=$("#sample2_detailAddress").val();
+				if(member_pw!=member_pw_chk){
+					alert("비밀번호가 서로 일치하지 않습니다. 확인해 주세요.");
+					return;
+				}
+				if(member_id=="" || member_pw=="" || member_pw_chk=="" || member_name=="" || member_phone=="" || member_email=="" || member_addr1=="" || member_addr2=="" || member_addr3==""){
+					alert("필수 사항을 입력해 주세요.");
+					return;
+				}
+				document.memberadd.submit();
+			});
+			$("#idchk_btn").click(function(){
+				if(member_id==""){
+					alert("입력된 아이디가 없습니다. 확인해 주세요.");
+					return;
+				}			
+				document.memberadd.submit();
+			});
+		});
 	</script>
 </body>
 </html>

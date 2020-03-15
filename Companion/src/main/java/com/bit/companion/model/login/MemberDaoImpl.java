@@ -17,4 +17,5 @@ public class MemberDaoImpl implements MemberDao {
 		sqlSession.insert("member.insertOne",bean);
 	}
 
+
 }

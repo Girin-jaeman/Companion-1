@@ -22,9 +22,10 @@ public class MemberController {
 	}
 	
 	
+	
 	@RequestMapping(value="/login/memberadd",method=RequestMethod.POST)
 	public String memberadd(@ModelAttribute MemberVo bean) {
 		memberService.insert(bean);
-		return "home";
+		return "redirect:..";
 	}
 }

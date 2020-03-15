@@ -17,4 +17,6 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.insertOne(bean);
 	}
 
+
+	
 }
