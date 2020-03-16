@@ -18,4 +18,7 @@ public interface AdminDao {
 
 	// 공지사항 수정
 	int updateOne(AdminNoticeVo bean) throws SQLException;
+
+	// 공지사항 삭제
+	int deleteOne(AdminNoticeVo bean) throws SQLException;
 }

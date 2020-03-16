@@ -31,6 +31,9 @@
   		<mapper resource="mybatis/login/memberMapper.xml"/>
   		<mapper resource="mybatis/login/loginMapper.xml"/>
   		
+  		<!-- mypage -->
+  		<mapper resource="mybatis/mypage/mypageMapper.xml"/>
+  		
   		<!-- admin -->
   		<mapper resource="mybatis/admin/adminMapper.xml"/>
   		

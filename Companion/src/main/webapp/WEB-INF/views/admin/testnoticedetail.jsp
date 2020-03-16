@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>包府磊 - 傍瘤荤亲 惑技 其捞瘤</h1>
-	<form>
+	<h1>甏�毽瀽 - 瓿奠靷暛 靸侅劯 韼橃澊歆�</h1>
+	<form method="post" action="${root }admin/testnoticedelete">
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
 			<label for="title">title</label>
@@ -29,11 +29,27 @@
 			<input type="file" name="article_image" id="article_image" value="${adminNoticeOne.article_image }">
 		</div>
 		<div>
-			<a href="${root }admin/testnoticeedit/${adminNoticeOne.article_id }">荐沥</a>
-			<a href="testnoticedelete/${adminNoticeOne.article_id }">昏力</a>
-			<button type="reset">秒家</button>
+			<a href="${root }admin/testnoticeedit/${adminNoticeOne.article_id }">靾橃爼</a>
+			<button type="button" onclick="removeCheck();">靷牅</button>
+			<button type="reset">旆唽</button>
 		</div>
 	</form>
-	
+
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
+	<script>
+		function removeCheck() {
+			if (confirm("鞝曤 靷牅頃橃嫓瓴犾姷雼堦箤??") == true){
+		    	$('form').submit();
+			}else{
+		    	return false;
+			}
+		}
+	</script>
+
 </body>
 </html>

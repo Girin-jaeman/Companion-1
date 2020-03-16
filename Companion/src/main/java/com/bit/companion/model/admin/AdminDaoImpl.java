@@ -42,4 +42,10 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.update("adminNotice.updateOne",bean);
 	}
 
+	// 공지사항 삭제 - deleteOne
+	@Override
+	public int deleteOne(AdminNoticeVo bean) throws SQLException {
+		return sqlSession.delete("adminNotice.deleteOne",bean);
+	}
+
 }

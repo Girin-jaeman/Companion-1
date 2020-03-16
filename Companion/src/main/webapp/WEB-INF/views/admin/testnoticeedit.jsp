@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>包府磊 - 傍瘤荤亲 荐沥 其捞瘤</h1>
+	<h1>甏�毽瀽 - 瓿奠靷暛 靾橃爼 韼橃澊歆�</h1>
 	<form method="post">
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
@@ -27,8 +27,8 @@
 			<input type="file" name="article_image" id="article_image" value="${adminNoticeOne.article_image }">
 		</div>
 		<div>
-			<button type="submit">荐沥</button>
-			<button type="reset">秒家</button>
+			<button type="submit">靾橃爼</button>
+			<button type="reset">旆唽</button>
 		</div>
 	</form>
 	

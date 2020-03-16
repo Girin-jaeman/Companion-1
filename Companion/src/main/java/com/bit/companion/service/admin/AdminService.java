@@ -14,4 +14,6 @@ public interface AdminService {
 	void insert(AdminNoticeVo bean);
 	// 공지사항 수정
 	void update(AdminNoticeVo bean);
+	// 공지사항 삭제
+	void delete(AdminNoticeVo bean);
 }
