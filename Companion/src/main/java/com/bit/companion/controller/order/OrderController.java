@@ -26,4 +26,16 @@ public class OrderController {
 		orderService.list(model);
 		return "order/orderMain";
 	}	
+	@RequestMapping(value = "/order/orderPurchase")
+	public String orderPurchase(Model model) {
+		orderService.list(model);
+		return "order/orderPurchase";
+	}
+	@RequestMapping(value = "/order/apiTest")
+	public String apiTest(Model model) {
+
+		return "order/apiTest";
+	}
+	
+
 }

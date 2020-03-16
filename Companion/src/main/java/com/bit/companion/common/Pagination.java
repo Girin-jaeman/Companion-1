@@ -1,9 +1,9 @@
 package com.bit.companion.common;
 
-//��ó: https://freehoon.tistory.com/112 [�ʺ� ������]
+//占쏙옙처: https://freehoon.tistory.com/112 [占십븝옙 占쏙옙占쏙옙占쏙옙]
 public class Pagination {
-	private int listSize = 5;                //�ʱⰪ���� ��ϰ����� 10���� ����
-	private int rangeSize = 5;            //�ʱⰪ���� ������������ 10���� ����
+	private int listSize = 5;                //占십기값占쏙옙占쏙옙 占쏙옙構占쏙옙占쏙옙占� 10占쏙옙占쏙옙 占쏙옙占쏙옙
+	private int rangeSize = 5;            //占십기값占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 10占쏙옙占쏙옙 占쏙옙占쏙옙
 	private int page;
 	private int range;
 	private int listCnt;
@@ -14,7 +14,7 @@ public class Pagination {
 	private boolean prev;
 	private boolean next;
 
-	/* ������ */
+	/* 占쏙옙占쏙옙占쏙옙 */
 	public Pagination() {}
 
 	/* Getter & Setter */
@@ -115,26 +115,26 @@ public class Pagination {
 
 	/* pagination */
 	public void pageInfo(int page, int range, int listCnt) {
-		this.page = page; // ���� ������ ����
-		this.range = range; // ���� ������ ���� ����
-		this.listCnt = listCnt; // �Խù��� �� ����
+		this.page = page; // 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+		this.range = range; // 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+		this.listCnt = listCnt; // 占쌉시뱄옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 		
-		//��ü �������� 
+		//占쏙옙체 占쏙옙占쏙옙占쏙옙占쏙옙 
 		this.pageCnt = (int) Math.ceil(listCnt*1.0/listSize);
 
-		//���� ������
+		//占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
 		this.startPage = (range - 1) * rangeSize + 1 ;
 
-		//�� ������
+		//占쏙옙 占쏙옙占쏙옙占쏙옙
 		this.endPage = range * rangeSize;
 
-		//�Խ��� ���۹�ȣ
+		//占쌉쏙옙占쏙옙 占쏙옙占쌜뱄옙호
 		this.startList = (page - 1) * listSize;
 
-		//���� ��ư ����
+		//占쏙옙占쏙옙 占쏙옙튼 占쏙옙占쏙옙
 		this.prev = range == 1 ? false : true;
 
-		//���� ��ư ����
+		//占쏙옙占쏙옙 占쏙옙튼 占쏙옙占쏙옙
 		this.next = endPage >= pageCnt ? false : true;
 		if (this.endPage > this.pageCnt) {
 			this.endPage = this.pageCnt;
