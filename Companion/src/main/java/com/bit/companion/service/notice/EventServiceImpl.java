@@ -3,6 +3,7 @@ package com.bit.companion.service.notice;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -12,7 +13,9 @@ import com.bit.companion.model.notice.EventDao;
 
 @Service
 public class EventServiceImpl implements EventService {
+	@Autowired
 	EventDao eventDao;
+	
 	@Override
 	public void list(Model model, int page, int range) {
 		try {
@@ -21,7 +24,7 @@ public class EventServiceImpl implements EventService {
 			
 			// Pagination
 			Pagination pagination = new Pagination();
-			pagination.pageInfo(page,range,listCnt);
+			pagination.pageInfo(page, range, listCnt);
 			
 			// List
 			List<EventVo> list = eventDao.selectAll(pagination);
@@ -30,9 +33,14 @@ public class EventServiceImpl implements EventService {
 			model.addAttribute("list",list);
 			model.addAttribute("pagination",pagination);
 			model.addAttribute("total",eventDao.selectTotal());
-		}catch(SQLException e){
-			
-		}
+		}catch(SQLException e){}
+	}
+
+	@Override
+	public void detail(Model model, int article_id) {
+		try {
+			model.addAttribute("bean",eventDao.selectOne(article_id));
+		}catch(SQLException e){}
 	}
 
 }

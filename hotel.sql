@@ -1,7 +1,19 @@
+-- select
 select * from reserve;
 select * from service;
 select * from member;
-select * from notice;
+-- 공지사항
+select * from article where board_id=0;
+-- 이벤트
+select * from article where board_id=1;
+select count(*) as listCnt from article where board_id=1;
+select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND board_id=1 order by A.article_id desc LIMIT 1,10;
+select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND A.board_id=1 order by no desc;
+-- Q&A
+select * from article where board_id=2;
+
+select count(*) as listCnt from article where board_id=0;
+-- insert
 insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항1','내용1',now());
 insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항2','내용2',now());
 insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항3','내용3',now());
@@ -56,5 +68,3 @@ insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항51','�
 insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항52','내용5',now());
 insert into notice (ntc_title,ntc_content,ntc_date) values ('공지사항53','내용5',now());
 commit;
-
-select * from notice where ntc_id=3

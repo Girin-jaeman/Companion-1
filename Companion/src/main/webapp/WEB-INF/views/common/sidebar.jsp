@@ -49,7 +49,7 @@
                             <a href="#">이용안내</a>
                         </li>
                         <li>
-                            <a href="#">예약하기</a>
+                            <a href="/companion/hotel/reservation">예약하기</a>
                         </li>
                         <li>
                             <a href="#">룸미리보기</a>
@@ -67,10 +67,10 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/companion/notice/list">공지사항</a>
+                            <a href="/companion/notice/">공지사항</a>
                         </li>
                         <li>
-                            <a href="#">이벤트</a>
+                            <a href="/companion/event/">이벤트</a>
                         </li>
                         <li>
                             <a href="#">Q&A</a>
