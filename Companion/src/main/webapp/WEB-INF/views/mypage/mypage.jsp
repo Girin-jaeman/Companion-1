@@ -86,7 +86,7 @@
 					return;
 				}
 				if(member_pw != pw_chk){
-					alert("현재 입력된 비밀번호가 틀렸습니다.");
+					alert("입력된 현재 비밀번호가 틀렸습니다.");
 					return;
 				}
 				if(pw_change != pw_change_chk){
@@ -97,9 +97,13 @@
 					type : "POST",
 					url : "/companion/mypage/pwchange",
 					data : pwData,
-					dataType : "json",
-					success : function(){
-						alert("비밀번호 변경완료");
+					success : function(result){
+						if(result==1){
+							alert("비밀번호 변경완료");
+							location.reload();
+						}else{
+							alert("에러.");
+						}
 					}
 				});
 			});

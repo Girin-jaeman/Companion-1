@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.service.mypage.MypageService;
 
 @Controller
@@ -33,7 +34,12 @@ public class MypageController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mypage/pwchange",method=RequestMethod.POST)
-	public void pwChange(String pw_change,String id_chk) {
-		mypageService.pwChange(pw_change,id_chk);
+	public int pwChange(String pw_change,String id_chk,HttpSession session) {
+		if(mypageService.pwChange(pw_change, id_chk)==1) {
+			MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+			memberVo.setMember_pw(pw_change);
+			session.setAttribute("memberVo", memberVo);
+		}
+		return mypageService.pwChange(pw_change,id_chk);
 	}
 }

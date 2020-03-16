@@ -1,7 +1,7 @@
 package com.bit.companion.model.mypage;
 
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,8 +13,12 @@ public class MypageDaoImpl implements MypageDao {
 	SqlSession sqlSession;
 	
 	@Override
-	@Update("update member set member_pw=#{pw_change} where member_id=#{id_chk}")
-	public void pwChange(@Param("pw_change")String pw_change,@Param("id_chk") String id_chk) {}
+	public int pwChange(String pw_change, String id_chk) {
+		HashMap<String,String> map=new HashMap<String,String>();
+		map.put("pw_change", pw_change);
+		map.put("id_chk", id_chk);
+		return sqlSession.update("mypage.pwChange", map);
+	}
 	
 
 }
