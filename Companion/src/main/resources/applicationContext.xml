@@ -8,8 +8,8 @@
 	<bean id="dataSource"
 	class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.gjt.mm.mysql.Driver"/>
-<!--  	<property name="url" value="jdbc:mysql://192.168.3.8:3306/companion?useUnicode=true&amp;characterEncoding=utf8"/> -->
-		<property name="url" value="jdbc:mysql://localhost/companion?useUnicode=true&amp;characterEncoding=utf8"/>
+	  	<property name="url" value="jdbc:mysql://192.168.3.8:3306/companion?useUnicode=true&amp;characterEncoding=utf8"/> 
+<!--  	<property name="url" value="jdbc:mysql://localhost/companion?useUnicode=true&amp;characterEncoding=utf8"/> -->
 		<property name="username" value="admin"/>
 		<property name="password" value="admin"/>
 	</bean>
