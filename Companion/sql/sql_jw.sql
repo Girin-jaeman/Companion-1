@@ -1,5 +1,5 @@
 use companion;
-insert into `member` values('admin','admin','관리자','02-3456-7890','010-1234-5678','admin@admin.com','우편번호','기본주소','상세주소',0);
+insert into `member` values('admin','1234','어드민',null,'010-0000-0001','admin@admin.com','55555','서울시','비트캠프',0);
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS loopInsert $$
@@ -7,13 +7,13 @@ CREATE PROCEDURE loopInsert()
 BEGIN
     DECLARE i INT DEFAULT 1;
         
-    WHILE i <= 20 DO
+    WHILE i <= 50 DO
         INSERT INTO article VALUES(0,null,'admin',concat('제목',i),concat('내용',i),now(),0,null);
         SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
--- CALL loopInsert;
+CALL loopInsert;
 
 select * from article ;
 update article set board_id=0 where article_id>40;

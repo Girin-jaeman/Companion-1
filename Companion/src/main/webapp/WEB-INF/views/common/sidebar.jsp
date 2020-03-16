@@ -67,7 +67,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">공지사항</a>
+                            <a href="/companion/notice/list">공지사항</a>
                         </li>
                         <li>
                             <a href="#">이벤트</a>

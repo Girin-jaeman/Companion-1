@@ -51,4 +51,14 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
+	// 공지사항 수정 - updateOne
+	@Override
+	public void update(AdminNoticeVo bean) {
+		try {
+			adminDao.updateOne(bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -12,4 +12,6 @@ public interface AdminService {
 	void detail(Model model,int article_id);
 	// 공지사항 입력
 	void insert(AdminNoticeVo bean);
+	// 공지사항 수정
+	void update(AdminNoticeVo bean);
 }

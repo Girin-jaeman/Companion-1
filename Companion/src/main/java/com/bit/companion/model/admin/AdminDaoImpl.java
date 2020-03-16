@@ -36,4 +36,10 @@ public class AdminDaoImpl implements AdminDao {
 		sqlSession.insert("adminNotice.insertOne",bean);
 	}
 
+	// 공지사항 수정 - updateOne
+	@Override
+	public int updateOne(AdminNoticeVo bean) throws SQLException {
+		return sqlSession.update("adminNotice.updateOne",bean);
+	}
+
 }

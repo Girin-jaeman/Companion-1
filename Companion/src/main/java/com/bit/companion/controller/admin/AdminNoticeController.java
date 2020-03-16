@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.model.entity.admin.AdminNoticeVo;
 import com.bit.companion.service.admin.AdminService;
@@ -44,5 +45,18 @@ public class AdminNoticeController {
 	public String noticeAdd(@ModelAttribute AdminNoticeVo bean ) {
 		adminService.insert(bean);
 		return "redirect:testnoticelist";
+	}
+	
+	// 공지사항 수정 페이지
+	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.GET)
+	public String noticeEdit(Model model, @PathVariable("idx") int article_id) {
+		adminService.detail(model, article_id);
+		return "admin/testnoticeedit";
+	}
+	// 공지사항 수정 페이지
+	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
+	public String noticeEdit(@ModelAttribute AdminNoticeVo bean, @PathVariable("idx") int article_id) {
+		adminService.update(bean);
+		return "redirect:testnoticedetail/"+bean.getArticle_id();
 	}
 }

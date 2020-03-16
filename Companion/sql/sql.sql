@@ -116,7 +116,7 @@ COLLATE = utf8_bin;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`product` (
   `category_id` INT(11) NOT NULL COMMENT '분류ID',
-  `product_id` INT(11) NOT NULL COMMENT '상품ID',
+  `product_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '상품ID',
   `product_name` VARCHAR(50) NOT NULL COMMENT '상품이름',
   `product_content` TEXT NOT NULL COMMENT '상품설명',
   `product_price` INT(11) NOT NULL COMMENT '상품가격',

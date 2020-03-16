@@ -7,12 +7,12 @@
 
 	<!-- 공지사항 리스트 -->
 	<select id="selectAll" resultType="adminNoticeBean">
-	select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id
+	select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc;
 	</select>
 	
 	<!-- 공지사항 상세 -->
 	<select id="selectOne" resultType="adminNoticeBean" parameterType="int">
-	select article_title, article_content, article_date, article_image from article where article_id=#{value}
+	select article_id, article_title, article_content, article_date, article_image from `article` where article_id=#{value}
 	</select>
 	
 	<!-- 공지사항 입력 -->
@@ -20,4 +20,9 @@
 	<insert id="insertOne" parameterType="adminNoticeBean">
 	insert into `article` values(0,null,'admin',#{article_title},#{article_content},now(),0,#{article_image})
 	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateOne" parameterType="adminNoticeBean" >
+	update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image} where article_id=#{article_id}
+	</update>
 </mapper>

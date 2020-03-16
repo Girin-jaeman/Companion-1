@@ -15,4 +15,7 @@ public interface AdminDao {
 	
 	// 공지사항 입력
 	void insertOne(AdminNoticeVo bean) throws SQLException;
+
+	// 공지사항 수정
+	int updateOne(AdminNoticeVo bean) throws SQLException;
 }
