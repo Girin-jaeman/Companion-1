@@ -57,6 +57,6 @@ public class AdminNoticeController {
 	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
 	public String noticeEdit(@ModelAttribute AdminNoticeVo bean, @PathVariable("idx") int article_id) {
 		adminService.update(bean);
-		return "redirect:testnoticedetail/"+bean.getArticle_id();
+		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
 }
