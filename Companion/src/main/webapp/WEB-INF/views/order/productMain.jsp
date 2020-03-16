@@ -9,22 +9,22 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
 		<title>Collapsible sidebar using Bootstrap 4</title>
 	
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/home.css">
-	
+
+		<!-- Our Custom CSS -->
+		<link rel="stylesheet" href="${root}css/main.css">
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	
 	</head>
-	
 	<body>
 	
+
 		<div class="wrapper">
 			<!-- Sidebar  -->
 			<nav id="sidebar">
@@ -156,25 +156,34 @@
 				  <button type="button" class="btn btn-secondary">등록일순</button>
 				</div>
 			  </div>
-			  
-		
-		
 		</div><!-- container end  -->
 		
 					<table class="table">
 						<thead>
+
+							<tr>
+								<td>상품 ID </td>
+								<td>상품 이름</td>
+								<td>상품 가격</td>
+								<td>상품 재고</td>
+								<td>상품 이미지</td>
+								<td>카테고리ID</td>
+							</tr>
+
 						</thead>
 							<tbody>
 								<c:forEach items="${productlist }" var="bean">
 									<tr>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_id }</a></td>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_name }</a></td>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_price }</a></td>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_stock }</a></td>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_img }</a></td>
-										<td><a href="productDetail/${bean.prdt_id }">${bean.prdt_ctgr_id }</a></td>
+
+										<td><a href="productDetail/${bean.product_id }">${bean.product_id }</a></td>
+										<td><a href="productDetail/${bean.product_id }">${bean.product_name }</a></td>
+										<td><a href="productDetail/${bean.product_id }">${bean.product_price }</a></td>
+										<td><a href="productDetail/${bean.product_id }">${bean.product_stock }</a></td>
+										<td><a href="productDetail/${bean.product_id }">${bean.product_image }</a></td>
+										<td><a href="productDetail/${bean.product_id }">${bean.category_id }</a></td>
 									</tr>
-								</c:forEach>
+								</c:forEach> 
+
 							</tbody>
 					</table>  
 
@@ -188,7 +197,7 @@
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
-	
+
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('#sidebarCollapse').on('click', function () {
