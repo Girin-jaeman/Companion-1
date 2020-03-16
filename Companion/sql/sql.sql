@@ -17,7 +17,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema companion
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `companion` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+CREATE SCHEMA IF NOT EXISTS `companion` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `companion` ;
 
 -- -----------------------------------------------------
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`board` (
   PRIMARY KEY (`board_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`grade` (
   PRIMARY KEY (`grade_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`member` (
     REFERENCES `companion`.`grade` (`grade_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`article` (
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`category` (
     REFERENCES `companion`.`category` (`category_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -121,7 +121,8 @@ CREATE TABLE IF NOT EXISTS `companion`.`product` (
   `product_content` TEXT NOT NULL COMMENT '상품설명',
   `product_price` INT(11) NOT NULL COMMENT '상품가격',
   `product_stock` INT(11) NOT NULL COMMENT '상품재고',
-  `product_image` VARCHAR(100) NULL DEFAULT NULL COMMENT '상품이미지',
+  `product_image` VARCHAR(200) NULL DEFAULT NULL COMMENT '상품이미지',
+  `product_thumb` VARCHAR(200) NULL DEFAULT NULL COMMENT '상품섬네일',
   `product_option1` VARCHAR(50) NULL DEFAULT NULL COMMENT '상품옵션1',
   `product_option2` VARCHAR(50) NULL DEFAULT NULL COMMENT '상품옵션2',
   `product_option3` VARCHAR(50) NULL DEFAULT NULL COMMENT '상품옵션3',
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`product` (
     REFERENCES `companion`.`category` (`category_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -156,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`cart` (
     REFERENCES `companion`.`product` (`product_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -182,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`comment` (
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -196,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`coupon` (
   PRIMARY KEY (`coupon_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -208,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`coupon_state` (
   PRIMARY KEY (`coupon_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -234,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`coupon_list` (
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -246,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`delivery_state` (
   PRIMARY KEY (`delivery_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -259,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`order_state` (
   PRIMARY KEY (`order_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -289,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`order` (
     REFERENCES `companion`.`order_state` (`order_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -317,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`delivery` (
     REFERENCES `companion`.`delivery_state` (`delivery_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -340,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`order_detail` (
     REFERENCES `companion`.`order` (`order_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -352,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment_method` (
   PRIMARY KEY (`payment_method_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -364,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment_state` (
   PRIMARY KEY (`payment_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -376,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`reserve_state` (
   PRIMARY KEY (`reserve_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -388,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`service` (
   PRIMARY KEY (`service_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -420,7 +421,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`reserve` (
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -453,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment` (
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -466,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`point` (
   PRIMARY KEY (`point_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -478,7 +479,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`point_state` (
   PRIMARY KEY (`point_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -505,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`point_list` (
     REFERENCES `companion`.`point_state` (`point_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -517,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question_secret` (
   PRIMARY KEY (`question_secret_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -529,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question_state` (
   PRIMARY KEY (`question_state_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -541,7 +542,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question_type` (
   PRIMARY KEY (`question_type_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
@@ -583,7 +584,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
     REFERENCES `companion`.`question_secret` (`question_secret_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
+COLLATE = utf8_general_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

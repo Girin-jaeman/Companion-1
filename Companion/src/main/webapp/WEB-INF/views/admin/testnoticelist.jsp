@@ -6,11 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/home.css">
 <title>Insert title here</title>
 </head>
 	<h1>관리자 - 공지사항 리스트 페이지</h1>
-	<a href="${root }admin/testnoticeadd">입력</a>
-	<table>
+	<a class="btn" href="${root }admin/testnoticeadd">입력</a>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>글번호</th>
@@ -36,5 +41,13 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	
+	
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
 </body>
 </html>
