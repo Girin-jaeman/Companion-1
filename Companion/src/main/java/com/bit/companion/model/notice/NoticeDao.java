@@ -12,6 +12,6 @@ public interface NoticeDao {
 
 	int selectTotal() throws SQLException;
 
-	NoticeVo selectOne(int ntc_id) throws SQLException;
+	NoticeVo selectOne(int article_id) throws SQLException;
 
 }

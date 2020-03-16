@@ -5,11 +5,11 @@
   
   <mapper namespace="notice">
   	<select id="selectAll" resultType="noticeBean">
-  		select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc LIMIT #{startList}, #{listSize};
+  		select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc LIMIT #{startList}, #{listSize}
   	</select>
   	
   	<select id="selectTotal" resultType="int">
-  		select count(*) as listCnt from article where board_id=0;
+  		select count(*) as listCnt from article where board_id=0
   	</select>
   	
   	<select id="selectOne" resultType="noticeBean" parameterType="int">

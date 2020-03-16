@@ -5,15 +5,15 @@
   
   <mapper namespace="event">
   	<select id="selectAll" resultType="eventBean">
-  		select ntc_id,ntc_title,ntc_content,ntc_date,ntc_cnt,ntc_img from notice order by ntc_id desc LIMIT #{startList}, #{listSize};
+  		select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND board_id=1 order by A.article_id desc LIMIT #{startList}, #{listSize}
   	</select>
   	
   	<select id="selectTotal" resultType="int">
-  		select count(*) as listCnt from notice;
+  		select count(*) as listCnt from article where board_id=1
   	</select>
   	
   	<select id="selectOne" resultType="eventBean" parameterType="int">
-  		select * from notice where ntc_id=#{value}
+  		select * from article where article_id=#{value}
   	</select>
   </mapper>
   

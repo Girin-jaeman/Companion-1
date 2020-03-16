@@ -26,11 +26,10 @@
   	<mappers>
   		<!-- hotel -->
   		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
-  		<mapper resource="mybatis/login/memberMapper.xml"/>
   		
   		<!-- login -->
+  		<mapper resource="mybatis/login/memberMapper.xml"/>
   		<mapper resource="mybatis/login/loginMapper.xml"/>
-  		<mapper resource="mybatis/hotel/hotelMapper.xml"/>
   		
   		<!-- admin -->
   		<mapper resource="mybatis/admin/adminMapper.xml"/>

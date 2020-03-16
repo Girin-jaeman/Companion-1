@@ -8,7 +8,10 @@ import com.bit.companion.model.entity.notice.EventVo;
 
 public interface EventDao {
 
+	int selectTotal() throws SQLException;
+
 	List<EventVo> selectAll(Pagination pagination) throws SQLException;
 
-	int selectTotal() throws SQLException;
+	EventVo selectOne(int article_id) throws SQLException;
+
 }

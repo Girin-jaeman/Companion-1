@@ -18,11 +18,11 @@ public class HotelController {
 	HotelService hotelService;
 	
 	@RequestMapping(value = "/reservation", method=RequestMethod.GET)
-	public String reservation() {return "hotel/hotel";}
+	public String reservation() {return "hotel/hotel_reservation";}
 	
 	@RequestMapping(value = "/reservation", method=RequestMethod.POST)
 	public String reservation(@ModelAttribute HotelVo bean) {
-		hotelService.insert(bean);
-		return "redirect:/";
+//		hotelService.insert(bean);
+		return "redirect:/hotel/reservation";
 	}
 }

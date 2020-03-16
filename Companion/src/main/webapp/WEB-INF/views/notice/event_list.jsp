@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/notice/list">></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/event/list">></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,12 +74,12 @@
 	                </tr>
 	            </thead>
 	            <tbody>
-	            <c:forEach items="${list }" var="bean">
+ 	            <c:forEach items="${list }" var="bean" varStatus="status">
 	                <tr>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_id }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_date }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_title }</a></td>
-	                    <td><a href="detail/${bean.ntc_id}">${bean.ntc_cnt }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${(total-status.index)-(pagination.page-1)*pagination.listSize}</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_date }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_title }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_count }</a></td>
 	                </tr>
 	            </c:forEach>
 	            </tbody>

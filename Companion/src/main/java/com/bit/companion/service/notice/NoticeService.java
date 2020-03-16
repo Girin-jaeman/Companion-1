@@ -6,6 +6,6 @@ public interface NoticeService {
 
 	void list(Model model, int page, int range);
 
-	void detail(Model model, int ntc_id);
+	void detail(Model model, int article_id);
 
 }
