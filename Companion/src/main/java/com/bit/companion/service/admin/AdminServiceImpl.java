@@ -61,4 +61,13 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
+	// 공지사항 삭제 - deleteOne
+	@Override
+	public void delete(AdminNoticeVo bean) {
+		try {
+			adminDao.deleteOne(bean);
+		} catch (SQLException e) {
+		}
+	}
+
 }
