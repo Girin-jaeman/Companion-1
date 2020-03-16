@@ -25,4 +25,9 @@
 	<update id="updateOne" parameterType="adminNoticeBean" >
 	update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image} where article_id=#{article_id}
 	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteOne" parameterType="adminNoticeBean">
+	delete from `article` where article_id=#{article_id}
+	</delete>
 </mapper>

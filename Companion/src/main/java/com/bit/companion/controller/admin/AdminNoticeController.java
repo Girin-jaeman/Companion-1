@@ -59,4 +59,10 @@ public class AdminNoticeController {
 		adminService.update(bean);
 		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
+	// 공지사항 삭제 페이지
+	@RequestMapping(value = "testnoticedelete", method = RequestMethod.POST)
+	public String noticeDelete(@ModelAttribute AdminNoticeVo bean) {
+		adminService.delete(bean);
+		return "redirect:testnoticelist";
+	}
 }
