@@ -18,14 +18,14 @@ public class AdminProductController {
 	@Autowired
 	AdminNoticeService adminService;
 	
-	// »óÇ° ÀÔ·Â ÆäÀÌÁö
+	// ï¿½ï¿½Ç° ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "testproductadd", method = RequestMethod.GET)
 	public String productAdd() {
 		logger.info("get product add");
 		return "admin/testproductadd";
 	}
 	
-	// »óÇ° µî·Ï ÆäÀÌÁö
+	// ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/goods/register", method = RequestMethod.GET)
 	public void getGoodsRegister(Model model) throws Exception {
 	 logger.info("get goods register");
