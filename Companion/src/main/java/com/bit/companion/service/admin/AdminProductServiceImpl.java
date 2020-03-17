@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import com.bit.companion.model.admin.AdminProductDao;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 
+import net.sf.json.JSONArray;
+
 @Service
 public class AdminProductServiceImpl implements AdminProductService{
 	Logger logger=LoggerFactory.getLogger(getClass());
@@ -23,8 +25,8 @@ public class AdminProductServiceImpl implements AdminProductService{
 	@Override
 	public void category(Model model) {
 		try {
-			List<AdminCategoryVo> list = adminProductDao.selectCategory();
-			model.addAttribute("adminProductCategory",list);
+			List<AdminCategoryVo> category = adminProductDao.selectCategory();
+			model.addAttribute("adminProductCategory",JSONArray.fromObject(category));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
