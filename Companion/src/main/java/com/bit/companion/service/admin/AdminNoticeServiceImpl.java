@@ -9,21 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.bit.companion.model.admin.NoticeDao;
+import com.bit.companion.model.admin.AdminNoticeDao;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 @Service
-public class AdminServiceImpl implements AdminService {
-	Logger log=LoggerFactory.getLogger(getClass());
+public class AdminNoticeServiceImpl implements AdminNoticeService {
+	Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	NoticeDao adminDao;
+	AdminNoticeDao adminNoticeDao;
 	
 	// 공지사항 리스트 - selectAll
 	@Override
 	public void list(Model model) {
 		try {
-			List<AdminArticleVo> list = adminDao.selectAll();
+			List<AdminArticleVo> list = adminNoticeDao.selectAll();
 			model.addAttribute("adminNoticeList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class AdminServiceImpl implements AdminService {
 	public void detail(Model model, int article_id) {
 		try {
 			//count?
-			model.addAttribute("adminNoticeOne", adminDao.selectOne(article_id));
+			model.addAttribute("adminNoticeOne", adminNoticeDao.selectOne(article_id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void insert(AdminArticleVo bean) {
 		try {
-			adminDao.insertOne(bean);
+			adminNoticeDao.insertOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +55,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void update(AdminArticleVo bean) {
 		try {
-			adminDao.updateOne(bean);
+			adminNoticeDao.updateOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void delete(AdminArticleVo bean) {
 		try {
-			adminDao.deleteOne(bean);
+			adminNoticeDao.deleteOne(bean);
 		} catch (SQLException e) {
 		}
 	}
