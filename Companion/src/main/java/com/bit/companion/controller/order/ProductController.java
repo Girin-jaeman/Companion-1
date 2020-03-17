@@ -26,5 +26,17 @@ public class ProductController {
 		return "order/productDetail";
 	}
 	
+	@RequestMapping(value = "/order/productDetail/orderQuestion")
+	public String orderQuestion(Model model) {
+		return "order/orderQuestion";
+	}
 	
+	
+	
+	
+	/*
+	 * @RequestMapping(value = "/order/productDetail/{idx}/orderQuestion") public
+	 * String orderQuestion(Model model,@PathVariable("idx") int product_id) {
+	 * productService.detail(model, product_id); return "order/orderQuestion"; }
+	 */
 }
