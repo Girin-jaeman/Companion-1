@@ -2,8 +2,6 @@ package com.bit.companion.model.entity.admin;
 
 import java.sql.Date;
 
-import javax.validation.constraints.NotNull;
-
 public class AdminArticleVo {
 	private int board_id;
 	private int article_id;

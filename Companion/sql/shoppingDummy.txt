@@ -36,7 +36,7 @@ BEGIN
     DECLARE i INT DEFAULT 1;
     WHILE i <= 10 DO
         INSERT INTO product
-          VALUES (100,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
+          VALUES (100,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
         SET i = i + 1;
     END WHILE;
 END$$
@@ -50,8 +50,7 @@ BEGIN
     DECLARE i INT DEFAULT 11;
     WHILE i <= 20 DO
         INSERT INTO product
-          VALUES (200,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (200,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
@@ -64,8 +63,7 @@ BEGIN
     DECLARE i INT DEFAULT 21;
     WHILE i <= 30 DO
       INSERT INTO product
-          VALUES (300,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (300,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
@@ -78,8 +76,7 @@ BEGIN
     DECLARE i INT DEFAULT 31;
     WHILE i <= 40 DO
          INSERT INTO product
-          VALUES (400,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (400,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
@@ -92,8 +89,7 @@ BEGIN
     DECLARE i INT DEFAULT 41;
     WHILE i <= 50 DO
       INSERT INTO product
-          VALUES (500,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (500,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
@@ -107,8 +103,7 @@ BEGIN
     DECLARE i INT DEFAULT 51;
     WHILE i <= 60 DO
         INSERT INTO product
-          VALUES (600,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (600,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
@@ -122,14 +117,11 @@ BEGIN
     DECLARE i INT DEFAULT 61;
     WHILE i <= 70 DO
         INSERT INTO product
-          VALUES (700,null,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));
-        SET i = i + 1;
+ VALUES (700,i,concat('상품이름',i),concat('상품설명',i),concat('7890',i),i,now(),concat('상품이미지',i),concat('상품섬네일',i),concat('상품옵션1',i),concat('상품옵션2',i),concat('상품옵션3',i),concat('상품옵션4',i),concat('상품옵션5',i));        SET i = i + 1;
     END WHILE;
 END$$
 DELIMITER $$
 call product();
-select * from product;
-commit;
 
 
 
@@ -152,10 +144,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `order`$$
 CREATE PROCEDURE `order`()
 BEGIN
-    DECLARE i INT DEFAULT 11;
+    DECLARE i INT DEFAULT 1;
     WHILE i <= 60 DO
         INSERT INTO `order`
-          VALUES (i,concat('회원',i),now(),concat('1000',i),concat('주문수령인',i),concat('주문수령인일반전화',i),concat('주문수령인휴대전화',i),concat('주문주소1',i),concat('주문주소2',i),concat('주문주소3',i),concat('주문배송메세지',i),i);
+          VALUES (i,concat('회원',i),now(),concat('1000',i),concat('주문수령인',i),concat('주문수령인일반전화',i),concat('주문수령인휴대전화',i),concat('주문주소1',i),concat('주문주소2',i),concat('주문주소3',i),concat('주문배송메세지',i),0);
         SET i = i + 1;
     END WHILE;
 END$$
@@ -179,11 +171,15 @@ BEGIN
 END$$
 DELIMITER $$
 CALL order_detail;
+
 select * from order_detail;
 commit;
 select * from member;
 select * from cart;
 select * from product;
+
+
+
 DELIMITER $$
 DROP PROCEDURE IF EXISTS cart$$
 CREATE PROCEDURE cart()
@@ -234,6 +230,58 @@ CALL payment;
 select * from payment;
 
 commit;
+
+
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS question$$
+CREATE PROCEDURE question()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 10 DO
+        INSERT INTO question
+          VALUES (default,0,i,i,concat('회원',i),now(),null,concat('문의제목',i),concat('문의내용',i),null,concat('문의답변내용',i),default,default);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL question;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS question$$
+CREATE PROCEDURE question()
+BEGIN
+    DECLARE i INT DEFAULT 11;
+    WHILE i <= 30 DO
+        INSERT INTO question
+          VALUES (default,5,i,i,concat('회원',i),now(),null,concat('문의제목',i),concat('문의내용',i),null,concat('문의답변내용',i),default,default);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL question;
+
+select * from question;
+DELIMITER $$
+DROP PROCEDURE IF EXISTS question$$
+CREATE PROCEDURE question()
+BEGIN
+    DECLARE i INT DEFAULT 31;
+    WHILE i <= 60 DO
+        INSERT INTO question
+          VALUES (default,100,i,i,concat('회원',i),now(),null,concat('문의제목',i),concat('문의내용',i),null,concat('문의답변내용',i),default,default);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL question;
+
+  INSERT INTO question VALUES (default,5,1,5,'회원1','2020-03-01',null,'문의제목123','문의내용46',null,'문의답변내용126',default,default);
+ INSERT INTO question VALUES (default,6,8,7,'회원1','2020-02-01',null,'문의제목123','문의내용46',null,'문의답변내용126',default,default);
+ INSERT INTO question VALUES (default,8,21,4,'회원1','2020-01-01',null,'문의제목123','문의내용46',null,'문의답변내용126',default,default);
+
+
 
 
 
