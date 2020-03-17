@@ -13,6 +13,11 @@
 		<label for="member_id">*ID</label>
 		<input type="text" name="member_id" id="member_id" placeholder="ID">
 		<button type="button" id="id_chk_btn">중복확인</button></br>
+		<!-- 아이디 체크여부
+						1 안함
+						2 함
+		 -->
+		<input type="hidden" name="id_chk_value" id="id_chk_value" value="1">
 		
 		
 		<label for="member_pw">*PW</label>
@@ -161,8 +166,13 @@
 				var member_addr1=$("#sample2_postcode").val();
 				var member_addr2=$("#sample2_address").val();
 				var member_addr3=$("#sample2_detailAddress").val();
+				var id_chk_value=$("#id_chk_value").val();
 				if(member_pw!=member_pw_chk){
 					alert("비밀번호가 서로 일치하지 않습니다. 확인해 주세요.");
+					return;
+				}
+				if(id_chk_value=="1"){
+					alert("아이디 중복확인을 해주세요.");
 					return;
 				}
 				if(member_id=="" || member_pw=="" || member_pw_chk=="" || member_name=="" || member_phone=="" || member_email=="" || member_addr1=="" || member_addr2=="" || member_addr3==""){
@@ -193,6 +203,7 @@
 						dataType : "json",
 						success : function(result){
 							if(result==0){
+								$("#id_chk_value").val()="2";
 								alert("사용이 가능한 아이디입니다.");
 							}else if(result==1){
 								alert("이미 존재하는 아이디입니다. \n다른 아이디를 사용해 주세요.");
