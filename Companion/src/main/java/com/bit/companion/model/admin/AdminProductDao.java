@@ -7,7 +7,7 @@ import com.bit.companion.model.entity.admin.AdminCategoryVo;
 
 public interface AdminProductDao {
 	
-	//카테고리
+	// product add category
 	List<AdminCategoryVo> selectCategory() throws SQLException;
 
 }

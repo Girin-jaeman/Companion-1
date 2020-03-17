@@ -20,13 +20,13 @@ public class AdminProductController {
 	@Autowired
 	AdminProductService adminProductService;
 	
-	// 상품 입력 페이지
+	// product add category - get
 	@RequestMapping(value = "testproductadd", method = RequestMethod.GET)
 	public String productAdd(Model model) {
 		logger.info("get product add");
 	
 		 adminProductService.category(model);
 		 
-		 return "admin/testadminhome";
+		 return "admin/testproductadd";
 	}
 }

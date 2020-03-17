@@ -18,31 +18,31 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	// 공지사항 리스트 - selectAll
+	// notice list - selectAll
 	@Override
 	public List<AdminArticleVo> selectAll() throws SQLException {
 		return sqlSession.selectList("adminNotice.selectAll");
 	}
 
-	// 공지사항 상세 - selectOne
+	// notice detail - selectOne
 	@Override
 	public AdminArticleVo selectOne(int article_id) throws SQLException {
 		return sqlSession.selectOne("adminNotice.selectOne",article_id);
 	}
 	
-	// 공지사항 입력 - insertOne
+	// notice add - insertOne
 	@Override
 	public void insertOne(AdminArticleVo bean) throws SQLException {
 		sqlSession.insert("adminNotice.insertOne",bean);
 	}
 
-	// 공지사항 수정 - updateOne
+	// notice edit - updateOne
 	@Override
 	public int updateOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.update("adminNotice.updateOne",bean);
 	}
 
-	// 공지사항 삭제 - deleteOne
+	// notice delete - deleteOne
 	@Override
 	public int deleteOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.delete("adminNotice.deleteOne",bean);
