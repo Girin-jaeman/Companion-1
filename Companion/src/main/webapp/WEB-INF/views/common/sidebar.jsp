@@ -17,25 +17,25 @@
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">사료</a>
+                            <a href="/companion/order/productMain">사료</a>
                         </li>
                         <li>
-                            <a href="#">간식</a>
+                            <a href="/companion/order/productMain">간식</a>
                         </li>
                         <li>
-                            <a href="#">장난감</a>
+                            <a href="/companion/order/productMain">장난감</a>
                         </li>
                         <li>
-                            <a href="#">미용용품</a>
+                            <a href="/companion/order/productMain">미용용품</a>
                         </li>
                         <li>
-                            <a href="#">목욕용품</a>
+                            <a href="/companion/order/productMain">목욕용품</a>
                         </li>
                         <li>
-                            <a href="#">위생용품</a>
+                            <a href="/companion/order/productMain">위생용품</a>
                         </li>
                         <li>
-                            <a href="#">산책용품</a>
+                            <a href="/companion/order/productMain">산책용품</a>
                         </li>
                     </ul>
                 </li>
@@ -73,7 +73,7 @@
                             <a href="/companion/event/">이벤트</a>
                         </li>
                         <li>
-                            <a href="#">Q&A</a>
+                            <a href="#">FAQ</a>
                         </li>
                     </ul>
                 </li>

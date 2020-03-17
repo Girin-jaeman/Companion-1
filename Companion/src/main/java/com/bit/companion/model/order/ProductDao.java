@@ -8,6 +8,6 @@ import com.bit.companion.model.entity.order.ProductVo;
 public interface ProductDao {
 
 	List<ProductVo> ProductSelectAll() throws SQLException;
-	ProductVo productDetailOne(String prdt_id) throws SQLException;
+	ProductVo ProductDetailOne(int product_id) throws SQLException;
 }
 

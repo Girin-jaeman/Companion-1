@@ -2,3 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="mypage">
+  	<update id="pwChange" parameterType="map">
+  		update member set member_pw=#{pw_change} where member_id=#{id_chk}
+  	</update>
+  </mapper>

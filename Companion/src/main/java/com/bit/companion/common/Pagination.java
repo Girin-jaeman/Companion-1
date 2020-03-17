@@ -1,9 +1,9 @@
 package com.bit.companion.common;
 
-//��ó: https://freehoon.tistory.com/112 [�ʺ� ������]
+//[source]https://freehoon.tistory.com/112
 public class Pagination {
-	private int listSize = 5;                //�ʱⰪ���� ��ϰ����� 10���� ����
-	private int rangeSize = 5;            //�ʱⰪ���� ������������ 10���� ����
+	private int listSize = 20;                //	Number of posts per page
+	private int rangeSize = 5;            // Number of pages per range
 	private int page;
 	private int range;
 	private int listCnt;
@@ -14,7 +14,7 @@ public class Pagination {
 	private boolean prev;
 	private boolean next;
 
-	/* ������ */
+	/* Constructor */
 	public Pagination() {}
 
 	/* Getter & Setter */
@@ -115,26 +115,26 @@ public class Pagination {
 
 	/* pagination */
 	public void pageInfo(int page, int range, int listCnt) {
-		this.page = page; // ���� ������ ����
-		this.range = range; // ���� ������ ���� ����
-		this.listCnt = listCnt; // �Խù��� �� ����
+		this.page = page; // Current page
+		this.range = range; // Current range
+		this.listCnt = listCnt; // Total posts
 		
-		//��ü �������� 
+		// Number of pages 
 		this.pageCnt = (int) Math.ceil(listCnt*1.0/listSize);
 
-		//���� ������
+		// Start page number
 		this.startPage = (range - 1) * rangeSize + 1 ;
 
-		//�� ������
+		// End page number
 		this.endPage = range * rangeSize;
 
-		//�Խ��� ���۹�ȣ
+		// Start post number
 		this.startList = (page - 1) * listSize;
 
-		//���� ��ư ����
+		// prev button 
 		this.prev = range == 1 ? false : true;
 
-		//���� ��ư ����
+		// next button
 		this.next = endPage >= pageCnt ? false : true;
 		if (this.endPage > this.pageCnt) {
 			this.endPage = this.pageCnt;
