@@ -73,7 +73,7 @@
                             <a href="/companion/event/">이벤트</a>
                         </li>
                         <li>
-                            <a href="#">Q&A</a>
+                            <a href="#">FAQ</a>
                         </li>
                     </ul>
                 </li>
