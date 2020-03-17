@@ -171,21 +171,14 @@
 					alert("비밀번호가 서로 일치하지 않습니다. 확인해 주세요.");
 					return;
 				}
-				if(id_chk_value=="1"){
-					alert("아이디 중복확인을 해주세요.");
-					return;
-				}
 				if(member_id=="" || member_pw=="" || member_pw_chk=="" || member_name=="" || member_phone=="" || member_email=="" || member_addr1=="" || member_addr2=="" || member_addr3==""){
 					alert("필수 사항을 입력해 주세요.");
 					return;
 				}
-				document.memberadd.submit();
-			});
-			$("#idchk_btn").click(function(){
-				if(member_id==""){
-					alert("입력된 아이디가 없습니다. 확인해 주세요.");
+				if(id_chk_value=="1"){
+					alert("아이디 중복확인을 해주세요.");
 					return;
-				}			
+				}
 				document.memberadd.submit();
 			});
 			
@@ -203,14 +196,15 @@
 						dataType : "json",
 						success : function(result){
 							if(result==0){
-								$("#id_chk_value").val()="2";
 								alert("사용이 가능한 아이디입니다.");
 							}else if(result==1){
 								alert("이미 존재하는 아이디입니다. \n다른 아이디를 사용해 주세요.");
+								return;
 							}
 						}
 						
 					});
+					document.getElementById("id_chk_value").value="2";
 				}
 			});
 		});
