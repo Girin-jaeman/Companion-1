@@ -20,7 +20,7 @@ public class AdminProductController {
 	@Autowired
 	AdminProductService adminProductService;
 	
-	// »óÇ° ÀÔ·Â ÆäÀÌÁö
+	// ï¿½ï¿½Ç° ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "testproductadd", method = RequestMethod.GET)
 	public String productAdd(Model model) {
 		logger.info("get product add");
