@@ -7,8 +7,8 @@
   	<select id="ProductSelectAll" resultType="productBean">
   		select * from `product`
   	</select>
-  	<select id="ProductDetailOne" resultType="productBean" parameterType="String">
-		select * from `product` where prdt_id=#{value}
+  	<select id="ProductDetailOne" resultType="productBean" parameterType="int">
+		select * from `product` where product_id=#{value}
 	</select>
  </mapper>
 	<!--<select id="selectProductDetail" resultType="productDetailBean">

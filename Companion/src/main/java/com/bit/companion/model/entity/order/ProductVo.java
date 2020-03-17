@@ -1,69 +1,132 @@
 package com.bit.companion.model.entity.order;
 
+import java.sql.Date;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 
 public class ProductVo {
-	private String prdt_id;
-	private String prdt_name;
-	private int prdt_price;
-	private int prdt_stock;
-	private String prdt_img;
-	private String prdt_ctgr_id;
-
-	public ProductVo(String prdt_id, String prdt_name, int prdt_price, int prdt_stock, String prdt_img,
-			String prdt_ctgr_id) {
+	private int category_id;
+	private int product_id;
+	private String product_name;
+	private String product_content;
+	private int product_price;
+	private int product_stock;
+	private String product_image;
+	private String product_thumb; 
+	private String product_option1;
+	private String product_option2;
+	private String product_option3;
+	private String product_option4;
+	private String product_option5;
+	
+	public ProductVo(int category_id, int product_id, String product_name, String product_content, int product_price,
+			int product_stock, String product_image, String product_thumb, String product_option1,
+			String product_option2, String product_option3, String product_option4, String product_option5) {
 		super();
-		this.prdt_id = prdt_id;
-		this.prdt_name = prdt_name;
-		this.prdt_price = prdt_price;
-		this.prdt_stock = prdt_stock;
-		this.prdt_img = prdt_img;
-		this.prdt_ctgr_id = prdt_ctgr_id;
+		this.category_id = category_id;
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.product_content = product_content;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.product_image = product_image;
+		this.product_thumb = product_thumb;
+		this.product_option1 = product_option1;
+		this.product_option2 = product_option2;
+		this.product_option3 = product_option3;
+		this.product_option4 = product_option4;
+		this.product_option5 = product_option5;
 	}
-
 	@Override
 	public String toString() {
-		return "ProductVo [prdt_id=" + prdt_id + ", prdt_name=" + prdt_name + ", prdt_price=" + prdt_price
-				+ ", prdt_stock=" + prdt_stock + ", prdt_img=" + prdt_img + ", prdt_ctgr_id=" + prdt_ctgr_id + "]";
+		return "ProductVo [category_id=" + category_id + ", product_id=" + product_id + ", product_name=" + product_name
+				+ ", product_content=" + product_content + ", product_price=" + product_price + ", product_stock="
+				+ product_stock + ", product_image=" + product_image + ", product_thumb=" + product_thumb
+				+ ", product_option1=" + product_option1 + ", product_option2=" + product_option2 + ", product_option3="
+				+ product_option3 + ", product_option4=" + product_option4 + ", product_option5=" + product_option5
+				+ "]";
 	}
-
 	public ProductVo() {
 	}
-	
-	public String getPrdt_id() {
-		return prdt_id;
+	public int getCategory_id() {
+		return category_id;
 	}
-	public void setPrdt_id(String prdt_id) {
-		this.prdt_id = prdt_id;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
-	public String getPrdt_name() {
-		return prdt_name;
+	public int getProduct_id() {
+		return product_id;
 	}
-	public void setPrdt_name(String prdt_name) {
-		this.prdt_name = prdt_name;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
-	public int getPrdt_price() {
-		return prdt_price;
+	public String getProduct_name() {
+		return product_name;
 	}
-	public void setPrdt_price(int prdt_price) {
-		this.prdt_price = prdt_price;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
-	public int getPrdt_stock() {
-		return prdt_stock;
+	public String getProduct_content() {
+		return product_content;
 	}
-	public void setPrdt_stock(int prdt_stock) {
-		this.prdt_stock = prdt_stock;
+	public void setProduct_content(String product_content) {
+		this.product_content = product_content;
 	}
-	public String getPrdt_img() {
-		return prdt_img;
+	public int getProduct_price() {
+		return product_price;
 	}
-	public void setPrdt_img(String prdt_img) {
-		this.prdt_img = prdt_img;
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
 	}
-	public String getPrdt_ctgr_id() {
-		return prdt_ctgr_id;
+	public int getProduct_stock() {
+		return product_stock;
 	}
-	public void setPrdt_ctgr_id(String prdt_ctgr_id) {
-		this.prdt_ctgr_id = prdt_ctgr_id;
+	public void setProduct_stock(int product_stock) {
+		this.product_stock = product_stock;
+	}
+	public String getProduct_image() {
+		return product_image;
+	}
+	public void setProduct_image(String product_image) {
+		this.product_image = product_image;
+	}
+	public String getProduct_thumb() {
+		return product_thumb;
+	}
+	public void setProduct_thumb(String product_thumb) {
+		this.product_thumb = product_thumb;
+	}
+	public String getProduct_option1() {
+		return product_option1;
+	}
+	public void setProduct_option1(String product_option1) {
+		this.product_option1 = product_option1;
+	}
+	public String getProduct_option2() {
+		return product_option2;
+	}
+	public void setProduct_option2(String product_option2) {
+		this.product_option2 = product_option2;
+	}
+	public String getProduct_option3() {
+		return product_option3;
+	}
+	public void setProduct_option3(String product_option3) {
+		this.product_option3 = product_option3;
+	}
+	public String getProduct_option4() {
+		return product_option4;
+	}
+	public void setProduct_option4(String product_option4) {
+		this.product_option4 = product_option4;
+	}
+	public String getProduct_option5() {
+		return product_option5;
+	}
+	public void setProduct_option5(String product_option5) {
+		this.product_option5 = product_option5;
 	}
 }

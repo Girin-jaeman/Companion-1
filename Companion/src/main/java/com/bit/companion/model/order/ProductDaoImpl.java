@@ -21,9 +21,9 @@ public class ProductDaoImpl implements ProductDao{
 	}
  
 	@Override
-	public ProductVo productDetailOne(String prdt_id) throws SQLException {
+	public ProductVo ProductDetailOne(int product_id) throws SQLException {
 		System.out.println(sqlSession);
-		return sqlSession.selectOne("product.ProductDetailOne",prdt_id);
+		return sqlSession.selectOne("product.ProductDetailOne",product_id);
 	}
 
 

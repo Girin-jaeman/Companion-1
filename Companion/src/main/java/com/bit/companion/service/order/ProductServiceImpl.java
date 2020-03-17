@@ -30,10 +30,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void detail(Model model, String prdt_id) {
+	public void detail(Model model,int product_id) {
 		try {
-			productDao.productDetailOne(prdt_id);
-			model.addAttribute("productDetailOne",productDao.productDetailOne(prdt_id));
+			productDao.ProductDetailOne(product_id);
+			model.addAttribute("productDetailOne",productDao.ProductDetailOne(product_id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

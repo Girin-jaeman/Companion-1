@@ -28,81 +28,8 @@
 	<body>
 	
 		<div class="wrapper">
-			<!-- Sidebar  -->
-			<nav id="sidebar">
-				<div class="sidebar-header">
-					<h3>Bootstrap Sidebar</h3>
-					<strong>BS</strong>
-				</div>
-	
-				<ul class="list-unstyled components">
-					<li class="active">
-						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-							<i class="fas fa-home"></i>
-							Home
-						</a>
-						<ul class="collapse list-unstyled" id="homeSubmenu">
-							<li>
-								<a href="#">Home 1</a>
-							</li>
-							<li>
-								<a href="#">Home 2</a>
-							</li>
-							<li>
-								<a href="#">Home 3</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-briefcase"></i>
-							About
-						</a>
-						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-							<i class="fas fa-copy"></i>
-							Pages
-						</a>
-						<ul class="collapse list-unstyled" id="pageSubmenu">
-							<li>
-								<a href="#">Page 1</a>
-							</li>
-							<li>
-								<a href="#">Page 2</a>
-							</li>
-							<li>
-								<a href="#">Page 3</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-image"></i>
-							Portfolio
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-question"></i>
-							FAQ
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fas fa-paper-plane"></i>
-							Contact
-						</a>
-					</li>
-				</ul>
-	
-				<ul class="list-unstyled CTAs">
-					<li>
-						<a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-					</li>
-					<li>
-						<a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-					</li>
-				</ul>
-			</nav>
+			 <!-- Sidebar  -->
+		<jsp:include page="../common/sidebar.jsp"/>
 	
 			<!-- menu  -->
 			<div id="content">
@@ -284,15 +211,18 @@
 		  <!-- iamport.payment.js -->
 		  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	 	<script>
-	 		$("#productPurchase"),click(function(){
-				var IMP=window.IMP;
-				IMP.init("imp14855754");
+	 	$(document).ready(function(){
+	 		var IMP=window.IMP;
+			IMP.init("imp14855754");
+	 	})
+	 	
+		$(document).on('click','#productPurchase',function(){
 					IMP.request_pay({
 					    pg : 'kakaopay',
 					    pay_method : 'card',
 					    merchant_uid : 'merchant_11' + new Date().getTime(),
-					    name : '주문명:결제테스트',
-					    amount : 14000,
+					    name : '주문명 받기',
+					    amount : 15000,
 					    buyer_email : 'iamport@siot.do',
 					    buyer_name : '구매자이름',
 					    buyer_tel : '010-1234-5678',
@@ -303,36 +233,18 @@
 		redirect되었다가, 완료 후 다시 사이트로 복귀하기 위해 사용되는 파라메터입니다.
 		이 경우, m_redirect_url에 해당되는 서버 핸들러에서 결제여부 체크 및 금액 변조확인이 이루어져야 합니다.
 		이를 위해 결제완료 후 랜딩되는 URL은 다음과 같은 추가 파라메터를 가지게 됩니다. */
-					}, function(rsp) {
-					 	 if ( rsp.success ) {
-					    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-					     	jQuery.ajax({
-					    		url: "http://localhost:8080/companion/order/orderPurchase", //cross-domain error가 발생하지 않도록 주의해주세요
-					    		type: 'POST',
-					    		dataType: 'json',
-					    		data: {
-						    		imp_uid : rsp.imp_uid
-						    		//기타 필요한 데이터가 있으면 추가 전달
-					    		} 
-					    	}).done(function(data) {
-					    		//[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-					    		if ( everythings_fine ) {
-					    			var msg = '결제가 완료되었습니다.';
-					    			msg += '\n고유ID : ' + rsp.imp_uid;
-					    			msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-					    			msg += '\결제 금액 : ' + rsp.paid_amount;
-					    			msg += '카드 승인번호 : ' + rsp.apply_num;
-					    			alert(msg);
-					    		} else {
-					    			//[3] 아직 제대로 결제가 되지 않았습니다.
-					    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-					    		}
-					    	}); 
-					    }else {
+					},  function(rsp) {
+					    if ( rsp.success ) {
+					        var msg = '결제가 완료되었습니다.';
+					        msg += '고유ID : ' + rsp.imp_uid;
+					        msg += '상점 거래ID : ' + rsp.merchant_uid;
+					        msg += '결제 금액 : ' + rsp.paid_amount;
+					        msg += '카드 승인번호 : ' + rsp.apply_num;
+					    } else {
 					        var msg = '결제에 실패하였습니다.';
 					        msg += '에러내용 : ' + rsp.error_msg;
-					        alert(msg);
-					    }  
+					    }
+					    alert(msg);
 					});
 	 		})
 			</script> 

@@ -14,7 +14,6 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	
 	@RequestMapping(value = "/order/productMain")
 	public String productMain(Model model) {
 		productService.list(model);
@@ -22,8 +21,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/order/productDetail/{idx}")
-	public String productDetail(Model model,@PathVariable("idx") String prdt_id) {
-		productService.detail(model, prdt_id);
+	public String productDetail(Model model,@PathVariable("idx") int product_id) {
+		productService.detail(model, product_id);
 		return "order/productDetail";
 	}
 	
