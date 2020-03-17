@@ -19,7 +19,7 @@ public class AdminProductController {
 	AdminService adminService;
 	
 	// 상품 입력 페이지
-	@RequestMapping(value = "testaproductadd", method = RequestMethod.GET)
+	@RequestMapping(value = "testproductadd", method = RequestMethod.GET)
 	public String productAdd() {
 		log.info("get product add");
 		return "admin/testproductadd";
