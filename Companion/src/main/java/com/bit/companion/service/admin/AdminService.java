@@ -2,7 +2,7 @@ package com.bit.companion.service.admin;
 
 import org.springframework.ui.Model;
 
-import com.bit.companion.model.entity.admin.AdminNoticeVo;
+import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminService {
 
@@ -11,9 +11,9 @@ public interface AdminService {
 	// 공지사항 상세
 	void detail(Model model,int article_id);
 	// 공지사항 입력
-	void insert(AdminNoticeVo bean);
+	void insert(AdminArticleVo bean);
 	// 공지사항 수정
-	void update(AdminNoticeVo bean);
+	void update(AdminArticleVo bean);
 	// 공지사항 삭제
-	void delete(AdminNoticeVo bean);
+	void delete(AdminArticleVo bean);
 }

@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bit.companion.model.entity.admin.AdminNoticeVo;
+import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.service.admin.AdminService;
 
 @Controller
 @RequestMapping(value = "/admin/")
-public class AdminNoticeController {
+public class NoticeController {
 
-	private static final Logger log=LoggerFactory.getLogger(AdminNoticeController.class);
+	private static final Logger log=LoggerFactory.getLogger(NoticeController.class);
 	
 	@Autowired
 	AdminService adminService;
@@ -49,7 +49,7 @@ public class AdminNoticeController {
 	}
 	//공지사항 입력 페이지 POST
 	@RequestMapping(value = "testnoticeadd", method = RequestMethod.POST)
-	public String noticeAdd(@ModelAttribute AdminNoticeVo bean ) {
+	public String noticeAdd(@ModelAttribute AdminArticleVo bean ) {
 		log.info("post notice add");
 		adminService.insert(bean);
 		return "redirect:testnoticelist";
@@ -64,14 +64,14 @@ public class AdminNoticeController {
 	}
 	// 공지사항 수정 페이지
 	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
-	public String noticeEdit(@ModelAttribute AdminNoticeVo bean, @PathVariable("idx") int article_id) {
+	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id) {
 		log.info("post notice edit");
 		adminService.update(bean);
 		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
 	// 공지사항 삭제 페이지
 	@RequestMapping(value = "testnoticedelete", method = RequestMethod.POST)
-	public String noticeDelete(@ModelAttribute AdminNoticeVo bean) {
+	public String noticeDelete(@ModelAttribute AdminArticleVo bean) {
 		log.info("post notice delete");
 		adminService.delete(bean);
 		return "redirect:testnoticelist";

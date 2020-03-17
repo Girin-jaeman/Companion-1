@@ -13,7 +13,7 @@ import com.bit.companion.service.admin.AdminService;
 @RequestMapping(value = "/admin/")
 public class AdminController {
 
-	private static final Logger log=LoggerFactory.getLogger(AdminNoticeController.class);
+	private static final Logger log=LoggerFactory.getLogger(NoticeController.class);
 	
 	@Autowired
 	AdminService adminService;
