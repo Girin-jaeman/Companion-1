@@ -2,9 +2,9 @@ package com.bit.companion.model.entity.admin;
 
 import java.sql.Date;
 
-import lombok.Data;
+import javax.validation.constraints.NotNull;
 
-public class AdminNoticeVo {
+public class AdminArticleVo {
 	private int board_id;
 	private int article_id;
 	private String member_id;
@@ -14,10 +14,10 @@ public class AdminNoticeVo {
 	private int article_count;
 	private String article_image;
 
-	public AdminNoticeVo() {
+	public AdminArticleVo() {
 	}
 
-	public AdminNoticeVo(int board_id, int article_id, String member_id, String article_title, String article_content,
+	public AdminArticleVo(int board_id, int article_id, String member_id, String article_title, String article_content,
 			Date article_date, int article_count, String article_image) {
 		super();
 		this.board_id = board_id;
