@@ -31,11 +31,11 @@ public class OrderController {
 		orderService.list(model);
 		return "order/orderPurchase";
 	}
-	@RequestMapping(value = "/order/apiTest")
+	@RequestMapping(value = "/order/payApi")
 	public String apiTest(Model model) {
-
-		return "order/apiTest";
+		return "order/payApi";
 	}
+	
 	
 
 }

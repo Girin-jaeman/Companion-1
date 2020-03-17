@@ -9,9 +9,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-		<title>Collapsible sidebar using Bootstrap 4</title>
-
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
@@ -187,32 +184,13 @@
 						</a>
 						</div>
 						<div class="col-sm-4">
-						<a class="btn btn-primary" href="#inquiry" role="button">
-						  문의하기 
+						<a id="question" class="btn btn-primary" href="#inquiry" role="button">
+	  
 						</a>
 
-							<button>찜하기!</button>
+				
 						</div>
-					</div>
-					<div class="row">
-						<!-- nav bar 넣자 상품설명 이용후기 문의하기 -->
-						<div class="col-sm-4">
-						<button type="button" class="btn btn-primary">
-						  상품설명
-						</button>
-						</div>
-						<div class="col-sm-4">
-						<button type="button" class="btn btn-primary">
-						<a href="#">이용후기 <span class="badge badge-light">87</span></a>
-						</button>
-						</div>
-						<div class="col-sm-4">
-						<button type="button" class="btn btn-primary">
-						  문의하기 
-						</button>
-
-						</div>
-					</div>
+					</div>		
 				</div>
 			</div>
 			<!-- 상품설명 -->
@@ -229,7 +207,6 @@
 		</div>	
 			<div class="row">
 				<h5>${productDetailOne.product_content }</h5>
-				
 			</div>
 			
 			<!-- 상품설명   -->
@@ -260,7 +237,7 @@
 				<div class="col-sm-3"><h4>문의하기</h4></div>
 				<div class="col-sm-9"><h4></h4></div>
 				<!--  -->
-				<div class="col-sm-3"><button>문의 작성하기</button></div>
+				<div class="col-sm-3"><button id="question">문의 작성하기</button></div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-4"><button>내가 작성한 글 보기(스위치 버튼)</button></div>
 				<div class="col-sm-4"></div>
@@ -372,7 +349,51 @@
 				$('#sidebarCollapse').on('click', function () {
 					$('#sidebar').toggleClass('active');
 				});
-			}); 			
+			}); 		
+			
+			var popup;
+			
+			$(document).on('click','#question',function(){
+				$(function pop(){
+					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
+					var target = 'orderQuestion';
+					popup = window.open('orderQuestion','question_popup',settings);
+					
+				 	$.load("orderQuestion",function(){
+						popup.location = target;
+					}); 
+				})
+			}) 
 		</script>
 	</body>
 	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

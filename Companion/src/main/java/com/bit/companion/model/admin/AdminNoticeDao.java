@@ -7,14 +7,14 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeDao {
 
-	// °øÁö»çÇ× ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	List<AdminArticleVo> selectAll() throws SQLException;
-	// °øÁö»çÇ× »ó¼¼
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	AdminArticleVo selectOne(int article_id) throws SQLException;;
-	// °øÁö»çÇ× ÀÔ·Â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	void insertOne(AdminArticleVo bean) throws SQLException;
-	// °øÁö»çÇ× ¼öÁ¤
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int updateOne(AdminArticleVo bean) throws SQLException;
-	// °øÁö»çÇ× »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int deleteOne(AdminArticleVo bean) throws SQLException;
 }
