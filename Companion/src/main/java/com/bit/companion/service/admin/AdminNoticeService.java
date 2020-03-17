@@ -6,14 +6,14 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeService {
 
-	// °øÁö»çÇ× ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	void list(Model model);
-	// °øÁö»çÇ× »ó¼¼
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	void detail(Model model,int article_id);
-	// °øÁö»çÇ× ÀÔ·Â
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	void insert(AdminArticleVo bean);
-	// °øÁö»çÇ× ¼öÁ¤
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void update(AdminArticleVo bean);
-	// °øÁö»çÇ× »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void delete(AdminArticleVo bean);
 }
