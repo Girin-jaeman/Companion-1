@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
-public interface AdminService {
+public interface AdminNoticeService {
 
 	// 공지사항 리스트
 	void list(Model model);

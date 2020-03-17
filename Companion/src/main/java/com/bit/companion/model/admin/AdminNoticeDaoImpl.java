@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 @Repository
-public class NoticeDaoImpl implements NoticeDao {
-	Logger log=LoggerFactory.getLogger(getClass());
+public class AdminNoticeDaoImpl implements AdminNoticeDao {
+	Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	SqlSession sqlSession;

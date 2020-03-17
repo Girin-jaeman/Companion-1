@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
-public interface NoticeDao {
+public interface AdminNoticeDao {
 
 	// 공지사항 리스트
 	List<AdminArticleVo> selectAll() throws SQLException;

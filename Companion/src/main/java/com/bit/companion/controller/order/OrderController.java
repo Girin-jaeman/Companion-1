@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bit.companion.service.admin.AdminService;
+import com.bit.companion.service.admin.AdminNoticeService;
 import com.bit.companion.service.order.OrderService;
 
 @Controller
