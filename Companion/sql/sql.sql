@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`product` (
   `product_content` TEXT NOT NULL COMMENT '상품설명',
   `product_price` INT(11) NOT NULL COMMENT '상품가격',
   `product_stock` INT(11) NOT NULL COMMENT '상품재고',
+  `product_date` DATETIME NOT NULL COMMENT '상품등록일',
   `product_image` VARCHAR(200) NULL DEFAULT NULL COMMENT '상품이미지',
   `product_thumb` VARCHAR(200) NULL DEFAULT NULL COMMENT '상품섬네일',
   `product_option1` VARCHAR(50) NULL DEFAULT NULL COMMENT '상품옵션1',
@@ -153,6 +154,27 @@ CREATE TABLE IF NOT EXISTS `companion`.`cart` (
     FOREIGN KEY (`member_id`)
     REFERENCES `companion`.`member` (`member_id`),
   CONSTRAINT `FK_product_cart_1`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `companion`.`product` (`product_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+
+-- -----------------------------------------------------
+-- Table `companion`.`like`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `companion`.`like` (
+  `like_id` INT(11) NOT NULL COMMENT '좋아요ID',
+  `member_id` VARCHAR(20) NOT NULL COMMENT '회원ID',
+  `product_id` INT(11) NOT NULL COMMENT '상품ID',
+  PRIMARY KEY (`like_id`, `product_id`, `member_id`),
+  INDEX `FK_product_like_1` (`product_id` ASC) ,
+  INDEX `FK_member_like_2` (`member_id` ASC) ,
+  CONSTRAINT `FK_member_like_2`
+    FOREIGN KEY (`member_id`)
+    REFERENCES `companion`.`member` (`member_id`),
+  CONSTRAINT `FK_product_like_1`
     FOREIGN KEY (`product_id`)
     REFERENCES `companion`.`product` (`product_id`))
 ENGINE = InnoDB
@@ -551,7 +573,8 @@ COLLATE = utf8_general_ci;
 CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `question_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '문의ID',
   `question_type_id` INT(11) NOT NULL COMMENT '문의유형ID',
-  `ord_id` INT(11) NOT NULL COMMENT '주문ID',
+  `order_id` INT(11) NULL DEFAULT NULL COMMENT '주문ID',
+  `product_id` INT(11) NULL DEFAULT NULL COMMENT '상품ID',
   `member_id` VARCHAR(20) NOT NULL COMMENT '회원ID',
   `question_date` DATETIME NOT NULL COMMENT '문의신청일',
   `question_answerdate` DATETIME NULL DEFAULT NULL COMMENT '문의답변일',
@@ -561,12 +584,13 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
   `question_answer` TEXT NULL DEFAULT NULL COMMENT '문의답변내용',
   `question_secret_id` INT(11) NOT NULL DEFAULT '0' COMMENT '문의비밀글id',
   `question_state_id` INT(11) NOT NULL DEFAULT '0' COMMENT '문의상태ID',
-  PRIMARY KEY (`question_id`, `member_id`, `question_state_id`, `question_type_id`, `question_secret_id`, `ord_id`),
+  PRIMARY KEY (`question_id`, `member_id`, `question_state_id`, `question_type_id`, `question_secret_id`),
   INDEX `FK_member_question_1` (`member_id` ASC) ,
   INDEX `FK_question_state_question_2` (`question_state_id` ASC) ,
   INDEX `FK_question_type_question_3` (`question_type_id` ASC) ,
-  INDEX `FK_order_question_4` (`ord_id` ASC) ,
+  INDEX `FK_order_question_4` (`order_id` ASC) ,
   INDEX `FK_question_secret_question_5` (`question_secret_id` ASC) ,
+  INDEX `FK_product_question_6` (`product_id` ASC) ,
   CONSTRAINT `FK_member_question_1`
     FOREIGN KEY (`member_id`)
     REFERENCES `companion`.`member` (`member_id`),
@@ -577,11 +601,14 @@ CREATE TABLE IF NOT EXISTS `companion`.`question` (
     FOREIGN KEY (`question_type_id`)
     REFERENCES `companion`.`question_type` (`question_type_id`),
       CONSTRAINT `FK_order_question_4`
-    FOREIGN KEY (`ord_id`)
+    FOREIGN KEY (`order_id`)
     REFERENCES `companion`.`order` (`order_id`),
   CONSTRAINT `FK_question_secret_question_5`
     FOREIGN KEY (`question_secret_id`)
-    REFERENCES `companion`.`question_secret` (`question_secret_id`))
+    REFERENCES `companion`.`question_secret` (`question_secret_id`),
+  CONSTRAINT `FK_product_question_6` 
+    FOREIGN KEY (`product_id`)
+    REFERENCES `companion`.`product` (`product_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
