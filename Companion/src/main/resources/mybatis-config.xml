@@ -13,7 +13,7 @@
   		<typeAlias alias="loginBean" type="com.bit.companion.model.entity.login.LoginVo"/>
   		
   		<!-- admin -->
-  		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminNoticeVo"/>
+  		<typeAlias alias="adminNoticeBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
@@ -35,7 +35,7 @@
   		<mapper resource="mybatis/mypage/mypageMapper.xml"/>
   		
   		<!-- admin -->
-  		<mapper resource="mybatis/admin/adminMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminNoticeMapper.xml"/>
   		
   		<!-- order -->
   		<mapper resource="mybatis/order/orderMapper.xml"/>

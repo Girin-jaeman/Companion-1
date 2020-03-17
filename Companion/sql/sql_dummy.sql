@@ -18,7 +18,7 @@ insert into `point_state` values(1,'차감');
 -- board
 insert into `board` values(0,'공지사항');
 insert into `board` values(1,'이벤트');
-insert into `board` values(2,'Q&A');
+insert into `board` values(2,'FAQ');
 insert into `board` values(3,'후기');
 
 -- question_type
@@ -32,6 +32,7 @@ insert into `question_type` values(6,'상품/재입고');
 insert into `question_type` values(7,'쿠폰/적립금');
 insert into `question_type` values(8,'회원 관련');
 insert into `question_type` values(9,'기타 문의');
+insert into `question_type` values(100,'상품');
 
 -- question_state
 insert into `question_state` values(0,'답변대기');

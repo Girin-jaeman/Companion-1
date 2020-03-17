@@ -14,8 +14,6 @@ BEGIN
 END$$
 DELIMITER $$
 CALL loopInsert;
-
-select * from article where board_id=0;
 update article set board_id=1 where article_id>100;
 update article set board_id=2 where article_id>200;
 update article set board_id=3 where article_id>300;
@@ -25,5 +23,7 @@ update article set board_id=2 where article_id>600;
 update article set board_id=3 where article_id>700;
 commit;
 
+select * from member order by member_id desc;
+select * from article where board_id=0;
 select article_title, article_content, article_date, article_image from article where article_id=2;
-
+select * from product;

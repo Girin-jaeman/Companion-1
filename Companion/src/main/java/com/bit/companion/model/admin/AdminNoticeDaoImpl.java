@@ -9,42 +9,42 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.bit.companion.model.entity.admin.AdminNoticeVo;
+import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 @Repository
-public class AdminDaoImpl implements AdminDao {
-	Logger log=LoggerFactory.getLogger(getClass());
+public class AdminNoticeDaoImpl implements AdminNoticeDao {
+	Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	SqlSession sqlSession;
 	
 	// 공지사항 리스트 - selectAll
 	@Override
-	public List<AdminNoticeVo> selectAll() throws SQLException {
+	public List<AdminArticleVo> selectAll() throws SQLException {
 		return sqlSession.selectList("adminNotice.selectAll");
 	}
 
 	// 공지사항 상세 - selectOne
 	@Override
-	public AdminNoticeVo selectOne(int article_id) throws SQLException {
+	public AdminArticleVo selectOne(int article_id) throws SQLException {
 		return sqlSession.selectOne("adminNotice.selectOne",article_id);
 	}
 	
 	// 공지사항 입력 - insertOne
 	@Override
-	public void insertOne(AdminNoticeVo bean) throws SQLException {
+	public void insertOne(AdminArticleVo bean) throws SQLException {
 		sqlSession.insert("adminNotice.insertOne",bean);
 	}
 
 	// 공지사항 수정 - updateOne
 	@Override
-	public int updateOne(AdminNoticeVo bean) throws SQLException {
+	public int updateOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.update("adminNotice.updateOne",bean);
 	}
 
 	// 공지사항 삭제 - deleteOne
 	@Override
-	public int deleteOne(AdminNoticeVo bean) throws SQLException {
+	public int deleteOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.delete("adminNotice.deleteOne",bean);
 	}
 

@@ -1,0 +1,38 @@
+/* FAQ LIST */
+.faq_group {
+    width: 50%;
+    margin: 50px auto;
+}
+.faq_group ul{
+	padding:0;
+}
+.board_slide {
+    text-align: left;
+    border-top: 2px solid #f5b895;
+    border-bottom: 1px solid #828282;
+    background: #fff;
+	list-style: none;
+}
+.board_slide .item{
+    border-top:1px solid #e8e8e8
+}
+.board_slide .item:first-child{
+    border: none;
+}
+.board_slide .item .tit{background: url(../../imgs/notice/faq_down.png) no-repeat 98% 50%;
+}
+.board_slide .on .tit{background: url(../../imgs/notice/faq_up.png) no-repeat 98% 50%;}
+.board_slide .item .tit>a{display: block;position: relative;padding: 16px 30px 16px 60px;font-size: 16px;color: #333;line-height: 22px;
+}
+.board_slide .item .tit>a>strong{
+    position: absolute;left: 30px;top: 14px;font-size: 20px; color: #e8340c;
+}
+.board_slide .item .hidden{
+    display: none;position: relative;overflow: hidden;
+}
+.board_slide .item .hidden .txt{
+    position: relative;padding: 28px 30px 28px 60px;font-size: 13px;color: #555;line-height: 26px;border-top: 1px solid #c0c0c0;background: #f8f8f8;
+}
+.board_slide .item .hidden .txt>strong{
+    position: absolute;left: 31px;top:26px;font-size: 20px;color: #e8340c;
+}
