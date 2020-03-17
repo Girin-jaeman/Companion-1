@@ -32,7 +32,7 @@
   		<mapper resource="mybatis/login/loginMapper.xml"/>
   		
   		<!-- admin -->
-  		<mapper resource="mybatis/admin/adminMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminNoticeMapper.xml"/>
   		
   		<!-- order -->
   		<mapper resource="mybatis/order/orderMapper.xml"/>

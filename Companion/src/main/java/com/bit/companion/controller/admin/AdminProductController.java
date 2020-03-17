@@ -11,16 +11,17 @@ import com.bit.companion.service.admin.AdminService;
 
 @Controller
 @RequestMapping(value = "/admin/")
-public class AdminController {
+public class AdminProductController {
 
 	private static final Logger log=LoggerFactory.getLogger(AdminNoticeController.class);
 	
 	@Autowired
 	AdminService adminService;
 	
-	@RequestMapping(value = "testadminhome", method = RequestMethod.GET)
-	public String adminHome() {
-		log.info("get admin home");
-		return "admin/testadminhome";
+	// 상품 입력 페이지
+	@RequestMapping(value = "testaproductadd", method = RequestMethod.GET)
+	public String productAdd() {
+		log.info("get product add");
+		return "admin/testproductadd";
 	}
 }
