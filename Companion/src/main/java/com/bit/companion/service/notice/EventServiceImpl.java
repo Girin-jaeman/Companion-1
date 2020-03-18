@@ -40,7 +40,7 @@ public class EventServiceImpl implements EventService {
 	public void detail(Model model, int article_id) {
 		try {
 			model.addAttribute("bean",eventDao.selectOne(article_id));
-		}catch(SQLException e){}
+		}catch(SQLException e) {}
 	}
 
 }

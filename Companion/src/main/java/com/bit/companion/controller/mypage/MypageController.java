@@ -32,6 +32,12 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 	
+	@RequestMapping("/mypagequestion")
+	public String mypagequestion(HttpSession session) {
+		mypageService.questionList(session);
+		return "mypage/mypagequestion";
+	}
+
 	@ResponseBody
 	@RequestMapping(value="/mypage/pwchange",method=RequestMethod.POST)
 	public int pwChange(String pw_change,String id_chk,HttpSession session) {
@@ -42,4 +48,51 @@ public class MypageController {
 		}
 		return mypageService.pwChange(pw_change,id_chk);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/telchange",method=RequestMethod.POST)
+	public int telChange(String tel_change,String id_chk,HttpSession session) {
+		if(mypageService.telChange(tel_change, id_chk)==1) {
+			MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+			memberVo.setMember_tel(tel_change);
+			session.setAttribute("memberVo", memberVo);
+		}
+		return mypageService.telChange(tel_change,id_chk);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/phonechange",method=RequestMethod.POST)
+	public int phoneChange(String phone_change,String id_chk,HttpSession session) {
+		if(mypageService.phoneChange(phone_change, id_chk)==1) {
+			MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+			memberVo.setMember_phone(phone_change);
+			session.setAttribute("memberVo", memberVo);
+		}
+		return mypageService.phoneChange(phone_change,id_chk);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/emailchange",method=RequestMethod.POST)
+	public int emailChange(String email_change,String id_chk,HttpSession session) {
+		if(mypageService.emailChange(email_change, id_chk)==1) {
+			MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+			memberVo.setMember_email(email_change);
+			session.setAttribute("memberVo", memberVo);
+		}
+		return mypageService.emailChange(email_change,id_chk);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/addrchange",method=RequestMethod.POST)
+	public int addrChange(String addr1_change,String addr2_change,String addr3_change,String id_chk,HttpSession session) {
+		if(mypageService.addrChange(addr1_change,addr2_change,addr3_change, id_chk)==1) {
+			MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+			memberVo.setMember_addr1(addr1_change);
+			memberVo.setMember_addr2(addr2_change);
+			memberVo.setMember_addr3(addr3_change);
+			session.setAttribute("memberVo", memberVo);
+		}
+		return mypageService.addrChange(addr1_change,addr2_change,addr3_change,id_chk);
+	}
+	
 }

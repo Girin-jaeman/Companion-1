@@ -14,4 +14,6 @@ public interface NoticeDao {
 
 	NoticeVo selectOne(int article_id) throws SQLException;
 
+	void updateCount(int article_id) throws SQLException;
+
 }

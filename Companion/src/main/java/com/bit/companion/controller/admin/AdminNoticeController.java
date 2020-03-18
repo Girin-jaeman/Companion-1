@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.service.admin.AdminNoticeService;
@@ -22,7 +23,7 @@ public class AdminNoticeController {
 	@Autowired
 	AdminNoticeService adminNoticeService;
 	
-	// 공지사항 리스트 페이지
+	// notice list - get 
 	@RequestMapping(value = "testnoticelist", method = RequestMethod.GET)
 	public String noticeList(Model model) {
 		logger.info("get notice list");
@@ -30,7 +31,7 @@ public class AdminNoticeController {
 		return "admin/testnoticelist";
 	}
 	
-	// 공지사항 상세 페이지
+	// notice detail - get
 	@RequestMapping(value = "testnoticedetail/{idx}", method = RequestMethod.GET)
 	public String noticeDetail(Model model, @PathVariable("idx") int article_id) {
 		logger.info("get notice detail");
@@ -38,13 +39,13 @@ public class AdminNoticeController {
 		return "admin/testnoticedetail";
 	}
 	
-	//공지사항 입력 페이지 GET
+	// notice add - get
 	@RequestMapping(value = "testnoticeadd", method = RequestMethod.GET)
 	public String noticeAdd() {
 		logger.info("get notice add");
 		return "admin/testnoticeadd";
 	}
-	//공지사항 입력 페이지 POST
+	// notice add - post
 	@RequestMapping(value = "testnoticeadd", method = RequestMethod.POST)
 	public String noticeAdd(@ModelAttribute AdminArticleVo bean ) {
 		logger.info("post notice add");
@@ -52,21 +53,21 @@ public class AdminNoticeController {
 		return "redirect:testnoticelist";
 	}
 	
-	// 공지사항 수정 페이지
+	// notice edit - get
 	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.GET)
 	public String noticeEdit(Model model, @PathVariable("idx") int article_id) {
 		logger.info("get notice edit");
 		adminNoticeService.detail(model, article_id);
 		return "admin/testnoticeedit";
 	}
-	// 공지사항 수정 페이지
+	// notice edit - post
 	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
 	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id) {
 		logger.info("post notice edit");
 		adminNoticeService.update(bean);
 		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
-	// 공지사항 삭제 페이지
+	// notice delete - post
 	@RequestMapping(value = "testnoticedelete", method = RequestMethod.POST)
 	public String noticeDelete(@ModelAttribute AdminArticleVo bean) {
 		logger.info("post notice delete");

@@ -31,4 +31,9 @@ public class NoticeDaoImpl implements NoticeDao {
 		return sqlSession.selectOne("notice.selectOne",article_id);
 	}
 
+	@Override
+	public void updateCount(int article_id) throws SQLException {
+		sqlSession.selectOne("notice.updateCount",article_id);
+	}
+
 }

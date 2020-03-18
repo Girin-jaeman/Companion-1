@@ -19,7 +19,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Autowired
 	AdminNoticeDao adminNoticeDao;
 	
-	// 공지사항 리스트 - selectAll
+	// notice list - selectAll
 	@Override
 	public void list(Model model) {
 		try {
@@ -30,7 +30,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		}
 	}
 
-	// 공지사항 상세 - selectOne
+	// notice detail - selectOne
 	@Override
 	public void detail(Model model, int article_id) {
 		try {
@@ -41,7 +41,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		}
 	}
 	
-	// 공지사항 입력 - insertOne
+	// notice add - insertOne
 	@Override
 	public void insert(AdminArticleVo bean) {
 		try {
@@ -51,7 +51,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		}
 	}
 
-	// 공지사항 수정 - updateOne
+	// notice edit - updateOne
 	@Override
 	public void update(AdminArticleVo bean) {
 		try {
@@ -61,7 +61,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		}
 	}
 
-	// 공지사항 삭제 - deleteOne
+	// notice delete - deleteOne
 	@Override
 	public void delete(AdminArticleVo bean) {
 		try {
