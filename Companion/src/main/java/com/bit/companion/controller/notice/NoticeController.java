@@ -34,6 +34,8 @@ public class NoticeController {
 	@RequestMapping(value = "/detail/{idx}")
 	public String detail(HttpServletResponse response,HttpServletRequest request,Model model,@PathVariable("idx") int article_id) {
 		
+		// 쿠키란? https://hyeonstorage.tistory.com/114
+		// 조회수 중복방지 쿠키적용
 		// 저장된 쿠키 불러오기
 		Cookie cookies[] = request.getCookies();
 		Map mapCookie = new HashMap();
@@ -53,8 +55,8 @@ public class NoticeController {
 		if(StringUtils.indexOfIgnoreCase(cookie_article_count, new_cookie_article_count)==-1) {
 			// 없을 경우 쿠키 생성
 			Cookie cookie = new Cookie("article_count",cookie_article_count+new_cookie_article_count);
-			// cookie.setMaxAge(1000); // 초단위
-			response.addCookie(cookie);
+			cookie.setMaxAge(1000); // 초단위, 쿠키 유효기간
+			response.addCookie(cookie); // 클라이언트 응답에 쿠키를 추가한다.
 			noticeService.count(article_id);
 		}
 		noticeService.detail(model, article_id);
