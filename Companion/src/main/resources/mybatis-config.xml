@@ -12,6 +12,9 @@
   		<typeAlias alias="memberBean" type="com.bit.companion.model.entity.login.MemberVo"/>
   		<typeAlias alias="loginBean" type="com.bit.companion.model.entity.login.LoginVo"/>
   		
+  		<!-- mypage -->
+  		<typeAlias alias="mypageQuestionBean" type="com.bit.companion.model.entity.mypage.MypageQuestionVo"/>
+  		
   		<!-- admin -->
   		<typeAlias alias="adminNoticeArticleBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
   		<typeAlias alias="adminCategoryBean" type="com.bit.companion.model.entity.admin.AdminCategoryVo"/>

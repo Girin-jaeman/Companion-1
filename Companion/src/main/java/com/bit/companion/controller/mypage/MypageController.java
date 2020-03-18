@@ -32,6 +32,12 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 	
+	@RequestMapping("/mypagequestion")
+	public String mypagequestion(HttpSession session) {
+		mypageService.questionList(session);
+		return "mypage/mypagequestion";
+	}
+
 	@ResponseBody
 	@RequestMapping(value="/mypage/pwchange",method=RequestMethod.POST)
 	public int pwChange(String pw_change,String id_chk,HttpSession session) {
