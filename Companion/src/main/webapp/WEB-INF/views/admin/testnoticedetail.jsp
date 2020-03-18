@@ -43,7 +43,7 @@
     <script src="${root }js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
    		 $("#modify_Btn").click(function(){
-		  location.href = ${root}+"admin/testnoticeedit/" + ${adminNoticeOne.article_id};
+   			history.back();
 		 });  
     </script>
 

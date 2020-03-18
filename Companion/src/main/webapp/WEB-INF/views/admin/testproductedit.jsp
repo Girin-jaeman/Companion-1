@@ -140,9 +140,25 @@
 		
 		// back button
 		 $("#back_Btn").click(function(){
-		  //history.back();
-		  location.href = ${root}+"admin/testproductdetail/" + ${adminProductOne.product_id};
+		  history.back();
 		 });   
+		
+		// category
+			var select_cateCode = '${adminProductOne.category_id}';
+			var select_cateCodeRef = '${adminProductOne.category_refid}';
+			var select_cateName = '${adminProductOne.category_name}';
+			
+			if(select_cateCodeRef != null) {
+			 $(".category1").val(select_cateCodeRef);
+			 $(".category2").val(select_cateCode);
+			 $(".category2").children().remove();
+			 $(".category2").append("<option value='"
+			       + select_cateCode + "'>" + select_cateName + "</option>");
+			} else {
+			 $(".category1").val(select_cateCode);
+			 $(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
+			}
+			
 	</script>
 	
 </body>
