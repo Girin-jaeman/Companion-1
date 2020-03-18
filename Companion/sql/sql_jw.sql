@@ -26,14 +26,22 @@ commit;
 select * from member order by member_id desc;
 select * from article where board_id=0;
 select article_title, article_content, article_date, article_image from article where article_id=2;
-select * from product;
 select * from category;
 insert into category values(701,700,'테스트1');
 insert into category values(702,700,'테스트2');
 insert into category values(703,700,'테스트3');
+select * from product;
+insert into product values(700,null,'테스트','관리자 상품 입력 테스트',30000,30,now(),null,null,null,null,null,null,null);
 select * from question;
 insert into question values(null,100,null,1,'회원1',now(),null,'테스트제목','테스트내용',null,null,0,0);
 
+select * from product p inner join category c on p.category_id=c.category_id where p.product_id=72;
+select * from product p, category c where p.category_id=c.category_id and p.product_id=72;
 
+select * from `like`;
+insert into `like` values (null,'admin',1);
+insert into `like` values (null,'admin',2);
+insert into `like` values (null,'admin',3);
+select count(product_id) from `like` where member_id='admin' and product_id=2;
 
 

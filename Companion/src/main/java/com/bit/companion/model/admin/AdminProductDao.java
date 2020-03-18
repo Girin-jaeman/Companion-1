@@ -3,6 +3,7 @@ package com.bit.companion.model.admin;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.bit.companion.model.entity.admin.AdminCateProdVo;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -18,5 +19,5 @@ public interface AdminProductDao {
 	List<AdminProductVo> selectAll() throws SQLException;
 	
 	// product detail
-	AdminProductVo selectOne(int product_id) throws SQLException;
+	AdminCateProdVo selectOne(int product_id) throws SQLException;
 }

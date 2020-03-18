@@ -51,7 +51,7 @@ public class AdminProductController {
 		return "admin/testproductlist";
 	}
 	
-	//prodcut detail - get
+	//product detail - get
 	@RequestMapping(value = "testproductdetail/{idx}", method = RequestMethod.GET)
 	public String productDetail(Model model, @PathVariable("idx") int product_id) {
 		logger.info("get product detail");
