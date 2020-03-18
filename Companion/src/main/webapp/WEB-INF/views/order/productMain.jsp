@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
 	<html>
@@ -50,6 +51,13 @@
 		.product-grid .price span{color:#999;font-size:13px;font-weight:400;text-decoration:line-through;margin-left:3px;display:inline-block}
 		.product-grid .add-to-cart{color:#000;font-size:13px;font-weight:600}
 		@media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
+		.btn-group {
+			width:100%;
+		}
+		.btn btn-secondary {
+			width:100%;
+		}
+		
 		}
 	</style>		
 		
@@ -99,46 +107,70 @@
 		<div class="container">
 			  <div class="btn-group" role="group">
 			    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			      카테고리
+			      카테고리  
 			    </button>
 			    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-			      <a class="dropdown-item" href="#">사료</a>
-			      <a class="dropdown-item" href="#">간식</a>
-			      <a class="dropdown-item" href="#">외출</a>
-			      <a class="dropdown-item" href="#">미용/목욕</a>
-			      <a class="dropdown-item" href="#">하우스</a>
+			      <a class="dropdown-item" href="/companion/order/productMain?c=100">사료</a>
+			      <a class="dropdown-item" href="/companion/order/productMain?c=200">간식</a>   <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=300">장난감</a>   <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=400">미용용품</a>  <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=500">목욕용품</a>  <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=600">위생용품</a>   <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=700">산책용품</a>    <!-- 1차분류 -->
 			    </div>
 				<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-				  <button type="button" class="btn btn-secondary">추천순</button>
-				  <button type="button" class="btn btn-secondary">판매인기순</button>
-				  <button type="button" class="btn btn-secondary">낮은 가격순</button>
-				  <button type="button" class="btn btn-secondary">높은 가격순</button>
-				  <button type="button" class="btn btn-secondary">상품평순</button>
-				  <button type="button" class="btn btn-secondary">등록일순</button>
+				  <button type="button" class="btn btn-secondary">추천순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">판매인기순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">낮은 가격순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">높은 가격순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">상품평순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">등록일순</button>  <!-- 2차분류 -->
 				</div>
 			  </div>
 			  
 			  <!-- 썸네일 -->
 			  
 			   <div class="row">
-       
-  
 			        <%--    <% for(int i=0;i<20;i++){ %>  --%>
-			<c:forEach items="${productlist }" var="bean"> 
+			<c:forEach items="${productCategory }" var="bean"> 
 			        <div class="col-md-3 col-sm-6"> 
 			            <div class="product-grid">
 			                <div class="product-image">
 			                    <a href="productDetail/${bean.product_id }">
-			                        <img class="pic-1" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-3.jpg">
-			         <!--                <img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-4.jpg"> -->
+			                    
+			                    
+			            <c:set var = "name" value="${bean.category_id }"/>        
+							<c:choose >
+								<c:when test="${name eq '100' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/사료.jpg">
+         <!--    마우스오버 사진변경<img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-4.jpg"> -->
+			                	</c:when>
+		                		<c:when test="${name eq '200' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/간식.jpg">
+			                	</c:when>
+		                		<c:when test="${name eq '300' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/장난감.jpg">
+			                	</c:when>
+		                		<c:when test="${name eq '400' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/미용용품.jpg">
+			                	</c:when>
+		                		<c:when test="${name eq '500' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/목욕용품.jpg">
+			                	</c:when>
+		                		<c:when test="${name eq '600' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/위생용품.jpg">
+			                	</c:when>
+		                		<c:when test="${name eq '700' }">		             
+			                        <img class="pic-1" src="${root }imgs/shopping/산책용품.jpg">
+			                	</c:when>
+			                	
+			                	
+			                	
+			                </c:choose>
+			                
+			                
 			                    </a>
-			                <!--     <ul class="social">
-			                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-			                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-			                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-			                    </ul> -->
-			               <!--      <span class="product-new-label">Sale</span>
-			                    <span class="product-discount-label">50%</span> -->
+
 			                </div>
 			                <ul class="rating">
 			                <!-- 별갯수 알려주는곳. -->
@@ -150,10 +182,28 @@
 			                </ul>
 			                <div class="product-content">
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_thumb }</a></h3>
+			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_id }</a></h3>
+			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_name }</a></h3> 
+			                
 			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
 			                    <h3 class="title"><a href="#"> ${productlist.product_option1 } 나오는지 확인</a></h3> --%>
 			         			<!-- 리스트로 넘기면 하나씩은 못받아옴 FOrEach를 써야 하는가봄... -->
-			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_name }</a></h3>
+			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_name }</a>
+			             
+			             
+			             
+			             
+			             <!-- 따봉 로그인 세션 검사  -->
+			             <c:set var = "memberID" value="${memberVo.member_id }"/>         
+			               <c:choose>
+									<c:when test="${memberVo.member_id==null}">	
+					                    <a id=btn href="${root }login"><img id="DDaBong" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					               </c:when>  
+									<c:when test="${memberVo.member_id!=null }">	
+					                    <button><img src="${root }imgs/shopping/빈따봉1.jpg"></button><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					               </c:when>  
+			                </c:choose>    
+			               <!-- 따봉 로그인 세션 검사  -->   
 			                    <div class="price">$5.00
 			                        <span>$10.00</span>
 			                    </div>
@@ -203,6 +253,84 @@
 				});
 			});
 		</script>
+		<!-- 추천수 script start -->
+		<script>
+		//추천 버튼 클릭할 때 no 와 id 값을 가지고 url 주소로 이동함. 성공했을 경우 recCount 함수를 호출 함. 
+		//recCount 는 현재 게시글의 추천수를 구하는 함수.  
+		//추천 버튼이 성공할 경우 db에 저장된 추천수를 구해온 후 <span class="rec_count">에 html 함수를 이용하여 갯수 출력.
+			$(function(){
+				$("DDaBong").click(function(){
+					$.ajax({
+						url:"/productMain",
+						type="POST",
+						data: {
+							no: ${productDetailOne.product_id},
+							id: '${id}'  //이게 무슨 id??
+						},
+						success: function(){
+							recCount();
+						},
+						
+					})
+				})
+			})
+		//추천 버튼 클릭할 때. end
+			//게시글 추천 수
+			function recCount(){
+				$.ajax({
+					url:"/productMain",
+					type: "POST",
+					data:{
+						no: ${productDetailOne.product_id}
+					},
+					success: function (count){
+						$(".rec_count").html(count);
+					},
+				})
+			};
+			recCount();
+			
+			
+			//게시글 추천 수. end
+		</script>
+		<!-- 추천수 script end -->
 	</body>
 	
 	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

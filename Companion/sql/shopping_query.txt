@@ -1,0 +1,52 @@
+...쿼리 연습 + 쓸 것 모아두기
+
+select level, cateName, cateCode, cateCodeRef from goods_category
+    start with cateCodeRef is null connect by prior cateCode = cateCodeRef;
+
+---카테고리 용 start 
+
+ select * from product where category_id=${value};
+밸류는 100~ 700까지 
+카테고리 id는 포린키.
+
+select a.product_name, a.product_price, a.product_image, a.product_thumb,
+ a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5,
+ b.category_name from `product` as a left join `category` as b on b.category_id=100;
+//////
+select a.product_id, a.product_name, a.product_price, a.product_image, a.product_thumb,
+  a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5,
+  b.category_name, b.category_id from `product` as a left join `category` as b on b.category_id=#{value};
+
+-----------카테고리용 end
+
+------------상품 좋아요 start
+
+///상품/ id 당 1회 만 추천 가능하도록 중복검사
+select count(*) from ex_rec where board_no = #{no} and rec_id = #{id}
+..like table에 회원 id / 상품 id 가 존재하는 지 여부를 찾아야 함. 
+경우의 수는 2가지임 0인 경우 추천 x 1인 경우 추천 o   따라서, 테이블 데이터가 있느냐?
+
+like 자동 증가 coulmn 은 나중에 추천수 총 증가량을 찾기 위함임.
+///////
+
+///상품 좋아요 등록
+
+	insert into ex_rec values(#{no}, #{id})
+
+///////
+
+///상품 좋아요 취소
+	
+	delete from ex_rec where board_no = #{no} and rec_id = #{id}
+
+///////
+
+///상품 추천수 조회
+
+	select count(*) from ex_rec where board_no = #{no}
+
+//////
+
+
+------------상품 좋아요 end
+

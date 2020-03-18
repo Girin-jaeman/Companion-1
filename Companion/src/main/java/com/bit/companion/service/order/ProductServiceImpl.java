@@ -41,5 +41,17 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public void category(Model model, int category_id) {
+		List<ProductVo> list;
+		try {
+			list = productDao.ProductCategorySelect(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 
 }
