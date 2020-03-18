@@ -31,12 +31,12 @@
 .goodsImg{
   width: 350px;
   height: 500px;
- 
+  border: solid;
   padding: 10px;
 }
 .goodsImg>img{
-  min-width: 328px;
-  max-width: 328px;
+  min-width: 325px;
+  max-width: 325px;
   min-height: 460px;
   max-height: 460px;
 }
@@ -55,8 +55,81 @@
   text-align: center;
 }
 
-a{
+.detailbtnR{
   float: right;
-  margin-left: 50px;
+  margin-left: 20px;
   
 }
+.nav-tabs{
+  margin-top: 20px;
+}
+.breadcrumb {
+  display: block;
+  overflow: hidden;
+  margin-right: 0px;
+}
+
+.breadcrumb-item {
+  float: left;
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+/* Rounded tabs */
+
+@media (min-width: 576px) {
+  .rounded-nav {
+    border-radius: 50rem !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .rounded-nav .nav-link {
+    border-radius: 50rem !important;
+  }
+}
+
+/* With arrow tabs */
+
+.with-arrow .nav-link.active {
+  position: relative;
+}
+
+.with-arrow .nav-link.active::after {
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0F4C81;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+}
+
+/* lined tabs */
+
+.lined .nav-link {
+  border: none;
+  border-bottom: 3px solid transparent;
+}
+
+.lined .nav-link:hover {
+  border: none;
+  border-bottom: 3px solid transparent;
+}
+
+.lined .nav-link.active {
+  background: none;
+  color: #0F4C81;
+  border-color: #0F4C81;
+}
+
+/*
+*

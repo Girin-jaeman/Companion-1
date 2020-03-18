@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/hotel/hotelLoc.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Companion</h3>
+                <strong>Comp.</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-home"></i>
+                        쇼핑하기
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">사료</a>
+                        </li>
+                        <li>
+                            <a href="#">간식</a>
+                        </li>
+                        <li>
+                            <a href="#">장난감</a>
+                        </li>
+                        <li>
+                            <a href="#">미용용품</a>
+                        </li>
+                        <li>
+                            <a href="#">목욕용품</a>
+                        </li>
+                        <li>
+                            <a href="#">위생용품</a>
+                        </li>
+                        <li>
+                            <a href="#">산책용품</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        호텔서비스
+                    </a>
+                    <ul class="collapse list-unstyled" id="hotelSubmenu">
+                        <li>
+                            <a href="#">이용안내</a>
+                        </li>
+                        <li>
+                            <a href="#">예약하기</a>
+                        </li>
+                        <li>
+                            <a href="#">룸미리보기</a>
+                        </li>
+                        <li>
+                            <a href="#">돌보미정보</a>
+                        </li>
+                        <li>
+                            <a href="#">위치정보</a>
+                        </li>
+                    </ul>
+                <li>    
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        알림
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="#">이벤트</a>
+                        </li>
+                        <li>
+                            <a href="#">Q&A</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled conn">
+                <li>
+                    <a href="#" class="login">마이페이지</a>
+                </li>
+                <li>
+                    <a href="#" class="join">장바구니</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>메뉴</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">이용안내</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">예약하기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">룸미리보기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">돌보미정보</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">위치정보</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--main content start-->
+            <div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    호텔서비스
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    위치정보
+                </a>
+                <hr class="mb-4">
+            </div>
+            <div class="maincontent">
+                <!--이용안내 이미지-->
+                <div class="hotelLoc mx-auto">
+                    <p>호텔위치 지도 카카오</p>
+                </div>
+                                
+                <div class="useInfo1">
+                    <div id="use">
+                        <h2>주소</h2>
+                        <table>
+                            <tr>
+                                <th>상담시간&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                <td >09:00~18:00</td>
+                            </tr>
+                            <tr>
+                                <th>이용안내</th>
+                                <td >예약제 원칙입니다</td>
+                            </tr>
+                        </table>
+                        <hr class="mb-4">
+                        <h2>버스</h2>
+                        <table>
+                            <tr>
+                                <th>접종필수&nbsp;&nbsp;</th>
+                                <td>입실제한</td>
+                            </tr>
+                            <tr>
+                                <th>건강문제</th>
+                                <td>입실제한</td>
+                            </tr>
+                            <tr>
+                                <th>공격성</th>
+                                <td>입실제한</td>
+                            </tr>
+                        </table>
+                        <hr class="mb-4">
+                        <h2>지하철</h2>
+                        <table>
+                            <tr>
+                                <th>접종필수&nbsp;&nbsp;</th>
+                                <td>입실제한</td>
+                            </tr>
+                            <tr>
+                                <th>건강문제</th>
+                                <td>입실제한</td>
+                            </tr>
+                            <tr>
+                                <th>공격성</th>
+                                <td>입실제한</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                
+            </div>      
+            <!--main contetn end-->
+
+            <div id="footer">
+                <!-- test main contetn end-->
+                <hr class="mb-2">
+                <footer class="companion-footer">
+                        <div class="paragraph-group">
+                            <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
+                            <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
+                            <p>호스팅제공자:(주)Companion</p>
+                            <br/>
+                            <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+                            <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
+                        </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="../js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
