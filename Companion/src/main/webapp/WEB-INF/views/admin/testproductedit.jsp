@@ -72,6 +72,7 @@
     <script src="${root }js/bootstrap/bootstrap.js"></script>
     
     <script>
+    
 		// 컨트롤러에서 데이터 받기
 		var jsonData = JSON.parse('${adminProductCategory}');
 		console.log(jsonData);
@@ -138,27 +139,28 @@
 		 
 		});
 		
-		// back button
-		 $("#back_Btn").click(function(){
-		  history.back();
-		 });   
-		
 		// category
 			var select_cateCode = '${adminProductOne.category_id}';
 			var select_cateCodeRef = '${adminProductOne.category_refid}';
 			var select_cateName = '${adminProductOne.category_name}';
 			
-			if(select_cateCodeRef != null) {
+			if(select_cateCodeRef == '0') {
+			 $(".category1").val(select_cateCode);
+			 $(".category2").children().remove();
+			 $(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
+			}
+			else{
 			 $(".category1").val(select_cateCodeRef);
 			 $(".category2").val(select_cateCode);
 			 $(".category2").children().remove();
 			 $(".category2").append("<option value='"
 			       + select_cateCode + "'>" + select_cateName + "</option>");
-			} else {
-			 $(".category1").val(select_cateCode);
-			 $(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
 			}
-			
+		
+		// back button
+		 $("#back_Btn").click(function(){
+		  history.back();
+		 });   
 	</script>
 	
 </body>

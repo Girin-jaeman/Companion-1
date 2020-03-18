@@ -61,6 +61,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	public void detail(Model model, int product_id) {
 		try {
 			model.addAttribute("adminProductOne", adminProductDao.selectOne(product_id));
+			System.out.println( adminProductDao.selectOne(product_id).toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
