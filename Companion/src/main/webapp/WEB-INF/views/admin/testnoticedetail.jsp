@@ -10,27 +10,27 @@
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
-	<form method="post" action="${root }admin/testnoticedelete">
+	<form role="form" method="post" >
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
 			<label for="title">title</label>
-			<input type="text" name="article_title" id="article_title" value="${adminNoticeOne.article_title }" disabled="disabled"/>
+			<span>${adminNoticeOne.article_title }</span>
 		</div>
 		<div>
 			<label for="date">date</label>
-			<input type="text" name="article_date" id="article_date" value="${adminNoticeOne.article_date }" disabled="disabled"/>
+			<span>${adminNoticeOne.article_date }</span>
 		</div>
 		<div>
 			<label for="content">content</label>
-			<input type="text" name="article_content" id="article_content" value="${adminNoticeOne.article_content }" disabled="disabled"/>
+			<span>${adminNoticeOne.article_content }</span>
 		</div>
 		<div>
 			<label for="img">img</label>
-			<input type="file" name="article_image" id="article_image" value="${adminNoticeOne.article_image }">
+			<span>${adminNoticeOne.article_image }</span>
 		</div>
 		<div>
-			<a href="${root }admin/testnoticeedit/${adminNoticeOne.article_id }">수정</a>
-			<button type="button" onclick="removeCheck();">삭제</button>
+			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
+		 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 			<button type="reset">취소</button>
 		</div>
 	</form>
@@ -41,15 +41,11 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-	<script>
-		function removeCheck() {
-			if (confirm("정말 삭제하시겠습니까??") == true){
-		    	$('form').submit();
-			}else{
-		    	return false;
-			}
-		}
-	</script>
+    <script type="text/javascript">
+   		 $("#modify_Btn").click(function(){
+		  location.href = ${root}+"admin/testnoticeedit/" + ${adminNoticeOne.article_id};
+		 });  
+    </script>
 
 </body>
 </html>

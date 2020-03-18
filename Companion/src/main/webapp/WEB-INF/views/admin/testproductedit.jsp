@@ -23,7 +23,7 @@
 			<li><a href="#">유저목록</a></li>
 		</ul>
 	</aside>
-	<h2>상품 등록</h2>
+	<h2>상품 수정</h2>
 	<form role="form" method="post" autocomplete="off">
 		 <label>1차 분류</label>
 		 <select class="category1">
@@ -35,28 +35,31 @@
 		  <option value="">전체</option>
 		 </select>
 		 
-		<div class="inputArea">
-		 <label for="product_name">상품명</label>
-		 <input type="text" id="product_name" name="product_name" />
-		</div>
-		
+		 <input type="hidden" name="product_id" value="${adminProductOne.product_id }"/>
+		 
 		<div class="inputArea">
 		 <label for="product_price">상품가격</label>
-		 <input type="text" id="product_price" name="product_price" />
+		 <input type="text" id="product_price" name="product_price" value="33"/>
 		</div>
 		
 		<div class="inputArea">
 		 <label for="product_stock">상품수량</label>
-		 <input type="text" id="product_stock" name="product_stock" />
+		 <input type="text" id="product_stock" name="product_stock" value="${adminProductOne.product_stock }"/>
+		</div>
+		 
+		<div class="inputArea">
+		 <label for="product_name">상품명</label>
+		 <input type="text" id="product_name" name="product_name" value="${adminProductOne.product_name }"/>
 		</div>
 		
 		<div class="inputArea">
 		 <label for="product_content">상품소개</label>
-		 <textarea rows="5" cols="50" id="product_content" name="product_content"></textarea>
+		 <textarea rows="5" cols="50" id="product_content" name="product_content">${adminProductOne.product_content }</textarea>
 		</div>
 		
 		<div class="inputArea">
-		 <button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
+		 <button type="submit" id="update_Btn" class="btn btn-primary">수정</button>
+		 <button type="button" id="back_Btn" class="btn btn-warning">취소</button>
 		</div>
 		 
 	</form>
@@ -134,6 +137,12 @@
 		 });
 		 
 		});
+		
+		// back button
+		 $("#back_Btn").click(function(){
+		  //history.back();
+		  location.href = ${root}+"admin/testproductdetail/" + ${adminProductOne.product_id};
+		 });   
 	</script>
 	
 </body>

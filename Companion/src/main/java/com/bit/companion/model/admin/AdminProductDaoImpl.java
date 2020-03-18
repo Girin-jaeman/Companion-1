@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
+import com.bit.companion.model.entity.admin.AdminProductVo;
 
 @Repository
 public class AdminProductDaoImpl implements AdminProductDao{
@@ -18,10 +19,28 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	@Autowired
 	SqlSession sqlsession;
 	
-	// product add category - selectCategory
+	// product add page category list - selectCategory
 	@Override
 	public List<AdminCategoryVo> selectCategory() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectCategory");
+	}
+
+	// product add - insertOne
+	@Override
+	public void insertOne(AdminProductVo bean) throws SQLException {
+		sqlsession.insert("adminProduct.insertOne",bean);
+	}
+
+	// product list - selectAll
+	@Override
+	public List<AdminProductVo> selectAll() throws SQLException {
+		return sqlsession.selectList("adminProduct.selectAll");
+	}
+
+	// product detail - selectOne
+	@Override
+	public AdminProductVo selectOne(int product_id) throws SQLException {
+		return sqlsession.selectOne("adminProduct.selectOne",product_id);
 	}
 
 }
