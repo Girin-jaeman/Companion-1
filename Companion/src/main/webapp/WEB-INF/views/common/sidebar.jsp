@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url value="/" var="root"></c:url>
 
 	<!-- Sidebar  -->
         <nav id="sidebar">
@@ -86,7 +87,7 @@
                                  <a href="${root }login" class="nav-link">로그인</a>
                              </li>
                              <li>
-                                 <a href="${root }login/memberadd" class="nav-link">회원가입</a></p>		
+                                 <a href="${root }login/memberadd" class="nav-link">회원가입</a>		
                              </li>
                          </ul>
                      </c:when>

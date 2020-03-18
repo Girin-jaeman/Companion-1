@@ -5,92 +5,183 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>컴패니언::Companion</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/home.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- 
-<label for="member_id">*ID</label>
-<input type="text" name="member_id" id="member_id" placeholder="ID">
-<button type="button" id="id_chk_btn">중복확인</button></br>
- -->
-	<h1>내 정보 조회/수정</h1>
-				<input type="hidden" name="id_chk" id="id_chk" value="${sessionScope.memberVo.member_id }">
-				<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
-				<input type="hidden" name="tel_chk" id="tel_chk" value="${sessionScope.memberVo.member_tel }">
-				<input type="hidden" name="phone_chk" id="phone_chk" value="${sessionScope.memberVo.member_phone }">
-				<input type="hidden" name="email_chk" id="email_chk" value="${sessionScope.memberVo.member_email }">
-				<input type="hidden" name="addr1_chk" id="addr1_chk" value="${sessionScope.memberVo.member_addr1 }">
-				<input type="hidden" name="addr2_chk" id="addr2_chk" value="${sessionScope.memberVo.member_addr2 }">
-				<input type="hidden" name="addr3_chk" id="addr3_chk" value="${sessionScope.memberVo.member_addr3 }">
-	<table>
-		<tr>
-			<td>이름</td>
-			<td>${sessionScope.memberVo.member_name }</td>
-		</tr>
-		<tr>
-			<td>비밀번호 변경</td>
-			<td>
-				<label for="member_pw">현재비밀번호</label>
-				<input type="password" name="member_pw" id="member_pw"></br>
-				
-				<label for="pw_change">변경비밀번호</label>
-				<input type="password" name="pw_change" id="pw_change"></br>
-				
-				<label for="pw_change_chk">변경비밀번호 확인</label>
-				<input type="password" name="pw_change_chk" id="pw_change_chk">
-				
-				<button type="button" id="pw_change_btn">변경</button>
-			</td>
-		</tr>
-		<tr>
-			<td>일반전화</td>
-			<td>
-				${sessionScope.memberVo.member_tel }</br>
-				<input type="text" name="tel_change" id="tel_change">
-				<button type="button" id="tel_change_btn">일반전화 변경</button>
-			</td>
-		</tr>
-		<tr>
-			<td>휴대전화</td>
-			<td>
-				${sessionScope.memberVo.member_phone }
-				<input type="text" name="phone_change" id="phone_change">
-				<button type="button" id="phone_change_btn">휴대전화 변경</button>
-			</td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td>
-				${sessionScope.memberVo.member_email }
-				<input type="text" name="email_change" id="email_change">
-				<button type="button" id="email_change_btn">이메일 변경</button>
-			</td>
-		</tr>
-		<tr>
-			<td>주소</td>
-			<td>
-				우편번호 ${sessionScope.memberVo.member_addr1 }</br>
-				주소 ${sessionScope.memberVo.member_addr2 }</br>
-				상세주소 ${sessionScope.memberVo.member_addr3 }</br>
-				
-				<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly">
-				<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
-				
-				<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly"></br>
-				
-				<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소"></br></br>
-				
-				<input type="hidden" id="sample2_extraAddress" placeholder="참고항목"></br></br>
-				
-				<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-					<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-				</div>
-					<button type="button" id="address_change_btn">주소 변경</button>
-			</td>
-		</tr>
-	</table>
+	<div class="wrapper">
+        
+        <!-- Sidebar  -->
+		<jsp:include page="../common/sidebar.jsp"/>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div id="container">
+
+	            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	                <div class="container-fluid">
 	
+	                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+	                        <i class="fas fa-align-left"></i>
+	                        <span>메뉴</span>
+	                    </button>
+	                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+	                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+	                        aria-expanded="false" aria-label="Toggle navigation">
+	                        <i class="fas fa-align-justify"></i>
+	                    </button>
+	                    
+	                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	                        <c:choose>
+	                            <c:when test="${sessionScope.memberVo.member_id==null }">
+	                                <script>
+	                                	window.location.href="login";
+	                                </script>
+	                            </c:when>
+	                            <c:otherwise>
+	                                <ul class="nav navbar-nav ml-auto">
+	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">주문내역</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">예약조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">상품보관함</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">문의조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
+	                                    </li>
+	                                </ul>
+	                            </c:otherwise>
+	                            
+	                        </c:choose>
+	                    </div>
+	                </div>
+	            </nav>
+	            <div class="maincontent">
+	            
+					<h1>내 정보 조회/수정</h1>
+								<input type="hidden" name="id_chk" id="id_chk" value="${sessionScope.memberVo.member_id }">
+								<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
+								<input type="hidden" name="tel_chk" id="tel_chk" value="${sessionScope.memberVo.member_tel }">
+								<input type="hidden" name="phone_chk" id="phone_chk" value="${sessionScope.memberVo.member_phone }">
+								<input type="hidden" name="email_chk" id="email_chk" value="${sessionScope.memberVo.member_email }">
+								<input type="hidden" name="addr1_chk" id="addr1_chk" value="${sessionScope.memberVo.member_addr1 }">
+								<input type="hidden" name="addr2_chk" id="addr2_chk" value="${sessionScope.memberVo.member_addr2 }">
+								<input type="hidden" name="addr3_chk" id="addr3_chk" value="${sessionScope.memberVo.member_addr3 }">
+					<table>
+						<tr>
+							<td>이름</td>
+							<td>${sessionScope.memberVo.member_name }</td>
+						</tr>
+						<tr>
+							<td>비밀번호 변경</td>
+							<td>
+								<label for="member_pw">현재비밀번호</label>
+								<input type="password" name="member_pw" id="member_pw"></br>
+								
+								<label for="pw_change">변경비밀번호</label>
+								<input type="password" name="pw_change" id="pw_change"></br>
+								
+								<label for="pw_change_chk">변경비밀번호 확인</label>
+								<input type="password" name="pw_change_chk" id="pw_change_chk">
+								
+								<button type="button" id="pw_change_btn">변경</button>
+							</td>
+						</tr>
+						<tr>
+							<td>일반전화</td>
+							<td>
+								${sessionScope.memberVo.member_tel }</br>
+								<input type="text" name="tel_change" id="tel_change">
+								<button type="button" id="tel_change_btn">일반전화 변경</button>
+							</td>
+						</tr>
+						<tr>
+							<td>휴대전화</td>
+							<td>
+								${sessionScope.memberVo.member_phone }
+								<input type="text" name="phone_change" id="phone_change">
+								<button type="button" id="phone_change_btn">휴대전화 변경</button>
+							</td>
+						</tr>
+						<tr>
+							<td>이메일</td>
+							<td>
+								${sessionScope.memberVo.member_email }
+								<input type="text" name="email_change" id="email_change">
+								<button type="button" id="email_change_btn">이메일 변경</button>
+							</td>
+						</tr>
+						<tr>
+							<td>주소</td>
+							<td>
+								우편번호 ${sessionScope.memberVo.member_addr1 }</br>
+								주소 ${sessionScope.memberVo.member_addr2 }</br>
+								상세주소 ${sessionScope.memberVo.member_addr3 }</br>
+								
+								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly">
+								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
+								
+								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly"></br>
+								
+								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소"></br></br>
+								
+								<input type="hidden" id="sample2_extraAddress" placeholder="참고항목"></br></br>
+								
+								<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+									<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+								</div>
+									<button type="button" id="address_change_btn">주소 변경</button>
+							</td>
+						</tr>
+					</table>
+	            
+	            </div>
+			</div>
+			
+        <div id="footer">
+            <!-- test main content end-->
+            <hr class="mb-2">
+            <footer class="companion-footer">
+                    <div class="paragraph-group">
+                        <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
+                        <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
+                        <p>호스팅제공자:(주)Companion</p>
+                        <br/>
+                        <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+                        <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
+                    </div>
+            </footer>
+        </div>
+
+		</div>
+	</div>
+	
+	
+	<!-- script start -->
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -330,8 +421,24 @@
         element_layer.style.height = height + 'px';
         element_layer.style.border = borderWidth + 'px solid';
         // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth + 200) + 'px';
+        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth - 100) + 'px';
     }
+    
+    </script>
+    
+    <!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!-- script end -->
 </body>
 </html>
