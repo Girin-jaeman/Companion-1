@@ -23,6 +23,7 @@
   		<!-- notice -->
   		<typeAlias alias="noticeBean" type="com.bit.companion.model.entity.notice.NoticeVo"/>
   		<typeAlias alias="eventBean" type="com.bit.companion.model.entity.notice.EventVo"/>
+  		<typeAlias alias="faqBean" type="com.bit.companion.model.entity.notice.FAQVo"/>
   	</typeAliases>
   	<mappers>
   		<!-- hotel -->
@@ -46,5 +47,6 @@
   		<!-- notice -->
   		<mapper resource="mybatis/notice/noticeMapper.xml"/>
   		<mapper resource="mybatis/notice/eventMapper.xml"/>
+  		<mapper resource="mybatis/notice/faqMapper.xml"/>
   	</mappers>
   </configuration>  
