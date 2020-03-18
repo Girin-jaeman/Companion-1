@@ -108,11 +108,11 @@
 					<!-- 예약하기 오른쪽(입력폼) -->
 					<div class="reserve--right col-6">
 						<!-- 예약하기 form -->
-						<form class="form-horizontal" method="post">
+						<form class="form-horizontal" method="get">
 							<div class="form-group">
 								<label for="service" class="col-sm-5 control-label">희망 서비스</label>
 								<div class="col-sm-8">
-									<select id="service" class="form-control">
+									<select id="service" class="form-control" name="service">
 										<option value="0">호텔&데이케어</option>
 										<option value="1">유치원</option>
 										<option value="2">독파크</option>

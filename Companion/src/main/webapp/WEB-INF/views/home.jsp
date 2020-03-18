@@ -60,7 +60,7 @@
                                         <a class="nav-link" href="${root }login">로그인</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="${root }login/memberadd" class="nav-link">회원가입</a>		
+                                        <a class="nav-link" href="${root }login/memberadd" >회원가입</a>		
                                     </li>
                                 </ul>
                             </c:when>
