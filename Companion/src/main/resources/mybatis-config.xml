@@ -18,6 +18,8 @@
   		<!-- admin -->
   		<typeAlias alias="adminNoticeArticleBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
   		<typeAlias alias="adminCategoryBean" type="com.bit.companion.model.entity.admin.AdminCategoryVo"/>
+  		<typeAlias alias="adminProductBean" type="com.bit.companion.model.entity.admin.AdminProductVo"/>
+  		<typeAlias alias="adminCategoryProductBean" type="com.bit.companion.model.entity.admin.AdminCateProdVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>

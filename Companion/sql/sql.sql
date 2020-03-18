@@ -165,7 +165,7 @@ COLLATE = utf8_general_ci;
 -- Table `companion`.`like`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`like` (
-  `like_id` INT(11) NOT NULL COMMENT '좋아요ID',
+  `like_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '좋아요ID',
   `member_id` VARCHAR(20) NOT NULL COMMENT '회원ID',
   `product_id` INT(11) NOT NULL COMMENT '상품ID',
   PRIMARY KEY (`like_id`, `product_id`, `member_id`),
