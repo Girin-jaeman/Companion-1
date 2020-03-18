@@ -27,3 +27,13 @@ select * from member order by member_id desc;
 select * from article where board_id=0;
 select article_title, article_content, article_date, article_image from article where article_id=2;
 select * from product;
+select * from category;
+insert into category values(701,700,'테스트1');
+insert into category values(702,700,'테스트2');
+insert into category values(703,700,'테스트3');
+select * from question;
+insert into question values(null,100,null,1,'회원1',now(),null,'테스트제목','테스트내용',null,null,0,0);
+
+
+
+

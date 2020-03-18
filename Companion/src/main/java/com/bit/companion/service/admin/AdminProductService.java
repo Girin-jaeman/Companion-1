@@ -4,6 +4,6 @@ import org.springframework.ui.Model;
 
 public interface AdminProductService {
 
-	// 카테고리
+	// product add category
 	void category(Model model);
 }

@@ -21,11 +21,13 @@ public class AdminProductServiceImpl implements AdminProductService{
 	@Autowired
 	AdminProductDao adminProductDao;
 	
-	// 카테고리 - selectCategory 
+	// product add category - selectCategory
 	@Override
 	public void category(Model model) {
 		try {
 			List<AdminCategoryVo> category = adminProductDao.selectCategory();
+			//test value check
+			//System.out.println(category.toString());
 			model.addAttribute("adminProductCategory",JSONArray.fromObject(category));
 		} catch (SQLException e) {
 			e.printStackTrace();

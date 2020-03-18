@@ -7,14 +7,14 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeDao {
 
-	// �������� ����Ʈ
+	// notice list
 	List<AdminArticleVo> selectAll() throws SQLException;
-	// �������� ��
+	// notice detail
 	AdminArticleVo selectOne(int article_id) throws SQLException;;
-	// �������� �Է�
+	// notice add
 	void insertOne(AdminArticleVo bean) throws SQLException;
-	// �������� ����
+	// notice edit
 	int updateOne(AdminArticleVo bean) throws SQLException;
-	// �������� ����
+	// notice delete
 	int deleteOne(AdminArticleVo bean) throws SQLException;
 }

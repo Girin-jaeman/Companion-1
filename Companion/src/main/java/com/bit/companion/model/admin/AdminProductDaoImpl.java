@@ -18,7 +18,7 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	@Autowired
 	SqlSession sqlsession;
 	
-	// 카테고리 - selectCategory
+	// product add category - selectCategory
 	@Override
 	public List<AdminCategoryVo> selectCategory() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectCategory");

@@ -6,14 +6,14 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeService {
 
-	// �������� ����Ʈ
+	// notice list
 	void list(Model model);
-	// �������� ��
+	// notice detail
 	void detail(Model model,int article_id);
-	// �������� �Է�
+	// notice add
 	void insert(AdminArticleVo bean);
-	// �������� ����
+	// notice edit
 	void update(AdminArticleVo bean);
-	// �������� ����
+	// notice delete
 	void delete(AdminArticleVo bean);
 }
