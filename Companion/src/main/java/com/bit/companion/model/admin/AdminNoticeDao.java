@@ -9,12 +9,17 @@ public interface AdminNoticeDao {
 
 	// notice list
 	List<AdminArticleVo> selectAll() throws SQLException;
+	
 	// notice detail
 	AdminArticleVo selectOne(int article_id) throws SQLException;;
+	
 	// notice add
 	void insertOne(AdminArticleVo bean) throws SQLException;
+	
 	// notice edit
 	int updateOne(AdminArticleVo bean) throws SQLException;
+	
 	// notice delete
 	int deleteOne(AdminArticleVo bean) throws SQLException;
+	
 }

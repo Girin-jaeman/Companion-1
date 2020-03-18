@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.bit.companion.model.admin.AdminProductDao;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
+import com.bit.companion.model.entity.admin.AdminProductVo;
 
 import net.sf.json.JSONArray;
 
@@ -21,7 +22,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	@Autowired
 	AdminProductDao adminProductDao;
 	
-	// product add category - selectCategory
+	// product add page category list - selectCategory
 	@Override
 	public void category(Model model) {
 		try {
@@ -32,6 +33,38 @@ public class AdminProductServiceImpl implements AdminProductService{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	// product add - insertOne
+	@Override
+	public void insert(AdminProductVo bean) {
+		try {
+			adminProductDao.insertOne(bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// product list - selectAll
+	@Override
+	public void list(Model model) {
+		try {
+			List<AdminProductVo> list=adminProductDao.selectAll();
+			model.addAttribute("adminProductList",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// product detail - selectOne
+	@Override
+	public void detail(Model model, int product_id) {
+		try {
+			model.addAttribute("adminProductOne", adminProductDao.selectOne(product_id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
