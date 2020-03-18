@@ -7,4 +7,16 @@
   	<update id="pwChange" parameterType="map">
   		update member set member_pw=#{pw_change} where member_id=#{id_chk}
   	</update>
+  	<update id="telChange" parameterType="map">
+  		update member set member_tel=#{tel_change} where member_id=#{id_chk}
+  	</update>
+  	<update id="phoneChange" parameterType="map">
+  		update member set member_phone=#{phone_change} where member_id=#{id_chk}
+  	</update>
+  	<update id="emailChange" parameterType="map">
+  		update member set member_email=#{email_change} where member_id=#{id_chk}
+  	</update>
+  	<update id="addrChange" parameterType="map">
+  		update member set member_addr1=#{addr1_change},member_addr2=#{addr2_change},member_addr3=#{addr3_change} where member_id=#{id_chk}
+  	</update>
   </mapper>
