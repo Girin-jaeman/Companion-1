@@ -21,11 +21,14 @@ function validation() {
     
     /* 체크인 */
     checkIn.on("change", function(){
-		var tooltip = $(this).siblings(".msg");
-        var date = Date.parse(checkIn.val());
-		if (date != "") {
-			msgInit();
-		} 
+    var tooltip = $(this).siblings(".msg");
+    var datetimeRegexp=/[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;
+    var date = Date.parse(checkIn.val());
+		if (!datetimeRegexp.test(date)) {
+      alert('올바른 날짜 형식이 아닙니다. yyyy-mm-dd 형식으로 입력해주세요.');
+		}else {
+      msgInit(tooltip);
+    }
     });
     /* 체크아웃 */
     checkOut.on("change", function(){
@@ -69,9 +72,10 @@ $(function() {
     dateFormat: 'yy-mm-dd',
     showOtherMonths:true,
     showMonthAfterYear: true,
-    changeYear: true,
+    changeMonth:true,
     yearSuffix: '년',
-    maxDate:'+30d',
+    minDate:'+1d',
+    maxDate:'+3m',
     onSelect: function( selectedDate ) {
       var option = this.id == "from" ? "minDate" : "maxDate",
         instance = $( this ).data( "datepicker" ),
@@ -82,5 +86,6 @@ $(function() {
       dates.not( this ).datepicker( "option", option, date );
     }
     });
-    $('#from,#to').datepicker('setDate','today');
+    $("#from").datepicker("setDate","+1d");
+    $("#to").datepicker("setDate","+2d");
   });
