@@ -7,7 +7,7 @@
 
 	<!-- notice list -->
 	<select id="selectAll" resultType="adminNoticeArticleBean">
-		select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc;
+		select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- notice detail -->
@@ -30,4 +30,9 @@
 	<delete id="deleteOne" parameterType="adminNoticeArticleBean">
 		delete from `article` where article_id=#{article_id}
 	</delete>
+	
+	<!-- notice total -->
+  	<select id="selectTotal" resultType="int">
+  		select count(*) as listCnt from article where board_id=0
+  	</select>
 </mapper>

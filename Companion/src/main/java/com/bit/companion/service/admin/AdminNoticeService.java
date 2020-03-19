@@ -7,7 +7,7 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 public interface AdminNoticeService {
 
 	// notice list
-	void list(Model model);
+	void list(Model model, int page, int range);
 	
 	// notice detail
 	void detail(Model model,int article_id);

@@ -25,9 +25,11 @@ public class AdminNoticeController {
 	
 	// notice list - get 
 	@RequestMapping(value = "testnoticelist", method = RequestMethod.GET)
-	public String noticeList(Model model) {
+	public String noticeList(Model model
+			,@RequestParam(required = false, defaultValue = "1") int page
+			,@RequestParam(required = false, defaultValue = "1") int range) {
 		logger.info("get notice list");
-		adminNoticeService.list(model);
+		adminNoticeService.list(model,page,range);
 		return "admin/testnoticelist";
 	}
 	
