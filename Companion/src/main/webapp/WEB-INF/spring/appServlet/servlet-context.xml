@@ -40,6 +40,6 @@
 	</beans:bean>
 	
 	<!-- General File Upload Path -->
-	<resources location="/resources/imgUpload" mapping="/imgUpload/"/>
+	<resources location="/resources/imgUpload/" mapping="/imgUpload/**"/>
 	
 </beans:beans>

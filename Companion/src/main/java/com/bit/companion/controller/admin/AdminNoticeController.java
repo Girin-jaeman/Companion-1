@@ -1,5 +1,10 @@
 package com.bit.companion.controller.admin;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +15,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.service.admin.AdminNoticeService;
+import com.bit.companion.util.UploadFileUtils;
 
 @Controller
 @RequestMapping(value = "/admin/")
 public class AdminNoticeController {
 
 	private static final Logger logger=LoggerFactory.getLogger(AdminNoticeController.class);
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	@Autowired
 	AdminNoticeService adminNoticeService;
@@ -49,9 +59,25 @@ public class AdminNoticeController {
 	}
 	// notice add - post
 	@RequestMapping(value = "testnoticeadd", method = RequestMethod.POST)
-	public String noticeAdd(@ModelAttribute AdminArticleVo bean ) {
+	public String noticeAdd(@ModelAttribute AdminArticleVo bean, MultipartFile file) throws IOException, Exception {
 		logger.info("post notice add");
+		
+		// File Upload
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file!=null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		bean.setArticle_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
+		bean.setArticle_thumb(File.separator + "imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
+		
 		adminNoticeService.insert(bean);
+		
 		return "redirect:testnoticelist";
 	}
 	

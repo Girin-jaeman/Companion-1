@@ -5,23 +5,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="${root }css/admin/main.css">
+    <!-- Font Awesome JS -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+	<!-- CKEditor JS -->
+ 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+
+	<style type="text/css">
+		.select_img img {margin:20px 0;}
+	</style>
+
+	<title>Companion::공지사항 입력</title>
 </head>
 <body>
 	<h1>관리자 - 공지사항 입력 페이지</h1>
-	<form method="post">
+	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 		<div>
 			<label for="title">title</label>
 			<input type="text" name="article_title" id="article_title" placeholder="제목을 입력하세요" required="required"/>
 		</div>
 		<div>
 			<label for="content">content</label>
-			<input type="text" name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required"/>
+			<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
+			<script>
+ 				var ckeditor_config = {
+						resize_enable : false,
+						enterMode : CKEDITOR.ENTER_BR,
+						shiftEnterMode : CKEDITOR.ENTER_P,
+						filebrowserUploadUrl : "../../upload/notice"
+				};
+				CKEDITOR.replace( 'article_content' );
+			</script>
 		</div>
 		<div>
-			<label for="img">img</label>
-			<input type="file" name="article_image" id="article_image">
+			<label for="file">img</label>
+			<input type="file" name="file" id="article_image">
 		 	<div class="select_img"><img src="" /></div>
 		</div>
 		<div>
@@ -36,19 +61,17 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-
 	<!-- 이미지 등록시 출력 -->	
-	<script>
-		$("#article_image").change(function(){
-	 		if(this.files && this.files[0]) {
-	 			var reader = new FileReader;
-	 			reader.onload = function(data) {
-	 				$(".select_img img").attr("src", data.target.result).width(500);        
-	 			}
-	 			reader.readAsDataURL(this.files[0]);
-	 		}
-	 	});
-	</script>
-
+ 	<script>
+ 		$('#article_image').change(function(){
+ 			if(this.files&&this.files[0]){
+ 				var reader = new FileReader;
+ 				reader.onload = function(data){
+ 					$('.select_img img').attr("src",data.target.result).width(500);
+ 				}
+ 				reader.readAsDataURL(this.files[0]);
+ 			}
+ 		});
+ 	</script>
 </body>
 </html>

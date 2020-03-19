@@ -25,8 +25,12 @@
 			<span>${adminNoticeOne.article_content }</span>
 		</div>
 		<div>
-			<label for="img">img</label>
-			<span>${adminNoticeOne.article_image }</span>
+			<label for="img">원본이미지</label>
+			<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }">
+		</div>
+		<div>
+			<label for="img">썸네일</label>
+			<img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }">
 		</div>
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
