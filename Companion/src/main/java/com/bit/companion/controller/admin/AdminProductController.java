@@ -62,12 +62,13 @@ public class AdminProductController {
 		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			bean.setProduct_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
+			bean.setProduct_thumb(File.separator + "imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
 		} else {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			bean.setProduct_image(fileName);
+			bean.setProduct_thumb(fileName);
 		}
-		
-		bean.setProduct_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
-		bean.setProduct_thumb(File.separator + "imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
 		
 		adminProductService.insert(bean);
 		return "redirect:testadminhome";
