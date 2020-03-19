@@ -23,7 +23,7 @@ public class EventController {
 	@Autowired
 	EventService eventService;
 
-	@RequestMapping(value = {"/list","/"})
+	@RequestMapping(value = {"/list","/",""})
 	public String list(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range) {
