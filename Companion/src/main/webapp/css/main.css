@@ -13,6 +13,7 @@ body {
     /* font-family: 'Jua', sans-serif; */
     /* font-family: 'Gaegu', cursive; */
     font-family: 'Gamja Flower', cursive;
+    color: #333;
 
 }
 
@@ -21,7 +22,7 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    
 }
 
 a,
@@ -176,11 +177,11 @@ span {
     margin-right: 10px;
 }
 
-/* #sidebar ul li.active>a,
+#sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
     background:  rgb(11, 61, 105);
-} */
+}
 
 .companion-footer{
     text-align: center;
@@ -203,28 +204,7 @@ ul ul a {
     background:  rgb(11, 61, 105);
 }
 
-ul.CTAs {
-    padding: 20px;
-}
 
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: #fff;
-    color: rgb(11, 61, 105);
-}
-
-a.article,
-a.article:hover {
-    background: rgb(11, 61, 105) !important;
-    color: #fff !important;
-}
 
 /* ---------------------------------------------------
     SIDELOGIN STYLE
@@ -261,7 +241,6 @@ a.join:hover {
 .maincontent {
     width: 100%;
     max-width: 1000px;
-    padding: 20px;
     margin: auto;
   }
 /* ---------------------------------------------------

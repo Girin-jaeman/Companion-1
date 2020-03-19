@@ -149,6 +149,7 @@
                             </li>
                         </ul>
                     </div>
+                
                 </div>
             </nav>
             <!--main content start-->
@@ -167,48 +168,27 @@
                 <section class="section--feature">
                     <div class="summary">
                         <div class="summary__title">
-                            내 정보 조회 / 수정
+                            나의정보
+                        </div>
+                        <div class="summary__description">
+                            <i class="fas fa-lock"></i>
+                             비밀번호를 입력해 주세요
                         </div>
                     </div>
-                    <form id="mypage-info" method="POST" action="">
+                    <form id="mypage-conn" method="POST" action="">
                         <ul>
                             <li>
-                                <label for="#" class="form-label">이름</label>
-                                <input type="password" name="pw_change" id="pw_change" class="input--text" ></br>
+                                <input type="password" class="input--text" placeholder="비밀번호를 입력하세요">
                             </li>
                             <li>
-                                <label for="pw_change" class="form-label">비밀번호 변경</label>
-                                <input type="password" name="pw_change" id="pw_change" class="input--text" placeholder="${sessionScope.memberVo.member_pw }"></br>
-                            </li>
-                            <li>        
-                                <label for="pw_change_chk" class="form-label">비밀번호변경 확인</label>
-                                <input type="password" name="pw_change_chk" id="pw_change_chk" class="input--text">
-                                <button type="button" id="pw_change_btn" class="btn">변경</button>
+                                <button type="submit" class="btn btn--primary">확 인</button>
                             </li>
                             <li>
-                                <label for="member_tel" class="form-label">일반전화</label>
-                                <input type="text" name="member_tel" id="member_tel" class="input--text"></br>
-                                <button type="button" id="tel_change_btn" class="btn">일반전화 변경</button>
-                            </li>
-                            <li>
-                                <label for="member_phone" class="form-label">휴대전화</label>        
-                                <input type="text" name="member_phone" id="member_phone" class="input--text" placeholder="${sessionScope.memberVo.member_phone }">
-                                <button type="button" id="phone_change_btn"class="btn">휴대전화 변경</button>
-                            </li>
-                            <li>        
-                                <label for="member_email" class="form-label">이메일</label>
-                                <input type="text" name="member_email" id="member_email" class="input--text" placeholder="${sessionScope.memberVo.member_email }">
-                                    <button type="button" id="email_change_btn"class="btn">이메일 변경</button>
-                            </li>
-                            <li>        
-                                <label for="#" class="form-label">우편번호</label>
-                                <input type="text" name="#" id="#" class="input--text" placeholder="${sessionScope.memberVo.member_addr1 }">
-                                    <button type="button" id="#"class="btn">주소 변경</button>
+                                <button type="reset" class="btn">취소</button>
                             </li>
                         </ul>
                     </form>
                 </section>
-	
             </div>
             
 

@@ -59,19 +59,22 @@
 	                                <ul class="nav navbar-nav ml-auto">
 	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">주문내역</a>
-	                                    </li>
-	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">상품보관함</a>
+	                                        <a class="nav-link" href="#">주문내역</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">장바구니</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">로그아웃</a>
 	                                    </li>
 	                                </ul>
 	                            </c:otherwise>
