@@ -34,7 +34,7 @@
 		</div>
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
-		 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
+		 	<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
 			<button type="reset">취소</button>
 		</div>
 	</form>
@@ -47,8 +47,18 @@
     <script src="${root }js/bootstrap/bootstrap.js"></script>
     <script type="text/javascript">
    		 $("#modify_Btn").click(function(){
-   			history.back();
+   			location.href = ${root}+"admin/testnoticeedit/" + ${adminNoticeOne.article_id};
 		 });  
+   		 
+     	// delete button
+     	var formObj = $("form[role='form']");
+    		$("#delete_Btn").click(function(){
+    		 var con = confirm("정말로 삭제하시겠습니까?");
+    		 if(con) {      
+    		  formObj.attr("action", "${root}admin/testnoticedelete/${adminNoticeOne.article_id}");
+    		  formObj.submit();
+    		 }
+   		});
     </script>
 
 </body>
