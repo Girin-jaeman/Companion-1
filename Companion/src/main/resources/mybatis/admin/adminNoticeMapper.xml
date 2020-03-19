@@ -23,7 +23,7 @@
 	
 	<!-- notice edit -->
 	<update id="updateOne" parameterType="adminNoticeArticleBean" >
-		update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image} where article_id=#{article_id}
+		update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image}, article_thumb=#{article_thumb} where article_id=#{article_id}
 	</update>
 	
 	<!-- notice delete -->

@@ -18,10 +18,6 @@
 	<!-- CKEditor JS -->
  	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
-	<style type="text/css">
-		.select_img img {margin:20px 0;}
-	</style>
-
 	<title>Companion::공지사항 입력</title>
 </head>
 <body>
@@ -45,10 +41,11 @@
 			</script>
 		</div>
 		<div>
-			<label for="file">img</label>
+			<label for="article_image">img</label>
 			<input type="file" name="file" id="article_image">
 		 	<div class="select_img"><img src="" /></div>
 		</div>
+		<%=request.getRealPath("/") %>
 		<div>
 			<button type="submit">입력</button>
 			<button type="reset">취소</button>
