@@ -43,4 +43,11 @@ public class EventServiceImpl implements EventService {
 		}catch(SQLException e) {}
 	}
 
+	@Override
+	public void count(int article_id) {
+		try {
+			eventDao.updateCount(article_id);
+		}catch(SQLException e) {}
+	}
+
 }

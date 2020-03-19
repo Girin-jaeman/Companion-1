@@ -8,4 +8,6 @@ public interface EventService {
 
 	void detail(Model model, int article_id);
 
+	void count(int article_id);
+
 }

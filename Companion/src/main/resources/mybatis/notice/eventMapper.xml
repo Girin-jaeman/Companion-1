@@ -15,6 +15,9 @@
   	<select id="selectOne" resultType="eventBean" parameterType="int">
   		select * from article where article_id=#{value}
   	</select>
+  	<update id="updateCount" parameterType="int">
+  		update article set article_count= IFNULL(article_count,0)+1 where article_id=#{value} LIMIT 1
+  	</update>
   </mapper>
   
   
