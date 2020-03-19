@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,9 +91,31 @@ public class AdminNoticeController {
 	}
 	// notice edit - post
 	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
-	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id) {
+	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post notice edit");
+		
+		// 새로운 파일이 등록되었는지 확인
+		 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		  // 기존 파일을 삭제
+		  new File(uploadPath + req.getParameter("article_image")).delete();
+		  new File(uploadPath + req.getParameter("article_thumb")).delete();
+		  
+		  // 새로 첨부한 파일을 등록
+		  String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		  String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		  String fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		  
+		  bean.setArticle_image(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		  bean.setArticle_thumb(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		  
+		 } else {  // 새로운 파일이 등록되지 않았다면
+		  // 기존 이미지를 그대로 사용
+		  bean.setArticle_image(req.getParameter("article_image"));
+		  bean.setArticle_thumb(req.getParameter("article_thumb"));
+		 }
+		
 		adminNoticeService.update(bean);
+		
 		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
 	// notice delete - post
