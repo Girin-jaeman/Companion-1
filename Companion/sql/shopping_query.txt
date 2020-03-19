@@ -26,27 +26,32 @@ select count(*) from ex_rec where board_no = #{no} and rec_id = #{id}
 ..like table에 회원 id / 상품 id 가 존재하는 지 여부를 찾아야 함. 
 경우의 수는 2가지임 0인 경우 추천 x 1인 경우 추천 o   따라서, 테이블 데이터가 있느냐?
 
-like 자동 증가 coulmn 은 나중에 추천수 총 증가량을 찾기 위함임.
+like 자동 증가 coulmn 은 나중에  상품ID에 따른 추천수 총량을 찾기 위함임.
+
+if(return 값이 1일 경우.){
+	select count(*) from `like` where member_id='admin' and product_id=1;  ====반환 1일 경우?
+	동일 아이디에 동일 상품 추천을 누른 상황임. 따라서 추천수 증가 X	
+
+}else(return 값이 0일 경우. {
+
+	insert query문 실행.	
+	insert into like (null, member_id, product_id) values (null,#{member_id}, #{product_id});
+}
 ///////
 
 ///상품 좋아요 등록
-
-	insert into ex_rec values(#{no}, #{id})
-
+	insert into like (null, member_id, product_id) values (null,#{member_id}, #{product_id});
 ///////
 
 ///상품 좋아요 취소
-	
-	delete from ex_rec where board_no = #{no} and rec_id = #{id}
-
+	delete from like where member_id=#{member_id} and product_id=#{product_id};
 ///////
 
 ///상품 추천수 조회
-
-	select count(*) from ex_rec where board_no = #{no}
-
+select count(*) from `like` where product_id=#{상품번호}  상품번호에 따른 추천수 조회  --> 메인페이지에서 상품 목록에 상품 추천 수 표시하기 위함.
 //////
 
 
 ------------상품 좋아요 end
-
+/////메인 페이지 --> 추천 // 비추천으로 구분
+높은 추천 수 조회 페이지 --> 현재 추천 수량을 표시. & 추천 높은 순으로 정렬.

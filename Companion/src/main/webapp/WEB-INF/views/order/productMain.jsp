@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
-	<html>
-	
+	<html> 
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +21,22 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<style type="text/css">
+		.btn {
+			    height: 34px;
+			    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+			    border: 1px solid #d5d5d5;
+			    border-radius: 4px;
+			    display: inline-flex;
+			    align-items: center;
+			    padding: 0 12px;
+			    font-size: 14px;
+			    font-weight: 500;
+			    line-height: 1.5;
+			    cursor: pointer;
+			    box-sizing: border-box;
+			    position: relative;
+			    color: #333;
+			}
 		.product-grid{font-family:Raleway,sans-serif;text-align:center;padding:0 0 72px;border:1px solid rgba(0,0,0,.1);overflow:hidden;position:relative;z-index:1}
 		.product-grid .product-image{position:relative;transition:all .3s ease 0s}
 		.product-grid .product-image a{display:block}
@@ -184,6 +199,10 @@
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_thumb }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_id }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_name }</a></h3> 
+			                <!-- 상품 추천 수 받아올 것. -->
+			                    <h3 id="DDaBong"class="title">상품 추천 수: ${like.product_id }</h3> 
+			                	
+			                <!-- 상품 추천 수 받아올 것. -->
 			                
 			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
 			                    <h3 class="title"><a href="#"> ${productlist.product_option1 } 나오는지 확인</a></h3> --%>
@@ -197,10 +216,11 @@
 			             <c:set var = "memberID" value="${memberVo.member_id }"/>         
 			               <c:choose>
 									<c:when test="${memberVo.member_id==null}">	
-					                    <a id=btn href="${root }login"><img id="DDaBong" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href="${root }login"><img  src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
 					               </c:when>  
 									<c:when test="${memberVo.member_id!=null }">	
-					                    <button><img src="${root }imgs/shopping/빈따봉1.jpg"></button><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <%System.out.println("따봉 클릭!할때만 작동하라고..."); %>
 					               </c:when>  
 			                </c:choose>    
 			               <!-- 따봉 로그인 세션 검사  -->   
@@ -217,21 +237,17 @@
   
     </div>
 			  <!-- 썸네일 쇼쇼핑멀 끝 -->
-			  
-			  <!-- 페이징 -->
-			      <!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${pagination.prev }" name="prev"/>
-			<jsp:param value="${pagination.next }" name="next"/>
-			<jsp:param value="${pagination.page }" name="page"/>
-			<jsp:param value="${pagination.range }" name="range"/>
-			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${pagination.startPage }" name="startPage"/>
-			<jsp:param value="${pagination.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
-			  
-			  <!-- 페이징 끝 -->
+					      <!-- pagination [start] -->
+				<jsp:include page="../common/pagination.jsp">
+					<jsp:param value="${pagination.prev }" name="prev"/>
+					<jsp:param value="${pagination.next }" name="next"/>
+					<jsp:param value="${pagination.page }" name="page"/>
+					<jsp:param value="${pagination.range }" name="range"/>
+					<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
+					<jsp:param value="${pagination.startPage }" name="startPage"/>
+					<jsp:param value="${pagination.endPage }" name="endPage"/>
+				</jsp:include>
+				<!-- pagination [end] -->		
 		</div><!-- container end  -->
 		
 
@@ -254,41 +270,58 @@
 			});
 		</script>
 		<!-- 추천수 script start -->
-		<script>
+		<script type="text/javascript">
 		//추천 버튼 클릭할 때 no 와 id 값을 가지고 url 주소로 이동함. 성공했을 경우 recCount 함수를 호출 함. 
 		//recCount 는 현재 게시글의 추천수를 구하는 함수.  
 		//추천 버튼이 성공할 경우 db에 저장된 추천수를 구해온 후 <span class="rec_count">에 html 함수를 이용하여 갯수 출력.
-			$(function(){
-				$("DDaBong").click(function(){
-					$.ajax({
-						url:"/productMain",
-						type="POST",
-						data: {
-							no: ${productDetailOne.product_id},
-							id: '${id}'  //이게 무슨 id??
-						},
-						success: function(){
-							recCount();
-						},
-						
-					})
-				})
+	
+		
+/* 		function like_func(){
+			var productNo="<c:out value='${productDetailOne.product_id}'/>";
+			var frm_read=$('#frm_read');
+		var productNo = $('#productNo',frm_read).val(); 
+		 		console.log("like_func implement "+productNo);
+		
+			$.ajax({
+				url:"/productMain/like.do",
+				type:"POST",
+				cache:false,
+				dataType:"json",
+				data:'productNo='+productNo.
+				success:function(data){
+					var msg='';
+				}
+				
 			})
-		//추천 버튼 클릭할 때. end
-			//게시글 추천 수
-			function recCount(){
-				$.ajax({
-					url:"/productMain",
-					type: "POST",
-					data:{
-						no: ${productDetailOne.product_id}
-					},
-					success: function (count){
-						$(".rec_count").html(count);
-					},
-				})
+		} */
+		
+		function get_like(){
+			$.getJSON('productMain/',function(data){
+				var arr=data;
+				var Like=$('DDaBong').addClass('p');
+				body.html(DDaBong);
+				DDaBong.append('추천수 : ');
+		/* 		for(var i=0l;i<arr.length; i++){
+					$('DDaBong').appendTo(Like).text(arr[i].like_id])
+				} */
+			})
+		}
+		
+		
+		
+		function like_func(){
+			var param={
+					product_id:$('#product_id').val(),
+					member_id:$('#member_id').val()
 			};
-			recCount();
+			$.post('productMain/like.do',param,function(){
+				get_like();
+			});
+		}
+		
+		
+
+	
 			
 			
 			//게시글 추천 수. end
