@@ -14,7 +14,7 @@ public class FAQController {
 	@Autowired
 	FAQService faqService;
 
-	@RequestMapping(value = {"/list","/"})
+	@RequestMapping(value = {"/list","/",""})
 	public String faq(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range) {

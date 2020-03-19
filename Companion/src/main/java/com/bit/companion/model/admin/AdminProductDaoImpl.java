@@ -44,4 +44,16 @@ public class AdminProductDaoImpl implements AdminProductDao{
 		return sqlsession.selectOne("adminProduct.selectOne",product_id);
 	}
 
+	// product edit - updateOne
+	@Override
+	public int updateOne(AdminProductVo bean) throws SQLException {
+		return sqlsession.update("adminProduct.updateOne",bean);
+	}
+
+	// product delete - deleteOne
+	@Override
+	public int deleteOne(int product_id) throws SQLException {
+		return sqlsession.delete("adminProduct.deleteOne",product_id);
+	}
+
 }

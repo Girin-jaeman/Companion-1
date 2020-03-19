@@ -34,4 +34,9 @@ public class EventDaoImpl implements EventDao {
 		return sqlSession.selectOne("event.selectOne",article_id);
 	}
 
+	@Override
+	public void updateCount(int article_id) throws SQLException {
+		sqlSession.selectOne("event.updateCount",article_id);
+	}
+
 }

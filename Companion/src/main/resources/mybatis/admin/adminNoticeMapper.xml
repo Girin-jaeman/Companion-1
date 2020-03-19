@@ -7,27 +7,32 @@
 
 	<!-- notice list -->
 	<select id="selectAll" resultType="adminNoticeArticleBean">
-		select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc;
+		select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- notice detail -->
 	<select id="selectOne" resultType="adminNoticeArticleBean" parameterType="int">
-		select article_id, article_title, article_content, article_date, article_image from `article` where article_id=#{value}
+		select article_id, article_title, article_content, article_date, article_image,article_thumb from `article` where article_id=#{value}
 	</select>
 	
 	<!-- notice add -->
 	<!-- #{member_id} - 임시로 admin -->
 	<insert id="insertOne" parameterType="adminNoticeArticleBean">
-		insert into `article` values(0,null,'admin',#{article_title},#{article_content},now(),0,#{article_image})
+		insert into `article` values(0,null,'admin',#{article_title},#{article_content},now(),0,#{article_image},#{article_thumb})
 	</insert>
 	
 	<!-- notice edit -->
 	<update id="updateOne" parameterType="adminNoticeArticleBean" >
-		update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image} where article_id=#{article_id}
+		update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image}, article_thumb=#{article_thumb} where article_id=#{article_id}
 	</update>
 	
 	<!-- notice delete -->
 	<delete id="deleteOne" parameterType="adminNoticeArticleBean">
 		delete from `article` where article_id=#{article_id}
 	</delete>
+	
+	<!-- notice total -->
+  	<select id="selectTotal" resultType="int">
+  		select count(*) as listCnt from `article` where board_id=0
+  	</select>
 </mapper>

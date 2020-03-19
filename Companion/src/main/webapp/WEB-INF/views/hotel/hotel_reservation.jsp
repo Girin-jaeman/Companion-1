@@ -17,8 +17,7 @@
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
-
+	<!-- user add css -->
 	<style type="text/css">
 		.msg {
 		    margin-top: 5px;
@@ -40,14 +39,19 @@
     <title>컴패니언::Companion::예약하기</title>
 </head>
 <body>
+<!-- .wrapper start  -->
 <div class="wrapper">
 	<!-- Sidebar -->
 	<jsp:include page="../common/sidebar.jsp"/>
+	<!-- #content start -->
 	<div id="content">
+		<!-- #container start -->
 		<div id="container">
+			<!-- nav start -->
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<!-- .container-fluid start -->
 			    <div class="container-fluid">
-			
+					<!-- menu toggle button start -->
 			        <button type="button" id="sidebarCollapse" class="btn btn-info">
 			            <i class="fas fa-align-left"></i>
 			            <span>메뉴</span>
@@ -57,33 +61,38 @@
 			            aria-expanded="false" aria-label="Toggle navigation">
 			            <i class="fas fa-align-justify"></i>
 			        </button>
-			        
+			        <!-- menu toggle button end -->
+			        <!-- top menu bar start -->
 			         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
 							<li class="nav-item">
-								<a class="nav-link" href="#">이용안내</a>
+								<a class="nav-link" href="${root }hotel/infouse">이용안내</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">예약하기</a>
+								<a class="nav-link" href="${root }hotel/reservation">예약하기</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">룸미리보기</a>
+								<a class="nav-link" href="${root }hotel/preroom">룸미리보기</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">돌보미정보</a>
+								<a class="nav-link" href="${root }hotel/infocare">돌보미정보</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">위치정보</a>
+								<a class="nav-link" href="${root }hotel/infoloc">위치정보</a>
 							</li>
 						</ul>
 			        </div>
+			        <!-- top menu bar end -->
 			    </div>
+			    <!-- .container-fluid end -->
 			</nav>
+			<!-- nav end -->
 		
-			<!-- section -->
+			<!-- section start -->
 			<section class="section">
+				<!-- .row start -->
 				<div class="row">
-					<!-- 예약하기 왼쪽(호텔예약설명) -->
+					<!-- 예약하기 왼쪽(호텔예약설명) start -->
 					<div class="reserve--left col-6">
 						<p>컴패니언 고객센터</p>
 						<p>1588-0000</p>
@@ -105,7 +114,8 @@
 							</tbody>
 						</table>
 					</div>
-					<!-- 예약하기 오른쪽(입력폼) -->
+					<!-- 예약하기 왼쪽(호텔예약설명) end -->
+					<!-- 예약하기 오른쪽(입력폼) start -->
 					<div class="reserve--right col-6">
 						<!-- 예약하기 form -->
 						<form class="form-horizontal" method="get">
@@ -164,27 +174,35 @@
 							</div>
 						</form>
 					</div>
+					<!-- 예약하기 오른쪽(입력폼) end -->
 				</div>
+				<!-- .row end -->
 			</section>
+			<!-- section end -->
 		</div>
+		<!-- #container end -->
 	</div>
+	<!-- #content end -->
 </div>
-	<!-- jQuery -->
-	<script src="${root}js/jquery-1.12.4.js"></script>
-	<!-- jQuery-UI -->
-	<script src="${root }js/jquery-ui.js"></script>
-	<!-- Popper.JS -->
-	<script src="${root}js/bootstrap/popper.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="${root}js/bootstrap/bootstrap.js"></script>
-	<script type="text/javascript" src="${root }js/site.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-	    validation();
+<!-- .wrapper end  -->
+<!-- jQuery -->
+<script src="${root}js/jquery-1.12.4.js"></script>
+<!-- jQuery-UI -->
+<script src="${root }js/jquery-ui.js"></script>
+<!-- Popper.JS -->
+<script src="${root}js/bootstrap/popper.js"></script>
+<!-- Bootstrap JS -->
+<script src="${root}js/bootstrap/bootstrap.js"></script>
+<!-- user add JS -->
+<script type="text/javascript" src="${root }js/site.js"></script>
+<script type="text/javascript">
+/* menu toggle button */
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
     });
-    </script>
+ validation();
+});
+</script>
 </body>
 </html>

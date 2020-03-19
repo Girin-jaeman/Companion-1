@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.admin.AdminNoticeDao;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
+import com.bit.companion.model.notice.NoticeDao;
 
 @Service
 public class AdminNoticeServiceImpl implements AdminNoticeService {
@@ -21,10 +23,19 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	
 	// notice list - selectAll
 	@Override
-	public void list(Model model) {
+	public void list(Model model,int page, int range) {
 		try {
-			List<AdminArticleVo> list = adminNoticeDao.selectAll();
+			// Total list Count
+			int listCnt = adminNoticeDao.selectTotal();
+			
+			// Pagination
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page,range,listCnt);
+			
+			List<AdminArticleVo> list = adminNoticeDao.selectAll(pagination);
+			
 			model.addAttribute("adminNoticeList",list);
+			model.addAttribute("pagination",pagination);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
