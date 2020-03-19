@@ -14,6 +14,9 @@ public class MypageQuestionVo {
 	private String question_image;
 	private String question_answer;
 	
+	private String product_thumb;
+	private String product_name;
+	
 	public MypageQuestionVo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -104,6 +107,31 @@ public class MypageQuestionVo {
 
 	public void setQuestion_answer(String question_answer) {
 		this.question_answer = question_answer;
+	}
+
+	public String getProduct_thumb() {
+		return product_thumb;
+	}
+
+	public void setProduct_thumb(String product_thumb) {
+		this.product_thumb = product_thumb;
+	}
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+	@Override
+	public String toString() {
+		return "MypageQuestionVo [question_id=" + question_id + ", question_type_id=" + question_type_id + ", order_id="
+				+ order_id + ", product_id=" + product_id + ", member_id=" + member_id + ", question_date="
+				+ question_date + ", question_answerdate=" + question_answerdate + ", question_title=" + question_title
+				+ ", question_content=" + question_content + ", question_image=" + question_image + ", question_answer="
+				+ question_answer + ", product_thumb=" + product_thumb + ", product_name=" + product_name + "]";
 	}
 	
 	

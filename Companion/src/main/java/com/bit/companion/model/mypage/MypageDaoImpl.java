@@ -64,7 +64,21 @@ public class MypageDaoImpl implements MypageDao {
 	public List<MypageQuestionVo> questionList(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
 		String member_id=bean.getMember_id();
-		return sqlSession.selectList("mypage.questionList", member_id);
+		List<MypageQuestionVo> list=sqlSession.selectList("mypage.questionList",member_id);
+		MypageQuestionVo bean2=new MypageQuestionVo();
+		String product_id="";
+		String product_thumb="";
+		String product_name="";
+		for(int i=0; i<list.size(); i++) {
+			bean2=list.get(i);
+			product_id=bean2.getProduct_id();
+			product_thumb=sqlSession.selectOne("mypage.productThumb",product_id);
+			product_name=sqlSession.selectOne("mypage.productName",product_id);
+			bean2.setProduct_thumb(product_thumb);
+			bean2.setProduct_name(product_name);
+		}
+		
+		return list;
 	}
 	
 

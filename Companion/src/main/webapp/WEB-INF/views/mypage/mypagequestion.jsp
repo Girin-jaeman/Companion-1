@@ -81,9 +81,48 @@
 	                </div>
 	            </nav>
 	            <div class="maincontent">
-					<c:forEach items="${questionList }" var="bean">
-						${bean.product_id }</br>
-					</c:forEach>	            
+	            	<div class="panel-group" id="accordion">
+						<c:forEach items="${questionList }" var="bean">
+							<div class="panel panel-default">
+								<div class="row panel-heading">
+									<div class="col-2">${bean.product_thumb }</div>
+									<div class="col-9">${bean.product_name }</div>
+									<div class="col-1">
+										<button class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#${bean.question_id }">확인</button>											
+									</div>
+								</div>
+								<div class="row panel-collapse collapse" id="${bean.question_id }">
+									<div class="panel-body">
+										<div>
+											<div class="col-1">Q.</div>
+											<div class="col-11">
+												${bean.question_title } / ${bean.question_date }</br>
+												${question_content }
+											</div>
+										</div>
+<c:choose>
+<c:when test="${bean.question_answer != null }">
+									<div>
+			                           	<div class="col-1">A.</div>
+			                           	<div class="col-11">
+			                           		${bean.question_answer }
+			                           	</div>
+									</div>
+</c:when>
+<c:otherwise>
+									<div>
+			                           	<div class="col-1">A.</div>
+			                           	<div class="col-11">
+			                           		답변 대기중입니다. 신속히 답변드릴 수 있도록 하겠습니다.
+			                           	</div>
+									</div>
+</c:otherwise>
+</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:forEach>	            
+	            	</div>
 	            </div>
 			</div>
 			
@@ -107,6 +146,8 @@
 	<!-- content -->
 	
 	<!-- script start -->
+	<!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
 	<!-- Popper.JS -->
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->

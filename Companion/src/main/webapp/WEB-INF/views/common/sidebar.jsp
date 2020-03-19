@@ -106,6 +106,14 @@
                      </c:otherwise>
                  </c:choose>
         </nav>
+        
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+	<!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
+    
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('#sidebarCollapse').on('click', function () {

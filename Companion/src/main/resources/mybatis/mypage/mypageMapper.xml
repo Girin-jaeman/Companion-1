@@ -22,4 +22,10 @@
   	<select id="questionList" parameterType="String" resultType="mypageQuestionBean">
   		select * from question where member_id=#{member_id} order by question_date desc
   	</select>
+  	<select id="productThumb" parameterType="String" resultType="String">
+  		select product_thumb from product where product_id=#{product_id}
+  	</select>
+  	<select id="productName" parameterType="String" resultType="String">
+  		select product_name from product where product_id=#{product_id}
+  	</select>
   </mapper>
