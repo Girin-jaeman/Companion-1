@@ -3,12 +3,13 @@ package com.bit.companion.model.admin;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeDao {
 
 	// notice list
-	List<AdminArticleVo> selectAll() throws SQLException;
+	List<AdminArticleVo> selectAll(Pagination pagination) throws SQLException;
 	
 	// notice detail
 	AdminArticleVo selectOne(int article_id) throws SQLException;;
@@ -21,5 +22,7 @@ public interface AdminNoticeDao {
 	
 	// notice delete
 	int deleteOne(AdminArticleVo bean) throws SQLException;
+
+	int selectTotal() throws SQLException;;
 	
 }

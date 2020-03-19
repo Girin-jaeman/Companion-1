@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`article` (
   `article_date` DATETIME NOT NULL COMMENT '게시글작성일',
   `article_count` INT(11) NOT NULL COMMENT '게시글조회수',
   `article_image` VARCHAR(200) NULL DEFAULT NULL COMMENT '게시글이미지',
+  `article_thumb` VARCHAR(200) NULL DEFAULT NULL COMMENT '게시글썸네일',
   PRIMARY KEY (`article_id`, `board_id`, `member_id`),
   INDEX `FK_board_article_1` (`board_id` ASC) ,
   INDEX `FK_member_article_2` (`member_id` ASC) ,
@@ -165,7 +166,7 @@ COLLATE = utf8_general_ci;
 -- Table `companion`.`like`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`like` (
-  `like_id` INT(11) NOT NULL COMMENT '좋아요ID',
+  `like_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '좋아요ID',
   `member_id` VARCHAR(20) NOT NULL COMMENT '회원ID',
   `product_id` INT(11) NOT NULL COMMENT '상품ID',
   PRIMARY KEY (`like_id`, `product_id`, `member_id`),

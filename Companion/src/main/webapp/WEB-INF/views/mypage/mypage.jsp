@@ -68,7 +68,7 @@
 	                                        <a class="nav-link" href="#">상품보관함</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">문의조회</a>
+	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
@@ -131,7 +131,7 @@
 							<td>이메일</td>
 							<td>
 								${sessionScope.memberVo.member_email }
-								<input type="text" name="email_change" id="email_change">
+								<input type="email" name="email_change" id="email_change">
 								<button type="button" id="email_change_btn">이메일 변경</button>
 							</td>
 						</tr>
@@ -203,6 +203,16 @@
 				}
 				if(pw_change != pw_change_chk){
 					alert("변경 비밀번호끼리 서로 다름.");
+					return;
+				}
+				var checkPassword=verifyPassword(pw_change,{
+					length : [8,20],
+					lower : 1,
+					numeric : 1,
+					special : 1
+				});
+				if(checkPassword != true){
+					alert("비밀번호 양식이 올바르지 않습니다.\n8자이상 / 영문.숫자.특수문자 조합");
 					return;
 				}
 				$.ajax({
@@ -287,6 +297,11 @@
 				}
 				if(email_change==email_chk){
 					alert("변경된 사항이 없습니다.");
+					return;
+				}
+				var checkEmail=verifyEmail(email_change);
+				if(checkEmail=="no"){
+					alert("이메일 양식이 올바르지 않습니다.");
 					return;
 				}
 				$.ajax({
@@ -424,6 +439,103 @@
         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth + 200) + 'px';
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth - 100) + 'px';
     }
+    
+	  //email validation 처리 함수
+		function verifyEmail(member_email){
+			var regExp=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			
+			if(member_email.match(regExp) != null){
+				return "ok";
+			}else{
+				return "no";
+			}
+		}
+		
+		//password validation 처리 함수
+		function verifyPassword(pw,options){
+			// default options (allows any password)
+			 var o = {
+			  lower:    0,
+			  upper:    0,
+			  alpha:    0, /* lower + upper */
+			  numeric:  0,
+			  special:  0,
+			  length:   [0, Infinity],
+			  custom:   [ /* regexes and/or functions */ ],
+			  badWords: [],
+			  badSequenceLength: 0,
+			  noQwertySequences: false,
+			  noSequential:      false
+			 };
+			 
+			 for (var property in options)
+			  o[property] = options[property];
+			 
+			 var re = {
+			   lower:   /[a-z]/g,
+			   upper:   /[A-Z]/g,
+			   alpha:   /[A-Z]/gi,
+			   numeric: /[0-9]/g,
+			   special: /[\W_]/g
+			  },
+			  rule, i;
+			 
+			 // enforce min/max length
+			 if (pw.length < o.length[0] || pw.length > o.length[1])
+			  return false;
+			 
+			 // enforce lower/upper/alpha/numeric/special rules
+			 for (rule in re) {
+			  if ((pw.match(re[rule]) || []).length < o[rule])
+			   return false;
+			 }
+			 
+			 // enforce word ban (case insensitive)
+			 for (i = 0; i < o.badWords.length; i++) {
+			  if (pw.toLowerCase().indexOf(o.badWords[i].toLowerCase()) > -1)
+			   return false;
+			 }
+			 
+			 // enforce the no sequential, identical characters rule
+			 if (o.noSequential && /([\S\s])\1/.test(pw))
+			  return false;
+			 
+			 // enforce alphanumeric/qwerty sequence ban rules
+			 if (o.badSequenceLength) {
+			  var lower   = "abcdefghijklmnopqrstuvwxyz",
+			   upper   = lower.toUpperCase(),
+			   numbers = "0123456789",
+			   qwerty  = "qwertyuiopasdfghjklzxcvbnm",
+			   start   = o.badSequenceLength - 1,
+			   seq     = "_" + pw.slice(0, start);
+			  for (i = start; i < pw.length; i++) {
+			   seq = seq.slice(1) + pw.charAt(i);
+			   if (
+			    lower.indexOf(seq)   > -1 ||
+			    upper.indexOf(seq)   > -1 ||
+			    numbers.indexOf(seq) > -1 ||
+			    (o.noQwertySequences && qwerty.indexOf(seq) > -1)
+			   ) {
+			    return false;
+			   }
+			  }
+			 }
+			 
+			 // enforce custom regex/function rules
+			 for (i = 0; i < o.custom.length; i++) {
+			  rule = o.custom[i];
+			  if (rule instanceof RegExp) {
+			   if (!rule.test(pw))
+			    return false;
+			  } else if (rule instanceof Function) {
+			   if (!rule(pw))
+			    return false;
+			  }
+			 }
+			 
+			 // great success!
+			 return true;
+			}
     
     </script>
     

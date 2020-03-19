@@ -115,8 +115,9 @@
 				<div class="page-header">
 
 					<h1>[ ${productDetailOne.product_name } ] 상품 번호 ${productDetailOne.product_id }</h1>
+					<h4>[ 카테고리NUM=${productDetailOne.category_id } ] </h4>
 
-					<h3>상품 설명 기타 등등등등등 DB의 Product table 의 상품 설명 컬럼에서 따올 것.</h3>
+					<h5>상품 설명 ${productDetailOne.product_content }</h5>
 				</div>
 					<div class="row">
 						<div class="col-sm-4">배송비</div>					
@@ -159,8 +160,18 @@
 						<div class="col-sm-8">가격</div>
 						<div class="col-sm-4">${productDetailOne.product_price }</div>					
 						<div class="col-sm-5">
+						<!-- 구매 로그인 세션 검사 -->
+						<c:choose>
+									<c:when test="${memberVo.member_id==null}">	
+						
+							<a class="btn btn-primary" href="${root }login" role="button">구매하기</a>
+									</c:when>
+									<c:when test="${memberVo.member_id!=null}">	
 							<a class="btn btn-primary" href="../orderPurchase" role="button">구매하기</a>
-
+									</c:when>
+							
+						</c:choose>			
+						<!-- 구매 로그인 세션 검사 -->
 						</div>
 						<div class="col-sm-5">
 							<button type="button" class="btn-btn-primary" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable">장바구니 담기</button>

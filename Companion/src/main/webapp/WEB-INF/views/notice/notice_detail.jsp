@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Companion::컴패니언::공지사항 상세보기</title>
+    <title>컴패니언::Companion::공지사항 상세보기</title>
 </head>
 <body>
 <!-- section -->

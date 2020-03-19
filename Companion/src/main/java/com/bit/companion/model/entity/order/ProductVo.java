@@ -14,6 +14,7 @@ public class ProductVo {
 	private String product_content;
 	private int product_price;
 	private int product_stock;
+	private Date product_date;
 	private String product_image;
 	private String product_thumb; 
 	private String product_option1;
@@ -21,9 +22,45 @@ public class ProductVo {
 	private String product_option3;
 	private String product_option4;
 	private String product_option5;
+
+	private String category_name;
+	
 	
 	public ProductVo(int category_id, int product_id, String product_name, String product_content, int product_price,
-			int product_stock, String product_image, String product_thumb, String product_option1,
+			int product_stock, Date product_date, String product_image, String product_thumb, String product_option1,
+			String product_option2, String product_option3, String product_option4, String product_option5,
+			String category_name) {
+		super();
+		this.category_id = category_id;
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.product_content = product_content;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.product_date = product_date;
+		this.product_image = product_image;
+		this.product_thumb = product_thumb;
+		this.product_option1 = product_option1;
+		this.product_option2 = product_option2;
+		this.product_option3 = product_option3;
+		this.product_option4 = product_option4;
+		this.product_option5 = product_option5;
+		this.category_name = category_name;
+	}
+
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+
+
+	public ProductVo(int category_id, int product_id, String product_name, String product_content, int product_price,
+			int product_stock, Date product_date, String product_image, String product_thumb, String product_option1,
 			String product_option2, String product_option3, String product_option4, String product_option5) {
 		super();
 		this.category_id = category_id;
@@ -32,6 +69,7 @@ public class ProductVo {
 		this.product_content = product_content;
 		this.product_price = product_price;
 		this.product_stock = product_stock;
+		this.product_date = product_date;
 		this.product_image = product_image;
 		this.product_thumb = product_thumb;
 		this.product_option1 = product_option1;
@@ -40,17 +78,23 @@ public class ProductVo {
 		this.product_option4 = product_option4;
 		this.product_option5 = product_option5;
 	}
+
+
 	@Override
 	public String toString() {
 		return "ProductVo [category_id=" + category_id + ", product_id=" + product_id + ", product_name=" + product_name
 				+ ", product_content=" + product_content + ", product_price=" + product_price + ", product_stock="
-				+ product_stock + ", product_image=" + product_image + ", product_thumb=" + product_thumb
-				+ ", product_option1=" + product_option1 + ", product_option2=" + product_option2 + ", product_option3="
-				+ product_option3 + ", product_option4=" + product_option4 + ", product_option5=" + product_option5
-				+ "]";
+				+ product_stock + ", product_date=" + product_date + ", product_image=" + product_image
+				+ ", product_thumb=" + product_thumb + ", product_option1=" + product_option1 + ", product_option2="
+				+ product_option2 + ", product_option3=" + product_option3 + ", product_option4=" + product_option4
+				+ ", product_option5=" + product_option5 + ", category_name=" + category_name + "]";
 	}
+
+
 	public ProductVo() {
 	}
+
+	
 	public int getCategory_id() {
 		return category_id;
 	}
@@ -86,6 +130,12 @@ public class ProductVo {
 	}
 	public void setProduct_stock(int product_stock) {
 		this.product_stock = product_stock;
+	}
+	public Date getProduct_date() {
+		return product_date;
+	}
+	public void setProduct_date(Date product_date) {
+		this.product_date = product_date;
 	}
 	public String getProduct_image() {
 		return product_image;
@@ -129,4 +179,5 @@ public class ProductVo {
 	public void setProduct_option5(String product_option5) {
 		this.product_option5 = product_option5;
 	}
+	
 }

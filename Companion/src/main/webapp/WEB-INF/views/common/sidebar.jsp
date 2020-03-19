@@ -17,26 +17,28 @@
                         쇼핑하기
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
+                    
+
                         <li>
-                            <a href="/companion/order/productMain">사료</a>
+                            <a href="/companion/order/productMain?c=100">사료</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">간식</a>
+                            <a href="/companion/order/productMain?c=200">간식</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">장난감</a>
+                            <a href="/companion/order/productMain?c=300">장난감</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">미용용품</a>
+                            <a href="/companion/order/productMain?c=400">미용용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">목욕용품</a>
+                            <a href="/companion/order/productMain?c=500">목욕용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">위생용품</a>
+                            <a href="/companion/order/productMain?c=600">위생용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain">산책용품</a>
+                            <a href="/companion/order/productMain?c=700">산책용품</a>
                         </li>
                     </ul>
                 </li>
@@ -47,19 +49,19 @@
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
-                            <a href="#">이용안내</a>
+                            <a href="/companion/hotel/infouse">이용안내</a>
                         </li>
                         <li>
                             <a href="/companion/hotel/reservation">예약하기</a>
                         </li>
                         <li>
-                            <a href="#">룸미리보기</a>
+                            <a href="/companion/hotel/preroom">룸미리보기</a>
                         </li>
                         <li>
-                            <a href="#">돌보미정보</a>
+                            <a href="/companion/hotel/infocare">돌보미정보</a>
                         </li>
                         <li>
-                            <a href="#">위치정보</a>
+                            <a href="/companion/hotel/infoloc">위치정보</a>
                         </li>
                     </ul>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

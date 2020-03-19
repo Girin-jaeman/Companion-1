@@ -1,10 +1,16 @@
 package com.bit.companion.model.mypage;
 
 import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.bit.companion.model.entity.login.MemberVo;
+import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 
 @Repository
 public class MypageDaoImpl implements MypageDao {
@@ -52,6 +58,13 @@ public class MypageDaoImpl implements MypageDao {
 		map.put("addr3_change",addr3_change);
 		map.put("id_chk", id_chk);
 		return sqlSession.update("mypage.addrChange",map);
+	}
+
+	@Override
+	public List<MypageQuestionVo> questionList(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		String member_id=bean.getMember_id();
+		return sqlSession.selectList("mypage.questionList", member_id);
 	}
 	
 

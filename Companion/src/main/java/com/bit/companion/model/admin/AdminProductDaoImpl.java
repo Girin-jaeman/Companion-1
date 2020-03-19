@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bit.companion.model.entity.admin.AdminCateProdVo;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -39,8 +40,20 @@ public class AdminProductDaoImpl implements AdminProductDao{
 
 	// product detail - selectOne
 	@Override
-	public AdminProductVo selectOne(int product_id) throws SQLException {
+	public AdminCateProdVo selectOne(int product_id) throws SQLException {
 		return sqlsession.selectOne("adminProduct.selectOne",product_id);
+	}
+
+	// product edit - updateOne
+	@Override
+	public int updateOne(AdminProductVo bean) throws SQLException {
+		return sqlsession.update("adminProduct.updateOne",bean);
+	}
+
+	// product delete - deleteOne
+	@Override
+	public int deleteOne(int product_id) throws SQLException {
+		return sqlsession.delete("adminProduct.deleteOne",product_id);
 	}
 
 }

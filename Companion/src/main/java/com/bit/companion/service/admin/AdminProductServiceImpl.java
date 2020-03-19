@@ -67,4 +67,25 @@ public class AdminProductServiceImpl implements AdminProductService{
 		
 	}
 
+	// product edit - updateOne
+	@Override
+	public void update(AdminProductVo bean) {
+		try {
+			adminProductDao.updateOne(bean);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// product delete - deleteOne
+	@Override
+	public void delete(int product_id) {
+		try {
+			adminProductDao.deleteOne(product_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

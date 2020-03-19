@@ -33,19 +33,21 @@ public class NoticeServiceImpl implements NoticeService {
 			model.addAttribute("list",list);
 			model.addAttribute("pagination",pagination);
 			model.addAttribute("total",noticeDao.selectTotal());
-		}catch(SQLException e){
-			
-		}
-		
+		}catch(SQLException e){}
 	}
 
 	@Override
 	public void detail(Model model, int article_id) {
 		try {
 			model.addAttribute("bean",noticeDao.selectOne(article_id));
-		}catch(SQLException e) {
-			
-		}
+		}catch(SQLException e) {}
+	}
+
+	@Override
+	public void count(int article_id) {
+		try {
+			noticeDao.updateCount(article_id);
+		}catch(SQLException e) {}
 	}
 
 }
