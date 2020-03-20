@@ -2,6 +2,7 @@ package com.bit.companion.service.order;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,16 @@ public class LikeServiceImpl implements LikeService {
 
 	@Autowired
 	LikeDao likedao;
+
+	@Override
+	public void likeTest(Map<String, Object> param) {
+		try {
+			likedao.likeTest();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}
+		
 	
 	@Override
 	public void likeUpdate(Model model,int product_id,String member_id) {
@@ -42,7 +53,6 @@ public class LikeServiceImpl implements LikeService {
 	public void likeDelete(Model model, int product_id, String member_id) {
 		
 	}
-
 
 
 }

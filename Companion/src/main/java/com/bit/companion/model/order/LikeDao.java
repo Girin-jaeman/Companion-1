@@ -10,4 +10,5 @@ public interface LikeDao {
 	int likeInsert(int product_id, String member_id) throws SQLException;//추천하기
 	int likeDelete(int product_id, String member_id) throws SQLException;//추천취소
 	List<LikeVo> productLikeNum(int product_id) throws SQLException;//상품 총 추천수
+	List<LikeVo> likeTest() throws SQLException;
 }

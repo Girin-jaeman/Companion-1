@@ -200,8 +200,7 @@
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_id }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_name }</a></h3> 
 			                <!-- 상품 추천 수 받아올 것. -->
-			                    <h3 id="DDaBong"class="title">상품 추천 수: ${like.product_id }</h3> 
-			                	
+			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3> 
 			                <!-- 상품 추천 수 받아올 것. -->
 			                
 			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
@@ -222,7 +221,8 @@
 					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
 					                    <%System.out.println("따봉 클릭!할때만 작동하라고..."); %>
 					               </c:when>  
-			                </c:choose>    
+ 			                </c:choose>       
+					 
 			               <!-- 따봉 로그인 세션 검사  -->   
 			                    <div class="price">$5.00
 			                        <span>$10.00</span>
@@ -275,11 +275,11 @@
 		//recCount 는 현재 게시글의 추천수를 구하는 함수.  
 		//추천 버튼이 성공할 경우 db에 저장된 추천수를 구해온 후 <span class="rec_count">에 html 함수를 이용하여 갯수 출력.
 	
-		
-/* 		function like_func(){
+/* 		
+ 		function like_func(){
 			var productNo="<c:out value='${productDetailOne.product_id}'/>";
 			var frm_read=$('#frm_read');
-		var productNo = $('#productNo',frm_read).val(); 
+			var productNo = $('#productNo',frm_read).val(); 
 		 		console.log("like_func implement "+productNo);
 		
 			$.ajax({
@@ -287,28 +287,40 @@
 				type:"POST",
 				cache:false,
 				dataType:"json",
-				data:'productNo='+productNo.
+				data:'productNo='+productNo,
 				success:function(data){
 					var msg='';
+				if(data.like_check==0){
+					like_img="${root }imgs/shopping/빈따봉1.jpg";
+				}else{
+					like_img="${root }imgs/shopping/찬따봉.jpg";
 				}
-				
-			})
-		} */
+				${'#like_img '}.attr('src'.like_img);
+				},
+				error:function(request.status.error){ 
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error : "+error);
+				}
+			});
+		}
+		 */
 		
+		
+/* 		
 		function get_like(){
 			$.getJSON('productMain/',function(data){
 				var arr=data;
 				var Like=$('DDaBong').addClass('p');
 				body.html(DDaBong);
 				DDaBong.append('추천수 : ');
-		/* 		for(var i=0l;i<arr.length; i++){
+	 		for(var i=0l;i<arr.length; i++){
 					$('DDaBong').appendTo(Like).text(arr[i].like_id])
-				} */
+				} 
 			})
 		}
 		
 		
 		
+ 		
 		function like_func(){
 			var param={
 					product_id:$('#product_id').val(),
@@ -317,9 +329,9 @@
 			$.post('productMain/like.do',param,function(){
 				get_like();
 			});
-		}
+		} 
 		
-		
+		 */
 
 	
 			
