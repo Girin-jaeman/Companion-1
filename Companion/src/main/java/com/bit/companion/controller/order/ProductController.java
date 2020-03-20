@@ -16,6 +16,7 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
+	
 //	@RequestMapping(value = "/order/productMain")
 //	public String productMain(Model model) {
 //		productService.list(model);
@@ -38,6 +39,10 @@ public class ProductController {
 	public String orderQuestion(Model model) {
 		return "order/orderQuestion";
 	}
+	
+	
+
+	
 	
 	
 	

@@ -5,19 +5,30 @@
 
 <mapper namespace="product">
   	<select id="ProductSelectAll" resultType="productBean">
-  		select * from `product`
+	  	select (a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date, 
+	  	a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, 
+	  	a.product_option5,b.product_id, b.like_id, b.member_id from `product` as a left join `like` as b on a.product_id=b.product_id) 
+	  	union select (a.like_id, a.member_id, a.product_id,b.category_id, b.product_id, b.product_name, b.product_content, b.product_price, 
+	  	b.product_stock, b.product_date, b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, 
+	  	b.product_option4, b.product_option5 from `like` as a left join `product` as b on a.product_id=b.product_id);
   	</select>
   	<select id="ProductDetailOne" resultType="productBean" parameterType="int">
 		select * from `product` where product_id=#{value}
 	</select>
-	<select id="ProductCategorySelect" resultType="productBean" parameterType="int">
+	<!-- <select id="ProductCategorySelect" resultType="productBean" parameterType="int">
   		select a.product_id, a.product_name, a.product_price, a.product_image, a.product_thumb,
   		 a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5,
   		  b.category_name, b.category_id from `product` as a left join `category` as b on b.category_id=#{value};
+  	</select> -->
+	<select id="ProductCategorySelect" resultType="productBean" parameterType="int">
+		 select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date,
+		  a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5, 
+		  b.product_id, b.like_id, b.member_id from `product` as a left join `like` as b on a.product_id=b.product_id 
+		  where a.category_id=#{value} 
+		union select b.category_id, b.product_id, b.product_name,b.product_content, b.product_price, b.product_stock, b.product_date,
+		 b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, b.product_option4, b.product_option5, 
+		 a.product_id, a.like_id, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
+		 where b.category_id=#{value};
   	</select>
 </mapper>
-	<!--<select id="selectProductDetail" resultType="productDetailBean">
-		select (a.상품명) (b.가격 수량 가격 상품코드 주문번호) from `product` (별명) left outer join `order_detail` (별명)
-			where 상품명=#{value} 조인 예시
-	</select> -->
   
