@@ -20,4 +20,10 @@ public interface AdminProductDao {
 	
 	// product detail
 	AdminCateProdVo selectOne(int product_id) throws SQLException;
+
+	// product edit
+	int updateOne(AdminProductVo bean) throws SQLException;
+
+	// product delete
+	int deleteOne(int product_id) throws SQLException;
 }

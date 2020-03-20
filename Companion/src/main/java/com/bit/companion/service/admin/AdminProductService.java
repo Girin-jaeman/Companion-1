@@ -18,4 +18,9 @@ public interface AdminProductService {
 	// product detail
 	void detail(Model model,int product_id);
 
+	// product edit
+	void update(AdminProductVo bean);
+	
+	//product delete
+	void delete(int product_id);
 }

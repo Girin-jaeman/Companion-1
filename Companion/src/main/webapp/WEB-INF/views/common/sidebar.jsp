@@ -49,19 +49,19 @@
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
-                            <a href="#">이용안내</a>
+                            <a href="/companion/hotel/infouse">이용안내</a>
                         </li>
                         <li>
                             <a href="/companion/hotel/reservation">예약하기</a>
                         </li>
                         <li>
-                            <a href="#">룸미리보기</a>
+                            <a href="/companion/hotel/preroom">룸미리보기</a>
                         </li>
                         <li>
-                            <a href="#">돌보미정보</a>
+                            <a href="/companion/hotel/infocare">돌보미정보</a>
                         </li>
                         <li>
-                            <a href="#">위치정보</a>
+                            <a href="/companion/hotel/infoloc">위치정보</a>
                         </li>
                     </ul>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -97,7 +97,7 @@
                          <ul class="list-unstyled conn">
                              <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
                              <li>
-                                 <a href="${root }mypagechk" class="nav-link">마이페이지</a>
+                                 <a href="${root }mypagechk" class="nav-link">나의정보</a>
                              </li>
                              <li>
                                  <a href="${root }logout" class="nav-link">로그아웃</a>

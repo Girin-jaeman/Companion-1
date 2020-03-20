@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 @Repository
@@ -20,8 +21,8 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	
 	// notice list - selectAll
 	@Override
-	public List<AdminArticleVo> selectAll() throws SQLException {
-		return sqlSession.selectList("adminNotice.selectAll");
+	public List<AdminArticleVo> selectAll(Pagination pagination) throws SQLException {
+		return sqlSession.selectList("adminNotice.selectAll",pagination);
 	}
 
 	// notice detail - selectOne
@@ -46,6 +47,12 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	@Override
 	public int deleteOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.delete("adminNotice.deleteOne",bean);
+	}
+
+	// notice total - selectTotal
+	@Override
+	public int selectTotal() throws SQLException {
+		return sqlSession.selectOne("adminNotice.selectTotal");
 	}
 
 }

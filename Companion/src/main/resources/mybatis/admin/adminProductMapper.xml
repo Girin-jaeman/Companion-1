@@ -13,7 +13,7 @@
 	<insert id="insertOne" parameterType="adminProductBean">
 		insert into `product` values (#{category_id},null,#{product_name},
 			#{product_content},#{product_price},#{product_stock},now(),
-			null,null,null,null,null,null,null);
+			#{product_image},#{product_thumb},null,null,null,null,null);
 	</insert>
 	
 	<!-- product list -->
@@ -26,7 +26,31 @@
 		 select p.category_id, c.category_refid, c.category_name, p.product_id, p.product_name, 
 		 	p.product_content, p.product_price, p.product_stock, p.product_date, p.product_image, p.product_thumb,
 		 		p.product_option1, p.product_option2, p.product_option3, p.product_option4, p.product_option5
-				from product p, category c where p.category_id=c.category_id and p.product_id=#{value}
+				from `product` p, `category` c where p.category_id=c.category_id and p.product_id=#{value}
 	</select>
+	
+	<!-- product edit -->
+	<update id="updateOne" parameterType="adminProductBean">
+		update `product` set 
+			category_id = #{category_id}, 
+        	product_id = #{product_id},
+         	product_name = #{product_name},
+	        product_content = #{product_content},
+	        product_price = #{product_price},
+	        product_stock = #{product_stock},
+	        product_image = #{product_image},
+	        product_thumb = #{product_thumb},
+	        product_option1 = #{product_option1},
+	        product_option2 = #{product_option2},
+	        product_option3 = #{product_option3},
+	        product_option4 = #{product_option4},
+	        product_option5 = #{product_option5}
+    	where product_id = ${product_id}
+	</update>
+	
+	<!-- product delete -->
+	<delete id="deleteOne" parameterType="int">
+		delete from `product` where product_id=#{value}
+	</delete>
 </mapper>
   
