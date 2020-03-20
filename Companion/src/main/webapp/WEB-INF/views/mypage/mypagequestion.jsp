@@ -81,48 +81,50 @@
 	                </div>
 	            </nav>
 	            <div class="maincontent">
-	            	<div class="panel-group" id="accordion">
+	            	<ul class="list-unstyled components">
 						<c:forEach items="${questionList }" var="bean">
-							<div class="panel panel-default">
-								<div class="row panel-heading">
+							<ul>
+								<li class="row">
+									<!-- 나중에 해당 상품페이지로 이동하게 앵커달기 -->
 									<div class="col-2">${bean.product_thumb }</div>
 									<div class="col-9">${bean.product_name }</div>
+									
 									<div class="col-1">
-										<button class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#${bean.question_id }">확인</button>											
+										<a href="#${bean.question_id }question" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+											확인
+										</a>											
 									</div>
-								</div>
-								<div class="row panel-collapse collapse" id="${bean.question_id }">
-									<div class="panel-body">
-										<div>
+								</li>
+								<ul class="collapse list-unstyled" id="${bean.question_id }question">
+										<li class="row">
 											<div class="col-1">Q.</div>
 											<div class="col-11">
 												${bean.question_title } / ${bean.question_date }</br>
 												${question_content }
 											</div>
-										</div>
+										</li>
 <c:choose>
 <c:when test="${bean.question_answer != null }">
-									<div>
+									<li class="row">
 			                           	<div class="col-1">A.</div>
 			                           	<div class="col-11">
 			                           		${bean.question_answer }
 			                           	</div>
-									</div>
+									</li>
 </c:when>
 <c:otherwise>
-									<div>
+									<li class="row">
 			                           	<div class="col-1">A.</div>
 			                           	<div class="col-11">
 			                           		답변 대기중입니다. 신속히 답변드릴 수 있도록 하겠습니다.
 			                           	</div>
-									</div>
+									</li>
 </c:otherwise>
 </c:choose>
-									</div>
-								</div>
-							</div>
+								</ul>
+							</ul>
 						</c:forEach>	            
-	            	</div>
+	            	</ul>
 	            </div>
 			</div>
 			
