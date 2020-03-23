@@ -27,6 +27,9 @@ import com.bit.companion.model.entity.admin.AdminProductVo;
 import com.bit.companion.service.admin.AdminProductService;
 import com.bit.companion.util.UploadFileUtils;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 
 @Controller
 @RequestMapping(value = "/admin/")
@@ -75,7 +78,7 @@ public class AdminProductController {
 	}
 	
 	// product add - ckeditor file upload
-	@RequestMapping(value = "/testproductadd/ckUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/testproductadd/ckUpload&responseType=json", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
 	         @RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
@@ -83,6 +86,7 @@ public class AdminProductController {
 		// random character create
 		UUID uid = UUID.randomUUID();
 	 
+		JSONObject json = new JSONObject();
 		OutputStream out = null;
 		PrintWriter printWriter = null;
 		try {
@@ -91,22 +95,19 @@ public class AdminProductController {
 	  
 			// upload path
 			String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
-	  
+			
 			out = new FileOutputStream(new File(ckUploadPath));
 			out.write(bytes);
 			out.flush(); // out initialization
 	  
-			String callback = req.getParameter("CKEditorFuncNum");
 			printWriter = res.getWriter();
 			String fileUrl = "/ckUpload/" + uid + "_" + fileName; // 작성화면
-	  
-			// upload msg print
-			printWriter.println("<script type='text/javascript'>"
-					+ "window.parent.CKEDITOR.tools.callFunction("
-					+ callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
-					+"</script>");
-	  
-			printWriter.flush(); // printWriter initialization
+			
+			json.put("uploaded", 1);
+            json.put("fileName", fileName);
+            json.put("url", fileUrl);
+
+			printWriter.println(json);
 	  
 		} catch (IOException e) { e.printStackTrace();
 		} finally {

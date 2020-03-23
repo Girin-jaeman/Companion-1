@@ -200,10 +200,9 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	// 수정 필요
-	filebrowserUploadUrl : "/ckupload"
+	filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/testproductadd/ckUpload"
 };
-CKEDITOR.replace( 'product_content' );
+CKEDITOR.replace( 'product_content', ckeditor_config );
 
 // menu toggle button 
 $(document).ready(function () {

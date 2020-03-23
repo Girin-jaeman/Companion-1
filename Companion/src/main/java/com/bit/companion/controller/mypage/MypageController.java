@@ -28,7 +28,8 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage() {
+	public String mypage(HttpSession session) {
+		mypageService.reserveList(session);
 		return "mypage/mypage";
 	}
 	
@@ -36,6 +37,12 @@ public class MypageController {
 	public String mypagequestion(HttpSession session) {
 		mypageService.questionList(session);
 		return "mypage/mypagequestion";
+	}
+	
+	@RequestMapping("/mypagereserve")
+	public String mypagereserve(HttpSession session) {
+		mypageService.reserveList(session);
+		return "mypage/mypagereserve";
 	}
 
 	@ResponseBody

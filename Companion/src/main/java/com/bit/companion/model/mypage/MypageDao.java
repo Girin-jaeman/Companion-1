@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
+import com.bit.companion.model.entity.mypage.MypageReserveVo;
 
 public interface MypageDao {
 
@@ -19,5 +20,7 @@ public interface MypageDao {
 	int addrChange(String addr1_change, String addr2_change, String addr3_change, String id_chk);
 
 	List<MypageQuestionVo> questionList(HttpSession session);
+
+	List<MypageReserveVo> reserveList(HttpSession session);
 	
 }

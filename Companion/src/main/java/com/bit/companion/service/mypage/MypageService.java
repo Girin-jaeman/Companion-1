@@ -16,4 +16,6 @@ public interface MypageService {
 
 	void questionList(HttpSession session);
 
+	void reserveList(HttpSession session);
+
 }

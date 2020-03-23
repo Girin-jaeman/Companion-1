@@ -84,17 +84,39 @@
 	                </div>
 	            </nav>
 	            <div class="maincontent">
-	            
-					<h1>비밀번호를 입력해 주세요.</h1>
-					<form name="mypagechk" method="post" autocomplete="off">
-						<label for="member_pw">PW</label>
-						<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>
-						<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
-						
-						<button type="button" id="mypagechk_btn">확인</button>
-						<button type="button" onclick="history.back();">뒤로</button>	</br>
-					</form>
-					
+	            	<ul class="list-group list-unstyled components">
+						<c:forEach items="${reserveList }" var="bean">
+							<ul>
+								<li class="list-group-item list-group-item-primary">
+									<div class="row">
+										<div class="col-2">${bean.service_name }</div>
+										<div class="col-7">${bean.reserve_state_name }</div>
+										<div class="col-2">예약일 : ${bean.reserve_date }</div>
+										<div class="col-1">
+											<button class="btn btn-primary" onclick="toggleReserve(${bean.reserve_id })" id="reserveBtn_${bean.reserve_id }">
+												열기
+											</button>
+										</div>
+									</div>
+								</li>
+								<ul class="list-group-item list-group-item-secondary list-unstyled" id="${bean.reserve_id }" style="display:none">
+									<li class="row">
+										<div class="col-2">반려견종</div>
+										<div class="col-4">${bean.reserve_dogtype }</div>
+										<div class="col-2">반려견나이</div>
+										<div class="col-4">${bean.reserve_dogage }</div></br>
+										
+										<div class="col-2">체크인</div>
+										<div class="col-4">${bean.reserve_checkin }</div>
+										<div class="col-2">체크아웃</div>
+										<div class="col-4">${bean.reserve_checkout }</div></br>
+										<div class="col-12">기타</div></br>
+										<div class="col-12">${bean.reserve_msg }</div>
+									</li>
+								</ul>
+							</ul>
+						</c:forEach>	            
+	            	</ul>
 	            </div>
 			</div>
 			
@@ -115,36 +137,34 @@
 
 		</div>
 	</div>
-	
+	<!-- content -->
 	
 	<!-- script start -->
 	<!-- jQuery -->
-	<script src="${root }js/jquery-1.12.4.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#mypagechk_btn").click(function(){
-				var member_pw=$("#member_pw").val();
-				var pw_chk=$('#pw_chk').val();
-				if(member_pw==""){
-					alert("비밀번호를 입력해 주세요.");
-					return;
-				}else if(member_pw!=pw_chk){
-					alert("비밀번호가 일치하지 않습니다.");
-					return;
-				}else if(member_pw==pw_chk){
-					location.replace("mypage");
-				}
-			});
-		});
-	</script>
-	
+    <script src="${root }js/jquery-1.12.4.js"></script>
 	<!-- Popper.JS -->
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-    <!-- MAIN JS -->
-    <script src="${root }js/main.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        
+       function toggleReserve(reserve_id){
+        	if($('#'+reserve_id).css("display")=="none"){
+        		$('#'+reserve_id).show();
+        		$('#reserveBtn_'+reserve_id).text("닫기");
+        	}else{
+        		$('#'+reserve_id).hide();
+        		$('#reserveBtn_'+reserve_id).text("열기");
+        	}
+        }
+    </script>
     <!-- script end -->
+
 </body>
 </html>
