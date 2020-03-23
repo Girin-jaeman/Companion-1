@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.model.admin.AdminProductDao;
+import com.bit.companion.model.entity.admin.AdminProductViewVo;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -22,13 +23,11 @@ public class AdminProductServiceImpl implements AdminProductService{
 	@Autowired
 	AdminProductDao adminProductDao;
 	
-	// product add page category list - selectCategory
+	// category list (product add page) - selectCategory
 	@Override
 	public void category(Model model) {
 		try {
 			List<AdminCategoryVo> category = adminProductDao.selectCategory();
-			//test value check
-			//System.out.println(category.toString());
 			model.addAttribute("adminProductCategory",JSONArray.fromObject(category));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,7 +48,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	@Override
 	public void list(Model model) {
 		try {
-			List<AdminProductVo> list=adminProductDao.selectAll();
+			List<AdminProductViewVo> list=adminProductDao.selectAll();
 			model.addAttribute("adminProductList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,7 +63,6 @@ public class AdminProductServiceImpl implements AdminProductService{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	// product edit - updateOne
@@ -72,7 +70,6 @@ public class AdminProductServiceImpl implements AdminProductService{
 	public void update(AdminProductVo bean) {
 		try {
 			adminProductDao.updateOne(bean);
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

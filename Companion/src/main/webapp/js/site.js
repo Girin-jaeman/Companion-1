@@ -1,7 +1,9 @@
+// [source] http://www.nextree.co.kr/p9887/
 /* 유효성검사 */
 function validation() {
-    var checkIn = $("#datepicker")
-        ,checkOut = $("#datepicer2")
+    console.log('validation running...');
+    var checkIn = $("#from")
+        ,checkOut = $("#to")
         ,breed = $("#animalBreed")
         ,age = $("#animalAge");
 
@@ -11,21 +13,29 @@ function validation() {
 	}
     /* 공란 */
 	$("input").on("focusout", function() {
+		console.log('공란...');
 		var tooltip = $(this).siblings(".msg");
 		var value = $(this).val();
 		if (value == "") {
 			tooltip.text("필수 입력사항입니다.");
 			tooltip.css("opacity", 1);
 		}
+		else{
+      msgInit(tooltip);
+		}
     });
     
     /* 체크인 */
-    checkIn.on("change", function(){
+    $("#from").on('change',function(){
+      console.log('checkIn change...');
     var tooltip = $(this).siblings(".msg");
-    var datetimeRegexp=/[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;
-    var date = Date.parse(checkIn.val());
-		if (!datetimeRegexp.test(date)) {
-      alert('올바른 날짜 형식이 아닙니다. yyyy-mm-dd 형식으로 입력해주세요.');
+    var datetimeRegexp=/^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/; 
+    if($('#from').val()!=""){
+      msgInit(tooltip);
+    }
+		if (!datetimeRegexp.test($('#from').val())) {
+      tooltip.text("올바른 날짜 형식이 아닙니다.");
+      tooltip.css("opacity",1);
 		}else {
       msgInit(tooltip);
     }
@@ -62,8 +72,8 @@ function validJoin() {
 /* Datepicker */
 $(function() {
     var dates = $( "#from, #to " ).datepicker({
-    prevText: '이전 달',
-    nextText: '다음 달',
+    prevText: 'Prev' ,
+    nextText: 'Next',
     monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
     monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
     dayNames: ['일','월','화','수','목','금','토'],
