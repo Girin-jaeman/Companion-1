@@ -58,6 +58,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
 	<!-- 이미지 등록시 출력 -->	
  	<script>
  		$('#article_image').change(function(){

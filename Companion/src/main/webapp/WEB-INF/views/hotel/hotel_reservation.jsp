@@ -193,16 +193,10 @@
 <script src="${root}js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root}js/bootstrap/bootstrap.js"></script>
+<!-- MAIN JS -->
+<script src="${root }js/main.js"></script>
 <!-- user add JS -->
 <script type="text/javascript" src="${root }js/site.js"></script>
-<script type="text/javascript">
-/* menu toggle button */
-$(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
- validation();
-});
-</script>
+
 </body>
 </html>

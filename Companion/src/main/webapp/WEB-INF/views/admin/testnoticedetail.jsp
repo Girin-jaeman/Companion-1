@@ -45,6 +45,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <script type="text/javascript">
    		 $("#modify_Btn").click(function(){
    			location.href = ${root}+"admin/testnoticeedit/" + ${adminNoticeOne.article_id};

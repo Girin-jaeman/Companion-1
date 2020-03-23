@@ -543,14 +543,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <!-- script end -->
 </body>
 </html>

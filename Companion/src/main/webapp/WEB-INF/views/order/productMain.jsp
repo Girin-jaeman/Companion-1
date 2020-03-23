@@ -261,14 +261,8 @@
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
-
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$('#sidebarCollapse').on('click', function () {
-					$('#sidebar').toggleClass('active');
-				});
-			});
-		</script>
+	    <!-- MAIN JS -->
+    	<script src="${root }js/main.js"></script>
 		<!-- 추천수 script start -->
 		<script type="text/javascript">
 		//추천 버튼 클릭할 때 no 와 id 값을 가지고 url 주소로 이동함. 성공했을 경우 recCount 함수를 호출 함. 

@@ -113,15 +113,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-    
-    <script type="text/javascript">
-	/* menu toggle button */
-	$(document).ready(function () {
-	    $('#sidebarCollapse').on('click', function () {
-	        $('#sidebar').toggleClass('active');
-	    });
-	});
-	</script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
 	
 </body>
 </html>

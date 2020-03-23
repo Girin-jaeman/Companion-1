@@ -119,6 +119,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <!-- CKEditor JS -->
  	<script src="${root }resources/ckeditor/ckeditor.js"></script>
  	
@@ -222,13 +224,7 @@
 			// filebrowserUploadUrl : "../../upload/notice"
 		};
 		CKEDITOR.replace( 'product_content' );
-		
-		/* menu toggle button */
-		$(document).ready(function () {
-		    $('#sidebarCollapse').on('click', function () {
-		        $('#sidebar').toggleClass('active');
-		    });
-		});
+
 	</script>
 	
 </body>
