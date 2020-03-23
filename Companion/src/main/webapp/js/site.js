@@ -1,6 +1,7 @@
 // [source] http://www.nextree.co.kr/p9887/
 /* 유효성검사 */
 function validation() {
+    console.log('validation running...');
     var checkIn = $("#from")
         ,checkOut = $("#to")
         ,breed = $("#animalBreed")
@@ -12,7 +13,7 @@ function validation() {
 	}
     /* 공란 */
 	$("input").on("focusout", function() {
-		console.log('공란');
+		console.log('공란...');
 		var tooltip = $(this).siblings(".msg");
 		var value = $(this).val();
 		if (value == "") {
@@ -25,7 +26,8 @@ function validation() {
     });
     
     /* 체크인 */
-    checkIn.on('change',function(){
+    $("#from").on('change',function(){
+      console.log('checkIn change...');
     var tooltip = $(this).siblings(".msg");
     var datetimeRegexp=/^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])$/; 
     if($('#from').val()!=""){
