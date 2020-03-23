@@ -23,7 +23,6 @@
 		.msg {
 		    margin-top: 5px;
 		    font-size: 14px;
-		    opacity: 0;
 		    -webkit-transition: opacity .3s linear;
 		    transition: opacity .3s linear;
 		  }
@@ -150,14 +149,14 @@
 							</div>
 							<!-- Datepicker -->
 							<div class="form-group">
-								<label for="from" class="h4 col-sm-5 control-label">체크인</label>
+								<label for="rsv_checkin" class="h4 col-sm-5 control-label">체크인</label>
 								<div class="col-sm-11">
 								<input type="text" class="form-control" name="rsv_checkin" id="from" placeholder="체크인 날짜를 선택하세요.">
 								<p class="msg err"></p>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="to" class="h4 col-sm-5 control-label">체크아웃</label>
+								<label for="rsv_checkout" class="h4 col-sm-5 control-label">체크아웃</label>
 								<div class="col-sm-11">
 								<input type="text" class="form-control" name="rsv_checkout" id="to" placeholder="체크아웃 날짜를 선택하세요.">
 								<p class="msg err"></p>
@@ -219,6 +218,8 @@
 <script src="${root }js/main.js"></script>
 <!-- user add JS -->
 <script type="text/javascript" src="${root }js/site.js"></script>
-
+<script type="text/javascript">
+	validation();
+</script>
 </body>
 </html>
