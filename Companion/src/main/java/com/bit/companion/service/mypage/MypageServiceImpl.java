@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
+import com.bit.companion.model.entity.mypage.MypageReserveVo;
 import com.bit.companion.model.mypage.MypageDao;
 
 @Service
@@ -45,6 +46,12 @@ public class MypageServiceImpl implements MypageService {
 	public void questionList(HttpSession session) {
 		List<MypageQuestionVo> questionList = mypageDao.questionList(session);
 		session.setAttribute("questionList", questionList);
+	}
+
+	@Override
+	public void reserveList(HttpSession session) {
+		List<MypageReserveVo> reserveList = mypageDao.reserveList(session);
+		session.setAttribute("reserveList", reserveList);
 	}
 
 }

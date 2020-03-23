@@ -422,6 +422,9 @@
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
+	    <!-- MAIN JS -->
+    	<script src="${root }js/main.js"></script>
+
 		<!-- productDetail JS -->
 
 		<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
@@ -429,12 +432,6 @@
 		<script src="${root}js/order/productDetail.js"></script>
 	
 		<script type="text/javascript">
-			$(document).ready(function () {
-				$('#sidebarCollapse').on('click', function () {
-					$('#sidebar').toggleClass('active');
-				});
-			}); 		
-			
 			var popup;
 			
 			$(document).on('click','#question',function(){

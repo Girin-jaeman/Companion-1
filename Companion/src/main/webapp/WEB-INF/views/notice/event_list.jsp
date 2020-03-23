@@ -97,8 +97,19 @@
 			<jsp:param value="${pagination.endPage }" name="endPage"/>
 		</jsp:include>
 		<!-- pagination [end] -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 	</div>
 	<!-- Content [end] -->
 </div>
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+    <script src="${root }js/bootstrap/popper.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/hotel/hotelreserv.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -22,7 +23,6 @@
 		.msg {
 		    margin-top: 5px;
 		    font-size: 14px;
-		    opacity: 0;
 		    -webkit-transition: opacity .3s linear;
 		    transition: opacity .3s linear;
 		  }
@@ -68,7 +68,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="${root }hotel/infouse">이용안내</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="${root }hotel/reservation">예약하기</a>
 							</li>
 							<li class="nav-item">
@@ -87,41 +87,54 @@
 			    <!-- .container-fluid end -->
 			</nav>
 			<!-- nav end -->
-		
+			<div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    호텔서비스
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    예약하기
+                </a>
+                <hr class="mb-4">
+            </div>
 			<!-- section start -->
-			<section class="section">
+			<div class="maincontent">
 				<!-- .row start -->
-				<div class="row">
+				<div class="reservHotel row">
 					<!-- 예약하기 왼쪽(호텔예약설명) start -->
-					<div class="reserve--left col-6">
-						<p>컴패니언 고객센터</p>
+					<div class="reserve--left col-md-6" id="reservImg">
+						<h1>예약하기</h1><br/>
+                        <h3>컴패니언 고객센터</h3>
 						<p>1588-0000</p>
-						<p>예약 및 상담시간</p>
-						<p>09:00~20:00</p>
-						<p>안내사항</p>
+						<h3>예약 및 상담시간</h3>
+                        <p>09:00~20:00</p>
+                        <br/>
+						<h2>안내사항</h2>
 						<p>컴패니언 이용 시 주의사항</p>
 						<table class="table">
 							<tbody>
 								<tr>
-									<td>1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 신종 인플루엔자, 광견병) 받지 않은 반려견은 입실이 제한됩니다.<br/>* 접종기록은 접종병원명이 꼭 필요하므로 증빙 자료는 미리 준비해주세요.</td>
+									<td>1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 신종 인플루엔자, 광견병) 받지<br/>않은 반려견은 입실이 제한됩니다.<br/>* 접종기록은 접종병원명이 꼭 필요하므로 증빙 자료는 미리 준비해주세요.</td>
 								</tr>
 								<tr>
 									<td>1살 미만의 반려동물인 경우 항체 검사가 필수 입니다.<br/>(단, 1살 이상 시 재접종 기록 확인)</td>
 								</tr>
 								<tr>
-									<td>생리,건강문제 또는 공격성이 강해 타 고객의 이용에 피해가 되는 반려동물 일 경우 입실이 제한됩니다.</td>
+									<td>생리, 건강문제 또는 공격성이 강해 타 고객의 이용에 피해가 되는 반려동물 일 경우 입실이 제한됩니다.</td>
 								</tr>
 							</tbody>
 						</table>
-					</div>
+                    </div>
 					<!-- 예약하기 왼쪽(호텔예약설명) end -->
 					<!-- 예약하기 오른쪽(입력폼) start -->
-					<div class="reserve--right col-6">
+					<div class="col-md-6 reserve--right" id="reserText">
 						<!-- 예약하기 form -->
 						<form class="form-horizontal" method="get">
 							<div class="form-group">
-								<label for="service" class="col-sm-5 control-label">희망 서비스</label>
-								<div class="col-sm-8">
+								<label for="service" class="h4 col-sm-5 control-label">희망 서비스</label>
+								<div class="col-sm-11">
 									<select id="service" class="form-control" name="service">
 										<option value="0">호텔&데이케어</option>
 										<option value="1">유치원</option>
@@ -135,33 +148,41 @@
 								</div>
 							</div>
 							<!-- Datepicker -->
-							<div class="form-group col-sm-8">
-								<label for="from" class="col-sm-5 control-label">체크인</label>
+							<div class="form-group">
+								<label for="rsv_checkin" class="h4 col-sm-5 control-label">체크인</label>
+								<div class="col-sm-11">
 								<input type="text" class="form-control" name="rsv_checkin" id="from" placeholder="체크인 날짜를 선택하세요.">
 								<p class="msg err"></p>
+								</div>
 							</div>
-							<div class="form-group col-sm-8">
-								<label for="to" class="col-sm-5 control-label">체크아웃</label>
+							<div class="form-group">
+								<label for="rsv_checkout" class="h4 col-sm-5 control-label">체크아웃</label>
+								<div class="col-sm-11">
 								<input type="text" class="form-control" name="rsv_checkout" id="to" placeholder="체크아웃 날짜를 선택하세요.">
 								<p class="msg err"></p>
+								</div>
 							</div>
 							<!-- 반려동물 품종 -->
-							<div class="form-group col-sm-8">
-								<label for="animalBreed" class="col-sm-5 control-label">반려동물 품종</label>
+							<div class="form-group">
+								<label for="animalBreed" class="h4 col-sm-5 control-label">반려동물 품종</label>
+								<div class="col-sm-11">
 								<input type="text" class="form-control" name="rsv_type" id="animalBreed" placeholder="반려동물 품종을 입력하세요.">
 								<p class="msg err"></p>
+								</div>
 							</div>
 							<!-- 반려동물 나이 -->
-							<div class="form-group col-sm-8">
-								<label for="animalAge" class="col-sm-5 control-label">반려동물 나이</label>
+							<div class="form-group">
+								<label for="animalAge" class="h4 col-sm-5 control-label">반려동물 나이</label>
+								<div class="col-sm-11">
 								<input type="number" class="form-control" name="rsv_age" id="animalAge" placeholder="반려동물 나이를 입력하세요.">
 								<p class="msg err"></p>
+								</div>
 							</div>
 							<!-- 기타/주의사항 -->
 							<div class="form-group">
-								<label for="etc" class="col-sm-5 control-label">기타</label>
-								<div class="col-sm-8">
-									<textarea name="rsv_msg" id="etc" cols="60" rows="10" placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한 사항을 작성해주세요."></textarea><br/>
+								<label for="etc" class="h4 col-sm-5 control-label">기타</label>
+								<div class="col-sm-11">
+									<textarea name="rsv_msg" id="etc" cols="56" rows="10" placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등의 자세한 사항을 작성해주세요."></textarea><br/>
 									<span id="counter">(0 / 200)</span>
 								</div>
 							</div>
@@ -177,13 +198,16 @@
 					<!-- 예약하기 오른쪽(입력폼) end -->
 				</div>
 				<!-- .row end -->
-			</section>
+			</div>
 			<!-- section end -->
 		</div>
 		<!-- #container end -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		</div>
+		<!-- Footer end -->
 	</div>
 	<!-- #content end -->
-</div>
 <!-- .wrapper end  -->
 <!-- jQuery -->
 <script src="${root}js/jquery-1.12.4.js"></script>
@@ -193,16 +217,12 @@
 <script src="${root}js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root}js/bootstrap/bootstrap.js"></script>
+<!-- MAIN JS -->
+<script src="${root }js/main.js"></script>
 <!-- user add JS -->
 <script type="text/javascript" src="${root }js/site.js"></script>
 <script type="text/javascript">
-/* menu toggle button */
-$(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
- validation();
-});
+	validation();
 </script>
 </body>
 </html>

@@ -24,7 +24,9 @@ p {
     line-height: 1.7em;
     
 }
-
+.bg-comp{
+	background-color: rgb(11, 61, 105) !important;
+}
 a,
 a:hover,
 a:focus {
@@ -229,9 +231,23 @@ a.join:hover {
     color: rgb(11, 61, 105);
 }
 /* ---------------------------------------------------
-    CONTENT STYLE
+    CATEGORIES STYLE
 ----------------------------------------------------- */
 
+.categories{
+
+}
+.categories a:first-child{
+    margin-left: 30px;
+}
+
+.categories .btn{
+    margin-right: 25px;
+    height: 26px;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
 #content {
     width: 100%;
     padding: 10px;
@@ -243,6 +259,11 @@ a.join:hover {
     max-width: 1000px;
     margin: auto;
   }
+.section{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

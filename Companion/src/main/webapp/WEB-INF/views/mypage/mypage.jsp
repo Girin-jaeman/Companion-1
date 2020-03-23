@@ -62,16 +62,19 @@
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">예약조회</a>
+	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">상품보관함</a>
+	                                        <a class="nav-link" href="#">장바구니</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }logout">로그아웃</a>
 	                                    </li>
 	                                </ul>
 	                            </c:otherwise>
@@ -543,14 +546,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <!-- script end -->
 </body>
 </html>

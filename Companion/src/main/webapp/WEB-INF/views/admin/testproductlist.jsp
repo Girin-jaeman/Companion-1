@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
@@ -14,19 +14,26 @@
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-<title>Insert title here</title>
+	
+	<title>Insert title here</title>
 </head>
 <body>
+
 <!-- .wrapper [start] -->
 <div class="wrapper">
+
 	<!-- Sidebar -->
 	<jsp:include page="../common/admin_sidebar.jsp"/>
+	
 	<!-- #content [start] -->
 	<div id="content">
+	
 		<!-- nav [start] -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			
 			<!-- .container-fluid [start] -->
 			<div class="container-fluid">
+
 				<!-- menu toggle button [start] -->
 			    <button type="button" id="sidebarCollapse" class="btn btn-jacaranda">
 			        <i class="fas fa-align-left"></i>
@@ -38,6 +45,7 @@
 			        <i class="fas fa-align-justify"></i>
 			    </button>
 			    <!-- menu toggle button [end] -->
+			    
 				<!-- top menu bar [start] -->
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
@@ -53,75 +61,82 @@
 			        </ul>
 			    </div>
 			    <!-- top menu bar [end] -->
+			    
 			</div>
 			<!-- .container-fluid [end] -->
+			
 		</nav>
 		<!-- nav [end] -->
+		
 		<!-- section [start] -->
 		<section class="section">
-	<h1>관리자 페이지</h1>
-	<aside>
-		<ul>
-			<li><a href="${root}admin/testproductadd">상품등록</a></li>
-			<li><a href="${root}admin/testproductlist">상품목록</a></li>
-			<li><a href="#">상품소감</a></li>
-			<li><a href="#">유저목록</a></li>
-		</ul>
-	</aside>
-	<h2>상품 목록</h2>
-	<table class="table">
-	 <thead>
-	  <tr>
-	   <th>카테고리번호</th>
-	   <th>상품번호</th>
-	   <th>이름</th>
-	   <th>설명</th>
-	   <th>가격</th>
-	   <th>수량</th>
-	   <th>등록날짜</th>
-	  </tr>
-	 </thead>
-	 <tbody>
-	  <c:forEach items="${adminProductList}" var="bean">
-	  <tr>
-	   <td>${bean.category_id}</td>
-	   <td>${bean.product_id}</td>
-	   <td>
-	   	<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_name}</a>
-	   </td>
-	   <td>${bean.product_content}</td>
-	   <td>
-	   	<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
-	   </td>
-	   <td>${bean.product_stock}</td>
-	   <td>
-	   	<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
-	   </td>
-	  </tr>   
-	  </c:forEach>
-	 </tbody>
-	</table>
-	</section>
-	</div>
-	<!-- #content [end] -->
-</div>
-<!-- .wrapper [end] -->
-	
-    <!-- jQuery -->
-    <script src="${root }js/jquery-1.12.4.js"></script>
-    <!-- Popper.JS -->
-    <script src="${root }js/bootstrap/popper.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="${root }js/bootstrap/bootstrap.js"></script>
-    
-    <script type="text/javascript">
-	/* menu toggle button */
+			<h1>관리자 페이지</h1>
+			<aside>
+			<ul>
+				<li><a href="${root}admin/testproductadd">상품등록</a></li>
+				<li><a href="${root}admin/testproductlist">상품목록</a></li>
+				<li><a href="#">상품소감</a></li>
+				<li><a href="#">유저목록</a></li>
+			</ul>
+			</aside>
+				<h2>상품 목록</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>이미지</th>
+							<th>이름</th>
+							<th>카테고리</th>
+							<th>가격</th>
+							<th>수량</th>
+							<th>등록날짜</th>
+						</tr>
+					</thead>
+				<tbody>
+				<c:forEach items="${adminProductList}" var="bean">
+					<tr>
+						<td>
+							<img src="${pageContext.request.contextPath}${bean.product_thumb}"/>
+						</td>
+						<td>
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_name}</a>
+						</td>
+						<td>
+							${bean.category_name}
+						</td>
+						<td>
+							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
+						</td>
+						<td>
+							${bean.product_stock}
+						</td>
+						<td>
+							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
+						</td>
+					</tr>   
+				</c:forEach>
+				</tbody>
+			</table>
+		</section>
+	</div><!-- #content [end] -->
+</div><!-- .wrapper [end] -->
+
+
+
+<!-- jQuery -->
+<script src="${root }js/jquery-1.12.4.js"></script>
+<!-- Popper.JS -->
+<script src="${root }js/bootstrap/popper.js"></script>
+<!-- Bootstrap JS -->
+<script src="${root }js/bootstrap/bootstrap.js"></script>
+
+<script type="text/javascript">
+	// menu toggle button 
 	$(document).ready(function () {
 	    $('#sidebarCollapse').on('click', function () {
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
-	</script>
+</script>
 	
 </body>
 </html>

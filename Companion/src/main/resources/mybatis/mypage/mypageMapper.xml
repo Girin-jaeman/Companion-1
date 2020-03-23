@@ -22,4 +22,19 @@
   	<select id="questionList" parameterType="String" resultType="mypageQuestionBean">
   		select * from question where member_id=#{member_id} order by question_date desc
   	</select>
+  	<select id="productThumb" parameterType="String" resultType="String">
+  		select product_thumb from product where product_id=#{product_id}
+  	</select>
+  	<select id="productName" parameterType="String" resultType="String">
+  		select product_name from product where product_id=#{product_id}
+  	</select>
+  	<select id="reserveList" parameterType="String" resultType="mypageReserveBean">
+  		select * from reserve where member_id=#{member_id} order by reserve_date desc
+  	</select>
+  	<select id="serviceName" parameterType="String" resultType="String">
+  		select service_name from service where service_id=#{service_id}
+  	</select>
+  	<select id="reserveStateName" parameterType="String" resultType="String">
+  		select reserve_state_name from reserve_state where reserve_state_id=#{reserve_state_id}
+  	</select>
   </mapper>

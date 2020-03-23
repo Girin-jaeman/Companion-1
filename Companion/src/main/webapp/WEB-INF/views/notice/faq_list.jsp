@@ -72,6 +72,9 @@
 				</ul>
 			</div>
 		</div>
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 	</div>
 </div>
     <!-- jQuery -->
@@ -84,6 +87,8 @@
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <script type="text/javascript">
      // FAQ Slide
         $('.faq_list').boardSlide({

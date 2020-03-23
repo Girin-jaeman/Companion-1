@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
+import com.bit.companion.model.entity.mypage.MypageReserveVo;
 
 @Repository
 public class MypageDaoImpl implements MypageDao {
@@ -64,7 +65,44 @@ public class MypageDaoImpl implements MypageDao {
 	public List<MypageQuestionVo> questionList(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
 		String member_id=bean.getMember_id();
-		return sqlSession.selectList("mypage.questionList", member_id);
+		List<MypageQuestionVo> list=sqlSession.selectList("mypage.questionList",member_id);
+		MypageQuestionVo bean2=new MypageQuestionVo();
+		String product_id="";
+		String product_thumb="";
+		String product_name="";
+		for(int i=0; i<list.size(); i++) {
+			bean2=list.get(i);
+			product_id=bean2.getProduct_id();
+			product_thumb=sqlSession.selectOne("mypage.productThumb",product_id);
+			product_name=sqlSession.selectOne("mypage.productName",product_id);
+			bean2.setProduct_thumb(product_thumb);
+			bean2.setProduct_name(product_name);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<MypageReserveVo> reserveList(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		String member_id=bean.getMember_id();
+		List<MypageReserveVo> list=sqlSession.selectList("mypage.reserveList",member_id);
+		MypageReserveVo bean2=new MypageReserveVo();
+		String service_id="";
+		String service_name="";
+		String reserve_state_id="";
+		String reserve_state_name="";
+		for(int i=0; i<list.size(); i++) {
+			bean2=list.get(i);
+			service_id=bean2.getService_id();
+			reserve_state_id=bean2.getReserve_state_id();
+			service_name=sqlSession.selectOne("mypage.serviceName",service_id);
+			reserve_state_name=sqlSession.selectOne("mypage.reserveStateName",reserve_state_id);
+			bean2.setService_name(service_name);
+			bean2.setReserve_state_name(reserve_state_name);
+			System.out.println(bean2.toString());
+		}
+		return list;
 	}
 	
 

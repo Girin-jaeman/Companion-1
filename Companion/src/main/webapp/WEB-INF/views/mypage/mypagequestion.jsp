@@ -62,16 +62,19 @@
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">예약조회</a>
+	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">상품보관함</a>
+	                                        <a class="nav-link" href="#">장바구니</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }logout">로그아웃</a>
 	                                    </li>
 	                                </ul>
 	                            </c:otherwise>
@@ -81,9 +84,52 @@
 	                </div>
 	            </nav>
 	            <div class="maincontent">
-					<c:forEach items="${questionList }" var="bean">
-						${bean.product_id }</br>
-					</c:forEach>	            
+	            	<ul class="list-unstyled components">
+						<c:forEach items="${questionList }" var="bean">
+							<ul>
+								<li class="list-group-item list-group-item-primary">
+									<div class="row">
+										<!-- 나중에 해당 상품페이지로 이동하게 앵커달기 -->
+										<div class="col-2">${bean.product_thumb }</div>
+										<div class="col-7">${bean.product_name }</div>
+										<div class="col-2">${bean.question_date }</div>
+										<div class="col-1">
+											<button class="btn btn-primary" onclick="toggleQuestion(${bean.question_id })" id="questionBtn_${bean.question_id }">
+												열기
+											</button>
+										</div>
+									</div>
+								</li>
+								<ul class="list-group-item list-group-item-secondary list-unstyled" id="${bean.question_id }" style="display:none">
+										<li class="row">
+											<div class="col-1">Q.</div>
+											<div class="col-11">
+												${bean.question_title }</br>
+												${question_content }
+											</div>
+										</li>
+<c:choose>
+<c:when test="${bean.question_answer != null }">
+									<li class="row">
+			                           	<div class="col-1">A.</div>
+			                           	<div class="col-11">
+			                           		${bean.question_answer }
+			                           	</div>
+									</li>
+</c:when>
+<c:otherwise>
+									<li class="row">
+			                           	<div class="col-1">A.</div>
+			                           	<div class="col-11">
+			                           		답변 대기중입니다. 신속히 답변드릴 수 있도록 하겠습니다.
+			                           	</div>
+									</li>
+</c:otherwise>
+</c:choose>
+								</ul>
+							</ul>
+						</c:forEach>	            
+	            	</ul>
 	            </div>
 			</div>
 			
@@ -107,18 +153,41 @@
 	<!-- content -->
 	
 	<!-- script start -->
+<<<<<<< HEAD
+	<!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
 	<!-- Popper.JS -->
+=======
+    <!-- jQuery -->
+    <script src="${root }js/jquery-1.12.4.js"></script>
+    <!-- Popper.JS -->
+>>>>>>> bb808c75f9ba84f85436d4f62d86b6a0963b6371
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
 
+<<<<<<< HEAD
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
         });
+        
+        function toggleQuestion(question_id){
+        	if($('#'+question_id).css("display")=="none"){
+        		$('#'+question_id).show();
+        		$('#questionBtn_'+question_id).text("닫기");
+        	}else{
+        		$('#'+question_id).hide();
+        		$('#questionBtn_'+question_id).text("열기");
+        	}
+        }
     </script>
+=======
+>>>>>>> bb808c75f9ba84f85436d4f62d86b6a0963b6371
     <!-- script end -->
 
 </body>

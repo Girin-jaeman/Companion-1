@@ -46,4 +46,6 @@ insert into `like` values (null,'admin',2);
 insert into `like` values (null,'admin',3);
 select count(product_id) from `like` where member_id='admin' and product_id=2;
 
+select p.product_id,p.product_name,c.category_name, (select count(*) from `like` l where p.product_id=l.product_id) "count" 
+from `product` p, category c where p.category_id=c.category_id order by p.product_id desc;
 

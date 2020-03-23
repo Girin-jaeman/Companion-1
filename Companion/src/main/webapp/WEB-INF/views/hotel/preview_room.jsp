@@ -54,7 +54,7 @@
 								<a class="nav-link" href="${root }hotel/reservation">예약하기</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="${root }hotel/preroom">룸미리보기</a>
+								<a class="nav-link active" href="${root }hotel/preroom">룸미리보기</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="${root }hotel/infocare">돌보미정보</a>
@@ -69,7 +69,18 @@
 			    <!-- .container-fluid end -->
 			</nav>
 		    <!-- nav end -->
-		    
+		    <div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    호텔서비스
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    룸미리보기
+                </a>
+                <hr class="mb-4">
+            </div>
 		    <!-- section start -->
 			<section class="section">
 				<!-- .row start -->
@@ -83,7 +94,9 @@
 			</section>
 			<!-- section end -->
 		</div>
-		<!-- #container end -->
+			<!-- Footer  -->
+				<jsp:include page="../common/footer.jsp"/>
+			<!-- Footer end -->
 	</div>
 	<!-- #content end -->
 </div>
@@ -96,13 +109,8 @@
 <script src="${root}js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root}js/bootstrap/bootstrap.js"></script>
-<script type="text/javascript">
-/* menu toggle button */
-$(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
-});
-</script>
+<!-- MAIN JS -->
+<script src="${root }js/main.js"></script>
+
 </body>
 </html>
