@@ -22,7 +22,8 @@
 .board_slide .item .tit{background: url(../../imgs/notice/faq_down.png) no-repeat 98% 50%;
 }
 .board_slide .on .tit{background: url(../../imgs/notice/faq_up.png) no-repeat 98% 50%;}
-.board_slide .item .tit>a{display: block;position: relative;padding: 16px 30px 16px 60px;font-size: 16px;color: #333;line-height: 22px;
+.board_slide .item .tit>a{
+    display: block; position: relative; padding: 16px 30px 16px 60px; line-height: 22px;
 }
 .board_slide .item .tit>a>strong{
     position: absolute;left: 30px;top: 14px;font-size: 20px; color: #e8340c;
@@ -31,7 +32,7 @@
     display: none;position: relative;overflow: hidden;
 }
 .board_slide .item .hidden .txt{
-    position: relative;padding: 28px 30px 28px 60px;font-size: 18px;color: #555;line-height: 26px;border-top: 1px solid #c0c0c0;background: #f8f8f8;
+    position: relative;padding: 28px 30px 28px 60px; line-height: 26px;border-top: 1px solid #c0c0c0;background: #f8f8f8;
 }
 .board_slide .item .hidden .txt>strong{
     position: absolute;left: 31px;top:26px;font-size: 20px;color: #e8340c;

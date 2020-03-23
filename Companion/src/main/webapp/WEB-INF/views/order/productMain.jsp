@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
-	<html>
-	
+	<html> 
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,49 +17,11 @@
 		<link rel="stylesheet" href="${root}css/home.css">
 		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/main.css">
+		<link rel="stylesheet" href="${root}css/order/productMain.css">
+		
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<style type="text/css">
-		.product-grid{font-family:Raleway,sans-serif;text-align:center;padding:0 0 72px;border:1px solid rgba(0,0,0,.1);overflow:hidden;position:relative;z-index:1}
-		.product-grid .product-image{position:relative;transition:all .3s ease 0s}
-		.product-grid .product-image a{display:block}
-		.product-grid .product-image img{width:100%;height:auto}
-		.product-grid .pic-1{opacity:1;transition:all .3s ease-out 0s}
-		.product-grid:hover .pic-1{opacity:1}
-		.product-grid .pic-2{opacity:0;position:absolute;top:0;left:0;transition:all .3s ease-out 0s}
-		.product-grid:hover .pic-2{opacity:1}
-		.product-grid .social{width:150px;padding:0;margin:0;list-style:none;opacity:0;transform:translateY(-50%) translateX(-50%);position:absolute;top:60%;left:50%;z-index:1;transition:all .3s ease 0s}
-		.product-grid:hover .social{opacity:1;top:50%}
-		.product-grid .social li{display:inline-block}
-		.product-grid .social li a{color:#fff;background-color:#333;font-size:16px;line-height:40px;text-align:center;height:40px;width:40px;margin:0 2px;display:block;position:relative;transition:all .3s ease-in-out}
-		.product-grid .social li a:hover{color:#fff;background-color:#ef5777}
-		.product-grid .social li a:after,.product-grid .social li a:before{content:attr(data-tip);color:#fff;background-color:#000;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
-		.product-grid .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
-		.product-grid .social li a:hover:after,.product-grid .social li a:hover:before{opacity:1}
-		.product-grid .product-discount-label,.product-grid .product-new-label{color:#fff;background-color:#ef5777;font-size:12px;text-transform:uppercase;padding:2px 7px;display:block;position:absolute;top:10px;left:0}
-		.product-grid .product-discount-label{background-color:#333;left:auto;right:0}
-		.product-grid .rating{color:#FFD200;font-size:12px;padding:12px 0 0;margin:0;list-style:none;position:relative;z-index:-1}
-		.product-grid .rating li.disable{color:rgba(0,0,0,.2)}
-		.product-grid .product-content{background-color:#fff;text-align:center;padding:12px 0;margin:0 auto;position:absolute;left:0;right:0;bottom:-27px;z-index:1;transition:all .3s}
-		.product-grid:hover .product-content{bottom:0}
-		.product-grid .title{font-size:13px;font-weight:400;letter-spacing:.5px;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
-		.product-grid .title a{color:#828282}
-		.product-grid .title a:hover,.product-grid:hover .title a{color:#ef5777}
-		.product-grid .price{color:#333;font-size:17px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.6px;margin-bottom:8px;text-align:center;transition:all .3s}
-		.product-grid .price span{color:#999;font-size:13px;font-weight:400;text-decoration:line-through;margin-left:3px;display:inline-block}
-		.product-grid .add-to-cart{color:#000;font-size:13px;font-weight:600}
-		@media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
-		.btn-group {
-			width:100%;
-		}
-		.btn btn-secondary {
-			width:100%;
-		}
-		
-		}
-	</style>		
-		
 		
 		
 	</head>
@@ -79,7 +40,7 @@
 	
 						<button type="button" id="sidebarCollapse" class="btn btn-info">
 							<i class="fas fa-align-left"></i>
-							<span>Toggle Sidebar</span>
+							<span>메뉴</span>
 						</button>
 						<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<i class="fas fa-align-justify"></i>
@@ -87,46 +48,79 @@
 	
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item active">
-									<a class="nav-link" href="#">Page</a>
-								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-							</ul>
+                                <a class="nav-link active" href="/companion/order/productMain?c=100">사료</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=200">간식</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=300">장난감</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=400">미용용품</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=500">목욕용품</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=600">위생용품</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/companion/order/productMain?c=700">산책용품</a>
+                            </li>
+                        </ul>
 						</div>
 					</div>
 				</nav>
+				<div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    쇼핑하기
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    사료
+                </a>
+                <hr class="mb-4">
+            </div>
 		<!-- content -->
-		<div class="container">
-			  <div class="btn-group" role="group">
+		<div class="maincontent">
+				<nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">추천순</li>
+                        <li class="breadcrumb-item"><a href="#">판매인기순</a></li>
+                        <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="#">상품평순</a></li>
+                        <li class="breadcrumb-item"><a href="#">등록일순</a></li>
+                    </ol>
+
+                </nav>
+		
+			  <!-- <div class="btn-group" role="group">
 			    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			      카테고리  
 			    </button>
 			    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 			      <a class="dropdown-item" href="/companion/order/productMain?c=100">사료</a>
-			      <a class="dropdown-item" href="/companion/order/productMain?c=200">간식</a>   <!-- 1차분류 -->
-			      <a class="dropdown-item" href="/companion/order/productMain?c=300">장난감</a>   <!-- 1차분류 -->
-			      <a class="dropdown-item" href="/companion/order/productMain?c=400">미용용품</a>  <!-- 1차분류 -->
-			      <a class="dropdown-item" href="/companion/order/productMain?c=500">목욕용품</a>  <!-- 1차분류 -->
-			      <a class="dropdown-item" href="/companion/order/productMain?c=600">위생용품</a>   <!-- 1차분류 -->
-			      <a class="dropdown-item" href="/companion/order/productMain?c=700">산책용품</a>    <!-- 1차분류 -->
+			      <a class="dropdown-item" href="/companion/order/productMain?c=200">간식</a>   1차분류
+			      <a class="dropdown-item" href="/companion/order/productMain?c=300">장난감</a>   1차분류
+			      <a class="dropdown-item" href="/companion/order/productMain?c=400">미용용품</a>  1차분류
+			      <a class="dropdown-item" href="/companion/order/productMain?c=500">목욕용품</a>  1차분류
+			      <a class="dropdown-item" href="/companion/order/productMain?c=600">위생용품</a>   1차분류
+			      <a class="dropdown-item" href="/companion/order/productMain?c=700">산책용품</a>    1차분류
 			    </div>
 				<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-				  <button type="button" class="btn btn-secondary">추천순</button>  <!-- 2차분류 -->
-				  <button type="button" class="btn btn-secondary">판매인기순</button>  <!-- 2차분류 -->
-				  <button type="button" class="btn btn-secondary">낮은 가격순</button>  <!-- 2차분류 -->
-				  <button type="button" class="btn btn-secondary">높은 가격순</button>  <!-- 2차분류 -->
-				  <button type="button" class="btn btn-secondary">상품평순</button>  <!-- 2차분류 -->
-				  <button type="button" class="btn btn-secondary">등록일순</button>  <!-- 2차분류 -->
+				  <button type="button" class="btn btn-secondary">추천순</button>  2차분류
+				  <button type="button" class="btn btn-secondary">판매인기순</button>  2차분류
+				  <button type="button" class="btn btn-secondary">낮은 가격순</button>  2차분류
+				  <button type="button" class="btn btn-secondary">높은 가격순</button>  2차분류
+				  <button type="button" class="btn btn-secondary">상품평순</button>  2차분류
+				  <button type="button" class="btn btn-secondary">등록일순</button>  2차분류
 				</div>
-			  </div>
+			  </div> -->
 			  
 			  <!-- 썸네일 -->
 			  
@@ -134,7 +128,7 @@
 			        <%--    <% for(int i=0;i<20;i++){ %>  --%>
 			<c:forEach items="${productCategory }" var="bean"> 
 			        <div class="col-md-3 col-sm-6"> 
-			            <div class="product-grid">
+			            <div class="product-grid productbox">
 			                <div class="product-image">
 			                    <a href="productDetail/${bean.product_id }">
 			                    
@@ -181,9 +175,11 @@
 			                    <li class="fa fa-star"></li>
 			                </ul>
 			                <div class="product-content">
-			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_thumb }</a></h3>
-			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_id }</a></h3>
+			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_thumb } // ${bean.category_id }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_name }</a></h3> 
+			                <!-- 상품 추천 수 받아올 것. -->
+			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3> 
+			                <!-- 상품 추천 수 받아올 것. -->
 			                
 			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
 			                    <h3 class="title"><a href="#"> ${productlist.product_option1 } 나오는지 확인</a></h3> --%>
@@ -197,12 +193,14 @@
 			             <c:set var = "memberID" value="${memberVo.member_id }"/>         
 			               <c:choose>
 									<c:when test="${memberVo.member_id==null}">	
-					                    <a id=btn href="${root }login"><img id="DDaBong" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href="${root }login"><img  src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
 					               </c:when>  
 									<c:when test="${memberVo.member_id!=null }">	
-					                    <button><img src="${root }imgs/shopping/빈따봉1.jpg"></button><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <%System.out.println("따봉 클릭!할때만 작동하라고..."); %>
 					               </c:when>  
-			                </c:choose>    
+ 			                </c:choose>       
+					 
 			               <!-- 따봉 로그인 세션 검사  -->   
 			                    <div class="price">$5.00
 			                        <span>$10.00</span>
@@ -217,21 +215,17 @@
   
     </div>
 			  <!-- 썸네일 쇼쇼핑멀 끝 -->
-			  
-			  <!-- 페이징 -->
-			      <!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${pagination.prev }" name="prev"/>
-			<jsp:param value="${pagination.next }" name="next"/>
-			<jsp:param value="${pagination.page }" name="page"/>
-			<jsp:param value="${pagination.range }" name="range"/>
-			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${pagination.startPage }" name="startPage"/>
-			<jsp:param value="${pagination.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
-			  
-			  <!-- 페이징 끝 -->
+					      <!-- pagination [start] -->
+				<jsp:include page="../common/pagination.jsp">
+					<jsp:param value="${pagination.prev }" name="prev"/>
+					<jsp:param value="${pagination.next }" name="next"/>
+					<jsp:param value="${pagination.page }" name="page"/>
+					<jsp:param value="${pagination.range }" name="range"/>
+					<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
+					<jsp:param value="${pagination.startPage }" name="startPage"/>
+					<jsp:param value="${pagination.endPage }" name="endPage"/>
+				</jsp:include>
+				<!-- pagination [end] -->		
 		</div><!-- container end  -->
 		
 
@@ -245,50 +239,73 @@
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
-
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$('#sidebarCollapse').on('click', function () {
-					$('#sidebar').toggleClass('active');
-				});
-			});
-		</script>
+	    <!-- MAIN JS -->
+    	<script src="${root }js/main.js"></script>
 		<!-- 추천수 script start -->
-		<script>
+		<script type="text/javascript">
 		//추천 버튼 클릭할 때 no 와 id 값을 가지고 url 주소로 이동함. 성공했을 경우 recCount 함수를 호출 함. 
 		//recCount 는 현재 게시글의 추천수를 구하는 함수.  
 		//추천 버튼이 성공할 경우 db에 저장된 추천수를 구해온 후 <span class="rec_count">에 html 함수를 이용하여 갯수 출력.
-			$(function(){
-				$("DDaBong").click(function(){
-					$.ajax({
-						url:"/productMain",
-						type="POST",
-						data: {
-							no: ${productDetailOne.product_id},
-							id: '${id}'  //이게 무슨 id??
-						},
-						success: function(){
-							recCount();
-						},
-						
-					})
-				})
+	
+/* 		
+ 		function like_func(){
+			var productNo="<c:out value='${productDetailOne.product_id}'/>";
+			var frm_read=$('#frm_read');
+			var productNo = $('#productNo',frm_read).val(); 
+		 		console.log("like_func implement "+productNo);
+		
+			$.ajax({
+				url:"/productMain/like.do",
+				type:"POST",
+				cache:false,
+				dataType:"json",
+				data:'productNo='+productNo,
+				success:function(data){
+					var msg='';
+				if(data.like_check==0){
+					like_img="${root }imgs/shopping/빈따봉1.jpg";
+				}else{
+					like_img="${root }imgs/shopping/찬따봉.jpg";
+				}
+				${'#like_img '}.attr('src'.like_img);
+				},
+				error:function(request.status.error){ 
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error : "+error);
+				}
+			});
+		}
+		 */
+		
+		
+/* 		
+		function get_like(){
+			$.getJSON('productMain/',function(data){
+				var arr=data;
+				var Like=$('DDaBong').addClass('p');
+				body.html(DDaBong);
+				DDaBong.append('추천수 : ');
+	 		for(var i=0l;i<arr.length; i++){
+					$('DDaBong').appendTo(Like).text(arr[i].like_id])
+				} 
 			})
-		//추천 버튼 클릭할 때. end
-			//게시글 추천 수
-			function recCount(){
-				$.ajax({
-					url:"/productMain",
-					type: "POST",
-					data:{
-						no: ${productDetailOne.product_id}
-					},
-					success: function (count){
-						$(".rec_count").html(count);
-					},
-				})
+		}
+		
+		
+		
+ 		
+		function like_func(){
+			var param={
+					product_id:$('#product_id').val(),
+					member_id:$('#member_id').val()
 			};
-			recCount();
+			$.post('productMain/like.do',param,function(){
+				get_like();
+			});
+		} 
+		
+		 */
+
+	
 			
 			
 			//게시글 추천 수. end

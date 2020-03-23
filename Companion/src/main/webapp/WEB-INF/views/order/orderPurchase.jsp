@@ -214,6 +214,8 @@
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
+		<!-- MAIN JS -->
+   		<script src="${root }js/main.js"></script>		
 						<!--api 스크립트 시작  -->
 						<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 						<script>
@@ -328,15 +330,7 @@
 				}) 
 			</script>
 		<!-- 배송지 주소 검색 API END  -->	
-			<script type="text/javascript">
-				$(document).ready(function () {
-					$('#sidebarCollapse').on('click', function () {
-						$('#sidebar').toggleClass('active');
-					});
-				});
-			</script>
-		
-			
+
 	</body>
 	
 	</html>
