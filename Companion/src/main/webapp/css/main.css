@@ -259,6 +259,11 @@ a.join:hover {
     max-width: 1000px;
     margin: auto;
   }
+.section{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
