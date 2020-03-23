@@ -43,6 +43,8 @@
 	<resources location="/resources/imgUpload/" mapping="/imgUpload/**"/>
 	<!-- ckeditor File Upload Path -->
 	<resources location="/resources/ckUpload/" mapping="/ckUpload/**"/>
+	<!-- none File Upload Path -->
+	<resources location="/resources/images/" mapping="/images/**"/>
 	
 	
 </beans:beans>

@@ -2,7 +2,7 @@ package com.bit.companion.model.entity.admin;
 
 import java.sql.Date;
 
-public class AdminCateProdVo {
+public class AdminProductViewVo {
 	private int category_id;
 	private int category_refid;
 	private String category_name;
@@ -21,10 +21,10 @@ public class AdminCateProdVo {
 	private String product_option4;
 	private String product_option5;
 	
-	public AdminCateProdVo() {
+	public AdminProductViewVo() {
 	}
 
-	public AdminCateProdVo(int category_id, int category_refid, String category_name, int product_id,
+	public AdminProductViewVo(int category_id, int category_refid, String category_name, int product_id,
 			String product_name, String product_content, int product_price, int product_stock, Date product_date,
 			String product_image, String product_thumb, String product_option1, String product_option2,
 			String product_option3, String product_option4, String product_option5) {

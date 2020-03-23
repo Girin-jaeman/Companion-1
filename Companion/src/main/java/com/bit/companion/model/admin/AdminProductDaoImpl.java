@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.bit.companion.model.entity.admin.AdminCateProdVo;
+import com.bit.companion.model.entity.admin.AdminProductViewVo;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -20,7 +20,7 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	@Autowired
 	SqlSession sqlsession;
 	
-	// product add page category list - selectCategory
+	// category list (product add page) - selectCategory
 	@Override
 	public List<AdminCategoryVo> selectCategory() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectCategory");
@@ -34,13 +34,13 @@ public class AdminProductDaoImpl implements AdminProductDao{
 
 	// product list - selectAll
 	@Override
-	public List<AdminProductVo> selectAll() throws SQLException {
+	public List<AdminProductViewVo> selectAll() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectAll");
 	}
 
 	// product detail - selectOne
 	@Override
-	public AdminCateProdVo selectOne(int product_id) throws SQLException {
+	public AdminProductViewVo selectOne(int product_id) throws SQLException {
 		return sqlsession.selectOne("adminProduct.selectOne",product_id);
 	}
 

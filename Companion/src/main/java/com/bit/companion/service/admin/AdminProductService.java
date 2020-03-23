@@ -6,7 +6,7 @@ import com.bit.companion.model.entity.admin.AdminProductVo;
 
 public interface AdminProductService {
 
-	// product add page category list
+	// category list (product add page)
 	void category(Model model);
 	
 	// product add
@@ -21,6 +21,6 @@ public interface AdminProductService {
 	// product edit
 	void update(AdminProductVo bean);
 	
-	//product delete
+	// product delete
 	void delete(int product_id);
 }
