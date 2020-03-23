@@ -71,7 +71,7 @@
 	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagechk">회원정보 확인/수정</a>
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
 	                                    </li>
 	                                </ul>
 	                            </c:otherwise>
@@ -90,12 +90,12 @@
 									<div class="col-9">${bean.product_name }</div>
 									
 									<div class="col-1">
-										<a href="#${bean.question_id }question" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-											확인
-										</a>											
+										<button class="btn btn-primary" onclick="toggleQuestion(${bean.question_id })" id="questionBtn_${bean.question_id }">
+											열기
+										</button>
 									</div>
 								</li>
-								<ul class="collapse list-unstyled" id="${bean.question_id }question">
+								<ul class="list-unstyled" id="${bean.question_id }" style="display:none">
 										<li class="row">
 											<div class="col-1">Q.</div>
 											<div class="col-11">
@@ -161,6 +161,16 @@
                 $('#sidebar').toggleClass('active');
             });
         });
+        
+        function toggleQuestion(question_id){
+        	if($('#'+question_id).css("display")=="none"){
+        		$('#'+question_id).show();
+        		$('#questionBtn_'+question_id).text("닫기");
+        	}else{
+        		$('#'+question_id).hide();
+        		$('#questionBtn_'+question_id).text("열기");
+        	}
+        }
     </script>
     <!-- script end -->
 
