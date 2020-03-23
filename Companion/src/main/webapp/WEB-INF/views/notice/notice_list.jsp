@@ -97,6 +97,9 @@
 			<jsp:param value="${pagination.endPage }" name="endPage"/>
 		</jsp:include>
 		<!-- pagination [end] -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 	</div>
 	<!-- Content [end] -->
 </div>

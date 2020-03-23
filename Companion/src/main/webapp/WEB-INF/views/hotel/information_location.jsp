@@ -60,7 +60,7 @@
 								<a class="nav-link" href="${root }hotel/infocare">돌보미정보</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="${root }hotel/infoloc">위치정보</a>
+								<a class="nav-link active" href="${root }hotel/infoloc">위치정보</a>
 							</li>
 						</ul>
 			        </div>
@@ -69,7 +69,18 @@
 			    <!-- .container-fluid end -->
 			</nav>
 		    <!-- nav end -->
-		    
+		    <div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    호텔서비스
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    위치정보
+                </a>
+                <hr class="mb-4">
+            </div>
 		    <!-- section start -->
 			<section class="section">
 				<!-- .row start -->
@@ -84,6 +95,9 @@
 			<!-- section end -->
 		</div>
 		<!-- #container end -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 	</div>
 	<!-- #content end -->
 </div>

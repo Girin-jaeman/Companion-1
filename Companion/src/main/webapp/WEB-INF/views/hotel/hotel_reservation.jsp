@@ -202,9 +202,12 @@
 			<!-- section end -->
 		</div>
 		<!-- #container end -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		</div>
+		<!-- Footer end -->
 	</div>
 	<!-- #content end -->
-</div>
 <!-- .wrapper end  -->
 <!-- jQuery -->
 <script src="${root}js/jquery-1.12.4.js"></script>

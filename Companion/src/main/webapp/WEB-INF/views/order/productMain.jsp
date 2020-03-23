@@ -227,7 +227,9 @@
 				</jsp:include>
 				<!-- pagination [end] -->		
 		</div><!-- container end  -->
-		
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 
 		<!-- content -->
 			</div>

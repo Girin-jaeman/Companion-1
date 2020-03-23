@@ -72,6 +72,9 @@
 				</ul>
 			</div>
 		</div>
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		<!-- Footer end -->
 	</div>
 </div>
     <!-- jQuery -->
