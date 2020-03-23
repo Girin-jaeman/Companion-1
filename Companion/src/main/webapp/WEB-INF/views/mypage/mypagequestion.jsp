@@ -74,7 +74,7 @@
 	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">로그아웃</a>
+	                                        <a class="nav-link" href="${root }logout">로그아웃</a>
 	                                    </li>
 	                                </ul>
 	                            </c:otherwise>

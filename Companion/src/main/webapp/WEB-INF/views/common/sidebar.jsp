@@ -97,7 +97,7 @@
                      </c:when>
                      <c:otherwise>
                          <ul class="list-unstyled conn">
-                             <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+                             <p>${sessionScope.memberVo.member_name }님이<br/>로그인 중입니다.</p>
                              <li>
                                  <a href="${root }mypagechk" class="nav-link">나의정보</a>
                              </li>
