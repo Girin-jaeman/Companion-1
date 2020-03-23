@@ -74,25 +74,30 @@ select * from a left join b on a.id = b.id union select * from b left join a on 
 select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date, a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5,b.product_id, b.like_id, b.member_id from `product` as a left join `like` as b on a.product_id=b.product_id union select a.like_id, a.member_id, a.product_id,b.category_id, b.product_id, b.product_name, b.product_content, b.product_price, b.product_stock, b.product_date, b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, b.product_option4, b.product_option5 from `like` as a  left join `product` as b on a.product_id=b.product_id ;
 
 ///////// value값 넣어서 카테고리 별로 출력할 수 있도록 해야 함 밑에 쿼리문
+(추천수도 찾을 수 있게 변경함.)
 		select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date,
 		  a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5, 
-		  b.product_id, b.like_id, b.member_id from `product` as a left join `like` as b on a.product_id=b.product_id 
+		  b.product_id, (select count(*) from `like` l where a.product_id = l.product_id) as `like_id`, b.member_id from `product` as a left join `like` as b on 		  				  a.product_id=b.product_id 
 		  where a.category_id=#{value} 
 		union select b.category_id, b.product_id, b.product_name,b.product_content, b.product_price, b.product_stock, b.product_date,
 		 b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, b.product_option4, b.product_option5, 
-		 a.product_id, a.like_id, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
-		 where b.category_id=#{value};
+		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on 		 				 a.product_id=b.product_id 
+		 where b.category_id=#{value}; 
+
 ///////////////////// b. category_id 에는 mybatis #{value} 로 처리해야함
 
 
 
+----------------------------product_detail_page 답글 기능 -----------------
+<!-- 답글 입력 -->
+insert into question
+          VALUES (default,100,null,2,'1111',now(),null,'확인용1','내용확인용1',null,null,default,default); 
 
 
+<!-- 답글 조회 -->
+select * from question where product_id = 3;  
 
-
-
-
-
+----------------------------product_detail_page 답글 기능 -----------------
 
 
 

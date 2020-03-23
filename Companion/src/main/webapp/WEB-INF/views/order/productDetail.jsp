@@ -242,7 +242,9 @@
 				<h5>//////////저렴하고 값싸고 아주 cheap 한 price에 좋은 product를 get했씁니다 여러분도 이 사이트에서 구매하시고 반려견과 행복한 생활을 하시길 바라며 이 글을 씁니다 아주 만족스럽고 환상적인 물건입니다. 김진우 올림. ////////////////</h5>  이미지 사이즈 90 X 90
 			</div>
 			<!-- 후기글 -->
-			<!-- 문의글 -->
+			
+			
+				<!-- 문의글 -->
 			<hr class="mb-2">
 		<div class="row" id="inquiry">	<!-- 테이블로 넣자  -->
 				<div class="col-sm-3"><h4>문의하기</h4></div>
@@ -255,7 +257,78 @@
 				<!--  -->
 				<div class="col-sm-6"> 구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
 				<div class="col-sm-6"></div>
-				<table class="table">
+				
+				
+				<div id="reply">
+				<c:if test="${memberVo.member_id==null}">	
+						<p>소감을 남기려면 로그인 해주세요!</p>
+				</c:if>
+				<c:if test="${memberVo.member_id!=null}">	
+						 <section class="replyForm">
+						  <form action="${root }order/productDetail/question" role="form" method="post" autocomplete="off">
+						  
+					  	<input type="hidden" name="product_id" value="${productDetailOne.product_id }">
+					  	<%-- 		<input type="hidden" name="order_id" value="${productDetailOne.order_id }">  --%>
+						  		
+						  
+							<div class="input_area">
+								<textarea name="question_title" id="question_title">문의 제목</textarea>
+								<textarea name="question_content" id="question_content">컨텐츠</textarea>
+							</div>
+							<div class="input_area">
+								<button type="submit" id="reply_btn">문의글 달기</button>
+							</div>
+						  </form>
+						 </section>
+				 </c:if>
+					 <section class="replyList">
+						<ol>
+					  			<h4>최근 문의글 목록</h4>
+					<div class="container">  			
+					  	<table class="table">
+					  		<thead></thead>
+					  		<tbody>
+					  			<tr>
+					  				<td>답변상태</td>
+					  				<td>작성자</td>
+					  				<td>제목</td>
+					  				<td>글 내용</td>
+					  				<td>비밀글여부</td>
+					  				<td>작성일</td>
+					  			</tr>
+								<c:forEach items="${reply }"  var="bean">
+								<tr>
+								  		
+								  			<td><span class="userName"></span>
+								  				<span class="userName">${bean.question_state_id }</span></td>
+
+								  			<td>	<span class="userName">  아이디 : </span>
+								  				<span class="userName">${bean.member_id }</span></td>
+
+								  				<td><span class="userName">  글 제목 : </span>
+								  				<span class="userName">${bean.question_title }</span></td>
+
+								  				<td><span class="userName">  글 내용 : </span>
+								  				<span class="userName">${bean.question_content }</span></td>
+
+								  				<td><span class="userName">  </span>
+								  				<span class="userName">${bean.question_secret_id }</span></td>
+								  				
+								  				<td><span class="userName">작성일:</span>
+								  				<span class="userName">${bean.question_date }</span></td>
+								  		
+						  		</tr>
+								</c:forEach>
+					  		</tbody>
+					  	</table>		
+					  </div>			
+					  	</ol>    
+					 </section>
+				</div>
+				
+				
+				
+				<%-- <table class="table">
 					<thead></thead>
 					<tbody>
 							<tr>
@@ -266,7 +339,7 @@
 								<td>작성자</td>
 								<td>작성일</td>
 							</tr>
-						<%-- 	<c:forEach items="${review }" var="bean"></c:forEach> --%>
+							<c:forEach items="${review }" var="bean"></c:forEach>
 							<tr>
 								<td>답변 대기</td>
 								<td></td>
@@ -308,11 +381,11 @@
 								<td>작성일</td>
 							</tr>
 					</tbody>
-				</table>
+				</table> --%>
 		</div>	
 
 			
-			<!-- 문의글 -->
+				<!-- 문의글 -->
 
 		</div><!-- content end -->
 		

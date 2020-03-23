@@ -25,6 +25,7 @@
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
   		<typeAlias alias="productBean" type="com.bit.companion.model.entity.order.ProductVo"/>
   		<typeAlias alias="likeBean" type="com.bit.companion.model.entity.order.LikeVo"/>
+  		<typeAlias alias="orderQuestionBean" type="com.bit.companion.model.entity.order.OrderQuestionVo"/>
   		
   		<!-- notice -->
   		<typeAlias alias="noticeBean" type="com.bit.companion.model.entity.notice.NoticeVo"/>
@@ -50,6 +51,7 @@
   		<mapper resource="mybatis/order/orderMapper.xml"/>
   		<mapper resource="mybatis/order/productMapper.xml"/>
   		<mapper resource="mybatis/order/likeMapper.xml"/>
+  		<mapper resource="mybatis/order/orderQuestion.xml"/>
   		
   		<!-- notice -->
   		<mapper resource="mybatis/notice/noticeMapper.xml"/>

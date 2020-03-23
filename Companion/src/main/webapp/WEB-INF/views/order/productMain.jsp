@@ -66,6 +66,7 @@
 		.product-grid .price span{color:#999;font-size:13px;font-weight:400;text-decoration:line-through;margin-left:3px;display:inline-block}
 		.product-grid .add-to-cart{color:#000;font-size:13px;font-weight:600}
 		@media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
+		
 		.btn-group {
 			width:100%;
 		}
@@ -147,6 +148,7 @@
 			  
 			   <div class="row">
 			        <%--    <% for(int i=0;i<20;i++){ %>  --%>
+		
 			<c:forEach items="${productCategory }" var="bean"> 
 			        <div class="col-md-3 col-sm-6"> 
 			            <div class="product-grid">
@@ -199,8 +201,10 @@
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.product_thumb }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_id }</a></h3>
 			                    <h3 class="title"><a href="productDetail/${bean.product_id }"> ${bean.category_name }</a></h3> 
+			              
 			                <!-- 상품 추천 수 받아올 것. -->
-			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3> 
+			      
+			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
 			                <!-- 상품 추천 수 받아올 것. -->
 			                
 			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
@@ -271,72 +275,7 @@
 		</script>
 		<!-- 추천수 script start -->
 		<script type="text/javascript">
-		//추천 버튼 클릭할 때 no 와 id 값을 가지고 url 주소로 이동함. 성공했을 경우 recCount 함수를 호출 함. 
-		//recCount 는 현재 게시글의 추천수를 구하는 함수.  
-		//추천 버튼이 성공할 경우 db에 저장된 추천수를 구해온 후 <span class="rec_count">에 html 함수를 이용하여 갯수 출력.
 	
-/* 		
- 		function like_func(){
-			var productNo="<c:out value='${productDetailOne.product_id}'/>";
-			var frm_read=$('#frm_read');
-			var productNo = $('#productNo',frm_read).val(); 
-		 		console.log("like_func implement "+productNo);
-		
-			$.ajax({
-				url:"/productMain/like.do",
-				type:"POST",
-				cache:false,
-				dataType:"json",
-				data:'productNo='+productNo,
-				success:function(data){
-					var msg='';
-				if(data.like_check==0){
-					like_img="${root }imgs/shopping/빈따봉1.jpg";
-				}else{
-					like_img="${root }imgs/shopping/찬따봉.jpg";
-				}
-				${'#like_img '}.attr('src'.like_img);
-				},
-				error:function(request.status.error){ 
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error : "+error);
-				}
-			});
-		}
-		 */
-		
-		
-/* 		
-		function get_like(){
-			$.getJSON('productMain/',function(data){
-				var arr=data;
-				var Like=$('DDaBong').addClass('p');
-				body.html(DDaBong);
-				DDaBong.append('추천수 : ');
-	 		for(var i=0l;i<arr.length; i++){
-					$('DDaBong').appendTo(Like).text(arr[i].like_id])
-				} 
-			})
-		}
-		
-		
-		
- 		
-		function like_func(){
-			var param={
-					product_id:$('#product_id').val(),
-					member_id:$('#member_id').val()
-			};
-			$.post('productMain/like.do',param,function(){
-				get_like();
-			});
-		} 
-		
-		 */
-
-	
-			
-			
-			//게시글 추천 수. end
 		</script>
 		<!-- 추천수 script end -->
 	</body>
