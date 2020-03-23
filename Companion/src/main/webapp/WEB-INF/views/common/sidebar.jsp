@@ -6,8 +6,10 @@
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Companion</h3>
-                <strong>Comp.</strong>
+                <a href="/companion/">
+	                <h3>Companion</h3>
+	                <strong>Comp.</strong>
+                </a>
             </div>
 
             <ul class="list-unstyled components">
@@ -98,6 +100,9 @@
                              <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
                              <li>
                                  <a href="${root }mypagechk" class="nav-link">나의정보</a>
+                             </li>
+                             <li>
+                                 <a href="#" class="nav-link">장바구니</a>
                              </li>
                              <li>
                                  <a href="${root }logout" class="nav-link">로그아웃</a>

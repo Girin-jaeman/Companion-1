@@ -24,7 +24,9 @@ p {
     line-height: 1.7em;
     
 }
-
+.bg-comp{
+	background-color: rgb(11, 61, 105) !important;
+}
 a,
 a:hover,
 a:focus {

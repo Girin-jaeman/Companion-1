@@ -66,14 +66,26 @@
                             </c:when>
                             <c:otherwise>
                                 <ul class="nav navbar-nav ml-auto">
-                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="${root }mypagechk">마이페이지</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="${root }logout">로그아웃</a>
-                                    </li>
-                                </ul>
+	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">예약조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">주문내역</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">장바구니</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">로그아웃</a>
+	                                    </li>
+	                                </ul>
                             </c:otherwise>
                             
                         </c:choose>
@@ -83,7 +95,7 @@
             <div class="maincontent">
                 <!--carousel-->
                 <div class="row">
-                    <!-- 쇼핑몰 이동하는 캐러셀-->
+                    <!-- 쇼핑몰 이동하는 캐러셀 485 x 560-->
                     <div class="col-md-6">
                         <div class="carosel">
                             <div id="carouselExampleCaptions1" class="carousel slide" data-ride="carousel">
@@ -94,18 +106,18 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }order/productMain?c=300">
+                                            <img src="${root }imgs/shopping/shopmain1.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }order/productMain?c=100">
+                                            <img src="${root }imgs/shopping/shopmain2.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }order/productMain?c=400">
+                                            <img src="${root }imgs/shopping/shopmain3.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                 </div>
@@ -122,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 호텔서비스로 이동하는 캐러셀-->
+                    <!-- 호텔서비스로 이동하는 캐러셀 485 x 560-->
                     <div class="col-md-6">
                         <div class="carosel">
                             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -133,18 +145,18 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/reserve_dog.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }hotel/infouse">
+                                            <img src="${root }imgs/hotel/hotelmain1.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/dogcare4.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }hotel/infouse">
+                                            <img src="${root }imgs/hotel/hotelmain2.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="#">
-                                            <img src="${root }imgs/hotel/dogcare5.jpg" class="d-block w-100" alt="...">
+                                        <a href="${root }hotel/infouse">
+                                            <img src="${root }imgs/hotel/hotelmain3.jpg" class="d-block w-100" alt="...">
                                         </a>
                                     </div>
                                 </div>
@@ -166,24 +178,24 @@
                 <!-- test main content start-->
                 <div class="row mb-2">
                     <div class="col-md-6">
-                        <div class="jumbotron text-dark rounded">
-                            <div class="col-md-6 px-0">
-                                <h1 class="display-4">Title of a longer featured blog post</h1>
-                                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers
-                                    quickly and
-                                    efficiently about what’s most interesting in this post’s contents.</p>
-                                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">쇼핑몰 바로가기 ></a></p>
+                        <div class="jumbotron text-gray rounded">
+                            <div class="col-md-12 px-0">
+                                <h1 class="display-4">최상의 품질 보장<br>간식 & 애완용품</h1>
+                                <p class="lead my-3">신성한 사료&간식 유통기한100%책임제<br>
+                                	매일매일 찾아오는 신상용품을 만나보세요 
+                                </p>
+                                <p class="lead mb-0"><a href="${root }order/productMain?c=100" class="text-gray font-weight-bold">쇼핑몰 바로가기 ></a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="jumbotron text-white rounded bg-dark">
-                            <div class="col-md-6 px-0">
-                                <h1 class="display-4">Title of a longer featured blog post</h1>
-                                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers
-                                    quickly and
-                                    efficiently about what’s most interesting in this post’s contents.</p>
-                                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">호텔예약 바로가기 ></a></p>
+                        <div class="jumbotron text-white rounded bg-comp">
+                            <div class="col-md-12 px-0">
+                                <h1 class="display-4">최고의 힐링 공간<br>호텔&nbsp;& 데이케어</h1>
+                                <p class="lead my-3">24시간 전문가 상주로 안심하고 맡길 수 있습니다.<br>
+                                	매일 수의사 회진으로 일상 건강 관리가 가능합니다.
+                                </p>
+                                <p class="lead mb-0"><a href="${root }hotel/reservation" class="text-white font-weight-bold">호텔예약 바로가기 ></a></p>
                             </div>
                         </div>
                     </div>
@@ -194,22 +206,22 @@
                         <div
                             class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                <h3 class="mb-0">Featured post</h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
+                                <strong class="d-inline-block mb-2 text-primary">쇼핑몰 이용후기</strong>
+                                <h3 class="mb-0">최고의 간식!</h3>
+                                <div class="mb-1 text-muted">★★★★★</div>
                                 <p class="card-text mb-auto">This is a wider card with supporting text below as a
                                     natural
                                     lead-in to
                                     additional content.</p>
-                                <a href="#" class="stretched-link">Continue reading</a>
+                                <a href="#" class="stretched-link font-weight-bold">더 많은 후기보기 ></a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                <svg class="bd-placeholder-img" width="200" height="250"
+                                <svg class="bd-placeholder-img" width="180" height="250"
                                     xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
                                     focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                                     <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="35%" y="50%"
+                                        fill="#eceeef" dy=".3em">후기 사진</text>
                                 </svg>
                             </div>
                         </div>
@@ -218,21 +230,21 @@
                         <div
                             class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-success">Design</strong>
-                                <h3 class="mb-0">Post title</h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
+                                <strong class="d-inline-block mb-2 text-success">호텔 이용후기</strong>
+                                <h3 class="mb-0">재이용 의사 100%</h3>
+                                <div class="mb-1 text-muted">★★★★★</div>
                                 <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in
                                     to
                                     additional content.</p>
-                                <a href="#" class="stretched-link">Continue reading</a>
+                                <a href="#" class="stretched-link font-weight-bold">더 많은 후기보기 ></a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                <svg class="bd-placeholder-img" width="200" height="250"
+                                <svg class="bd-placeholder-img" width="180" height="250"
                                     xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
                                     focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                                     <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">Thumbnail</text>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="35%" y="50%"
+                                        fill="#eceeef" dy=".3em">후기 사진</text>
                                 </svg>
                             </div>
                         </div>
