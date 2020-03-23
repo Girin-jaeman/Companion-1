@@ -65,7 +65,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/hotelInfoadd">
                             	<i class="fas fa-angle-right"></i>
                             	게시글등록
                             </a>
