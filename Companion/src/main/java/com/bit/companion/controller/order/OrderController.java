@@ -26,6 +26,8 @@ public class OrderController {
 		orderService.list(model);
 		return "order/orderMain";
 	}	
+
+	
 	@RequestMapping(value = "/order/orderPurchase")
 	public String orderPurchase(Model model) {
 		orderService.list(model);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="like">
+	<select id="likeClickNum" resultType="likeBean">
+		<!-- 동일 ID 동일 상품 추천 조회용. -->
+		select count(*) from `like` where product_id=#{product_id}, memeber_id=#{member_id}
+		<!-- 결과값이 1이라면 이미 클릭한 상품임. -->
+	</select>
+	<insert id="likeInsert">
+		insert into `like` (null,product_id,member_id) values (null,#{member_id},#{product_id})	
+	</insert>
+	<delete id="likeDelete">
+		delete from `like` where product_id=#{product_id} and member_id=#{member_id}
+	</delete>
+	
+	<select id="productLikeNum" resultType="likeBean">
+		select count(*) from `like` where product_id=#{product_id}
+	</select>
+	<!-- 
+	<select id="likeTest" resultType="likeBean">
+		select like_id, member_id, product_id from `like`
+	</select>like테이블 정보 추출 테스트.  -->
+
+<!-- 	<select id="likeTest" resultType="likeBean">
+		insert into `like` values (null,#{member_id},{#product_id});
+	</select> -->
+	<select id="likeTest" parameterType="java.util.Map">
+		insert into `like` values (null,#{member_id},{#product_id});
+	</select>
+
+  </mapper>
+
+  

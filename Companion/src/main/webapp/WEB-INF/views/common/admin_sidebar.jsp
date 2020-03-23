@@ -17,7 +17,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/testnoticelist">
                             	<i class="fas fa-angle-right"></i>
                             	공지사항
                             </a>
@@ -33,18 +33,58 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <a href="#shopSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-shopping-cart"></i>
                         쇼핑몰 관리
+                    </a>
+                    <ul class="collapse list-unstyled" id="shopSubmenu">
+                        <li>
+                            <a href="${root}admin/testproductadd">
+                            	<i class="fas fa-angle-right"></i>
+                            	상품관리
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            	<i class="fas fa-angle-right"></i>
+                            	결제관리
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${root}admin/testproductlist">
+                            	<i class="fas fa-angle-right"></i>
+                            	배송관리
+                            </a>
+                        </li>
+                    </ul>
+                 </li>
+                 <li>
+                    <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+						<i class="fas fa-building"></i>
+                       호텔관리
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
                             <a href="#">
                             	<i class="fas fa-angle-right"></i>
-                            	#
+                            	게시글등록
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            	<i class="fas fa-angle-right"></i>
+                            	예약관리
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            	<i class="fas fa-angle-right"></i>
+                            	예약관리
                             </a>
                         </li>
                     </ul>
+                 </li>
+                 <li>   
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-address-card"></i>
                         회원 관리
@@ -53,7 +93,7 @@
                         <li>
                             <a href="#">
                             	<i class="fas fa-angle-right"></i>
-                            	#
+                            	회원목록
                             </a>
                         </li>
                     </ul>
