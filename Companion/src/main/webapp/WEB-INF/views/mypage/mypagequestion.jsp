@@ -62,7 +62,7 @@
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">예약조회</a>
+	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">상품보관함</a>
@@ -84,22 +84,24 @@
 	            	<ul class="list-unstyled components">
 						<c:forEach items="${questionList }" var="bean">
 							<ul>
-								<li class="row">
-									<!-- 나중에 해당 상품페이지로 이동하게 앵커달기 -->
-									<div class="col-2">${bean.product_thumb }</div>
-									<div class="col-9">${bean.product_name }</div>
-									
-									<div class="col-1">
-										<button class="btn btn-primary" onclick="toggleQuestion(${bean.question_id })" id="questionBtn_${bean.question_id }">
-											열기
-										</button>
+								<li class="list-group-item list-group-item-primary">
+									<div class="row">
+										<!-- 나중에 해당 상품페이지로 이동하게 앵커달기 -->
+										<div class="col-2">${bean.product_thumb }</div>
+										<div class="col-7">${bean.product_name }</div>
+										<div class="col-2">${bean.question_date }</div>
+										<div class="col-1">
+											<button class="btn btn-primary" onclick="toggleQuestion(${bean.question_id })" id="questionBtn_${bean.question_id }">
+												열기
+											</button>
+										</div>
 									</div>
 								</li>
-								<ul class="list-unstyled" id="${bean.question_id }" style="display:none">
+								<ul class="list-group-item list-group-item-secondary list-unstyled" id="${bean.question_id }" style="display:none">
 										<li class="row">
 											<div class="col-1">Q.</div>
 											<div class="col-11">
-												${bean.question_title } / ${bean.question_date }</br>
+												${bean.question_title }</br>
 												${question_content }
 											</div>
 										</li>

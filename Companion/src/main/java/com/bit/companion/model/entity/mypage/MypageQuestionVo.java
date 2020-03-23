@@ -1,5 +1,7 @@
 package com.bit.companion.model.entity.mypage;
 
+import java.sql.Date;
+
 public class MypageQuestionVo {
 
 	private String question_id;
@@ -7,8 +9,8 @@ public class MypageQuestionVo {
 	private String order_id;
 	private String product_id;
 	private String member_id;
-	private String question_date;
-	private String question_answerdate;
+	private Date question_date;
+	private Date question_answerdate;
 	private String question_title;
 	private String question_content;
 	private String question_image;
@@ -61,19 +63,19 @@ public class MypageQuestionVo {
 		this.member_id = member_id;
 	}
 
-	public String getQuestion_date() {
+	public Date getQuestion_date() {
 		return question_date;
 	}
 
-	public void setQuestion_date(String question_date) {
+	public void setQuestion_date(Date question_date) {
 		this.question_date = question_date;
 	}
 
-	public String getQuestion_answerdate() {
+	public Date getQuestion_answerdate() {
 		return question_answerdate;
 	}
 
-	public void setQuestion_answerdate(String question_answerdate) {
+	public void setQuestion_answerdate(Date question_answerdate) {
 		this.question_answerdate = question_answerdate;
 	}
 

@@ -14,6 +14,7 @@
   		
   		<!-- mypage -->
   		<typeAlias alias="mypageQuestionBean" type="com.bit.companion.model.entity.mypage.MypageQuestionVo"/>
+  		<typeAlias alias="mypageReserveBean" type="com.bit.companion.model.entity.mypage.MypageReserveVo"/>
   		
   		<!-- admin -->
   		<typeAlias alias="adminNoticeArticleBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
