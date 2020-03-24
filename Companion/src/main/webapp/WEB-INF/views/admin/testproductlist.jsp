@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -75,8 +76,6 @@
 			<ul>
 				<li><a href="${root}admin/testproductadd">상품등록</a></li>
 				<li><a href="${root}admin/testproductlist">상품목록</a></li>
-				<li><a href="#">상품소감</a></li>
-				<li><a href="#">유저목록</a></li>
 			</ul>
 			</aside>
 				<h2>상품 목록</h2>
@@ -100,37 +99,48 @@
 				<c:forEach items="${adminProductList}" var="bean">
 					<tr>
 						<td>
-							<img src="${pageContext.request.contextPath}${bean.product_thumb}"/>
+							<img src="<spring:url value='${bean.product_thumb }'/>"/>
 						</td>
 						<td>
 							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_name}</a>
 						</td>
 						<td>
-							${bean.category_name}
+							<c:choose>
+								<c:when test="${bean.category_refid == '0' }">
+									<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.category_name}</a>
+								</c:when>
+								<c:when test="${bean.category_refid != '0' }">
+									<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
+								</c:when>
+							</c:choose>
 						</td>
 						<td>
+							<a href="${root }admin/testproductdetail/${bean.product_id}">
 							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
+							</a>
 						</td>
 						<td>
-							${bean.product_stock}
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_stock}</a>
 						</td>
 						<td>
+							<a href="${root }admin/testproductdetail/${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
+							</a>
 						</td>
 						<td>
-							${bean.product_option1 }
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option1 }</a>
 						</td>
 						<td>
-							${bean.product_option2 }
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option2 }</a>
 						</td>
 						<td>
-							${bean.product_option3 }
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option3 }</a>
 						</td>
 						<td>
-							${bean.product_option4 }
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option4 }</a>
 						</td>
 						<td>
-							${bean.product_option5 }
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option5 }</a>
 						</td>
 					</tr>   
 				</c:forEach>
@@ -150,7 +160,7 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 
 <script type="text/javascript">
-	// menu toggle button 
+	// 메뉴 토글 버튼
 	$(document).ready(function () {
 	    $('#sidebarCollapse').on('click', function () {
 	        $('#sidebar').toggleClass('active');

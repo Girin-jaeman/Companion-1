@@ -11,15 +11,15 @@ public interface AdminProductDao {
 	
 	//  category list (product add page)
 	List<AdminCategoryVo> selectCategory() throws SQLException;
-
-	// product add 
-	void insertOne(AdminProductVo bean) throws SQLException;
 	
 	// product list
 	List<AdminProductViewVo> selectAll() throws SQLException;
 	
 	// product detail
 	AdminProductViewVo selectOne(int product_id) throws SQLException;
+
+	// product add 
+	void insertOne(AdminProductVo bean) throws SQLException;
 
 	// product edit
 	int updateOne(AdminProductVo bean) throws SQLException;

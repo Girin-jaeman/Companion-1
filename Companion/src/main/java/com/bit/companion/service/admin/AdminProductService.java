@@ -9,14 +9,14 @@ public interface AdminProductService {
 	// category list (product add page)
 	void category(Model model);
 	
-	// product add
-	void insert(AdminProductVo bean);
-	
 	// product list
 	void list(Model model);
 	
 	// product detail
 	void detail(Model model,int product_id);
+	
+	// product add
+	void insert(AdminProductVo bean);
 
 	// product edit
 	void update(AdminProductVo bean);
