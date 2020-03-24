@@ -19,22 +19,7 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 		<style type="text/css">
-		/* .btn {
-			    height: 34px;
-			    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
-			    border: 1px solid #d5d5d5;
-			    border-radius: 4px;
-			    display: inline-flex;
-			    align-items: center;
-			    padding: 0 12px;
-			    font-size: 14px;
-			    font-weight: 500;
-			    line-height: 1.5;
-			    cursor: pointer;
-			    box-sizing: border-box;
-			    position: relative;
-			    color: #333;
-			} */
+
 		</style>
 	</head>
 
@@ -477,6 +462,7 @@
 										</section>
 									</c:if>
 
+									<!-- 여기에 문의글 ajax 들어감 -->
 									<section class="replyList">
 										<ol>
 											<h4>최근 문의글 목록</h4>
@@ -484,6 +470,8 @@
 											</ol>
 										</ol>
 									</section>
+									<!-- 여기에 문의글 ajax 들어감. -->
+									
 								</div>
 								<!-- reply end -->
 							</div>
@@ -491,19 +479,12 @@
 						</div>
 						<!-- row end -->
 						</div>	<!-- 문의 엔드 -->
-					
-
 					</div>
 					<!-- End lined tabs -->
-				
 				</div>
 				<!-- #myTab2Content end-->
-			
 			</div>
 			<!-- 후기글 -->
-			
-			
-			
 				<!-- 문의글 -->
 			<!-- 3tap layer end -->
 		
@@ -512,7 +493,6 @@
 			<!-- Footer end -->
 		</div>
 		<!-- #content end -->
-
 	</div>
 	<!-- wrapper end -->
 
@@ -561,21 +541,6 @@
 			}) 
 		</script>
 
-<!-- 	<script type="text/javascript">
-		 	문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
-			var popup;
-			$(document).on('click','#question',function(){
-				$(function pop(){
-					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
-					var target = 'orderQuestion';
-					popup = window.open('orderQuestion','question_popup',settings);
-					
-				 	$.load("orderQuestion",function(){
-						popup.location = target;
-					}); 
-				})
-			})  
-		</script> -->
 		<!-- ajax 문의글 리스트 출력. -->
 		<script type="text/javascript">
 				function replyList(){
@@ -600,6 +565,7 @@
 					});
 				}
 		replyList();
+		
 		/* ajax 문의 글 입력 할 때 */
 			$("#reply_btn").click(function(){
 				var formObj=$(".replyForm form[role='form']");
@@ -619,6 +585,9 @@
 					data : data,
 					success : function(){
 						replyList();
+						$("#question_content").val("");
+						$("#question_title").val("");
+						alert('문의 글이 정상 등록되었습니다.');
 					}
 				});
 				console.log(data);	
