@@ -16,12 +16,6 @@
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<!-- jQuery -->
-	<script src="${root}js/jquery-1.12.4.js"></script>
-	<!-- Popper.JS -->
-	<script src="${root}js/bootstrap/popper.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="${root}js/bootstrap/bootstrap.js"></script>
     <title>Companion::컴패니언::공지사항</title>
 </head>
 <body>

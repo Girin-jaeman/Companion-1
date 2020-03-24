@@ -596,6 +596,21 @@
 			}) 
 		</script>
 
+<!-- 	<script type="text/javascript">
+		 	문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
+			var popup;
+			$(document).on('click','#question',function(){
+				$(function pop(){
+					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
+					var target = 'orderQuestion';
+					popup = window.open('orderQuestion','question_popup',settings);
+					
+				 	$.load("orderQuestion",function(){
+						popup.location = target;
+					}); 
+				})
+			})  
+		</script> -->
 		
 <script type="text/javascript">
 		function replyList(){
