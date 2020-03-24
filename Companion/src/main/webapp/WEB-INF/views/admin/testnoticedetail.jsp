@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,8 @@
 		</div>
 		<div>
 			<label for="img">원본이미지</label>
-			<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }">
+			<%-- <img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"> --%>
+			<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
 		</div>
 		<div>
 			<label for="img">썸네일</label>

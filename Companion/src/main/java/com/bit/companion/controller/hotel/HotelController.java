@@ -22,7 +22,7 @@ public class HotelController {
 	
 	@RequestMapping(value = "/reservation", method=RequestMethod.POST)
 	public String reservation(@ModelAttribute HotelVo bean) {
-//		hotelService.insert(bean);
+		hotelService.insert(bean);
 		return "redirect:/hotel/reservation";
 	}
 }
