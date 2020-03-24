@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 - 공지사항 상세 페이지</title>
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
