@@ -1,6 +1,6 @@
 ﻿/**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
 /**
@@ -10,13 +10,13 @@
  * If you would like to build CKEditor online again
  * (for example to upgrade), visit one the following links:
  *
- * (1) https://ckeditor.com/cke4/builder
+ * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/f8e43662834169025515f77f371e3653
+ * (2) http://ckeditor.com/builder/8ff7b71bcccc296bcc3a4a5b82942d17
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/f8e43662834169025515f77f371e3653
+ * (3) http://ckeditor.com/builder/download/8ff7b71bcccc296bcc3a4a5b82942d17
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -58,7 +58,6 @@ var CKBUILDER_CONFIG = {
 		'blockquote' : 1,
 		'clipboard' : 1,
 		'contextmenu' : 1,
-		'easyimage' : 1,
 		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
@@ -73,10 +72,8 @@ var CKBUILDER_CONFIG = {
 		'list' : 1,
 		'magicline' : 1,
 		'maximize' : 1,
-		'pastefromgdocs' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
-		'pastetools' : 1,
 		'removeformat' : 1,
 		'resize' : 1,
 		'scayt' : 1,
