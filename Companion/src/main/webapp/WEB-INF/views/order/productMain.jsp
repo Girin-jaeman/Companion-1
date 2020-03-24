@@ -22,12 +22,8 @@
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-		
-		
 	</head>
 	<body>
-	
-
 		<div class="wrapper">
 			 <!-- Sidebar  -->
 		<jsp:include page="../common/sidebar.jsp"/>
@@ -93,6 +89,7 @@
                         <li class="breadcrumb-item"><a href="#">판매인기순</a></li>
                         <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
+                          <a href="productDetail?idx=5">productDetail 경로 테스트 : ${bean.like_id }</a>
                         <li class="breadcrumb-item"><a href="#">상품평순</a></li>
                         <li class="breadcrumb-item"><a href="#">등록일순</a></li>
                     </ol>
@@ -145,17 +142,10 @@
 			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.category_name }</a></h3> 
 			              
 			                <!-- 상품 추천 수 받아올 것. -->
-			      
 			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
 			                <!-- 상품 추천 수 받아올 것. -->
-			                
-			         <%--            <h3 class="title"><a href="#"> ${productlist.product_thumb } 나오는지 확인</a></h3>
-			                    <h3 class="title"><a href="#"> ${productlist.product_option1 } 나오는지 확인</a></h3> --%>
-			         			<!-- 리스트로 넘기면 하나씩은 못받아옴 FOrEach를 써야 하는가봄... -->
+	
 			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>
-			             
-			             
-			             
 			             
 			             <!-- 따봉 로그인 세션 검사  -->
 			             <c:set var = "memberID" value="${memberVo.member_id }"/>         

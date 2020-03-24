@@ -4,7 +4,6 @@
 <c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
 	<html>
-	
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,11 +35,8 @@
 			    color: #333;
 			}
 		</style>
-
 	</head>
-	
 	<body>
-	
 		<div class="wrapper">
 			 <!-- Sidebar  -->
 		<jsp:include page="../common/sidebar.jsp"/>
@@ -100,10 +96,6 @@
 				</div>
 			  </div>
 		</div><!-- container end  -->
-		
-		
-		
-		
 		<!-- content start -->
 		<div class="container">
 			<div class="row">
@@ -127,7 +119,6 @@
 						<div class="col-sm-4">옵션</div>					
 						<div class="col-sm-8">
 							<div class="row">
-								
 										<div class="btn-group">
 											  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											    옵션 선택하기
@@ -154,7 +145,6 @@
 											  </div>
 											  <div class="col-sm-1"></div>
 										</div>
-									
 							</div>
 						</div>
 						<div class="col-sm-8">가격</div>
@@ -169,7 +159,6 @@
 									<c:when test="${memberVo.member_id!=null}">	
 							<a class="btn btn-primary" href="../orderPurchase" role="button">구매하기</a>
 									</c:when>
-							
 						</c:choose>			
 						<!-- 구매 로그인 세션 검사 -->
 						</div>
@@ -195,11 +184,7 @@
 						</a>
 						</div>
 						<div class="col-sm-4">
-						<a id="question" class="btn btn-primary" href="#inquiry" role="button">
-	  
-						</a>
-
-				
+						<a id="question" class="btn btn-primary" href="#inquiry" role="button"></a>
 						</div>
 					</div>		
 				</div>
@@ -250,7 +235,7 @@
 				<div class="col-sm-3"><h4>문의하기</h4></div>
 				<div class="col-sm-9"><h4></h4></div>
 				<!--  -->
-				<div class="col-sm-3"><button id="question">문의 작성하기</button></div>
+				<div class="col-sm-3"><!-- <button id="question">문의 작성하기</button> --></div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-4"><button>내가 작성한 글 보기(스위치 버튼)</button></div>
 				<div class="col-sm-4"></div>
@@ -265,108 +250,33 @@
 				</c:if>
 				<c:if test="${memberVo.member_id!=null}">	
 						 <section class="replyForm">
- <!-- 답글 POST ajax 처리. -->
-	  <form action="${root }order/productDetail/question" role="form" method="post" autocomplete="off">
-		 	<input type="hidden" name="product_id" value="${productDetailOne.product_id }">
-			<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<textarea name="question_title" id="question_title">문의 제목</textarea>
-				<textarea name="question_content" id="question_content">컨텐츠</textarea>
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-			</div>
-		<div class="input_area">
-		
-			<button type="submit" id="reply_btn">문의글 달기</button>
-			
-			<script>
-				$("#reply_btn").click(function(){
-					var formObj = $(".replyForm form[role='form']");
-					var product_id = $("#product_id").val();
-					var question_title = $("#question_title").val();
-					var question_content = $("#question_content").val();
-					var data= {
-							product_id : product_id,
-							question_title : question_title,
-							question_content : question_content
-					};
-					$.ajax({
-						url : "order/productDetail/registReply",
-						type : "POST",
-						data : data,
-						success : function(){
-							replyList();
-						}
-					});
-				});			
-				
-			</script>
-		</div>
-	  </form>
- <!-- 답글 POST ajax 처리. -->
+								 <!-- 답글 POST ajax 처리. -->
+<%-- 								 	  <form action="${root }order/productDetail/question" role="form" method="post" autocomplete="off">  --%>
+								 	  <form role="form" method="post" autocomplete="off"> 
+								
+										 	<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
+										 	<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
+											<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+												<textarea name="question_title" id="question_title">문의 제목</textarea>
+												<textarea name="question_content" id="question_content">컨텐츠</textarea>
+											</div>
+										<div class="input_area">
+										
+											<button type="button" id="reply_btn">문의글 달기</button>
+										</div>
+									  </form>
+								 <!-- 답글 POST ajax 처리. -->
 						 </section>
 				 </c:if>
-					 <section class="replyList">
+					 <section class="replyList">  <!-- AJAX에서 여기에 추가하는듯 -->
 						<ol>
 					  			<h4>최근 문의글 목록</h4>
-					<div class="container">  			
-					  	<table class="table">
-					  		<thead></thead>
-					  		<tbody>
-					  			<tr>
-					  				<td>답변상태</td>
-					  				<td>작성자</td>
-					  				<td>제목</td>
-					  				<td>글 내용</td>
-					  				<td>비밀글여부</td>
-					  				<td>작성일</td>
-					  			</tr>
-					  		</tbody>
-					  	</table>		
-
-							<section class="replyList">
 								<ol>
-								
-					  			
-					  			<!-- ajax로 처리하기위한 주석처리.  -->
-							<%-- 	<c:forEach items="${reply }"  var="bean">
-								<tr>
-					  				<td><span class="userName"></span>
-					  				<span class="userName">${bean.question_state_id }</span></td>
-
-					  				<td><span class="userName">  아이디 : </span>
-					  				<span class="userName">${bean.member_id }</span></td>
-
-					  				<td><span class="userName">  글 제목 : </span>
-					  				<span class="userName">${bean.question_title }</span></td>
-
-					  				<td><span class="userName">  글 내용 : </span>
-					  				<span class="userName">${bean.question_content }</span></td>
-
-					  				<td><span class="userName">  </span>
-					  				<span class="userName">${bean.question_secret_id }</span></td>
-					  				
-					  				<td><span class="userName">작성일:</span>
-					  				<span class="userName">${bean.question_date }</span></td>
-					  			</tr>
-								</c:forEach> --%>
 								</ol>
-								<script>
-									replyList();
-								</script>
-							</section>
-					  </div>			
 					  	</ol>    
 					 </section>
 				</div>
-			
 		</div>	
-
-			
 				<!-- 문의글 -->
 
 		</div><!-- content end -->
@@ -427,35 +337,55 @@
 				})
 			})  
 		</script> -->
-		
-<script type="text/javascript">
-		function replyList(){
-			console.log("replyList() function run...");
-			
-			var product_id = ${productDetailOne.product_id};
-			var member_id = ${sessionScope.memberVo.member_name };
-			$.getJSON("productDetail?idx="+product_id,function(data){
-				var str= "";
-				
-				$(data).each(function(){
-					console.log(data);
-					
-					var question_date = new Date(this.question_date);
-					question_date = question_date.toLocalDateString("ko-US")
-						str += "<li data-gdsNum='" + this.product_id + "'>"
-					     + "<div class='userInfo'>"
-					     + "<span class='userName'>" + this.member_id + "</span>"
-					     + "<span class='date'>" + question_date + "</span>"
-					     + "</div>"
-					     + "<div class='replyContent'>" + this.question_content + "</div>"
-					     + "</li>"; 
+		<!-- ajax 문의글 리스트 출력. -->
+		<script type="text/javascript">
+				function replyList(){
+					console.log("replyList() function run...");
+								var product_id = ${productDetailOne.product_id};
+								var member_id = ${memberVo.member_id };
+					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
+								var str= "";
+						$(data).each(function(){
+							console.log(data);
+							var question_date = new Date(this.question_date);
+							question_date = question_date.toLocaleDateString("ko-US")
+								str += "<li data-gdsNum='" + this.product_id + "'>"
+							     + "<div class='userInfo'>"
+							     + "<span class='userName'>" + this.member_id + "</span>"
+							     + "<span class='date'>" + question_date + "</span>"
+							     + "</div>"
+							     + "<div class='replyContent'>" + this.question_content + "</div>"
+							     + "</li>"; 
+						});
+		 				  $("section.replyList ol").html(str); 
+					});
+				}
+		replyList();
+		/* ajax 문의 글 입력 할 때 */
+			$("#reply_btn").click(function(){
+				var formObj=$(".replyForm form[role='form']");
+				var product_id=$("#product_id").val();
+				var member_id=$("#member_id").val();
+				var question_title=$("#question_title").val();
+				var question_content = $("#question_content").val();
+				var data = {
+						product_id : product_id,
+						question_title : question_title,
+						question_content : question_content,
+						member_id : member_id
+				};
+				$.ajax({
+					url : "${root }order/productDetail/question",
+					type : "post",
+					data : data,
+					success : function(){
+						replyList();
+					}
 				});
-				  $("section.replyList ol").html(str);
+				console.log(data);	
 			});
-		}
-</script>
-		
-		
+		/* 데이터 입력할 떄  */
+		</script> 
 	</body>
 	</html>
 	
