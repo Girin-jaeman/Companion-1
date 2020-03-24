@@ -47,10 +47,16 @@
   height: 500px;
 }
 .goods-text{
-  
   height: 180px;
 }
+.goods-text div{
+	margin-bottom:10px;
+	font-size:18px;
+}
+.goods-text .title{
+	text-align: center;
 
+}
 .goods-text>h5{
   text-align: center;
 }
@@ -130,6 +136,27 @@
   color: #0F4C81;
   border-color: #0F4C81;
 }
+.btn--group{
+	display:block;
+	margin-top:20px;
+	margin-left:50px;
+}
+#question_label{
+	width:76px;
+	text-align: center;
+}
+#question_title{
+	width:420px;
+}
+#question_content{
+	width:500px;
+	height:60px
+}
 
-/*
-*
+.replyList ol h4{
+	margin-top:20px;
+	
+}
+
+
+
