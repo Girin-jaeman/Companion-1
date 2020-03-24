@@ -154,7 +154,6 @@
                         <!-- 구매 로그인 세션 검사 -->
 								<c:choose>
 									<c:when test="${memberVo.member_id==null}">
-
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
 									<c:when test="${memberVo.member_id!=null}">
@@ -163,7 +162,7 @@
 									</c:when>
 
 								</c:choose>
-								<!-- 구매 로그인 세션 검사 -->
+							<!-- 구매 로그인 세션 검사 -->
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-5" role="button" aria-pressed="true">찜하기</a>
                         </div>
@@ -182,78 +181,31 @@
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<%-- 	        ${productDetailOne.product_name }이 장바구니에 담겼습니다. --%>
-							장바구니로 이동할까요?
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary">확인</button>
-						</div>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<%-- 	        ${productDetailOne.product_name }이 장바구니에 담겼습니다. --%>
+								장바구니로 이동할까요?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">확인</button>
+							</div>
 						
 					</div>
-					<!-- modal-content end -->
+		
 				</div>
-					<div class="row">
-						<div class="col-sm-4">배송비</div>					
-						<div class="col-sm-8">2,500원 (5만원이상 구매 시 무료)</div>
-						<div class="col-sm-8">재 고 </div>
-						<div class="col-sm-4">${productDetailOne.product_stock }</div>					
-						<div class="col-sm-4">옵션</div>					
-						<div class="col-sm-8">
-							<div class="row">
-										<div class="btn-group">
-											  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											    옵션 선택하기
-											  </button>
-											  <div class="dropdown-menu dropdown-menu-right">
-											    <button class="dropdown-item" type="button">옵션1</button>
-											    <button class="dropdown-item" type="button">옵션2</button>
-											    <button class="dropdown-item" type="button">옵션3</button>
-											    <button class="dropdown-item" type="button">옵션4</button>
-											    <button class="dropdown-item" type="button">옵션5</button>
-											  </div>
-										</div>
-											  <div class="col-sm-1"></div>
-										<div class="btn-group">
-											  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											   수량
-											  </button>
-											  <div class="dropdown-menu dropdown-menu-right">
-											    <button class="dropdown-item" type="button">1</button>
-											    <button class="dropdown-item" type="button">2</button>
-											    <button class="dropdown-item" type="button">3</button>
-											    <button class="dropdown-item" type="button">4</button>
-											    <button class="dropdown-item" type="button">5</button>
-											  </div>
-											  <div class="col-sm-1"></div>
-										</div>
-							</div>
-						</div>
-						<div class="col-sm-8">가격</div>
-						<div class="col-sm-4">${productDetailOne.product_price }</div>					
-						<div class="col-sm-5">
-						<!-- 구매 로그인 세션 검사 -->
-						<c:choose>
-									<c:when test="${memberVo.member_id==null}">	
-						
-							<a class="btn btn-primary" href="${root }login" role="button">구매하기</a>
-									</c:when>
-									<c:when test="${memberVo.member_id!=null}">	
-							<a class="btn btn-primary" href="../orderPurchase" role="button">구매하기</a>
-									</c:when>
-						</c:choose>			
-						<!-- 구매 로그인 세션 검사 -->
+			</div>	<!-- modal-content end -->
+					
+		
 				<!-- modal-dialog end -->
-			</div>
+	
 			<!-- modal end -->
 			<!-- modal 장바구니! end -->
 			<div class="p-12 rounded mb-5">
@@ -278,7 +230,7 @@
 				</ul>
 				<div id="myTab2Content" class="tab-content">
 					<div id="product-info" role="tabpanel" aria-labelledby="home-tab"
-						class="tab-pane fade px-4 py-5 show active">
+						class="tab-pane fade px-4 py-5 show active"><!-- 상품설명 start   -->
 						<!-- 상품설명 -->
 						<div class="row">
 							<!-- 테이블로 넣자  -->
@@ -308,8 +260,9 @@
 							<h5>${productDetailOne.product_content }</h5>
 						</div>
 
-						<!-- 상품설명   -->
-					</div>
+					
+					</div>	<!-- 상품설명   end -->
+					
 					<!-- product-info end -->
 
 					<div id="post-use" role="tabpanel" aria-labelledby="post-use-tab"
@@ -329,8 +282,8 @@
 						</nav>
 						<hr class="my-1">
 
-						<!-- 후기글 start -->
-						<div class="row">
+					
+						<div class="row">	<!-- 후기글 start -->
 							<div class="col-lg-12">
 								<table class="table">
 									<thead>
@@ -479,9 +432,9 @@
 							<!-- col-lg-12 end -->
 						</div>
 						<!-- row end -->
-					</div>
-					<!-- #post-use end  -->
-					<!-- 후기글 End -->
+					</div>	<!-- #post-use end  -->	<!-- 후기글 End -->
+				
+				
 
 					<!-- 문의글 start-->
 					<div id="contact2" role="tabpanel" aria-labelledby="contact-tab"
@@ -509,23 +462,17 @@
 									<c:if test="${memberVo.member_id!=null}">
 										<section class="replyForm">
 
-											<form action="${root }order/productDetail/question"
-												role="form" method="post" autocomplete="off">
-
-												<input type="hidden" name="product_id"
-													value="${productDetailOne.product_id }">
-												<%-- 		<input type="hidden" name="order_id" value="${productDetailOne.order_id }">  --%>
-
-
-												<div class="input_area">
+											 <form role="form" method="post" autocomplete="off"> 
+											<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
+										 	<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
+										
+										
+											<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
 													<label for="question_title" id="question_label">문의 제목</label>
-													<input type="text" name="question_title"
-														id="question_title" placeholder="제목을 입력해주세요"></br>
-													<textarea name="question_content" id="question_content">컨텐츠</textarea>
-												</div>
-												<div class="input_area">
-													<button type="submit" id="reply_btn">문의글 달기</button>
-												</div>
+												<textarea name="question_title" id="question_title">문의 제목</textarea>
+												<textarea name="question_content" id="question_content">컨텐츠</textarea>
+											</div>
+													<button type="button" id="reply_btn">문의글 달기</button>
 											</form>
 										</section>
 									</c:if>
@@ -533,44 +480,8 @@
 									<section class="replyList">
 										<ol>
 											<h4>최근 문의글 목록</h4>
-											<div class="container">
-												<table class="table">
-													<thead></thead>
-													<tbody>
-														<tr>
-															<td>답변상태</td>
-															<td>작성자</td>
-															<td>제목</td>
-															<td>글 내용</td>
-															<td>비밀글여부</td>
-															<td>작성일</td>
-														</tr>
-														<c:forEach items="${reply }" var="bean">
-															<tr>
-
-																<td><span class="userName"></span> <span
-																	class="userName">${bean.question_state_id }</span></td>
-
-																<td><span class="userName"> 아이디 : </span> <span
-																	class="userName">${bean.member_id }</span></td>
-
-																<td><span class="userName"> 글 제목 : </span> <span
-																	class="userName">${bean.question_title }</span></td>
-
-																<td><span class="userName"> 글 내용 : </span> <span
-																	class="userName">${bean.question_content }</span></td>
-
-																<td><span class="userName"> </span> <span
-																	class="userName">${bean.question_secret_id }</span></td>
-
-																<td><span class="userName">작성일:</span> <span
-																	class="userName">${bean.question_date }</span></td>
-
-															</tr>
-														</c:forEach>
-													</tbody>
-												</table>
-											</div>
+											<ol>
+											</ol>
 										</ol>
 									</section>
 								</div>
@@ -579,7 +490,8 @@
 							<!-- col-lg-12 end -->
 						</div>
 						<!-- row end -->
-						<!-- 문의 엔드 -->
+						</div>	<!-- 문의 엔드 -->
+					
 
 					</div>
 					<!-- End lined tabs -->
@@ -591,57 +503,10 @@
 			<!-- 후기글 -->
 			
 			
-				<!-- 문의글 -->
-			<hr class="mb-2">
-		<div class="row" id="inquiry">	<!-- 테이블로 넣자  -->
-				<div class="col-sm-3"><h4>문의하기</h4></div>
-				<div class="col-sm-9"><h4></h4></div>
-				<!--  -->
-				<div class="col-sm-3"><!-- <button id="question">문의 작성하기</button> --></div>
-				<div class="col-sm-1"></div>
-				<div class="col-sm-4"><button>내가 작성한 글 보기(스위치 버튼)</button></div>
-				<div class="col-sm-4"></div>
-				<!--  -->
-				<div class="col-sm-6"> 구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
-				<div class="col-sm-6"></div>
-				
-				
-				<div id="reply">
-				<c:if test="${memberVo.member_id==null}">	
-						<p>소감을 남기려면 로그인 해주세요!</p>
-				</c:if>
-				<c:if test="${memberVo.member_id!=null}">	
-						 <section class="replyForm">
-								 <!-- 답글 POST ajax 처리. -->
-<%-- 								 	  <form action="${root }order/productDetail/question" role="form" method="post" autocomplete="off">  --%>
-								 	  <form role="form" method="post" autocomplete="off"> 
-								
-										 	<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
-										 	<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
-											<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
-												<textarea name="question_title" id="question_title">문의 제목</textarea>
-												<textarea name="question_content" id="question_content">컨텐츠</textarea>
-											</div>
-										<div class="input_area">
-										
-											<button type="button" id="reply_btn">문의글 달기</button>
-										</div>
-									  </form>
-								 <!-- 답글 POST ajax 처리. -->
-						 </section>
-				 </c:if>
-					 <section class="replyList">  <!-- AJAX에서 여기에 추가하는듯 -->
-						<ol>
-					  			<h4>최근 문의글 목록</h4>
-								<ol>
-								</ol>
-					  	</ol>    
-					 </section>
-				</div>
-		</div>	
+			
 				<!-- 문의글 -->
 			<!-- 3tap layer end -->
-			</div>
+		
 			<!-- Footer  -->
 			<jsp:include page="../common/footer.jsp" />
 			<!-- Footer end -->
