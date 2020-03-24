@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="/resources/ckeditor/ckeditor.js"></script>
 <title>관리자 - 공지사항 상세 페이지</title>
 </head>
 <body>

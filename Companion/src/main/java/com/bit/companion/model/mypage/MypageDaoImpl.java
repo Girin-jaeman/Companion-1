@@ -100,7 +100,6 @@ public class MypageDaoImpl implements MypageDao {
 			reserve_state_name=sqlSession.selectOne("mypage.reserveStateName",reserve_state_id);
 			bean2.setService_name(service_name);
 			bean2.setReserve_state_name(reserve_state_name);
-			System.out.println(bean2.toString());
 		}
 		return list;
 	}

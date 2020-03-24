@@ -29,18 +29,25 @@ public class MypageController {
 	
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session) {
-		mypageService.reserveList(session);
 		return "mypage/mypage";
 	}
 	
 	@RequestMapping("/mypagequestion")
 	public String mypagequestion(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "login/login";
+		}
 		mypageService.questionList(session);
 		return "mypage/mypagequestion";
 	}
 	
 	@RequestMapping("/mypagereserve")
 	public String mypagereserve(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "login/login";
+		}
 		mypageService.reserveList(session);
 		return "mypage/mypagereserve";
 	}
