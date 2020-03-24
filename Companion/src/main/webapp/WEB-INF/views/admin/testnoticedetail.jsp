@@ -32,7 +32,8 @@
 		</div>
 		<div>
 			<label for="img">썸네일</label>
-			<img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }">
+			<%-- <img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"> --%>
+			<img alt="썸네일" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
 		</div>
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
