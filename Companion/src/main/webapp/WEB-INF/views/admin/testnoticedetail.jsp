@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 - 공지사항 상세 페이지</title>
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
-	<form role="form" method="post" >
+	<form role="form" method="post" autocomplete="off">
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
 			<label for="title">title</label>
@@ -26,11 +27,13 @@
 		</div>
 		<div>
 			<label for="img">원본이미지</label>
-			<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }">
+			<%-- <img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"> --%>
+			<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
 		</div>
 		<div>
 			<label for="img">썸네일</label>
-			<img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }">
+			<%-- <img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"> --%>
+			<img alt="썸네일" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
 		</div>
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>

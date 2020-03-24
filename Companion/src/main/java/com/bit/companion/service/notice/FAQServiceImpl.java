@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.EventVo;
-import com.bit.companion.model.entity.notice.FAQVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 import com.bit.companion.model.notice.FAQDao;
 
 @Service
@@ -28,7 +27,7 @@ public class FAQServiceImpl implements FAQService {
 			pagination.pageInfo(page, range, listCnt);
 			
 			// List
-			List<FAQVo> list = faqDao.selectAll(pagination);
+			List<ArticleVo> list = faqDao.selectAll(pagination);
 			
 			// addAttribute
 			model.addAttribute("list",list);

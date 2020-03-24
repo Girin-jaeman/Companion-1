@@ -119,10 +119,10 @@ public class AdminNoticeController {
 		return "redirect:../testnoticedetail/"+bean.getArticle_id();
 	}
 	// notice delete - post
-	@RequestMapping(value = "testnoticedelete", method = RequestMethod.POST)
-	public String noticeDelete(@ModelAttribute AdminArticleVo bean) {
+	@RequestMapping(value = "testnoticedelete/{idx}", method = RequestMethod.POST)
+	public String noticeDelete(@PathVariable("idx") int article_id) {
 		logger.info("post notice delete");
-		adminNoticeService.delete(bean);
-		return "redirect:testnoticelist";
+		adminNoticeService.delete(article_id);
+		return "redirect:../testnoticelist";
 	}
 }

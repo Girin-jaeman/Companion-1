@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -24,24 +25,25 @@
 			<tbody>
 				<tr>
 					<td> 글 제목 </td>
-					<td colspan="2">${bean.article_title }</td>
+					<td colspan="2">${noticeSelectOne.article_title }</td>
 				</tr>
 				<tr>
 					<td>조회수</td>	
-					<td colspan="2">${bean.article_count }</td>
+					<td colspan="2">${noticeSelectOne.article_count }</td>
 					
 				</tr>
 				<tr>
 					<td>작성일</td>	
-					<td colspan="2">${bean.article_date }</td>
+					<td colspan="2">${noticeSelectOne.article_date }</td>
 				</tr>
 				<tr>
 					<td>내용</td>	
-					<td colspan="2">${bean.article_content }</td>
+					<td colspan="2">${noticeSelectOne.article_content }</td>
 				</tr>
 				<tr>
 					<td>이미지</td>	
-					<td colspan="2">${bean.article_image }</td>
+					<td><img alt="원본이미지" src="<spring:url value='${noticeSelectOne.article_image }'/>"/></td>
+					<%-- <td>${noticeSelectOne.article_image }</td> --%>
 				</tr>
 			</tbody>
 		</table>	

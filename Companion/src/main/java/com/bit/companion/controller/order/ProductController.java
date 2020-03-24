@@ -31,23 +31,37 @@ public class ProductController {
 //		return "order/productMain";
 //	}
 	
+
+	
+	// param version test 
+	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
+	public String productDetail(Model model,@RequestParam("idx") int product_id) throws SQLException {
+		productService.detail(model, product_id);
+		
+//		답글 리스트 넘기기 ajax로 처리하기 위해 주석 처리.
+//		List<OrderQuestionVo> list = orderQuestionService.replyList(product_id);
+//		model.addAttribute("reply",list);
+		
+		return "order/productDetail";
+	}
+
+//	@RequestMapping(value = "/order/productDetail/{idx}",method=RequestMethod.GET)
+//	public String productDetail(Model model,@PathVariable("idx") int product_id) throws SQLException {
+//		productService.detail(model, product_id);
+//		
+////		답글 리스트 넘기기 
+//		List<OrderQuestionVo> list = orderQuestionService.replyList(product_id);
+//		model.addAttribute("reply",list);
+//		
+//		return "order/productDetail";
+//	}
+	
 	@RequestMapping(value = "/order/productMain",method = RequestMethod.GET)
 	public String productcategory(Model model,@RequestParam("c") int category_id) {
 		productService.category(model,category_id);
 		return "order/productMain";
 	}
-	
-	@RequestMapping(value = "/order/productDetail/{idx}",method=RequestMethod.GET)
-	public String productDetail(Model model,@PathVariable("idx") int product_id) throws SQLException {
-		productService.detail(model, product_id);
-		
-//		답글 리스트 넘기기 
-		List<OrderQuestionVo> list = orderQuestionService.replyList(product_id);
-		model.addAttribute("reply",list);
-		
-		return "order/productDetail";
-	}
-	
+
 	/* 답글 입력용 */
 	@RequestMapping(value = "/order/productDetail/orderQuestion")
 	public String orderQuestion(Model model) {

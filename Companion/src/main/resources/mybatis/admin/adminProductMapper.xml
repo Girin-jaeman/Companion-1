@@ -22,11 +22,11 @@
 			now(),
 			#{product_image},
 			#{product_thumb},
-			null,
-			null,
-			null,
-			null,
-			null
+			#{product_option1},
+			#{product_option2},
+			#{product_option3},
+			#{product_option4},
+			#{product_option5}
 		);
 	</insert>
 	

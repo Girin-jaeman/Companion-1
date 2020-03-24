@@ -208,7 +208,6 @@
 			</div>
 			<!-- modal end -->
 			<!-- modal 장바구니! end -->
-			<!--  바 테스트으으으응 -->
 			<div class="p-12 rounded mb-5">
 				<!-- Lined tabs-->
 				<ul id="myTab2" role="tablist"
@@ -542,7 +541,6 @@
 			
 			</div>
 			<!-- 3tap layer end -->
-			<!--  바 테스트으으으응 -->
 			</div>
 			<!-- Footer  -->
 			<jsp:include page="../common/footer.jsp" />
@@ -569,35 +567,66 @@
 	<script src="${root}js/order/productDetail.js"></script>
 
 	<script type="text/javascript">
-			var popup;
-			
-			$(document).on('click','#question',function(){
-				$(function pop(){
-					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
-					var target = 'orderQuestion';
-					popup = window.open('orderQuestion','question_popup',settings);
+		<script src="${root}js/order/productDetail.js"></script>
+	<script type="text/javascript">
+		 	// 문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
+			// var popup;
+			// $(document).on('click','#question',function(){
+			// 	$(function pop(){
+			// 		var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
+			// 		var target = 'orderQuestion';
+			// 		popup = window.open('orderQuestion','question_popup',settings);
 					
-				 	$.load("orderQuestion",function(){
-						popup.location = target;
-					}); 
-				})
+			// 	 	$.load("orderQuestion",function(){
+			// 			popup.location = target;
+			// 		}); 
+			// 	})
+			// }) 
+			$(function(){ 
+			$('.bt_up').click(function(){ 
+				var n = $('.bt_up').index(this);
+				var num = $(".num:eq("+n+")").val();
+				num = $(".num:eq("+n+")").val(num*1+1); 
+			});
+			$('.bt_down').click(function(){ 
+				var n = $('.bt_down').index(this);
+				var num = $(".num:eq("+n+")").val();
+				num = $(".num:eq("+n+")").val(num*1-1); 
+			});
 			}) 
-$(function(){ 
-  $('.bt_up').click(function(){ 
-    var n = $('.bt_up').index(this);
-    var num = $(".num:eq("+n+")").val();
-    num = $(".num:eq("+n+")").val(num*1+1); 
-  });
-  $('.bt_down').click(function(){ 
-    var n = $('.bt_down').index(this);
-    var num = $(".num:eq("+n+")").val();
-    num = $(".num:eq("+n+")").val(num*1-1); 
-  });
-}) 
 		</script>
 
-</body>
-</html>
+		
+<script type="text/javascript">
+		function replyList(){
+			console.log("replyList() function run...");
+			
+			var product_id = ${productDetailOne.product_id};
+			var member_id = ${sessionScope.memberVo.member_name };
+			$.getJSON("productDetail?idx="+product_id,function(data){
+				var str= "";
+				
+				$(data).each(function(){
+					console.log(data);
+					
+					var question_date = new Date(this.question_date);
+					question_date = question_date.toLocalDateString("ko-US")
+						str += "<li data-gdsNum='" + this.product_id + "'>"
+					     + "<div class='userInfo'>"
+					     + "<span class='userName'>" + this.member_id + "</span>"
+					     + "<span class='date'>" + question_date + "</span>"
+					     + "</div>"
+					     + "<div class='replyContent'>" + this.question_content + "</div>"
+					     + "</li>"; 
+				});
+				  $("section.replyList ol").html(str);
+			});
+		}
+</script>
+		
+		
+	</body>
+	</html>
 	
 	
 	

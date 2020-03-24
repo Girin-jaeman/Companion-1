@@ -21,7 +21,7 @@ public interface AdminNoticeDao {
 	int updateOne(AdminArticleVo bean) throws SQLException;
 	
 	// notice delete
-	int deleteOne(AdminArticleVo bean) throws SQLException;
+	int deleteOne(int article_id) throws SQLException;
 
 	int selectTotal() throws SQLException;;
 	

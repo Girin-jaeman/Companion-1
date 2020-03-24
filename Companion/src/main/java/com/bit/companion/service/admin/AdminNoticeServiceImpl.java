@@ -74,9 +74,9 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// notice delete - deleteOne
 	@Override
-	public void delete(AdminArticleVo bean) {
+	public void delete(int article_id) {
 		try {
-			adminNoticeDao.deleteOne(bean);
+			adminNoticeDao.deleteOne(article_id);
 		} catch (SQLException e) {
 		}
 	}

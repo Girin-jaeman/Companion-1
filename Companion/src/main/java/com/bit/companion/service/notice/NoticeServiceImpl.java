@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.NoticeVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 import com.bit.companion.model.notice.NoticeDao;
 
 @Service
@@ -27,7 +27,7 @@ public class NoticeServiceImpl implements NoticeService {
 			pagination.pageInfo(page,range,listCnt);
 			
 			// List
-			List<NoticeVo> list = noticeDao.selectAll(pagination);
+			List<ArticleVo> list = noticeDao.selectAll(pagination);
 			
 			// addAttribute
 			model.addAttribute("list",list);
@@ -39,7 +39,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void detail(Model model, int article_id) {
 		try {
-			model.addAttribute("bean",noticeDao.selectOne(article_id));
+			model.addAttribute("noticeSelectOne",noticeDao.selectOne(article_id));
 		}catch(SQLException e) {}
 	}
 
