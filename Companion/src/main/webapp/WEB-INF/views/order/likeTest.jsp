@@ -51,7 +51,7 @@
 	<button type="button" class="btn">simple 여기@!</button>
 	<div id="result"></div>
 
-<%-- 		<!-- Popper.JS -->
+ <%-- 	 	<!-- Popper.JS -->
 		<script src="${root}js/bootstrap/popper.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
@@ -82,7 +82,7 @@
 		
 			
 			
-		</script>
+		</script>  --%>
 
 
 </body>
