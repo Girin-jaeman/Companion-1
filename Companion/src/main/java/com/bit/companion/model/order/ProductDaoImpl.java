@@ -33,6 +33,7 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.selectList("product.ProductCategorySelect",category_id);
 	}
 
+
 	/*
 	 * @Override public List<ProductVo> ProductCategorySelect(int category_id)
 	 * throws SQLException { return

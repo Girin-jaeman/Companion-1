@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -112,9 +113,29 @@
 					<label for="product_date">상품등록일</label>
 					<span><fmt:formatDate value="${adminProductOne.product_date}" pattern="yyy-MM-dd"/></span>
 				</div>
+				<div class="inputArea">
+					<label for="product_option1">상품옵션1</label>
+					<span>${adminProductOne.product_option1 }</span>
+				</div>
+				<div class="inputArea">
+					<label for="product_option2">상품옵션2</label>
+					<span>${adminProductOne.product_option2 }</span>
+				</div>
+				<div class="inputArea">
+					<label for="product_option3">상품옵션3</label>
+					<span>${adminProductOne.product_option3 }</span>
+				</div>
+				<div class="inputArea">
+					<label for="product_option4">상품옵션4</label>
+					<span>${adminProductOne.product_option4 }</span>
+				</div>
+				<div class="inputArea">
+					<label for="product_option5">상품옵션5</label>
+					<span>${adminProductOne.product_option5 }</span>
+				</div>
 				<div>
 					<label for="img">원본이미지</label>
-					<img alt="원본이미지" src="${pageContext.request.contextPath}${adminProductOne.product_image }">
+					<img alt="원본이미지" src="<spring:url value='${adminProductOne.product_image }'/>">
 				</div>
 				<div>
 					<label for="img">썸네일</label>
@@ -140,6 +161,24 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 
 <script type="text/javascript">
+	//category
+	var select_cateCode = '${adminProductOne.category_id}';
+	var select_cateCodeRef = '${adminProductOne.category_refid}';
+	var select_cateName = '${adminProductOne.category_name}';
+	
+	if(select_cateCodeRef == '0') {
+		$(".category1").val(select_cateCode);
+		$(".category2").children().remove();
+		$(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
+	}
+	else{
+		$(".category1").val(select_cateCodeRef);
+		$(".category2").val(select_cateCode);
+		$(".category2").children().remove();
+		$(".category2").append("<option value='"
+			+ select_cateCode + "'>" + select_cateName + "</option>");
+	}
+
  	// edit button
 	$("#edit_Btn").click(function(){
 		location.href = ${root}+"admin/testproductedit/" + ${adminProductOne.product_id};

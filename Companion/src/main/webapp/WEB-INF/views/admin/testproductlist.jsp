@@ -89,6 +89,11 @@
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
+							<th>옵션1</th>
+							<th>옵션2</th>
+							<th>옵션3</th>
+							<th>옵션4</th>
+							<th>옵션5</th>
 						</tr>
 					</thead>
 				<tbody>
@@ -111,6 +116,21 @@
 						</td>
 						<td>
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
+						</td>
+						<td>
+							${bean.product_option1 }
+						</td>
+						<td>
+							${bean.product_option2 }
+						</td>
+						<td>
+							${bean.product_option3 }
+						</td>
+						<td>
+							${bean.product_option4 }
+						</td>
+						<td>
+							${bean.product_option5 }
 						</td>
 					</tr>   
 				</c:forEach>

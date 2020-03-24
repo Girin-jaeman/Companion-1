@@ -131,11 +131,11 @@
 					<!-- 예약하기 오른쪽(입력폼) start -->
 					<div class="col-md-6 reserve--right" id="reserText">
 						<!-- 예약하기 form -->
-						<form class="form-horizontal" method="get">
+						<form class="form-horizontal" method="POST">
 							<div class="form-group">
-								<label for="service" class="h4 col-sm-5 control-label">희망 서비스</label>
+								<label for="service_id" class="h4 col-sm-5 control-label">희망 서비스</label>
 								<div class="col-sm-11">
-									<select id="service" class="form-control" name="service">
+									<select id="service_id" class="form-control" name="service_id">
 										<option value="0">호텔&데이케어</option>
 										<option value="1">유치원</option>
 										<option value="2">독파크</option>
@@ -149,40 +149,40 @@
 							</div>
 							<!-- Datepicker -->
 							<div class="form-group">
-								<label for="rsv_checkin" class="h4 col-sm-5 control-label">체크인</label>
+								<label for="reserve_checkin" class="h4 col-sm-5 control-label">체크인</label>
 								<div class="col-sm-11">
-								<input type="text" class="form-control" name="rsv_checkin" id="from" placeholder="체크인 날짜를 선택하세요.">
+								<input type="text" class="form-control" name="reserve_checkin" id="reserve_checkin" placeholder="체크인 날짜를 선택하세요.">
 								<p class="msg err"></p>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="rsv_checkout" class="h4 col-sm-5 control-label">체크아웃</label>
+								<label for="reserve_checkout" class="h4 col-sm-5 control-label">체크아웃</label>
 								<div class="col-sm-11">
-								<input type="text" class="form-control" name="rsv_checkout" id="to" placeholder="체크아웃 날짜를 선택하세요.">
+								<input type="text" class="form-control" name="reserve_checkout" id="reserve_checkout" placeholder="체크아웃 날짜를 선택하세요.">
 								<p class="msg err"></p>
 								</div>
 							</div>
 							<!-- 반려동물 품종 -->
 							<div class="form-group">
-								<label for="animalBreed" class="h4 col-sm-5 control-label">반려동물 품종</label>
+								<label for="reserve_dogtype" class="h4 col-sm-5 control-label">반려동물 품종</label>
 								<div class="col-sm-11">
-								<input type="text" class="form-control" name="rsv_type" id="animalBreed" placeholder="반려동물 품종을 입력하세요.">
+								<input type="text" class="form-control" name="reserve_dogtype" id="reserve_dogtype" placeholder="반려동물 품종을 입력하세요.">
 								<p class="msg err"></p>
 								</div>
 							</div>
 							<!-- 반려동물 나이 -->
 							<div class="form-group">
-								<label for="animalAge" class="h4 col-sm-5 control-label">반려동물 나이</label>
+								<label for="reserve_dogage" class="h4 col-sm-5 control-label">반려동물 나이</label>
 								<div class="col-sm-11">
-								<input type="number" class="form-control" name="rsv_age" id="animalAge" placeholder="반려동물 나이를 입력하세요.">
+								<input type="number" class="form-control" name="reserve_dogage" id="reserve_dogage" placeholder="반려동물 나이를 입력하세요.">
 								<p class="msg err"></p>
 								</div>
 							</div>
 							<!-- 기타/주의사항 -->
 							<div class="form-group">
-								<label for="etc" class="h4 col-sm-5 control-label">기타</label>
+								<label for="reserve_msg" class="h4 col-sm-5 control-label">기타</label>
 								<div class="col-sm-11">
-									<textarea name="rsv_msg" id="etc" cols="56" rows="10" placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등의 자세한 사항을 작성해주세요."></textarea><br/>
+									<textarea name="reserve_msg" id="reserve_msg" cols="56" rows="10" placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등의 자세한 사항을 작성해주세요."></textarea><br/>
 									<span id="counter">(0 / 200)</span>
 								</div>
 							</div>
@@ -202,9 +202,12 @@
 			<!-- section end -->
 		</div>
 		<!-- #container end -->
+		<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+		</div>
+		<!-- Footer end -->
 	</div>
 	<!-- #content end -->
-</div>
 <!-- .wrapper end  -->
 <!-- jQuery -->
 <script src="${root}js/jquery-1.12.4.js"></script>

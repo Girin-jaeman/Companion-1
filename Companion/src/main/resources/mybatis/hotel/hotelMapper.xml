@@ -5,11 +5,11 @@
   
 <mapper namespace="hotel">
 	<select id="selectAll" resultType="hotelBean">
-		select * from reserve
+		select * from `reserve`;
 	</select>
 	
+	<!-- 임시 'test01'->회원아이디로 수정 필요 -->
 	<insert id="insertOne" parameterType="hotelBean">
-		insert into reserve (rsv_date,rsv_checkin,rsv_checkout,rsv_type,rsv_age,rsv_msg,rsv_svc_id,rsv_mb_id) 
-		values (now(),#{rsv_checkin},#{rsv_checkout},#{rsv_type},#{rsv_age},#{rsv_msg},'testcode','admin4');
+		insert into `reserve` values (null,'test01',#{service_id},now(),#{reserve_checkin},#{reserve_checkout},#{reserve_dogtype},#{reserve_dogage},#{reserve_msg},DEFAULT);
 	</insert>
 </mapper>

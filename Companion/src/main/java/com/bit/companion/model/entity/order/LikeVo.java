@@ -5,21 +5,19 @@ public class LikeVo {
 	private String member_id;
 	private int product_id;
 	
+	public LikeVo() {
+	}
+	
 	public LikeVo(int like_id, String member_id, int product_id) {
 		super();
 		this.like_id = like_id;
 		this.member_id = member_id;
 		this.product_id = product_id;
 	}
-
 	@Override
 	public String toString() {
 		return "LikeVo [like_id=" + like_id + ", member_id=" + member_id + ", product_id=" + product_id + "]";
 	}
-
-	public LikeVo() {
-	}
-	
 	public int getLike_id() {
 		return like_id;
 	}
@@ -38,6 +36,6 @@ public class LikeVo {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	
+
 	
 }

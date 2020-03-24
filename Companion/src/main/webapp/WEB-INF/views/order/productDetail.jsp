@@ -242,7 +242,9 @@
 				<h5>//////////저렴하고 값싸고 아주 cheap 한 price에 좋은 product를 get했씁니다 여러분도 이 사이트에서 구매하시고 반려견과 행복한 생활을 하시길 바라며 이 글을 씁니다 아주 만족스럽고 환상적인 물건입니다. 김진우 올림. ////////////////</h5>  이미지 사이즈 90 X 90
 			</div>
 			<!-- 후기글 -->
-			<!-- 문의글 -->
+			
+			
+				<!-- 문의글 -->
 			<hr class="mb-2">
 		<div class="row" id="inquiry">	<!-- 테이블로 넣자  -->
 				<div class="col-sm-3"><h4>문의하기</h4></div>
@@ -255,64 +257,117 @@
 				<!--  -->
 				<div class="col-sm-6"> 구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
 				<div class="col-sm-6"></div>
-				<table class="table">
-					<thead></thead>
-					<tbody>
-							<tr>
-								<td>답변 상태</td>
-								<td></td>
-								<td>제목</td>
-								<td></td>
-								<td>작성자</td>
-								<td>작성일</td>
-							</tr>
-						<%-- 	<c:forEach items="${review }" var="bean"></c:forEach> --%>
-							<tr>
-								<td>답변 대기</td>
-								<td></td>
-								<td>문의 제목1</td>
-								<td></td>
-								<td>작성자 아이디</td>
-								<td>작성일</td>
-							</tr>
-							<tr>
-								<td>답변 완료</td>
-								<td></td>
-								<td>문의 제목2</td>
-								<td></td>
-								<td>작성자 아이디</td>
-								<td>작성일</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>문의 내용</td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>문의 내용</td>
-								<td>관리자</td>
-								<td>작성일</td>
-							</tr>
-							<tr>
-								<td>답변 대기</td>
-								<td></td>
-								<td>비밀글입니다.</td>
-								<td></td>
-								<td>작성자 아이디</td>
-								<td>작성일</td>
-							</tr>
-					</tbody>
-				</table>
+				
+				
+				<div id="reply">
+				<c:if test="${memberVo.member_id==null}">	
+						<p>소감을 남기려면 로그인 해주세요!</p>
+				</c:if>
+				<c:if test="${memberVo.member_id!=null}">	
+						 <section class="replyForm">
+ <!-- 답글 POST ajax 처리. -->
+	  <form action="${root }order/productDetail/question" role="form" method="post" autocomplete="off">
+		 	<input type="hidden" name="product_id" value="${productDetailOne.product_id }">
+			<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<textarea name="question_title" id="question_title">문의 제목</textarea>
+				<textarea name="question_content" id="question_content">컨텐츠</textarea>
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+				<!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
+			</div>
+		<div class="input_area">
+		
+			<button type="submit" id="reply_btn">문의글 달기</button>
+			
+			<script>
+				$("#reply_btn").click(function(){
+					var formObj = $(".replyForm form[role='form']");
+					var product_id = $("#product_id").val();
+					var question_title = $("#question_title").val();
+					var question_content = $("#question_content").val();
+					var data= {
+							product_id : product_id,
+							question_title : question_title,
+							question_content : question_content
+					};
+					$.ajax({
+						url : "order/productDetail/registReply",
+						type : "POST",
+						data : data,
+						success : function(){
+							replyList();
+						}
+					});
+				});			
+				
+			</script>
+		</div>
+	  </form>
+ <!-- 답글 POST ajax 처리. -->
+						 </section>
+				 </c:if>
+					 <section class="replyList">
+						<ol>
+					  			<h4>최근 문의글 목록</h4>
+					<div class="container">  			
+					  	<table class="table">
+					  		<thead></thead>
+					  		<tbody>
+					  			<tr>
+					  				<td>답변상태</td>
+					  				<td>작성자</td>
+					  				<td>제목</td>
+					  				<td>글 내용</td>
+					  				<td>비밀글여부</td>
+					  				<td>작성일</td>
+					  			</tr>
+					  		</tbody>
+					  	</table>		
+
+							<section class="replyList">
+								<ol>
+								
+					  			
+					  			<!-- ajax로 처리하기위한 주석처리.  -->
+							<%-- 	<c:forEach items="${reply }"  var="bean">
+								<tr>
+					  				<td><span class="userName"></span>
+					  				<span class="userName">${bean.question_state_id }</span></td>
+
+					  				<td><span class="userName">  아이디 : </span>
+					  				<span class="userName">${bean.member_id }</span></td>
+
+					  				<td><span class="userName">  글 제목 : </span>
+					  				<span class="userName">${bean.question_title }</span></td>
+
+					  				<td><span class="userName">  글 내용 : </span>
+					  				<span class="userName">${bean.question_content }</span></td>
+
+					  				<td><span class="userName">  </span>
+					  				<span class="userName">${bean.question_secret_id }</span></td>
+					  				
+					  				<td><span class="userName">작성일:</span>
+					  				<span class="userName">${bean.question_date }</span></td>
+					  			</tr>
+								</c:forEach> --%>
+								</ol>
+								<script>
+									replyList();
+								</script>
+							</section>
+					  </div>			
+					  	</ol>    
+					 </section>
+				</div>
+			
 		</div>	
 
 			
-			<!-- 문의글 -->
+				<!-- 문의글 -->
 
 		</div><!-- content end -->
 		
@@ -357,10 +412,9 @@
 		<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
 
 		<script src="${root}js/order/productDetail.js"></script>
-	
-		<script type="text/javascript">
+<!-- 	<script type="text/javascript">
+		 	문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
 			var popup;
-			
 			$(document).on('click','#question',function(){
 				$(function pop(){
 					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
@@ -371,8 +425,37 @@
 						popup.location = target;
 					}); 
 				})
-			}) 
-		</script>
+			})  
+		</script> -->
+		
+<script type="text/javascript">
+		function replyList(){
+			console.log("replyList() function run...");
+			
+			var product_id = ${productDetailOne.product_id};
+			var member_id = ${sessionScope.memberVo.member_name };
+			$.getJSON("productDetail?idx="+product_id,function(data){
+				var str= "";
+				
+				$(data).each(function(){
+					console.log(data);
+					
+					var question_date = new Date(this.question_date);
+					question_date = question_date.toLocalDateString("ko-US")
+						str += "<li data-gdsNum='" + this.product_id + "'>"
+					     + "<div class='userInfo'>"
+					     + "<span class='userName'>" + this.member_id + "</span>"
+					     + "<span class='date'>" + question_date + "</span>"
+					     + "</div>"
+					     + "<div class='replyContent'>" + this.question_content + "</div>"
+					     + "</li>"; 
+				});
+				  $("section.replyList ol").html(str);
+			});
+		}
+</script>
+		
+		
 	</body>
 	</html>
 	
