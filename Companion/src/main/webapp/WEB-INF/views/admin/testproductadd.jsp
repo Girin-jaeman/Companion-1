@@ -106,6 +106,26 @@
 					<textarea rows="5" cols="50" id="product_content" name="product_content"></textarea>
 				</div>
 				<div class="inputArea">
+					<label for="product_option1">상품옵션1</label>
+					<input type="text" id="product_option1" name="product_option1" />
+				</div>
+				<div class="inputArea">
+					<label for="product_option2">상품옵션2</label>
+					<input type="text" id="product_option2" name="product_option2" />
+				</div>
+				<div class="inputArea">
+					<label for="product_option3">상품옵션3</label>
+					<input type="text" id="product_option3" name="product_option3" />
+				</div>
+				<div class="inputArea">
+					<label for="product_option4">상품옵션4</label>
+					<input type="text" id="product_option4" name="product_option4" />
+				</div>
+				<div class="inputArea">
+					<label for="product_option5">상품옵션5</label>
+					<input type="text" id="product_option5" name="product_option5" />
+				</div>
+				<div class="inputArea">
 					<label for="file">이미지</label>
 					<input type="file" id="product_image" name="file" />
 					<div class="select_img"><img src="" /></div>

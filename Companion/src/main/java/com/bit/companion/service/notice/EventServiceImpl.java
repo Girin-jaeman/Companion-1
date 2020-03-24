@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.EventVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 import com.bit.companion.model.notice.EventDao;
 
 @Service
@@ -27,7 +27,7 @@ public class EventServiceImpl implements EventService {
 			pagination.pageInfo(page, range, listCnt);
 			
 			// List
-			List<EventVo> list = eventDao.selectAll(pagination);
+			List<ArticleVo> list = eventDao.selectAll(pagination);
 			
 			// addAttribute
 			model.addAttribute("list",list);

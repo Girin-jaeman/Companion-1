@@ -4,15 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="event">
-  	<select id="selectAll" resultType="eventBean">
-  		select @rownum:=@rownum+1 as no, A.* from article A where (@rownum:=0)=0 AND board_id=1 order by A.article_id desc LIMIT #{startList}, #{listSize}
+  	<select id="selectAll" resultType="articleBean">
+  		select * from article where board_id=1 order by article_id desc LIMIT #{startList}, #{listSize}
   	</select>
   	
   	<select id="selectTotal" resultType="int">
   		select count(*) as listCnt from article where board_id=1
   	</select>
   	
-  	<select id="selectOne" resultType="eventBean" parameterType="int">
+  	<select id="selectOne" resultType="articleBean" parameterType="int">
   		select * from article where article_id=#{value}
   	</select>
   	<update id="updateCount" parameterType="int">

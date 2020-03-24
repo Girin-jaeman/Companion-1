@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.FAQVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 
 @Repository
 public class FAQDaoImpl implements FAQDao {
@@ -25,7 +25,7 @@ public class FAQDaoImpl implements FAQDao {
 	}
 
 	@Override
-	public List<FAQVo> selectAll(Pagination pagination) throws SQLException {
+	public List<ArticleVo> selectAll(Pagination pagination) throws SQLException {
 		return sqlSession.selectList("faq.selectAll",pagination);
 	}
 

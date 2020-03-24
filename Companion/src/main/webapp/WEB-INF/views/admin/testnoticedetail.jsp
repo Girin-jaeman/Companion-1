@@ -7,11 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="/resources/ckeditor/ckeditor.js"></script>
+<title>관리자 - 공지사항 상세 페이지</title>
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
-	<form role="form" method="post" >
+	<form role="form" method="post" autocomplete="off">
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
 			<label for="title">title</label>
@@ -32,7 +33,8 @@
 		</div>
 		<div>
 			<label for="img">썸네일</label>
-			<img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }">
+			<%-- <img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"> --%>
+			<img alt="썸네일" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
 		</div>
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>

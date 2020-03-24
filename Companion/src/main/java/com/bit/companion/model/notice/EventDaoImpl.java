@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.EventVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 
 @Repository
 public class EventDaoImpl implements EventDao {
@@ -25,12 +25,12 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public List<EventVo> selectAll(Pagination pagination) throws SQLException {
+	public List<ArticleVo> selectAll(Pagination pagination) throws SQLException {
 		return sqlSession.selectList("event.selectAll",pagination);
 	}
 
 	@Override
-	public EventVo selectOne(int article_id) throws SQLException {
+	public ArticleVo selectOne(int article_id) throws SQLException {
 		return sqlSession.selectOne("event.selectOne",article_id);
 	}
 
