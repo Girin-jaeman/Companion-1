@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
-	<form role="form" method="post" >
+	<form role="form" method="post" autocomplete="off">
 		<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 		<div>
 			<label for="title">title</label>

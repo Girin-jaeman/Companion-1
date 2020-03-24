@@ -19,6 +19,6 @@ public interface AdminNoticeService {
 	void update(AdminArticleVo bean);
 	
 	// notice delete
-	void delete(AdminArticleVo bean);
+	void delete(int article_id);
 	
 }

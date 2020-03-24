@@ -45,8 +45,8 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 	// notice delete - deleteOne
 	@Override
-	public int deleteOne(AdminArticleVo bean) throws SQLException {
-		return sqlSession.delete("adminNotice.deleteOne",bean);
+	public int deleteOne(int article_id) throws SQLException {
+		return sqlSession.delete("adminNotice.deleteOne",article_id);
 	}
 
 	// notice total - selectTotal
