@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -74,17 +75,6 @@
 				<ul>
 					<li><a href="${root}admin/testproductadd">상품등록</a></li>
 					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-					<li><a href="#">상품소감</a></li>
-					<li><a href="#">유저목록</a></li>
-				</ul>
-			</aside>
-			<h1>관리자 페이지</h1>
-			<aside>
-				<ul>
-					<li><a href="${root}admin/testproductadd">상품등록</a></li>
-					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-					<li><a href="#">상품소감</a></li>
-					<li><a href="#">유저목록</a></li>
 				</ul>
 			</aside>
 			<h2>상품 수정</h2>
@@ -139,11 +129,10 @@
 					<label for="product_image">이미지</label>
 					<input type="file" id="product_image" name="file" />
 					<div class="select_img">
-						<img src="${pageContext.request.contextPath}${adminProductOne.product_image}" />
+						<img src="<spring:url value='${adminProductOne.product_image }'/>" />
 						<input type="hidden" name="product_image" value="${adminProductOne.product_image}" />
 						<input type="hidden" name="product_thumb" value="${adminProductOne.product_thumb}" /> 
 					</div>
-				 	<%=request.getRealPath("/") %>
 				</div>
 				<div class="inputArea">
 					<button type="submit" id="update_Btn" class="btn btn-primary">수정</button>
@@ -166,11 +155,31 @@
 <script src="${root }resources/ckeditor/ckeditor.js"></script>
 
 <script>
+// 메뉴 토글 버튼
+$(document).ready(function () {
+	$('#sidebarCollapse').on('click', function () {
+		$('#sidebar').toggleClass('active');
+	});
+});
 
+// 취소 버튼
+$("#back_Btn").click(function(){
+	history.back();
+});
+
+// 숫자 유효성검사 
+var regExp = /[^0-9]/gi;
+$("#product_price").keyup(function(){ numCheck($(this)); });
+$("#product_stock").keyup(function(){ numCheck($(this)); });
+
+function numCheck(selector) {
+	var tempVal = selector.val();
+	selector.val(tempVal.replace(regExp, ""));
+}
+
+/* 카테고리 불러오기 시작*/
 // 컨트롤러에서 데이터 받기
 var jsonData = JSON.parse('${adminProductCategory}');
-console.log(jsonData);
-
 var cate1Arr = new Array();
 var cate1Obj = new Object();
 
@@ -178,31 +187,32 @@ var cate1Obj = new Object();
 for(var i = 0; i < jsonData.length; i++) {
 	if(jsonData[i].category_refid == "0") {
 		cate1Obj = new Object();  //초기화
-		cate1Obj.cateCode = jsonData[i].category_id;
-		cate1Obj.cateName = jsonData[i].category_name;
+		cate1Obj.category_id = jsonData[i].category_id;
+		cate1Obj.category_name = jsonData[i].category_name;
 		cate1Arr.push(cate1Obj);
 	}
 }
 
 // 1차 분류 셀렉트 박스에 데이터 삽입
-var cate1Select = $("select.category1")
+var cate1Select = $("select.category1");
 
 for(var i = 0; i < cate1Arr.length; i++) {
-	cate1Select.append("<option value='" + cate1Arr[i].cateCode + "'>"
-		+ cate1Arr[i].cateName + "</option>"); 
+	cate1Select.append("<option value='" + cate1Arr[i].category_id + "'>"
+		+ cate1Arr[i].category_name + "</option>"); 
 }
 
 // 1차 분류 선택시 2차 분류 출력
 $(document).on("change", "select.category1", function(){
 	var cate2Arr = new Array();
 	var cate2Obj = new Object();
+	$('.category2').attr('disabled', false);
 	// 2차 분류 셀렉트 박스에 삽입할 데이터 준비
 	for(var i = 0; i < jsonData.length; i++) {
 		if(jsonData[i].category_refid != "0") {
 			cate2Obj = new Object();  //초기화
-			cate2Obj.cateCode = jsonData[i].category_id;
-			cate2Obj.cateName = jsonData[i].category_name;
-			cate2Obj.cateCodeRef = jsonData[i].category_refid;
+			cate2Obj.category_id = jsonData[i].category_id;
+			cate2Obj.category_name = jsonData[i].category_name;
+			cate2Obj.category_refid = jsonData[i].category_refid;
 			cate2Arr.push(cate2Obj);
 		}
 	}
@@ -212,55 +222,45 @@ $(document).on("change", "select.category1", function(){
 		var selectVal = $(this).val();  
 		cate2Select.append("<option value='"+selectVal+"'>전체</option>");
 		for(var i = 0; i < cate2Arr.length; i++) {
-			if(selectVal == cate2Arr[i].cateCodeRef) {
-			cate2Select.append("<option value='" + cate2Arr[i].cateCode + "'>"
-				+ cate2Arr[i].cateName + "</option>");
+			if(selectVal == cate2Arr[i].category_refid) {
+			cate2Select.append("<option value='" + cate2Arr[i].category_id + "'>"
+				+ cate2Arr[i].category_name + "</option>");
 			}
 		}
 	});
 });
+/* 카테고리 불러오기 끝*/
 
-// category
-var select_cateCode = '${adminProductOne.category_id}';
-var select_cateCodeRef = '${adminProductOne.category_refid}';
-var select_cateName = '${adminProductOne.category_name}';
+// 카테고리 선 입력
+var select_category_id = '${adminProductOne.category_id}';
+var select_category_refid = '${adminProductOne.category_refid}';
+var select_category_name = '${adminProductOne.category_name}';
 
-if(select_cateCodeRef == '0') {
-	$(".category1").val(select_cateCode);
+if(select_category_refid == '0') {
+	$(".category1").val(select_category_id);
 	$(".category2").children().remove();
-	$(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
+	$(".category2").append("<option value='" + select_category_id + "' selected='selected'>전체</option>");
+	$('.category2').attr('disabled', true);
 }
 else{
-	$(".category1").val(select_cateCodeRef);
-	$(".category2").val(select_cateCode);
+	$(".category1").val(select_category_refid);
+	$(".category2").val(select_category_id);
 	$(".category2").children().remove();
 	$(".category2").append("<option value='"
-		+ select_cateCode + "'>" + select_cateName + "</option>");
+		+ select_category_id + "'>" + select_category_name + "</option>");
+	$('.category2').attr('disabled', true);
 }
-
-// back button
-$("#back_Btn").click(function(){
-	history.back();
-});   
 
 // ckeditor
 var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	// 수정 필요
 	// filebrowserUploadUrl : "../../upload/notice"
 };
 CKEDITOR.replace( 'product_content' );
 
-/* menu toggle button */
-$(document).ready(function () {
-	$('#sidebarCollapse').on('click', function () {
-		$('#sidebar').toggleClass('active');
-	});
-});
- 
-//
+// 이미지 미리보기
 $("#product_image").change(function(){
 	if(this.files && this.files[0]) {
 		var reader = new FileReader;
@@ -270,16 +270,6 @@ $("#product_image").change(function(){
 		reader.readAsDataURL(this.files[0]);
 	}
 });
-  
-// 숫자 
-var regExp = /[^0-9]/gi;
-$("#product_price").keyup(function(){ numCheck($(this)); });
-$("#product_stock").keyup(function(){ numCheck($(this)); });
-
-function numCheck(selector) {
-	var tempVal = selector.val();
-	selector.val(tempVal.replace(regExp, ""));
-}
 </script>
 
 </body>

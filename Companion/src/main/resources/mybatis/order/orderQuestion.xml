@@ -7,9 +7,7 @@
 	<select id="OrderQuestionList" resultType="orderQuestionBean" parameterType="int">
 	select * from `question` where product_id=#{value}
 	</select>
-	
 	<insert id="registReply">
-		insert into question
-          values (default,100,null,#{product_id},#{member_id},now(),null,#{question_title},#{question_content},null,null,default,default);
+		insert into `question` values (default,100,null,#{product_id},#{member_id},now(),null,#{question_title},#{question_content},null,null,default,default);
 	</insert>
   </mapper>

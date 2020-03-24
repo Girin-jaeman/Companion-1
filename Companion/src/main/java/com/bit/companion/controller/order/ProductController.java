@@ -1,16 +1,18 @@
 package com.bit.companion.controller.order;
 
 import java.sql.SQLException;
-import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.model.entity.order.OrderQuestionVo;
 import com.bit.companion.service.order.OrderQuestionService;
 import com.bit.companion.service.order.ProductService;
@@ -24,7 +26,7 @@ public class ProductController {
 	@Autowired
 	OrderQuestionService orderQuestionService;
 	
-	
+	OrderQuestionVo orderQuestionVo;
 //	@RequestMapping(value = "/order/productMain")
 //	public String productMain(Model model) {
 //		productService.list(model);
@@ -33,7 +35,9 @@ public class ProductController {
 	
 
 	
-	// param version test 
+
+
+	// param version test  ajax 실패하면 이거 살릴것.
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
 	public String productDetail(Model model,@RequestParam("idx") int product_id) throws SQLException {
 		productService.detail(model, product_id);

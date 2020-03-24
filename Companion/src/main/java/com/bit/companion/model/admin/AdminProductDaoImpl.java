@@ -25,23 +25,23 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	public List<AdminCategoryVo> selectCategory() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectCategory");
 	}
-
-	// product add - insertOne
-	@Override
-	public void insertOne(AdminProductVo bean) throws SQLException {
-		sqlsession.insert("adminProduct.insertOne",bean);
-	}
-
+	
 	// product list - selectAll
 	@Override
 	public List<AdminProductViewVo> selectAll() throws SQLException {
 		return sqlsession.selectList("adminProduct.selectAll");
 	}
-
+	
 	// product detail - selectOne
 	@Override
 	public AdminProductViewVo selectOne(int product_id) throws SQLException {
 		return sqlsession.selectOne("adminProduct.selectOne",product_id);
+	}
+
+	// product add - insertOne
+	@Override
+	public void insertOne(AdminProductVo bean) throws SQLException {
+		sqlsession.insert("adminProduct.insertOne",bean);
 	}
 
 	// product edit - updateOne

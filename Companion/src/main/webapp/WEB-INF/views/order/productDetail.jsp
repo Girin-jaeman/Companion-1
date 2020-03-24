@@ -4,7 +4,6 @@
 <c:url value="/" var ="root"></c:url>
 	<!DOCTYPE html>
 	<html>
-	
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,24 +19,8 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 		<style type="text/css">
-		/* .btn {
-			    height: 34px;
-			    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
-			    border: 1px solid #d5d5d5;
-			    border-radius: 4px;
-			    display: inline-flex;
-			    align-items: center;
-			    padding: 0 12px;
-			    font-size: 14px;
-			    font-weight: 500;
-			    line-height: 1.5;
-			    cursor: pointer;
-			    box-sizing: border-box;
-			    position: relative;
-			    color: #333;
-			} */
-		</style>
 
+		</style>
 	</head>
 
 <body>
@@ -156,7 +139,6 @@
                         <!-- 구매 로그인 세션 검사 -->
 								<c:choose>
 									<c:when test="${memberVo.member_id==null}">
-
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
 									<c:when test="${memberVo.member_id!=null}">
@@ -165,7 +147,7 @@
 									</c:when>
 
 								</c:choose>
-								<!-- 구매 로그인 세션 검사 -->
+							<!-- 구매 로그인 세션 검사 -->
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-5" role="button" aria-pressed="true">찜하기</a>
                         </div>
@@ -184,28 +166,31 @@
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<%-- 	        ${productDetailOne.product_name }이 장바구니에 담겼습니다. --%>
-							장바구니로 이동할까요?
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary">확인</button>
-						</div>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<%-- 	        ${productDetailOne.product_name }이 장바구니에 담겼습니다. --%>
+								장바구니로 이동할까요?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">확인</button>
+							</div>
 						
 					</div>
-					<!-- modal-content end -->
+		
 				</div>
+			</div>	<!-- modal-content end -->
+					
+		
 				<!-- modal-dialog end -->
-			</div>
+	
 			<!-- modal end -->
 			<!-- modal 장바구니! end -->
 			<div class="p-12 rounded mb-5">
@@ -230,7 +215,7 @@
 				</ul>
 				<div id="myTab2Content" class="tab-content">
 					<div id="product-info" role="tabpanel" aria-labelledby="home-tab"
-						class="tab-pane fade px-4 py-5 show active">
+						class="tab-pane fade px-4 py-5 show active"><!-- 상품설명 start   -->
 						<!-- 상품설명 -->
 						<div class="row">
 							<!-- 테이블로 넣자  -->
@@ -260,8 +245,9 @@
 							<h5>${productDetailOne.product_content }</h5>
 						</div>
 
-						<!-- 상품설명   -->
-					</div>
+					
+					</div>	<!-- 상품설명   end -->
+					
 					<!-- product-info end -->
 
 					<div id="post-use" role="tabpanel" aria-labelledby="post-use-tab"
@@ -281,8 +267,8 @@
 						</nav>
 						<hr class="my-1">
 
-						<!-- 후기글 start -->
-						<div class="row">
+					
+						<div class="row">	<!-- 후기글 start -->
 							<div class="col-lg-12">
 								<table class="table">
 									<thead>
@@ -431,9 +417,9 @@
 							<!-- col-lg-12 end -->
 						</div>
 						<!-- row end -->
-					</div>
-					<!-- #post-use end  -->
-					<!-- 후기글 End -->
+					</div>	<!-- #post-use end  -->	<!-- 후기글 End -->
+				
+				
 
 					<!-- 문의글 start-->
 					<div id="contact2" role="tabpanel" aria-labelledby="contact-tab"
@@ -461,93 +447,52 @@
 									<c:if test="${memberVo.member_id!=null}">
 										<section class="replyForm">
 
-											<form action="${root }order/productDetail/question"
-												role="form" method="post" autocomplete="off">
-
-												<input type="hidden" name="product_id"
-													value="${productDetailOne.product_id }">
-												<%-- 		<input type="hidden" name="order_id" value="${productDetailOne.order_id }">  --%>
-
-
-												<div class="input_area">
+											 <form role="form" method="post" autocomplete="off"> 
+											<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
+										 	<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
+										
+										
+											<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
 													<label for="question_title" id="question_label">문의 제목</label>
-													<input type="text" name="question_title"
-														id="question_title" placeholder="제목을 입력해주세요"></br>
-													<textarea name="question_content" id="question_content">컨텐츠</textarea>
-												</div>
-												<div class="input_area">
-													<button type="submit" id="reply_btn">문의글 달기</button>
-												</div>
+												<textarea name="question_title" id="question_title">문의 제목</textarea>
+												<textarea name="question_content" id="question_content">컨텐츠</textarea>
+											</div>
+													<button type="button" id="reply_btn">문의글 달기</button>
 											</form>
 										</section>
 									</c:if>
 
+									<!-- 여기에 문의글 ajax 들어감 -->
 									<section class="replyList">
 										<ol>
 											<h4>최근 문의글 목록</h4>
-											<div class="container">
-												<table class="table">
-													<thead></thead>
-													<tbody>
-														<tr>
-															<td>답변상태</td>
-															<td>작성자</td>
-															<td>제목</td>
-															<td>글 내용</td>
-															<td>비밀글여부</td>
-															<td>작성일</td>
-														</tr>
-														<c:forEach items="${reply }" var="bean">
-															<tr>
-
-																<td><span class="userName"></span> <span
-																	class="userName">${bean.question_state_id }</span></td>
-
-																<td><span class="userName"> 아이디 : </span> <span
-																	class="userName">${bean.member_id }</span></td>
-
-																<td><span class="userName"> 글 제목 : </span> <span
-																	class="userName">${bean.question_title }</span></td>
-
-																<td><span class="userName"> 글 내용 : </span> <span
-																	class="userName">${bean.question_content }</span></td>
-
-																<td><span class="userName"> </span> <span
-																	class="userName">${bean.question_secret_id }</span></td>
-
-																<td><span class="userName">작성일:</span> <span
-																	class="userName">${bean.question_date }</span></td>
-
-															</tr>
-														</c:forEach>
-													</tbody>
-												</table>
-											</div>
+											<ol>
+											</ol>
 										</ol>
 									</section>
+									<!-- 여기에 문의글 ajax 들어감. -->
+									
 								</div>
 								<!-- reply end -->
 							</div>
 							<!-- col-lg-12 end -->
 						</div>
 						<!-- row end -->
-						<!-- 문의 엔드 -->
-
+						</div>	<!-- 문의 엔드 -->
 					</div>
 					<!-- End lined tabs -->
-				
 				</div>
 				<!-- #myTab2Content end-->
-			
 			</div>
+			<!-- 후기글 -->
+				<!-- 문의글 -->
 			<!-- 3tap layer end -->
-			</div>
+		
 			<!-- Footer  -->
 			<jsp:include page="../common/footer.jsp" />
 			<!-- Footer end -->
 		</div>
 		<!-- #content end -->
-
 	</div>
 	<!-- wrapper end -->
 
@@ -596,50 +541,59 @@
 			}) 
 		</script>
 
-<!-- 	<script type="text/javascript">
-		 	문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
-			var popup;
-			$(document).on('click','#question',function(){
-				$(function pop(){
-					var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
-					var target = 'orderQuestion';
-					popup = window.open('orderQuestion','question_popup',settings);
-					
-				 	$.load("orderQuestion",function(){
-						popup.location = target;
-					}); 
-				})
-			})  
-		</script> -->
+		<!-- ajax 문의글 리스트 출력. -->
+		<script type="text/javascript">
+				function replyList(){
+					console.log("replyList() function run...");
+								var product_id = ${productDetailOne.product_id};
+								var member_id = ${memberVo.member_id };
+					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
+								var str= "";
+						$(data).each(function(){
+							console.log(data);
+							var question_date = new Date(this.question_date);
+							question_date = question_date.toLocaleDateString("ko-US")
+								str += "<li data-gdsNum='" + this.product_id + "'>"
+							     + "<div class='userInfo'>"
+							     + "<span class='userName'>" + this.member_id + "</span>"
+							     + "<span class='date'>" + question_date + "</span>"
+							     + "</div>"
+							     + "<div class='replyContent'>" + this.question_content + "</div>"
+							     + "</li>"; 
+						});
+		 				  $("section.replyList ol").html(str); 
+					});
+				}
+		replyList();
 		
-<script type="text/javascript">
-		function replyList(){
-			console.log("replyList() function run...");
-			
-			var product_id = ${productDetailOne.product_id};
-			var member_id = ${sessionScope.memberVo.member_name };
-			$.getJSON("productDetail?idx="+product_id,function(data){
-				var str= "";
-				
-				$(data).each(function(){
-					console.log(data);
-					
-					var question_date = new Date(this.question_date);
-					question_date = question_date.toLocalDateString("ko-US")
-						str += "<li data-gdsNum='" + this.product_id + "'>"
-					     + "<div class='userInfo'>"
-					     + "<span class='userName'>" + this.member_id + "</span>"
-					     + "<span class='date'>" + question_date + "</span>"
-					     + "</div>"
-					     + "<div class='replyContent'>" + this.question_content + "</div>"
-					     + "</li>"; 
+		/* ajax 문의 글 입력 할 때 */
+			$("#reply_btn").click(function(){
+				var formObj=$(".replyForm form[role='form']");
+				var product_id=$("#product_id").val();
+				var member_id=$("#member_id").val();
+				var question_title=$("#question_title").val();
+				var question_content = $("#question_content").val();
+				var data = {
+						product_id : product_id,
+						question_title : question_title,
+						question_content : question_content,
+						member_id : member_id
+				};
+				$.ajax({
+					url : "${root }order/productDetail/question",
+					type : "post",
+					data : data,
+					success : function(){
+						replyList();
+						$("#question_content").val("");
+						$("#question_title").val("");
+						alert('문의 글이 정상 등록되었습니다.');
+					}
 				});
-				  $("section.replyList ol").html(str);
+				console.log(data);	
 			});
-		}
-</script>
-		
-		
+		/* 데이터 입력할 떄  */
+		</script> 
 	</body>
 	</html>
 	

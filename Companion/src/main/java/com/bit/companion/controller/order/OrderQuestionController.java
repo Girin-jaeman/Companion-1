@@ -1,6 +1,7 @@
 package com.bit.companion.controller.order;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.companion.model.entity.login.MemberVo;
@@ -24,7 +26,7 @@ public class OrderQuestionController {
 	@Autowired
 	OrderQuestionService orderQuestionService;
 	
-/*	//상품 조회 댓글 작성.
+	//상품 조회 댓글 작성.
 	@RequestMapping(value="order/productDetail/question", method=RequestMethod.POST)
 	public String registReply(OrderQuestionVo orderQuestionVo,HttpSession session) throws SQLException {
 		logger.debug("OrderQuestion Controller 동작중!!!!");
@@ -34,20 +36,20 @@ public class OrderQuestionController {
 		orderQuestionVo.setMember_id(member.getMember_id());
 
 		orderQuestionService.registReply(orderQuestionVo);
-		return "redirect:/order/productDetail?idx=" + orderQuestionVo.getProduct_id();
-	}*/
-	
-	//ajax productDetail PAGE 댓글 조회.
+		return "order/productDetail";
+	}
+	// 상품소감 댓글 목록 불러오기. get 방식
 	@ResponseBody
-	@RequestMapping(value = "order/productDetail/registReply",method=RequestMethod.POST)
-	public void registReply(OrderQuestionVo orderQuestionVo,HttpSession session) throws SQLException {
-		logger.debug("OrderQuestion Controller 동작중!!!!");
-		MemberVo member = (MemberVo)session.getAttribute("memberVo");
-		orderQuestionVo.setMember_id(member.getMember_id());
-		orderQuestionService.registReply(orderQuestionVo);
+	@RequestMapping(value="order/productDetail/registReply",method = RequestMethod.GET)
+	public List<OrderQuestionVo> getReplyList(@RequestParam("idx") int product_id) throws SQLException{
+		logger.debug("GET replyList call...");
+		
+		List<OrderQuestionVo> reply = orderQuestionService.replyList(product_id);
+		
+		return reply;
 	}
 	
-	
+
 	
 	
 	

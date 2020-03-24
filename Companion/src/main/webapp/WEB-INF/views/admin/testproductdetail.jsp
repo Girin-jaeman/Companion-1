@@ -76,16 +76,22 @@
 				<ul>
 					<li><a href="${root}admin/testproductadd">상품등록</a></li>
 					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-					<li><a href="#">상품소감</a></li>
-					<li><a href="#">유저목록</a></li>
 				</ul>
 			</aside>
 			<h2>상품 상세</h2>
 			<form role="form" method="post" autocomplete="off" >
-				<label>1차 분류</label>
-				<span class="category1"></span>
-				<label>2차 분류</label>
-				<span class="category2">${adminProductOne.category_id }</span>
+				<c:choose>
+					<c:when test="${adminProductOne.category_refid == '0' }">
+						<label for="category_name">1차 분류</label>
+						<span>${adminProductOne.category_name}</span>
+					</c:when>
+					<c:when test="${adminProductOne.category_refid != '0' }">
+						<label for="category_refidname">1차 분류</label>
+						<span>${adminProductOne.category_refidname}</span>
+						<label for="category_name">2차 분류</label>
+						<span>${adminProductOne.category_name}</span>
+					</c:when>
+				</c:choose>
 				
 		 		<input type="hidden" name="product_id" value="${adminProductOne.product_id }"/>
 		 		 
@@ -107,7 +113,7 @@
 				</div>
 				<div class="inputArea">
 					<label for="product_content">상품소개</label>
-					<span>${adminProductOne.product_content }</span>
+					<div>${adminProductOne.product_content }</div>
 				</div>
 				<div class="inputArea">
 					<label for="product_date">상품등록일</label>
@@ -139,7 +145,7 @@
 				</div>
 				<div>
 					<label for="img">썸네일</label>
-					<img alt="썸네일" src="${pageContext.request.contextPath}${adminProductOne.product_thumb }">
+					<img alt="썸네일" src="<spring:url value='${adminProductOne.product_thumb }'/>">
 				</div>
 				<div class="inputArea">
 					<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>
@@ -161,30 +167,19 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 
 <script type="text/javascript">
-	//category
-	var select_cateCode = '${adminProductOne.category_id}';
-	var select_cateCodeRef = '${adminProductOne.category_refid}';
-	var select_cateName = '${adminProductOne.category_name}';
+	// 메뉴 토글 버튼
+	$(document).ready(function () {
+		$('#sidebarCollapse').on('click', function () {
+			$('#sidebar').toggleClass('active');
+		});
+	});
 	
-	if(select_cateCodeRef == '0') {
-		$(".category1").val(select_cateCode);
-		$(".category2").children().remove();
-		$(".category2").append("<option value='" + select_cateCode + "' selected='selected'>전체</option>");
-	}
-	else{
-		$(".category1").val(select_cateCodeRef);
-		$(".category2").val(select_cateCode);
-		$(".category2").children().remove();
-		$(".category2").append("<option value='"
-			+ select_cateCode + "'>" + select_cateName + "</option>");
-	}
-
- 	// edit button
+ 	// 수정 버튼
 	$("#edit_Btn").click(function(){
 		location.href = ${root}+"admin/testproductedit/" + ${adminProductOne.product_id};
 	});
 
- 	// delete button
+ 	// 삭제 버튼
  	var formObj = $("form[role='form']");
 	$("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
@@ -192,13 +187,6 @@
 		formObj.attr("action", "${root}admin/testproductdelete/${adminProductOne.product_id}");
 		formObj.submit();
 		}
-	});
-	
-	// menu toggle button 
-	$(document).ready(function () {
-		$('#sidebarCollapse').on('click', function () {
-			$('#sidebar').toggleClass('active');
-		});
 	});
 </script>
 
