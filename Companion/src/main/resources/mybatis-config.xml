@@ -29,9 +29,7 @@
   		<typeAlias alias="orderQuestionBean" type="com.bit.companion.model.entity.order.OrderQuestionVo"/>
   		
   		<!-- notice -->
-  		<typeAlias alias="noticeBean" type="com.bit.companion.model.entity.notice.NoticeVo"/>
-  		<typeAlias alias="eventBean" type="com.bit.companion.model.entity.notice.EventVo"/>
-  		<typeAlias alias="faqBean" type="com.bit.companion.model.entity.notice.FAQVo"/>
+  		<typeAlias alias="articleBean" type="com.bit.companion.model.entity.notice.ArticleVo"/>
   	</typeAliases>
   	<mappers>
   		<!-- hotel -->

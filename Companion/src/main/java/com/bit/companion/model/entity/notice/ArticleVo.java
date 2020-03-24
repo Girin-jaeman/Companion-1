@@ -2,8 +2,7 @@ package com.bit.companion.model.entity.notice;
 
 import java.sql.Date;
 
-public class NoticeVo {
-	private int no;
+public class ArticleVo {
 	private int board_id;
 	private int article_id;
 	private String member_id;
@@ -12,13 +11,13 @@ public class NoticeVo {
 	private Date article_date;
 	private int article_count;
 	private String article_image;
+	private String article_thumb;
 	
-	public NoticeVo() {}
+	public ArticleVo() {}
 
-	public NoticeVo(int no, int board_id, int article_id, String member_id, String article_title,
-			String article_content, Date article_date, int article_count, String article_image) {
+	public ArticleVo(int board_id, int article_id, String member_id, String article_title, String article_content,
+			Date article_date, int article_count, String article_image, String article_thumb) {
 		super();
-		this.no = no;
 		this.board_id = board_id;
 		this.article_id = article_id;
 		this.member_id = member_id;
@@ -27,14 +26,7 @@ public class NoticeVo {
 		this.article_date = article_date;
 		this.article_count = article_count;
 		this.article_image = article_image;
-	}
-
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
+		this.article_thumb = article_thumb;
 	}
 
 	public int getBoard_id() {
@@ -101,12 +93,20 @@ public class NoticeVo {
 		this.article_image = article_image;
 	}
 
-	@Override
-	public String toString() {
-		return "NoticeVo [no=" + no + ", board_id=" + board_id + ", article_id=" + article_id + ", member_id="
-				+ member_id + ", article_title=" + article_title + ", article_content=" + article_content
-				+ ", article_date=" + article_date + ", article_count=" + article_count + ", article_image="
-				+ article_image + "]";
+	public String getArticle_thumb() {
+		return article_thumb;
 	}
 
+	public void setArticle_thumb(String article_thumb) {
+		this.article_thumb = article_thumb;
+	}
+
+	@Override
+	public String toString() {
+		return "NoticeVo [board_id=" + board_id + ", article_id=" + article_id + ", member_id=" + member_id
+				+ ", article_title=" + article_title + ", article_content=" + article_content + ", article_date="
+				+ article_date + ", article_count=" + article_count + ", article_image=" + article_image
+				+ ", article_thumb=" + article_thumb + "]";
+	}
+	
 }

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.common.Pagination;
-import com.bit.companion.model.entity.notice.NoticeVo;
+import com.bit.companion.model.entity.notice.ArticleVo;
 
 @Repository
 public class NoticeDaoImpl implements NoticeDao {
@@ -17,7 +17,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<NoticeVo> selectAll(Pagination pagination) throws SQLException {
+	public List<ArticleVo> selectAll(Pagination pagination) throws SQLException {
 		return sqlSession.selectList("notice.selectAll",pagination);
 	}
 
@@ -27,7 +27,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public NoticeVo selectOne(int article_id) throws SQLException {
+	public ArticleVo selectOne(int article_id) throws SQLException {
 		return sqlSession.selectOne("notice.selectOne",article_id);
 	}
 
