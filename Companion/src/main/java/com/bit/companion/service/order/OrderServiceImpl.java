@@ -16,17 +16,32 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderDao orderDao;
 
+	
+	//단일 상품 구매 할 때.
 	@Override
-	public void list(Model model) {
+	public void list(Model model,int product_id) {
 
-		List<OrderVo> list;
 		try {
-			list = orderDao.OrderSelectAll();
-			model.addAttribute("orderlist",list);
+			orderDao.OrderProductPurchaseOne(product_id);
+			model.addAttribute("orderProductPurchaseOne",orderDao.OrderProductPurchaseOne(product_id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		
+	}
+
+	
+//	상품 구매 
+	@Override
+	public void OrderInfo_Detail(OrderVo orderVo) {
+
+		try {
+			orderDao.OrderInfo_Details(orderVo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

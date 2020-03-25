@@ -18,11 +18,6 @@
 		a.product_image,a.product_thumb,a.product_option1,a.product_option2,a.product_option3,a.product_option4,a.product_option5,
 		b.order_id from `product` a, `order` b where a.product_id=#{value} -->
 	</select>
-	<!-- <select id="ProductCategorySelect" resultType="productBean" parameterType="int">
-  		select a.product_id, a.product_name, a.product_price, a.product_image, a.product_thumb,
-  		 a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5,
-  		  b.category_name, b.category_id from `product` as a left join `category` as b on b.category_id=#{value};
-  	</select> -->
 	<select id="ProductCategorySelect" resultType="productBean" parameterType="int">
 		 select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date,
 		  a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5, 
@@ -33,6 +28,5 @@
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
   	</select> 
-  	
 </mapper>
   

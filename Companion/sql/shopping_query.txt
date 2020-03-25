@@ -90,16 +90,39 @@ select a.category_id, a.product_id, a.product_name, a.product_content, a.product
 
 ----------------------------product_detail_page 답글 기능 -----------------
 <!-- 답글 입력 -->
-insert into question
-          VALUES (default,100,null,2,'1111',now(),null,'확인용1','내용확인용1',null,null,default,default); 
 
+insert into `question` values (default,100,null,#{product_id},#{member_id},now(),null,#{question_title},#{question_content},null,null,default,default);
 
 <!-- 답글 조회 -->
-select * from question where product_id = 3;  
+select * from `question` where product_id=#{value}
 
 ----------------------------product_detail_page 답글 기능 -----------------
 
+////////////////주문 결제 버튼 누를 시 
 
+insert into `order` 
+values 
+(default,#{member_name},now(),(select product_price from product where product_id = #{product_id}),#{order_name},null,#{order_phone},#{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},0);
+
+
+insert into `order`
+ values (default,'회원1',now(),(select product_price from product where product_id=2),
+'수령인입니다',null,'01057459996','077','강서구화곡동','까치산꿀주먹','일년후에배달해주세요',0);    테스트 성공함.
+
+
+
+
+주문 옵션에서 갯수 n 개 만큼 order_amount에 곱함.
+
+	  member_Vo 에서      product_price,  memeber_name				우편번호       아파트              동/호수    배송메세지.
+//////////////////////////
+
+
+////////////////////주문 결제 창에 필요한 쿼리문.
+select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
+
+select * from `product` where product_id=#{value}
+/////////////////
 
 
 

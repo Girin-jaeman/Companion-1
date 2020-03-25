@@ -141,11 +141,9 @@
 									<c:when test="${memberVo.member_id==null}">
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
-									<c:when test="${memberVo.member_id!=null}">
-										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="../orderPurchase"
-											role="button"  aria-pressed="true">구매하기</a>
+									<c:when test="${memberVo.member_id!=null}">  <!-- product_id 정보 GET 방식으로 넘길것.  -->
+										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
-
 								</c:choose>
 							<!-- 구매 로그인 세션 검사 -->
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
@@ -463,7 +461,7 @@
 									</c:if>
 
 									<!-- 여기에 문의글 ajax 들어감 -->
-									<section class="replyList">
+									<section class="replyList">  <!-- 로그인안하면 표시 안되는 오류가 있음.  -->
 										<ol>
 											<h4>최근 문의글 목록</h4>
 											<ol>
@@ -556,6 +554,7 @@
 								str += "<li data-gdsNum='" + this.product_id + "'>"
 							     + "<div class='userInfo'>"
 							     + "<span class='userName'>" + this.member_id + "</span>"
+							     + "<span class='question_title'>" + this.question_title + "</span>"
 							     + "<span class='date'>" + question_date + "</span>"
 							     + "</div>"
 							     + "<div class='replyContent'>" + this.question_content + "</div>"

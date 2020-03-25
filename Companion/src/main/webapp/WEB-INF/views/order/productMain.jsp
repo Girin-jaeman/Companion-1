@@ -89,8 +89,6 @@
                         <li class="breadcrumb-item"><a href="#">판매인기순</a></li>
                         <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
-                          <a href="productDetail?idx=5">productDetail 경로 테스트 : ${bean.like_id }</a>
-                        <li class="breadcrumb-item"><a href="#">상품평순</a></li>
                         <li class="breadcrumb-item"><a href="#">등록일순</a></li>
                     </ol>
                 </nav>
