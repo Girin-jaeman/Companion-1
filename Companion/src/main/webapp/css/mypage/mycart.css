@@ -1,3 +1,7 @@
+ul{
+    list-style: none;
+}
+
 
 /* BTN */
 .btn{
@@ -91,69 +95,66 @@
 .section{
     position: relative;
 }
-.section--feature{
-    height: 500px;
-    margin-left: 30px;
+.section .title-group{
+    max-width: 1000px;
+    height: 80px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 40px;
 }
-.section--feature .summary{
-    margin-bottom: 20px;
-}
-.section--feature .summary__title{
-
-}
-.section--feature .summary__descirption{
-}
-
-#mypage-conn{
-}
-#mypage-conn li{
-    list-style: none;
-}
-#mypage-conn .input--text{
-    width: 200x;
-}
-#mypage-conn ul{
+.section .main--title{
     display: flex;
-}
-#mypage-conn ul li{
-    margin-right: 15px;
-}
-#mypage-conn [type="submit"]{
-    width: 80px;
-    justify-content: center;
-}
-#mypage-conn ul li:last-child{
-    margin-right: 0;
-}
+    align-items: center;
+    height: 100%;
 
-#mypage-info{
-   
+}
+.section .route{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.section .route li{
+    font-size: 16px;
+    font-weight: 800;
+    margin-right: 10px;
+    color: rgb(185, 184, 184);
     
 }
-#mypage-info ul{
-    width: 100%;
-    list-style: none;
-    margin: 0 auto;
-}
-#mypage-info ul li{
-    display: flex;
-    margin-bottom: 15px;
-}
-#mypage-info ul li:nth-child(2){
-    margin-bottom: 2px;
-}
 
-#mypage-info ul li label{
-    display: block;
-    width: 150px;
-    margin-top: 5px;
+.section .route li:first-child{
+    font-size: 16px;
+    color: #333;
+    font-weight: 800;
     margin-right: 10px;
-    text-align: right;
+    
+}
+.table{
+    border-bottom: 1px solid rgb(185, 184, 184);
+    text-align: center;
+}
+.table th{
+    text-align: center;
+}
+.table tr{
 
 }
-#mypage-info .input--text{
-    width: 300px;
+.table td{
+
 }
-#mypage-info .btn{
-    margin-left: 10px;
+.table td:nth-child(2) a{
+    display: block;
+    width: 120px;
+    height: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-items: center;
+    background: tomato;
+}
+.section .coast{
+    border: 1.5px solid rgb(112, 112, 112);
+    border-radius: 5px;
+    width: 100%;
+    height: 100px;
+}
+.section .coast-group{
+    display: flex;
 }
