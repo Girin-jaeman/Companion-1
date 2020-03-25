@@ -49,25 +49,28 @@ insert into `like` values (null,'admin',3);
 select count(product_id) from `like` where member_id='admin' and product_id=2;
 
 select p.product_id,p.product_name,c.category_name, (select count(*) from `like` l where p.product_id=l.product_id) "count" 
-from `product` p, category c where p.category_id=c.category_id order by p.product_id desc;
+from `product` p, `category` c where p.category_id=c.category_id order by p.product_id desc;
 
-		select 
-			c.category_refid,
-			(select cc.category_name from category cc where c.category_refid=cc.category_id) as "categoty_refidname",
-            p.category_id,
-		 	c.category_name,
-            p.product_id,
-		 	p.product_name,
-		 	p.product_content,
-		 	p.product_price,
-		 	p.product_stock,
-		 	p.product_date,
-		 	p.product_image,
-		 	p.product_thumb,
-		 	p.product_option1,
-		 	p.product_option2,
-		 	p.product_option3,
-		 	p.product_option4,
-		 	p.product_option5
-				from `product` p, `category` c 
-					where p.category_id=c.category_id order by p.product_id desc;
+select * from `like`;
+
+select 
+	c.category_refid,
+	(select cc.category_name from category cc where c.category_refid=cc.category_id) as "categoty_refidname",
+	p.category_id,
+	c.category_name,
+	p.product_id,
+	p.product_name,
+	p.product_content,
+	p.product_price,
+	p.product_stock,
+	p.product_date,
+	p.product_image,
+	p.product_thumb,
+	p.product_option1,
+	p.product_option2,
+	p.product_option3,
+	p.product_option4,
+	p.product_option5,
+	(select count(*) from `like` l where l.product_id=p.product_id) "like_sum" 
+		from `product` p, `category` c 
+			where p.category_id=c.category_id order by p.product_id desc;

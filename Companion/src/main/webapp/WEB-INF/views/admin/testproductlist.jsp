@@ -78,6 +78,18 @@
 				<li><a href="${root}admin/testproductlist">상품목록</a></li>
 			</ul>
 			</aside>
+			
+			<!-- 검색창 -->
+			<div>
+				<select name="searchType" id="searchType">
+					<option value="">구분?</option>
+					<option value="category">카테고리명</option>
+					<option value="product">상품명</option>
+				</select>
+				<input type="text" name="keyword" id="keyword">
+				<button name="search_btn" id="search_btn">검색</button>
+			</div>
+			
 				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
@@ -88,6 +100,7 @@
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
+							<th>좋아요</th>
 							<th>옵션1</th>
 							<th>옵션2</th>
 							<th>옵션3</th>
@@ -128,6 +141,9 @@
 							</a>
 						</td>
 						<td>
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.like_sum }</a>
+						</td>
+						<td>
 							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option1 }</a>
 						</td>
 						<td>
@@ -166,6 +182,17 @@
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
+
+	// 검색 버튼
+	$("#search_Btn").click(function(e){
+		e.preventDefault();
+		var url = "${pageContext.request.contextPath}/board/getBoardList";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});	
+
 </script>
 	
 </body>

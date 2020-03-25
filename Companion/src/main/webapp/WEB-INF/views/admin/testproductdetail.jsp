@@ -120,6 +120,10 @@
 					<span><fmt:formatDate value="${adminProductOne.product_date}" pattern="yyy-MM-dd"/></span>
 				</div>
 				<div class="inputArea">
+					<label for="like_sum">좋아요</label>
+					<span>${adminProductOne.like_sum }</span>
+				</div>
+				<div class="inputArea">
 					<label for="product_option1">상품옵션1</label>
 					<span>${adminProductOne.product_option1 }</span>
 				</div>

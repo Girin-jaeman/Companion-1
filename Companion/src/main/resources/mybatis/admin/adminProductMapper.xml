@@ -7,14 +7,14 @@
 
  	<!-- category list (product add page) -->
 	<select id="selectCategory" resultType="adminCategoryBean">
-	 	select * from `category`
+	 	SELECT * FROM `CATEGORY`
 	</select>
 	
 	<!-- product list -->
 	<select id="selectAll" resultType="adminProductViewBean">
-		select 
+		SELECT 
 			c.category_refid,
-			(select cc.category_name from category cc where c.category_refid=cc.category_id) as "category_refidname",
+			(SELECT cc.category_name FROM `CATEGORY` cc WHERE c.category_refid=cc.category_id) AS "category_refidname",
             p.category_id,
 		 	c.category_name,
             p.product_id,
@@ -29,16 +29,26 @@
 		 	p.product_option2,
 		 	p.product_option3,
 		 	p.product_option4,
-		 	p.product_option5
-				from `product` p, `category` c 
-					where p.category_id=c.category_id order by p.product_id desc;
+		 	p.product_option5,
+			(SELECT count(*) FROM `LIKE` l WHERE l.product_id=p.product_id) AS "like_sum" 
+				FROM `PRODUCT` p, `CATEGORY` c 
+					WHERE p.category_id=c.category_id ORDER BY p.product_id DESC;
+					<trim prefix="AND">
+						<if test="searchType=='category' and keyword != null and keyword != '' ">
+							category_refidname like CONCAT('%', #{keyword}, '%') AND c.category_name LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='product' and keyword != null and keyword != '' ">
+							product_name LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+					</trim>
+					LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- product detail -->
 	<select id="selectOne" parameterType="int" resultType="adminProductViewBean">
 		 select
 		 	c.category_refid,
-		 	(select cc.category_name from category cc where c.category_refid=cc.category_id) as "category_refidname",
+		 	(SELECT cc.category_name FROM `CATEGORY` cc WHERE c.category_refid=cc.category_id) AS "category_refidname",
 		 	p.category_id,
 		 	c.category_name,
 		 	p.product_id,
@@ -53,14 +63,15 @@
 		 	p.product_option2,
 		 	p.product_option3,
 		 	p.product_option4,
-		 	p.product_option5
-				from `product` p, `category` c 
-					where p.category_id=c.category_id and p.product_id=#{value}
+		 	p.product_option5,
+			(SELECT count(*) FROM `LIKE` l WHERE l.product_id=p.product_id) AS "like_sum" 
+				from `PRODUCT` p, `CATEGORY` c 
+					WHERE p.category_id=c.category_id AND p.product_id=#{value}
 	</select>
 	
 	<!-- product add -->
 	<insert id="insertOne" parameterType="adminProductBean">
-		insert into `product` values (
+		INSERT INTO `PRODUCT` VALUES (
 			#{category_id},
 			null,
 			#{product_name},
@@ -80,7 +91,7 @@
 	
 	<!-- product edit -->
 	<update id="updateOne" parameterType="adminProductBean">
-		update `product` set 
+		UPDATE `PRODUCT` SET 
 			category_id = #{category_id}, 
         	product_id = #{product_id},
          	product_name = #{product_name},
@@ -94,12 +105,27 @@
 	        product_option3 = #{product_option3},
 	        product_option4 = #{product_option4},
 	        product_option5 = #{product_option5}
-    	where product_id = ${product_id}
+    	WHERE product_id = ${product_id}
 	</update>
 	
 	<!-- product delete -->
 	<delete id="deleteOne" parameterType="int">
-		delete from `product` where product_id=#{value}
+		DELETE FROM `PRODUCT` WHERE product_id=#{value}
 	</delete>
+	
+	<!-- product total -->
+  	<select id="selectTotal" resultType="int">
+  		SELECT count(*) AS listCnt FROM `PRODUCT`
+  			<trim prefix="WHERE">
+				<if test="keyword != null and keyword != '' ">
+		  			<if test="searchType == 'categoty'">
+						category_refidname like CONCAT('%', #{keyword}, '%') AND c.category_name LIKE CONCAT('%', #{keyword}, '%')
+					</if>
+					<if test="searchType == 'product'">
+						product_name LIKE CONCAT('%', #{keyword}, '%')
+					</if>
+	  			</if>
+			</trim>
+  	</select>
 </mapper>
   
