@@ -489,6 +489,7 @@
 										</script>
 												
 									</tbody>
+									</table>
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->
 									
