@@ -27,15 +27,6 @@ public class ProductController {
 	OrderQuestionService orderQuestionService;
 	
 	OrderQuestionVo orderQuestionVo;
-//	@RequestMapping(value = "/order/productMain")
-//	public String productMain(Model model) {
-//		productService.list(model);
-//		return "order/productMain";
-//	}
-	
-
-	
-
 
 	// param version test  ajax 실패하면 이거 살릴것.
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
@@ -49,17 +40,6 @@ public class ProductController {
 		return "order/productDetail";
 	}
 
-//	@RequestMapping(value = "/order/productDetail/{idx}",method=RequestMethod.GET)
-//	public String productDetail(Model model,@PathVariable("idx") int product_id) throws SQLException {
-//		productService.detail(model, product_id);
-//		
-////		답글 리스트 넘기기 
-//		List<OrderQuestionVo> list = orderQuestionService.replyList(product_id);
-//		model.addAttribute("reply",list);
-//		
-//		return "order/productDetail";
-//	}
-	
 	@RequestMapping(value = "/order/productMain",method = RequestMethod.GET)
 	public String productcategory(Model model,@RequestParam("c") int category_id) {
 		productService.category(model,category_id);
@@ -72,10 +52,4 @@ public class ProductController {
 		return "order/orderQuestion";
 	}
 
-	
-	/*
-	 * @RequestMapping(value = "/order/productDetail/{idx}/orderQuestion") public
-	 * String orderQuestion(Model model,@PathVariable("idx") int product_id) {
-	 * productService.detail(model, product_id); return "order/orderQuestion"; }
-	 */
 }
