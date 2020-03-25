@@ -39,19 +39,20 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 	// product list - selectAll
 	@Override
-	public void list(Model model, int page, int range, String searchType, String keyword) {
+	public void list(Model model, int page, int range, String searchType, String keyword, Search search) {
 		try {
 			// Total list Count
-			int listCnt = adminProductDao.selectTotal();
-			
+			int listCnt = adminProductDao.selectTotal(search);
+			System.out.println("너 안하는거 알아" + listCnt);
 			// Pagination + Search
-			Search search = new Search();
 			search.setSearchType(searchType);
 			search.setKeyword(keyword);
 			search.pageInfo(page, range, listCnt);
-			
+
+			// product List
 			List<AdminProductViewVo> list=adminProductDao.selectAll(search);
 			
+			model.addAttribute("search", search);
 			model.addAttribute("pagination",search);
 			model.addAttribute("adminProductList",list);
 		} catch (SQLException e) {

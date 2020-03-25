@@ -73,7 +73,15 @@ select
 	p.product_option5,
 	(select count(*) from `like` l where l.product_id=p.product_id) "like_sum" 
 		from `product` p, `category` c 
-			where p.category_id=c.category_id order by p.product_id desc;
+			where p.category_id=c.category_id and
+            c.category_name LIKE CONCAT('%', 3, '%')
+            order by p.product_id desc
+            
+SELECT count(*) AS listCnt FROM `PRODUCT` where product_name LIKE CONCAT('%', 4, '%')
+            
+            
+            
+            
             
 DELIMITER $$
 DROP PROCEDURE IF EXISTS loopInsert $$

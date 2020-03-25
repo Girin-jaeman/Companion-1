@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 import com.bit.companion.service.admin.AdminProductService;
 import com.bit.companion.util.UploadFileUtils;
@@ -58,11 +59,12 @@ public class AdminProductController {
 			, @RequestParam(required = false, defaultValue = "1") int page
 			, @RequestParam(required = false, defaultValue = "1") int range
 			, @RequestParam(required = false, defaultValue = "product") String searchType
-			, @RequestParam(required = false) String keyword) {
+			, @RequestParam(required = false) String keyword
+			, @ModelAttribute("search") Search search) {
 		logger.info("get product list");
 		
 		adminProductService.category(model);
-		adminProductService.list(model, page, range, searchType, keyword);
+		adminProductService.list(model, page, range, searchType, keyword, search);
 		return "admin/testproductlist";
 	}
 	

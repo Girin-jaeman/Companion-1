@@ -60,8 +60,8 @@ public class AdminProductDaoImpl implements AdminProductDao{
 
 	// product total - selectTotal
 	@Override
-	public int selectTotal() throws SQLException {
-		return sqlsession.selectOne("adminProduct.selectTotal");
+	public int selectTotal(Search search) throws SQLException {
+		return sqlsession.selectOne("adminProduct.selectTotal", search);
 	}
 
 }

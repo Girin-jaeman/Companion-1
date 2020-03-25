@@ -30,5 +30,5 @@ public interface AdminProductDao {
 	int deleteOne(int product_id) throws SQLException;
 
 	// product total
-	int selectTotal() throws SQLException;
+	int selectTotal(Search search) throws SQLException;
 }

@@ -35,7 +35,8 @@
 					WHERE p.category_id=c.category_id
 					<trim prefix="AND">
 						<if test="searchType=='category' and keyword != null and keyword != '' ">
-							category_refidname like CONCAT('%', #{keyword}, '%') AND c.category_name LIKE CONCAT('%', #{keyword}, '%')
+							<!-- category_refidname like CONCAT('%', #{keyword}, '%') AND  --> 
+							category_name LIKE CONCAT('%', #{keyword}, '%')
 						</if>
 						<if test="searchType=='product' and keyword != null and keyword != '' ">
 							product_name LIKE CONCAT('%', #{keyword}, '%')
@@ -116,16 +117,17 @@
 	<!-- product total -->
   	<select id="selectTotal" resultType="int">
   		SELECT count(*) AS listCnt FROM `PRODUCT`
-  			<trim prefix="WHERE">
+   			<trim prefix="WHERE">
 				<if test="keyword != null and keyword != '' ">
-		  			<if test="searchType == 'categoty'">
-						category_refidname like CONCAT('%', #{keyword}, '%') AND c.category_name LIKE CONCAT('%', #{keyword}, '%')
-					</if>
+		  			<!-- <if test="searchType == 'categoty'">
+						category_refidname like CONCAT('%', #{keyword}, '%') AND  
+						category_name LIKE CONCAT('%', #{keyword}, '%')
+					</if> -->
 					<if test="searchType == 'product'">
 						product_name LIKE CONCAT('%', #{keyword}, '%')
 					</if>
 	  			</if>
-			</trim>
+  			</trim>
   	</select>
 </mapper>
   
