@@ -216,7 +216,7 @@
 		                <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
 		                <p>호스팅제공자:(주)Companion</p>
 		                <br/>
-		                <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+		                <a href="${root}user/terms">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
 		                <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
 		            </div>
 		    </footer>
