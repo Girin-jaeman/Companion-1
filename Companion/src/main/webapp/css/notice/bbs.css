@@ -6,6 +6,9 @@
 .main--title{
     margin-bottom: 20px;
 }
+table{
+    width: 100%;
+}
 table thead tr {
     background: #ddd;
 }
@@ -23,6 +26,7 @@ table thead tr th strong{
 table thead tr th span:first-child{
     font-size: 20px;
     line-height: 70px;
+    float: left;
 }
 table thead tr th span:nth-child(2){
     padding-top: 10px;
