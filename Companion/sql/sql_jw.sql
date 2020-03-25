@@ -74,3 +74,28 @@ select
 	(select count(*) from `like` l where l.product_id=p.product_id) "like_sum" 
 		from `product` p, `category` c 
 			where p.category_id=c.category_id order by p.product_id desc;
+            
+DELIMITER $$
+DROP PROCEDURE IF EXISTS loopInsert $$
+CREATE PROCEDURE loopInsert()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+        
+    WHILE i <= 400 DO
+        INSERT INTO product VALUES(701,null,concat('테스트이름',i),concat('테스트설명',i),i,i,now(),null,null,null,null,null,null,null);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL loopInsert;
+update product set category_id=100 where product_id>80;
+update product set category_id=200 where product_id>120;
+update product set category_id=300 where product_id>160;
+update product set category_id=400 where product_id>200;
+update product set category_id=500 where product_id>240;
+update product set category_id=600 where product_id>280;
+update product set category_id=700 where product_id>320;
+update product set category_id=701 where product_id>360;
+update product set category_id=600 where product_id>460;
+update product set category_id=703 where product_id>485;
+select * from product order by product_id desc;

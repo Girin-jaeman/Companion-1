@@ -81,16 +81,14 @@
 			</aside>
 			
 			<!-- 검색창 -->
-			<!-- <div>
+			<div>
 				<select name="searchType" id="searchType">
-					<option value="">구분?</option>
-					<option value="category">카테고리명</option>
 					<option value="product">상품명</option>
+					<option value="category">카테고리명</option>
 				</select>
 				<input type="text" name="keyword" id="keyword">
-				<button name="search_btn" id="search_btn">검색</button>
+				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-			 -->
 				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
@@ -200,7 +198,7 @@
 	// 검색 버튼
 	$("#search_Btn").click(function(e){
 		e.preventDefault();
-		var url = "${pageContext.request.contextPath}/board/getBoardList";
+		var url = "${getList}";
 		url = url + "?searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + $('#keyword').val();
 		location.href = url;

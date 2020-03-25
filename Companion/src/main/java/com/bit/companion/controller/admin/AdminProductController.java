@@ -56,11 +56,13 @@ public class AdminProductController {
 	@RequestMapping(value = "testproductlist", method = RequestMethod.GET)
 	public String productList(Model model
 			, @RequestParam(required = false, defaultValue = "1") int page
-			, @RequestParam(required = false, defaultValue = "1") int range) {
+			, @RequestParam(required = false, defaultValue = "1") int range
+			, @RequestParam(required = false, defaultValue = "product") String searchType
+			, @RequestParam(required = false) String keyword) {
 		logger.info("get product list");
 		
 		adminProductService.category(model);
-		adminProductService.list(model, page, range);
+		adminProductService.list(model, page, range, searchType, keyword);
 		return "admin/testproductlist";
 	}
 	

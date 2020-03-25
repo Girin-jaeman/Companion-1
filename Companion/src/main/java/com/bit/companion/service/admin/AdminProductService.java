@@ -10,7 +10,7 @@ public interface AdminProductService {
 	void category(Model model);
 	
 	// product list
-	void list(Model model, int page, int range);
+	void list(Model model, int page, int range, String searchType, String keyword);
 	
 	// product detail
 	void detail(Model model,int product_id);

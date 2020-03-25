@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.admin.AdminProductViewVo;
 import com.bit.companion.common.Pagination;
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -29,8 +30,8 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	
 	// product list - selectAll
 	@Override
-	public List<AdminProductViewVo> selectAll(Pagination pagination) throws SQLException {
-		return sqlsession.selectList("adminProduct.selectAll",pagination);
+	public List<AdminProductViewVo> selectAll(Search search) throws SQLException {
+		return sqlsession.selectList("adminProduct.selectAll",search);
 	}
 	
 	// product detail - selectOne
