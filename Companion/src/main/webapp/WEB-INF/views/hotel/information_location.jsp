@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/hotel/infoLoc.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -83,14 +84,51 @@
             </div>
 		    <!-- section start -->
 			<section class="section">
-				<!-- .row start -->
-				<div class="row">
-					<div class="col-12">
-						<h1>위치정보</h1>
-						<p>내용을 채워주세요</p>
-					</div>
-				</div>
-				<!-- .row end -->
+				<!-- main title -->
+				<div class="main--title">
+						<h1>위치 정보</h1>
+                </div>
+                <div class="hotelLoc mx-auto">
+                    <p>호텔위치 지도 카카오</p>
+                </div>
+                                
+                <!-- 운영시간 안내 -->
+                <div class="useinfo row">
+                    <div class="icon"><img src="${root}imgs/infoloc.png" alt="time"></div>
+                    <div>
+                        <h2 class="sub--title">오시는 길</h2>
+                        <h3 class="third--title">컴패니언 위치</h3>
+                    </div>
+               
+                    <table class="table">
+                        <tr>
+                            <td>
+                            <i class="fas fa-map-marker-alt"></i>
+                            서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층
+							<br/><br/>
+                            대표전화 : 02-3486-9600
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <i class="fas fa-subway"></i>
+                            지하철 이용 시
+							<br/>
+                            (신논현역) 9호선 6번출구 – 강남역 방향 도보 3분<br/>
+							(강남역) 2호선 10번출구 – 신논현역 방향 도보 7분
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <i class="fas fa-bus"></i>
+                            버스 이용 시
+							<br/>                            
+                            (하차) 신논현역,구교보타워사거리/ 신논현역,씨티은행
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>  
 			</section>
 			<!-- section end -->
 		</div>

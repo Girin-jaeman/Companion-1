@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/hotel/infoCare.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -83,14 +84,66 @@
             </div>
 		    <!-- section start -->
 			<section class="section">
-				<!-- .row start -->
-				<div class="row">
-					<div class="col-12">
-						<h1>돌보미정보</h1>
-						<p>내용을 채워주세요</p>
+				<div class="main--title">
+						<h1>다년간의 경험과 노하우를 보유한<br/>국내 최고의 반려견 전문가들이 함께 합니다.</h1>
+                </div>
+				<!-- .boxing start -->
+				<div class="boxing clearfix">
+					<div class="pic float--left">
+						<img src="../imgs/doctor.png" alt="doctorimg">
+					</div>
+					<div class="descrip-group float--right">
+						<ul class="descrip">
+							<li><h2 id="name">김땡땡</h2></li>
+							<li><span>독일 뮌헨대학교 수의대 졸업</span></li>
+							<li><span>동대학수의대 동물복지 및 동물행동학 박사 취득</span></li>
+							<li><span>유럽동물자연보호협회 동물보호소 임상 수의사</span></li>
+							<li><span>서울대 수의대 겸임교수</span></li>
+							<li><span>대한수의사회 동물복지위원회 위원</span></li>
+							<li><span>애견 종합 관리사 - 한국애견협회</span></li>
+							<li><span>독 아로마테라피스트 마스터 - 한국펫산업학회장</span></li>
+						</ul>
 					</div>
 				</div>
-				<!-- .row end -->
+				<!-- .boxing end -->
+				<!-- .boxing start -->
+				<div class="boxing clearfix">
+					<div class="pic float--left">
+						<img src="../imgs/doctor.png" alt="doctorimg">
+					</div>
+					<div class="descrip-group float--right">
+						<ul class="descrip">
+							<li><h2 id="name">김땡땡</h2></li>
+							<li><span>독일 뮌헨대학교 수의대 졸업</span></li>
+							<li><span>동대학수의대 동물복지 및 동물행동학 박사 취득</span></li>
+							<li><span>유럽동물자연보호협회 동물보호소 임상 수의사</span></li>
+							<li><span>서울대 수의대 겸임교수</span></li>
+							<li><span>대한수의사회 동물복지위원회 위원</span></li>
+							<li><span>애견 종합 관리사 - 한국애견협회</span></li>
+							<li><span>독 아로마테라피스트 마스터 - 한국펫산업학회장</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- .boxing end -->
+				<!-- .boxing start -->
+				<div class="boxing clearfix">
+					<div class="pic float--left">
+						<img src="../imgs/doctor.png" alt="doctorimg">
+					</div>
+					<div class="descrip-group float--right">
+						<ul class="descrip">
+							<li><h2 id="name">김땡땡</h2></li>
+							<li><span>독일 뮌헨대학교 수의대 졸업</span></li>
+							<li><span>동대학수의대 동물복지 및 동물행동학 박사 취득</span></li>
+							<li><span>유럽동물자연보호협회 동물보호소 임상 수의사</span></li>
+							<li><span>서울대 수의대 겸임교수</span></li>
+							<li><span>대한수의사회 동물복지위원회 위원</span></li>
+							<li><span>애견 종합 관리사 - 한국애견협회</span></li>
+							<li><span>독 아로마테라피스트 마스터 - 한국펫산업학회장</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- .boxing end -->
 			</section>
 			<!-- section end -->
 		</div>
