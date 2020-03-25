@@ -17,6 +17,9 @@ table thead tr th{
     line-height: 1.5;
     height: 70px;
 }
+table thead tr th strong{
+    font-weight: 500;
+}
 table thead tr th span:first-child{
     font-size: 20px;
     line-height: 70px;
