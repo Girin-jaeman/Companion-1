@@ -88,8 +88,7 @@
 				<div class="main--title">
 						<h1>위치 정보</h1>
                 </div>
-                <div class="hotelLoc mx-auto">
-                    <p>호텔위치 지도 카카오</p>
+                <div class="hotelLoc mx-auto" id="map">
                 </div>
                                 
                 <!-- 운영시간 안내 -->
@@ -150,6 +149,60 @@
 <script src="${root}js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+<!-- KAKAO MAP API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc9be5e3e3a09fa3182e27df9a35a1a6&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">
+	var container  = document.getElementById('map'); // 지도를 표시할 div
+	var options = {
+		center : new kakao.maps.LatLng(37.503268, 127.024286), // 지도의 중심좌표(WGS84 좌표계)
+		level: 3 // 지도의 확대 레벨
+	};
+	
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
+	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다.
+	var mapTypeControl = new kakao.maps.MapTypeControl();
+	
+	// 지도에 컨트롤을 추가해야 지도위에 표시됩니다.
+	// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TORIGHT는 오른쪽 위를 의미합니다.
+	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TORIGHT);
+	
+	// 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성합니다.
+	var zoomControl = new kakao.maps.ZoomControl();
+	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+	
+	// 마커가 표시될 위치입니다.
+	var markerPosition  = new kakao.maps.LatLng(37.503268, 127.024286);
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
 
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	
+	// 인포윈도우 표시 위치입니다
+	// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var iwContent = '<div id="mapinfo">'+
+	'<div class="map-header">'+
+	'컴패니언::Comapnion</div>'+
+	'<div class="map-section">'+
+	'서울 서초구 강남대로 459 백암빌딩 구관<br/>(우) 06611(지번) 서초동 1303-34</div>'+
+	'<div class="map-toolbar clearfix">'+
+	'<a href="https://map.kakao.com/link/map/Hello World!,37.503268, 127.024286" class="map-button" target="_blank">큰지도보기</a>'+
+	'<a href="https://map.kakao.com/link/to/Hello World!,37.503268, 127.024286" class="map-button" target="_blank">길찾기</a></div>'+
+	'</div>',
+    iwPosition = new kakao.maps.LatLng(37.503268, 127.024286);
+	
+ // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        position : iwPosition, 
+        content : iwContent 
+    });
+ 
+ // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+    infowindow.open(map, marker);
+</script>
 </body>
 </html>
