@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.bit.companion.common.Pagination;
 import com.bit.companion.model.admin.AdminProductDao;
 import com.bit.companion.model.entity.admin.AdminProductViewVo;
+import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -36,9 +38,18 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 	// product list - selectAll
 	@Override
-	public void list(Model model) {
+	public void list(Model model, int page, int range) {
 		try {
-			List<AdminProductViewVo> list=adminProductDao.selectAll();
+			// Total list Count
+			int listCnt = adminProductDao.selectTotal();
+			
+			// Pagination
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page,range,listCnt);
+			
+			List<AdminProductViewVo> list=adminProductDao.selectAll(pagination);
+			
+			model.addAttribute("pagination",pagination);
 			model.addAttribute("adminProductList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,5 +95,6 @@ public class AdminProductServiceImpl implements AdminProductService{
 			e.printStackTrace();
 		}
 	}
+
 
 }

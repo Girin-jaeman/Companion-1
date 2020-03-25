@@ -48,17 +48,19 @@ public class AdminProductController {
 	public String productAdd(Model model) {
 		logger.info("get product add");
 	
-		 adminProductService.category(model);
-		 return "admin/testproductadd";
+		adminProductService.category(model);
+		return "admin/testproductadd";
 	}
 	
 	// product list - get
 	@RequestMapping(value = "testproductlist", method = RequestMethod.GET)
-	public String productList(Model model) {
+	public String productList(Model model
+			, @RequestParam(required = false, defaultValue = "1") int page
+			, @RequestParam(required = false, defaultValue = "1") int range) {
 		logger.info("get product list");
 		
 		adminProductService.category(model);
-		adminProductService.list(model);
+		adminProductService.list(model, page, range);
 		return "admin/testproductlist";
 	}
 	

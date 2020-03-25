@@ -23,7 +23,7 @@
 <script type="text/javascript">
  	//이전 버튼 이벤트
     function fn_prev(page, range, rangeSize) {
-    		var page = ((range - 2) * rangeSize) + 1;
+    		var page = ((range - 2) * rangeSize) + 1 + 4;
     		var range = range - 1;
 /*     		var url = "${pageContext.request.contextPath}/notice/list"; */
     		var url = "${getList}";

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/testnoticelist">></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/testnoticelist"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
+<c:url var="getList" value="/admin/testproductlist"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +81,7 @@
 			</aside>
 			
 			<!-- 검색창 -->
-			<div>
+			<!-- <div>
 				<select name="searchType" id="searchType">
 					<option value="">구분?</option>
 					<option value="category">카테고리명</option>
@@ -89,7 +90,7 @@
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_btn" id="search_btn">검색</button>
 			</div>
-			
+			 -->
 				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
@@ -163,6 +164,19 @@
 				</tbody>
 			</table>
 		</section>
+		
+		<!-- pagination [start] -->
+		<jsp:include page="../common/pagination.jsp">
+			<jsp:param value="${pagination.prev }" name="prev"/>
+			<jsp:param value="${pagination.next }" name="next"/>
+			<jsp:param value="${pagination.page }" name="page"/>
+			<jsp:param value="${pagination.range }" name="range"/>
+			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
+			<jsp:param value="${pagination.startPage }" name="startPage"/>
+			<jsp:param value="${pagination.endPage }" name="endPage"/>
+		</jsp:include>
+		<!-- pagination [end] -->
+		
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->
 

@@ -10,7 +10,7 @@ public interface AdminProductService {
 	void category(Model model);
 	
 	// product list
-	void list(Model model);
+	void list(Model model, int page, int range);
 	
 	// product detail
 	void detail(Model model,int product_id);
@@ -23,4 +23,5 @@ public interface AdminProductService {
 	
 	// product delete
 	void delete(int product_id);
+	
 }
