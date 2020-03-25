@@ -464,11 +464,31 @@
 
 									<!-- 여기에 문의글 ajax 들어감 -->
 									<section class="replyList">
-										<ol>
 											<h4>최근 문의글 목록</h4>
-											<ol>
-											</ol>
-										</ol>
+											<p>sssss</p>
+									<table class="table--replyList">
+									<thead>
+										<tr>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">this.member_id</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">this.question_title</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="py-2 text-uppercase">this.question_content</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">question_date</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<script>
+										replyList();
+										</script>
+												
+									</tbody>
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->
 									
@@ -547,24 +567,24 @@
 					console.log("replyList() function run...");
 								var product_id = ${productDetailOne.product_id};
 								var member_id = ${memberVo.member_id };
+								
 					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
 								var str= "";
 						$(data).each(function(){
 							console.log(data);
 							var question_date = new Date(this.question_date);
 							question_date = question_date.toLocaleDateString("ko-US")
-								str += "<li data-gdsNum='" + this.product_id + "'>"
-							     + "<div class='userInfo'>"
-							     + "<span class='userName'>" + this.member_id + "</span>"
-							     + "<span class='date'>" + question_date + "</span>"
-							     + "</div>"
-							     + "<div class='replyContent'>" + this.question_content + "</div>"
-							     + "</li>"; 
+								str += "<tr data-productId='" + this.product_id + "'>"
+							     + "<td class='border-0 align-middle userName'>" + this.member_id + "</td>"
+							     + "<td class='border-0 align-middle replyTitle'>" + this.question_title + "</td>"
+							     + "<td class='border-0 align-middle replyContent'>" + this.question_content + "</td>"
+							     + "<td class='border-0 align-middle date'>" + question_date + "</td>"
+							     + "</tr>"; 
 						});
-		 				  $("section.replyList ol").html(str); 
+		 				  $("table.table--replyList tbody").html(str); 
 					});
 				}
-		replyList();
+				replyList();
 		
 		/* ajax 문의 글 입력 할 때 */
 			$("#reply_btn").click(function(){
