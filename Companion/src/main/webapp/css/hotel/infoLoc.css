@@ -1,0 +1,55 @@
+/*-------------------CONTENT STYLE--------------------*/
+
+
+.hotelLoc{
+  display: flex;
+  border: solid;
+  height: 400px;
+  width: 80%;
+  padding: 10px;
+  position: relative;
+  margin:30px auto;
+  
+}
+
+.useinfo{
+  margin-bottom: 20px;
+  width:80%;
+  margin-left:100px;
+  
+  
+}
+.useinfo .icon{
+  padding: 0;
+  background-color: green;
+  margin: 0 20px;
+  margin-bottom: 20px;
+  height: 70px;
+  width: 70px;
+  align-items: center;
+}
+
+.useinfo .sub--title{
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 800;
+}
+.useinfo .third--title{
+  font-size: 20px;
+  font-weight: 500;
+}
+.table{
+  border-radius: 30px;
+}
+.useinfo .table tr{
+
+  height:30px;
+  
+}
+.useinfo .table td{
+  padding-left: 30px;
+}
+
+.useinfo table:last-child{
+  margin-bottom: 30px;
+}

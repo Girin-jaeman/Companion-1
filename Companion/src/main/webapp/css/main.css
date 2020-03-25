@@ -4,6 +4,22 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 @import "https://fonts.googleapis.com/css?family=Do+Hyeon|Gaegu:300,400,700|Gamja+Flower|Jua|Nanum+Myeongjo:400,700,800|Nanum+Pen+Script&display=swap&subset=korean";
+
+/* FLOAT CLEARFIX*/
+.claerfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.float--left{
+  float: left;
+}
+.float--right{
+  float: right;
+}
+
+
+
 body {
     background: #fafafa;
     /* font-family: 'Poppins', sans-serif; */
@@ -14,13 +30,14 @@ body {
     /* font-family: 'Gaegu', cursive; */
     font-family: 'Gamja Flower', cursive;
     color: #333;
+    font-weight: 500;
 
 }
 
 p {
 	font-family: 'Gaegu', cursive;
     font-size: 1.1em;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.7em;
     
 }
