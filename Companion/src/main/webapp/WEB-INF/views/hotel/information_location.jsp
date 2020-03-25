@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/hotel/infoLoc.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -83,14 +84,50 @@
             </div>
 		    <!-- section start -->
 			<section class="section">
-				<!-- .row start -->
-				<div class="row">
-					<div class="col-12">
-						<h1>위치정보</h1>
-						<p>내용을 채워주세요</p>
-					</div>
-				</div>
-				<!-- .row end -->
+				<!-- main title -->
+				<div class="main--title">
+						<h1>위치 정보</h1>
+                </div>
+                <div class="hotelLoc mx-auto" id="map">
+                </div>
+                                
+                <!-- 운영시간 안내 -->
+                <div class="useinfo row">
+                    <div class="icon"><img src="${root}imgs/infoloc.png" alt="time"></div>
+                    <div>
+                        <h2 class="sub--title">오시는 길</h2>
+                        <h3 class="third--title">컴패니언 위치</h3>
+                    </div>
+               
+                    <table class="table">
+                        <tr>
+                            <td>
+                            <i class="fas fa-map-marker-alt"></i>
+                            서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층
+							<br/><br/>
+                            대표전화 : 02-3486-9600
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <i class="fas fa-subway"></i>
+                            지하철 이용 시
+							<br/>
+                            (신논현역) 9호선 6번출구 – 강남역 방향 도보 3분<br/>
+							(강남역) 2호선 10번출구 – 신논현역 방향 도보 7분
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <i class="fas fa-bus"></i>
+                            버스 이용 시
+							<br/>                            
+                            (하차) 신논현역,구교보타워사거리/ 신논현역,씨티은행
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>  
 			</section>
 			<!-- section end -->
 		</div>
@@ -112,6 +149,60 @@
 <script src="${root}js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+<!-- KAKAO MAP API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc9be5e3e3a09fa3182e27df9a35a1a6&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">
+	var container  = document.getElementById('map'); // 지도를 표시할 div
+	var options = {
+		center : new kakao.maps.LatLng(37.503268, 127.024286), // 지도의 중심좌표(WGS84 좌표계)
+		level: 3 // 지도의 확대 레벨
+	};
+	
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	
+	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다.
+	var mapTypeControl = new kakao.maps.MapTypeControl();
+	
+	// 지도에 컨트롤을 추가해야 지도위에 표시됩니다.
+	// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TORIGHT는 오른쪽 위를 의미합니다.
+	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TORIGHT);
+	
+	// 지도 확대 축소를 제어할 수 있는 줌 컨트롤을 생성합니다.
+	var zoomControl = new kakao.maps.ZoomControl();
+	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+	
+	// 마커가 표시될 위치입니다.
+	var markerPosition  = new kakao.maps.LatLng(37.503268, 127.024286);
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
 
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	
+	// 인포윈도우 표시 위치입니다
+	// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var iwContent = '<div id="mapinfo">'+
+	'<div class="map-header">'+
+	'컴패니언::Comapnion</div>'+
+	'<div class="map-section">'+
+	'서울 서초구 강남대로 459 백암빌딩 구관<br/>(우) 06611(지번) 서초동 1303-34</div>'+
+	'<div class="map-toolbar clearfix">'+
+	'<a href="https://map.kakao.com/link/map/Hello World!,37.503268, 127.024286" class="map-button" target="_blank">큰지도보기</a>'+
+	'<a href="https://map.kakao.com/link/to/Hello World!,37.503268, 127.024286" class="map-button" target="_blank">길찾기</a></div>'+
+	'</div>',
+    iwPosition = new kakao.maps.LatLng(37.503268, 127.024286);
+	
+ // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        position : iwPosition, 
+        content : iwContent 
+    });
+ 
+ // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+    infowindow.open(map, marker);
+</script>
 </body>
 </html>

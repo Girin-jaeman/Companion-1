@@ -74,8 +74,6 @@
 				<ul>
 					<li><a href="${root}admin/testproductadd">상품등록</a></li>
 					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-					<li><a href="#">상품소감</a></li>
-					<li><a href="#">유저목록</a></li>
 				</ul>
 			</aside>
 			<h2>상품 등록</h2>
@@ -151,10 +149,26 @@
 <script src="${root }resources/ckeditor/ckeditor.js"></script>
 
 <script>
+// 메뉴 토글 버튼
+$(document).ready(function () {
+	$('#sidebarCollapse').on('click', function () {
+		$('#sidebar').toggleClass('active');
+	});
+});
+
+// 숫자 유효성 검사
+var regExp = /[^0-9]/gi;
+$("#product_price").keyup(function(){ numCheck($(this)); });
+$("#product_stock").keyup(function(){ numCheck($(this)); });
+
+function numCheck(selector) {
+	var tempVal = selector.val();
+	selector.val(tempVal.replace(regExp, ""));
+}
+
+/* 카테고리 불러오기 시작 */
 // 컨트롤러에서 데이터 받기
 var jsonData = JSON.parse('${adminProductCategory}');
-console.log(jsonData);
-
 var cate1Arr = new Array();
 var cate1Obj = new Object();
 
@@ -162,8 +176,8 @@ var cate1Obj = new Object();
 for(var i = 0; i < jsonData.length; i++) {
 	if(jsonData[i].category_refid == "0") {
 		cate1Obj = new Object();  //초기화
-		cate1Obj.cateCode = jsonData[i].category_id;
-		cate1Obj.cateName = jsonData[i].category_name;
+		cate1Obj.category_id = jsonData[i].category_id;
+		cate1Obj.category_name = jsonData[i].category_name;
 		cate1Arr.push(cate1Obj);
 	}
 }
@@ -172,8 +186,8 @@ for(var i = 0; i < jsonData.length; i++) {
 var cate1Select = $("select.category1")
 
 for(var i = 0; i < cate1Arr.length; i++) {
-	cate1Select.append("<option value='" + cate1Arr[i].cateCode + "'>"
-		+ cate1Arr[i].cateName + "</option>"); 
+	cate1Select.append("<option value='" + cate1Arr[i].category_id + "'>"
+		+ cate1Arr[i].category_name + "</option>"); 
 }
 
 // 1차 분류 선택시 2차 분류 출력
@@ -184,9 +198,9 @@ $(document).on("change", "select.category1", function(){
 	for(var i = 0; i < jsonData.length; i++) {
 		if(jsonData[i].category_refid != "0") {
 			cate2Obj = new Object();  //초기화
-			cate2Obj.cateCode = jsonData[i].category_id;
-			cate2Obj.cateName = jsonData[i].category_name;
-			cate2Obj.cateCodeRef = jsonData[i].category_refid;
+			cate2Obj.category_id = jsonData[i].category_id;
+			cate2Obj.category_name = jsonData[i].category_name;
+			cate2Obj.category_refid = jsonData[i].category_refid;
 			cate2Arr.push(cate2Obj);
 		}
  	}
@@ -196,15 +210,25 @@ $(document).on("change", "select.category1", function(){
 		var selectVal = $(this).val();  
 		cate2Select.append("<option value='"+selectVal+"'>전체</option>");
 		for(var i = 0; i < cate2Arr.length; i++) {
-			if(selectVal == cate2Arr[i].cateCodeRef) {
-				cate2Select.append("<option value='" + cate2Arr[i].cateCode + "'>"
-					+ cate2Arr[i].cateName + "</option>");
+			if(selectVal == cate2Arr[i].category_refid) {
+				cate2Select.append("<option value='" + cate2Arr[i].category_id + "'>"
+					+ cate2Arr[i].category_name + "</option>");
 			}
 		}
 	});
 });
+/* 카테고리 불러오기 끝*/
 
-// thumb img 
+// ckeditor
+var ckeditor_config = {
+	resize_enable : false,
+	enterMode : CKEDITOR.ENTER_BR,
+	shiftEnterMode : CKEDITOR.ENTER_P,
+	filebrowserUploadUrl :"/admin/testproductadd/ckUpload"
+};
+CKEDITOR.replace( 'product_content', ckeditor_config );
+
+// 이미지 미리보기
 $("#product_image").change(function(){
 	if(this.files && this.files[0]) {
 		var reader = new FileReader;
@@ -214,32 +238,6 @@ $("#product_image").change(function(){
 		reader.readAsDataURL(this.files[0]);
 	}
 });
-
-// ckeditor
-var ckeditor_config = {
-	resize_enable : false,
-	enterMode : CKEDITOR.ENTER_BR,
-	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/testproductadd/ckUpload"
-};
-CKEDITOR.replace( 'product_content', ckeditor_config );
-
-// menu toggle button 
-$(document).ready(function () {
-	$('#sidebarCollapse').on('click', function () {
-		$('#sidebar').toggleClass('active');
-	});
-});
-
-// number validation 
-var regExp = /[^0-9]/gi;
-$("#product_price").keyup(function(){ numCheck($(this)); });
-$("#product_stock").keyup(function(){ numCheck($(this)); });
-
-function numCheck(selector) {
-	var tempVal = selector.val();
-	selector.val(tempVal.replace(regExp, ""));
-}
 </script>
 
 </body>

@@ -34,6 +34,8 @@ insert into category values(703,700,'테스트3');
 
 select * from product order by product_id desc;
 insert into product values(700,null,'테스트','관리자 상품 입력 테스트',30000,30,now(),null,null,null,null,null,null,null);
+update product set product_thumb=null where product_id>0;
+
 select * from question;
 insert into question values(null,100,null,1,'회원1',now(),null,'테스트제목','테스트내용',null,null,0,0);
 
@@ -49,3 +51,23 @@ select count(product_id) from `like` where member_id='admin' and product_id=2;
 select p.product_id,p.product_name,c.category_name, (select count(*) from `like` l where p.product_id=l.product_id) "count" 
 from `product` p, category c where p.category_id=c.category_id order by p.product_id desc;
 
+		select 
+			c.category_refid,
+			(select cc.category_name from category cc where c.category_refid=cc.category_id) as "categoty_refidname",
+            p.category_id,
+		 	c.category_name,
+            p.product_id,
+		 	p.product_name,
+		 	p.product_content,
+		 	p.product_price,
+		 	p.product_stock,
+		 	p.product_date,
+		 	p.product_image,
+		 	p.product_thumb,
+		 	p.product_option1,
+		 	p.product_option2,
+		 	p.product_option3,
+		 	p.product_option4,
+		 	p.product_option5
+				from `product` p, `category` c 
+					where p.category_id=c.category_id order by p.product_id desc;

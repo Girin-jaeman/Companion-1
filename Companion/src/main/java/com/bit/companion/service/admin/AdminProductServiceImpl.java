@@ -33,17 +33,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 			e.printStackTrace();
 		}
 	}
-
-	// product add - insertOne
-	@Override
-	public void insert(AdminProductVo bean) {
-		try {
-			adminProductDao.insertOne(bean);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+	
 	// product list - selectAll
 	@Override
 	public void list(Model model) {
@@ -54,12 +44,22 @@ public class AdminProductServiceImpl implements AdminProductService{
 			e.printStackTrace();
 		}
 	}
-
+	
 	// product detail - selectOne
 	@Override
 	public void detail(Model model, int product_id) {
 		try {
 			model.addAttribute("adminProductOne", adminProductDao.selectOne(product_id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// product add - insertOne
+	@Override
+	public void insert(AdminProductVo bean) {
+		try {
+			adminProductDao.insertOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

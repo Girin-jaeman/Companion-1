@@ -437,7 +437,7 @@
 							<div class="col-sm-6">구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
 							<div class="col-sm-6"></div>
 
-
+								
 								<div id="reply">
 									<c:if test="${memberVo.member_id==null}">
 										<p>소감을 남기려면 로그인 해주세요!</p>
@@ -461,12 +461,34 @@
 									</c:if>
 
 									<!-- 여기에 문의글 ajax 들어감 -->
-									<section class="replyList">  <!-- 로그인안하면 표시 안되는 오류가 있음.  -->
-										<ol>
+									<section class="replyList">
 											<h4>최근 문의글 목록</h4>
-											<ol>
-											</ol>
-										</ol>
+									<div class="col-lg-12">		
+									<table class="table--replyList">
+									<thead>
+										<tr>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">아이디</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">문의 제목</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="py-2 text-uppercase">문의 내용</div>
+											</th>
+											<th scope="col" class="border-0 bg-light">
+												<div class="p-2 px-3 text-uppercase">작성 날짜</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<script>
+										replyList();
+										</script>
+												
+									</tbody>
+									</table>
+									</div>
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->
 									
@@ -545,25 +567,24 @@
 					console.log("replyList() function run...");
 								var product_id = ${productDetailOne.product_id};
 								var member_id = ${memberVo.member_id };
+								
 					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
 								var str= "";
 						$(data).each(function(){
 							console.log(data);
 							var question_date = new Date(this.question_date);
 							question_date = question_date.toLocaleDateString("ko-US")
-								str += "<li data-gdsNum='" + this.product_id + "'>"
-							     + "<div class='userInfo'>"
-							     + "<span class='userName'>" + this.member_id + "</span>"
-							     + "<span class='question_title'>" + this.question_title + "</span>"
-							     + "<span class='date'>" + question_date + "</span>"
-							     + "</div>"
-							     + "<div class='replyContent'>" + this.question_content + "</div>"
-							     + "</li>"; 
+								str += "<tr data-productId='" + this.product_id + "'>"
+							     + "<td class='border-0 align-middle userName'>" + this.member_id + "</td>"
+							     + "<td class='border-0 align-middle replyTitle'>" + this.question_title + "</td>"
+							     + "<td class='border-0 align-middle replyContent'>" + this.question_content + "</td>"
+							     + "<td class='border-0 align-middle date'>" + question_date + "</td>"
+							     + "</tr>"; 
 						});
-		 				  $("section.replyList ol").html(str); 
+		 				  $("table.table--replyList tbody").html(str); 
 					});
 				}
-		replyList();
+				replyList();
 		
 		/* ajax 문의 글 입력 할 때 */
 			$("#reply_btn").click(function(){

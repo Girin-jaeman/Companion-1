@@ -52,6 +52,26 @@ public class AdminProductController {
 		 return "admin/testproductadd";
 	}
 	
+	// product list - get
+	@RequestMapping(value = "testproductlist", method = RequestMethod.GET)
+	public String productList(Model model) {
+		logger.info("get product list");
+		
+		adminProductService.category(model);
+		adminProductService.list(model);
+		return "admin/testproductlist";
+	}
+	
+	//product detail - get
+	@RequestMapping(value = "testproductdetail/{idx}", method = RequestMethod.GET)
+	public String productDetail(Model model, @PathVariable("idx") int product_id) {
+		logger.info("get product detail");
+		
+		adminProductService.category(model);
+		adminProductService.detail(model, product_id);
+		return "admin/testproductdetail";
+	}
+	
 	// product add - post
 	@RequestMapping(value = "testproductadd", method = RequestMethod.POST)
 	public String productAdd(@ModelAttribute AdminProductVo bean, MultipartFile file) throws IOException, Exception {
@@ -78,7 +98,7 @@ public class AdminProductController {
 	}
 	
 	// product add - ckeditor file upload
-	@RequestMapping(value = "/testproductadd/ckUpload&responseType=json", method = RequestMethod.POST)
+	@RequestMapping(value = "/testproductadd/ckUpload", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
 	         @RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
@@ -86,7 +106,6 @@ public class AdminProductController {
 		// random character create
 		UUID uid = UUID.randomUUID();
 	 
-		JSONObject json = new JSONObject();
 		OutputStream out = null;
 		PrintWriter printWriter = null;
 		try {
@@ -97,17 +116,20 @@ public class AdminProductController {
 			String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
 			
 			out = new FileOutputStream(new File(ckUploadPath));
-			out.write(bytes);
-			out.flush(); // out initialization
-	  
-			printWriter = res.getWriter();
-			String fileUrl = "/ckUpload/" + uid + "_" + fileName; // 작성화면
-			
-			json.put("uploaded", 1);
-            json.put("fileName", fileName);
-            json.put("url", fileUrl);
-
-			printWriter.println(json);
+			  out.write(bytes);
+			  out.flush();  // init
+			  
+			  String callback = req.getParameter("CKEditorFuncNum");
+			  printWriter = res.getWriter();
+			  String fileUrl = "/ckUpload/" + uid + "_" + fileName; 
+			  
+			  // upload msg print
+			  printWriter.println("<script type='text/javascript'>"
+			     + "window.parent.CKEDITOR.tools.callFunction("
+			     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
+			     +"</script>");
+			  
+			  printWriter.flush();
 	  
 		} catch (IOException e) { e.printStackTrace();
 		} finally {
@@ -117,24 +139,6 @@ public class AdminProductController {
 			} catch(IOException e) { e.printStackTrace(); }
 		}
 		return; 
-	}
-	
-	// product list - get
-	@RequestMapping(value = "testproductlist", method = RequestMethod.GET)
-	public String productList(Model model) {
-		logger.info("get product list");
-		
-		adminProductService.list(model);
-		return "admin/testproductlist";
-	}
-	
-	//product detail - get
-	@RequestMapping(value = "testproductdetail/{idx}", method = RequestMethod.GET)
-	public String productDetail(Model model, @PathVariable("idx") int product_id) {
-		logger.info("get product detail");
-		
-		adminProductService.detail(model, product_id);
-		return "admin/testproductdetail";
 	}
 	
 	// product edit page category list - get

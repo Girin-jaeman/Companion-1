@@ -83,15 +83,80 @@
             </div>
 		    <!-- section start -->
 			<section class="section">
-				<!-- .row start -->
-				<div class="row">
-					<div class="col-12">
-						<h1>룸미리보기</h1>
-						<p>내용을 채워주세요</p>
-					</div>
-				</div>
-				<!-- .row end -->
-			</section>
+                             
+                  <div class="album py-5 bg-light">
+                    <div class="container">
+                        <span class="h2">VIP Room</span>
+                        <p>개별 마당이 있으며, 다양한 서비스를 추가로 받을 수 있습니다.<br/>
+                            평소 넓은 공간에서 지내고 있는 반려견을 위한 객실입니다.<br/>
+                            객실크기 : 100cm × 102cm × 90cm<br/>
+                            개별마당 : 60cm × 80cm × 90cm</p>
+                      <div class="row"> <!-- viproom .row start -->
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <img class="card-img-vip"src="../imgs/viproom1.png" alt="viproom1">
+                              <div class="card-body">
+                                <p class="card-text">VipRoom 1</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card mb-4">
+                                <img class="card-img-vip"src="../imgs/viproom1.png" alt="viproom1">
+                              <div class="card-body">
+                                <p class="card-text">VipRoom 3</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card mb-4">
+                                <img class="card-img-vip" src="../imgs/viproom1.png" alt="viproom1">
+                              <div class="card-body">
+                                <p class="card-text">VipRoom 3</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- viproom .row end-->  
+                        
+                          <span class="h2">Standard Room</span>
+                          <p>넓은 공간에서 논 후 스트레스 없이 안심하고 쉴 수 있는 객실입니다.<br/>
+                            객실크기 : 73cm × 59cm × 57cm</p>
+                          <div class="row"><!-- standard .row start--> 
+                          <div class="col-md-3">
+                            <div class="card mb-3">
+                                <img class="card-img-std" src="../imgs/stdroom1.png" alt="stdroom1">
+                              <div class="card-body">
+                                <p class="card-text">WoodRoom1</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="card mb-3">
+                                <img class="card-img-std" src="../imgs/stdroom1.png" alt="stdroom1">
+                              <div class="card-body">
+                                <p class="card-text">WoodRoom2</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="card mb-3">
+                                <img class="card-img-std" src="../imgs/stdroom1.png" alt="stdroom1">
+                              <div class="card-body">
+                                <p class="card-text">WoodRoom3</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="card mb-3">
+                                <img class="card-img-std" src="../imgs/stdroom1.png" alt="stdroom1">
+                              <div class="card-body">
+                                <p class="card-text">WoodRoom4</p>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="mb-2">
+                        </div><!-- standard .row end--> 
+            </section>
 			<!-- section end -->
 		</div>
 			<!-- Footer  -->

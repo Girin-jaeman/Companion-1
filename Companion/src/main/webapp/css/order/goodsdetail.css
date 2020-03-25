@@ -153,10 +153,27 @@
 	height:60px
 }
 
-.replyList ol h4{
+.replyList h4{
 	margin-top:20px;
 	
 }
-
+.table--replyList{
+	text-align: center;
+	width:100%;
+	
+}
+.table--replyList tr{
+	border-bottom: 1px solid #b3b7bb;
+	
+}
+.table--replyList th{
+	width:200px;
+	line-height: 1;
+	font-size:20px;
+}
+.table--replyList td{
+	line-height: 2;
+	font-size:18px;
+}
 
 

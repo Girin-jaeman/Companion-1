@@ -9,34 +9,15 @@
 	<select id="selectCategory" resultType="adminCategoryBean">
 	 	select * from `category`
 	</select>
-
-	<!-- product add -->
-	<insert id="insertOne" parameterType="adminProductBean">
-		insert into `product` values (
-			#{category_id},
-			null,
-			#{product_name},
-			#{product_content},
-			#{product_price},
-			#{product_stock},
-			now(),
-			#{product_image},
-			#{product_thumb},
-			#{product_option1},
-			#{product_option2},
-			#{product_option3},
-			#{product_option4},
-			#{product_option5}
-		);
-	</insert>
 	
 	<!-- product list -->
 	<select id="selectAll" resultType="adminProductViewBean">
 		select 
-			p.category_id,
-		 	c.category_refid,
+			c.category_refid,
+			(select cc.category_name from category cc where c.category_refid=cc.category_id) as "category_refidname",
+            p.category_id,
 		 	c.category_name,
-		 	p.product_id,
+            p.product_id,
 		 	p.product_name,
 		 	p.product_content,
 		 	p.product_price,
@@ -56,8 +37,9 @@
 	<!-- product detail -->
 	<select id="selectOne" parameterType="int" resultType="adminProductViewBean">
 		 select
-		 	p.category_id,
 		 	c.category_refid,
+		 	(select cc.category_name from category cc where c.category_refid=cc.category_id) as "category_refidname",
+		 	p.category_id,
 		 	c.category_name,
 		 	p.product_id,
 		 	p.product_name,
@@ -75,6 +57,26 @@
 				from `product` p, `category` c 
 					where p.category_id=c.category_id and p.product_id=#{value}
 	</select>
+	
+	<!-- product add -->
+	<insert id="insertOne" parameterType="adminProductBean">
+		insert into `product` values (
+			#{category_id},
+			null,
+			#{product_name},
+			#{product_content},
+			#{product_price},
+			#{product_stock},
+			now(),
+			#{product_image},
+			#{product_thumb},
+			#{product_option1},
+			#{product_option2},
+			#{product_option3},
+			#{product_option4},
+			#{product_option5}
+		);
+	</insert>
 	
 	<!-- product edit -->
 	<update id="updateOne" parameterType="adminProductBean">

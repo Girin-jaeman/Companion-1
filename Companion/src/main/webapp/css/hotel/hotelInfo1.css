@@ -1,13 +1,48 @@
 /*-------------------CONTENT STYLE--------------------*/
 
-
-.useInfo1{
-  border: solid;
-  height: 300px;
-  padding: 10px;
+.main--title{
+  margin-bottom: 60px;
 }
 .useInfo{
   border: solid;
-  height: 500px;
+  height: 200px;
   padding: 10px;
+  margin-bottom: 30px;
+}
+.useinfo{
+  margin-bottom: 20px;
+}
+.useinfo .icon{
+  padding: 0;
+  background-color: green;
+  margin: 0 20px;
+  margin-bottom: 20px;
+  height: 70px;
+  width: 70px;
+  align-items: center;
+}
+
+.useinfo .sub--title{
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 800;
+}
+.useinfo .third--title{
+  font-size: 20px;
+  font-weight: 500;
+}
+.table{
+  border-radius: 30px;
+}
+.useinfo .table tr{
+
+  height:30px;
+  
+}
+.useinfo .table td{
+  padding-left: 30px;
+}
+
+.useinfo table:last-child{
+  margin-bottom: 30px;
 }

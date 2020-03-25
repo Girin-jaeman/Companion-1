@@ -3,8 +3,9 @@ package com.bit.companion.model.entity.admin;
 import java.sql.Date;
 
 public class AdminProductViewVo {
-	private int category_id;
 	private int category_refid;
+	private String category_refidname;
+	private int category_id;
 	private String category_name;
 
 	private int product_id;
@@ -24,13 +25,14 @@ public class AdminProductViewVo {
 	public AdminProductViewVo() {
 	}
 
-	public AdminProductViewVo(int category_id, int category_refid, String category_name, int product_id,
-			String product_name, String product_content, int product_price, int product_stock, Date product_date,
-			String product_image, String product_thumb, String product_option1, String product_option2,
-			String product_option3, String product_option4, String product_option5) {
+	public AdminProductViewVo(int category_refid, String category_refidname, int category_id, String category_name,
+			int product_id, String product_name, String product_content, int product_price, int product_stock,
+			Date product_date, String product_image, String product_thumb, String product_option1,
+			String product_option2, String product_option3, String product_option4, String product_option5) {
 		super();
-		this.category_id = category_id;
 		this.category_refid = category_refid;
+		this.category_refidname = category_refidname;
+		this.category_id = category_id;
 		this.category_name = category_name;
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -47,20 +49,28 @@ public class AdminProductViewVo {
 		this.product_option5 = product_option5;
 	}
 
-	public int getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
-	}
-
 	public int getCategory_refid() {
 		return category_refid;
 	}
 
 	public void setCategory_refid(int category_refid) {
 		this.category_refid = category_refid;
+	}
+
+	public String getCategory_refidname() {
+		return category_refidname;
+	}
+
+	public void setCategory_refidname(String category_refidname) {
+		this.category_refidname = category_refidname;
+	}
+
+	public int getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 	public String getCategory_name() {
@@ -177,13 +187,13 @@ public class AdminProductViewVo {
 
 	@Override
 	public String toString() {
-		return "AdminCateProdVo [category_id=" + category_id + ", category_refid=" + category_refid + ", category_name="
-				+ category_name + ", product_id=" + product_id + ", product_name=" + product_name + ", product_content="
-				+ product_content + ", product_price=" + product_price + ", product_stock=" + product_stock
-				+ ", product_date=" + product_date + ", product_image=" + product_image + ", product_thumb="
-				+ product_thumb + ", product_option1=" + product_option1 + ", product_option2=" + product_option2
-				+ ", product_option3=" + product_option3 + ", product_option4=" + product_option4 + ", product_option5="
-				+ product_option5 + "]";
+		return "AdminProductViewVo [category_refid=" + category_refid + ", category_refidname=" + category_refidname
+				+ ", category_id=" + category_id + ", category_name=" + category_name + ", product_id=" + product_id
+				+ ", product_name=" + product_name + ", product_content=" + product_content + ", product_price="
+				+ product_price + ", product_stock=" + product_stock + ", product_date=" + product_date
+				+ ", product_image=" + product_image + ", product_thumb=" + product_thumb + ", product_option1="
+				+ product_option1 + ", product_option2=" + product_option2 + ", product_option3=" + product_option3
+				+ ", product_option4=" + product_option4 + ", product_option5=" + product_option5 + "]";
 	}
 	
 }

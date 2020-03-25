@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/hotel/hotelInfo1.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -83,15 +84,74 @@
             </div>
 		    <!-- section start -->
 			<section class="section">
-				<!-- .row start -->
-				<div class="row">
-					<div class="col-12">
-						<h1>이용안내</h1>
-						<p>내용을 채워주세요</p>
-					</div>
-				</div>
-				<!-- .row end -->
-			</section>
+                <!-- main title -->
+				<div class="main--title">
+						<h1>이용 안내</h1>
+                </div>
+                <!-- 운영시간 안내 -->
+                <div class="useinfo row">
+                    <div class="icon"><img src="${root}imgs/infotime.png" alt="time"></div>
+                    <div>
+                        <h2 class="sub--title">운영시간</h2>
+                        <h3 class="third--title">매일 10:00 ~ 21:00</h3>
+                    </div>
+               
+                    <table class="table">
+                        <tr>
+                            <td>컴패니언은 연중 무휴로 운영됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td>모든 서비스는 100% 회원 예약제로 운영됩니다.</td>
+                        </tr>
+                        <tr>
+                            <td>사전 입실 시 대기시간이 발생 할 수 있으니 양해해 주시기 바랍니다.</td>
+                        </tr>
+                    </table>
+                </div>  
+                
+                <!-- 상담시간 안내 -->
+                <div class="useinfo row">
+                    <div class="icon"><img src="${root}imgs/infotalk.png" alt="time"></div>
+                    <div>
+                        <h2 class="sub--title">상담문의</h2>
+                        <h3 class="third--title">매일 09:00 ~ 20:00</h3>
+                    </div>
+               
+                    <table class="table">
+                        <tr>
+                            <td>컴패니언 TEL : 02) 123-0424</td>
+                        </tr>
+                        <tr>
+                            <td>예약 및 상담은 상담시간 내에만 가능합니다.</td>
+                        </tr>
+                        <tr>
+                            <td>비상 연락은 카카오톡 ID : Companion 친구추가 후 가능합니다.</td>
+                        </tr>
+                    </table>
+                </div>    
+                <!-- 안내사항 안내 -->
+                <div class="useinfo row">
+                    <div class="icon"><img src="${root}imgs/infochk.png" alt="time"></div>
+                    <div>
+                        <h2 class="sub--title">유의사항</h2>
+                        <h3 class="third--title">이용 시 주의사항</h3>
+                    </div>
+               
+                    <table class="table">
+                        <tr>
+                            <td>1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 신종 인플루엔자, 광견병) 받지 않은 반려견은 입실이 제한됩니다.<br/>
+                                * 접종기록은 접종병원명이 꼭 필요하므로 증빙 자료는 미리 준비해주세요.</td>
+                        </tr>
+                        <tr>
+                            <td>1살 미만의 반려견인 경우 항체 검사가 필수 입니다.<br/>
+                                (단, 1살 이상 시 재접종 기록 확인)</td>
+                        </tr>
+                        <tr>
+                            <td>생리,건강문제 또는 공격성이 강해 타 고객의 이용에 피해가 되는 반려견 일 경우 입실이 제한됩니다.</td>
+                        </tr>
+                    </table>
+                </div>    
+            </section>
 			<!-- section end -->
 		</div>
 		<!-- #container end -->

@@ -1,18 +1,21 @@
 /*-------------------CONTENT STYLE--------------------*/
 
-
-.hotelLoc{
-  display: flex;
-  border: solid;
-  height: 300px;
-  width: 600px;
-  padding: 10px;
-  position: relative;
-  
+.card .card-img-vip{
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
 }
 
-.useInfo{
-  border: solid;
-  height: 500px;
-  padding: 10px;
+.card .card-img-std{
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+.container p{
+  font-weight: 500;
+}
+.card-body .card-text{
+  font-weight: 800px;
+  font-size: 20px;
+  text-align: center;
 }
