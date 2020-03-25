@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/notice/terms.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -216,7 +217,7 @@
 		                <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
 		                <p>호스팅제공자:(주)Companion</p>
 		                <br/>
-		                <a href="${root}user/terms">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
+		                <a href="${root}user/terms">[홈페이지 이용약관]</a> <a href="${root}policy/privacy">[개인정보취급방침]</a><br/>
 		                <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
 		            </div>
 		    </footer>
