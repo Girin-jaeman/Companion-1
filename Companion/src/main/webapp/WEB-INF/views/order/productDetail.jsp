@@ -439,7 +439,7 @@
 							<div class="col-sm-6">구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
 							<div class="col-sm-6"></div>
 
-
+								
 								<div id="reply">
 									<c:if test="${memberVo.member_id==null}">
 										<p>소감을 남기려면 로그인 해주세요!</p>
@@ -465,21 +465,21 @@
 									<!-- 여기에 문의글 ajax 들어감 -->
 									<section class="replyList">
 											<h4>최근 문의글 목록</h4>
-											<p>sssss</p>
+									<div class="col-lg-12">		
 									<table class="table--replyList">
 									<thead>
 										<tr>
 											<th scope="col" class="border-0 bg-light">
-												<div class="p-2 px-3 text-uppercase">this.member_id</div>
+												<div class="p-2 px-3 text-uppercase">아이디</div>
 											</th>
 											<th scope="col" class="border-0 bg-light">
-												<div class="p-2 px-3 text-uppercase">this.question_title</div>
+												<div class="p-2 px-3 text-uppercase">문의 제목</div>
 											</th>
 											<th scope="col" class="border-0 bg-light">
-												<div class="py-2 text-uppercase">this.question_content</div>
+												<div class="py-2 text-uppercase">문의 내용</div>
 											</th>
 											<th scope="col" class="border-0 bg-light">
-												<div class="p-2 px-3 text-uppercase">question_date</div>
+												<div class="p-2 px-3 text-uppercase">작성 날짜</div>
 											</th>
 										</tr>
 									</thead>
@@ -490,6 +490,7 @@
 												
 									</tbody>
 									</table>
+									</div>
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->
 									
