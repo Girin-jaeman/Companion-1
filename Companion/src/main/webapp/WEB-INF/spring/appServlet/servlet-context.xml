@@ -50,5 +50,4 @@
 	<!-- https://antananarivo.tistory.com/63 -->
 	<resources location="file:///C:/Companion" mapping="imgUpload/**"></resources>
 	
-	
 </beans:beans>

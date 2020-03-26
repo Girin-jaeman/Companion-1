@@ -1,6 +1,11 @@
 package com.bit.companion.controller.login;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,7 +18,7 @@ import com.bit.companion.service.login.MemberService;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -23,16 +28,64 @@ public class MemberController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/login/emailchk",method=RequestMethod.POST)
+	public String mailChk(String member_email){
+		JavaMailSenderImpl mailSender=new JavaMailSenderImpl();
+
+		String randomMsg=randomMsg();
+		
+		String setfrom = "bitcompanion@gmail.com";
+		String tomail=member_email;
+		String title="인증 이메일";
+		String c="";
+		c+=System.getProperty("line.separator");
+		c+=System.getProperty("line.separator");
+		c+="인증번호는 "+randomMsg+" 입니다.";
+		c+=System.getProperty("line.separator");
+		c+=System.getProperty("line.separator");
+		final String content =c;
+		
+		final MimeMessagePreparator preparator=new MimeMessagePreparator() {
+			
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessage msg=mailSender.createMimeMessage();
+				final MimeMessageHelper msgHelper=new MimeMessageHelper(msg,true,"utf-8");
+				
+				msgHelper.setFrom(setfrom);
+				msgHelper.setTo(tomail);
+				msgHelper.setSubject(title);
+				msgHelper.setText(content);
+				
+			}
+		};
+			
+			
+			mailSender.send(preparator);
+			
+		return randomMsg;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/login/idchk",method=RequestMethod.POST)
 	public int idChk(String member_id) {
 		int result=memberService.idChk(member_id);
 		return result;
 	}
 	
-	
 	@RequestMapping(value="/login/memberadd",method=RequestMethod.POST)
 	public String memberadd(@ModelAttribute MemberVo bean) {
 		memberService.insert(bean);
 		return "redirect:..";
+	}
+	
+	/* 난수 만드는 method */
+	public static String randomMsg() {
+		String s="";
+		for(int i=0; i<6; i++) {
+			int r=(int)(Math.random()*9+1);
+			s+=r;
+		}
+		return s;
 	}
 }
