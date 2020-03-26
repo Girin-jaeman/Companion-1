@@ -5,7 +5,7 @@
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-            	<a href="${root }admin/testadminhome">
+            	<a href="${root }admin/admin_home">
 	                <h3>Companion Admin</h3>
 	                <strong>Comp.<br/>Admin</strong>
             	</a>
@@ -19,7 +19,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="${root }admin/testnoticelist">
+                            <a href="${root }admin/notice_list">
                             	<i class="fas fa-angle-right"></i>
                             	공지사항
                             </a>
@@ -41,7 +41,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="shopSubmenu">
                         <li>
-                            <a href="${root}admin/testproductadd">
+                            <a href="${root}admin/product_list">
                             	<i class="fas fa-angle-right"></i>
                             	상품관리
                             </a>
@@ -49,13 +49,7 @@
                         <li>
                             <a href="#">
                             	<i class="fas fa-angle-right"></i>
-                            	결제관리
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${root}admin/testproductlist">
-                            	<i class="fas fa-angle-right"></i>
-                            	배송관리
+                            	주문관리
                             </a>
                         </li>
                     </ul>
@@ -78,12 +72,6 @@
                             	예약관리
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                            	<i class="fas fa-angle-right"></i>
-                            	예약관리
-                            </a>
-                        </li>
                     </ul>
                  </li>
                  <li>   
@@ -93,7 +81,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/member_list">
                             	<i class="fas fa-angle-right"></i>
                             	회원목록
                             </a>
@@ -115,7 +103,7 @@
                      </c:when>
                      <c:otherwise>
                          <ul class="list-unstyled conn">
-                             <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+                             <p><strong>${sessionScope.memberVo.member_name }</strong>님이<br/>로그인 중입니다.</p>
                              <li>
                                  <a href="${root }" class="nav-link">홈페이지로</a>
                              </li>
