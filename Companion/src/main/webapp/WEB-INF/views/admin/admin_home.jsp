@@ -62,10 +62,8 @@
 			<h1>관리자 페이지</h1>
 			<aside>
 				<ul>
-					<li><a href="${root}admin/testproductadd">상품등록</a></li>
-					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-					<li><a href="#">상품소감</a></li>
-					<li><a href="#">유저목록</a></li>
+					<li><a href="${root}admin/product_add">상품등록</a></li>
+					<li><a href="${root}admin/product_list">상품목록</a></li>
 				</ul>
 			</aside>
 			<h2>관리자 메인</h2>

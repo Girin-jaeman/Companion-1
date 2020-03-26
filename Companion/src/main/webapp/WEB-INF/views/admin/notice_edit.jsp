@@ -55,7 +55,7 @@
 		<%=request.getRealPath("/") %>
 		<div>
 			<button type="submit">수정</button>
-			<button type="reset">취소</button>
+			<button type="button" id="back_Btn">취소</button>
 		</div>
 	</form>
 	
@@ -77,6 +77,11 @@
  				}
  				reader.readAsDataURL(this.files[0]);
  			}
+ 		});
+ 		
+ 		// 취소 버튼
+ 		$("#back_Btn").click(function(){
+ 			history.back();
  		});
  	</script>
 </body>

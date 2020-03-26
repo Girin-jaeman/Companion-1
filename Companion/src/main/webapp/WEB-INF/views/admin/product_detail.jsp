@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
+<c:url var="getList" value="/admin/product_list"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
-	<title>Insert title here</title>
+	<title>Companion::상품 조회</title>
 </head>
 <body>
 
@@ -74,8 +75,8 @@
 			<h1>관리자 페이지</h1>
 			<aside>
 				<ul>
-					<li><a href="${root}admin/testproductadd">상품등록</a></li>
-					<li><a href="${root}admin/testproductlist">상품목록</a></li>
+					<li><a href="${root}admin/product_add">상품등록</a></li>
+					<li><a href="${root}admin/product_list">상품목록</a></li>
 				</ul>
 			</aside>
 			<h2>상품 상세</h2>
@@ -180,7 +181,7 @@
 	
  	// 수정 버튼
 	$("#edit_Btn").click(function(){
-		location.href = ${root}+"admin/testproductedit/" + ${adminProductOne.product_id};
+		location.href = ${root}+"admin/product_edit/" + ${adminProductOne.product_id};
 	});
 
  	// 삭제 버튼
@@ -188,9 +189,26 @@
 	$("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
-		formObj.attr("action", "${root}admin/testproductdelete/${adminProductOne.product_id}");
+		formObj.attr("action", "${root}admin/product_delete/${adminProductOne.product_id}");
 		formObj.submit();
 		}
+	});
+	
+	// 취소 버튼
+	$("#back_Btn").click(function(){
+		history.back();
+	});
+	
+ 	// 이전목록 버튼
+		var url = "${getList}";
+  		url = url + "?page=" + "${pagination.page}";
+		url = url + "&range=" + "${pagination.pagerange}";
+		url = url + "&searchType=" + "${search.searchType}";
+		url = url + "&keyword=" + "${search.keyword}";
+		console.log(url);
+	$("#list_Btn").click(function(){
+		location.href = url;	
+
 	});
 </script>
 

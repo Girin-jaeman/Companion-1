@@ -53,7 +53,6 @@ public class AdminProductServiceImpl implements AdminProductService{
 			List<AdminProductViewVo> list=adminProductDao.selectAll(search);
 			
 			model.addAttribute("search", search);
-			model.addAttribute("pagination",search);
 			model.addAttribute("adminProductList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
