@@ -120,7 +120,7 @@ ul{
     
 }
 
- .section .route li:first-child{
+ .section .route li:nth-child(2){
     font-size: 16px;
     color: #333;
     font-weight: 800;
@@ -131,14 +131,22 @@ ul{
     border-bottom: 1px solid rgb(185, 184, 184);
     text-align: center;
 }
-.table th{
+.table thead{
+    background-color: rgba(197, 194, 194, 0.438);
+}
+.table thead tr{
     text-align: center;
+    height: 50px;
+    margin: 0;
 }
-.table tr{
-
+.table tbody tr{
+    height: 70px;
 }
-.table td{
-    margin-bottom: 0;
+.table tbody td{
+    height: 60px;
+    padding-top: 20px;
+   
+    text-align: center;
 }
 .table td span{
     display: block;
@@ -204,19 +212,82 @@ ul{
     font-weight: 600;
     font-size: 20px;
 }
+.section .purchase{
+    width: 1000px;
+    height: 200px;
+    position: relative;
+}
+.purchase button{
+    width: 30%;
+    height: 60px;
+    display: block;
+    margin: 20px auto;
+    font-size: 36px;
+    
+    
+}
 .btn-order{
     border: 1px solid #0F4C81;
     color: #fff;
     background: #0F4C81 linear-gradient(rgb(22, 121, 207), #0F4C81);
-    
     border: 1px solid ;
+    border-radius: 4px;
 }
 .btn-order:hover{
-    background: #fff;
-    color: #0F4C81;
+    background: #0F4C81 linear-gradient(#0F4C81, rgb(22, 121, 207));
+    color: #fff;
 }
 
 .section .chk-non{
     margin-bottom: 100px;
     text-align: right;
+}
+.coast-group .total__title{
+    font-weight: 600;
+    color: rgb(15, 17, 129);
+    
+}
+.coast-group .total{
+    color: rgb(15, 17, 129);
+
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.order_info{
+    width: 100%;
+    margin-top: 20px;
+}
+.table-left{
+    width: 100%;
+    border-top: 1.5px solid rgb(112, 112, 112);
+    
+}
+.table-left tr{
+    border-bottom: 1px solid rgba(112, 112, 112,.25);
+    
+}
+.table-left th{
+    width: 150px;
+    background: rgb(226, 231, 233);
+    text-align: center;
+}
+.table-left input{
+    margin: 5px 10px;
+    width: 200px;
+}
+.delivery_info{
+    width: 100%;
+    margin: 30px auto;
+}
+
+.form-check .form-check-input{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+}
+.table-left .detail-adress{
+    margin-left: 0px;
+    width: 400px;
 }

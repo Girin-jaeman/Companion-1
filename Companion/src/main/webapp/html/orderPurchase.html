@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>컴패니언::Companion::장바구니</title>
+    <title>컴패니언::Companion::주문결제</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/mypage/mycart.css">
+    <link rel="stylesheet" href="../css/mypage/orderPurchase.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -168,9 +168,9 @@
             <section class="section">
                 <!-- .title-group start-->
                 <div class="title-group clearfix">
-                    <h1 class="main--title float--left">장바구니</h1>
+                    <h1 class="main--title float--left">주문서작성/결제</h1>
                     <ul class="route float--right">
-                        <li class="active">
+                        <li>
                             01 장바구니
                             <span>></span>
                         </li> 
@@ -181,26 +181,27 @@
                         <li>03 주문완료</li> 
                     </ul>
                 </div><!-- .title-group end-->
-                <!-- 장바구니 담긴 상품 테이블 -->
+                <!-- 결제할 상품 테이블 -->
+                <h4>주문상세내역</h4>
                 <table class="table">
-                    <tr>
-                        <th><input type="checkbox" name="chk" value="product"></th>
-                        <th>상품/옵션 정보</th>
-                        <th>수량</th>
-                        <th>상품금액</th>
-                        <th>합계금액</th>
-                        <th>배송비</th>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="chk" value="product"></td>
-                        <td>집에갈수있는휴가권</td>
-                        <td><span>1개</span>
-                            <a class="btn"href="#" role="button">옵션/수량변경</a>
-                        </td>
-                        <td>2,000원</td>
-                        <td>2,000원</td>
-                        <td>기본배송비<br/>2,500원</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>상품/옵션 정보</th>
+                            <th>수량</th>
+                            <th>상품금액</th>
+                            <th>합계금액</th>
+                            <th>배송비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>집에갈수있는휴가권</td>
+                            <td>1개</td>
+                            <td>2,000원</td>
+                            <td>2,000원</td>
+                            <td>2,500원</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <!-- table end -->
                 <a href="#"><span><< 쇼핑계속하기</span></a>
@@ -215,22 +216,78 @@
                     </ul>
                 </div>
                 <!-- 주문금액 합계 end-->
-                <!-- 버튼그룹 start-->
-                <div class="btn--group clearfix">
-                    <div class="selectP float--left">
-                        <button class="">선택 상품 삭제</button>
-                        <button class="">선택 상품 찜</button>
-                    </div>
-                    <div class="orderP float--right">
-                        <button class="">선택 상품 주문</button>
-                        <button class="btn-order">전체 상품 주문</button>
-                    </div>
+                <!-- 주문자 정보 start-->
+                <div class="order_info">
+                    <h4>주문자 정보</h4>
+                <table class="table-left">
+                    <tbody>
+                        <tr>
+                            <th class="label"><span>주문하시는 분</span></th>
+                            <td><input type="text" class="input--text" id="name" name="name" placeholder="" required></td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰 번호</th>
+                            <td><input type="text" class="input--text" id="phoneNumber" name="phone" placeholder="'-' 없이 숫자만 입력" required></td>
+                        </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td><input type="email" class="input--text" id="email" name="email" placeholder="이메일 형식에 맞춰 입력" required></td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
-                <!-- 버튼그룹 end-->
-                <div class="chk-non">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>주문서 작성단계에서 할인/마일리지 적용을 하실 수 있습니다</span>
+                <div class="delivery_info">
+                    <h4>배송지 정보</h4>
+                <table class="table-left">
+                    <tbody>
+                        <tr>
+                            <th class="label"><span>배송지 확인</span></th>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        주문자정보와 동일 
+                                    </label>
+                                  </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="label"><span>받으실 분</span></th>
+                            <td><input type="text" class="input--text" id="name" name="name" placeholder="" required></td>
+                        </tr>
+                        <tr>
+                            <th>받으실 곳</th>
+                            <td>
+                                <input type="text" class="input--text" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
+                                <button type="button" id="postSearch">우편 검색</button><br/>
+                                <input type="text" class="input--text" name="order_addr2" id="sample6_address" placeholder="주소">
+                                <input type="text" class="detail-adress input--text" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>휴대폰 번호</th>
+                            <td><input type="text" class="input--text" id="phoneNumber" name="phone" placeholder="'-' 없이 숫자만 입력" required></td>
+                        </tr>
+                        <tr>
+                            <th>요청사항</th>
+                            <td><input type="text" class="input--text" name="order_msg" id="order_msg" placeholder="40자 내로 써주세요" aria-label="Username" aria-describedby="basic-addon1"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
+                <!-- 주문자 정보 end-->
+                <!-- 최종결제금액 start-->
+                <div class="coast clearfix">
+                    <ul class="coast-group float--right">
+                        <li class="total__title">최종 결제 금액</li>
+                        <li class="total">4,500원</li>
+                    </ul>
+                </div>
+                 <!-- 결제버튼-->
+                    <div class="purchase">
+                        <button class="btn-order">결 제 하 기</button>
+                    </div>
+                <!--  결제버튼 end-->
             </section>      
             <!--main content end-->
 
