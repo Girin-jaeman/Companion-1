@@ -5,7 +5,7 @@
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <a href="/companion/">
+                <a href="${root }">
 	                <h3>Companion</h3>
 	                <strong>Comp.</strong>
                 </a>
@@ -18,8 +18,6 @@
                         쇼핑하기
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                    
-
                         <li>
                             <a href="/companion/order/productMain?c=100">사료</a>
                         </li>

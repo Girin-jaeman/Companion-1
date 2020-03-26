@@ -5,8 +5,10 @@
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Companion Admin</h3>
-                <strong>Comp.<br/>Admin</strong>
+            	<a href="${root }admin/testadminhome">
+	                <h3>Companion Admin</h3>
+	                <strong>Comp.<br/>Admin</strong>
+            	</a>
             </div>
 
             <ul class="list-unstyled components">
