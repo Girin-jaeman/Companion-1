@@ -368,18 +368,6 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `companion`.`payment_method`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `companion`.`payment_method` (
-  `payment_method_id` INT(11) NOT NULL COMMENT '결제수단ID',
-  `payment_method_name` VARCHAR(20) NOT NULL COMMENT '결제수단이름',
-  PRIMARY KEY (`payment_method_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-
--- -----------------------------------------------------
 -- Table `companion`.`payment_state`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `companion`.`payment_state` (
@@ -455,24 +443,19 @@ CREATE TABLE IF NOT EXISTS `companion`.`payment` (
   `order_id` INT(11) NOT NULL COMMENT '주문ID',
   `member_id` VARCHAR(20) NOT NULL COMMENT '회원ID',
   `payment_date` DATETIME NOT NULL COMMENT '결제일',
-  `payment_amount` INT(11) NOT NULL COMMENT '결제금액',
-  `payment_method_id` INT(11) NOT NULL COMMENT '결제수단ID',
-  `payment_state_id` INT(11) NOT NULL COMMENT '결제상태ID',
-  PRIMARY KEY (`payment_id`, `payment_method_id`, `payment_state_id`, `order_id`, `member_id`),
-  INDEX `FK_payment_method_payment_1` (`payment_method_id` ASC) ,
-  INDEX `FK_payment_state_payment_2` (`payment_state_id` ASC) ,
-  INDEX `FK_order_payment_3` (`order_id` ASC) ,
-  INDEX `FK_member_payment_4` (`member_id` ASC) ,
-  CONSTRAINT `FK_payment_method_payment_1`
-    FOREIGN KEY (`payment_method_id`)
-    REFERENCES `companion`.`payment_method` (`payment_method_id`),
-  CONSTRAINT `FK_payment_state_payment_2`
+  `payment_amount` INT(11) NOT NULL COMMENT '결제금액',,
+  `payment_state_id` INT(11) NOT NULL DEFAULT '0' COMMENT '결제상태ID',
+  PRIMARY KEY (`payment_id`, `payment_state_id`, `order_id`, `member_id`),
+  INDEX `FK_payment_state_payment_1` (`payment_state_id` ASC) ,
+  INDEX `FK_order_payment_2` (`order_id` ASC) ,
+  INDEX `FK_member_payment_3` (`member_id` ASC) ,
+  CONSTRAINT `FK_payment_state_payment_1`
     FOREIGN KEY (`payment_state_id`)
     REFERENCES `companion`.`payment_state` (`payment_state_id`),
-  CONSTRAINT `FK_order_payment_3`
+  CONSTRAINT `FK_order_payment_2`
     FOREIGN KEY (`order_id`)
     REFERENCES `companion`.`order` (`order_id`),
-  CONSTRAINT `FK_member_payment_4`
+  CONSTRAINT `FK_member_payment_3`
     FOREIGN KEY (`member_id`)
     REFERENCES `companion`.`member` (`member_id`))
 ENGINE = InnoDB

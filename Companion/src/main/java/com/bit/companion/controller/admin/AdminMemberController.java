@@ -7,17 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bit.companion.service.admin.AdminNoticeService;
+import com.bit.companion.service.admin.AdminMemberService;
 
 @Controller
 @RequestMapping(value = "/admin/")
-public class AdminController {
-
+public class AdminMemberController {
+	
 	private static final Logger log=LoggerFactory.getLogger(AdminNoticeController.class);
 	
-	@RequestMapping(value = "admin_home", method = RequestMethod.GET)
+	@Autowired
+	AdminMemberService adminMemberService;
+	
+	@RequestMapping(value = "member_list", method = RequestMethod.GET)
 	public String adminHome() {
-		log.info("get admin home");
-		return "admin/admin_home";
+		log.info("get member list");
+		return "admin/member_list";
 	}
 }

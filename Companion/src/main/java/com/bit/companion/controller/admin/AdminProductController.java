@@ -28,10 +28,6 @@ import com.bit.companion.model.entity.admin.AdminProductVo;
 import com.bit.companion.service.admin.AdminProductService;
 import com.bit.companion.util.UploadFileUtils;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-
 @Controller
 @RequestMapping(value = "/admin/")
 public class AdminProductController {

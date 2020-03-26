@@ -85,6 +85,5 @@ insert into `reserve_state` values(1,'예약완료');
 insert into `reserve_state` values(2,'이용중');
 insert into `reserve_state` values(3,'이용완료');
 
--- payment_methodservice
-
 -- payment_state
+insert into `payment_state` values(0,'결제완료');

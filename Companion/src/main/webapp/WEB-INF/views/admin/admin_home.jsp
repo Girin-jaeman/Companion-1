@@ -60,12 +60,6 @@
 		<!-- .container-fluid [start] -->
 		<div class="container-fluid">
 			<h1>관리자 페이지</h1>
-			<aside>
-				<ul>
-					<li><a href="${root}admin/product_add">상품등록</a></li>
-					<li><a href="${root}admin/product_list">상품목록</a></li>
-				</ul>
-			</aside>
 			<h2>관리자 메인</h2>
 			<div class="row">
 				<div class="card col-xl-6">
