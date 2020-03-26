@@ -81,7 +81,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/member_list">
                             	<i class="fas fa-angle-right"></i>
                             	회원목록
                             </a>

@@ -97,7 +97,15 @@
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+
 <script type="text/javascript">
+	// 메뉴 토글 버튼
+	$(document).ready(function () {
+	    $('#sidebarCollapse').on('click', function () {
+	        $('#sidebar').toggleClass('active');
+	    });
+	});
+
 </script>
 </body>
 </html>

@@ -52,13 +52,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">공지사항</a>
+			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">이벤트</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">FAQ</a>
+			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -73,13 +70,7 @@
 		<!-- section [start] -->
 		<section class="section">
 			<h1>관리자 페이지</h1>
-			<aside>
-			<ul>
-				<li><a href="${root}admin/product_add">상품등록</a></li>
-				<li><a href="${root}admin/product_list">상품목록</a></li>
-			</ul>
-			</aside>
-			
+
 			<!-- 검색창 -->
 			<div>
 				<input type="hidden" name="searchType" id="searchType" value="product">
@@ -185,22 +176,22 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 
 <script type="text/javascript">
-	// 메뉴 토글 버튼
-	$(document).ready(function () {
-	    $('#sidebarCollapse').on('click', function () {
-	        $('#sidebar').toggleClass('active');
-	    });
-	});
+// 메뉴 토글 버튼
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
 
-	// 검색 버튼
-	$("#search_Btn").click(function(e){
-		e.preventDefault();
-		var url = "${getList}";
-		url = url + "?searchType=" + $('#searchType').val();
-		url = url + "&keyword=" + $('#keyword').val();
-		location.href = url;
-		console.log(url);
-	});	
+// 검색 버튼
+$("#search_Btn").click(function(e){
+	e.preventDefault();
+	var url = "${getList}";
+	url = url + "?searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = url;
+	console.log(url);
+});	
 
 </script>
 	
