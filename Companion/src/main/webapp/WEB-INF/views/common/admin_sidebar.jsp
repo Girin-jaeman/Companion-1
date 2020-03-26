@@ -115,7 +115,7 @@
                      </c:when>
                      <c:otherwise>
                          <ul class="list-unstyled conn">
-                             <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+                             <p><strong>${sessionScope.memberVo.member_name }</strong>님이<br/>로그인 중입니다.</p>
                              <li>
                                  <a href="${root }" class="nav-link">홈페이지로</a>
                              </li>
