@@ -58,9 +58,6 @@ span {
 .pagination{
     justify-content: center;
 }
-.page-item{
-    width: 40px;
-}
 .page-item>a{
     color:#5f4b8b;
     text-align: center;
@@ -301,4 +298,11 @@ a.join:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+/* ---------------------------------------------------
+    Dashboard
+----------------------------------------------------- */
+.card {
+    margin: 10px auto;
 }
