@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/testnoticelist"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/notice_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-	<title>Companion::관리자::공지사항</title>
+	<title>Companion::공지사항 목록</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -63,7 +63,7 @@
 		<!-- section [start] -->
 		<section class="section">
 			<h1>관리자 - 공지사항 리스트 페이지</h1>
-			<a class="btn btn-dark" role="button" href="${root }admin/testnoticeadd">입력</a>
+			<a class="btn btn-dark" role="button" href="${root }admin/notice_add">입력</a>
 			<table class="table">
 			<thead>
 				<tr>
@@ -80,13 +80,13 @@
 			<!-- forEach start -->
 			<c:forEach items="${adminNoticeList }" var="bean">
 			<tr>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_id }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_content }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_count }</a></td>
-			<td><a href="${root }admin/testnoticedetail/${bean.article_id }">${bean.article_image }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_id }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.member_id }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_title }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_content }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_date }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_count }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_image }</a></td>
 			</tr>
 			</c:forEach>
 			</tbody>

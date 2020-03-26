@@ -14,7 +14,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
-	<title>Insert title here</title>
+	<title>Companion::상품 등록</title>
 </head>
 <body>
 
@@ -72,8 +72,8 @@
 			<h1>관리자 페이지</h1>
 			<aside>
 				<ul>
-					<li><a href="${root}admin/testproductadd">상품등록</a></li>
-					<li><a href="${root}admin/testproductlist">상품목록</a></li>
+					<li><a href="${root}admin/product_add">상품등록</a></li>
+					<li><a href="${root}admin/product_list">상품목록</a></li>
 				</ul>
 			</aside>
 			<h2>상품 등록</h2>
@@ -156,6 +156,11 @@ $(document).ready(function () {
 	});
 });
 
+//취소 버튼
+$("#back_Btn").click(function(){
+	history.back();
+});
+
 // 숫자 유효성 검사
 var regExp = /[^0-9]/gi;
 $("#product_price").keyup(function(){ numCheck($(this)); });
@@ -224,7 +229,7 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl :"/admin/testproductadd/ckUpload"
+	filebrowserUploadUrl :"/admin/product_add/ckUpload"
 };
 CKEDITOR.replace( 'product_content', ckeditor_config );
 

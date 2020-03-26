@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/resources/ckeditor/ckeditor.js"></script>
-<title>관리자 - 공지사항 상세 페이지</title>
+<title>Companion::공지사항 조회</title>
 </head>
 <body>
 	<h1>관리자 - 공지사항 상세 페이지</h1>
@@ -39,7 +39,7 @@
 		<div>
 			<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 		 	<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
-			<button type="reset">취소</button>
+			<button type="button" id="back_Btn">취소</button>
 		</div>
 	</form>
 
@@ -52,16 +52,22 @@
     <!-- MAIN JS -->
     <script src="${root }js/main.js"></script>
     <script type="text/javascript">
+    	// 수정 버튼
    		 $("#modify_Btn").click(function(){
-   			location.href = ${root}+"admin/testnoticeedit/" + ${adminNoticeOne.article_id};
+   			location.href = ${root}+"admin/notice_edit/" + ${adminNoticeOne.article_id};
 		 });  
    		 
-     	// delete button
+  		// 취소 버튼
+  		$("#back_Btn").click(function(){
+  			history.back();
+  		});
+   		 
+     	// 삭제 버튼
      	var formObj = $("form[role='form']");
     		$("#delete_Btn").click(function(){
     		 var con = confirm("정말로 삭제하시겠습니까?");
     		 if(con) {      
-    		  formObj.attr("action", "${root}admin/testnoticedelete/${adminNoticeOne.article_id}");
+    		  formObj.attr("action", "${root}admin/notice_delete/${adminNoticeOne.article_id}");
     		  formObj.submit();
     		 }
    		});

@@ -18,9 +18,9 @@ public class AdminController {
 	@Autowired
 	AdminNoticeService adminService;
 	
-	@RequestMapping(value = "testadminhome", method = RequestMethod.GET)
+	@RequestMapping(value = "admin_home", method = RequestMethod.GET)
 	public String adminHome() {
 		log.info("get admin home");
-		return "admin/testadminhome";
+		return "admin/admin_home";
 	}
 }
