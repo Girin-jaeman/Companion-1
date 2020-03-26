@@ -74,6 +74,7 @@
 		
 		
 		</section>
+		<!-- section [end] -->
 		
 		<!-- pagination [start] -->
 		<jsp:include page="../common/pagination.jsp">
