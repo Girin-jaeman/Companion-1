@@ -57,6 +57,8 @@ select count(*) from `like` where product_id=#{상품번호}  상품번호에 �
 높은 추천 수 조회 페이지 --> 현재 추천 수량을 표시. & 추천 높은 순으로 정렬.
 
 
+http://localhost:8080/companion/imgs/shopping/%EA%B0%84%EC%8B%9D.jpg
+
 
 
 ///////////////////////////////

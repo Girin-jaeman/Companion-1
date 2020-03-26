@@ -100,119 +100,119 @@
 		<hr class="mb-5">
 				<div class="col-sm-6"><h4></h4></div>
 				<div class="col-sm-1"><h4>합계 : ${orderProductPurchaseOne.product_price }</h4></div>
-				<div class="col-sm-2"><h4>총 합계 : ${orderProductPurchaseOne.product_price } + 2500</h4></div>
+				<div class="col-sm-2"><h4>총 합계 : ${orderProductPurchaseOne.product_price+2500}</h4></div>
 				 <div class="w-100"></div>
 	 	</div>
 	
 		<hr class="mb-5">
-		 <form action="${root }order/successOrder" role="form" method="post" autocomplete="off" id="payForm">  
-	<div class="row"> 
 		
 		
-		
-<%-- 		<form action="${root }order/successOrder" role="form" method="post" autocomplete="off">    --%>
-				<div class="col-sm-5"><!-- 왼쪽 주문자 정보 start -->
-					<div class="col-sm-12"><h2>주문자 정보</h2></div>
-<%-- 					<div class="col-sm-12"><h2>상품 번호 : ${orderProductPurchaseOne.product_id }</h2></div>
-					<input type="text" value="${orderProductPurchaseOne.product_id }"/> --%>
-					<!-- 주문자 정보 member table에서 따올 것. -->
-						<div class="w-100"></div>
-								<div class="input-group mb-3">
-								  <div class="input-group-prepend">
-								    <span class="input-group-text" id="name">이 &nbsp; 름</span>
-								  </div>
-								  
-								  <!-- member_id 로 불러올 것.  -->
-								  <input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_id}" aria-label="Username" aria-describedby="basic-addon1">
-								    <hr class="one">
-								  	<div class="w-100"></div>
-								  <div class="input-group-prepend">
-								    <span class="input-group-text" id="phone">연락처</span>
-								  </div>
-								  <!-- memeber_phone으로 불러 올 것. -->
-								  <input type="text" class="form-control" name="order_phone" id="order_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1">
-								  	    <hr class="one">
-								  	<div class="w-100"></div>
-								  <div class="input-group-prepend">
-								    <span class="input-group-text" id="email">이메일</span>
-								  </div>
-									<!-- member_email로 불러올 것. -->
-								  <input type="text" class="form-control" placeholder="${orderVo.member_email}" aria-label="email" aria-describedby="basic-addon1">
-								  	    <hr class="one">
-								  	<div class="w-100"></div>
-								</div>	
-					<!-- 주문자 정보 member table에서 따올 것. -->
-				</div><!-- 왼쪽 주문자 정보 END -->
-		
-		
-				
-				
-						
-					<div class="col-sm-5"> <!-- 오른쪽 배송지 정보 -->
-							<div class="row">
-								<div class="col-sm-5"><h2>배송지 정보</h2></div>
-								<div class="col-sm-7">
-									<div class="form-check">
-									  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-										<label class="form-check-label" for="defaultCheck1">
-										    주문자 정보와 동일 
-										</label>
-									</div></div>
-									<div class="col-sm-5"></div>
+			 <form action="${root }order/successOrder" role="form" method="post" autocomplete="off" id="payForm">  
+				<div class="row"> 
+			<%-- 		<form action="${root }order/successOrder" role="form" method="post" autocomplete="off">    --%>
+						<div class="col-sm-5"><!-- 왼쪽 주문자 정보 start -->
+							<div class="col-sm-12"><h2>주문자 정보</h2></div>
+		<%-- 					<div class="col-sm-12"><h2>상품 번호 : ${orderProductPurchaseOne.product_id }</h2></div>
+							<input type="text" value="${orderProductPurchaseOne.product_id }"/> --%>
+							<!-- 주문자 정보 member table에서 따올 것. -->
+								<div class="w-100"></div>
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="name">이 &nbsp; 름</span>
+										  </div>
+										  
+										  <!-- member_id 로 불러올 것.  -->
+										  <input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_id}" aria-label="Username" aria-describedby="basic-addon1" readonly>
+										    <hr class="one">
+										  	<div class="w-100"></div>
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="phone">연락처</span>
+										  </div>
+										  <!-- memeber_phone으로 불러 올 것. -->
+										  <input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly>
+<%-- 										  <input type="text" class="form-control" name="order_phone" id="order_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly> --%>
+										  	    <hr class="one">
+										  	<div class="w-100"></div>
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="email">이메일</span>
+										  </div>
+											<!-- member_email로 불러올 것. -->
+										  <input type="text" class="form-control" placeholder="${orderVo.member_email}" aria-label="email" aria-describedby="basic-addon1" readonly>
+										  	    <hr class="one">
+										  	<div class="w-100"></div>
+										</div>	
+							<!-- 주문자 정보 member table에서 따올 것. -->
+						</div><!-- 왼쪽 주문자 정보 END -->
+							
+							
 									
-									<div class="input-group mb-3">
-									  <div class="input-group-prepend">
-									    <span class="input-group-text" id="name">이 &nbsp;름</span>
-									  </div>
-									  <input type="text" class="form-control" name="order_name" id="order_name" placeholder="name" aria-label="Username" aria-describedby="basic-addon1">
-									    <div class="w-100"></div>
-									<div class="col-sm-11">
-									</div>	
-									<div class="col-sm-3">
-											<br>
-										  <button type="button" id="postSearch">우편 검색</button>
-									</div>	
-									<div class="w-100"></div>
-									
-									<div class="col-sm-3">
-								
-											<input type="text" class="form-control" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
-									</div>
-									<!-- 	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
-									<div class="col-sm-9">
-										<input type="text" class="form-control" name="order_addr2" id="sample6_address" placeholder="주소"><br>
-									</div>
-									<div class="col-sm-12">
-										<input type="text" class="form-control" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소">
-									</div>
-										<input type="hidden" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
+						<div class="col-sm-5"> <!-- 오른쪽 배송지 정보 -->
+								<div class="row">
+									<div class="col-sm-5"><h2>배송지 정보</h2></div>
+									<div class="col-sm-7">
+											<!-- check 시 정보 자동 입력.  -->
+										<div class="form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="defaultCheck1">
+											<label class="form-check-label" for="defaultCheck1">
+											    주문자 정보와 동일 
+											</label>
+										</div></div>
 										
-										<!-- order_amount 쿼리문에는 product_id 를 통한 subQuery 로 처리하기 때문에 에 product_id가 들어가야 한다.  -->
- 										<input type="hidden" class="form-control" name="order_amount" id="order_amount" value="${orderProductPurchaseOne.product_price }" placeholder="${orderProductPurchaseOne.product_price }"/>
-								 		<%-- <input type="hidden" class="form-control" name="product_id" id="product_id" value="${orderProductPurchaseOne.product_id}" placeholder="product ID 들어갑니까?">
- --%>
-								  	<div class="w-100"></div>
-									   <div class="input-group-prepend">
-									    <span class="input-group-text" id="name">연락처</span>
-									  </div>
-									  <input type="text" class="form-control" name="order_phone" id="order_phone" placeholder="연락처 입력해주세요" aria-label="Username" aria-describedby="basic-addon1">
-									    <div class="w-100"></div>	
-									  	 <div class="input-group-prepend">
-									    <span class="input-group-text" id="name">요청사항</span>
-									  </div>
-									  <input type="text" class="form-control" name="order_msg" id="order_msg" placeholder="40자 내로 써주세요" aria-label="Username" aria-describedby="basic-addon1">
-									    <div class="w-100"></div>
+										<div class="col-sm-5"></div>
+										
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="name">이 &nbsp;름</span>
+										  </div>
+										  <input type="text" class="form-control" name="order_name" id="order_name" placeholder="name" aria-label="Username" aria-describedby="basic-addon1">
+										    <div class="w-100"></div>
+										<div class="col-sm-11">
+										</div>	
+										<div class="col-sm-3">
+												<br>
+											  <button type="button" id="postSearch">우편 검색</button>
+										</div>	
+										<div class="w-100"></div>
+										
+										<div class="col-sm-3">
+									
+											<input type="text" class="form-control" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
+										</div>
+										<!-- 	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
+										<div class="col-sm-9">
+											<input type="text" class="form-control" name="order_addr2" id="sample6_address" placeholder="주소"><br>
+										</div>
+										<div class="col-sm-12">
+											<input type="text" class="form-control" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소">
+										</div>
+											<input type="hidden" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
+											
+											<!-- order_amount 쿼리문에는 product_id 를 통한 subQuery 로 처리하기 때문에 에 product_id가 들어가야 한다.  -->
+	 										<input type="hidden" class="form-control" name="order_amount" id="order_amount" value="${orderProductPurchaseOne.product_price }" placeholder="${orderProductPurchaseOne.product_price }"/>
+									 		<%-- <input type="hidden" class="form-control" name="product_id" id="product_id" value="${orderProductPurchaseOne.product_id}" placeholder="product ID 들어갑니까?">
+	 --%>
+									  	<div class="w-100"></div>
+										   <div class="input-group-prepend">
+										    <span class="input-group-text" id="name">연락처</span>
+										  </div>
+										  <input type="text" class="form-control" name="order_phone" id="order_phone" placeholder="연락처 입력해주세요" aria-label="Username" aria-describedby="basic-addon1">
+										    <div class="w-100"></div>	
+										  	 <div class="input-group-prepend">
+										    <span class="input-group-text" id="name">요청사항</span>
+										  </div>
+										  <input type="text" class="form-control" name="order_msg" id="order_msg" placeholder="40자 내로 써주세요" aria-label="Username" aria-describedby="basic-addon1">
+										    <div class="w-100"></div>
+										</div>
+										
 									</div>
 									
-								</div>
-								
-					</div><!-- 오른쪽 배송지 정보 END -->
-	</div><!-- row end -->
- 	<button type="button" class="btn btn-primary" id="payApi" role="button"> 결제하기 </button> 
-<!-- 	<button onclick="window.open='../order/payApi'">결제하기</button> -->
-<!-- 	<a class="btn btn-primary" id="payApi" href="../order/payApi" role="button"> 결제하기 </a> -->
-<button type="button" class="btn btn-secondary btn-lg">취소</button> 
-			</form>
+						</div><!-- 오른쪽 배송지 정보 END -->
+				</div><!-- row end -->
+				 	<button type="button" class="btn btn-primary" id="payApi" role="button"> 결제하기 </button> 
+					<!-- 	<button onclick="window.open='../order/payApi'">결제하기</button> -->
+					<!-- 	<a class="btn btn-primary" id="payApi" href="../order/payApi" role="button"> 결제하기 </a> -->
+					<button type="button" class="btn btn-secondary btn-lg">취소</button> 
+		</form>
 	
 	
 				<div class="col-sm-2"></div> 
@@ -229,6 +229,54 @@
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 		<!-- MAIN JS -->
    		<script src="${root }js/main.js"></script>		
+   		
+		   		<!-- 주문자 정보와 동일 체크박스 start -->
+		   		<script type="text/javascript">
+		   		
+		   		$('input[name=defaultCheck1]').on('click',function(){
+		   			if($(this).is(":checked")){
+		   				same(true);
+		   			}else{
+		   				same(false);
+		   			}
+		   		});
+		   			function same(checked){
+		   				var f= document.form;
+		   				if(checked == true){
+		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
+		   					document.getElementById("order_name").value="${memberVo.member_id}";
+		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
+		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
+		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
+		   					document.getElementById("sample6_detailAddress").value="${memberVo.member_addr3}";
+		   				}else{
+		   					document.getElementById("order_name").value="";
+		   					document.getElementById("order_phone").value="";
+		   					document.getElementById("sample6_postcode").value="";
+		   					document.getElementById("sample6_address").value="";
+		   					document.getElementById("sample6_detailAddress").value="";
+		   				}
+		   			}
+		   		
+		   		
+		   		
+		   		
+		  /*  		
+		   			function Copy(){
+		   				if(document.getElementById("defaultCheck1").checked){
+		   					console.log("체크박스 체크됐음!");
+		   					System.out.println()
+		   					document.getElementById("order_name").value=${memberVo.member_id};
+		   					document.getElementById("order_phone").value=${memberVo.member_phone};
+		   					document.getElementById("order_addr1").value=${memberVo.member_addr1};
+		   					document.getElementById("order_addr2").value=${memberVo.member_addr2};
+		   					document.getElementById("order_addr3").value=${memberVo.member_addr3};
+		   				}
+		   			} */
+		   		</script>
+		   		
+		   		<!-- 주문자 정보와 동일 체크박스 end  --> 
+		   		
 						<!--api 스크립트 시작  -->
 						<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 						<script>
@@ -247,7 +295,7 @@
 											amount : '${orderProductPurchaseOne.product_price }', */
 								            buyer_email : '${orderVo.member_email}',
 								            buyer_name : '${orderVo.member_name}',
-								            buyer_tel : 'order_phone.',
+								            buyer_tel : 'order_phone',
 								            buyer_addr : 'order_addr2'+'order_addr3',
 								            buyer_postcode : 'order_addr1',
 								            //m_redirect_url : 'http://www.naver.com'
@@ -281,7 +329,6 @@
 								                    }
 								                });
 								                //성공시 이동할 페이지
-								              <%--   location.href='<%=request.getContextPath()%>/order/successOrder?msg='+msg; --%>
 								                $('#payForm').submit();
 								                
 								            } else {
