@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
+<c:url var="getList" value="/admin/testproductlist"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +79,16 @@
 				<li><a href="${root}admin/testproductlist">상품목록</a></li>
 			</ul>
 			</aside>
+			
+			<!-- 검색창 -->
+			<div>
+				<select name="searchType" id="searchType">
+					<option value="product">상품명</option>
+					<option value="category">카테고리명</option>
+				</select>
+				<input type="text" name="keyword" id="keyword">
+				<button name="search_Btn" id="search_Btn">검색</button>
+			</div>
 				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
@@ -88,6 +99,7 @@
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
+							<th>좋아요</th>
 							<th>옵션1</th>
 							<th>옵션2</th>
 							<th>옵션3</th>
@@ -128,6 +140,9 @@
 							</a>
 						</td>
 						<td>
+							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.like_sum }</a>
+						</td>
+						<td>
 							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option1 }</a>
 						</td>
 						<td>
@@ -147,6 +162,19 @@
 				</tbody>
 			</table>
 		</section>
+		
+		<!-- pagination [start] -->
+		<jsp:include page="../common/pagination.jsp">
+			<jsp:param value="${pagination.prev }" name="prev"/>
+			<jsp:param value="${pagination.next }" name="next"/>
+			<jsp:param value="${pagination.page }" name="page"/>
+			<jsp:param value="${pagination.range }" name="range"/>
+			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
+			<jsp:param value="${pagination.startPage }" name="startPage"/>
+			<jsp:param value="${pagination.endPage }" name="endPage"/>
+		</jsp:include>
+		<!-- pagination [end] -->
+		
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->
 
@@ -166,6 +194,17 @@
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
+
+	// 검색 버튼
+	$("#search_Btn").click(function(e){
+		e.preventDefault();
+		var url = "${getList}";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});	
+
 </script>
 	
 </body>

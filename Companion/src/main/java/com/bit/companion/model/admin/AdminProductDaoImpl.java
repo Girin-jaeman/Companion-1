@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.admin.AdminProductViewVo;
+import com.bit.companion.common.Pagination;
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminCategoryVo;
 import com.bit.companion.model.entity.admin.AdminProductVo;
 
@@ -28,8 +30,8 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	
 	// product list - selectAll
 	@Override
-	public List<AdminProductViewVo> selectAll() throws SQLException {
-		return sqlsession.selectList("adminProduct.selectAll");
+	public List<AdminProductViewVo> selectAll(Search search) throws SQLException {
+		return sqlsession.selectList("adminProduct.selectAll",search);
 	}
 	
 	// product detail - selectOne
@@ -54,6 +56,12 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	@Override
 	public int deleteOne(int product_id) throws SQLException {
 		return sqlsession.delete("adminProduct.deleteOne",product_id);
+	}
+
+	// product total - selectTotal
+	@Override
+	public int selectTotal(Search search) throws SQLException {
+		return sqlsession.selectOne("adminProduct.selectTotal", search);
 	}
 
 }
