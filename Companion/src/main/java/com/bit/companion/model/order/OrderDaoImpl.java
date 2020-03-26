@@ -15,6 +15,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Autowired
 	SqlSession sqlSession;
 	
+//	상품 목록 출력.
 	@Override
 	public List<OrderVo> OrderSelectAll() throws SQLException{
 		
@@ -22,5 +23,21 @@ public class OrderDaoImpl implements OrderDao {
 		/* return sqlSession.selectList("order.selectAll"); */
 		
 	}
+
+	
+//	상품 주문 하기.
+	@Override
+	public void OrderInfo_Details(OrderVo orderVo) throws SQLException {
+		sqlSession.insert("order.OrderProductPurchase",orderVo);
+		
+	}
+
+
+// 상품 하나 주문 하기.
+	@Override
+	public OrderVo OrderProductPurchaseOne(int product_id) throws SQLException {
+		return sqlSession.selectOne("order.OrderProductPurchaseOne",product_id);
+	}
+
 
 }

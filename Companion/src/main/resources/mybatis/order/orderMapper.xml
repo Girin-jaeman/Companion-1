@@ -7,4 +7,23 @@
 	<select id="OrderSelectAll" resultType="orderBean">
 	select * from `order`
 	</select>
+	
+	<!-- 상품 정보를 받아서 구매 할 때 입력해야 하므로 porduct table의 정보를 받아와야 함.  -->
+	<select id="OrderProductPurchaseOne" resultType="orderBean" parameterType="int">
+		select * from product where product_id=#{value}
+	</select>
+	
+	<!--잠시 대기합시다.  -->
+	<insert id="OrderProductPurchase" parameterType="orderBean">
+	 	insert into 
+		`order` values
+		 (null,#{member_id},now(),${order_amount},#{order_name},#{order_tell},#{order_phone},
+		 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},0);
+<!-- 	 	insert into 
+		`order` values
+		 (null,#{member_id},now(),(select product_price from product where product_id=#{product_id}),#{order_name},#{order_tell},#{order_phone},
+		 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},0); -->
+	</insert> 
+	
+	
   </mapper>

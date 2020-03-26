@@ -141,11 +141,9 @@
 									<c:when test="${memberVo.member_id==null}">
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
-									<c:when test="${memberVo.member_id!=null}">
-										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="../orderPurchase"
-											role="button"  aria-pressed="true">구매하기</a>
+									<c:when test="${memberVo.member_id!=null}">  <!-- product_id 정보 GET 방식으로 넘길것.  -->
+										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
-
 								</c:choose>
 							<!-- 구매 로그인 세션 검사 -->
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>

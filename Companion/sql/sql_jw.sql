@@ -49,25 +49,61 @@ insert into `like` values (null,'admin',3);
 select count(product_id) from `like` where member_id='admin' and product_id=2;
 
 select p.product_id,p.product_name,c.category_name, (select count(*) from `like` l where p.product_id=l.product_id) "count" 
-from `product` p, category c where p.category_id=c.category_id order by p.product_id desc;
+from `product` p, `category` c where p.category_id=c.category_id order by p.product_id desc;
 
-		select 
-			c.category_refid,
-			(select cc.category_name from category cc where c.category_refid=cc.category_id) as "categoty_refidname",
-            p.category_id,
-		 	c.category_name,
-            p.product_id,
-		 	p.product_name,
-		 	p.product_content,
-		 	p.product_price,
-		 	p.product_stock,
-		 	p.product_date,
-		 	p.product_image,
-		 	p.product_thumb,
-		 	p.product_option1,
-		 	p.product_option2,
-		 	p.product_option3,
-		 	p.product_option4,
-		 	p.product_option5
-				from `product` p, `category` c 
-					where p.category_id=c.category_id order by p.product_id desc;
+select * from `like`;
+
+select 
+	c.category_refid,
+	(select cc.category_name from category cc where c.category_refid=cc.category_id) as "categoty_refidname",
+	p.category_id,
+	c.category_name,
+	p.product_id,
+	p.product_name,
+	p.product_content,
+	p.product_price,
+	p.product_stock,
+	p.product_date,
+	p.product_image,
+	p.product_thumb,
+	p.product_option1,
+	p.product_option2,
+	p.product_option3,
+	p.product_option4,
+	p.product_option5,
+	(select count(*) from `like` l where l.product_id=p.product_id) "like_sum" 
+		from `product` p, `category` c 
+			where p.category_id=c.category_id and
+            c.category_name LIKE CONCAT('%', 3, '%')
+            order by p.product_id desc
+            
+SELECT count(*) AS listCnt FROM `PRODUCT` where product_name LIKE CONCAT('%', 4, '%')
+            
+            
+            
+            
+            
+DELIMITER $$
+DROP PROCEDURE IF EXISTS loopInsert $$
+CREATE PROCEDURE loopInsert()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+        
+    WHILE i <= 400 DO
+        INSERT INTO product VALUES(701,null,concat('테스트이름',i),concat('테스트설명',i),i,i,now(),null,null,null,null,null,null,null);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL loopInsert;
+update product set category_id=100 where product_id>80;
+update product set category_id=200 where product_id>120;
+update product set category_id=300 where product_id>160;
+update product set category_id=400 where product_id>200;
+update product set category_id=500 where product_id>240;
+update product set category_id=600 where product_id>280;
+update product set category_id=700 where product_id>320;
+update product set category_id=701 where product_id>360;
+update product set category_id=600 where product_id>460;
+update product set category_id=703 where product_id>485;
+select * from product order by product_id desc;

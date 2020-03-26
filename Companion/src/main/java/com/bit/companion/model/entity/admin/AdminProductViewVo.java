@@ -22,13 +22,16 @@ public class AdminProductViewVo {
 	private String product_option4;
 	private String product_option5;
 	
+	private int like_sum;
+	
 	public AdminProductViewVo() {
 	}
 
 	public AdminProductViewVo(int category_refid, String category_refidname, int category_id, String category_name,
 			int product_id, String product_name, String product_content, int product_price, int product_stock,
 			Date product_date, String product_image, String product_thumb, String product_option1,
-			String product_option2, String product_option3, String product_option4, String product_option5) {
+			String product_option2, String product_option3, String product_option4, String product_option5,
+			int like_sum) {
 		super();
 		this.category_refid = category_refid;
 		this.category_refidname = category_refidname;
@@ -47,6 +50,7 @@ public class AdminProductViewVo {
 		this.product_option3 = product_option3;
 		this.product_option4 = product_option4;
 		this.product_option5 = product_option5;
+		this.like_sum = like_sum;
 	}
 
 	public int getCategory_refid() {
@@ -185,6 +189,14 @@ public class AdminProductViewVo {
 		this.product_option5 = product_option5;
 	}
 
+	public int getLike_sum() {
+		return like_sum;
+	}
+
+	public void setLike_sum(int like_sum) {
+		this.like_sum = like_sum;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminProductViewVo [category_refid=" + category_refid + ", category_refidname=" + category_refidname
@@ -193,7 +205,8 @@ public class AdminProductViewVo {
 				+ product_price + ", product_stock=" + product_stock + ", product_date=" + product_date
 				+ ", product_image=" + product_image + ", product_thumb=" + product_thumb + ", product_option1="
 				+ product_option1 + ", product_option2=" + product_option2 + ", product_option3=" + product_option3
-				+ ", product_option4=" + product_option4 + ", product_option5=" + product_option5 + "]";
+				+ ", product_option4=" + product_option4 + ", product_option5=" + product_option5 + ", like_sum="
+				+ like_sum + "]";
 	}
 	
 }
