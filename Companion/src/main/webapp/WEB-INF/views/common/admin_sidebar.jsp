@@ -115,6 +115,9 @@
                          <ul class="list-unstyled conn">
                              <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
                              <li>
+                                 <a href="${root }" class="nav-link">홈페이지로</a>
+                             </li>
+                             <li>
                                  <a href="${root }mypagechk" class="nav-link">마이페이지</a>
                              </li>
                              <li>

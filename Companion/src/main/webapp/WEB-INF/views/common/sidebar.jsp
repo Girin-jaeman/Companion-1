@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -85,6 +84,20 @@
             </ul>
             
                  <c:choose>
+					 <c:when test="${(sessionScope.memberVo.member_id!=null) && (sessionScope.memberVo.member_grade!=2)  }">
+					 	<ul class="list-unstyled conn">
+							 <p>${sessionScope.memberVo.member_name }님이<br/>로그인 중입니다.</p>
+                             <li>
+                                 <a href="${root }admin/testadminhome" class="nav-link">관리자페이지로</a>
+                             </li>
+                             <li>
+                                 <a href="${root }mypagechk" class="nav-link">나의정보</a>
+                             </li>
+                             <li>
+                                 <a href="${root }logout" class="nav-link">로그아웃</a>
+                             </li>
+					 	</ul>
+					 </c:when>
                      <c:when test="${sessionScope.memberVo.member_id==null }">
                          <ul class="list-unstyled conn">
                              <li>
