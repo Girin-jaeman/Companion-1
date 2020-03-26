@@ -115,7 +115,7 @@
                                  <a href="${root }mypagechk" class="nav-link">나의정보</a>
                              </li>
                              <li>
-                                 <a href="#" class="nav-link">장바구니</a>
+                                 <a href="${root }mypage/mycart"" class="nav-link">장바구니</a>
                              </li>
                              <li>
                                  <a href="${root }logout" class="nav-link">로그아웃</a>
