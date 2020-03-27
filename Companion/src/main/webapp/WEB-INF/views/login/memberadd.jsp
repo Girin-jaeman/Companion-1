@@ -99,11 +99,11 @@
 						<label for="member_email">*E-MAIL</label>
 						<input type="email" name="member_email" id="member_email" placeholder="E-mail contains @">
 						<button type="button" id="email_chk_btn">인증번호받기</button></br>
-						<input type="hidden" name="email_random_msg" id="email_random_msg">
 						<p name="email_chk_panel" id="email_chk_panel" style="display:none">
 							<input type="text" name="member_email_chk" id="member_email_chk" placeholder="받으신 인증번호를 입력해 주세요.">
 							<button type="button" id="email_chk_btn2">확인</button>
 						</p>
+						<input type="hidden" name="email_random_msg" id="email_random_msg" value="">
 						<input type="hidden" name="email_chk_value" id="email_chk_value" value="1">
 						<!-- 이메일 인증여부 //1안함 2함// -->
 						
@@ -458,6 +458,7 @@
 					alert("인증번호가 일치하지 않습니다.");
 					return;
 				}else{
+					alert("이메일 인증 완료");
 					document.getElementById("email_chk_value").value="2";
 				}
 				

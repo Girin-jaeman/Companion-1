@@ -20,6 +20,9 @@ import com.bit.companion.service.login.MemberService;
 public class MemberController {
 	
 	@Autowired
+	JavaMailSenderImpl mailSender;
+	
+	@Autowired
 	MemberService memberService;
 	
 	@RequestMapping("/login/memberadd")
@@ -30,7 +33,6 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value="/login/emailchk",method=RequestMethod.POST)
 	public String mailChk(String member_email){
-		JavaMailSenderImpl mailSender=new JavaMailSenderImpl();
 
 		String randomMsg=randomMsg();
 		
@@ -45,24 +47,19 @@ public class MemberController {
 		c+=System.getProperty("line.separator");
 		final String content =c;
 		
-		final MimeMessagePreparator preparator=new MimeMessagePreparator() {
+		try {
+			MimeMessage msg=mailSender.createMimeMessage();
+			MimeMessageHelper msgHelper=new MimeMessageHelper(msg,true,"utf-8");
 			
-			@Override
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				MimeMessage msg=mailSender.createMimeMessage();
-				final MimeMessageHelper msgHelper=new MimeMessageHelper(msg,true,"utf-8");
-				
-				msgHelper.setFrom(setfrom);
-				msgHelper.setTo(tomail);
-				msgHelper.setSubject(title);
-				msgHelper.setText(content);
-				
-			}
-		};
+			msgHelper.setFrom(setfrom);
+			msgHelper.setTo(tomail);
+			msgHelper.setSubject(title);
+			msgHelper.setText(content);
 			
-			
-			mailSender.send(preparator);
-			
+			mailSender.send(msg);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 		return randomMsg;
 	}
 	
