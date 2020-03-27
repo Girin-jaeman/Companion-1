@@ -133,11 +133,15 @@ insert into payment values (default,order_id,member_id,now(),order_amount,결제
 
 	  member_Vo 에서      product_price,  memeber_name				우편번호       아파트              동/호수    배송메세지.
 //////////////////////////
-
-
 ////////////////////주문 결제 창에 필요한 쿼리문.
-select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
 
+
+
+///////// 장바구니 담기
+
+insert into `cart` values (null,) where product_id=#{product_id};
+
+select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
 select * from `product` where product_id=#{value}
 /////////////////
 
