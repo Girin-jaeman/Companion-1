@@ -86,7 +86,7 @@
 					 	<ul class="list-unstyled conn">
 							 <p>${sessionScope.memberVo.member_name }님이<br/>로그인 중입니다.</p>
                              <li>
-                                 <a href="${root }admin/testadminhome" class="nav-link">관리자페이지로</a>
+                                 <a href="${root }admin/admin_home" class="nav-link">관리자페이지</a>
                              </li>
                              <li>
                                  <a href="${root }mypagechk" class="nav-link">나의정보</a>

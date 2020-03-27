@@ -5,17 +5,17 @@
 	<ul class="pagination justify-content-center">
 		<c:if test="${param.prev }">
 			<li class="page-item">
-				<a class="page-link" aria-label="Previous" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }' )"><span aria-hidden="true">&laquo;</span></a>
+				<a class="page-link" aria-label="Previous" href="#" onClick="fn_prev('${search.page}', '${search.range}', '${search.rangeSize}', '${search.searchType }', '${search.keyword }' )"><span aria-hidden="true">&laquo;</span></a>
 			</li>
 		</c:if>
 		<c:forEach begin="${param.startPage}" end="${param.endPage}" var="idx">
 			<li class="page-item <c:out value="${param.page == idx ? 'active': ''}"/>" >
-				<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }')">${idx}</a>
+				<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${search.range}', '${search.rangeSize}', '${search.searchType }', '${search.keyword }')">${idx}</a>
 			</li>
 		</c:forEach>
 			<c:if test="${param.next}">
 			<li class="page-item">
-				<a class="page-link" aria-label="Next" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}', '${search.searchType }', '${search.keyword }')"><span aria-hidden="true">&raquo;</span></a>
+				<a class="page-link" aria-label="Next" href="#" onClick="fn_next('${search.page}', '${search.range}', '${search.rangeSize}', '${search.searchType }', '${search.keyword }')"><span aria-hidden="true">&raquo;</span></a>
 			</li>
 		</c:if>
 	</ul>

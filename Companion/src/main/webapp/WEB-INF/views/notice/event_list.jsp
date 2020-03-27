@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="${root}css/main.css">
+	<link rel="stylesheet" href="${root}css/notice/bbsE.css">
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -60,25 +61,60 @@
 			</div>
 		</nav>
 		<!-- Navbar [end] -->
+		<div class="categories">
+			<a href="#homeSubmenu">
+            	<i class="fas fa-home"></i>
+                알림
+            </a>
+            <span>></span>
+            <a href="#">
+            	<i class="fas fa-home"></i>
+                이벤트
+            </a>
+            <hr class="mb-4">
+        </div>
 		<!-- Section [start] -->
 		<section class="section">
-			<h1>이벤트</h1>
-			<span>총 ${total }건</span>
-			<table class="table table-striped">
+			<div class="main--title">
+				<h1>- 이벤트 알림 -</h1>
+			</div>
+			<div class="sub-group clearfix">
+				<div class="total-count float--left">
+					<h4>총 ${total } 건</h4>
+				</div>
+				<div class="search-group float--right">
+					<select class="input--text" name="searchType" id="searchType">
+						<option value="article_title">제목</option>
+						<option value="article_date">작성일</option>
+					</select> <input class="input--text" type="text" name="keyword"
+						id="keyword">
+					<button name="search_Btn" id="search_Btn">검색</button>
+				</div>
+			</div>
+			<table class="table-bbs table_layout">
+			<colgroup>
+        		<col class="col1">
+        		<col class="col2">
+        		<col class="col3">
+        		<col class="col4">
+        		<col class="col5">
+    		</colgroup>
 	            <thead>
 	                <tr>
-	                    <th>글번호</th>
-	                    <th>작성일</th>
-	                    <th>제목</th>
-	                    <th>조회수</th>
+	                    <th scope="row" >글번호</th>
+	                    <th scope="row" >제목</th>
+	                    <th scope="row" >작성일</th>
+	                    <th scope="row" >작성자</th>
+	                    <th scope="row" >조회수</th>
 	                </tr>
 	            </thead>
 	            <tbody>
  	            <c:forEach items="${list }" var="bean" varStatus="status">
 	                <tr>
 	                    <td><a href="detail/${bean.article_id}">${(total-status.index)-(pagination.page-1)*pagination.listSize}</a></td>
-	                    <td><a href="detail/${bean.article_id}">${bean.article_date }</a></td>
 	                    <td><a href="detail/${bean.article_id}">${bean.article_title }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.article_date }</a></td>
+	                    <td><a href="detail/${bean.article_id}">${bean.member_id }</a></td>
 	                    <td><a href="detail/${bean.article_id}">${bean.article_count }</a></td>
 	                </tr>
 	            </c:forEach>

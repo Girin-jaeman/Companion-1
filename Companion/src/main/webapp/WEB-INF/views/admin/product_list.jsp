@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/testproductlist"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/product_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
-	<title>Insert title here</title>
+	<title>Companion::상품 목록</title>
 </head>
 <body>
 
@@ -52,13 +52,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">공지사항</a>
+			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">이벤트</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">FAQ</a>
+			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -73,19 +70,10 @@
 		<!-- section [start] -->
 		<section class="section">
 			<h1>관리자 페이지</h1>
-			<aside>
-			<ul>
-				<li><a href="${root}admin/testproductadd">상품등록</a></li>
-				<li><a href="${root}admin/testproductlist">상품목록</a></li>
-			</ul>
-			</aside>
-			
+
 			<!-- 검색창 -->
 			<div>
-				<select name="searchType" id="searchType">
-					<option value="product">상품명</option>
-					<option value="category">카테고리명</option>
-				</select>
+				<input type="hidden" name="searchType" id="searchType" value="product">
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
@@ -114,48 +102,48 @@
 							<img src="<spring:url value='${bean.product_thumb }'/>"/>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_name}</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_name}</a>
 						</td>
 						<td>
 							<c:choose>
 								<c:when test="${bean.category_refid == '0' }">
-									<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.category_name}</a>
+									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_name}</a>
 								</c:when>
 								<c:when test="${bean.category_refid != '0' }">
-									<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
+									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
 								</c:when>
 							</c:choose>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">
+							<a href="${root }admin/product_detail/${bean.product_id}">
 							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
 							</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_stock}</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_stock}</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">
+							<a href="${root }admin/product_detail/${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.like_sum }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.like_sum }</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option1 }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option1 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option2 }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option2 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option3 }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option3 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option4 }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option4 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/testproductdetail/${bean.product_id}">${bean.product_option5 }</a>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option5 }</a>
 						</td>
 					</tr>   
 				</c:forEach>
@@ -165,13 +153,13 @@
 		
 		<!-- pagination [start] -->
 		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${pagination.prev }" name="prev"/>
-			<jsp:param value="${pagination.next }" name="next"/>
-			<jsp:param value="${pagination.page }" name="page"/>
-			<jsp:param value="${pagination.range }" name="range"/>
-			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${pagination.startPage }" name="startPage"/>
-			<jsp:param value="${pagination.endPage }" name="endPage"/>
+			<jsp:param value="${search.prev }" name="prev"/>
+			<jsp:param value="${search.next }" name="next"/>
+			<jsp:param value="${search.page }" name="page"/>
+			<jsp:param value="${search.range }" name="range"/>
+			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
+			<jsp:param value="${search.startPage }" name="startPage"/>
+			<jsp:param value="${search.endPage }" name="endPage"/>
 		</jsp:include>
 		<!-- pagination [end] -->
 		
@@ -188,22 +176,22 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 
 <script type="text/javascript">
-	// 메뉴 토글 버튼
-	$(document).ready(function () {
-	    $('#sidebarCollapse').on('click', function () {
-	        $('#sidebar').toggleClass('active');
-	    });
-	});
+// 메뉴 토글 버튼
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
 
-	// 검색 버튼
-	$("#search_Btn").click(function(e){
-		e.preventDefault();
-		var url = "${getList}";
-		url = url + "?searchType=" + $('#searchType').val();
-		url = url + "&keyword=" + $('#keyword').val();
-		location.href = url;
-		console.log(url);
-	});	
+// 검색 버튼
+$("#search_Btn").click(function(e){
+	e.preventDefault();
+	var url = "${getList}";
+	url = url + "?searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = url;
+	console.log(url);
+});	
 
 </script>
 	

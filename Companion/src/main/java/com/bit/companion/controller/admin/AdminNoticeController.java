@@ -40,31 +40,31 @@ public class AdminNoticeController {
 	AdminNoticeService adminNoticeService;
 	
 	// notice list - get 
-	@RequestMapping(value = "testnoticelist", method = RequestMethod.GET)
+	@RequestMapping(value = "notice_list", method = RequestMethod.GET)
 	public String noticeList(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range) {
 		logger.info("get notice list");
 		adminNoticeService.list(model,page,range);
-		return "admin/testnoticelist";
+		return "admin/notice_list";
 	}
 	
 	// notice detail - get
-	@RequestMapping(value = "testnoticedetail/{idx}", method = RequestMethod.GET)
+	@RequestMapping(value = "notice_detail/{idx}", method = RequestMethod.GET)
 	public String noticeDetail(Model model, @PathVariable("idx") int article_id) {
 		logger.info("get notice detail");
 		adminNoticeService.detail(model, article_id);
-		return "admin/testnoticedetail";
+		return "admin/notice_detail";
 	}
 	
 	// notice add - get
-	@RequestMapping(value = "testnoticeadd", method = RequestMethod.GET)
+	@RequestMapping(value = "notice_add", method = RequestMethod.GET)
 	public String noticeAdd() {
 		logger.info("get notice add");
-		return "admin/testnoticeadd";
+		return "admin/notice_add";
 	}
 	// notice add - post
-	@RequestMapping(value = "testnoticeadd", method = RequestMethod.POST)
+	@RequestMapping(value = "notice_add", method = RequestMethod.POST)
 	public String noticeAdd(@ModelAttribute AdminArticleVo bean, MultipartFile file) throws IOException, Exception {
 		logger.info("post notice add");
 		
@@ -84,11 +84,11 @@ public class AdminNoticeController {
 		
 		adminNoticeService.insert(bean);
 		
-		return "redirect:testnoticelist";
+		return "redirect:notice_list";
 	}
 	
 	// notice ckeditor - post
-	@RequestMapping(value = "testnoticeadd/ckUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "notice_add/ckUpload", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
 		
@@ -141,14 +141,14 @@ public class AdminNoticeController {
 	
 	
 	// notice edit - get
-	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.GET)
+	@RequestMapping(value = "notice_edit/{idx}", method = RequestMethod.GET)
 	public String noticeEdit(Model model, @PathVariable("idx") int article_id) {
 		logger.info("get notice edit");
 		adminNoticeService.detail(model, article_id);
-		return "admin/testnoticeedit";
+		return "admin/notice_edit";
 	}
 	// notice edit - post
-	@RequestMapping(value = "testnoticeedit/{idx}", method = RequestMethod.POST)
+	@RequestMapping(value = "notice_edit/{idx}", method = RequestMethod.POST)
 	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post notice edit");
 		
@@ -174,13 +174,13 @@ public class AdminNoticeController {
 		
 		adminNoticeService.update(bean);
 		
-		return "redirect:../testnoticedetail/"+bean.getArticle_id();
+		return "redirect:../notice_detail/"+bean.getArticle_id();
 	}
 	// notice delete - post
-	@RequestMapping(value = "testnoticedelete/{idx}", method = RequestMethod.POST)
+	@RequestMapping(value = "notice_delete/{idx}", method = RequestMethod.POST)
 	public String noticeDelete(@PathVariable("idx") int article_id) {
 		logger.info("post notice delete");
 		adminNoticeService.delete(article_id);
-		return "redirect:../testnoticelist";
+		return "redirect:../notice_list";
 	}
 }

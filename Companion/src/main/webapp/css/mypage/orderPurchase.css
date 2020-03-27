@@ -148,9 +148,11 @@ ul{
    
     text-align: center;
 }
+
 .table td span{
     display: block;
 }
+
 .table td:nth-child(2) a{
     display: block;
     width: 110px;
