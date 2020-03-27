@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-
 	<!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <a href="/companion/">
+                <a href="${root }">
 	                <h3>Companion</h3>
 	                <strong>Comp.</strong>
                 </a>
@@ -19,8 +18,6 @@
                         쇼핑하기
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                    
-
                         <li>
                             <a href="/companion/order/productMain?c=100">사료</a>
                         </li>
@@ -85,6 +82,20 @@
             </ul>
             
                  <c:choose>
+					 <c:when test="${(sessionScope.memberVo.member_id!=null) && (sessionScope.memberVo.member_grade!=2)  }">
+					 	<ul class="list-unstyled conn">
+							 <p>${sessionScope.memberVo.member_name }님이<br/>로그인 중입니다.</p>
+                             <li>
+                                 <a href="${root }admin/admin_home" class="nav-link">관리자페이지</a>
+                             </li>
+                             <li>
+                                 <a href="${root }mypagechk" class="nav-link">나의정보</a>
+                             </li>
+                             <li>
+                                 <a href="${root }logout" class="nav-link">로그아웃</a>
+                             </li>
+					 	</ul>
+					 </c:when>
                      <c:when test="${sessionScope.memberVo.member_id==null }">
                          <ul class="list-unstyled conn">
                              <li>
@@ -102,7 +113,7 @@
                                  <a href="${root }mypagechk" class="nav-link">나의정보</a>
                              </li>
                              <li>
-                                 <a href="#" class="nav-link">장바구니</a>
+                                 <a href="${root }mypage/mycart"" class="nav-link">장바구니</a>
                              </li>
                              <li>
                                  <a href="${root }logout" class="nav-link">로그아웃</a>

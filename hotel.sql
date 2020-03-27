@@ -20,8 +20,10 @@ insert into member values ('test01',1234,'테스터','테스트일반전화','�
 
 insert into `reserve` values (null,'test01',0,now(),'2020-03-24','2020-03-30','진돗개',4,'물어요',DEFAULT);
 select * from `reserve`;
+select * from `payment`;
+select * from `payment_state`;
+select * from `order`;
 
-
-
-
+insert into payment values (null,1,'회원1',now(),100,0);
+insert into payment values (null,2,'회원1',now(),200,0);
 

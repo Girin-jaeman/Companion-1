@@ -10,10 +10,10 @@ body {
 
 p {
     font-family: 'Nanum Gothic', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+    font-size: 1.0em;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #fff;
 }
 
 a,
@@ -57,9 +57,6 @@ span {
 
 .pagination{
     justify-content: center;
-}
-.page-item{
-    width: 40px;
 }
 .page-item>a{
     color:#5f4b8b;
@@ -224,7 +221,7 @@ ul.conn a {
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
-    background: rgb(95, 75, 139);
+    background: rgb(100, 75, 200);
     color: #fff;
 }
 
@@ -301,4 +298,11 @@ a.join:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+/* ---------------------------------------------------
+    Dashboard
+----------------------------------------------------- */
+.card {
+    margin: 10px auto;
 }

@@ -158,8 +158,8 @@
  			                </c:choose>       
 					 
 			               <!-- 따봉 로그인 세션 검사  -->   
-			                    <div class="price">$5.00
-			                        <span>$10.00</span>
+			                    <div class="price">${bean.product_price }
+			                        <span>${bean.product_price +5600}</span>
 			                    </div>
 			                    <a class="add-to-cart" href="">+ Add To Cart</a>
 			                </div>

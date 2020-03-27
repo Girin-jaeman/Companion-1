@@ -1,0 +1,74 @@
+/* MAIN-TITLE STYLE */
+.main--title{
+   margin-bottom: 60px;
+  text-align: center;
+}
+
+/* SUB-GROUP STYLE */
+.section .sub-group{
+    max-width: 1000px;
+    height: 50px;
+    margin-bottom:3px;
+}
+.total-count{
+    display: flex;
+	width:90px;
+	border-bottom:2px solid gray;
+    align-items: center;
+    text-align:center;
+}
+.search-group{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.search-group select{
+    width: 80px;
+    height: 32px;
+    margin-right: 5px;
+}
+.search-group input{
+    width: 200px;
+    height: 32px;
+    margin-right: 10px;
+}
+.search-group button{
+    width: 70px;
+    height: 32px;
+}
+
+/* TABLE_LAYOUT STYLE */
+.table_layout { margin:0px; table-layout:fixed; }
+.table_layout .col1 { width:100px; }
+.table_layout .col2 { width:450px; }
+.table_layout .col3 { width:170px; }
+.table_layout .col4 { width:170px; }
+.table_layout .col5 { width:auto; }
+
+/* TABLE STYLE */
+.table-bbs{
+    width: 100%;
+    border-top: 1.5px solid rgb(112, 112, 112);
+    margin-bottom:30px;
+}
+.table-bbs thead{
+	border-bottom: 1.5px solid rgb(112, 112, 112);
+}
+.table-bbs thead tr{
+	height:50px;
+    background: rgba(181, 209, 250, 0.5);
+}
+.table-bbs thead tr th{
+    text-align: center;
+    font-size: 20px;
+}
+.table-bbs tbody{}
+.table-bbs tbody tr{
+	text-align:center;
+    border-bottom: 1px solid rgba(112, 112, 112,.25);
+}
+.table-bbs tbody tr td{
+	height: 40px;
+	font-size: 18px;
+}
+

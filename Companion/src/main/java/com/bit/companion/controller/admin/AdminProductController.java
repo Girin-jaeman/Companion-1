@@ -28,10 +28,6 @@ import com.bit.companion.model.entity.admin.AdminProductVo;
 import com.bit.companion.service.admin.AdminProductService;
 import com.bit.companion.util.UploadFileUtils;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-
 @Controller
 @RequestMapping(value = "/admin/")
 public class AdminProductController {
@@ -45,16 +41,16 @@ public class AdminProductController {
 	AdminProductService adminProductService;
 	
 	//  category list (product add page) - get
-	@RequestMapping(value = "testproductadd", method = RequestMethod.GET)
+	@RequestMapping(value = "product_add", method = RequestMethod.GET)
 	public String productAdd(Model model) {
 		logger.info("get product add");
 	
 		adminProductService.category(model);
-		return "admin/testproductadd";
+		return "admin/product_add";
 	}
 	
 	// product list - get
-	@RequestMapping(value = "testproductlist", method = RequestMethod.GET)
+	@RequestMapping(value = "product_list", method = RequestMethod.GET)
 	public String productList(Model model
 			, @RequestParam(required = false, defaultValue = "1") int page
 			, @RequestParam(required = false, defaultValue = "1") int range
@@ -65,21 +61,21 @@ public class AdminProductController {
 		
 		adminProductService.category(model);
 		adminProductService.list(model, page, range, searchType, keyword, search);
-		return "admin/testproductlist";
+		return "admin/product_list";
 	}
 	
 	//product detail - get
-	@RequestMapping(value = "testproductdetail/{idx}", method = RequestMethod.GET)
+	@RequestMapping(value = "product_detail/{idx}", method = RequestMethod.GET)
 	public String productDetail(Model model, @PathVariable("idx") int product_id) {
 		logger.info("get product detail");
 		
 		adminProductService.category(model);
 		adminProductService.detail(model, product_id);
-		return "admin/testproductdetail";
+		return "admin/product_detail";
 	}
 	
 	// product add - post
-	@RequestMapping(value = "testproductadd", method = RequestMethod.POST)
+	@RequestMapping(value = "product_add", method = RequestMethod.POST)
 	public String productAdd(@ModelAttribute AdminProductVo bean, MultipartFile file) throws IOException, Exception {
 		logger.info("post product add");
 		
@@ -100,11 +96,11 @@ public class AdminProductController {
 		}
 		
 		adminProductService.insert(bean);
-		return "redirect:testproductlist";
+		return "redirect:product_list";
 	}
 	
 	// product add - ckeditor file upload
-	@RequestMapping(value = "/testproductadd/ckUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/product_add/ckUpload", method = RequestMethod.POST)
 	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
 	         @RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
@@ -148,17 +144,17 @@ public class AdminProductController {
 	}
 	
 	// product edit page category list - get
-	@RequestMapping(value = "testproductedit/{idx}", method = RequestMethod.GET)
+	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.GET)
 	public String productEdit(Model model, @PathVariable("idx") int product_id) {
 		logger.info("get product edit");
 	
 		adminProductService.category(model);
 		adminProductService.detail(model, product_id);
-		 return "admin/testproductedit";
+		 return "admin/product_edit";
 	}
 	
 	// product edit - post
-	@RequestMapping(value = "testproductedit/{idx}", method = RequestMethod.POST)
+	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.POST)
 	public String productEdit(@ModelAttribute AdminProductVo bean, @PathVariable("idx") int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post product edit");
 		
@@ -183,15 +179,15 @@ public class AdminProductController {
 		}
 		
 		adminProductService.update(bean);
-		return "redirect:../testproductdetail/"+product_id;
+		return "redirect:../product_detail/"+product_id;
 	}
 	
 	// product delete - post
-	@RequestMapping(value = "testproductdelete/{idx}", method = RequestMethod.POST)
+	@RequestMapping(value = "product_delete/{idx}", method = RequestMethod.POST)
 	public String productDelete(@PathVariable("idx") int product_id) {
 		logger.info("post product delete");
 		
 		adminProductService.delete(product_id);
-		return "redirect:../testproductlist";
+		return "redirect:../product_list";
 	}
 }

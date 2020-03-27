@@ -72,16 +72,19 @@
 		<section class="section">
 			<!-- main title -->
 			<div class="main--title">
-				<h1>공지사항</h1>
+				<h2>공지사항</h2>
 			</div>
 			<hr class="mb-4">
 			<table>
 				<thead>
 					<tr>
-						<th><span>${noticeSelectOne.article_title }</span><span>조회수<strong>${noticeSelectOne.article_count }</strong><br/>${noticeSelectOne.article_date }</span></th>
+						<th><span>[제목]&nbsp;</span><span>${noticeSelectOne.article_title }</span></th>
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><span>${noticeSelectOne.member_id }</span><span>|</span><span>${noticeSelectOne.article_date }</span><span>조회수 ${noticeSelectOne.article_count }</span></td>
+					</tr>
 					<tr>
 						<td>
 						${noticeSelectOne.article_content}

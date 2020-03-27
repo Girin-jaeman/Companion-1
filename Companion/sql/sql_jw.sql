@@ -1,4 +1,5 @@
 use companion;
+select * from `member`;
 insert into `member` values('admin','1234','어드민',null,'010-0000-0001','admin@admin.com','55555','서울시','비트캠프',0);
 
 DELIMITER $$

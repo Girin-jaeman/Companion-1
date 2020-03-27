@@ -14,7 +14,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
-	<title>Insert title here</title>
+	<title>Companion::상품 등록</title>
 </head>
 <body>
 
@@ -49,13 +49,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">공지사항</a>
+			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">이벤트</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">FAQ</a>
+			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -70,12 +67,6 @@
 		<!-- section [start] -->
 		<section class="section">
 			<h1>관리자 페이지</h1>
-			<aside>
-				<ul>
-					<li><a href="${root}admin/testproductadd">상품등록</a></li>
-					<li><a href="${root}admin/testproductlist">상품목록</a></li>
-				</ul>
-			</aside>
 			<h2>상품 등록</h2>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<label>1차 분류</label>
@@ -156,6 +147,11 @@ $(document).ready(function () {
 	});
 });
 
+//취소 버튼
+$("#back_Btn").click(function(){
+	history.back();
+});
+
 // 숫자 유효성 검사
 var regExp = /[^0-9]/gi;
 $("#product_price").keyup(function(){ numCheck($(this)); });
@@ -224,7 +220,7 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl :"/admin/testproductadd/ckUpload"
+	filebrowserUploadUrl :"/admin/product_add/ckUpload"
 };
 CKEDITOR.replace( 'product_content', ckeditor_config );
 
