@@ -7,12 +7,12 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["2019년11월", "2019년12월", "2020년01월", "2020년02월", "2020년03월", "2020년04월"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [9851000, 17851000, 13851000, 3851000, 2851000, 851000],
     }],
   },
   options: {
@@ -31,8 +31,8 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
-          maxTicksLimit: 5
+          max: 20000000,
+          maxTicksLimit: 10
         },
         gridLines: {
           display: true
