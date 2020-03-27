@@ -77,10 +77,7 @@
 						<label for="member_id">*ID</label>
 						<input type="text" name="member_id" id="member_id" placeholder="ID">
 						<button type="button" id="id_chk_btn">중복확인</button></br>
-						<!-- 아이디 체크여부
-										1 안함
-										2 함
-						 -->
+						<!-- 아이디 체크여부  //1 안함  2 함//-->
 						<input type="hidden" name="id_chk_value" id="id_chk_value" value="1">
 						
 						
@@ -100,7 +97,15 @@
 						<input type="text" name="member_phone" id="member_phone" placeholder="phone number contains -"></br>
 						
 						<label for="member_email">*E-MAIL</label>
-						<input type="email" name="member_email" id="member_email" placeholder="E-mail contains @"></br>
+						<input type="email" name="member_email" id="member_email" placeholder="E-mail contains @">
+						<button type="button" id="email_chk_btn">인증번호받기</button></br>
+						<p name="email_chk_panel" id="email_chk_panel" style="display:none">
+							<input type="text" name="member_email_chk" id="member_email_chk" placeholder="받으신 인증번호를 입력해 주세요.">
+							<button type="button" id="email_chk_btn2">확인</button>
+						</p>
+						<input type="hidden" name="email_random_msg" id="email_random_msg" value="">
+						<input type="hidden" name="email_chk_value" id="email_chk_value" value="1">
+						<!-- 이메일 인증여부 //1안함 2함// -->
 						
 						<label>*ADDRESS</label>
 						<p>
@@ -352,6 +357,7 @@
 				var member_addr2=$("#sample2_address").val();
 				var member_addr3=$("#sample2_detailAddress").val();
 				var id_chk_value=$("#id_chk_value").val();
+				var email_chk_value=$("#email_chk_value").val();
 				if(member_pw!=member_pw_chk){
 					alert("비밀번호가 서로 일치하지 않습니다. 확인해 주세요.");
 					return;
@@ -364,9 +370,8 @@
 					alert("아이디 중복확인을 해주세요.");
 					return;
 				}
-				var checkEmail=verifyEmail(member_email);
-				if(checkEmail=="no"){
-					alert("이메일 양식이 올바르지 않습니다.");
+				if(email_chk_value=="1"){
+					alert("이메일 인증을 해주세요.");
 					return;
 				}
 				var checkPassword=verifyPassword(member_pw,{
@@ -382,8 +387,7 @@
 				document.memberadd.submit();
 			});
 			
-			
-			
+			/* id 중복체크버튼 */
 			$("#id_chk_btn").click(function(){
 				var member_id=$("#member_id").val();
 				var userData={"member_id" : member_id};
@@ -409,6 +413,57 @@
 					document.getElementById("id_chk_value").value="2";
 				}
 			});
+			
+			/* email 인증버튼 */
+			$("#email_chk_btn").click(function(){
+				document.getElementById("email_chk_value").value="1";
+				$('#email_chk_panel').show();
+				var member_email=$("#member_email").val();
+				var userData={"member_email" : member_email};
+				var checkEmail=verifyEmail(member_email);
+				if(member_email==""){
+					alert("이메일을 입력해 주시기 바랍니다.");
+					return;
+				}else if(checkEmail=="no"){
+					alert("이메일 양식이 올바르지 않습니다.");
+					return;
+				}else{
+					$.ajax({
+						type : "POST",
+						url : "/companion/login/emailchk",
+						data : userData,
+						dataType : "json",
+						success : function(randomMsg){
+							if(randomMsg==null){
+								alert("전송실패");
+								return;
+							}else{
+								alert("전송완료");
+								document.getElementById("email_random_msg").value=randomMsg;
+							}
+						}
+					});
+				}
+			});
+			
+			/* email 인증 번호확인버튼 */
+			$("#email_chk_btn2").click(function(){
+				var email_random_msg=$("#email_random_msg").val();
+				var member_email_chk=$("#member_email_chk").val();
+				var email_chk_value=$("#email_chk_value").val();
+				if(member_email_chk==""){
+					alert("인증번호를 입력해 주세요.");
+					return;
+				}else if(member_email_chk!=email_random_msg){
+					alert("인증번호가 일치하지 않습니다.");
+					return;
+				}else{
+					alert("이메일 인증 완료");
+					document.getElementById("email_chk_value").value="2";
+				}
+				
+			});
+			
 		});
 	</script>
 	
