@@ -80,6 +80,8 @@
 				<hr class="mb-4">
 			</div>
 			
+			<!-- Right-Scrollbar  -->
+			<jsp:include page="../common/scrollbar.jsp"/>
 			
 			<!-- main content start -->
 			<div class="maincontent">
