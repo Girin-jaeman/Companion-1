@@ -44,7 +44,7 @@
 			                <a class="nav-link" href="${root }notice/">공지사항</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }event/">이벤트</a>
+			                <a class="nav-link active" href="${root }event/">이벤트</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root}faq/">FAQ</a>
@@ -78,10 +78,13 @@
 			<table>
 				<thead>
 					<tr>
-						<th><span>${bean.article_title }</span><span>조회수<strong>${bean.article_count }</strong><br/>${bean.article_date }</span></th>
+						<th><span>[제목]&nbsp;</span><span>${bean.article_title }</span></th>
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><span>${bean.member_id }</span><span>|</span><span>${bean.article_date }</span><span>조회수 ${bean.article_count }</span></td>
+					</tr>
 					<tr>
 						<td>
 						${bean.article_content }
