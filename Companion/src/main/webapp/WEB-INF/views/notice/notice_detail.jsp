@@ -41,7 +41,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }notice/">공지사항</a>
+			                <a class="nav-link active" href="${root }notice/">공지사항</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root }event/">이벤트</a>
