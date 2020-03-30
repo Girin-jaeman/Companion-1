@@ -70,7 +70,7 @@
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
 			
 			<!-- 검색창 -->
-			<div class="search-group float--right">
+			<div class="search-group btn-group float--right">
 				<input type="hidden" name="searchType" id="searchType" value="notice">
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>

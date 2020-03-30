@@ -1,12 +1,12 @@
 /* TABLE_LAYOUT STYLE */
 .table_layout { margin:0px; table-layout:fixed; }
-.table_layout .col1 { width: 100px; }
-.table_layout .col2 { width: 120px; }
-.table_layout .col3 { width: 300px; }
-.table_layout .col4 { width: 300px; }
-.table_layout .col5 { width: 150px; }
-.table_layout .col6 { width: 100px; }
-.table_layout .col7 { width:auto; }
+.table_layout .col1 { width: 100px; } /* 글번호 */ 
+.table_layout .col2 { width: 120px; } /* 작성자 */
+.table_layout .col3 { width: 300px; } /* 제목 */
+.table_layout .col4 { width: 300px; } /* 내용 */
+.table_layout .col5 { width: 150px; } /* 날짜 */
+.table_layout .col6 { width: 100px; } /* 조회수 */
+.table_layout .col7 { width:auto; } /* 썸네일 */
 
 .insertbtn{
 	margin:5px;
