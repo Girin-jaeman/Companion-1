@@ -86,7 +86,7 @@
 						<td><span>${noticeSelectOne.member_id }</span><span>|</span><span>${noticeSelectOne.article_date }</span><span>조회수 ${noticeSelectOne.article_count }</span></td>
 					</tr>
 					<tr>
-						<td>
+						<td id="bbs-content">
 						${noticeSelectOne.article_content}
 						<img class="bbs-image" alt="원본이미지" src="<spring:url value='${noticeSelectOne.article_image }'/>"/>
 						</td>

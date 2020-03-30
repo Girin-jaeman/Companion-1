@@ -45,7 +45,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link active" href="${root }admin/notice_list">공지사항 목록</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
@@ -60,7 +60,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 - 공지사항 리스트 페이지</h1>
+			<div class="main--title">
+				<h1>[Admin] 공지사항 목록</h1>
+			</div>
 			<a class="btn btn-dark" role="button" href="${root }admin/notice_add">입력</a>
 			<table class="table">
 			<thead>

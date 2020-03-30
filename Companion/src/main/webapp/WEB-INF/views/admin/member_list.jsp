@@ -70,7 +70,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-		
+			<div class="main--title">
+				<h1>[Admin] 회원 목록</h1>
+			</div>
 		
 		
 		</section>

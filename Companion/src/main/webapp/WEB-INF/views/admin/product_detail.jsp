@@ -69,8 +69,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
-			<h2>상품 상세</h2>
+			<div class="main--title">
+				<h1>[Admin] 상품 상세</h1>
+			</div>
 			<form role="form" method="post" autocomplete="off" >
 				<c:choose>
 					<c:when test="${adminProductOne.category_refid == '0' }">

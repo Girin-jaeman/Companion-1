@@ -116,7 +116,7 @@ span {
     height: 300px;
     width: 120px;
     float: right;
-    background:#0F4C81;
+    background:rgba(15, 76, 129, 0.9);
     border-radius: 5px;
     color: #fff;
 }

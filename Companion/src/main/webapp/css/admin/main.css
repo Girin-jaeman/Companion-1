@@ -246,6 +246,19 @@ a.join:hover {
     padding: 20px;
     margin: auto;
   }
+
+.section{
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+}
+.main--title{
+  margin-bottom: 20px;
+}
+.main--title h1{
+  font-size:26px;
+	
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
