@@ -91,9 +91,9 @@
 					<label for="article_image">img</label>
 					<input type="file" name="file" id="article_image"/>
 					<div class="select_img">
-						<img alt="원본이미지" src="${adminNoticeOne.article_image }"/>
-						<input type="hidden" name="article_image" value="${adminNoticeOne.article_image }"/>
-						<input type="hidden" name="article_thumb" value="${adminNoticeOne.article_thumb }"/>
+						<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
+						<input type="hidden" name="article_image" value="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
+						<input type="hidden" name="article_thumb" value="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"/>
 					</div>
 				</div>
 				<div>
