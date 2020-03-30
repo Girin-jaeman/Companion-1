@@ -114,12 +114,12 @@
 							<c:choose>
 								<c:when test="${bean.category_refid == '0' }">
 							<div>
-									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_name}</a>
+									<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.category_name}</a>
 							</div>
 								</c:when>
 								<c:when test="${bean.category_refid != '0' }">
 							<div class="div2">	
-									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_refidname} <br/>- ${bean.category_name}</a>
+									<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.category_refidname} <br/>- ${bean.category_name}</a>
 							</div>		
 								</c:when>
 							</c:choose>
@@ -129,46 +129,46 @@
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_name}</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_name}</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
 							</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_stock}</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_stock}</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.like_sum }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.like_sum }</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option1 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option1 }</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option2 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option2 }</a>
 							</div>
 						</td>
 						<td>
 							<div>
-							<a href="${root }admin/product_detail/${bean.product_id}">자세히>></a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">자세히>></a>
 							</div>
 						</td>
 
