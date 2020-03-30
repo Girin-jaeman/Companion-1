@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/product.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -74,85 +75,110 @@
 			</div>
 
 			<!-- 검색창 -->
-			<div>
+			<div class="search-group btn-group">
 				<input type="hidden" name="searchType" id="searchType" value="product">
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-				<table class="table">
+				<table border=1 class="table table_layout">
+				<colgroup>
+        		<col class="col1">
+        		<col class="col2">
+        		<col class="col3">
+        		<col class="col4">
+        		<col class="col5">
+        		<col class="col6">
+        		<col class="col7">
+        		<col class="col8">
+        		<col class="col9">
+        		<col class="col10">
+    			</colgroup>
 					<thead>
 						<tr>
+							<th>카테고리</th>
 							<th>이미지</th>
 							<th>이름</th>
-							<th>카테고리</th>
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
 							<th>좋아요</th>
 							<th>옵션1</th>
 							<th>옵션2</th>
-							<th>옵션3</th>
-							<th>옵션4</th>
-							<th>옵션5</th>
+							<th>옵션etc</th>
 						</tr>
 					</thead>
 				<tbody>
 				<c:forEach items="${adminProductList}" var="bean">
 					<tr>
 						<td>
-							<img src="<spring:url value='${bean.product_thumb }'/>"/>
-						</td>
-						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_name}</a>
-						</td>
-						<td>
 							<c:choose>
 								<c:when test="${bean.category_refid == '0' }">
+							<div>
 									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_name}</a>
+							</div>
 								</c:when>
 								<c:when test="${bean.category_refid != '0' }">
-									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
+							<div class="div2">	
+									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_refidname} <br/>- ${bean.category_name}</a>
+							</div>		
 								</c:when>
 							</c:choose>
 						</td>
 						<td>
+							<img src="<spring:url value='${bean.product_thumb }'/>"/>
+						</td>
+						<td>
+							<div>
+							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_name}</a>
+							</div>
+						</td>
+						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">
 							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
 							</a>
+							</div>
 						</td>
 						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_stock}</a>
+							</div>
 						</td>
 						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
+							</div>
 						</td>
 						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">${bean.like_sum }</a>
+							</div>
 						</td>
 						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option1 }</a>
+							</div>
 						</td>
 						<td>
+							<div>
 							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option2 }</a>
+							</div>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option3 }</a>
+							<div>
+							<a href="${root }admin/product_detail/${bean.product_id}">자세히>></a>
+							</div>
 						</td>
-						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option4 }</a>
-						</td>
-						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option5 }</a>
-						</td>
+
 					</tr>   
 				</c:forEach>
 				</tbody>
 			</table>
 		</section>
-		
 		<!-- pagination [start] -->
+		<div id="pagination">
 		<jsp:include page="../common/pagination.jsp">
 			<jsp:param value="${search.prev }" name="prev"/>
 			<jsp:param value="${search.next }" name="next"/>
@@ -162,6 +188,7 @@
 			<jsp:param value="${search.startPage }" name="startPage"/>
 			<jsp:param value="${search.endPage }" name="endPage"/>
 		</jsp:include>
+		</div>
 		<!-- pagination [end] -->
 		
 	</div><!-- #content [end] -->
@@ -192,7 +219,7 @@ $("#search_Btn").click(function(e){
 	url = url + "&keyword=" + $('#keyword').val();
 	location.href = url;
 	console.log(url);
-});	
+});
 
 </script>
 	
