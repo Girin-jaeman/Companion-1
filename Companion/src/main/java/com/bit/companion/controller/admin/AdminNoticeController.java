@@ -78,12 +78,13 @@ public class AdminNoticeController {
 		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			bean.setArticle_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
+			bean.setArticle_thumb(File.separator+"imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
 		} else {
-			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			fileName = File.separator + "images" + File.separator + "none.png";
+			bean.setArticle_image(fileName);
+			bean.setArticle_thumb(fileName);
 		}
-		
-		bean.setArticle_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
-		bean.setArticle_thumb(File.separator + "imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
 		
 		adminNoticeService.insert(bean);
 		

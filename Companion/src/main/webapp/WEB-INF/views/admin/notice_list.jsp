@@ -108,7 +108,7 @@
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_content }</a></td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_image }</a></td>
+			<td><img src="<spring:url value='${bean.article_image }'/>"/></td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 				</a>

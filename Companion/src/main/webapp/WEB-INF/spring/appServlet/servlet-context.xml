@@ -46,7 +46,7 @@
 	<resources location="file:///C:/Companion" mapping="ckUpload/**"/>
 	<!-- none File Upload Path -->
 	<resources location="file:///C:/Companion" mapping="images/**"/>
-<!-- 	<resources location="/resources/images/" mapping="/images/**"/> -->
+<!-- <resources location="/resources/images/" mapping="/images/**"/> -->
 	
 	<!-- https://antananarivo.tistory.com/63 -->
 	<resources location="file:///C:/Companion" mapping="imgUpload/**"></resources>
