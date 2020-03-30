@@ -78,13 +78,13 @@
 			<!-- forEach start -->
 			<c:forEach items="${adminNoticeList }" var="bean">
 			<tr>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_id }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_content }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_count }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_image }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_content }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_image }</a></td>
 			</tr>
 			</c:forEach>
 			</tbody>

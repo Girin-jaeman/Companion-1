@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.service.admin.AdminMemberService;
 
@@ -30,8 +31,8 @@ public class AdminMemberController {
 	}
 	
 	// member detail
-	@RequestMapping(value = "member_detail/{idx}", method = RequestMethod.GET)
-	public String memberDetail(Model model, @PathVariable("idx") String member_id ) {
+	@RequestMapping(value = "member_detail", method = RequestMethod.GET)
+	public String memberDetail(Model model, @RequestParam String member_id ) {
 		log.info("get member datail");
 		
 		adminMemberService.detail(model, member_id);

@@ -97,31 +97,31 @@
 				<c:forEach items="${adminMemberList}" var="bean">
 					<tr>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_grade }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_grade }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_name }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_id }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_tel }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_tel }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_phone }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_email }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_addr1 }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr1 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_addr2 }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr2 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/member_detail/${bean.member_id}">${bean.member_addr3 }</a>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr3 }</a>
 						</td>
 					</tr>   
 				</c:forEach>

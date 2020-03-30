@@ -65,8 +65,8 @@ public class AdminProductController {
 	}
 	
 	//product detail - get
-	@RequestMapping(value = "product_detail/{idx}", method = RequestMethod.GET)
-	public String productDetail(Model model, @PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_detail", method = RequestMethod.GET)
+	public String productDetail(Model model, @RequestParam int product_id) {
 		logger.info("get product detail");
 		
 		adminProductService.category(model);
@@ -144,8 +144,8 @@ public class AdminProductController {
 	}
 	
 	// product edit page category list - get
-	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.GET)
-	public String productEdit(Model model, @PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_edit", method = RequestMethod.GET)
+	public String productEdit(Model model, @RequestParam int product_id) {
 		logger.info("get product edit");
 	
 		adminProductService.category(model);
@@ -154,8 +154,8 @@ public class AdminProductController {
 	}
 	
 	// product edit - post
-	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.POST)
-	public String productEdit(@ModelAttribute AdminProductVo bean, @PathVariable("idx") int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
+	@RequestMapping(value = "product_edit", method = RequestMethod.POST)
+	public String productEdit(@ModelAttribute AdminProductVo bean, @RequestParam int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post product edit");
 		
 		// new file upload check
@@ -177,17 +177,17 @@ public class AdminProductController {
 			bean.setProduct_image(req.getParameter("product_image"));
 			bean.setProduct_thumb(req.getParameter("product_thumb"));
 		}
-		
+		System.out.println(bean.toString());
 		adminProductService.update(bean);
-		return "redirect:../product_detail/"+product_id;
+		return "redirect:/admin/product_detail?product_id="+bean.getProduct_id();
 	}
 	
 	// product delete - post
-	@RequestMapping(value = "product_delete/{idx}", method = RequestMethod.POST)
-	public String productDelete(@PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_delete", method = RequestMethod.POST)
+	public String productDelete(@RequestParam int product_id) {
 		logger.info("post product delete");
 		
 		adminProductService.delete(product_id);
-		return "redirect:../product_list";
+		return "redirect:/admin/product_list";
 	}
 }

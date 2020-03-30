@@ -158,6 +158,18 @@ $("#back_Btn").click(function(){
 	history.back();
 });
 
+
+//이미지 미리보기
+$("#product_image").change(function(){
+	if(this.files && this.files[0]) {
+		var reader = new FileReader;
+		reader.onload = function(data) {
+			$(".select_img img").attr("src", data.target.result).width(500);        
+		}
+		reader.readAsDataURL(this.files[0]);
+	}
+});
+
 // 숫자 유효성검사 
 var regExp = /[^0-9]/gi;
 $("#product_price").keyup(function(){ numCheck($(this)); });
@@ -251,16 +263,6 @@ var ckeditor_config = {
 };
 CKEDITOR.replace( 'product_content' );
 
-// 이미지 미리보기
-$("#product_image").change(function(){
-	if(this.files && this.files[0]) {
-		var reader = new FileReader;
-		reader.onload = function(data) {
-			$(".select_img img").attr("src", data.target.result).width(500);        
-		}
-		reader.readAsDataURL(this.files[0]);
-	}
-});
 </script>
 
 </body>
