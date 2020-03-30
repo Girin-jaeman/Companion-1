@@ -155,7 +155,7 @@
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
 									<c:when test="${memberVo.member_id!=null}">  <!-- product_id 정보 GET 방식으로 넘길것.  -->
-										<button class="btn-order" id="purchaseBtn" type="submit" onclick="goForm()">구매하기</button>
+										<button class="btn btn-primary btn-lg" id="purchaseBtn" type="submit" onclick="goForm()">구매하기</button>
 <%-- 										<button type="submit"> href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button" type="submit" aria-pressed="true">구매하기</a> </button> --%>
 									</c:when>
 								</c:choose>
