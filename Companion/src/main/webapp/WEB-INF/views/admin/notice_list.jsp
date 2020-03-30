@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <c:url var="getList" value="/admin/notice_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
@@ -94,6 +95,7 @@
 					<th scope="row">날짜</th>
 					<th scope="row">조회수</th>
 					<th scope="row">이미지</th>
+					<th scope="row">썸네일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -107,7 +109,7 @@
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_image }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }"><%-- ${bean.article_image } --%>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 				</a>
 			</td>
