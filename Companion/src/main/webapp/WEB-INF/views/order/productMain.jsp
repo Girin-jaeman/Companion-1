@@ -14,8 +14,6 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/home.css">
-		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/main.css">
 		<link rel="stylesheet" href="${root}css/order/productMain.css">
 		

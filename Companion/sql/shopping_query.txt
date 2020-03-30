@@ -114,20 +114,22 @@ insert into `order`
 
 
 //////order_detail 입력
-insert into `order_detail` values (default,order_id,product_id,order_amount,order_quantity); 
+insert into `order_detail`
+ values 
+(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id='1111')),1,190000,4);
 /////////////////////////
 //////delivery 입력
-insert into delivery values (default,order_id,member_id,'한진택배',delivery_number,0);
+		(서브 쿼리문 )select truncate(rand()*100000000000000,0);-->randeom 난수 생성 + 소수점 삭제.
+insert into delivery 
+values
+ (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
 /////////////////////////
 //////payment 입력 
-insert into payment values (default,order_id,member_id,now(),order_amount,결제수단ID,1);
+insert into `payment` 
+values
+ (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},now(),#{order_detail_price},default);
 /////////////////////////
-
-
-
-
 /////////////주문 결제 버튼 누를 시 END
-
 
 주문 옵션에서 갯수 n 개 만큼 order_amount에 곱함.
 
