@@ -104,6 +104,54 @@ span {
     color:#0F4C81;
     text-align: center;
 }
+
+/* ---------------------------------------------------
+    scroll-right STYLE
+----------------------------------------------------- */
+#scroll-right{
+    
+    margin-left: 1220px;
+    margin-right: 20px;
+    position: fixed;
+    height: 300px;
+    width: 120px;
+    float: right;
+    background:rgba(15, 76, 129, 0.9);
+    border-radius: 5px;
+    color: #fff;
+}
+.scroll-right-header{
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+
+}
+.scroll-right-content .goods-content{
+    height: 90px;
+    width: 90px;
+    margin: 10px auto;
+    
+    border-radius: 5px;
+}
+.scroll-right-content img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    align-items: center;
+    margin: auto;
+}
+.scroll-up{
+    display: block;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid white;
+    background: #0F4C81;
+}
+.scroll-up:hover{
+    color: #0F4C81;
+    background: white;
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -262,6 +310,8 @@ a.join:hover {
     margin-right: 25px;
     height: 26px;
 }
+
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -281,6 +331,7 @@ a.join:hover {
     max-width: 1000px;
     margin: auto;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

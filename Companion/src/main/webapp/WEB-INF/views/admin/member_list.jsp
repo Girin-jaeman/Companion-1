@@ -70,8 +70,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-		<h1>관리자 페이지</h1>
-
+			<div class="main--title">
+				<h1>[Admin] 회원 목록</h1>
+			</div>
 			<!-- 검색창 -->
 			<!-- <div>
 				<input type="hidden" name="searchType" id="searchType" value="product">

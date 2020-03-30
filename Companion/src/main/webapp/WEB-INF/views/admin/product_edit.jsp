@@ -67,8 +67,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
-			<h2>상품 수정</h2>
+			<div class="main--title">
+				<h1>[Admin] 상품정보 수정</h1>
+			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<label>1차 분류</label>
 				<select class="category1">

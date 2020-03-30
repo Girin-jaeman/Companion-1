@@ -15,10 +15,13 @@
 		<link rel="stylesheet" href="${root}css/main.css">
 		<link rel="stylesheet" href="${root}css/order/goodsdetail.css">
 		
-		<!-- Font Awesome JS -->
-		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-		<style type="text/css">
+	    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
 
 		</style>
 	</head>
@@ -76,6 +79,10 @@
 				</a>
 				<hr class="mb-4">
 			</div>
+			
+			<!-- Right-Scrollbar  -->
+			<jsp:include page="../common/scrollbar.jsp"/>
+			
 			<!-- main content start -->
 			<div class="maincontent">
 				<div class="row">
@@ -503,7 +510,7 @@
 					<!-- End lined tabs -->
 				</div>
 				<!-- #myTab2Content end-->
-			</div>
+			</div><!--main content END  -->
 			<!-- 후기글 -->
 				<!-- 문의글 -->
 			<!-- 3tap layer end -->

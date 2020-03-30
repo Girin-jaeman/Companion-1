@@ -52,7 +52,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
+			                <a class="nav-link active" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
@@ -69,7 +69,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
+			<div class="main--title">
+				<h1>[Admin] 상품 목록</h1>
+			</div>
 
 			<!-- 검색창 -->
 			<div>
@@ -77,7 +79,6 @@
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
 						<tr>

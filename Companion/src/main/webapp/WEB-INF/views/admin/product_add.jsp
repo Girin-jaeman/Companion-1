@@ -52,7 +52,7 @@
 			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
+			                <a class="nav-link active" href="${root }admin/product_add">상품등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -66,8 +66,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
-			<h2>상품 등록</h2>
+		<div class="main--title">
+				<h1>[Admin] 상품 등록</h1>
+			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<label>1차 분류</label>
 				<select class="category1">
