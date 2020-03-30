@@ -72,7 +72,7 @@
 			<div class="main--title">
 				<h1>[Admin] 상품 상세</h1>
 			</div>
-			<form role="form" method="post" autocomplete="off" >
+			<form role="form" method="post" autocomplete="off" action="${root}admin/product_delete">
 				<c:choose>
 					<c:when test="${adminProductOne.category_refid == '0' }">
 						<label for="category_name">1차 분류</label>
@@ -146,7 +146,7 @@
 				</div>
 				<div class="inputArea">
 					<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>
-					<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
+					<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 					<button type="button" id="back_Btn" class="btn btn-warning">취소</button>
 				</div>
 			</form>
@@ -173,7 +173,7 @@ $(document).ready(function () {
 
 	// 수정 버튼
 $("#edit_Btn").click(function(){
-	location.href = ${root}+"admin/product_edit/" + ${adminProductOne.product_id};
+	location.href = ${root}+"admin/product_edit?product_id=" + ${adminProductOne.product_id};
 });
 
 	// 삭제 버튼
@@ -181,7 +181,6 @@ $("#edit_Btn").click(function(){
 $("#delete_Btn").click(function(){
 var con = confirm("정말로 삭제하시겠습니까?");
 if(con) {      
-	formObj.attr("action", "${root}admin/product_delete/${adminProductOne.product_id}");
 	formObj.submit();
 	}
 });

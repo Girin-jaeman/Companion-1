@@ -5,4 +5,13 @@
 
 <mapper namespace="adminMember">
 
+	<!-- member list -->
+	<select id="selectAll" resultType="adminMemberViewBean">
+		select * from `member` order by member_name;
+	</select>
+	
+	<!-- member detail -->
+	<select id="selectOne" parameterType="String" resultType="adminMemberViewBean">
+		select * from `member` where member_id=#{value}
+	</select>
 </mapper>

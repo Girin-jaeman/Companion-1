@@ -68,10 +68,10 @@
 			</div>
 				<div class="btn__group">
 					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
-				 	<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
+				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 					<button type="button" id="back_Btn" class="btn btn-back">뒤로</button>
 				</div>
-			<form role="form" method="post" autocomplete="off">
+			<form role="form" method="post" autocomplete="off" action="${root}admin/notice_delete">
 				<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
 				<table class="table">
 				<thead>
@@ -136,7 +136,7 @@
 <script type="text/javascript">
 // 수정 버튼
 $("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/notice_edit/" + ${adminNoticeOne.article_id};
+	location.href = ${root}+"admin/notice_edit?article_id=" + ${adminNoticeOne.article_id};
 });  
 		 
 // 취소 버튼
@@ -149,7 +149,6 @@ var formObj = $("form[role='form']");
 $("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
-		formObj.attr("action", "${root}admin/notice_delete/${adminNoticeOne.article_id}");
 		formObj.submit();
 	}
 });
