@@ -27,13 +27,16 @@
 
 <!-- order_quantity 어떡할래 개 -->
 	<insert id="OrderDetailInsert" parameterType="orderBean">
-		insert into `order_detail` values (default,#{order_id},#{product_id},#{order_amount},#{order_quantity});
+		insert into `order_detail`
+		 values 
+		 (default,(select a.order_id from `order` as a, `product` as b where b.product_id=${product_id} and member_id=${member_id}),
+		 #{product_id},#{order_detail_price},#{order_detail_quantity});
 	</insert>
 
 
 <!-- 결제수단 결제 그 API에서 받아 올 수 있는지 확인 할 것.  -->
 	<!-- <insert id="OrderPaymentInsert" parameterType="orderBean">
-		insert into `payment` values (default,#{order_id},#{member_id},now(),#{order_amount},결제수단ID,1);
+		insert into `payment` values (default,#{order_id},#{member_id},now(),#{order_amount},0);
 	</insert> -->
 	
 	<!-- delivery_number 자동 생성해서 입력넣을 것. type=string임.  -->

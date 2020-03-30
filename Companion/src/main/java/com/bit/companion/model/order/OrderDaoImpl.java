@@ -32,7 +32,7 @@ public class OrderDaoImpl implements OrderDao {
 		sqlSession.insert("order.OrderProductPurchase",orderVo);
 
 		//order_detail table에
-//		sqlSession.insert("order.OrderDetailInsert",orderVo);
+		sqlSession.insert("order.OrderDetailInsert",orderVo);
 		
 		//payment table에
 //		sqlSession.insert("order.OrderPaymentInsert",orderVo);
@@ -47,6 +47,11 @@ public class OrderDaoImpl implements OrderDao {
 	public OrderVo OrderProductPurchaseOne(int product_id) throws SQLException {
 		return sqlSession.selectOne("order.OrderProductPurchaseOne",product_id);
 	}
+	
+	
+	
+	
+	
 
 
 }

@@ -22,8 +22,6 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
-
-		</style>
 	</head>
 
 <body>
@@ -99,7 +97,9 @@
 						<h4>[ 카테고리NUM=${productDetailOne.category_id } ]</h4>
 						<p class="goos-text">상품 설명 ${productDetailOne.product_content }
 						</p>
-
+			 <!-- 셀렉트박스 옵션 값 가져오기.  -->
+	
+	<form method="POST" action="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="form">
 						<div class="goods-text row">
 							<div class="col-sm-4 title">배송비</div>
 							<div class="col-sm-8">2,500원 (5만원이상 구매 시 무료)</div>
@@ -107,29 +107,35 @@
 							<div class="col-sm-8">${productDetailOne.product_stock }</div>
 							<div class="col-sm-4 title">옵션</div>
 							<div class="col-sm-8">
-								<select class="form-control col-sm-8">
-									<option>옵션1</option>
-									<option>옵션2</option>
-									<option>옵션3</option>
-									<option>옵션4</option>
-									<option>옵션5</option>
+							
+								<select name="selectBox" class="form-control col-sm-8" onchange="getSelectValue(this.form);">
+								<!-- 옵션이랑 수량 어떻게 처리???  -->
+									<option value="옵션1">옵션1</option>
+									<option value="옵션2">옵션2</option>
+									<option value="옵션3">옵션3</option>
+									<option value="옵션4">옵션4</option>
+									<option value="옵션5">옵션5</option>
 								</select>
+								<input type="hidden" name="product_option">
+								<input type="hidden" name="optionValue">
+								
 							</div>
+							<!-- 수량도 받아서 처리해야함.  -->
 							<div class="col-sm-4 title">수량</div>
 							<div class="col-sm-8">
 								<!-- 수량 -->
 								<table class="col-sm-8">
 									<tr>
-										<td><input type="text" name="num" value="1" id=""
+										<td><input type="text" name="order_detail_quantity" value="1" placeholder="1" id="order_detail_quantity"
 											class="num form-control" /></td>
 										<td>
 											<div width="10" height="10" class="bt_down">
-												<button class="btn">▼</button>
+												<button type="button" class="btn">▼</button>
 											</div>
 										</td>
 										<td>
 											<div width="10" height="10" class="bt_up">
-												<button class="btn">▲</button>
+												<button type="button" class="btn">▲</button>
 											</div>
 										</td>
 									</tr>
@@ -147,7 +153,8 @@
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
 									<c:when test="${memberVo.member_id!=null}">  <!-- product_id 정보 GET 방식으로 넘길것.  -->
-										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button"  aria-pressed="true">구매하기</a>
+										<button class="btn-order" id="purchaseBtn" type="submit" onclick="goForm()">구매하기</button>
+<%-- 										<button type="submit"> href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button" type="submit" aria-pressed="true">구매하기</a> </button> --%>
 									</c:when>
 								</c:choose>
 							<!-- 구매 로그인 세션 검사 -->
@@ -157,6 +164,7 @@
 						<!-- btn group end-->
 
 					</div>
+		</form>
 				</div>
 				
 			</div>
@@ -564,6 +572,22 @@
 				num = $(".num:eq("+n+")").val(num*1-1); 
 			});
 			}) 
+		</script>
+		
+		<!-- select Box Option  -->
+		<script type="text/javascript">
+		function getSelectValue(frm){
+			frm.textValue.value=frm.selectBox.options[frm.selectBox.selectedIndex].text;
+			frm.optionValue.value=frm.selectBox.options[frm.selectBox.selectedIndex].value;
+		}
+		</script>
+		<!--  form 다중 액션 처리 -->
+		<script type="text/javascript">
+		 function goForm(){
+			 
+			 
+		 }
+		
 		</script>
 
 		<!-- ajax 문의글 리스트 출력. -->
