@@ -25,7 +25,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	
-//	상품 주문 하기.
+//	상품 주문 하기. 테이블 
 	@Override
 	public void OrderInfo_Details(OrderVo orderVo) throws SQLException {
 		// order table에 
@@ -35,10 +35,10 @@ public class OrderDaoImpl implements OrderDao {
 		sqlSession.insert("order.OrderDetailInsert",orderVo);
 		
 		//payment table에
-//		sqlSession.insert("order.OrderPaymentInsert",orderVo);
+		sqlSession.insert("order.OrderPaymentInsert",orderVo);
 
 		//delivery table에
-//		sqlSession.insert("order.OrderDeliveryInsert",orderVo);
+		sqlSession.insert("order.OrderDeliveryInsert",orderVo);
 	}
 
 
