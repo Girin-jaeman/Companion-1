@@ -52,7 +52,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/product_list">상품목록</a>
+			                <a class="nav-link active" href="${root }admin/product_list">상품목록</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root }admin/product_add">상품등록</a>
@@ -69,7 +69,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
+			<div class="main--title">
+				<h1>[Admin] 상품 목록</h1>
+			</div>
 
 			<!-- 검색창 -->
 			<div>
@@ -77,7 +79,6 @@
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-				<h2>상품 목록</h2>
 				<table class="table">
 					<thead>
 						<tr>
@@ -102,48 +103,48 @@
 							<img src="<spring:url value='${bean.product_thumb }'/>"/>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_name}</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_name}</a>
 						</td>
 						<td>
 							<c:choose>
 								<c:when test="${bean.category_refid == '0' }">
-									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_name}</a>
+									<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.category_name}</a>
 								</c:when>
 								<c:when test="${bean.category_refid != '0' }">
-									<a href="${root }admin/product_detail/${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
+									<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.category_refidname} - ${bean.category_name}</a>
 								</c:when>
 							</c:choose>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatNumber value="${bean.product_price}" pattern="###,###,###"/>
 							</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_stock}</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_stock}</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.like_sum }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.like_sum }</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option1 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option1 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option2 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option2 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option3 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option3 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option4 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option4 }</a>
 						</td>
 						<td>
-							<a href="${root }admin/product_detail/${bean.product_id}">${bean.product_option5 }</a>
+							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.product_option5 }</a>
 						</td>
 					</tr>   
 				</c:forEach>

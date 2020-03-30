@@ -1,6 +1,8 @@
 package com.bit.companion.controller.admin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,8 +53,8 @@ public class AdminNoticeController {
 	}
 	
 	// notice detail - get
-	@RequestMapping(value = "notice_detail/{idx}", method = RequestMethod.GET)
-	public String noticeDetail(Model model, @PathVariable("idx") int article_id) {
+	@RequestMapping(value = "notice_detail", method = RequestMethod.GET)
+	public String noticeDetail(Model model, @RequestParam int article_id) {
 		logger.info("get notice detail");
 		adminNoticeService.detail(model, article_id);
 		return "admin/notice_detail";
@@ -88,8 +91,8 @@ public class AdminNoticeController {
 	}
 	
 	// notice ckeditor - post
-	@RequestMapping(value = "notice_add/ckUpload", method = RequestMethod.POST)
-	public void postCKEditorImgUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
+	@RequestMapping(value = "ckUpload", method = RequestMethod.POST)
+	public void ckeditorImgUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
 		
 		UUID uid = UUID.randomUUID();
@@ -99,7 +102,6 @@ public class AdminNoticeController {
 		
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
-		
 		try {
 			String fileName = upload.getOriginalFilename();
 			byte[] bytes = upload.getBytes();
@@ -110,19 +112,14 @@ public class AdminNoticeController {
 			out.write(bytes);
 			out.flush();
 			
-			String callback = req.getParameter("CKEditorFuncNum");
 			printWriter = res.getWriter();
-			String fileUrl = "/ckUpload/"+uid+"_"+fileName;
+			String fileUrl = "ckSubmit?uid="+uid+"&fileName="+fileName;
 			
-			printWriter.println("<script type='text/javascript'>"
-				     + "window.parent.CKEDITOR.tools.callFunction("
-				     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
-				     +"</script>");
-			
+			printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
 			printWriter.flush();
 			
 		}catch(IOException e) {
-			
+			e.printStackTrace();
 		}finally {
 			try{
 				if(out!=null) {
@@ -135,21 +132,69 @@ public class AdminNoticeController {
 				
 			}
 		}
-		
 		return;
 	}
 	
+	@RequestMapping(value = "ckSubmit", method = RequestMethod.GET)
+    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName
+                            , HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		logger.info("post CKEditor img submit");
+		
+        //서버에 저장된 이미지 경로
+        String ckUploadPath = uploadPath + "ckUpload" +File.separator;
+        	System.out.println(ckUploadPath);
+        	
+        String Path = ckUploadPath + uid + "_" + fileName;
+        	System.out.println(Path);
+        	
+        File imgFile = new File(File.separator+Path);
+        	System.out.println(imgFile);
+        	
+        //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
+        if(imgFile.isFile()){
+            byte[] buf = new byte[1024];
+            int readByte = 0;
+            int length = 0;
+            byte[] imgBuf = null;
+            
+            FileInputStream fileInputStream = null;
+            ByteArrayOutputStream outputStream = null;
+            ServletOutputStream out = null;
+            
+            try{
+                fileInputStream = new FileInputStream(imgFile);
+                outputStream = new ByteArrayOutputStream();
+                out = response.getOutputStream();
+                
+                while((readByte = fileInputStream.read(buf)) != -1){
+                    outputStream.write(buf, 0, readByte);
+                }
+                
+                imgBuf = outputStream.toByteArray();
+                length = imgBuf.length;
+                out.write(imgBuf, 0, length);
+                out.flush();
+                
+            }catch(IOException e){
+                e.printStackTrace();
+            }finally {
+                outputStream.close();
+                fileInputStream.close();
+                out.close();
+            }
+        }
+    }
 	
 	// notice edit - get
-	@RequestMapping(value = "notice_edit/{idx}", method = RequestMethod.GET)
-	public String noticeEdit(Model model, @PathVariable("idx") int article_id) {
+	@RequestMapping(value = "notice_edit", method = RequestMethod.GET)
+	public String noticeEdit(Model model, @RequestParam int article_id) {
 		logger.info("get notice edit");
 		adminNoticeService.detail(model, article_id);
 		return "admin/notice_edit";
 	}
 	// notice edit - post
-	@RequestMapping(value = "notice_edit/{idx}", method = RequestMethod.POST)
-	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @PathVariable("idx") int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
+	@RequestMapping(value = "notice_edit", method = RequestMethod.POST)
+	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @RequestParam int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post notice edit");
 		
 		// 새로운 파일이 등록되었는지 확인
@@ -174,13 +219,13 @@ public class AdminNoticeController {
 		
 		adminNoticeService.update(bean);
 		
-		return "redirect:../notice_detail/"+bean.getArticle_id();
+		return "redirect:/admin/notice_detail?article_id="+bean.getArticle_id();
 	}
 	// notice delete - post
-	@RequestMapping(value = "notice_delete/{idx}", method = RequestMethod.POST)
-	public String noticeDelete(@PathVariable("idx") int article_id) {
+	@RequestMapping(value = "notice_delete", method = RequestMethod.POST)
+	public String noticeDelete(@RequestParam int article_id) {
 		logger.info("post notice delete");
 		adminNoticeService.delete(article_id);
-		return "redirect:../notice_list";
+		return "redirect:/admin/notice_list";
 	}
 }

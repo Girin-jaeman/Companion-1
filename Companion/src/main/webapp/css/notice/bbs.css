@@ -62,3 +62,9 @@ table tbody tr td p {
 #btn--list{
     float: right;
 }
+table #bbs-content{
+	height:300px;
+	min-height:300px;
+	padding:10px;
+	
+}

@@ -81,6 +81,10 @@
                 </a>
                 <hr class="mb-4">
             </div>
+            
+        <!-- Right-Scrollbar  -->
+		<jsp:include page="../common/scrollbar.jsp"/>
+		
 		<!-- content -->
 		<div class="maincontent">
 				<nav aria-label="breadcrumb">

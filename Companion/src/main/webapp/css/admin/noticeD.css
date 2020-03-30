@@ -1,0 +1,52 @@
+.btn__group{
+	float:right;
+	margin:5px;
+}
+.btn-back{
+	border:1px solid gray;
+}
+
+.table{
+	width: 100%;
+	margin: 0 auto;
+}
+.table thead{
+}
+
+.table thead tr{
+	background:#5f4b8b80;
+}
+.table thead tr th{
+ 	padding: 3px 15px;
+    box-sizing: border-box;
+    border-top: #999 1px solid;
+    border-bottom: rgba(153, 153, 153, 0.5) 1px solid;
+    line-height: 1.5;
+    height: 50px;
+    font-size: 20px;
+}
+.table .thumb{
+	display:flex;
+}
+.table tbody{
+	height:300px;
+	border: none;
+	min-height:300px;
+	padding:10px;
+}
+.table tbody tr{
+
+}
+.table tbody tr td{
+	text-align:center;
+}
+.table tbody tr td div:first-child{
+	text-align:left;
+}
+table tbody tr:first-child{
+	height:40px;
+	float:left;
+	line-height: 1;
+	margin:0;
+	padding:0;
+}

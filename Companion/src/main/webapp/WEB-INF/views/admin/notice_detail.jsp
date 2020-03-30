@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/noticeD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -62,36 +63,56 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 - 공지사항 상세 페이지</h1>
-			<form role="form" method="post" autocomplete="off">
-				<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
-				<div>
-					<label for="title">title</label>
-					<span>${adminNoticeOne.article_title }</span>
-				</div>
-				<div>
-					<label for="date">date</label>
-					<span>${adminNoticeOne.article_date }</span>
-				</div>
-				<div>
-					<label for="content">content</label>
-					<span>${adminNoticeOne.article_content }</span>
-				</div>
-				<div>
-					<label for="img">원본이미지</label>
-					<%-- <img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"> --%>
-					<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
-				</div>
-				<div>
-					<label for="img">썸네일</label>
-					<%-- <img alt="썸네일" src="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"> --%>
-					<img alt="썸네일" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
-				</div>
-				<div>
+			<div class="main--title">
+				<h1>[Admin] 공지사항 상세</h1>
+			</div>
+				<div class="btn__group">
 					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
-				 	<button type="button" id="delete_Btn" class="btn btn-danger">삭제</button>
-					<button type="button" id="back_Btn">취소</button>
+				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
+					<button type="button" id="back_Btn" class="btn btn-back">뒤로</button>
 				</div>
+			<form role="form" method="post" autocomplete="off" action="${root}admin/notice_delete">
+				<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
+				<table class="table">
+				<thead>
+					<tr>
+						<th class="clearfix">
+						<div class="float--left">
+							<label for="title">[제목]&nbsp;</label><span>${adminNoticeOne.article_title }</span>
+						</div>
+						<div class="thumb float--right">
+							<label for="img">[썸네일]&nbsp;</label>
+							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
+						</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						<label for="date">[작성일]&nbsp;</label>
+						<span>${adminNoticeOne.article_date }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div>
+						<label for="content">content</label>
+						<span>${adminNoticeOne.article_content }</span>
+						</div>
+						<div>
+						<label for="img">원본이미지</label>
+						<%-- <img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"> --%>
+						<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+					</tr>
+				</tbody>
+				</table>
 			</form>
 	
 		</section>
@@ -115,7 +136,7 @@
 <script type="text/javascript">
 // 수정 버튼
 $("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/notice_edit/" + ${adminNoticeOne.article_id};
+	location.href = ${root}+"admin/notice_edit?article_id=" + ${adminNoticeOne.article_id};
 });  
 		 
 // 취소 버튼
@@ -128,7 +149,6 @@ var formObj = $("form[role='form']");
 $("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
-		formObj.attr("action", "${root}admin/notice_delete/${adminNoticeOne.article_id}");
 		formObj.submit();
 	}
 });

@@ -41,7 +41,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }notice/">공지사항</a>
+			                <a class="nav-link active" href="${root }notice/">공지사항</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root }event/">이벤트</a>
@@ -86,7 +86,7 @@
 						<td><span>${noticeSelectOne.member_id }</span><span>|</span><span>${noticeSelectOne.article_date }</span><span>조회수 ${noticeSelectOne.article_count }</span></td>
 					</tr>
 					<tr>
-						<td>
+						<td id="bbs-content">
 						${noticeSelectOne.article_content}
 						<img class="bbs-image" alt="원본이미지" src="<spring:url value='${noticeSelectOne.article_image }'/>"/>
 						</td>

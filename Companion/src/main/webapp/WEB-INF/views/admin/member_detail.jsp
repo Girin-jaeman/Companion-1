@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/member_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
-	<title>Companion::회원 목록</title>
+	<title>Companion::회원 상세</title>
 </head>
 <body>
 
@@ -70,78 +69,47 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<div class="main--title">
-				<h1>[Admin] 회원 목록</h1>
+		<h1>관리자 페이지</h1>
+			<h2>회원 상세</h2>
+			
+			<div class="inputArea">
+				<label for="member_grade">회원구분</label>
+				<span>${adminMemberOne.member_grade }</span>
 			</div>
-			<!-- 검색창 -->
-			<!-- <div>
-				<input type="hidden" name="searchType" id="searchType" value="product">
-				<input type="text" name="keyword" id="keyword">
-				<button name="search_Btn" id="search_Btn">검색</button>
-			</div> -->
-				<h2>회원 목록</h2>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>회원구분</th>
-							<th>이름</th>
-							<th>아이디</th>
-							<th>일반전화</th>
-							<th>휴대전화</th>
-							<th>이메일</th>
-							<th>우편번호</th>
-							<th>기본주소</th>
-							<th>상세주소</th>
-						</tr>
-					</thead>
-				<tbody>
-				<c:forEach items="${adminMemberList}" var="bean">
-					<tr>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_grade }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_tel }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr1 }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr2 }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr3 }</a>
-						</td>
-					</tr>   
-				</c:forEach>
-				</tbody>
-			</table>
+			<div class="inputArea">
+				<label for="member_name">이름</label>
+				<span>${adminMemberOne.member_name }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_id">아이디</label>
+				<span>${adminMemberOne.member_id }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_tel">일반전화</label>
+				<span>${adminMemberOne.member_tel }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_phone">휴대전화</label>
+				<span>${adminMemberOne.member_phone }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_email">이메일</label>
+				<span>${adminMemberOne.member_email }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_addr1">우편번호</label>
+				<span>${adminMemberOne.member_addr1 }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_addr2">기본주소</label>
+				<span>${adminMemberOne.member_addr2 }</span>
+			</div>
+			<div class="inputArea">
+				<label for="member_addr3">상세주소</label>
+				<span>${adminMemberOne.member_addr3 }</span>
+			</div>
 		</section>
 		<!-- section [end] -->
-		
-		<!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
 		
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->

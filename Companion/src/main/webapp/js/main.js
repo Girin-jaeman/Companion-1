@@ -13,3 +13,9 @@ function historyBack() {
 $(document).ready(function () {
     sidebarCollapse();
 });
+
+var topBtn = $('#topBtn');
+var delay = 1000;
+topBtn.on('click', function() {
+  $('html, body').stop().animate({scrollTop: 0}, delay);
+});
