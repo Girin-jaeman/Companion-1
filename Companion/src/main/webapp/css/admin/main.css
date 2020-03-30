@@ -2,6 +2,19 @@
     DEMO STYLE
 */
 
+/* FLOAT CLEARFIX*/
+.claerfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.float--left{
+  float: left;
+}
+.float--right{
+  float: right;
+}
+
 @import "https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&display=swap&subset=korean";
 body {
     background: #fafafa;

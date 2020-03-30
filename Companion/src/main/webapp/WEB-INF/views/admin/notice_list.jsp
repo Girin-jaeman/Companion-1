@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/notice.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -63,17 +64,36 @@
 			<div class="main--title">
 				<h1>[Admin] 공지사항 목록</h1>
 			</div>
-			<a class="btn btn-dark" role="button" href="${root }admin/notice_add">입력</a>
-			<table class="table">
+			<div class="sub-group clearfix">
+			<!-- 공지 등록 -->
+			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
+			
+			<!-- 검색창 -->
+			<div class="search-group float--right">
+				<input type="hidden" name="searchType" id="searchType" value="notice">
+				<input type="text" name="keyword" id="keyword">
+				<button name="search_Btn" id="search_Btn">검색</button>
+			</div>
+			</div>
+			<table class="table table_layout ">
+			<colgroup>
+        		<col class="col1">
+        		<col class="col2">
+        		<col class="col3">
+        		<col class="col4">
+        		<col class="col5">
+        		<col class="col6">
+        		<col class="col7">
+    		</colgroup>
 			<thead>
 				<tr>
-					<th>글번호</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>날짜</th>
-					<th>조회수</th>
-					<th>이미지</th>
+					<th scope="row">글번호</th>
+					<th scope="row">작성자</th>
+					<th scope="row">제목</th>
+					<th scope="row">내용</th>
+					<th scope="row">날짜</th>
+					<th scope="row">조회수</th>
+					<th scope="row">이미지</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -86,7 +106,10 @@
 			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_content }</a></td>
 			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_date }</a></td>
 			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_count }</a></td>
-			<td><a href="${root }admin/notice_detail/${bean.article_id }">${bean.article_image }</a></td>
+			<td><a href="${root }admin/notice_detail/${bean.article_id }"><%-- ${bean.article_image } --%>
+				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
+				</a>
+			</td>
 			</tr>
 			</c:forEach>
 			</tbody>
