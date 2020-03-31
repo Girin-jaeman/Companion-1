@@ -18,7 +18,13 @@
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
+	<style type="text/css">
+		.table .heightt{
+			background:tomato;
+			height:50px;
+			max-height:50px;
+		}
+	</style>
 	<title>Companion::공지사항 목록</title>
 </head>
 <body>
@@ -76,26 +82,24 @@
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
 			</div>
-			<table class="table table_layout ">
+			<table class="table table_layout">
 			<colgroup>
         		<col class="col1">
         		<col class="col2">
         		<col class="col3">
         		<col class="col4">
         		<col class="col5">
-        		<col class="col6">
-        		<col class="col7">
+        		<col class="col6"> 
+        		
     		</colgroup>
 			<thead>
 				<tr>
 					<th scope="row">글번호</th>
-					<th scope="row">작성자</th>
+					<th scope="row">썸네일</th>
 					<th scope="row">제목</th>
-					<th scope="row">내용</th>
+					<th scope="row">작성자</th>
 					<th scope="row">날짜</th>
 					<th scope="row">조회수</th>
-					<th scope="row">이미지</th>
-					<th scope="row">썸네일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -103,16 +107,15 @@
 			<c:forEach items="${adminNoticeList }" var="bean">
 			<tr>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_content }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_image }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">
+			<td>
+				<a href="${root }admin/notice_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 				</a>
 			</td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
+			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
 			</tr>
 			</c:forEach>
 			</tbody>
