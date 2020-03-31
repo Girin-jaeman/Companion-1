@@ -17,7 +17,7 @@
   		<typeAlias alias="mypageReserveBean" type="com.bit.companion.model.entity.mypage.MypageReserveVo"/>
   		
   		<!-- admin -->
-  		<typeAlias alias="adminNoticeArticleBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
+  		<typeAlias alias="adminArticleBean" type="com.bit.companion.model.entity.admin.AdminArticleVo"/>
   		<typeAlias alias="adminCategoryBean" type="com.bit.companion.model.entity.admin.AdminCategoryVo"/>
   		<typeAlias alias="adminProductBean" type="com.bit.companion.model.entity.admin.AdminProductVo"/>
   		<typeAlias alias="adminProductViewBean" type="com.bit.companion.model.entity.admin.AdminProductViewVo"/>
@@ -47,6 +47,7 @@
   		<mapper resource="mybatis/admin/adminNoticeMapper.xml"/>
   		<mapper resource="mybatis/admin/adminProductMapper.xml"/>
   		<mapper resource="mybatis/admin/adminMemberMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminEventMapper.xml"/>
   		
   		<!-- order -->
   		<mapper resource="mybatis/order/orderMapper.xml"/>

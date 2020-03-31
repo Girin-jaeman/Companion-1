@@ -3,23 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="adminNotice">
+<mapper namespace="adminEvent">
 
-	<!-- notice list -->
+	<!-- event list -->
 	<select id="selectAll" resultType="adminArticleBean">
 		SELECT 
 			@rownum:=@rownum+1 AS no,
 			A.* 
 				FROM `ARTICLE` A 
-					WHERE (@rownum:=0)=0 and board_id=0
-					<!-- <trim prefix="AND">
-						<if test="">
-							board_id=0
-						</if>
-						<if test="">
-							board_id=1
-						</if>
-					</trim> -->
+					WHERE (@rownum:=0)=0 AND board_id=0
 					<trim prefix="AND">
 						<if test="searchType=='all' and keyword != null and keyword != '' ">
 							article_title LIKE CONCAT('%', #{keyword}, '%') OR
@@ -39,7 +31,7 @@
 					 ORDER BY A.article_id DESC LIMIT #{startList}, #{listSize}
 	</select>
 	
-	<!-- notice detail -->
+	<!-- event detail -->
 	<select id="selectOne" resultType="adminArticleBean" parameterType="int">
 		SELECT 
 			article_id,
@@ -52,7 +44,7 @@
 					WHERE article_id=#{value}
 	</select>
 	
-	<!-- notice add -->
+	<!-- event add -->
 	<!-- #{member_id} - 임시로 admin -->
 	<insert id="insertOne" parameterType="adminArticleBean">
 		INSERT INTO `ARTICLE` VALUES(
@@ -68,7 +60,7 @@
 		)
 	</insert>
 	
-	<!-- notice edit -->
+	<!-- event edit -->
 	<update id="updateOne" parameterType="adminArticleBean" >
 		UPDATE `ARTICLE` SET 
 			article_title=#{article_title},
@@ -78,12 +70,12 @@
 				WHERE article_id=#{article_id}
 	</update>
 	
-	<!-- notice delete -->
+	<!-- event delete -->
 	<delete id="deleteOne" parameterType="adminArticleBean">
 		DELETE FROM `ARTICLE` WHERE article_id=#{article_id}
 	</delete>
 	
-	<!-- notice total -->
+	<!-- event total -->
   	<select id="selectTotal" resultType="int">
   		SELECT count(*) as listCnt FROM `ARTICLE` WHERE board_id=0
   		<trim prefix="AND">

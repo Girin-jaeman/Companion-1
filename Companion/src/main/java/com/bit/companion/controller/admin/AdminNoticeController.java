@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -42,19 +43,38 @@ public class AdminNoticeController {
 	
 	@Autowired
 	AdminNoticeService adminNoticeService;
+
+	
+	public String checkBoardName(String url) {
+		int idx=url.indexOf("_");
+		return url.substring(7, idx);
+	}
+	public int checkBoardId(String boardName) {
+		if(boardName.contains("notice")) {
+			return 0;
+		} else if (boardName.contains("event")) {
+			return 1;
+		}
+		return 0;
+	}
 	
 	// notice list - get 
-	@RequestMapping(value = "notice_list", method = RequestMethod.GET)
+	@RequestMapping(value = {"notice_list", "event_list"}, method = RequestMethod.GET)
 	public String noticeList(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range
 			,@RequestParam(required = false, defaultValue = "all") String searchType
 			,@RequestParam(required = false) String keyword
-			,@ModelAttribute("search") Search search) {
+			,@ModelAttribute("search") Search search, HttpServletRequest req,HttpServletResponse res) {
 		logger.info("get notice list");
 		
+		String boardName=checkBoardName(req.getServletPath());
+		System.out.println(boardName);
+		int boardId=checkBoardId(boardName);
+		System.out.println(boardId);
+		
 		adminNoticeService.list(model, page, range, searchType, keyword, search);
-		return "admin/notice_list";
+		return "admin/"+boardName+"_list";
 	}
 	
 	// notice detail - get
