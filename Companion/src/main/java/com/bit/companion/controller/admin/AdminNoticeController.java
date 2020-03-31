@@ -97,9 +97,9 @@ public class AdminNoticeController {
 	}
 	
 	// notice ckeditor - post
-	@RequestMapping(value = "ckUpload", method = RequestMethod.POST)
-	public void ckeditorImgUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
-		logger.info("post CKEditor img upload");
+	@RequestMapping(value = "notice_ckUpload", method = RequestMethod.POST)
+	public void ckUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
+		logger.info("post notice CKEditor img upload");
 		
 		UUID uid = UUID.randomUUID();
 		
@@ -119,7 +119,7 @@ public class AdminNoticeController {
 			out.flush();
 			
 			printWriter = res.getWriter();
-			String fileUrl = "ckSubmit?uid="+uid+"&fileName="+fileName;
+			String fileUrl = "notice_ckSubmit?uid="+uid+"&fileName="+fileName;
 			
 			printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
 			printWriter.flush();
@@ -135,26 +135,22 @@ public class AdminNoticeController {
 					printWriter.close();
 				}
 			}catch(IOException e) {
-				
+				e.printStackTrace();
 			}
 		}
 		return;
 	}
 	
-	@RequestMapping(value = "ckSubmit", method = RequestMethod.GET)
+	// ckeditor file loading
+	@RequestMapping(value = "notice_ckSubmit", method = RequestMethod.GET)
     public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName
                             , HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		logger.info("post CKEditor img submit");
+		logger.info("get notice CKEditor img submit");
 		
         //서버에 저장된 이미지 경로
         String ckUploadPath = uploadPath + "ckUpload" +File.separator;
-        	System.out.println(ckUploadPath);
-        	
         String Path = ckUploadPath + uid + "_" + fileName;
-        	System.out.println(Path);
-        	
         File imgFile = new File(File.separator+Path);
-        	System.out.println(imgFile);
         	
         //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
         if(imgFile.isFile()){

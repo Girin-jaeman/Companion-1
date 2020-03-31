@@ -221,7 +221,7 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl :"/admin/product_add/ckUpload"
+	filebrowserUploadUrl :"${pageContext.request.contextPath}/admin/product_ckUpload"
 };
 CKEDITOR.replace( 'product_content', ckeditor_config );
 

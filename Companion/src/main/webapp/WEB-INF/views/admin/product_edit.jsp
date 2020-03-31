@@ -260,9 +260,9 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	// filebrowserUploadUrl : "../../upload/notice"
+	filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/product_ckUpload"
 };
-CKEDITOR.replace( 'product_content' );
+CKEDITOR.replace('product_content', ckeditor_config);
 
 </script>
 
