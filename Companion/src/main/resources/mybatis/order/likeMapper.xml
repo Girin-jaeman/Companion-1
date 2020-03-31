@@ -6,7 +6,7 @@
   <mapper namespace="like">
   <!-- insert 즉 라이크에 넣는것! -->
  	<insert id="likeInsert">
-		insert into `like` values (null,#{member_id},{#product_id});
+		insert into `like` values (default,#{member_id},#{product_id});
 	</insert> 
 
 
