@@ -87,7 +87,7 @@
 			#{product_option3},
 			#{product_option4},
 			#{product_option5}
-		);
+		)
 	</insert>
 	
 	<!-- product edit -->
@@ -106,7 +106,7 @@
 	        product_option3 = #{product_option3},
 	        product_option4 = #{product_option4},
 	        product_option5 = #{product_option5}
-    	WHERE product_id = ${product_id}
+    			WHERE product_id = ${product_id}
 	</update>
 	
 	<!-- product delete -->

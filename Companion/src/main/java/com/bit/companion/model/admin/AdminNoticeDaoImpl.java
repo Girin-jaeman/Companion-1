@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.common.Pagination;
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 @Repository
@@ -21,8 +22,8 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 	
 	// notice list - selectAll
 	@Override
-	public List<AdminArticleVo> selectAll(Pagination pagination) throws SQLException {
-		return sqlSession.selectList("adminNotice.selectAll",pagination);
+	public List<AdminArticleVo> selectAll(Search search) throws SQLException {
+		return sqlSession.selectList("adminNotice.selectAll",search);
 	}
 
 	// notice detail - selectOne
@@ -51,8 +52,8 @@ public class AdminNoticeDaoImpl implements AdminNoticeDao {
 
 	// notice total - selectTotal
 	@Override
-	public int selectTotal() throws SQLException {
-		return sqlSession.selectOne("adminNotice.selectTotal");
+	public int selectTotal(Search search) throws SQLException {
+		return sqlSession.selectOne("adminNotice.selectTotal", search);
 	}
 
 }

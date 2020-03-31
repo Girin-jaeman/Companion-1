@@ -75,13 +75,20 @@
 			<!-- 공지 등록 -->
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
 			
-			<!-- 검색창 -->
-			<div class="search-group btn-group float--right">
-				<input type="hidden" name="searchType" id="searchType" value="notice">
-				<input type="text" name="keyword" id="keyword">
-				<button name="search_Btn" id="search_Btn">검색</button>
+				<!-- 검색창 -->
+				<div class="search-group btn-group float--right">
+					<select name="searchType" id="searchType">
+						<option value="all">전체</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="member">작성자</option>
+					</select>
+					<input type="hidden" name="searchType" id="searchType" value="notice">
+					<input type="text" name="keyword" id="keyword">
+					<button name="search_Btn" id="search_Btn">검색</button>
+				</div>
 			</div>
-			</div>
+			
 			<table class="table table_layout">
 			<colgroup>
         		<col class="col1">
@@ -125,13 +132,13 @@
 		
 		<!-- pagination [start] -->
 		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${pagination.prev }" name="prev"/>
-			<jsp:param value="${pagination.next }" name="next"/>
-			<jsp:param value="${pagination.page }" name="page"/>
-			<jsp:param value="${pagination.range }" name="range"/>
-			<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${pagination.startPage }" name="startPage"/>
-			<jsp:param value="${pagination.endPage }" name="endPage"/>
+			<jsp:param value="${search.prev }" name="prev"/>
+			<jsp:param value="${search.next }" name="next"/>
+			<jsp:param value="${search.page }" name="page"/>
+			<jsp:param value="${search.range }" name="range"/>
+			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
+			<jsp:param value="${search.startPage }" name="startPage"/>
+			<jsp:param value="${search.endPage }" name="endPage"/>
 		</jsp:include>
 		<!-- pagination [end] -->
 	</div>
@@ -150,7 +157,15 @@
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
 <script type="text/javascript">
-
+//검색 버튼
+$("#search_Btn").click(function(e){
+	e.preventDefault();
+	var url = "${getList}";
+	url = url + "?searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = url;
+	console.log(url);
+});
 </script>
 </body>
 </html>

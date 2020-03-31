@@ -1,6 +1,8 @@
 package com.bit.companion.controller.admin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -100,16 +104,19 @@ public class AdminProductController {
 	}
 	
 	// product add - ckeditor file upload
-	@RequestMapping(value = "/product_add/ckUpload", method = RequestMethod.POST)
-	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
+	@RequestMapping(value = "product_ckUpload", method = RequestMethod.POST)
+	public void ckUpload(HttpServletRequest req, HttpServletResponse res,
 	         @RequestParam MultipartFile upload) throws Exception {
-		logger.info("post CKEditor img upload");
+		logger.info("post product CKEditor img upload");
 	 
 		// random character create
 		UUID uid = UUID.randomUUID();
 	 
 		OutputStream out = null;
 		PrintWriter printWriter = null;
+		
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html;charset=utf-8");
 		try {
 			String fileName = upload.getOriginalFilename(); // get file name
 			byte[] bytes = upload.getBytes();
@@ -118,22 +125,17 @@ public class AdminProductController {
 			String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
 			
 			out = new FileOutputStream(new File(ckUploadPath));
-			  out.write(bytes);
-			  out.flush();  // init
+			out.write(bytes);
+			out.flush();  // init
 			  
-			  String callback = req.getParameter("CKEditorFuncNum");
-			  printWriter = res.getWriter();
-			  String fileUrl = "/ckUpload/" + uid + "_" + fileName; 
-			  
-			  // upload msg print
-			  printWriter.println("<script type='text/javascript'>"
-			     + "window.parent.CKEDITOR.tools.callFunction("
-			     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
-			     +"</script>");
-			  
-			  printWriter.flush();
+			printWriter = res.getWriter();
+			String fileUrl = "product_ckSubmit?uid="+uid+"&fileName="+fileName;
+			
+			printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
+			printWriter.flush();
 	  
-		} catch (IOException e) { e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if(out != null) { out.close(); }
@@ -142,6 +144,52 @@ public class AdminProductController {
 		}
 		return; 
 	}
+	
+	// ckeditor file loading
+	@RequestMapping(value = "product_ckSubmit", method = RequestMethod.GET)
+    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName
+                            , HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		logger.info("get product CKEditor img submit");
+		
+        //서버에 저장된 이미지 경로
+        String ckUploadPath = uploadPath + "ckUpload" +File.separator;
+        String Path = ckUploadPath + uid + "_" + fileName;
+        File imgFile = new File(File.separator+Path);
+        	
+        //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
+        if(imgFile.isFile()){
+            byte[] buf = new byte[1024];
+            int readByte = 0;
+            int length = 0;
+            byte[] imgBuf = null;
+            
+            FileInputStream fileInputStream = null;
+            ByteArrayOutputStream outputStream = null;
+            ServletOutputStream out = null;
+            
+            try{
+                fileInputStream = new FileInputStream(imgFile);
+                outputStream = new ByteArrayOutputStream();
+                out = response.getOutputStream();
+                
+                while((readByte = fileInputStream.read(buf)) != -1){
+                    outputStream.write(buf, 0, readByte);
+                }
+                
+                imgBuf = outputStream.toByteArray();
+                length = imgBuf.length;
+                out.write(imgBuf, 0, length);
+                out.flush();
+                
+            }catch(IOException e){
+                e.printStackTrace();
+            }finally {
+                outputStream.close();
+                fileInputStream.close();
+                out.close();
+            }
+        }
+    }
 	
 	// product edit page category list - get
 	@RequestMapping(value = "product_edit", method = RequestMethod.GET)

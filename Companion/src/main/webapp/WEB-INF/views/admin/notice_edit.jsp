@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -82,18 +83,18 @@
 								resize_enable : false,
 								enterMode : CKEDITOR.ENTER_BR,
 								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
+								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/notice_ckUpload"
 						};
-						CKEDITOR.replace( 'article_content', ckeditor_config);
+						CKEDITOR.replace('article_content', ckeditor_config);
 					</script>
 				</div>
 				<div>
 					<label for="article_image">img</label>
 					<input type="file" name="file" id="article_image"/>
 					<div class="select_img">
-						<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
-						<input type="hidden" name="article_image" value="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
-						<input type="hidden" name="article_thumb" value="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"/>
+						<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
+						<input type="hidden" name="article_image" value="${adminNoticeOne.article_image }"/>
+						<input type="hidden" name="article_thumb" value="${adminNoticeOne.article_thumb }"/>
 					</div>
 				</div>
 				<div>
