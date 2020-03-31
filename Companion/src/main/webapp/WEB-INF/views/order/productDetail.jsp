@@ -653,24 +653,47 @@
 		</script> 
 		<!-- 그 그 좋아요버튼 AJAX 처리. 아 에이젝스 개빡세네 왤케 많아 근데 미치겠네 진짜 -->
 		<script type="text/javascript">
-			$("#like_btn").click(function(){
-				var member_id='${memberVo.member_id}';
-				var product_id=$("#product_id").val();
-				var data= {
-						member_id : member_id,
-						product_id : product_id
-				};
-				$.ajax({
-					url : "${root}order/likeInsert",
-					type : "post",
-					data : data,
-					success : function(){
-						alert('좋아요! 버튼 클릭');
-					}
-					
-				});
-				console.log(data);
+		
+		/* 페이지를 리로드 할 경우 또 다시 추천을 할 수 있음.  */
+		$(document).ready(function(){
+			var clickNum=1;
+		
+
+		$("#like_btn").click(function(){
+
+						if(clickNum==2||clickNum>2){
+							alert('이미 추천을 하신 상품입니다!');
+							console.log('추천수 중복 허용할까그냥...');
+							return false;
+							
+						}else{
+						
+							console.log(clickNum);
+							var member_id='${memberVo.member_id}';
+							var product_id=$("#product_id").val();
+							var data= {
+									member_id : member_id,
+									product_id : product_id
+							};
+							$.ajax({
+								url : "${root}order/likeInsert",
+								type : "post",
+								data : data,
+								success : function(){
+									clickNum = clickNum + 1;
+									
+									alert('좋아요! 버튼 클릭');
+									/* 좋아요 버튼에 달려있는 아이디 찾아서 그 값에 +1 해서 표시해줘야 함. */
+									
+								}
+								
+							});
+							console.log(data);
+						};
+			
 			});
+		
+		});
 		</script>
 		
 	</body>
