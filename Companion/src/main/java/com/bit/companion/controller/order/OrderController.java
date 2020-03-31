@@ -53,6 +53,10 @@ public class OrderController {
 		orderService.list(model, product_id);
 		
 		
+		//장바구니에 담을 것.
+		//장바구니 버튼 경로도 여기로 지정되어있음.
+		
+		
 		logger.debug("1111order_detail_quantity 확인.");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
 		logger.debug("2222order_detail_price확인.");
@@ -60,9 +64,12 @@ public class OrderController {
 		logger.debug("3333order_amount 확인");
 		logger.debug((Integer.toString(orderVo.getOrder_amount())));
 //데이터 확인용.
-//		logger.debug(member.getMember_name());
-//		logger.debug(member.getMember_phone());
-//		logger.debug(member.getMember_email());
+		logger.debug("member_id 확인");
+		logger.debug(member.getMember_name());
+		logger.debug("옵션 수량 확인. 확인");
+		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
+		logger.debug("product_ id 확인");
+		logger.debug((Integer.toString(orderVo.getProduct_id())));
 //		logger.debug(orderVo.getMember_email());
 //		logger.debug(orderVo.getMember_email());
 

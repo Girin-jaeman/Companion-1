@@ -47,6 +47,15 @@ public class OrderDaoImpl implements OrderDao {
 	public OrderVo OrderProductPurchaseOne(int product_id) throws SQLException {
 		return sqlSession.selectOne("order.OrderProductPurchaseOne",product_id);
 	}
+
+// 장바구니에 담기
+	@Override
+	public void OrderCartAdd(OrderVo orderVo) throws SQLException {
+		
+		//cart table에 
+		sqlSession.insert("order.OrderCartAdd",orderVo);
+		
+	}
 	
 	
 	

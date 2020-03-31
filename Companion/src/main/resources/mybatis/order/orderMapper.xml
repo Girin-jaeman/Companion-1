@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="order">
+ 
+  <!-- order Table용 매퍼였지만 지금 안쓰는 중.  -->
 	<select id="OrderSelectAll" resultType="orderBean">
 	select * from `order`
 	</select>
@@ -13,7 +15,12 @@
 		select * from product where product_id=#{value}
 	</select>
 	
+	<!-- 장바구니에 상품 등록  -->
+	<insert id="OrderCartAdd" parameterType="orderBean">
+		insert into `cart` values ((select truncate(rand()*10000000,0)),#{member_id},#{product_id},#{order_detail_quantity});
+	</insert>
 
+	<!-- 상품 주문 시  -->
 	<insert id="OrderProductPurchase" parameterType="orderBean">
 	 	insert into 
 		`order` values
@@ -32,7 +39,6 @@
 		 (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})), 
 		 #{product_id},#{order_detail_price},#{order_detail_quantity});
 	</insert>
-
 
 <!-- 결제수단 결제 그 API에서 받아 올 수 있는지 확인 할 것.  -->
 	<insert id="OrderPaymentInsert" parameterType="orderBean">

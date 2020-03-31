@@ -44,6 +44,17 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 	}
+
+//  장바구니에 상품 담기.
+	@Override
+	public void insertCart(Model model, OrderVo orderVo) {
+ 
+		try {
+			orderDao.OrderCartAdd(orderVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

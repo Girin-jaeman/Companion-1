@@ -28,5 +28,30 @@
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
   	</select> 
+  	
+  	<!-- 메뉴바 목록 별로 정렬 출력하기.
+  	<select id="ProductCategorySelectOrderBySalesVolume" resultType="productBean" parameterType="int">
+  	select 
+  	
+  	</select>
+  	<select id="ProductCategorySelectOrderByLowPriceOrder" resultType="productBean" parameterType="int">
+  	
+  	
+  	</select>
+	<select id="ProductCategorySelectOrderByHighPriceOrder" resultType="productBean" parameterType="int">
+  		
+  	</select>
+  	<select id="ProductCategorySelectOrderByRegistrationDateOrder" resultType="productBean" parameterType="int">
+  	
+  	
+  	</select>
+  	  -->
+  	
+  	
+  	
+  	
+  	
+  	
+  	
 </mapper>
   

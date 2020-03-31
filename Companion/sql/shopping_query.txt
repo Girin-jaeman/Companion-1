@@ -1,4 +1,16 @@
+// 스프링 절대경로 :> C:\Companion\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Companion\
 ...쿼리 연습 + 쓸 것 모아두기
+
+
+장바구니 폼에 들어가는 것. productDetailOne.product_name   //  {productDetailOne.product_id 
+
+// cart_quantity 는 order_detail_quantity로 처리 할 것.
+
+///insert into `cart` values (랜덤상수,#{member_id},#{product_id},#{cart_quantity});
+
+
+
+
 
 select level, cateName, cateCode, cateCodeRef from goods_category
     start with cateCodeRef is null connect by prior cateCode = cateCodeRef;
@@ -113,12 +125,12 @@ insert into `order`
 
 
 
-//////order_detail 입력
+//////order_detail 입력-------------------------------------
 insert into `order_detail`
  values 
 (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id='1111')),1,190000,4);
 /////////////////////////
-//////delivery 입력
+//////delivery 입력-----------------------------------
 		(서브 쿼리문 )select truncate(rand()*100000000000000,0);-->randeom 난수 생성 + 소수점 삭제.
 insert into delivery 
 values

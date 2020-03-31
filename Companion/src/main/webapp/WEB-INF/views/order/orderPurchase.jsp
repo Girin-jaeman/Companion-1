@@ -468,14 +468,6 @@
 		   			}
 		   		</script><!-- 주문자 정보와 동일 체크박스 end  --> 
 		
-		<!-- 수량 * 물품 합계 출력.  -->
-		<script type="text/javascript">
-		 functuion calc_multiply(left, right){
-			 return Number(left) * Number(right);
-		 }
-		 
-		
-		</script>
 
 	</body>
 	
