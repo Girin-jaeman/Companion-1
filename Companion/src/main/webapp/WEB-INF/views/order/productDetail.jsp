@@ -163,26 +163,50 @@
 							<!-- 구매 로그인 세션 검사 -->
 							
 					  <!-- 장바구니  -->		
-                        <a href="#" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
-                        <button type="submit" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2">타입섭밋버튼장바구니</button>
+                        <button type="button" id="cartBtn" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#exampleModalCenter">장바구니에 담기</button>
                       	<input type="hidden" name="product_id" value="${productDetailOne.product_id }" />
+                      	
+                      	
+			                      			<!-- modal 장바구니! start -->
+			
+						<!-- Modal -->
+						<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+													
+										<div class="modal-body">
+											 ${productDetailOne.product_name } 을 장바구니에 담을까요?.<br>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">취소</button>
+											<button onclick="goForm()" type="submit" class="btn btn-primary">확인</button>
+										</div>
+								</div>
+							</div>
+				 		</div>	 <!-- modal-content end -->
+								
+					
+							<!-- modal-dialog end -->
                        <!-- 장바구니  -->
-                       
-                       
-                        <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-5" role="button" aria-pressed="true">찜하기</a>
+                        <a href="#" class="tn btn-primary btn-lg active navbar-btn mx-center" role="button" aria-pressed="true">찜하기</a>
                         </div>
 						<!-- btn group end-->
-
-			
 		</form>
 				</div>
-				
+						</div>
 			</div>
 			
 			
 			<!-- main content end -->
 
-			<!-- modal 장바구니! start -->
+	<%-- 		<!-- modal 장바구니! start -->
 
 			<!-- Modal -->
 			<div class="modal" id="myModal" tabindex="-1" role="dialog"
@@ -212,7 +236,7 @@
 			</div>	<!-- modal-content end -->
 					
 		
-				<!-- modal-dialog end -->
+				<!-- modal-dialog end --> --%>
 	
 			<!-- modal end -->
 			<!-- modal 장바구니! end -->
@@ -578,10 +602,16 @@
 		</script>
 		<!--  form 다중 액션 처리 -->
 		<script type="text/javascript">
+		var modal = document.getElementById("");
+		
 		 function goForm(){
 			 console.log("장바구니 버튼 클릭");
 			 document.formName.action="${root}order/orderCart";
+		 
+		 	modal.style.display = "block";
 		 };
+		 
+		 
 		</script>
 
 		<!-- ajax 문의글 리스트 출력. -->
