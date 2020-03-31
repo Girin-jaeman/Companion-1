@@ -90,6 +90,7 @@
 							<!-- 이미지 반 글 반 먹고 나머지는 밑에 푸터처럼. -->
 							<img src="${root }imgs/shopping/dogTestImage.jpg"
 								class="img-fluid" alt="Responsive image">
+								<!-- 이미지는 DB에 이미지 경로를 넣어야 함.  -->
 						</div>
 					</div>
 					<div class="col-md-7" id="descrip">
@@ -101,7 +102,7 @@
 						</p>
 			 <!-- 셀렉트박스 옵션 값 가져오기.  -->
 	
-	<form method="POST" action="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="form">
+	<form name="formName" id="formId" method="POST" action="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="form">
 						<div class="goods-text row">
 							<div class="col-sm-4 title">배송비</div>
 							<div class="col-sm-8">2,500원 (5만원이상 구매 시 무료)</div>
@@ -155,21 +156,30 @@
 										<a class="btn btn-primary btn-lg active navbar-btn mx-center" href="${root }login" role="button"  aria-pressed="true">구매하기</a>
 									</c:when>
 									<c:when test="${memberVo.member_id!=null}">  <!-- product_id 정보 GET 방식으로 넘길것.  -->
-										<button class="btn btn-primary btn-lg" id="purchaseBtn" type="submit" onclick="goForm()">구매하기</button>
+										<button class="btn btn-primary btn-lg" id="purchaseBtn" type="submit">구매하기</button>
 <%-- 										<button type="submit"> href="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="button" type="submit" aria-pressed="true">구매하기</a> </button> --%>
 									</c:when>
 								</c:choose>
 							<!-- 구매 로그인 세션 검사 -->
-                        <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
+							
+					  <!-- 장바구니  -->		
+                        <a href="#" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
+                        <button type="submit" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2">타입섭밋버튼장바구니</button>
+                      	<input type="hidden" name="product_id" value="${productDetailOne.product_id }" />
+                       <!-- 장바구니  -->
+                       
+                       
                         <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-5" role="button" aria-pressed="true">찜하기</a>
                         </div>
 						<!-- btn group end-->
 
-					</div>
+			
 		</form>
 				</div>
 				
 			</div>
+			
+			
 			<!-- main content end -->
 
 			<!-- modal 장바구니! start -->
@@ -186,14 +196,14 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
+										
 							<div class="modal-body">
-								<%-- 	        ${productDetailOne.product_name }이 장바구니에 담겼습니다. --%>
+								 ${productDetailOne.product_name }이 장바구니에 담겼습니다.<br>
 								장바구니로 이동할까요?
 							</div>
-							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">취소</button>
-								<button type="button" class="btn btn-primary">확인</button>
+								<button onclick="location.href='${root}mypage/mycart'" type="button" class="btn btn-primary">확인</button>
 							</div>
 						
 					</div>
@@ -539,29 +549,12 @@
 	<script src="${root}js/bootstrap/bootstrap.js"></script>
 	<!-- MAIN JS -->
 	<script src="${root }js/main.js"></script>
-
 	<!-- productDetail JS -->
-
-	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
-
 	<script src="${root}js/order/productDetail.js"></script>
 
 	<script type="text/javascript">
 		<script src="${root}js/order/productDetail.js"></script>
 	<script type="text/javascript">
-		 	// 문의글 작성 모달 창인데 잠시 보류 나중에 수정하겠음.
-			// var popup;
-			// $(document).on('click','#question',function(){
-			// 	$(function pop(){
-			// 		var settings = 'toolbar=0,location=no, status=0, menubar=0, scrollbars=no, height=500, width=400';
-			// 		var target = 'orderQuestion';
-			// 		popup = window.open('orderQuestion','question_popup',settings);
-					
-			// 	 	$.load("orderQuestion",function(){
-			// 			popup.location = target;
-			// 		}); 
-			// 	})
-			// }) 
 			$(function(){ 
 			$('.bt_up').click(function(){ 
 				var n = $('.bt_up').index(this);
@@ -586,10 +579,9 @@
 		<!--  form 다중 액션 처리 -->
 		<script type="text/javascript">
 		 function goForm(){
-			 
-			 
-		 }
-		
+			 console.log("장바구니 버튼 클릭");
+			 document.formName.action="${root}order/orderCart";
+		 };
 		</script>
 
 		<!-- ajax 문의글 리스트 출력. -->
