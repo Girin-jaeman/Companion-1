@@ -25,10 +25,9 @@ public class OrderCartController {
 	OrderService orderService;
 	
 	
-	@RequestMapping(value ="/order/orderCart",method=RequestMethod.POST)
-	public String orderCartAdd(Model model,HttpSession session,OrderVo orderVo,HttpServletRequest request) throws SQLException{
-		MemberVo member = (MemberVo)session.getAttribute("memberVo");
-		
+	 @RequestMapping(value ="/order/orderCart",method=RequestMethod.POST)
+	 public String orderCartAdd(Model model,HttpSession session,OrderVo orderVo,HttpServletRequest request) throws SQLException{
+	 		MemberVo member = (MemberVo)session.getAttribute("memberVo");
 		logger.debug("member_id 확인");
 		logger.debug(member.getMember_name());
 		logger.debug("옵션 수량 확인. 확인");
@@ -41,8 +40,7 @@ public class OrderCartController {
 		
 		orderService.insertCart(model, orderVo);
 		
-		return "redirect:productDetail?idx="+orderVo.getProduct_id();
-		
+		 return "redirect:productDetail?idx="+orderVo.getProduct_id(); 
 	};
 	
 	

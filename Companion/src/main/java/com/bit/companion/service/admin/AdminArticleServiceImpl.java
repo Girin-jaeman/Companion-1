@@ -9,35 +9,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.bit.companion.common.Pagination;
 import com.bit.companion.common.Search;
-import com.bit.companion.model.admin.AdminNoticeDao;
+import com.bit.companion.model.admin.AdminArticleDao;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
-import com.bit.companion.model.notice.NoticeDao;
 
 @Service
-public class AdminNoticeServiceImpl implements AdminNoticeService {
+public class AdminArticleServiceImpl implements AdminArticleService {
 	Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	AdminNoticeDao adminNoticeDao;
+	AdminArticleDao adminArticleDao;
 	
 	// notice list - selectAll
 	@Override
-	public void list(Model model, int page, int range, String searchType, String keyword, Search search) {
+	public void list(Model model, int page, int range, String searchType, String keyword, Search search, int board_id) {
 		try {
+			// board_id
+			search.setBoard_id(board_id);
+			
 			// Total list Count
-			int listCnt = adminNoticeDao.selectTotal(search);
+			int listCnt = adminArticleDao.selectTotal(search);
 			
 			// Pagination
 			search.setSearchType(searchType);
 			search.setKeyword(keyword);
 			search.pageInfo(page, range, listCnt);
 			
-			List<AdminArticleVo> list = adminNoticeDao.selectAll(search);
+			List<AdminArticleVo> list = adminArticleDao.selectAll(search);
 			
 			model.addAttribute("search",search);
-			model.addAttribute("adminNoticeList",list);
+			model.addAttribute("adminArticleList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,10 +46,12 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// notice detail - selectOne
 	@Override
-	public void detail(Model model, int article_id) {
+	public void detail(Model model, AdminArticleVo bean, int board_id) {
 		try {
-			//count?
-			model.addAttribute("adminNoticeOne", adminNoticeDao.selectOne(article_id));
+			// board_id
+			bean.setBoard_id(board_id);
+			
+			model.addAttribute("adminArticleOne", adminArticleDao.selectOne(bean));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -56,9 +59,12 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	
 	// notice add - insertOne
 	@Override
-	public void insert(AdminArticleVo bean) {
+	public void insert(AdminArticleVo bean, int board_id) {
 		try {
-			adminNoticeDao.insertOne(bean);
+			// board_id
+			bean.setBoard_id(board_id);
+			
+			adminArticleDao.insertOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -66,9 +72,12 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// notice edit - updateOne
 	@Override
-	public void update(AdminArticleVo bean) {
+	public void update(AdminArticleVo bean, int board_id) {
 		try {
-			adminNoticeDao.updateOne(bean);
+			// board_id
+			bean.setBoard_id(board_id);
+			
+			adminArticleDao.updateOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -76,9 +85,12 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	// notice delete - deleteOne
 	@Override
-	public void delete(int article_id) {
+	public void delete(AdminArticleVo bean, int board_id) {
 		try {
-			adminNoticeDao.deleteOne(article_id);
+			// board_id
+			bean.setBoard_id(board_id);
+			
+			adminArticleDao.deleteOne(bean);
 		} catch (SQLException e) {
 		}
 	}

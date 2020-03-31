@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/noticeD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<!-- CKEditor JS -->
-	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+ 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
-	<title>Companion::공지사항 수정</title>
+	<title>Companion::이벤트 조회</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -47,10 +48,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link" href="${root }admin/event_list">이벤트 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link" href="${root }admin/event_add">이벤트 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -63,46 +64,56 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 수정</h1>
+				<h1>[Admin] 이벤트 상세</h1>
 			</div>
-			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+				<div class="btn__group">
+					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
+				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
+					<button type="button" id="back_Btn" class="btn btn-back">뒤로</button>
+				</div>
+			<form role="form" method="post" autocomplete="off" action="${root}admin/event_delete">
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
-				<div>
-					<label for="title">title</label>
-					<input type="text" name="article_title" id="article_title" value="${adminArticleOne.article_title }"/>
-				</div>
-				<div>
-					<label for="date">date</label>
-					<input type="text" name="article_date" id="article_date" value="${adminArticleOne.article_date }"/>
-				</div>
-				<div>
-					<label for="content">content</label>
-					<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
-					<script>
-		 				var ckeditor_config = {
-								resize_enable : false,
-								enterMode : CKEDITOR.ENTER_BR,
-								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
-						};
-						CKEDITOR.replace('article_content', ckeditor_config);
-					</script>
-				</div>
-				<div>
-					<label for="article_image">img</label>
-					<input type="file" name="file" id="article_image"/>
-					<div class="select_img">
+				<table class="table">
+				<thead>
+					<tr>
+						<th class="clearfix">
+						<div class="float--left">
+							<label for="title">[제목]&nbsp;</label><span>${adminArticleOne.article_title }</span>
+						</div>
+						<div class="thumb float--right">
+							<label for="img">[썸네일]&nbsp;</label>
+							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminArticleOne.article_thumb }'/>"/>
+						</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						<label for="date">[작성일]&nbsp;</label>
+						<span>${adminArticleOne.article_date }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div>
+						<label for="content">content</label>
+						<span>${adminArticleOne.article_content }</span>
+						</div>
+						<div>
+						<label for="img">원본이미지</label>
 						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-						<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
-						<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
-					</div>
-				</div>
-				<div>
-					<button type="submit">수정</button>
-					<button type="button" id="back_Btn">취소</button>
-				</div>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+					</tr>
+				</tbody>
+				</table>
 			</form>
-			
+	
 		</section>
 		<!-- section [end] -->
 	</div>
@@ -120,22 +131,25 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
-
+  
 <script type="text/javascript">
-<!-- 이미지 등록시 출력 -->	
-$('#article_image').change(function(){
-	if(this.files&&this.files[0]){
-		var reader = new FileReader;
-		reader.onload = function(data){
-			$('.select_img img').attr("src",data.target.result).width(500);
-		}
-		reader.readAsDataURL(this.files[0]);
-	}
-});
-
+// 수정 버튼
+$("#modify_Btn").click(function(){
+	location.href = ${root}+"admin/event_edit?article_id=" + ${adminArticleOne.article_id};
+});  
+		 
 // 취소 버튼
 $("#back_Btn").click(function(){
 	history.back();
+});
+		 
+// 삭제 버튼
+var formObj = $("form[role='form']");
+$("#delete_Btn").click(function(){
+	var con = confirm("정말로 삭제하시겠습니까?");
+	if(con) {      
+		formObj.submit();
+	}
 });
 </script>
 

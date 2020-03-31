@@ -162,60 +162,59 @@
 								</c:choose>
 							<!-- 구매 로그인 세션 검사 -->
 							
-					  <!-- 장바구니  -->		
-                        <a href="#" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2" role="button" id="shoppingCart" data-toggle="modal" data-target="#exacmpleModalScrollable" aria-pressed="true">장바구니</a>
-                        <button type="submit" onclick="goForm()" class="btn btn-secondary btn-lg active navbar-btn mx-2">타입섭밋버튼장바구니</button>
-                      	<input type="hidden" name="product_id" value="${productDetailOne.product_id }" />
-                       <!-- 장바구니  -->
-                       
-                       
-                        <a href="#" class="btn btn-secondary btn-lg active navbar-btn mx-5" role="button" aria-pressed="true">찜하기</a>
-                        </div>
-						<!-- btn group end-->
-
-			
-		</form>
-				</div>
-				
-			</div>
-			
-			
-			<!-- main content end -->
-
-			<!-- modal 장바구니! start -->
-
-			<!-- Modal -->
-			<div class="modal" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+					  <!-- 장바구니  -->	
+					  
+					  <c:choose>
+					  	<c:when test="${memberVo.member_id==null }">
+					  		<button type="button" class="btn btn-primary btn-lg" onclick= "location.href= '${root}login'">장바구니=로그인.</button>
+					  	</c:when> 
+						<c:when test="${memberVo.member_id!=null}">	
+							<!-- 장바구니 로그인 세션 검사. -->
+	                        <button type="button" id="cartBtn" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#exampleModalCenter">장바구니에 담기</button>
+    	                  	<input type="hidden" name="product_id" value="${productDetailOne.product_id }" />
+						</c:when>			  
+					  </c:choose>	
+						<!-- Modal(장바구니_) -->
+						<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"	aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">장바구니에 담기</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+													
+										<div class="modal-body">
+											 ${productDetailOne.product_name } 을 장바구니에 담을까요?.<br>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">취소</button>
+											<button onclick="goForm()" type="submit" class="btn btn-primary">확인</button>
+										</div>
+								</div>
 							</div>
-										
-							<div class="modal-body">
-								 ${productDetailOne.product_name }이 장바구니에 담겼습니다.<br>
-								장바구니로 이동할까요?
-							</div>
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">취소</button>
-								<button onclick="location.href='${root}mypage/mycart'" type="button" class="btn btn-primary">확인</button>
-							</div>
-						
-					</div>
-		
-				</div>
-			</div>	<!-- modal-content end -->
+				 		</div>
+						<!-- modal-(장바구니) end -->
+                       <!-- 좋아요... 만들기 시러... -->
+						<button id="like_btn" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
+							<!-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							       아니 왜 얘만 이런 사이즈로 나옴??
+							    </div>
+							  </div>
+							</div> -->
+                       <!-- 좋아요... 만들기 시러... -->
+                        
+                        </div>	<!-- btn group end-->
 					
-		
-				<!-- modal-dialog end -->
-	
-			<!-- modal end -->
-			<!-- modal 장바구니! end -->
+	</form>
+						</div>
+					</div>
+				</div>
+
 			<div class="p-12 rounded mb-5">
 				<!-- Lined tabs-->
 				<ul id="myTab2" role="tablist"
@@ -455,7 +454,7 @@
 									<h4>문의하기</h4>
 								</div>
 								<div class="col-sm-3">
-									<button>내가 쓴 글 보기(스위치)</button>
+									<!-- <button>내가 쓴 글 보기(스위치)</button> -->
 								</div>
 							
 							</div>
@@ -466,6 +465,18 @@
 								<div id="reply">
 									<c:if test="${memberVo.member_id==null}">
 										<p>소감을 남기려면 로그인 해주세요!</p>
+										<section class="replyList">
+											<p>문의글 리스트 왜 안나오는데??? </p>
+											<!-- null 값이어도 값이 들어가야함. -->
+											<!-- 근데 뭐가 문제인지 모르겠음. -->
+												<table class="table--replyList">
+													<thead>							
+													</thead>
+													<tbody>
+									
+													</tbody>
+												</table>
+										</section>
 									</c:if>
 									<c:if test="${memberVo.member_id!=null}">
 										<section class="replyForm">
@@ -489,6 +500,7 @@
 									<section class="replyList">
 											<h4>최근 문의글 목록</h4>
 									<div class="col-lg-12">		
+							
 									<table class="table--replyList">
 									<thead>
 										<tr>
@@ -508,9 +520,8 @@
 									</thead>
 									<tbody>
 										<script>
-										replyList();
+											replyList();
 										</script>
-												
 									</tbody>
 									</table>
 									</div>
@@ -578,12 +589,15 @@
 		</script>
 		<!--  form 다중 액션 처리 -->
 		<script type="text/javascript">
+		var modal = document.getElementById("");
+		
 		 function goForm(){
 			 console.log("장바구니 버튼 클릭");
 			 document.formName.action="${root}order/orderCart";
+		 	 modal.style.display = "block";
 		 };
 		</script>
-
+		
 		<!-- ajax 문의글 리스트 출력. -->
 		<script type="text/javascript">
 				function replyList(){
@@ -635,8 +649,30 @@
 				});
 				console.log(data);	
 			});
-		/* 데이터 입력할 떄  */
+		/* ajax end  */
 		</script> 
+		<!-- 그 그 좋아요버튼 AJAX 처리. 아 에이젝스 개빡세네 왤케 많아 근데 미치겠네 진짜 -->
+		<script type="text/javascript">
+			$("#like_btn").click(function(){
+				var member_id='${memberVo.member_id}';
+				var product_id=$("#product_id").val();
+				var data= {
+						member_id : member_id,
+						product_id : product_id
+				};
+				$.ajax({
+					url : "${root}order/likeInsert",
+					type : "post",
+					data : data,
+					success : function(){
+						alert('좋아요! 버튼 클릭');
+					}
+					
+				});
+				console.log(data);
+			});
+		</script>
+		
 	</body>
 	</html>
 	

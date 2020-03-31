@@ -72,17 +72,17 @@
 					<button type="button" id="back_Btn" class="btn btn-back">뒤로</button>
 				</div>
 			<form role="form" method="post" autocomplete="off" action="${root}admin/notice_delete">
-				<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
+				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<table class="table">
 				<thead>
 					<tr>
 						<th class="clearfix">
 						<div class="float--left">
-							<label for="title">[제목]&nbsp;</label><span>${adminNoticeOne.article_title }</span>
+							<label for="title">[제목]&nbsp;</label><span>${adminArticleOne.article_title }</span>
 						</div>
 						<div class="thumb float--right">
 							<label for="img">[썸네일]&nbsp;</label>
-							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminNoticeOne.article_thumb }'/>"/>
+							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminArticleOne.article_thumb }'/>"/>
 						</div>
 						</th>
 					</tr>
@@ -91,19 +91,19 @@
 					<tr>
 						<td>
 						<label for="date">[작성일]&nbsp;</label>
-						<span>${adminNoticeOne.article_date }</span>
+						<span>${adminArticleOne.article_date }</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
 						<div>
 						<label for="content">content</label>
-						<span>${adminNoticeOne.article_content }</span>
+						<span>${adminArticleOne.article_content }</span>
 						</div>
 						<div>
 						<label for="img">원본이미지</label>
 						<%-- <img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"> --%>
-						<img alt="원본이미지" src="<spring:url value='${adminNoticeOne.article_image }'/>"/>
+						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
 						</div>
 						</td>
 					</tr>
@@ -136,7 +136,7 @@
 <script type="text/javascript">
 // 수정 버튼
 $("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/notice_edit?article_id=" + ${adminNoticeOne.article_id};
+	location.href = ${root}+"admin/notice_edit?article_id=" + ${adminArticleOne.article_id};
 });  
 		 
 // 취소 버튼

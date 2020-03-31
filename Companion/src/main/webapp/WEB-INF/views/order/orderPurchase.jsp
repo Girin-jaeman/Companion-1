@@ -194,7 +194,7 @@
 	                    <tbody>
 	                        <tr>
 	                            <th class="label"><span>주문하시는 분</span></th>
-	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_id}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
+	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_name}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
 	                        </tr>
 	                        <tr>
 	                            <th>휴대폰 번호</th>
@@ -453,7 +453,7 @@
 		   				var f= document.form;
 		   				if(checked == true){
 		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
-		   					document.getElementById("order_name").value="${memberVo.member_id}";
+		   					document.getElementById("order_name").value="${memberVo.member_name}";
 		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
 		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
 		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";

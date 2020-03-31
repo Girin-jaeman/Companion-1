@@ -78,7 +78,7 @@
 								resize_enable : false,
 								enterMode : CKEDITOR.ENTER_BR,
 								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/notice_ckUpload"
+								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
 						};
 						CKEDITOR.replace('article_content', ckeditor_config);
 					</script>

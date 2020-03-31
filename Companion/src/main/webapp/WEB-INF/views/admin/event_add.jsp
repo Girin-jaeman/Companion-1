@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -17,9 +16,9 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<!-- CKEditor JS -->
-	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+ 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
-	<title>Companion::공지사항 수정</title>
+	<title>Companion::이벤트 입력</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -47,10 +46,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link" href="${root }admin/event_list">이벤트 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link active" href="${root }admin/event_add">이벤트 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -63,21 +62,17 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 수정</h1>
+				<h1>[Admin] 이벤트 등록</h1>
 			</div>
+			
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<div>
 					<label for="title">title</label>
-					<input type="text" name="article_title" id="article_title" value="${adminArticleOne.article_title }"/>
-				</div>
-				<div>
-					<label for="date">date</label>
-					<input type="text" name="article_date" id="article_date" value="${adminArticleOne.article_date }"/>
+					<input type="text" name="article_title" id="article_title" placeholder="제목을 입력하세요" required="required"/>
 				</div>
 				<div>
 					<label for="content">content</label>
-					<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
+					<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
 					<script>
 		 				var ckeditor_config = {
 								resize_enable : false,
@@ -90,28 +85,24 @@
 				</div>
 				<div>
 					<label for="article_image">img</label>
-					<input type="file" name="file" id="article_image"/>
-					<div class="select_img">
-						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-						<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
-						<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
-					</div>
+					<input type="file" name="file" id="article_image">
+				 	<div class="select_img"><img src="" /></div>
 				</div>
 				<div>
-					<button type="submit">수정</button>
+					<button type="submit">입력</button>
 					<button type="button" id="back_Btn">취소</button>
 				</div>
 			</form>
-			
+	
 		</section>
 		<!-- section [end] -->
 	</div>
 	<!-- #content [end] -->
 </div>
 <!-- .wrapper [end] -->
-	
-	
 
+
+	
 <!-- jQuery -->
 <script src="${root }js/jquery-1.12.4.js"></script>
 <!-- Popper.JS -->
@@ -121,7 +112,7 @@
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
 
-<script type="text/javascript">
+<script>
 <!-- 이미지 등록시 출력 -->	
 $('#article_image').change(function(){
 	if(this.files&&this.files[0]){
@@ -138,6 +129,6 @@ $("#back_Btn").click(function(){
 	history.back();
 });
 </script>
-
+ 	
 </body>
 </html>
