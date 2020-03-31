@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.common.Pagination;
+import com.bit.companion.common.Search;
 import com.bit.companion.model.admin.AdminNoticeDao;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.model.notice.NoticeDao;
@@ -23,19 +24,20 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	
 	// notice list - selectAll
 	@Override
-	public void list(Model model,int page, int range) {
+	public void list(Model model, int page, int range, String searchType, String keyword, Search search) {
 		try {
 			// Total list Count
-			int listCnt = adminNoticeDao.selectTotal();
+			int listCnt = adminNoticeDao.selectTotal(search);
 			
 			// Pagination
-			Pagination pagination = new Pagination();
-			pagination.pageInfo(page,range,listCnt);
+			search.setSearchType(searchType);
+			search.setKeyword(keyword);
+			search.pageInfo(page, range, listCnt);
 			
-			List<AdminArticleVo> list = adminNoticeDao.selectAll(pagination);
+			List<AdminArticleVo> list = adminNoticeDao.selectAll(search);
 			
+			model.addAttribute("search",search);
 			model.addAttribute("adminNoticeList",list);
-			model.addAttribute("pagination",pagination);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

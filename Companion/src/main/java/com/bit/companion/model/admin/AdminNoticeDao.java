@@ -4,12 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.bit.companion.common.Pagination;
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminNoticeDao {
 
 	// notice list
-	List<AdminArticleVo> selectAll(Pagination pagination) throws SQLException;
+	List<AdminArticleVo> selectAll(Search search) throws SQLException;
 	
 	// notice detail
 	AdminArticleVo selectOne(int article_id) throws SQLException;;
@@ -23,6 +24,7 @@ public interface AdminNoticeDao {
 	// notice delete
 	int deleteOne(int article_id) throws SQLException;
 
-	int selectTotal() throws SQLException;;
+	// notice total
+	int selectTotal(Search search) throws SQLException;;
 	
 }

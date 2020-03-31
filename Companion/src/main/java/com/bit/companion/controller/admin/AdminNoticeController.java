@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
 import com.bit.companion.service.admin.AdminNoticeService;
 import com.bit.companion.util.UploadFileUtils;
@@ -46,9 +47,13 @@ public class AdminNoticeController {
 	@RequestMapping(value = "notice_list", method = RequestMethod.GET)
 	public String noticeList(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
-			,@RequestParam(required = false, defaultValue = "1") int range) {
+			,@RequestParam(required = false, defaultValue = "1") int range
+			,@RequestParam(required = false, defaultValue = "all") String searchType
+			,@RequestParam(required = false) String keyword
+			,@ModelAttribute("search") Search search) {
 		logger.info("get notice list");
-		adminNoticeService.list(model,page,range);
+		
+		adminNoticeService.list(model, page, range, searchType, keyword, search);
 		return "admin/notice_list";
 	}
 	

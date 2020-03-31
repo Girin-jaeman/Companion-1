@@ -7,32 +7,94 @@
 
 	<!-- notice list -->
 	<select id="selectAll" resultType="adminNoticeArticleBean">
-		select @rownum:=@rownum+1 as no, A.* from `article` A where (@rownum:=0)=0 AND board_id=0 order by A.article_id desc LIMIT #{startList}, #{listSize}
+		SELECT 
+			@rownum:=@rownum+1 AS no,
+			A.* 
+				FROM `ARTICLE` A 
+					WHERE (@rownum:=0)=0 AND board_id=0
+					<trim prefix="AND">
+						<if test="searchType=='all' and keyword != null and keyword != '' ">
+							article_title LIKE CONCAT('%', #{keyword}, '%') OR
+							article_content LIKE CONCAT('%', #{keyword}, '%') OR
+							member_id LIKE CONCAT('%', #{keyword}, '%') 
+						</if>
+						<if test="searchType=='title' and keyword != null and keyword != '' ">
+							article_title LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='content' and keyword != null and keyword != '' ">
+							article_content LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='member' and keyword != null and keyword != '' ">
+							member_id LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+					</trim>
+					 ORDER BY A.article_id DESC LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- notice detail -->
 	<select id="selectOne" resultType="adminNoticeArticleBean" parameterType="int">
-		select article_id, article_title, article_content, article_date, article_image,article_thumb from `article` where article_id=#{value}
+		SELECT 
+			article_id,
+			article_title,
+			article_content,
+			article_date,
+			article_image,
+			article_thumb
+				FROM `ARTICLE` 
+					WHERE article_id=#{value}
 	</select>
 	
 	<!-- notice add -->
 	<!-- #{member_id} - 임시로 admin -->
 	<insert id="insertOne" parameterType="adminNoticeArticleBean">
-		insert into `article` values(0,null,'admin',#{article_title},#{article_content},now(),0,#{article_image},#{article_thumb})
+		INSERT INTO `ARTICLE` VALUES(
+			0,
+			null,
+			'admin',
+			#{article_title},
+			#{article_content},
+			now(),
+			0,
+			#{article_image},
+			#{article_thumb}
+		)
 	</insert>
 	
 	<!-- notice edit -->
 	<update id="updateOne" parameterType="adminNoticeArticleBean" >
-		update `article` set article_title=#{article_title} , article_content=#{article_content}, article_image=#{article_image}, article_thumb=#{article_thumb} where article_id=#{article_id}
+		UPDATE `ARTICLE` SET 
+			article_title=#{article_title},
+			article_content=#{article_content},
+			article_image=#{article_image},
+			article_thumb=#{article_thumb}
+				WHERE article_id=#{article_id}
 	</update>
 	
 	<!-- notice delete -->
 	<delete id="deleteOne" parameterType="adminNoticeArticleBean">
-		delete from `article` where article_id=#{article_id}
+		DELETE FROM `ARTICLE` WHERE article_id=#{article_id}
 	</delete>
 	
 	<!-- notice total -->
   	<select id="selectTotal" resultType="int">
-  		select count(*) as listCnt from `article` where board_id=0
+  		SELECT count(*) as listCnt FROM `ARTICLE` WHERE board_id=0
+  		<trim prefix="AND">
+  			<if test="keyword != null and keyword != '' ">
+				<if test="searchType == 'all'">
+					article_title LIKE CONCAT('%', #{keyword}, '%') OR
+					article_content LIKE CONCAT('%', #{keyword}, '%') OR
+					member_id LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'title'">
+					article_title LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'content'">
+					article_content LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'member'">
+					member_id LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+  			</if>
+  		</trim>
   	</select>
 </mapper>
