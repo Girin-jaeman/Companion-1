@@ -44,10 +44,9 @@
   		<mapper resource="mybatis/mypage/mypageMapper.xml"/>
   		
   		<!-- admin -->
-  		<mapper resource="mybatis/admin/adminNoticeMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminArticleMapper.xml"/>
   		<mapper resource="mybatis/admin/adminProductMapper.xml"/>
   		<mapper resource="mybatis/admin/adminMemberMapper.xml"/>
-  		<mapper resource="mybatis/admin/adminEventMapper.xml"/>
   		
   		<!-- order -->
   		<mapper resource="mybatis/order/orderMapper.xml"/>

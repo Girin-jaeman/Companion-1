@@ -47,10 +47,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link" href="${root }admin/event_list">이벤트 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link" href="${root }admin/event_add">이벤트 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -63,7 +63,7 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 수정</h1>
+				<h1>[Admin] 이벤트 수정</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
