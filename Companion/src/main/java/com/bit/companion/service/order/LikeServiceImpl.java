@@ -17,19 +17,6 @@ public class LikeServiceImpl implements LikeService {
 
 	@Autowired
 	LikeDao likedao;
-	
-	@Override
-	public void likeTest(Model model) {
-		
-		List<LikeVo> list;
-		try {
-			list = likedao.likeTest();
-			model.addAttribute("likeTest",list);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		
-	}
 
 	@Override
 	public void likeInsert(LikeVo likeVo) throws Exception{
@@ -37,9 +24,6 @@ public class LikeServiceImpl implements LikeService {
 		
 	}
 
-
-		
-	
 //	@Override
 //	public void likeUpdate(Model model,int product_id,String member_id) {
 //		int list; 

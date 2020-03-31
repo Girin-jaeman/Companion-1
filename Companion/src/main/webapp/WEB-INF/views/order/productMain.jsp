@@ -153,6 +153,7 @@
 			              
 			                <!-- 상품 추천 수 받아올 것. -->
 			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
+<%-- 			                    <%request.setAttribute("like_id",${bean.like_id}); %> --%>
 			                <!-- 상품 추천 수 받아올 것. -->
 	
 			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>
