@@ -91,7 +91,7 @@
 					</th>
 				    <td>
 				    	<div>
-				    	<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
+				    	<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80" style="resize: none;"></textarea>
 						<script>
 		 				var ckeditor_config = {
 								resize_enable : false,
