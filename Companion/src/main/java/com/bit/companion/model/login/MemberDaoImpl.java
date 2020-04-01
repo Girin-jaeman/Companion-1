@@ -23,5 +23,29 @@ public class MemberDaoImpl implements MemberDao {
 		return result;
 	}
 
+	@Override
+	public int emailChk(String k_email) {
+		int result=sqlSession.selectOne("member.emailChk",k_email);
+		return result;
+	}
+
+	@Override
+	public String emailFindId(String k_email) {
+		String member_id=sqlSession.selectOne("member.emailFindId",k_email);
+		return member_id;
+	}
+
+	@Override
+	public String emailFindPw(String k_email) {
+		String member_pw=sqlSession.selectOne("member.emailFindPw",k_email);
+		return member_pw;
+	}
+
+	@Override
+	public String emailFindName(String k_email) {
+		String member_name=sqlSession.selectOne("member.emailFindName",k_email);
+		return member_name;
+	}
+
 
 }
