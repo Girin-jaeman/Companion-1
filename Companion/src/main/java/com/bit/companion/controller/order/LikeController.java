@@ -33,13 +33,15 @@ public class LikeController {
 	  
 	  @ResponseBody
 	  @RequestMapping(value="/order/likeInsert", method = RequestMethod.POST)
-	  public void likeInsert(LikeVo likeVo,HttpSession session) throws Exception {
+	  public int likeInsert(LikeVo likeVo,HttpSession session) throws Exception {
+		  int result;
 		  System.out.println("likeInsertController run");
 		  logger.debug(likeVo.getMember_id());
 		  logger.debug((Integer.toString(likeVo.getProduct_id())));
 //		  MemberVo member = (MemberVo)session.getAttribute("member");
 //		  likeVo.setLike_id(member.getMember_id());
-		  likeService.likeInsert(likeVo);
+		  result = likeService.likeInsert(likeVo);
+		  return result;
 	  }
 	  
 
