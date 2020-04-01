@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
 public class ProductVo {
 	private int category_id;
 	private int product_id;
@@ -25,12 +24,35 @@ public class ProductVo {
 	private String category_name;
 	private int like_id;
 	private int order_id;
+	private int AllProductNum;
 	
+public ProductVo(int category_id, int product_id, String product_name, String product_content, int product_price,
+			int product_stock, Date product_date, String product_image, String product_thumb, String product_option1,
+			String product_option2, String product_option3, String product_option4, String product_option5,
+			String category_name, int like_id, int order_id, int allProductNum) {
+		super();
+		this.category_id = category_id;
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.product_content = product_content;
+		this.product_price = product_price;
+		this.product_stock = product_stock;
+		this.product_date = product_date;
+		this.product_image = product_image;
+		this.product_thumb = product_thumb;
+		this.product_option1 = product_option1;
+		this.product_option2 = product_option2;
+		this.product_option3 = product_option3;
+		this.product_option4 = product_option4;
+		this.product_option5 = product_option5;
+		this.category_name = category_name;
+		this.like_id = like_id;
+		this.order_id = order_id;
+		AllProductNum = allProductNum;
+	}
+
 public ProductVo() {
 }
-
-
-
 
 public ProductVo(int category_id, int product_id, String product_name, String product_content, int product_price,
 		int product_stock, Date product_date, String product_image, String product_thumb, String product_option1,
@@ -56,12 +78,6 @@ public ProductVo(int category_id, int product_id, String product_name, String pr
 	this.order_id = order_id;
 }
 
-
-
-
-
-
-
 @Override
 public String toString() {
 	return "ProductVo [category_id=" + category_id + ", product_id=" + product_id + ", product_name=" + product_name
@@ -70,14 +86,16 @@ public String toString() {
 			+ product_thumb + ", product_option1=" + product_option1 + ", product_option2=" + product_option2
 			+ ", product_option3=" + product_option3 + ", product_option4=" + product_option4 + ", product_option5="
 			+ product_option5 + ", category_name=" + category_name + ", like_id=" + like_id + ", order_id=" + order_id
-			+ "]";
+			+ ", AllProductNum=" + AllProductNum + "]";
 }
 
+public int getAllProductNum() {
+	return AllProductNum;
+}
 
-
-
-
-
+public void setAllProductNum(int allProductNum) {
+AllProductNum = allProductNum;
+}
 
 public int getCategory_id() {
 	return category_id;
@@ -214,10 +232,5 @@ public int getOrder_id() {
 public void setOrder_id(int order_id) {
 	this.order_id = order_id;
 }
-
-
-
-
-	
 
 }

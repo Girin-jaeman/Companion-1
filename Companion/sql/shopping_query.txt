@@ -107,8 +107,12 @@ select a.category_id, a.product_id, a.product_name, a.product_content, a.product
 		 b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, b.product_option4, b.product_option5, 
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on 		 				 a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
-
 ///////////////////// b. category_id 에는 mybatis #{value} 로 처리해야함
+------------------------페이징용----Product-------------------------------
+select count(*) as AllProductNum,product.* from product where category_id=#{category_id};
+------------------------페이징용----Product-------------------------------
+
+
 
 
 

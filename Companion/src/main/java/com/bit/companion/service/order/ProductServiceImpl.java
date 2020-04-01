@@ -41,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+//	프로덕트 목록 출력.
 	@Override
 	public void category(Model model, int category_id) {
 		List<ProductVo> list;
