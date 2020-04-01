@@ -71,6 +71,7 @@
 	                </div>
 	            </nav>
 	            
+	            
 				<div class="maincontent">
 				
 					<form name="memberadd" method="post" autocomplete="off">
@@ -96,8 +97,22 @@
 						<label for="member_phone">*PHONE</label>
 						<input type="text" name="member_phone" id="member_phone" placeholder="phone number contains -"></br>
 						
+	            <c:choose>
+	            	<c:when test="${k_email!=null }">
+	            	<!-- 카톡 로그인을 통해서 왔을때 -->
+						<label for="member_email">*E-MAIL</label>
+						<input type="email" name="member_email" id="member_email" value="${k_email }" readonly="readonly">
+					<!-- 이메일 중복확인,인증은 한 것으로 처리 -->
+						<input type="hidden" name="email_chk_value" id="email_chk_value" value="2">
+						<!-- 이메일 인증여부 //1안함 2함// -->
+						<input type="hidden" name="email_overlap_chk_value" id="email_overlap_chk_value" value="2">
+						<!-- 이메일 중복확인여부 //1 안함 2 함 // -->
+	            	</c:when>
+	            	<c:otherwise>
+	            	<!-- 그냥 회원가입으로 왔을 떄 -->
 						<label for="member_email">*E-MAIL</label>
 						<input type="email" name="member_email" id="member_email" placeholder="E-mail contains @">
+						<button type="button" id="email_overlap_chk">중복확인</button>
 						<button type="button" id="email_chk_btn">인증번호받기</button></br>
 						<p name="email_chk_panel" id="email_chk_panel" style="display:none">
 							<input type="text" name="member_email_chk" id="member_email_chk" placeholder="받으신 인증번호를 입력해 주세요.">
@@ -106,7 +121,11 @@
 						<input type="hidden" name="email_random_msg" id="email_random_msg" value="">
 						<input type="hidden" name="email_chk_value" id="email_chk_value" value="1">
 						<!-- 이메일 인증여부 //1안함 2함// -->
-						
+						<input type="hidden" name="email_overlap_chk_value" id="email_overlap_chk_value" value="1">
+						<!-- 이메일 중복확인여부 //1 안함 2 함 // -->
+	            	</c:otherwise>
+	            </c:choose>
+						</br>
 						<label>*ADDRESS</label>
 						<p>
 						
@@ -357,7 +376,7 @@
 				var member_addr2=$("#sample2_address").val();
 				var member_addr3=$("#sample2_detailAddress").val();
 				var id_chk_value=$("#id_chk_value").val();
-				var email_chk_value=$("#email_chk_value").val();
+				var email_overlap_chk_value=$("#email_overlap_chk_value").val();
 				if(member_pw!=member_pw_chk){
 					alert("비밀번호가 서로 일치하지 않습니다. 확인해 주세요.");
 					return;
@@ -370,8 +389,8 @@
 					alert("아이디 중복확인을 해주세요.");
 					return;
 				}
-				if(email_chk_value=="1"){
-					alert("이메일 인증을 해주세요.");
+				if(email_overlap_chk_value=="1"){
+					alert("이메일 중복확인을 해주세요.");
 					return;
 				}
 				var checkPassword=verifyPassword(member_pw,{
@@ -389,6 +408,7 @@
 			
 			/* id 중복체크버튼 */
 			$("#id_chk_btn").click(function(){
+				document.getElementById("id_chk_value").value="1";
 				var member_id=$("#member_id").val();
 				var userData={"member_id" : member_id};
 				if(member_id==""){
@@ -404,13 +424,41 @@
 							if(result==0){
 								alert("사용이 가능한 아이디입니다.");
 							}else if(result==1){
-								alert("이미 존재하는 아이디입니다.\n다른 아이디를 사용해 주세요.");
+								alert("이미 사용중인 아이디입니다.\n다른 아이디를 사용해 주세요.");
 								return;
 							}
 						}
 						
 					});
 					document.getElementById("id_chk_value").value="2";
+				}
+			});
+			
+			/* email 중복체크버튼 */
+			$("#email_overlap_chk").click(function(){
+				document.getElementById("email_overlap_chk_value").value="1";
+				var member_email=$("#member_email").val();
+				var userData={"member_email" : member_email};
+				if(member_email==""){
+					alert("이메일을 입력해 주시기 바랍니다.");
+					return;
+				}else{
+					$.ajax({
+						type : "POST",
+						url : "/companion/login/emailoverlapchk",
+						data : userData,
+						dataType : "json",
+						success : function(result){
+							if(result==0){
+								alert("사용이 가능한 이메일입니다.");
+							}else if(result==1){
+								alert("이미 사용중인 이메일입니다.\n다른 이메일을 사용해 주세요.")
+								return;
+							}
+						}
+					
+					});
+					document.getElementById("email_overlap_chk_value").value="2";
 				}
 			});
 			
@@ -421,8 +469,9 @@
 				var member_email=$("#member_email").val();
 				var userData={"member_email" : member_email};
 				var checkEmail=verifyEmail(member_email);
-				if(member_email==""){
-					alert("이메일을 입력해 주시기 바랍니다.");
+				var email_overlap_chk_value=$("#email_overlap_chk_value").val();
+				if(email_overlap_chk_value=="1"){
+					alert("이메일 중복확인을 먼저 해주시기 바랍니다.");
 					return;
 				}else if(checkEmail=="no"){
 					alert("이메일 양식이 올바르지 않습니다.");

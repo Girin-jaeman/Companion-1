@@ -84,9 +84,12 @@
 						<button type="button" onclick="history.back();">뒤로</button>	</br>
 						<c:if test="${loginChk==false }">
 							<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-						</c:if>	
+						</c:if>
 					</form>
-					
+					<div id="kakao_id_login">
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">카카오 로그인</a>
+					</div>
+		
 	            </div>
 			</div>
 			
