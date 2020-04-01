@@ -23,6 +23,30 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int emailChk(String k_email) {
+		int result=memberDao.emailChk(k_email);
+		return result;
+	}
+
+	@Override
+	public String emailFindId(String k_email) {
+		String member_id=memberDao.emailFindId(k_email);
+		return member_id;
+	}
+
+	@Override
+	public String emailFindPw(String k_email) {
+		String member_pw=memberDao.emailFindPw(k_email);
+		return member_pw;
+	}
+
+	@Override
+	public String emailFindName(String k_email) {
+		String member_name=memberDao.emailFindName(k_email);
+		return member_name;
+	}
+
 
 	
 }

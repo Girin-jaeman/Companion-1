@@ -70,10 +70,17 @@ public class MemberController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/login/emailoverlapchk",method=RequestMethod.POST)
+	public int emailChk(String member_email) {
+		int result=memberService.emailChk(member_email);
+		return result;
+	}
+	
 	@RequestMapping(value="/login/memberadd",method=RequestMethod.POST)
 	public String memberadd(@ModelAttribute MemberVo bean) {
 		memberService.insert(bean);
-		return "redirect:..";
+		return "home";
 	}
 	
 	/* 난수 만드는 method */

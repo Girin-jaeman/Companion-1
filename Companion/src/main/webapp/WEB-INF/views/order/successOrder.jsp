@@ -30,7 +30,7 @@
 		<link rel="stylesheet" href="${root}css/home.css">
 		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/main.css">
-	
+		<link rel="stylesheet" href="${root}css/mypage/successOrder.css">
 		<!-- Font Awesome JS -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -47,57 +47,98 @@
 			<div id="content">
 	
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<div class="container-fluid">
+	                <div class="container-fluid">
 	
-						<button type="button" id="sidebarCollapse" class="btn btn-info">
-							<i class="fas fa-align-left"></i>
-							<span>Toggle Sidebar</span>
-						</button>
-						<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<i class="fas fa-align-justify"></i>
-						</button>
-	
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="nav navbar-nav ml-auto">
-								<li class="nav-item active">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Page</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
+	                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+	                        <i class="fas fa-align-left"></i>
+	                        <span>메뉴</span>
+	                    </button>
+	                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+	                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+	                        aria-expanded="false" aria-label="Toggle navigation">
+	                        <i class="fas fa-align-justify"></i>
+	                    </button>
+	                    
+	                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	                        <c:choose>
+	                            <c:when test="${sessionScope.memberVo.member_id==null }">
+	                                <script>
+	                                	window.location.href="login";
+	                                </script>
+	                            </c:when>
+	                            <c:otherwise>
+	                                <ul class="nav navbar-nav ml-auto">
+	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="#">주문내역</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypage/mycart">장바구니</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link" href="${root }logout">로그아웃</a>
+	                                    </li>
+	                                </ul>
+	                            </c:otherwise>
+	                            
+	                        </c:choose>
+	                    </div>
+	                </div>
+	            </nav>
 				<!-- menu -->
 				
 				<!--content  -->
-	<div class="page-header">
-		<h1>주문 / 결제</h1>
-				<hr class="mb-5">
-	
-	</div> <!-- <div class="w-100"></div> 강제 줄바꿈-->
-	<div class="container">
-		<hr class="mb-5">
-	<div class="row"> 
-		
-		<h1>주문이 완료되었습니다!</h1>
-	</div><!-- row end -->
- 	<a href="${root }" class="btn btn-primary" id="payApi" role="button"> 메인페이지로 돌아가기. </a> 
-<!-- 	<button onclick="window.open='../order/payApi'">결제하기</button> -->
-<!-- 	<a class="btn btn-primary" id="payApi" href="../order/payApi" role="button"> 결제하기 </a> -->
-<a href="${root }mypagechk" class="btn btn-primary" role="button">주문 내역 확인하기.</a> 
-	
-	
-				<div class="col-sm-2"></div> 
-					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>						
-	</div><!-- container end -->
+	<div class="categories">
+                <a href="#homeSubmenu">
+                    <i class="fas fa-home"></i>
+                    마이페이지
+                </a>
+                <span>></span>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    구매완료
+                </a>
+                <hr class="mb-4">
+            </div>
+	<section class="section">
+		 <div class="title-group clearfix">
+                    <h1 class="main--title float--left">구매완료</h1>
+                    <ul class="route float--right">
+                        <li>
+                            01 장바구니
+                            <span>></span>
+                        </li> 
+                        <li>
+                            02 주문서작성/결제
+                            <span>></span>
+                        </li> 
+                        <li>03 주문완료</li> 
+                    </ul>
+                </div><!-- .title-group end-->
+
+				<div class="success">
+					<h1>주문이 완료되었습니다!</h1>
+					<a href="${root }" class="btn btn--primary" id="payApi"
+						role="button"> 메인페이지로 돌아가기. </a>
+					<!-- 	<button onclick="window.open='../order/payApi'">결제하기</button> -->
+					<!-- 	<a class="btn btn-primary" id="payApi" href="../order/payApi" role="button"> 결제하기 </a> -->
+					<a href="${root }mypagechk" class="btn btn--primary" role="button">주문
+						내역 확인하기.</a>
+				</div>
+
+			</section><!-- container end -->
+	<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp"/>
+	<!-- Footer end -->
 </div><!-- content 끝나는 곳. -->
 		</div><!-- Wrapper ENd -->
 	

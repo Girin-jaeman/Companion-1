@@ -1,0 +1,79 @@
+label{
+	margin-bottom:0;
+}
+.section #detail{
+	width:950px;
+	margin: 0 auto;
+	border:5px double gray;
+}
+.tit{
+	width:160px;
+	border-bottom: 1px double gray;
+	font-size:20px;
+	margin-bottom:10px;
+	text-align:center;
+	padding:5px;
+}
+.rightd{
+	width:200px;
+	font-size:16px;
+	margin-bottom:10px;
+	text-align:center;
+	padding:5px;
+}
+.imgB{
+	background:burlywood;
+	width:350px;
+	height:350px;
+	margin-left:10px;
+	margin-bottom: 10px;
+	border:1px solid gray;
+}
+.imgB img{
+	
+	width:348px;
+	height:348px;
+	
+}
+table{
+	margin-right:12px;
+	width:550px;
+	height:350px;
+}
+table tr{
+	height:36px;
+
+}
+table thead{
+	border-bottom:1px solid gray;
+}
+table thead th{
+	width:100px;
+	text-align:right;
+}
+table thead td{
+	width:150px;
+	padding-left:10px;
+}
+#detailContent{
+	
+	height:100px;
+}
+table tbody th{
+	text-align: right;
+	padding-right:15px;
+}
+.inputArea{
+	margin:10px;
+}
+.inputArea .inputAreaC{
+	border:1px solid gray;
+	
+}
+.product-o{
+	display:flex;
+	
+}
+.product-o .inputArea-o{
+	margin-right:15px;
+}

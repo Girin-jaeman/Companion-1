@@ -10,4 +10,16 @@
 	<select id="idChk" parameterType="String" resultType="int">
 		select count(*) from member where member_id=#{member_id}
 	</select>
+	<select id="emailChk" parameterType="String" resultType="int">
+		select count(*) from member where member_email=#{k_email}
+	</select>
+	<select id="emailFindId" parameterType="String" resultType="String">
+		select member_id from member where member_email=#{k_email}
+	</select>
+	<select id="emailFindPw" parameterType="String" resultType="String">
+		select member_pw from member where member_email=#{k_email}
+	</select>
+	<select id="emailFindName" parameterType="String" resultType="String">
+		select member_name from member where member_email=#{k_email}
+	</select>
 </mapper>
