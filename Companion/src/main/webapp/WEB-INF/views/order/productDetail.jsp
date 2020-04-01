@@ -198,14 +198,16 @@
 				 		</div>
 						<!-- modal-(장바구니) end -->
                        <!-- 좋아요... 만들기 시러... -->
-						<button id="like_btn" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
-							<!-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-							  <div class="modal-dialog modal-sm">
-							    <div class="modal-content">
-							       아니 왜 얘만 이런 사이즈로 나옴??
-							    </div>
-							  </div>
-							</div> -->
+                       
+<!-- 로그인 안하면 그냥 모달폼 넘길것.  -->                       
+                    <c:choose>
+						<c:when test="${memberVo.member_id!=null }">
+							<button id="like_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
+						</c:when>	
+						<c:when test="${memberVo.member_id==null }">	
+							<button id="noneLgnLike_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
+						</c:when>
+					</c:choose>	
                        <!-- 좋아요... 만들기 시러... -->
                         
                         </div>	<!-- btn group end-->
@@ -653,12 +655,13 @@
 		</script> 
 		<!-- 그 그 좋아요버튼 AJAX 처리. 아 에이젝스 개빡세네 왤케 많아 근데 미치겠네 진짜 -->
 		<script type="text/javascript">
-		
-		/* 페이지를 리로드 할 경우 또 다시 추천을 할 수 있음.  */
+		/*   로그인 여부 체크  */
+		$("#noneLgnLike_btn").click(function(){
+			alert('로그인이 필요합니다.');
+		})
+		/* 매퍼에서 못 거를 경우 여기에서 다시 거름.  */
 		$(document).ready(function(){
 			var clickNum=1;
-		
-
 		$("#like_btn").click(function(){
 
 						if(clickNum==2||clickNum>2){
@@ -679,14 +682,17 @@
 								url : "${root}order/likeInsert",
 								type : "post",
 								data : data,
-								success : function(){
+								success : function(result){
 									clickNum = clickNum + 1;
-									
-									alert('좋아요! 버튼 클릭');
-									/* 좋아요 버튼에 달려있는 아이디 찾아서 그 값에 +1 해서 표시해줘야 함. */
-									
-								}
 								
+									if(result==0){
+										alert('좋아요! 버튼 클릭');
+										location.reload();
+									}else{
+										alert('좋아요!가 취소되었습니다!');
+										location.reload();
+									}
+								}
 							});
 							console.log(data);
 						};

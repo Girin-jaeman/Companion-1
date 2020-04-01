@@ -53,6 +53,16 @@ if(return 값이 1일 경우.){
 
 ///상품 좋아요 등록
 	insert into `like` (null, member_id, product_id) values (null,#{member_id}, #{product_id});
+
+insert into `like` values(default,#{member_id},#{product_id});
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+update `like` set like_id = like_id+1 where product_id=1 and member_id='회원9';
+회원 아이디 체크 반드시 해야함 
+상품 아이디는 여러개인데 멤버 아이디만 다른 경우에는 
+상품ID에 해당하는 모든 상품의 추천 개수가 증가하기 때문.
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
 ///////
 
 ///상품 좋아요 취소
