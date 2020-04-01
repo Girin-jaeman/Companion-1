@@ -11,6 +11,7 @@ public interface LikeService {
 //	void likeUpdate(Model model, int product_id, String member_id);
 //	void productLikeInquiry(Model model,int product_id);
 //	void likeDelete(Model model, int product_id, String member_id);
-	void likeTest(Model model);	
-	void likeInsert(LikeVo likevo) throws Exception;
+
+	int likeInsert(LikeVo likevo) throws Exception;
 } 
+ 

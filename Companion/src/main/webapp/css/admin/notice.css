@@ -1,0 +1,59 @@
+/* TABLE_LAYOUT STYLE */
+.table_layout { margin:0px; table-layout:fixed; }
+.table_layout .col1 { width: 120px; } /* 글번호 */ 
+.table_layout .col2 { width: 120px; } /* 썸네일 */
+.table_layout .col3 { width: auto } /* 제목 */
+.table_layout .col4 { width: 200px; } /* 작성자 */
+.table_layout .col5 { width: 200px; } /* 날짜 */
+.table_layout .col6 { width: 120px; } /* 조회수 */
+
+
+.insertbtn{
+	margin:5px;
+	width: 80px;
+	
+}
+.search-group{
+	margin:5px;
+	height:38px;
+	
+}
+.search-group input{
+	height:38px;
+	width:200px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.search-group button{
+	height:38px;
+	width: 60px;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+#search_Btn:hover{
+	font-weight:800;
+}
+.table{
+	
+	margin: 0 auto;
+}
+.table thead{}
+
+.table thead tr{
+	background:#5f4b8b80;
+}
+.table thead tr th{
+	text-align:center;
+}
+	text-align:center;
+.table tbody{}
+.table tbody tr{
+	height:50px;
+	max-height:50px;
+}
+.table tbody tr td{
+	text-align:center;
+	overflow:hidden;
+}
+

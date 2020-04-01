@@ -18,6 +18,7 @@
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/fonts/**" location="/fonts/" />
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/assets/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -37,15 +38,16 @@
 	<!-- Upload Path Settings -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<!-- <beans:constructor-arg value="C:\Companion\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Companion\resources"/> -->
-		<beans:constructor-arg value="C:\Companion"/>
+		<beans:constructor-arg value="C:\Companion\"/>
 	</beans:bean>
 	
 	<!-- General File Upload Path -->
 	<!-- <resources location="/resources/imgUpload/" mapping="/imgUpload/**"/> -->
 	<!-- ckeditor File Upload Path -->
-	<resources location="https:///C:/Companion" mapping="ckUpload/**"/>
+	<resources location="file:///C:/Companion" mapping="ckUpload/**"/>
 	<!-- none File Upload Path -->
-	<resources location="/resources/images/" mapping="/images/**"/>
+	<resources location="file:///C:/Companion" mapping="images/**"/>
+<!-- <resources location="/resources/images/" mapping="/images/**"/> -->
 	
 	<!-- https://antananarivo.tistory.com/63 -->
 	<resources location="file:///C:/Companion" mapping="imgUpload/**"></resources>

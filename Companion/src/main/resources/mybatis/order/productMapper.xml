@@ -13,10 +13,19 @@
 	  	b.product_option4, b.product_option5 from `like` as a left join `product` as b on a.product_id=b.product_id);
   	</select>
   	<select id="ProductDetailOne" resultType="productBean" parameterType="int">
-	 	select * from `product` where product_id=#{value} 
+ 	  	<!-- select * from `product` where product_id=#{value}  -->  
 		<!-- select a.category_id,a.product_id,a.product_name,a.product_content,a.product_price,a.product_stock,a.product_date,
 		a.product_image,a.product_thumb,a.product_option1,a.product_option2,a.product_option3,a.product_option4,a.product_option5,
 		b.order_id from `product` a, `order` b where a.product_id=#{value} -->
+<!-- 		select a.*,(select count(*) from `like` l where a.product_id=l.product_id) as like_id from product as a, `like` as b where a.product_id=b.product_id and a.product_id=#{value}; -->
+	 select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date,
+		  a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, a.product_option5, 
+		  b.product_id, (select count(*) from `like` l where a.product_id = l.product_id) as `like_id`, b.member_id from `product` as a left join `like` as b on a.product_id=b.product_id 
+		  where a.product_id=#{value} 
+		union select b.category_id, b.product_id, b.product_name,b.product_content, b.product_price, b.product_stock, b.product_date,
+		 b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, b.product_option4, b.product_option5, 
+		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
+		 where b.product_id=#{value}; 
 	</select>
 	<select id="ProductCategorySelect" resultType="productBean" parameterType="int">
 		 select a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date,
@@ -28,5 +37,30 @@
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
   	</select> 
+  	
+  	<!-- 메뉴바 목록 별로 정렬 출력하기.
+  	<select id="ProductCategorySelectOrderBySalesVolume" resultType="productBean" parameterType="int">
+  	select 
+  	
+  	</select>
+  	<select id="ProductCategorySelectOrderByLowPriceOrder" resultType="productBean" parameterType="int">
+  	
+  	
+  	</select>
+	<select id="ProductCategorySelectOrderByHighPriceOrder" resultType="productBean" parameterType="int">
+  		
+  	</select>
+  	<select id="ProductCategorySelectOrderByRegistrationDateOrder" resultType="productBean" parameterType="int">
+  	
+  	
+  	</select>
+  	  -->
+  	
+  	
+  	
+  	
+  	
+  	
+  	
 </mapper>
   

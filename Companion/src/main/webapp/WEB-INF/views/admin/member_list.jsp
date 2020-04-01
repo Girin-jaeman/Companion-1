@@ -70,9 +70,64 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-		
-		
-		
+			<div class="main--title">
+				<h1>[Admin] 회원 목록</h1>
+			</div>
+			<!-- 검색창 -->
+			<!-- <div>
+				<input type="hidden" name="searchType" id="searchType" value="product">
+				<input type="text" name="keyword" id="keyword">
+				<button name="search_Btn" id="search_Btn">검색</button>
+			</div> -->
+				<h2>회원 목록</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>회원구분</th>
+							<th>이름</th>
+							<th>아이디</th>
+							<th>일반전화</th>
+							<th>휴대전화</th>
+							<th>이메일</th>
+							<th>우편번호</th>
+							<th>기본주소</th>
+							<th>상세주소</th>
+						</tr>
+					</thead>
+				<tbody>
+				<c:forEach items="${adminMemberList}" var="bean">
+					<tr>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_grade }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_tel }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr1 }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr2 }</a>
+						</td>
+						<td>
+							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr3 }</a>
+						</td>
+					</tr>   
+				</c:forEach>
+				</tbody>
+			</table>
 		</section>
 		<!-- section [end] -->
 		

@@ -158,22 +158,35 @@
                     <tbody>
                         <tr>
                             <td><img src="${root }imgs/shopping/dogGum.jpg" class="img-fluid" alt="Responsive image"></td>
-                            <td>상품이름 : ${orderProductPurchaseOne.product_name } </td>
-                            <td>1개</td>
-                            <td>${orderProductPurchaseOne.product_price }</td>
+                            <td><input type="hidden" class="form-control" name="product_id" value="${orderProductPurchaseOne.product_id }">
+                            이름:${orderProductPurchaseOne.product_name } / 
+                            <!-- 옵션 값  -->
+                            <% String select1= request.getParameter("selectBox");
+                            out.println(select1);
+                            %>
+	                        </td>
+                            <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 
+                            out.println(order_detail_quantity);%>
+                            <%
+                             request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
+                            %>  
+                             <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=order_detail_quantity %>"> </td>
+                            <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
+                            </td>
                             <td>2,500원</td>
-                            <td>${orderProductPurchaseOne.product_price +2500}</td>
+                            <td>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}</td>
+                            
                         </tr>
                     </tbody>
                 </table>
                   <a href="#"><span> << 쇼핑계속하기</span></a>
                   <div class="coast clearfix">
                     <ul class="coast-group float--right">
-                        <li>총1개의 상품금액<br/>${orderProductPurchaseOne.product_price }원</li>
+                        <li>총 <%=order_detail_quantity %> 개의 상품금액<br/>${orderProductPurchaseOne.product_price * order_detail_quantity }원</li>
                         <li><i class="fas fa-plus"></i></li>
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
-                        <li>합계<br/>${orderProductPurchaseOne.product_price +2500}</li>
+                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}<input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"></li> 
                     </ul>
                 </div>
 				<div class="order_info"><h2>주문자 정보</h2>
@@ -181,7 +194,7 @@
 	                    <tbody>
 	                        <tr>
 	                            <th class="label"><span>주문하시는 분</span></th>
-	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_id}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
+	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_name}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
 	                        </tr>
 	                        <tr>
 	                            <th>휴대폰 번호</th>
@@ -285,8 +298,8 @@
 		   			var sample6_detailAddress = $("#sample6_detailAddress").val();
 		   			var order_phone = $("#order_phone").val(); 
 		   			var order_msg = $("#order_msg").val(); 
-		   			var phonenum = $('#phone').val();
-			   		var regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
+		   			var phonenum = $('#order_phone').val();
+ 			   		var regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g; 
 	
 			   		 if(!regPhone.test(phonenum)){
 			   		  alert('잘못된 휴대폰 번호입니다.');
@@ -440,7 +453,7 @@
 		   				var f= document.form;
 		   				if(checked == true){
 		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
-		   					document.getElementById("order_name").value="${memberVo.member_id}";
+		   					document.getElementById("order_name").value="${memberVo.member_name}";
 		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
 		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
 		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
@@ -454,7 +467,6 @@
 		   				}
 		   			}
 		   		</script><!-- 주문자 정보와 동일 체크박스 end  --> 
-		
 		
 
 	</body>

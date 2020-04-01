@@ -17,29 +17,16 @@ public class LikeServiceImpl implements LikeService {
 
 	@Autowired
 	LikeDao likedao;
-	
-	@Override
-	public void likeTest(Model model) {
-		
-		List<LikeVo> list;
-		try {
-			list = likedao.likeTest();
-			model.addAttribute("likeTest",list);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		
-	}
 
 	@Override
-	public void likeInsert(LikeVo likeVo) throws Exception{
-		likedao.likeInsert(likeVo);
-		
-	}
+	public int likeInsert(LikeVo likeVo) throws Exception{
+		int result;
+		System.out.println("라이크 인설트 실행전...");
+		result = likedao.likeInsert(likeVo);
+		System.out.println("라이크 인설트 실행 후후후후..."); 
+		return result; 
+	} 
 
-
-		
-	
 //	@Override
 //	public void likeUpdate(Model model,int product_id,String member_id) {
 //		int list; 
