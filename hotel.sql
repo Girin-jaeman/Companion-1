@@ -24,6 +24,37 @@ select * from `payment`;
 select * from `payment_state`;
 select * from `order`;
 
+select sum(payment_amount) from `payment` where payment_date like '2020-03-26%';
+
 insert into payment values (null,1,'회원1',now(),100,0);
 insert into payment values (null,2,'회원1',now(),200,0);
+insert into payment values (null,3,'회원1',now(),300,0);
+insert into payment values (null,4,'회원1',now(),400,0);
+insert into payment values (null,5,'회원1',now(),500,0);
+insert into payment values (null,6,'회원1',now(),600,0);
+insert into payment values (null,7,'회원1',now(),700,0);
+insert into payment values (null,8,'회원1',now(),800,0);
+insert into payment values (null,9,'회원1',now(),900,0);
+insert into payment values (null,10,'회원1',now(),1000,0);
 
+insert into payment values (null,11,'회원1',now(),1100,0);
+insert into payment values (null,12,'회원1',now(),1200,0);
+insert into payment values (null,13,'회원1',now(),1300,0);
+insert into payment values (null,14,'회원1',now(),1400,0);
+insert into payment values (null,15,'회원1',now(),1500,0);
+insert into payment values (null,16,'회원1',now(),1600,0);
+insert into payment values (null,17,'회원1',now(),1700,0);
+insert into payment values (null,18,'회원1',now(),1800,0);
+insert into payment values (null,19,'회원1',now(),1900,0);
+insert into payment values (null,20,'회원1',now(),2000,0);
+
+insert into payment values (null,21,'회원1',now(),2100,0);
+insert into payment values (null,22,'회원1',now(),2200,0);
+insert into payment values (null,23,'회원1',now(),2300,0);
+insert into payment values (null,24,'회원1',now(),2400,0);
+insert into payment values (null,25,'회원1',now(),2500,0);
+insert into payment values (null,26,'회원1',now(),2600,0);
+insert into payment values (null,27,'회원1',now(),2700,0);
+insert into payment values (null,28,'회원1',now(),2800,0);
+insert into payment values (null,29,'회원1',now(),2900,0);
+insert into payment values (null,30,'회원1',now(),3000,0);
