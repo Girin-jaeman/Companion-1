@@ -40,6 +40,10 @@
 .table td{
 	padding:0;
 }
+.table td img{
+	height:80px;
+	width:80px;
+}
 .table thead{}
 
 .table thead tr{

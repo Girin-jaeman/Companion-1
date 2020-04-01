@@ -35,7 +35,7 @@ import com.bit.companion.util.UploadFileUtils;
 @Controller
 @RequestMapping(value = "/admin/")
 public class AdminProductController {
-	private static final Logger logger=LoggerFactory.getLogger(AdminNoticeController.class);
+	private static final Logger logger=LoggerFactory.getLogger(AdminArticleController.class);
 	
 	// upload path
 	@Resource(name="uploadPath")

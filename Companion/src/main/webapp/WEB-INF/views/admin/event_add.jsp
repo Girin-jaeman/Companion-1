@@ -19,7 +19,7 @@
 	<!-- CKEditor JS -->
  	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
-	<title>Companion::공지사항 입력</title>
+	<title>Companion::이벤트 입력</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -47,10 +47,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link" href="${root }admin/event_list">이벤트 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link active" href="${root }admin/event_add">이벤트 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -63,11 +63,12 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 등록</h1>
+				<h1>[Admin] 이벤트 등록</h1>
 			</div>
 			
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<table>
+			<!-- table start-->
+			<table>
 				<thead>
 				</thead>
 				<tbody>
@@ -119,12 +120,16 @@
 				  </tr>
 				</tbody>
 				</table>
+				<!-- table end -->
 
 				
 				<div class="btn__group">
 					<button type="submit"class="btn">입력</button>
 					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
+			
+			
+			
 			</form>
 	
 		</section>

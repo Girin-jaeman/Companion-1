@@ -115,17 +115,17 @@ public class Pagination {
 
 	/* pagination */
 	public void pageInfo(int page, int range, int listCnt) {
-		this.page = page; // Current page
-		this.range = range; // Current range
-		this.listCnt = listCnt; // Total posts
+		this.page = page; // Current page 현재 페이지 정보
+		this.range = range; // Current range 현재 페이지 범위 정보
+		this.listCnt = listCnt; // Total posts 게시물 총 개수
 		
-		// Number of pages 
+		// Number of pages 전체 페이지 수
 		this.pageCnt = (int) Math.ceil(listCnt*1.0/listSize);
 
-		// Start page number
+		// Start page number 페이지범위의 시작번호
 		this.startPage = (range - 1) * rangeSize + 1 ;
 
-		// End page number
+		// End page number 페이지 범위의 마지막 번호
 		this.endPage = range * rangeSize;
 
 		// Start post number

@@ -16,7 +16,7 @@ import com.bit.companion.service.admin.AdminMemberService;
 @RequestMapping(value = "/admin/")
 public class AdminMemberController {
 	
-	private static final Logger log=LoggerFactory.getLogger(AdminNoticeController.class);
+	private static final Logger log=LoggerFactory.getLogger(AdminArticleController.class);
 	
 	@Autowired
 	AdminMemberService adminMemberService;

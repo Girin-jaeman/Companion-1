@@ -80,7 +80,7 @@
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-				<table border=1 class="table table_layout">
+				<table class="table table_layout">
 				<colgroup>
         		<col class="col1">
         		<col class="col2">
@@ -125,7 +125,7 @@
 							</c:choose>
 						</td>
 						<td>
-							<img src="<spring:url value='${bean.product_thumb }'/>"/>
+							<img src="<spring:url value='${bean.product_thumb }'/>" alt="Img"/>
 						</td>
 						<td>
 							<div>

@@ -23,7 +23,7 @@
                             	<i class="fas fa-angle-right"></i>
                             	공지사항
                             </a>
-                            <a href="#">
+                            <a href="${root }admin/event_list">
                             	<i class="fas fa-angle-right"></i>
                             	이벤트
                             </a>

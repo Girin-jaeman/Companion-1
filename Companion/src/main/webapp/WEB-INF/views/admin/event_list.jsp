@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/notice_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/event_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<title>Companion::공지사항 목록</title>
+	<title>Companion::이벤트 목록</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -46,10 +46,10 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/notice_list">공지사항 목록</a>
+			                <a class="nav-link active" href="${root }admin/event_list">이벤트 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link" href="${root }admin/event_add">이벤트 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -62,11 +62,11 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 목록</h1>
+				<h1>[Admin] 이벤트 목록</h1>
 			</div>
 			<div class="sub-group clearfix">
 			<!-- 공지 등록 -->
-			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
+			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/event_add">글 등록</a>
 			
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
@@ -105,16 +105,16 @@
 			<!-- forEach start -->
 			<c:forEach items="${adminArticleList }" var="bean">
 			<tr>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
+			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
 			<td>
-				<a href="${root }admin/notice_detail?article_id=${bean.article_id }">
+				<a href="${root }admin/event_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 				</a>
 			</td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
+			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
+			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
+			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
+			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
 			</tr>
 			</c:forEach>
 			</tbody>
