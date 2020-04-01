@@ -19,37 +19,37 @@ public class AdminArticleDaoImpl implements AdminArticleDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	// notice list - selectAll
+	// article list - selectAll
 	@Override
 	public List<AdminArticleVo> selectAll(Search search) throws SQLException {
 		return sqlSession.selectList("adminArticle.selectAll",search);
 	}
 
-	// notice detail - selectOne
+	// article detail - selectOne
 	@Override
 	public AdminArticleVo selectOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.selectOne("adminArticle.selectOne",bean);
 	}
 	
-	// notice add - insertOne
+	// article add - insertOne
 	@Override
 	public void insertOne(AdminArticleVo bean) throws SQLException {
 		sqlSession.insert("adminArticle.insertOne",bean);
 	}
 
-	// notice edit - updateOne
+	// article edit - updateOne
 	@Override
 	public int updateOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.update("adminArticle.updateOne",bean);
 	}
 
-	// notice delete - deleteOne
+	// article delete - deleteOne
 	@Override
 	public int deleteOne(AdminArticleVo bean) throws SQLException {
 		return sqlSession.delete("adminArticle.deleteOne",bean);
 	}
 
-	// notice total - selectTotal
+	// article total - selectTotal
 	@Override
 	public int selectTotal(Search search) throws SQLException {
 		return sqlSession.selectOne("adminArticle.selectTotal", search);

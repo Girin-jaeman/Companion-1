@@ -20,7 +20,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 	@Autowired
 	AdminArticleDao adminArticleDao;
 	
-	// notice list - selectAll
+	// article list - selectAll
 	@Override
 	public void list(Model model, int page, int range, String searchType, String keyword, Search search, int board_id) {
 		try {
@@ -44,7 +44,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 		}
 	}
 
-	// notice detail - selectOne
+	// article detail - selectOne
 	@Override
 	public void detail(Model model, AdminArticleVo bean, int board_id) {
 		try {
@@ -57,7 +57,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 		}
 	}
 	
-	// notice add - insertOne
+	// article add - insertOne
 	@Override
 	public void insert(AdminArticleVo bean, int board_id) {
 		try {
@@ -70,7 +70,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 		}
 	}
 
-	// notice edit - updateOne
+	// article edit - updateOne
 	@Override
 	public void update(AdminArticleVo bean, int board_id) {
 		try {
@@ -83,7 +83,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 		}
 	}
 
-	// notice delete - deleteOne
+	// article delete - deleteOne
 	@Override
 	public void delete(AdminArticleVo bean, int board_id) {
 		try {
