@@ -66,6 +66,7 @@
 					<li>\459,152,100</li>
 					<li>월별 매출액</li>
 					<li>\132,456,751,100</li>
+					<li>${adminHomeVo.today}</li>
 				</ul>
 			<h2>그래프</h2>
             <div class="row">
@@ -246,11 +247,65 @@
     
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="${root }assets/demo/chart-area-demo.js"></script>
+    <%-- <script src="${root }assets/demo/chart-area-demo.js"></script> --%>
     <script src="${root }assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${root }assets/demo/datatables-demo.js"></script>
+    
+    <!-- AreaChart -->
+    <script type="text/javascript">
+    var ctx = document.getElementById("myAreaChart");
+    var chartLabels=["<c:out value='${adminHomeVo.today_6}'/>","<c:out value='${adminHomeVo.today_5}'/>","<c:out value='${adminHomeVo.today_4}'/>","<c:out value='${adminHomeVo.today_3}'/>","<c:out value='${adminHomeVo.today_2}'/>","<c:out value='${adminHomeVo.today_1}'/>","<c:out value='${adminHomeVo.today}'/>"];
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: chartLabels,
+        datasets: [{
+          label: "Sessions",
+          lineTension: 0.3,
+          backgroundColor: "rgba(2,117,216,0.2)",
+          borderColor: "rgba(2,117,216,1)",
+          pointRadius: 5,
+          pointBackgroundColor: "rgba(2,117,216,1)",
+          pointBorderColor: "rgba(255,255,255,0.8)",
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(2,117,216,1)",
+          pointHitRadius: 50,
+          pointBorderWidth: 2,
+          data: [112704, 303209, 258409, 240159, 320651, 310984, 438451],
+        }],
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'date'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 7
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 500000,
+              maxTicksLimit: 10
+            },
+            gridLines: {
+              color: "rgba(0, 0, 0, .125)",
+            }
+          }],
+        },
+        legend: {
+          display: false
+        }
+      }
+    });
+    </script>
     
 </body>
 </html>
