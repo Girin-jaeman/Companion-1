@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/noticeA.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -49,7 +50,7 @@
 			                <a class="nav-link" href="${root }admin/notice_list">공지사항 목록</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link active" href="${root }admin/notice_add">공지사항 등록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -61,33 +62,68 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 - 공지사항 입력 페이지</h1>
+			<div class="main--title">
+				<h1>[Admin] 공지사항 등록</h1>
+			</div>
+			
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<div>
-					<label for="title">title</label>
-					<input type="text" name="article_title" id="article_title" placeholder="제목을 입력하세요" required="required"/>
-				</div>
-				<div>
-					<label for="content">content</label>
-					<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
-					<script>
+				<table>
+				<thead>
+				</thead>
+				<tbody>
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="title">글 제목</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+				    	<input class="input--text" type="text" name="article_title" id="article_title" placeholder="제목을 입력하세요" required="required"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+						<label for="content">게시글 내용</label>
+						</div>
+					</th>
+				    <td>
+				    	<div>
+				    	<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
+						<script>
 		 				var ckeditor_config = {
 								resize_enable : false,
 								enterMode : CKEDITOR.ENTER_BR,
 								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "../../upload/notice"
+								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
 						};
-						CKEDITOR.replace( 'article_content' );
-					</script>
-				</div>
-				<div>
-					<label for="article_image">img</label>
-					<input type="file" name="file" id="article_image">
-				 	<div class="select_img"><img src="" /></div>
-				</div>
-				<div>
-					<button type="submit">입력</button>
-					<button type="button" id="back_Btn">취소</button>
+						CKEDITOR.replace('article_content', ckeditor_config);
+						</script>
+				    	</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+						<label for="article_image">파일 첨부</label>
+						</div>
+					</th>
+				    <td>
+				    	<div class="file-add">
+				    	<input type="file" name="file" id="article_image">
+				 		<div class="select_img"><img src=""/></div>
+				    	</div>
+				    </td>
+				  </tr>
+				</tbody>
+				</table>
+
+				
+				<div class="btn__group">
+					<button type="submit"class="btn">입력</button>
+					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
 			</form>
 	

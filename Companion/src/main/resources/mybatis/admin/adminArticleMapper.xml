@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminArticle">
+
+	<!-- notice list -->
+	<select id="selectAll" parameterType="int" resultType="adminArticleBean">
+		SELECT 
+			@rownum:=@rownum+1 AS no,
+			A.* 
+				FROM `ARTICLE` A 
+					WHERE (@rownum:=0)=0
+					<trim prefix="AND">
+						<if test="board_id==0">
+							board_id=0
+						</if>
+						<if test="board_id==1">
+							board_id=1
+						</if>
+					</trim>
+					<trim prefix="AND">
+						<if test="searchType=='all' and keyword != null and keyword != '' ">
+							(article_title LIKE CONCAT('%', #{keyword}, '%') OR
+							article_content LIKE CONCAT('%', #{keyword}, '%') OR
+							member_id LIKE CONCAT('%', #{keyword}, '%'))
+						</if>
+						<if test="searchType=='title' and keyword != null and keyword != '' ">
+							article_title LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='content' and keyword != null and keyword != '' ">
+							article_content LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='member' and keyword != null and keyword != '' ">
+							member_id LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+					</trim>
+					 ORDER BY A.article_id DESC LIMIT #{startList}, #{listSize}
+	</select>
+	
+	<!-- notice detail -->
+	<select id="selectOne" resultType="adminArticleBean" parameterType="int">
+		SELECT 
+			article_id,
+			article_title,
+			article_content,
+			article_date,
+			article_image,
+			article_thumb
+				FROM `ARTICLE` 
+					WHERE article_id=#{article_id}
+					<trim prefix="AND">
+						<if test="board_id==0">
+							board_id=0
+						</if>
+						<if test="board_id==1">
+							board_id=1
+						</if>
+					</trim>
+	</select>
+	
+	<!-- notice add -->
+	<!-- #{member_id} - 임시로 admin -->
+	<insert id="insertOne" parameterType="adminArticleBean">
+		INSERT INTO `ARTICLE` VALUES(
+			<if test="board_id==0">
+				0,
+			</if>
+			<if test="board_id==1">
+				1,
+			</if>
+			null,
+			'admin',
+			#{article_title},
+			#{article_content},
+			now(),
+			0,
+			#{article_image},
+			#{article_thumb}
+		)
+	</insert>
+	
+	<!-- notice edit -->
+	<update id="updateOne" parameterType="adminArticleBean" >
+		UPDATE `ARTICLE` SET 
+			article_title=#{article_title},
+			article_content=#{article_content},
+			article_image=#{article_image},
+			article_thumb=#{article_thumb}
+				WHERE article_id=#{article_id}
+				<trim prefix="AND">
+						<if test="board_id==0">
+							board_id=0
+						</if>
+						<if test="board_id==1">
+							board_id=1
+						</if>
+					</trim>
+	</update>
+	
+	<!-- notice delete -->
+	<delete id="deleteOne" parameterType="adminArticleBean">
+		DELETE FROM `ARTICLE` WHERE article_id=#{article_id}
+		<trim prefix="AND">
+			<if test="board_id==0">
+				board_id=0
+			</if>
+			<if test="board_id==1">
+				board_id=1
+			</if>
+		</trim>
+	</delete>
+	
+	<!-- notice total -->
+  	<select id="selectTotal" resultType="int">
+  		SELECT count(*) as listCnt FROM `ARTICLE` 
+  		<trim prefix=" WHERE">
+			<if test="board_id==0">
+				board_id=0
+			</if>
+			<if test="board_id==1">
+				board_id=1
+			</if>
+  		</trim>
+  		<trim prefix="AND">
+  			<if test="keyword != null and keyword != '' ">
+				<if test="searchType == 'all'">
+					(article_title LIKE CONCAT('%', #{keyword}, '%') OR
+					article_content LIKE CONCAT('%', #{keyword}, '%') OR
+					member_id LIKE CONCAT('%', #{keyword}, '%'))
+				</if>
+				<if test="searchType == 'title'">
+					article_title LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'content'">
+					article_content LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'member'">
+					member_id LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+  			</if>
+  		</trim>
+  	</select>
+</mapper>

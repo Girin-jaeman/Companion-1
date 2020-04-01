@@ -67,8 +67,9 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 페이지</h1>
-			<h2>상품 수정</h2>
+			<div class="main--title">
+				<h1>[Admin] 상품정보 수정</h1>
+			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<label>1차 분류</label>
 				<select class="category1">
@@ -156,6 +157,18 @@ $(document).ready(function () {
 // 취소 버튼
 $("#back_Btn").click(function(){
 	history.back();
+});
+
+
+//이미지 미리보기
+$("#product_image").change(function(){
+	if(this.files && this.files[0]) {
+		var reader = new FileReader;
+		reader.onload = function(data) {
+			$(".select_img img").attr("src", data.target.result).width(500);        
+		}
+		reader.readAsDataURL(this.files[0]);
+	}
 });
 
 // 숫자 유효성검사 
@@ -247,20 +260,10 @@ var ckeditor_config = {
 	resize_enable : false,
 	enterMode : CKEDITOR.ENTER_BR,
 	shiftEnterMode : CKEDITOR.ENTER_P,
-	// filebrowserUploadUrl : "../../upload/notice"
+	filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/product_ckUpload"
 };
-CKEDITOR.replace( 'product_content' );
+CKEDITOR.replace('product_content', ckeditor_config);
 
-// 이미지 미리보기
-$("#product_image").change(function(){
-	if(this.files && this.files[0]) {
-		var reader = new FileReader;
-		reader.onload = function(data) {
-			$(".select_img img").attr("src", data.target.result).width(500);        
-		}
-		reader.readAsDataURL(this.files[0]);
-	}
-});
 </script>
 
 </body>

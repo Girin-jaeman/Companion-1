@@ -1,4 +1,16 @@
+// 스프링 절대경로 :> C:\Companion\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Companion\
 ...쿼리 연습 + 쓸 것 모아두기
+
+
+장바구니 폼에 들어가는 것. productDetailOne.product_name   //  {productDetailOne.product_id 
+
+// cart_quantity 는 order_detail_quantity로 처리 할 것.
+
+///insert into `cart` values (랜덤상수,#{member_id},#{product_id},#{cart_quantity});
+
+
+
+
 
 select level, cateName, cateCode, cateCodeRef from goods_category
     start with cateCodeRef is null connect by prior cateCode = cateCodeRef;
@@ -113,31 +125,37 @@ insert into `order`
 
 
 
-//////order_detail 입력
-insert into `order_detail` values (default,order_id,product_id,order_amount,order_quantity); 
+//////order_detail 입력-------------------------------------
+insert into `order_detail`
+ values 
+(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id='1111')),1,190000,4);
 /////////////////////////
-//////delivery 입력
-insert into delivery values (default,order_id,member_id,'한진택배',delivery_number,0);
+//////delivery 입력-----------------------------------
+		(서브 쿼리문 )select truncate(rand()*100000000000000,0);-->randeom 난수 생성 + 소수점 삭제.
+insert into delivery 
+values
+ (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
 /////////////////////////
 //////payment 입력 
-insert into payment values (default,order_id,member_id,now(),order_amount,결제수단ID,1);
+insert into `payment` 
+values
+ (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},now(),#{order_detail_price},default);
 /////////////////////////
-
-
-
-
 /////////////주문 결제 버튼 누를 시 END
-
 
 주문 옵션에서 갯수 n 개 만큼 order_amount에 곱함.
 
 	  member_Vo 에서      product_price,  memeber_name				우편번호       아파트              동/호수    배송메세지.
 //////////////////////////
-
-
 ////////////////////주문 결제 창에 필요한 쿼리문.
-select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
 
+
+
+///////// 장바구니 담기
+
+insert into `cart` values (null,) where product_id=#{product_id};
+
+select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
 select * from `product` where product_id=#{value}
 /////////////////
 

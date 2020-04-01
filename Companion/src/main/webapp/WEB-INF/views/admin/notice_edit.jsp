@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<!-- CKEditor JS -->
- 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
 	<title>Companion::공지사항 수정</title>
 </head>
@@ -61,36 +62,40 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-			<h1>관리자 - 공지사항 수정 페이지</h1>
+			<div class="main--title">
+				<h1>[Admin] 공지사항 수정</h1>
+			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<input type="hidden" name="article_id" id="article_id" value="${adminNoticeOne.article_id }">
+				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<div>
 					<label for="title">title</label>
-					<input type="text" name="article_title" id="article_title" value="${adminNoticeOne.article_title }"/>
+					<input type="text" name="article_title" id="article_title" value="${adminArticleOne.article_title }"/>
 				</div>
 				<div>
 					<label for="date">date</label>
-					<input type="text" name="article_date" id="article_date" value="${adminNoticeOne.article_date }"/>
+					<input type="text" name="article_date" id="article_date" value="${adminArticleOne.article_date }"/>
 				</div>
 				<div>
 					<label for="content">content</label>
-					<textarea name="article_content" id="article_content" rows="10" cols="80">${adminNoticeOne.article_content }</textarea>
+					<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
 					<script>
 		 				var ckeditor_config = {
 								resize_enable : false,
 								enterMode : CKEDITOR.ENTER_BR,
 								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "../../upload/notice"
+								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
 						};
-						CKEDITOR.replace( 'article_content' );
+						CKEDITOR.replace('article_content', ckeditor_config);
 					</script>
 				</div>
 				<div>
 					<label for="article_image">img</label>
 					<input type="file" name="file" id="article_image"/>
-					<img alt="원본이미지" src="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
-					<input type="hidden" name="article_image" value="${pageContext.request.contextPath}${adminNoticeOne.article_image }"/>
-					<input type="hidden" name="article_thumb" value="${pageContext.request.contextPath}${adminNoticeOne.article_thumb }"/>
+					<div class="select_img">
+						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
+						<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
+						<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
+					</div>
 				</div>
 				<div>
 					<button type="submit">수정</button>

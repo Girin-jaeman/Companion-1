@@ -1,6 +1,8 @@
 package com.bit.companion.controller.admin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,7 +35,7 @@ import com.bit.companion.util.UploadFileUtils;
 @Controller
 @RequestMapping(value = "/admin/")
 public class AdminProductController {
-	private static final Logger logger=LoggerFactory.getLogger(AdminNoticeController.class);
+	private static final Logger logger=LoggerFactory.getLogger(AdminArticleController.class);
 	
 	// upload path
 	@Resource(name="uploadPath")
@@ -65,8 +69,8 @@ public class AdminProductController {
 	}
 	
 	//product detail - get
-	@RequestMapping(value = "product_detail/{idx}", method = RequestMethod.GET)
-	public String productDetail(Model model, @PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_detail", method = RequestMethod.GET)
+	public String productDetail(Model model, @RequestParam int product_id) {
 		logger.info("get product detail");
 		
 		adminProductService.category(model);
@@ -100,16 +104,19 @@ public class AdminProductController {
 	}
 	
 	// product add - ckeditor file upload
-	@RequestMapping(value = "/product_add/ckUpload", method = RequestMethod.POST)
-	public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res,
+	@RequestMapping(value = "product_ckUpload", method = RequestMethod.POST)
+	public void ckUpload(HttpServletRequest req, HttpServletResponse res,
 	         @RequestParam MultipartFile upload) throws Exception {
-		logger.info("post CKEditor img upload");
+		logger.info("post product CKEditor img upload");
 	 
 		// random character create
 		UUID uid = UUID.randomUUID();
 	 
 		OutputStream out = null;
 		PrintWriter printWriter = null;
+		
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html;charset=utf-8");
 		try {
 			String fileName = upload.getOriginalFilename(); // get file name
 			byte[] bytes = upload.getBytes();
@@ -118,22 +125,17 @@ public class AdminProductController {
 			String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
 			
 			out = new FileOutputStream(new File(ckUploadPath));
-			  out.write(bytes);
-			  out.flush();  // init
+			out.write(bytes);
+			out.flush();  // init
 			  
-			  String callback = req.getParameter("CKEditorFuncNum");
-			  printWriter = res.getWriter();
-			  String fileUrl = "/ckUpload/" + uid + "_" + fileName; 
-			  
-			  // upload msg print
-			  printWriter.println("<script type='text/javascript'>"
-			     + "window.parent.CKEDITOR.tools.callFunction("
-			     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
-			     +"</script>");
-			  
-			  printWriter.flush();
+			printWriter = res.getWriter();
+			String fileUrl = "product_ckSubmit?uid="+uid+"&fileName="+fileName;
+			
+			printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
+			printWriter.flush();
 	  
-		} catch (IOException e) { e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if(out != null) { out.close(); }
@@ -143,9 +145,55 @@ public class AdminProductController {
 		return; 
 	}
 	
+	// ckeditor file loading
+	@RequestMapping(value = "product_ckSubmit", method = RequestMethod.GET)
+    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName
+                            , HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		logger.info("get product CKEditor img submit");
+		
+        //서버에 저장된 이미지 경로
+        String ckUploadPath = uploadPath + "ckUpload" +File.separator;
+        String Path = ckUploadPath + uid + "_" + fileName;
+        File imgFile = new File(File.separator+Path);
+        	
+        //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
+        if(imgFile.isFile()){
+            byte[] buf = new byte[1024];
+            int readByte = 0;
+            int length = 0;
+            byte[] imgBuf = null;
+            
+            FileInputStream fileInputStream = null;
+            ByteArrayOutputStream outputStream = null;
+            ServletOutputStream out = null;
+            
+            try{
+                fileInputStream = new FileInputStream(imgFile);
+                outputStream = new ByteArrayOutputStream();
+                out = response.getOutputStream();
+                
+                while((readByte = fileInputStream.read(buf)) != -1){
+                    outputStream.write(buf, 0, readByte);
+                }
+                
+                imgBuf = outputStream.toByteArray();
+                length = imgBuf.length;
+                out.write(imgBuf, 0, length);
+                out.flush();
+                
+            }catch(IOException e){
+                e.printStackTrace();
+            }finally {
+                outputStream.close();
+                fileInputStream.close();
+                out.close();
+            }
+        }
+    }
+	
 	// product edit page category list - get
-	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.GET)
-	public String productEdit(Model model, @PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_edit", method = RequestMethod.GET)
+	public String productEdit(Model model, @RequestParam int product_id) {
 		logger.info("get product edit");
 	
 		adminProductService.category(model);
@@ -154,8 +202,8 @@ public class AdminProductController {
 	}
 	
 	// product edit - post
-	@RequestMapping(value = "product_edit/{idx}", method = RequestMethod.POST)
-	public String productEdit(@ModelAttribute AdminProductVo bean, @PathVariable("idx") int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
+	@RequestMapping(value = "product_edit", method = RequestMethod.POST)
+	public String productEdit(@ModelAttribute AdminProductVo bean, @RequestParam int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post product edit");
 		
 		// new file upload check
@@ -177,17 +225,17 @@ public class AdminProductController {
 			bean.setProduct_image(req.getParameter("product_image"));
 			bean.setProduct_thumb(req.getParameter("product_thumb"));
 		}
-		
+		System.out.println(bean.toString());
 		adminProductService.update(bean);
-		return "redirect:../product_detail/"+product_id;
+		return "redirect:/admin/product_detail?product_id="+bean.getProduct_id();
 	}
 	
 	// product delete - post
-	@RequestMapping(value = "product_delete/{idx}", method = RequestMethod.POST)
-	public String productDelete(@PathVariable("idx") int product_id) {
+	@RequestMapping(value = "product_delete", method = RequestMethod.POST)
+	public String productDelete(@RequestParam int product_id) {
 		logger.info("post product delete");
 		
 		adminProductService.delete(product_id);
-		return "redirect:../product_list";
+		return "redirect:/admin/product_list";
 	}
 }

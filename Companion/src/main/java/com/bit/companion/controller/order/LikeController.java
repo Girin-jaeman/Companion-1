@@ -23,15 +23,6 @@ public class LikeController {
 	@Autowired
 	LikeService likeService;
 
-
-	  @RequestMapping(value="/order/likeTest")
-	  public String LikeTest(Model model) {
-	
-		  likeService.likeTest(model); 
-	 
-		  return "order/likeTest";
-	  }
-	 
 	
 	/*
 	 * @PostMapping("/order/likeTest") public @ResponseBody void
@@ -41,12 +32,13 @@ public class LikeController {
 	 */	 
 	  
 	  @ResponseBody
-	  @RequestMapping(value="/order/likeTest1", method = RequestMethod.POST)
+	  @RequestMapping(value="/order/likeInsert", method = RequestMethod.POST)
 	  public void likeInsert(LikeVo likeVo,HttpSession session) throws Exception {
 		  System.out.println("likeInsertController run");
+		  logger.debug(likeVo.getMember_id());
+		  logger.debug((Integer.toString(likeVo.getProduct_id())));
 //		  MemberVo member = (MemberVo)session.getAttribute("member");
 //		  likeVo.setLike_id(member.getMember_id());
-		  
 		  likeService.likeInsert(likeVo);
 	  }
 	  

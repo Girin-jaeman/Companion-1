@@ -8,4 +8,5 @@ public interface OrderService {
 
 	void list(Model model,int product_id);
 	void OrderInfo_Detail(OrderVo orderVo);
+	void insertCart(Model model,OrderVo orderVo);
 }

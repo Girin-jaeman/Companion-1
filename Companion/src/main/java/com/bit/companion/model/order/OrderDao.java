@@ -12,6 +12,6 @@ public interface OrderDao {
 	OrderVo OrderProductPurchaseOne(int product_id) throws SQLException;
 	
 	
-	
+	void OrderCartAdd(OrderVo orderVo) throws SQLException;
 	
 }

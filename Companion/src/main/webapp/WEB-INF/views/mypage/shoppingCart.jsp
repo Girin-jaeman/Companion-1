@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/mypage/mycart.css">
+
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -93,13 +95,72 @@
             	<!-- .categories start -->
             	
 	            <section class="section">
-					<div class="main--title">
-					<h1>h1테크는 왜 글씨체가 안먹지</h1>
-					<p>장바구니 내용들어갈껀데</p>
-							
-	                </div>
-	            
-	            </section>
+                <!-- .title-group start-->
+                <div class="title-group clearfix">
+                    <h1 class="main--title float--left">장바구니</h1>
+                    <ul class="route float--right">
+                        <li class="active">
+                            01 장바구니
+                            <span>></span>
+                        </li> 
+                        <li>
+                            02 주문서작성/결제
+                            <span>></span>
+                        </li> 
+                        <li>03 주문완료</li> 
+                    </ul>
+                </div><!-- .title-group end-->
+                <!-- 장바구니 담긴 상품 테이블 -->
+                <table class="table">
+                    <tr>
+                        <th><input type="checkbox" name="chk" value="product"></th>
+                        <th>상품/옵션 정보</th>
+                        <th>수량</th>
+                        <th>상품금액</th>
+                        <th>합계금액</th>
+                        <th>배송비</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="chk" value="product"></td>
+                        <td>집에갈수있는휴가권</td>
+                        <td><span>1개</span>
+                            <a class="btn"href="#" role="button">옵션/수량변경</a>
+                        </td>
+                        <td>2,000원</td>
+                        <td>2,000원</td>
+                        <td>기본배송비<br/>2,500원</td>
+                    </tr>
+                </table>
+                <!-- table end -->
+                <a href="#"><span><< 쇼핑계속하기</span></a>
+                <!-- 주문금액 합계 start -->
+                <div class="coast clearfix">
+                    <ul class="coast-group float--right">
+                        <li>총1개의 상품금액<br/>2,000원</li>
+                        <li><i class="fas fa-plus"></i></li>
+                        <li>배송비<br/>2,500원</li>
+                        <li><i class="fas fa-equals"></i></li>
+                        <li>합계<br/>4,500원</li>
+                    </ul>
+                </div>
+                <!-- 주문금액 합계 end-->
+                <!-- 버튼그룹 start-->
+                <div class="btn--group clearfix">
+                    <div class="selectP float--left">
+                        <button class="">선택 상품 삭제</button>
+                        <button class="">선택 상품 찜</button>
+                    </div>
+                    <div class="orderP float--right">
+                        <button class="">선택 상품 주문</button>
+                        <button class="btn-order">전체 상품 주문</button>
+                    </div>
+                </div>
+                <!-- 버튼그룹 end-->
+                <div class="chk-non">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>주문서 작성단계에서 할인/마일리지 적용을 하실 수 있습니다</span>
+                </div>
+            </section>      
 			<!-- section end -->
 		</div>
 		<!-- #container end -->

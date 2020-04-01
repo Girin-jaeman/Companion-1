@@ -42,6 +42,20 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	
+		<style type="text/css">
+			.purchase{
+			
+			}
+			.btn-order{
+			float:right;
+			display:block;
+			
+			}
+		
+		</style>
+		
+	
+	
 	</head>
 	
 	<body>
@@ -144,22 +158,35 @@
                     <tbody>
                         <tr>
                             <td><img src="${root }imgs/shopping/dogGum.jpg" class="img-fluid" alt="Responsive image"></td>
-                            <td>상품이름 : ${orderProductPurchaseOne.product_name } </td>
-                            <td>1개</td>
-                            <td>${orderProductPurchaseOne.product_price }</td>
+                            <td><input type="hidden" class="form-control" name="product_id" value="${orderProductPurchaseOne.product_id }">
+                            이름:${orderProductPurchaseOne.product_name } / 
+                            <!-- 옵션 값  -->
+                            <% String select1= request.getParameter("selectBox");
+                            out.println(select1);
+                            %>
+	                        </td>
+                            <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 
+                            out.println(order_detail_quantity);%>
+                            <%
+                             request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
+                            %>  
+                             <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=order_detail_quantity %>"> </td>
+                            <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
+                            </td>
                             <td>2,500원</td>
-                            <td>${orderProductPurchaseOne.product_price +2500}</td>
+                            <td>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}</td>
+                            
                         </tr>
                     </tbody>
                 </table>
                   <a href="#"><span> << 쇼핑계속하기</span></a>
                   <div class="coast clearfix">
                     <ul class="coast-group float--right">
-                        <li>총1개의 상품금액<br/>${orderProductPurchaseOne.product_price }원</li>
+                        <li>총 <%=order_detail_quantity %> 개의 상품금액<br/>${orderProductPurchaseOne.product_price * order_detail_quantity }원</li>
                         <li><i class="fas fa-plus"></i></li>
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
-                        <li>합계<br/>${orderProductPurchaseOne.product_price +2500}</li>
+                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}<input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"></li> 
                     </ul>
                 </div>
 				<div class="order_info"><h2>주문자 정보</h2>
@@ -167,7 +194,7 @@
 	                    <tbody>
 	                        <tr>
 	                            <th class="label"><span>주문하시는 분</span></th>
-	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_id}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
+	                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_name}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
 	                        </tr>
 	                        <tr>
 	                            <th>휴대폰 번호</th>
@@ -182,54 +209,55 @@
 				</div>
 				<div class="delivery_info">
 				   		 <h4>배송지 정보</h4>
-						<table class="table-left">
-							<tbody>
-								<tr>
-									<th class="label"><span>배송지 확인</span></th>
-									<td><label class="form-check-label" for="defaultCheck1">
-											주문자 정보와 동일 </label> <input class="form-check-input" type="checkbox"
-										value="" id="defaultCheck1" name="defaultCheck1"></td>
-								</tr>
-								<tr>
-									<th class="label"><span>받으실 분</span></th>
-									<td><input type="text" class="form-control"
-										name="order_name" id="order_name" placeholder="이름을 입력해주세요."
-										aria-label="Username" aria-describedby="basic-addon1"></td>
-								</tr>
-								<tr>
-									<th>받으실 곳</th>
-									<td><input type="text" class="input--text"
-										name="order_addr1" id="sample6_postcode" placeholder="우편번호">
-										<button type="button" id="postSearch">우편 검색</button> <br /> <input
-										type="text" class="input--text" name="order_addr2"
-										id="sample6_address" placeholder="주소"> <input
-										type="text" class="detail-adress input--text"
-										name="order_addr3" id="sample6_detailAddress"
-										placeholder="상세주소"></td>
-								</tr>
-								<tr>
-									<th>휴대폰 번호</th>
-									<td><input type="text" class="form-control"
-										name="order_phone" id="order_phone" placeholder="연락처 입력해주세요"
-										aria-label="Username" aria-describedby="basic-addon1"></td>
-								</tr>
-								<tr>
-									<th>요청사항</th>
-									<td><input type="text" class="form-control"
-										name="order_msg" id="order_msg" placeholder="40자 내로 써주세요"
-										aria-label="Username" aria-describedby="basic-addon1"></td>
-								</tr>
-							</tbody>
-						</table>
+					<table class="table-left">
+						<tbody>
+							<tr>
+								<th class="label"><span>배송지 확인</span></th>
+								<td><label class="form-check-label" for="defaultCheck1">
+										주문자 정보와 동일 </label> <input class="form-check-input" type="checkbox"
+									value="" id="defaultCheck1" name="defaultCheck1"></td>
+							</tr>
+							<tr>
+								<th class="label"><span>받으실 분</span></th>
+								<td><input type="text" class="form-control"
+									name="order_name" id="order_name" placeholder="이름을 입력해주세요."
+									aria-label="Username" aria-describedby="basic-addon1"></td>
+							</tr>
+							<tr>
+								<th>받으실 곳</th>
+								<td><input type="text" class="input--text" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
+									<button type="button" id="postSearch">우편 검색</button> <br /> 
+									<input type="text" class="input--text" name="order_addr2" id="sample6_address" placeholder="주소"> 
+									<input type="text" class="input--text" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소"></td>
+							</tr>
+							<tr>
+								<th>휴대폰 번호</th>
+								<td>
+								
+								<input type="text" class="form-control"
+									name="order_phone" id="order_phone" placeholder="번호만 입력해주세요."
+									aria-label="Username" aria-describedby="basic-addon1">
+									
+									</td>
+							</tr>
+							<tr>
+								<th>요청사항</th>
+								<td><input type="text" class="form-control"
+									name="order_msg" id="order_msg" placeholder="40자 내로 써주세요"
+									aria-label="Username" aria-describedby="basic-addon1"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
                 <div class="coast clearfix">
                     <ul class="coast-group float--right">
                         <li class="total__title">최종 결제 금액</li>
-                        <li class="total">4,500원</li>
+                        <li class="total">${orderProductPurchaseOne.product_price +2500}</li>
                     </ul>
                 </div>
                 <div class="purchase">
                         <button type="button" class="btn-order" id="payApi" role="button"> 결제하기 </button> 
+                        <button type="button" class="btn-order" id="" role="button"> 정기결제 </button> 
                 </div>
        		</form>
        	</section>  
@@ -259,41 +287,47 @@
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 		<!-- MAIN JS -->
    		<script src="${root }js/main.js"></script>		
-   		
-		   		<!-- 주문자 정보와 동일 체크박스 start -->
-		   		<script type="text/javascript">
-		   		
-		   		$('input[name=defaultCheck1]').on('click',function(){
-		   			if($(this).is(":checked")){
-		   				same(true);
-		   			}else{
-		   				same(false);
-		   			}
-		   		});
-		   			function same(checked){
-		   				var f= document.form;
-		   				if(checked == true){
-		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
-		   					document.getElementById("order_name").value="${memberVo.member_id}";
-		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
-		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
-		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
-		   					document.getElementById("sample6_detailAddress").value="${memberVo.member_addr3}";
-		   				}else{
-		   					document.getElementById("order_name").value="";
-		   					document.getElementById("order_phone").value="";
-		   					document.getElementById("sample6_postcode").value="";
-		   					document.getElementById("sample6_address").value="";
-		   					document.getElementById("sample6_detailAddress").value="";
-		   				}
-		   			}
-		   		</script><!-- 주문자 정보와 동일 체크박스 end  --> 
-		   		
-		   		
 			<!--PayApi 스크립트 시작  -->
 			<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 			<script>
 				$(document).on('click','#payApi',function(){
+					var payButton = $("#payApi");
+		   			var order_name = $("#order_name").val();
+		   			var sample6_postcode = $("#sample6_postcode").val();
+		   			var sample6_address = $("#sample6_address").val();
+		   			var sample6_detailAddress = $("#sample6_detailAddress").val();
+		   			var order_phone = $("#order_phone").val(); 
+		   			var order_msg = $("#order_msg").val(); 
+		   			var phonenum = $('#order_phone').val();
+ 			   		var regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g; 
+	
+			   		 if(!regPhone.test(phonenum)){
+			   		  alert('잘못된 휴대폰 번호입니다.');
+			   		  $('#phone').focus();
+			   		  return false;    
+			   		 }
+		   
+		   			
+/* 		   			if(order_name==null||order_name==""||order_addr1==""||order_addr1==null||order_addr2==""||order_addr2==null||order_addr3==""||order_addr3==null||order_phone==""||order_phone==null){ */
+		   			if(order_name==null||order_name==""){
+		   				alert("받으실 분 이름을 입력해주세요.");
+		   				return;
+		   			}
+		   			if(order_phone==null||order_phone==""){
+		   				alert("휴대폰 번호를 입력해주세요.");
+		   				return;
+		   			}
+		   			if(sample6_postcode==null||sample6_postcode==""||sample6_address==null||sample6_address==""||sample6_detailAddress==""||sample6_detailAddress==null){
+		   				alert("우편 번호를 입력해주세요.");
+		   				return;
+		   			}
+		   			if(order_msg==null||order_msg==""){
+		   				alert("요청사항을 입력해주세요.");
+		   				return;
+		   			}
+/*}  */
+		   			
+			/* 		alert("유효성 검사 끝나고 카카오 페이로 들어감."); */
 					 $(function(){
 					        var IMP = window.IMP; // 생략가능
 					        IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -357,55 +391,83 @@
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			<script>
 				$(document).on('click','#postSearch',function(){
-				    new daum.Postcode({
-				        oncomplete: function(data) {
-				        	  // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+					 new daum.Postcode({
+				            oncomplete: function(data) {
+				                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-			                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-			                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-			                var addr = ''; // 주소 변수
-			                var extraAddr = ''; // 참고항목 변수
+				                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				                var addr = ''; // 주소 변수
+				                var extraAddr = ''; // 참고항목 변수
 
-			                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-			                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-			                    addr = data.roadAddress;
-			                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-			                    addr = data.jibunAddress;
-			                }
+				                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+				                    addr = data.roadAddress;
+				                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+				                    addr = data.jibunAddress;
+				                }
 
-			                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-			                if(data.userSelectedType === 'R'){
-			                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-			                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-			                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-			                        extraAddr += data.bname;
-			                    }
-			                    // 건물명이 있고, 공동주택일 경우 추가한다.
-			                    if(data.buildingName !== '' && data.apartment === 'Y'){
-			                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-			                    }
-			                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-			                    if(extraAddr !== ''){
-			                        extraAddr = ' (' + extraAddr + ')';
-			                    }
-			                    // 조합된 참고항목을 해당 필드에 넣는다.
-			                    document.getElementById("sample6_extraAddress").value = extraAddr;
-			                
-			                } else {
-			                    document.getElementById("sample6_extraAddress").value = '';
-			                }
+				                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+				                if(data.userSelectedType === 'R'){
+				                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+				                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+				                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+				                        extraAddr += data.bname;
+				                    }
+				                    // 건물명이 있고, 공동주택일 경우 추가한다.
+				                    if(data.buildingName !== '' && data.apartment === 'Y'){
+				                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+				                    }
+				                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+				                    if(extraAddr !== ''){
+				                        extraAddr = ' (' + extraAddr + ')';
+				                    }
+				                    // 조합된 참고항목을 해당 필드에 넣는다.
+				                 /*    document.getElementById("sample6_extraAddress").value = extraAddr; */
+				                
+				                } else {
+				                /*     document.getElementById("sample6_extraAddress").value = ''; */
+				                }
 
-			                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-			                document.getElementById('sample6_postcode').value = data.zonecode;
-			                document.getElementById("sample6_address").value = addr;
-			                // 커서를 상세주소 필드로 이동한다.
-			                document.getElementById("sample6_detailAddress").focus();
-				        }
-				    }).open();
-				
-				}) 
+				                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+				                document.getElementById('sample6_postcode').value = data.zonecode;
+				                document.getElementById("sample6_address").value = addr;
+				                // 커서를 상세주소 필드로 이동한다.
+				                document.getElementById("sample6_detailAddress").focus();
+				            }
+				        }).open();
+				}); 
 			</script>
 		<!-- 배송지 주소 검색 API END  -->	
+				<!-- 주문자 정보와 동일 체크박스 start -->
+		   		<script type="text/javascript"> 
+				/*  주문자 정보와 동일 체크박스 */		   		
+		   		$('input[name=defaultCheck1]').on('click',function(){
+		   			if($(this).is(":checked")){
+		   				same(true);
+		   			}else{
+		   				same(false);
+		   			}
+		   		});
+		   			function same(checked){
+		   				var f= document.form;
+		   				if(checked == true){
+		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
+		   					document.getElementById("order_name").value="${memberVo.member_name}";
+		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
+		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
+		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
+		   					document.getElementById("sample6_detailAddress").value="${memberVo.member_addr3}";
+		   				}else{
+		   					document.getElementById("order_name").value="";
+		   					document.getElementById("order_phone").value="";
+		   					document.getElementById("sample6_postcode").value="";
+		   					document.getElementById("sample6_address").value="";
+		   					document.getElementById("sample6_detailAddress").value="";
+		   				}
+		   			}
+		   		</script><!-- 주문자 정보와 동일 체크박스 end  --> 
+		
 
 	</body>
 	

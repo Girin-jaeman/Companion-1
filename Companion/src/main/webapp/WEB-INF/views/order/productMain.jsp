@@ -14,8 +14,6 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/home.css">
-		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/main.css">
 		<link rel="stylesheet" href="${root}css/order/productMain.css">
 		
@@ -65,6 +63,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/companion/order/productMain?c=700">산책용품</a>
                             </li>
+                      
+                            
+                            
+                            
                         </ul>
 						</div>
 					</div>
@@ -81,6 +83,10 @@
                 </a>
                 <hr class="mb-4">
             </div>
+            
+        <!-- Right-Scrollbar  -->
+		<jsp:include page="../common/scrollbar.jsp"/>
+		
 		<!-- content -->
 		<div class="maincontent">
 				<nav aria-label="breadcrumb">
@@ -90,6 +96,12 @@
                         <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
                         <li class="breadcrumb-item"><a href="#">등록일순</a></li>
+                        <div class="navbar navbar-dark bg-primary"> 
+	                        <form class="form-inline">
+						    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+						    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색기능 넣을까말까</button>
+							</form>
+						</div>
                     </ol>
                 </nav>
 			   <div class="row">
@@ -141,6 +153,7 @@
 			              
 			                <!-- 상품 추천 수 받아올 것. -->
 			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
+<%-- 			                    <%request.setAttribute("like_id",${bean.like_id}); %> --%>
 			                <!-- 상품 추천 수 받아올 것. -->
 	
 			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>

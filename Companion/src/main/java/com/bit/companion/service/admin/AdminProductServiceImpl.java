@@ -41,7 +41,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 		try {
 			// Total list Count
 			int listCnt = adminProductDao.selectTotal(search);
-			System.out.println("너 안하는거 알아" + listCnt);
+			
 			// Pagination + Search
 			search.setSearchType(searchType);
 			search.setKeyword(keyword);

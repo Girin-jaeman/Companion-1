@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="order">
+ 
+  <!-- order Table용 매퍼였지만 지금 안쓰는 중.  -->
 	<select id="OrderSelectAll" resultType="orderBean">
 	select * from `order`
 	</select>
@@ -13,12 +15,17 @@
 		select * from product where product_id=#{value}
 	</select>
 	
+	<!-- 장바구니에 상품 등록  -->
+	<insert id="OrderCartAdd" parameterType="orderBean">
+		insert into `cart` values ((select truncate(rand()*10000000,0)),#{member_id},#{product_id},#{order_detail_quantity});
+	</insert>
 
+	<!-- 상품 주문 시  -->
 	<insert id="OrderProductPurchase" parameterType="orderBean">
 	 	insert into 
 		`order` values
 		 (null,#{member_id},now(),${order_amount},#{order_name},#{order_tell},#{order_phone},
-		 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},0);
+		 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},1);
 <!-- 	 	insert into 
 		`order` values
 		 (null,#{member_id},now(),(select product_price from product where product_id=#{product_id}),#{order_name},#{order_tell},#{order_phone},
@@ -27,18 +34,23 @@
 
 <!-- order_quantity 어떡할래 개 -->
 	<insert id="OrderDetailInsert" parameterType="orderBean">
-		insert into `order_detail` values (default,#{order_id},#{product_id},#{order_amount},#{order_quantity});
+		insert into `order_detail`
+		 values 
+		 (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})), 
+		 #{product_id},#{order_detail_price},#{order_detail_quantity});
 	</insert>
 
-
 <!-- 결제수단 결제 그 API에서 받아 올 수 있는지 확인 할 것.  -->
-	<!-- <insert id="OrderPaymentInsert" parameterType="orderBean">
-		insert into `payment` values (default,#{order_id},#{member_id},now(),#{order_amount},결제수단ID,1);
-	</insert> -->
-	
-	<!-- delivery_number 자동 생성해서 입력넣을 것. type=string임.  -->
-<!-- 	<insert id="OrderDeliveryInsert" parameterType="orderBean">
-		insert into `delivery` values (default,#{order_id},#{member_id},'비트택배',#{delivery_number},0);
-	</insert> -->
+	<insert id="OrderPaymentInsert" parameterType="orderBean">
+		insert into `payment` values
+		(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},now(),#{order_detail_price},default);
+	</insert> 
+	 
+	<!-- delivery_number 랜덤 처리함. (select truncate(rand()*100000000000000,0))  -->
+ 	<insert id="OrderDeliveryInsert" parameterType="orderBean">
+ 	insert into delivery 
+ 	values 
+ 	(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
+	</insert>
 	
   </mapper>
