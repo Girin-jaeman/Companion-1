@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/" var="root"></c:url> 
 <!DOCTYPE html>
 <html>
@@ -62,12 +63,8 @@
 		<div class="container-fluid">
 			<h1>대시보드</h1>
 				<ul>
-					<li>일별 매출액</li>
-					<li>\459,152,100</li>
-					<li>월별 매출액</li>
-					<li>\132,456,751,100</li>
-					<li>${dailySum.daily_sum}</li>
-					<li></li>
+					<li>오늘 매출액 : <fmt:formatNumber value="${todaySum.daily_sum}" pattern="###,###,###원"/></li>
+					<li>이번달 매출액 : <fmt:formatNumber value="${monthSum.monthly_sum}" pattern="###,###,###원"/></li>
 				</ul>
 			<h2>그래프</h2>
             <div class="row">
@@ -75,7 +72,7 @@
                     <div class="card-header">
                         <svg class="svg-inline--fa fa-chart-area fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-area" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M500 384c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v308h436zM372.7 159.5L288 216l-85.3-113.7c-5.1-6.8-15.5-6.3-19.9 1L96 248v104h384l-89.9-187.8c-3.2-6.5-11.4-8.7-17.4-4.7z"></path></svg>
                         <!-- <i class="fas fa-chart-area mr-1"></i> -->
-                        "Area Chart Example"
+                        "일별 매출"
                     </div>
                     <div class="card-body">
                         <canvas id="myAreaChart" width="601" height="240" style="display: block; width: 601px; height: 240px;" class="chartjs-render-monitor"></canvas>
@@ -85,7 +82,7 @@
 					<div class="card-header">
 						<svg class="svg-inline--fa fa-chart-bar fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-bar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M332.8 320h38.4c6.4 0 12.8-6.4 12.8-12.8V172.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V76.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-288 0h38.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zM496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"></path></svg>
 						<!-- <i class="fas fa-chart-bar mr-1"></i> -->
-						"Bar Chart Example"
+						"월별 매출"
 					</div>
 					<div class="card-body">
 						<canvas id="myBarChart" width="601" height="240" style="display: block; width: 601px; height: 240px;" class="chartjs-render-monitor"></canvas>
@@ -248,65 +245,153 @@
     
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <%-- <script src="${root }assets/demo/chart-area-demo.js"></script> --%>
-    <script src="${root }assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${root }assets/demo/datatables-demo.js"></script>
     
     <!-- AreaChart -->
     <script type="text/javascript">
-    var ctx = document.getElementById("myAreaChart");
-    var chartLabels=["<c:out value='${chartDate.today_6}'/>","<c:out value='${chartDate.today_5}'/>","<c:out value='${chartDate.today_4}'/>","<c:out value='${chartDate.today_3}'/>","<c:out value='${chartDate.today_2}'/>","<c:out value='${chartDate.today_1}'/>","<c:out value='${chartDate.today}'/>"];
-    var chartData=["<c:out value='${today_6Sum.daily_sum}'/>","<c:out value='${today_5Sum.daily_sum}'/>","<c:out value='${today_4Sum.daily_sum}'/>","<c:out value='${today_3Sum.daily_sum}'/>","<c:out value='${today_2Sum.daily_sum}'/>","<c:out value='${today_1Sum.daily_sum}'/>","<c:out value='${todaySum.daily_sum}'/>"];
-    var myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: chartLabels,
-        datasets: [{
-          label: "Sessions",
-          lineTension: 0.3,
-          backgroundColor: "rgba(2,117,216,0.2)",
-          borderColor: "rgba(2,117,216,1)",
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(2,117,216,1)",
-          pointBorderColor: "rgba(255,255,255,0.8)",
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(2,117,216,1)",
-          pointHitRadius: 50,
-          pointBorderWidth: 2,
-          data: chartData
-        }],
-      },
-      options: {
-        scales: {
-          xAxes: [{
-            time: {
-              unit: 'date'
-            },
-            gridLines: {
-              display: false
-            },
-            ticks: {
-              maxTicksLimit: 7
-            }
-          }],
-          yAxes: [{
-            ticks: {
-              min: 0,
-              max: 50000000,
-              maxTicksLimit: 10
-            },
-            gridLines: {
-              color: "rgba(0, 0, 0, .125)",
-            }
-          }],
-        },
-        legend: {
-          display: false
-        }
-      }
-    });
+    // Area Chart 일별 매출
+    var areaChart = function (){
+	    var ctx = document.getElementById("myAreaChart");
+	    var chartLabels=["<c:out value='${chartDate.today_6}'/>","<c:out value='${chartDate.today_5}'/>","<c:out value='${chartDate.today_4}'/>","<c:out value='${chartDate.today_3}'/>","<c:out value='${chartDate.today_2}'/>","<c:out value='${chartDate.today_1}'/>","<c:out value='${chartDate.today}'/>"];
+	    var chartData=["<c:out value='${today_6Sum.daily_sum}'/>","<c:out value='${today_5Sum.daily_sum}'/>","<c:out value='${today_4Sum.daily_sum}'/>","<c:out value='${today_3Sum.daily_sum}'/>","<c:out value='${today_2Sum.daily_sum}'/>","<c:out value='${today_1Sum.daily_sum}'/>","<c:out value='${todaySum.daily_sum}'/>"];
+	    var myLineChart = new Chart(ctx, {
+	      type: 'line',
+	      data: {
+	        labels: chartLabels,
+	        datasets: [{
+	          label: "Sessions",
+	          lineTension: 0.3,
+	          backgroundColor: "rgba(2,117,216,0.2)",
+	          borderColor: "rgba(2,117,216,1)",
+	          pointRadius: 5,
+	          pointBackgroundColor: "rgba(2,117,216,1)",
+	          pointBorderColor: "rgba(255,255,255,0.8)",
+	          pointHoverRadius: 5,
+	          pointHoverBackgroundColor: "rgba(2,117,216,1)",
+	          pointHitRadius: 50,
+	          pointBorderWidth: 2,
+	          data: chartData
+	        }],
+	      },
+	      options: {
+	        scales: {
+	          xAxes: [{
+	            time: {
+	              unit: 'date'
+	            },
+	            gridLines: {
+	              display: false
+	            },
+	            ticks: {
+	              maxTicksLimit: 7
+	            }
+	          }],
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 50000000,
+	              maxTicksLimit: 10,
+	              beginAtZero:true,
+	              userCallback: function(value, index, values) {
+	                  value = value.toString();
+	                  value = value.split(/(?=(?:...)*$)/);
+	                  value = value.join(',');
+	                  return value;
+	              }
+	            },
+	            gridLines: {
+	              color: "rgba(0, 0, 0, .125)",
+	            }
+	          }],
+	        },
+	        legend: {
+	          display: false
+	        },
+	        tooltips: {
+	        	callbacks: {
+	        		label : function(tooltipItem,data){
+					        	var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					        	value = value.toString();
+					        	value = value.split(/(?=(?:...)*$)/);
+					        	value = value.join(',');
+					        	return value;
+	        				}
+       			}
+    		}
+	      }
+	    });
+    };
+    
+ // Bar Chart 월별 매출
+	var barChart = function() {
+	    var ctx = document.getElementById("myBarChart");
+	    var chartLabels=["<c:out value='${chartDate.month_6}'/>","<c:out value='${chartDate.month_5}'/>","<c:out value='${chartDate.month_4}'/>","<c:out value='${chartDate.month_3}'/>","<c:out value='${chartDate.month_2}'/>","<c:out value='${chartDate.month_1}'/>","<c:out value='${chartDate.month}'/>"];
+	    var chartData=["<c:out value='${month_6Sum.monthly_sum}'/>","<c:out value='${month_5Sum.monthly_sum}'/>","<c:out value='${month_4Sum.monthly_sum}'/>","<c:out value='${month_3Sum.monthly_sum}'/>","<c:out value='${month_2Sum.monthly_sum}'/>","<c:out value='${month_1Sum.monthly_sum}'/>","<c:out value='${monthSum.monthly_sum}'/>"];
+	    var myLineChart = new Chart(ctx, {
+	      type: 'bar',
+	      data: {
+	        labels: chartLabels,
+	        datasets: [{
+	          label: "Revenue",
+	          backgroundColor: "rgba(2,117,216,1)",
+	          borderColor: "rgba(2,117,216,1)",
+	          data: chartData
+	        }],
+	      },
+	      options: {
+	        scales: {
+	          xAxes: [{
+	            time: {
+	              unit: 'month'
+	            },
+	            gridLines: {
+	              display: false
+	            },
+	            ticks: {
+	              maxTicksLimit: 7
+	              
+	            }
+	          }],
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 50000000,
+	              maxTicksLimit: 10,
+	              beginAtZero:true,
+	              userCallback: function(value, index, values) {
+	                  value = value.toString();
+	                  value = value.split(/(?=(?:...)*$)/);
+	                  value = value.join(',');
+	                  return value;
+	              }
+	            },
+	            gridLines: {
+	              display: true
+	            }
+	          }],
+	        },
+	        legend: {
+	          display: false
+	        },
+	        tooltips: {
+	        	callbacks: {
+	        		label : function(tooltipItem,data){
+					        	var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					        	value = value.toString();
+					        	value = value.split(/(?=(?:...)*$)/);
+					        	value = value.join(',');
+					        	return value;
+	        				}
+       			}
+    		}
+	      }
+	    });
+ 	};
+    
+    areaChart();
+    barChart();
     </script>
     
 </body>

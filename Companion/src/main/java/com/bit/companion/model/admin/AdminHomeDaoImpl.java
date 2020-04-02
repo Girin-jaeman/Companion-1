@@ -1,7 +1,6 @@
 package com.bit.companion.model.admin;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -54,6 +53,41 @@ public class AdminHomeDaoImpl implements AdminHomeDao {
 	@Override
 	public PaymentVo selectToday_6(ChartDate chartDate) throws SQLException {
 		return sqlSession.selectOne("adminHome.selectToday_6",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_1(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_1",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_2(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_2",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_3(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_3",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_4(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_4",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_5(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_5",chartDate);
+	}
+
+	@Override
+	public PaymentVo selectMonth_6(ChartDate chartDate) throws SQLException {
+		return sqlSession.selectOne("adminHome.selectMonth_6",chartDate);
 	}
 
 }

@@ -23,13 +23,14 @@ public class AdminHomeServiceImpl implements AdminHomeService {
 	
 	@Override
 	public void list(Model model) {
+		// 날짜 객체
 		ChartDate chartDate = new ChartDate();
+		chartDate.chartDate();
+		model.addAttribute("chartDate", chartDate);
+		
 		try {
-			chartDate.chartDate();
-			String today = chartDate.getToday();
-			log.info("service:chartDate:today:"+today);
-			log.info("service:daily_sum:");
 			
+			// 일별 매출
 			PaymentVo todaySum = adminHomeDao.selectToday(chartDate);
 			PaymentVo today_1Sum = adminHomeDao.selectToday_1(chartDate);
 			PaymentVo today_2Sum = adminHomeDao.selectToday_2(chartDate);
@@ -44,7 +45,22 @@ public class AdminHomeServiceImpl implements AdminHomeService {
 			model.addAttribute("today_4Sum",today_4Sum);
 			model.addAttribute("today_5Sum",today_5Sum);
 			model.addAttribute("today_6Sum",today_6Sum);
-			model.addAttribute("chartDate", chartDate);
+			
+			// 월별 매출
+			PaymentVo monthSum = adminHomeDao.selectMonth(chartDate);
+			PaymentVo month_1Sum = adminHomeDao.selectMonth_1(chartDate);
+			PaymentVo month_2Sum = adminHomeDao.selectMonth_2(chartDate);
+			PaymentVo month_3Sum = adminHomeDao.selectMonth_3(chartDate);
+			PaymentVo month_4Sum = adminHomeDao.selectMonth_4(chartDate);
+			PaymentVo month_5Sum = adminHomeDao.selectMonth_5(chartDate);
+			PaymentVo month_6Sum = adminHomeDao.selectMonth_6(chartDate);
+			model.addAttribute("monthSum", monthSum);
+			model.addAttribute("month_1Sum", month_1Sum);
+			model.addAttribute("month_2Sum", month_2Sum);
+			model.addAttribute("month_3Sum", month_3Sum);
+			model.addAttribute("month_4Sum", month_4Sum);
+			model.addAttribute("month_5Sum", month_5Sum);
+			model.addAttribute("month_6Sum", month_6Sum);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
