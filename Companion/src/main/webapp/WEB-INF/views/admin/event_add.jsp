@@ -87,7 +87,7 @@
 				  <tr>
 				    <th>
 				    	<div>
-						<label for="content">게시글 내용</label>
+						<label for="content">글 내용</label>
 						</div>
 					</th>
 				    <td>

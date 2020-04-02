@@ -75,7 +75,6 @@
 				<div class="btn__group">
 					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<table class="table">
@@ -85,18 +84,20 @@
 						<div class="float--left">
 							<label for="title">[제목]&nbsp;</label><span>${adminArticleOne.article_title }</span>
 						</div>
-						<div class="thumb float--right">
-							<label for="img">[썸네일]&nbsp;</label>
-							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminArticleOne.article_thumb }'/>"/>
-						</div>
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>
-						<label for="date">[작성일]&nbsp;</label>
-						<span>${adminArticleOne.article_date }</span>
+					<tr class="clearfix">
+						<td class="clearfix">
+						<div class="float--left">
+							<label for="date">[작성일]&nbsp;</label>
+							<span>${adminArticleOne.article_date }</span>
+						</div>
+						<div class="rightt float--right">
+							<label for="member_id">[작성자]&nbsp;</label>
+							<span>${adminArticleOne.member_id }</span>
+						</div>
 						</td>
 					</tr>
 					<tr>
@@ -111,12 +112,9 @@
 						</div>
 						</td>
 					</tr>
-					<tr>
-						<td>
-						</td>
-					</tr>
 				</tbody>
 				</table>
+				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 			</form>
 		</section>
 		<!-- section [end] -->
