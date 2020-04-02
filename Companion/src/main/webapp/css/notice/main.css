@@ -1,15 +1,22 @@
+/* MAIN-TITLE STYLE */
+.main--title{
+   margin-bottom: 30px;
+  text-align: center;
+}
+
+
 /* FAQ LIST */
 .faq_group {
     width: 50%;
-    margin: 50px auto;
+    margin: 0 auto 50px;
 }
 .faq_group ul{
 	padding:0;
 }
 .board_slide {
     text-align: left;
-    border-top: 2px solid #f5b895;
-    border-bottom: 1px solid #828282;
+    border-top: 2px solid rgba(15, 76, 129, 0.9);
+    border-bottom: 1px solid rgba(15, 76, 129, 0.9);
     background: #fff;
 	list-style: none;
 }
@@ -26,7 +33,7 @@
     display: block; position: relative; padding: 16px 30px 16px 60px; line-height: 22px;
 }
 .board_slide .item .tit>a>strong{
-    position: absolute;left: 30px;top: 14px;font-size: 20px; color: #e8340c;
+    position: absolute;left: 30px;top: 14px;font-size: 20px; color: #0F4C81;
 }
 .board_slide .item .hidden{
     display: none;position: relative;overflow: hidden;

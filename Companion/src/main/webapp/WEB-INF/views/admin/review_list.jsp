@@ -18,7 +18,7 @@
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<title>Companion::이벤트 목록</title>
+	<title>Companion::후기 목록</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -46,10 +46,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/event_list">이벤트 목록</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/event_add">이벤트 등록</a>
+			                <a class="nav-link active" href="${root }admin/review_list">후기 목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -62,11 +59,9 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 이벤트 목록</h1>
+				<h1>[Admin] 후기 목록</h1>
 			</div>
 			<div class="sub-group clearfix">
-			<!-- 공지 등록 -->
-			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/event_add">글 등록</a>
 			
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
@@ -109,7 +104,7 @@
 			<td>
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 			</td>
-			<td><a href="${root }admin/event_detail?article_id=${bean.article_id }&
+			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }&
 					page=${search.page}&
 					range=${search.range}&
 					searchType=${search.searchType}&

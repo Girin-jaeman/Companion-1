@@ -28,7 +28,7 @@ table{
 table tbody tr{
 	height:40px;
 }
-table tbody tr:nth-child(2){
+table tbody tr:nth-child(3){
 	height:360px;
 }
 table tbody tr th{
