@@ -66,8 +66,8 @@
 			<div class="main--title">
 				<h1>[Admin] 이벤트 상세</h1>
 			</div>
-			<!-- 페이지 유지를 위한 정보 -->
 			<form role="form" method="post" autocomplete="off" action="${root}admin/event_delete">
+				<!-- 페이지 유지를 위한 정보 -->
 			    <input type="hidden" name="page" value="${search.page }"/>
 			    <input type="hidden" name="range" value="${search.range }"/>
 			    <input type="hidden" name="searchType" value="${search.searchType }"/>
@@ -148,7 +148,6 @@ $("#modify_Btn").click(function(){
 
 // 목록버튼
 $("#list_Btn").click(function(){
-/* 	history.back(); */
 	location.href = ${root}+"/admin/event_list?page=${search.page}"
 		+"&range=${search.range}"
 		+"&searchType=${search.searchType}"

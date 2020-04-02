@@ -105,16 +105,18 @@
 			<!-- forEach start -->
 			<c:forEach items="${adminArticleList }" var="bean">
 			<tr>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
+			<td>${bean.article_id }</td>
 			<td>
-				<a href="${root }admin/faq_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
-				</a>
 			</td>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
+			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }&
+					page=${search.page}&
+					range=${search.range}&
+					searchType=${search.searchType}&
+					keyword=${search.keyword}">${bean.article_title }</a></td>
+			<td>${bean.member_id }</td>
+			<td>${bean.article_date }</td>
+			<td>${bean.article_count }</td>
 			</tr>
 			</c:forEach>
 			</tbody>

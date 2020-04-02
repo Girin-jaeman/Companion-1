@@ -144,7 +144,7 @@
 				</table>
 				<!-- table end -->
 				<div class="btn__group">
-					<button type="submit"class="btn">입력</button>
+					<button type="submit"class="btn">수정</button>
 					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
 			</form>
@@ -188,7 +188,6 @@ $("#back_Btn").click(function(){
 		+"&range=${search.range}"
 		+"&searchType=${search.searchType}"
 		+"&keyword=${search.keyword}"; 
- 
 });
 </script>
 

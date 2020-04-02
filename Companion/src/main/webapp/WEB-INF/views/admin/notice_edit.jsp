@@ -67,6 +67,11 @@
 				<h1>[Admin] 공지사항 수정</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+				<!-- 페이지 유지를 위한 정보 -->
+				<input type="hidden" name="page" value="${search.page }"/>
+				<input type="hidden" name="range" value="${search.range }"/>
+				<input type="hidden" name="searchType" value="${search.searchType }"/>
+				<input type="hidden" name="keyword" value="${search.keyword }"/>
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<!-- table에 잡아넣기시작 -->
 				<table>
@@ -127,10 +132,11 @@
 				    <td>
 				    	<div class="file-add">
 				    	<input type="file" name="file" id="article_image"/>
-					<div class="select_img">
-						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-						<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
-						<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
+						<div class="select_img">
+							<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
+							<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
+							<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
+						</div>
 					</div>
 				    </td>
 				  </tr>
@@ -175,7 +181,13 @@ $('#article_image').change(function(){
 
 // 취소 버튼
 $("#back_Btn").click(function(){
-	history.back();
+	/* history.back(); */
+	event.preventDefault();
+	location.href = ${root}+"/admin/notice_detail?article_id=${adminArticleOne.article_id}"
+		+"&page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
 });
 </script>
 

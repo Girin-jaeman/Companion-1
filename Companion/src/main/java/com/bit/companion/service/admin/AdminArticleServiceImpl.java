@@ -52,11 +52,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 			// board_id
 			bean.setBoard_id(board_id);
 			
-			System.out.println(search.getPage());
-			System.out.println(search.getRange());
-			System.out.println(search.getSearchType());
-			System.out.println(search.getKeyword());
-			
 			model.addAttribute("search",search);
 			model.addAttribute("adminArticleOne", adminArticleDao.selectOne(bean));
 		} catch (SQLException e) {
