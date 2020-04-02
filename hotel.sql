@@ -28,7 +28,7 @@ select sum(payment_amount) as `daily_sum` from `payment` where payment_date like
 select sum(payment_amount) as daily_sum from `payment`;
 
 select sum(payment_amount) as daily_sum from `payment` where payment_date like '2020-03-30%';
-select sum(payment_amount) as monthly_sum from `payment` where payment_date like '2020-02%';
+select sum(payment_amount) as monthly_sum from `payment` where payment_date like '2020-03%';
 
 insert into payment values (null,1,'회원1',now(),100,0);
 insert into payment values (null,2,'회원1',now(),200,0);
@@ -64,6 +64,8 @@ insert into payment values (null,29,'회원1',now(),2900,0);
 insert into payment values (null,30,'회원1',now(),3000,0);
 
 insert into payment values (null,30,'회원1',now(),3000,0);
-insert into payment values (null,30,'회원1',now(),3000,0);
+insert into payment values (null,30,'회원1','2019-10-01',47540000,0);
+delete from payment where payment_date = '2019-12-01 00:00:00';
+
 
 commit;

@@ -29,11 +29,25 @@
 	</select>
 	
 	<!-- monthly sum -->
-	<!--
-	<select id="selectMonthlySum" resultType="adminHomeBean">
-		select sum(payment_amount) as monthly_sum from `payment` where payment_date like '2020-02%'
+	<select id="selectMonth" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month},'%')
 	</select>
-	-->
-	
-	
+	<select id="selectMonth_1" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_1},'%')
+	</select>
+	<select id="selectMonth_2" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_2},'%')
+	</select>
+	<select id="selectMonth_3" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_3},'%')
+	</select>
+	<select id="selectMonth_4" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_4},'%')
+	</select>
+	<select id="selectMonth_5" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_5},'%')
+	</select>
+	<select id="selectMonth_6" resultType="PaymentBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_6},'%')
+	</select>
 </mapper>

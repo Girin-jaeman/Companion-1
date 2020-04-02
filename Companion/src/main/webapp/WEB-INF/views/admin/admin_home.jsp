@@ -248,65 +248,116 @@
     
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <%-- <script src="${root }assets/demo/chart-area-demo.js"></script> --%>
-    <script src="${root }assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${root }assets/demo/datatables-demo.js"></script>
     
     <!-- AreaChart -->
     <script type="text/javascript">
-    var ctx = document.getElementById("myAreaChart");
-    var chartLabels=["<c:out value='${chartDate.today_6}'/>","<c:out value='${chartDate.today_5}'/>","<c:out value='${chartDate.today_4}'/>","<c:out value='${chartDate.today_3}'/>","<c:out value='${chartDate.today_2}'/>","<c:out value='${chartDate.today_1}'/>","<c:out value='${chartDate.today}'/>"];
-    var chartData=["<c:out value='${today_6Sum.daily_sum}'/>","<c:out value='${today_5Sum.daily_sum}'/>","<c:out value='${today_4Sum.daily_sum}'/>","<c:out value='${today_3Sum.daily_sum}'/>","<c:out value='${today_2Sum.daily_sum}'/>","<c:out value='${today_1Sum.daily_sum}'/>","<c:out value='${todaySum.daily_sum}'/>"];
-    var myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: chartLabels,
-        datasets: [{
-          label: "Sessions",
-          lineTension: 0.3,
-          backgroundColor: "rgba(2,117,216,0.2)",
-          borderColor: "rgba(2,117,216,1)",
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(2,117,216,1)",
-          pointBorderColor: "rgba(255,255,255,0.8)",
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(2,117,216,1)",
-          pointHitRadius: 50,
-          pointBorderWidth: 2,
-          data: chartData
-        }],
-      },
-      options: {
-        scales: {
-          xAxes: [{
-            time: {
-              unit: 'date'
-            },
-            gridLines: {
-              display: false
-            },
-            ticks: {
-              maxTicksLimit: 7
-            }
-          }],
-          yAxes: [{
-            ticks: {
-              min: 0,
-              max: 50000000,
-              maxTicksLimit: 10
-            },
-            gridLines: {
-              color: "rgba(0, 0, 0, .125)",
-            }
-          }],
-        },
-        legend: {
-          display: false
-        }
-      }
-    });
+    // Area Chart 일별 매출
+    var areaChart = function (){
+	    var ctx = document.getElementById("myAreaChart");
+	    var chartLabels=["<c:out value='${chartDate.today_6}'/>","<c:out value='${chartDate.today_5}'/>","<c:out value='${chartDate.today_4}'/>","<c:out value='${chartDate.today_3}'/>","<c:out value='${chartDate.today_2}'/>","<c:out value='${chartDate.today_1}'/>","<c:out value='${chartDate.today}'/>"];
+	    var chartData=["<c:out value='${today_6Sum.daily_sum}'/>","<c:out value='${today_5Sum.daily_sum}'/>","<c:out value='${today_4Sum.daily_sum}'/>","<c:out value='${today_3Sum.daily_sum}'/>","<c:out value='${today_2Sum.daily_sum}'/>","<c:out value='${today_1Sum.daily_sum}'/>","<c:out value='${todaySum.daily_sum}'/>"];
+	    var myLineChart = new Chart(ctx, {
+	      type: 'line',
+	      data: {
+	        labels: chartLabels,
+	        datasets: [{
+	          label: "Sessions",
+	          lineTension: 0.3,
+	          backgroundColor: "rgba(2,117,216,0.2)",
+	          borderColor: "rgba(2,117,216,1)",
+	          pointRadius: 5,
+	          pointBackgroundColor: "rgba(2,117,216,1)",
+	          pointBorderColor: "rgba(255,255,255,0.8)",
+	          pointHoverRadius: 5,
+	          pointHoverBackgroundColor: "rgba(2,117,216,1)",
+	          pointHitRadius: 50,
+	          pointBorderWidth: 2,
+	          data: chartData
+	        }],
+	      },
+	      options: {
+	        scales: {
+	          xAxes: [{
+	            time: {
+	              unit: 'date'
+	            },
+	            gridLines: {
+	              display: false
+	            },
+	            ticks: {
+	              maxTicksLimit: 7
+	            }
+	          }],
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 50000000,
+	              maxTicksLimit: 10
+	            },
+	            gridLines: {
+	              color: "rgba(0, 0, 0, .125)",
+	            }
+	          }],
+	        },
+	        legend: {
+	          display: false
+	        }
+	      }
+	    });
+    };
+    
+ // Bar Chart 월별 매출
+	var barChart = function() {
+	    var ctx = document.getElementById("myBarChart");
+	    var chartLabels=["<c:out value='${chartDate.month_6}'/>","<c:out value='${chartDate.month_5}'/>","<c:out value='${chartDate.month_4}'/>","<c:out value='${chartDate.month_3}'/>","<c:out value='${chartDate.month_2}'/>","<c:out value='${chartDate.month_1}'/>","<c:out value='${chartDate.month}'/>"];
+	    var chartData=["<c:out value='${month_6Sum.monthly_sum}'/>","<c:out value='${month_5Sum.monthly_sum}'/>","<c:out value='${month_4Sum.monthly_sum}'/>","<c:out value='${month_3Sum.monthly_sum}'/>","<c:out value='${month_2Sum.monthly_sum}'/>","<c:out value='${month_1Sum.monthly_sum}'/>","<c:out value='${monthSum.monthly_sum}'/>"];
+	    var myLineChart = new Chart(ctx, {
+	      type: 'bar',
+	      data: {
+	        labels: chartLabels,
+	        datasets: [{
+	          label: "Revenue",
+	          backgroundColor: "rgba(2,117,216,1)",
+	          borderColor: "rgba(2,117,216,1)",
+	          data: chartData
+	        }],
+	      },
+	      options: {
+	        scales: {
+	          xAxes: [{
+	            time: {
+	              unit: 'month'
+	            },
+	            gridLines: {
+	              display: false
+	            },
+	            ticks: {
+	              maxTicksLimit: 7
+	            }
+	          }],
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 50000000,
+	              maxTicksLimit: 10
+	            },
+	            gridLines: {
+	              display: true
+	            }
+	          }],
+	        },
+	        legend: {
+	          display: false
+	        }
+	      }
+	    });
+ 	};
+    
+    areaChart();
+    barChart();
     </script>
     
 </body>
