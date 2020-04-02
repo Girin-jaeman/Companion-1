@@ -87,7 +87,9 @@
 						</c:if>
 					</form>
 					<div id="kakao_id_login">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">카카오 로그인</a>
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">
+							<button>카카오 로그인</button>
+						</a>
 					</div>
 		
 	            </div>

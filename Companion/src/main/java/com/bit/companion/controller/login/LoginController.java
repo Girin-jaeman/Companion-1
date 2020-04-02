@@ -57,15 +57,16 @@ public class LoginController {
 			}
 		}
 		loginService.logout(session);
-		return "home";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/login/kakaologin")
 	public String kakaoLogin(@RequestParam("code") String code,HttpSession session) {
 		if(session.getAttribute("memberVo")!=null) {
-			return "home";
+			return "redirect:/";
 		}
 		String access_Token=loginService.getAccessToken(code);
+		session.setAttribute("access_Token", access_Token);
 		HashMap<String,Object> userInfo=loginService.getUserInfo(access_Token);
 		/* System.out.println("login Controller : "+userInfo); */
 		String k_email=(String)userInfo.get("k_email");
@@ -75,7 +76,6 @@ public class LoginController {
 		int result=memberService.emailChk(k_email);
 		/* System.out.println("emailChk : "+result); */
 		if(result!=0) { 
-			session.setAttribute("access_Token", access_Token);
 			String member_id=memberService.emailFindId(k_email); 
 			String member_pw=memberService.emailFindPw(k_email); 
 			String member_name=memberService.emailFindName(k_email); 
@@ -90,9 +90,9 @@ public class LoginController {
 			} 
 		}else {
 			session.setAttribute("k_email", k_email);
-			return "login/memberadd"; 
+			return "redirect:memberadd"; 
 		} 
-		return "home";
+		return "redirect:/";
 		 
 	}
 
