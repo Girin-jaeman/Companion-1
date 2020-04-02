@@ -39,6 +39,9 @@
 						<if test="searchType=='member' and keyword != null and keyword != '' ">
 							member_id LIKE CONCAT('%', #{keyword}, '%')
 						</if>
+						<if test="searchType=='product' and keyword != null and keyword != '' ">
+							product_id LIKE CONCAT('%', #{keyword}, '%')
+						</if>
 					</trim>
 					 ORDER BY article_id DESC LIMIT #{startList}, #{listSize}
 	</select>
@@ -83,9 +86,6 @@
 			<if test="board_id==2">
 				2,
 			</if>
-			<if test="board_id==3">
-				3,
-			</if>
 			null,
 			'admin',
 			#{article_title},
@@ -93,7 +93,8 @@
 			now(),
 			0,
 			#{article_image},
-			#{article_thumb}
+			#{article_thumb},
+			null
 		)
 	</insert>
 	
@@ -172,6 +173,9 @@
 				</if>
 				<if test="searchType == 'member'">
 					member_id LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'product'">
+					product_id LIKE CONCAT('%', #{keyword}, '%')
 				</if>
   			</if>
   		</trim>

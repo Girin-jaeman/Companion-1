@@ -12,12 +12,13 @@ public class AdminArticleVo {
 	private int article_count;
 	private String article_image;
 	private String article_thumb;
+	private int product_id;
 
 	public AdminArticleVo() {
 	}
 
 	public AdminArticleVo(int board_id, int article_id, String member_id, String article_title, String article_content,
-			Date article_date, int article_count, String article_image, String article_thumb) {
+			Date article_date, int article_count, String article_image, String article_thumb, int product_id) {
 		super();
 		this.board_id = board_id;
 		this.article_id = article_id;
@@ -28,6 +29,7 @@ public class AdminArticleVo {
 		this.article_count = article_count;
 		this.article_image = article_image;
 		this.article_thumb = article_thumb;
+		this.product_id = product_id;
 	}
 
 	public int getBoard_id() {
@@ -102,12 +104,20 @@ public class AdminArticleVo {
 		this.article_thumb = article_thumb;
 	}
 
+	public int getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminArticleVo [board_id=" + board_id + ", article_id=" + article_id + ", member_id=" + member_id
 				+ ", article_title=" + article_title + ", article_content=" + article_content + ", article_date="
 				+ article_date + ", article_count=" + article_count + ", article_image=" + article_image
-				+ ", article_thumb=" + article_thumb + "]";
+				+ ", article_thumb=" + article_thumb + ", product_id=" + product_id + "]";
 	}
 
 }

@@ -66,7 +66,8 @@
 					<li>\459,152,100</li>
 					<li>월별 매출액</li>
 					<li>\132,456,751,100</li>
-					<li>${adminHomeVo.today}</li>
+					<li>${dailySum.daily_sum}</li>
+					<li></li>
 				</ul>
 			<h2>그래프</h2>
             <div class="row">
@@ -256,7 +257,8 @@
     <!-- AreaChart -->
     <script type="text/javascript">
     var ctx = document.getElementById("myAreaChart");
-    var chartLabels=["<c:out value='${adminHomeVo.today_6}'/>","<c:out value='${adminHomeVo.today_5}'/>","<c:out value='${adminHomeVo.today_4}'/>","<c:out value='${adminHomeVo.today_3}'/>","<c:out value='${adminHomeVo.today_2}'/>","<c:out value='${adminHomeVo.today_1}'/>","<c:out value='${adminHomeVo.today}'/>"];
+    var chartLabels=["<c:out value='${chartDate.today_6}'/>","<c:out value='${chartDate.today_5}'/>","<c:out value='${chartDate.today_4}'/>","<c:out value='${chartDate.today_3}'/>","<c:out value='${chartDate.today_2}'/>","<c:out value='${chartDate.today_1}'/>","<c:out value='${chartDate.today}'/>"];
+    var chartData=["<c:out value='${today_6Sum.daily_sum}'/>","<c:out value='${today_5Sum.daily_sum}'/>","<c:out value='${today_4Sum.daily_sum}'/>","<c:out value='${today_3Sum.daily_sum}'/>","<c:out value='${today_2Sum.daily_sum}'/>","<c:out value='${today_1Sum.daily_sum}'/>","<c:out value='${todaySum.daily_sum}'/>"];
     var myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -273,7 +275,7 @@
           pointHoverBackgroundColor: "rgba(2,117,216,1)",
           pointHitRadius: 50,
           pointBorderWidth: 2,
-          data: [112704, 303209, 258409, 240159, 320651, 310984, 438451],
+          data: chartData
         }],
       },
       options: {
@@ -292,7 +294,7 @@
           yAxes: [{
             ticks: {
               min: 0,
-              max: 500000,
+              max: 50000000,
               maxTicksLimit: 10
             },
             gridLines: {
