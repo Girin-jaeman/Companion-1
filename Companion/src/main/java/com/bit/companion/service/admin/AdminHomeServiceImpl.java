@@ -27,8 +27,6 @@ public class AdminHomeServiceImpl implements AdminHomeService {
 		ChartDate chartDate = new ChartDate();
 		chartDate.chartDate();
 		model.addAttribute("chartDate", chartDate);
-		log.info("service:chartDate:today:"+chartDate.getToday());
-		log.info("service:chartDate:month:"+chartDate.getMonth());
 		
 		try {
 			
