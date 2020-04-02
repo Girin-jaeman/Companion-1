@@ -25,7 +25,8 @@ update article set board_id=3 where article_id>700;
 commit;
 
 select * from member order by member_id desc;
-select * from article where board_id=0;
+select * from article where board_id=2 order by article_id desc;
+INSERT INTO article VALUES(2,null,'admin',concat('제목999'),concat('내용888'),now(),0,null,null);
 select article_title, article_content, article_date, article_image from article where article_id=2;
 
 select * from category;
@@ -108,3 +109,17 @@ update product set category_id=701 where product_id>360;
 update product set category_id=600 where product_id>460;
 update product set category_id=703 where product_id>485;
 select * from product order by product_id desc;
+
+select * from `member` where member_id='1111';
+
+SELECT * FROM `ARTICLE` WHERE board_id=1 and (article_title LIKE CONCAT('%', 23, '%') OR
+					article_content LIKE CONCAT('%', 23, '%') OR
+					member_id LIKE CONCAT('%', 23, '%'))
+
+
+
+
+
+
+
+
