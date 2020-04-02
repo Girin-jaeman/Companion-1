@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/" var="root"></c:url> 
 <!DOCTYPE html>
 <html>
@@ -62,10 +63,8 @@
 		<div class="container-fluid">
 			<h1>대시보드</h1>
 				<ul>
-					<li>오늘 매출액</li>
-					<li>${todaySum.daily_sum}</li>
-					<li>이번달 매출액</li>
-					<li>${monthSum.monthly_sum}</li>
+					<li>오늘 매출액 : <fmt:formatNumber value="${todaySum.daily_sum}" pattern="###,###,###원"/></li>
+					<li>이번달 매출액 : <fmt:formatNumber value="${monthSum.monthly_sum}" pattern="###,###,###원"/></li>
 				</ul>
 			<h2>그래프</h2>
             <div class="row">
@@ -293,7 +292,14 @@
 	            ticks: {
 	              min: 0,
 	              max: 50000000,
-	              maxTicksLimit: 10
+	              maxTicksLimit: 10,
+	              beginAtZero:true,
+	              userCallback: function(value, index, values) {
+	                  value = value.toString();
+	                  value = value.split(/(?=(?:...)*$)/);
+	                  value = value.join(',');
+	                  return value;
+	              }
 	            },
 	            gridLines: {
 	              color: "rgba(0, 0, 0, .125)",
@@ -302,7 +308,18 @@
 	        },
 	        legend: {
 	          display: false
-	        }
+	        },
+	        tooltips: {
+	        	callbacks: {
+	        		label : function(tooltipItem,data){
+					        	var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					        	value = value.toString();
+					        	value = value.split(/(?=(?:...)*$)/);
+					        	value = value.join(',');
+					        	return value;
+	        				}
+       			}
+    		}
 	      }
 	    });
     };
@@ -334,13 +351,21 @@
 	            },
 	            ticks: {
 	              maxTicksLimit: 7
+	              
 	            }
 	          }],
 	          yAxes: [{
 	            ticks: {
 	              min: 0,
 	              max: 50000000,
-	              maxTicksLimit: 10
+	              maxTicksLimit: 10,
+	              beginAtZero:true,
+	              userCallback: function(value, index, values) {
+	                  value = value.toString();
+	                  value = value.split(/(?=(?:...)*$)/);
+	                  value = value.join(',');
+	                  return value;
+	              }
 	            },
 	            gridLines: {
 	              display: true
@@ -349,7 +374,18 @@
 	        },
 	        legend: {
 	          display: false
-	        }
+	        },
+	        tooltips: {
+	        	callbacks: {
+	        		label : function(tooltipItem,data){
+					        	var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					        	value = value.toString();
+					        	value = value.split(/(?=(?:...)*$)/);
+					        	value = value.join(',');
+					        	return value;
+	        				}
+       			}
+    		}
 	      }
 	    });
  	};
