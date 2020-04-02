@@ -69,6 +69,51 @@
 		<div class="main--title">
 				<h1>[Admin] 상품 등록</h1>
 			</div>
+			
+			<table border="2">
+			  <tr>
+			    <th width="120px">1차분류</th>
+			    <td width="200px">선택지</td>
+			    <th width="120px">2차분류</th>
+			    <td width="200px">선택지</td>
+			  </tr>
+			  <tr>
+			  	<th>상품명</th>
+			  	<td colspan="3">작성란</td>
+			  </tr>
+			  <tr>
+			    <th>상품가격</th>
+			    <td colspan="3">작성란</td>
+			  </tr>
+			  <tr>
+			    <th>상품수량</th>
+			    <td colspan="3">작성란</td>
+			  </tr>
+			  <tr height="300px">
+			    <th>상품소개</th>
+			    <td colspan="5">작성란</td>
+			  </tr>
+			  <tr>
+			    <th>옵션1</th>
+			    <td>작성란</td>
+			     <th>옵션2</th>
+			    <td>작성란</td>
+			     <th width="120px">옵션3</th>
+			    <td width="200px">작성란</td>
+			  </tr>
+			  <tr>
+			    <th>옵션4</th>
+			    <td>작성란</td>
+			     <th>옵션5</th>
+			    <td>작성란</td>
+			  </tr>
+			  <tr height="150px">
+			    <th>파일첨부</th>
+			    <td colspan="5">첨부버튼및 나오는곳</td>
+			  </tr>
+			  
+			</table>
+
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<label>1차 분류</label>
 				<select class="category1">
