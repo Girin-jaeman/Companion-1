@@ -27,9 +27,13 @@
                             	<i class="fas fa-angle-right"></i>
                             	이벤트
                             </a>
-                            <a href="#">
+                            <a href="${root }admin/faq_list">
                             	<i class="fas fa-angle-right"></i>
                             	FAQ
+                            </a>
+                            <a href="${root }admin/review_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	후기
                             </a>
                         </li>
                     </ul>

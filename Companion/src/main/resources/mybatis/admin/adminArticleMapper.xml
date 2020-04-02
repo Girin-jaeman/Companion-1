@@ -5,7 +5,7 @@
 
 <mapper namespace="adminArticle">
 
-	<!-- notice list -->
+	<!-- article list -->
 	<select id="selectAll" parameterType="int" resultType="adminArticleBean">
 		SELECT 
 			@rownum:=@rownum+1 AS no,
@@ -18,6 +18,12 @@
 						</if>
 						<if test="board_id==1">
 							board_id=1
+						</if>
+						<if test="board_id==2">
+							board_id=2
+						</if>
+						<if test="board_id==3">
+							board_id=3
 						</if>
 					</trim>
 					<trim prefix="AND">
@@ -39,7 +45,7 @@
 					 ORDER BY A.article_id DESC LIMIT #{startList}, #{listSize}
 	</select>
 	
-	<!-- notice detail -->
+	<!-- article detail -->
 	<select id="selectOne" resultType="adminArticleBean" parameterType="int">
 		SELECT 
 			article_id,
@@ -57,10 +63,16 @@
 						<if test="board_id==1">
 							board_id=1
 						</if>
+						<if test="board_id==2">
+							board_id=2
+						</if>
+						<if test="board_id==3">
+							board_id=3
+						</if>
 					</trim>
 	</select>
 	
-	<!-- notice add -->
+	<!-- article add -->
 	<!-- #{member_id} - 임시로 admin -->
 	<insert id="insertOne" parameterType="adminArticleBean">
 		INSERT INTO `ARTICLE` VALUES(
@@ -69,6 +81,12 @@
 			</if>
 			<if test="board_id==1">
 				1,
+			</if>
+			<if test="board_id==2">
+				2,
+			</if>
+			<if test="board_id==3">
+				3,
 			</if>
 			null,
 			'admin',
@@ -81,7 +99,7 @@
 		)
 	</insert>
 	
-	<!-- notice edit -->
+	<!-- article edit -->
 	<update id="updateOne" parameterType="adminArticleBean" >
 		UPDATE `ARTICLE` SET 
 			article_title=#{article_title},
@@ -96,10 +114,16 @@
 						<if test="board_id==1">
 							board_id=1
 						</if>
+						<if test="board_id==2">
+							board_id=2
+						</if>
+						<if test="board_id==3">
+							board_id=3
+						</if>
 					</trim>
 	</update>
 	
-	<!-- notice delete -->
+	<!-- article delete -->
 	<delete id="deleteOne" parameterType="adminArticleBean">
 		DELETE FROM `ARTICLE` WHERE article_id=#{article_id}
 		<trim prefix="AND">
@@ -109,10 +133,16 @@
 			<if test="board_id==1">
 				board_id=1
 			</if>
+			<if test="board_id==2">
+				board_id=2
+			</if>
+			<if test="board_id==3">
+				board_id=3
+			</if>
 		</trim>
 	</delete>
 	
-	<!-- notice total -->
+	<!-- article total -->
   	<select id="selectTotal" resultType="int">
   		SELECT count(*) as listCnt FROM `ARTICLE` 
   		<trim prefix=" WHERE">
@@ -121,6 +151,12 @@
 			</if>
 			<if test="board_id==1">
 				board_id=1
+			</if>
+			<if test="board_id==2">
+				board_id=2
+			</if>
+			<if test="board_id==3">
+				board_id=3
 			</if>
   		</trim>
   		<trim prefix="AND">

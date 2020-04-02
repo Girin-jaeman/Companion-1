@@ -8,22 +8,22 @@ import com.bit.companion.model.entity.admin.AdminArticleVo;
 
 public interface AdminArticleDao {
 
-	// notice list
+	// article list
 	List<AdminArticleVo> selectAll(Search search) throws SQLException;
 	
-	// notice detail
+	// article detail
 	AdminArticleVo selectOne(AdminArticleVo bean) throws SQLException;;
 	
-	// notice add
+	// article add
 	void insertOne(AdminArticleVo bean) throws SQLException;
 	
-	// notice edit
+	// article edit
 	int updateOne(AdminArticleVo bean) throws SQLException;
 	
-	// notice delete
+	// article delete
 	int deleteOne(AdminArticleVo bean) throws SQLException;
 
-	// notice total
+	// article total
 	int selectTotal(Search search) throws SQLException;;
 	
 }

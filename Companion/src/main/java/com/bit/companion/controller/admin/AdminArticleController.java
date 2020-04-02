@@ -55,12 +55,16 @@ public class AdminArticleController {
 			return 0;
 		} else if (boardName.contains("event")) {
 			return 1;
+		} else if (boardName.contains("faq")) {
+			return 2;
+		} else if (boardName.contains("review")) {
+			return 3;
 		}
 		return 0;
 	}
 	
-	// notice list - get 
-	@RequestMapping(value = {"notice_list", "event_list"}, method = RequestMethod.GET)
+	// article list - get 
+	@RequestMapping(value = {"notice_list", "event_list", "faq_list" ,"review_list"}, method = RequestMethod.GET)
 	public String noticeList(Model model
 			,@RequestParam(required = false, defaultValue = "1") int page
 			,@RequestParam(required = false, defaultValue = "1") int range
@@ -72,13 +76,15 @@ public class AdminArticleController {
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
+		System.out.println(board_id);
+		System.out.println(board_name);
 		adminNoticeService.list(model, page, range, searchType, keyword, search, board_id);
 		logger.info("get "+board_name+" list");
 		return "admin/"+board_name+"_list";
 	}
 	
-	// notice detail - get
-	@RequestMapping(value = {"notice_detail", "event_detail"}, method = RequestMethod.GET)
+	// article detail - get
+	@RequestMapping(value = {"notice_detail", "event_detail", "faq_detail" ,"review_detail"}, method = RequestMethod.GET)
 	public String noticeDetail(Model model, @ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
 		
 		// board_id 
@@ -90,8 +96,8 @@ public class AdminArticleController {
 		return "admin/"+board_name+"_detail";
 	}
 	
-	// notice add - get
-	@RequestMapping(value = {"notice_add", "event_add"}, method = RequestMethod.GET)
+	// article add - get
+	@RequestMapping(value = {"notice_add", "event_add", "faq_add" ,"review_add"}, method = RequestMethod.GET)
 	public String noticeAdd(HttpServletRequest req) {
 		
 		// board_name
@@ -101,27 +107,28 @@ public class AdminArticleController {
 		return "admin/"+board_name+"_add";
 	}
 	
-	// notice add - post
-	@RequestMapping(value = {"notice_add", "event_add"}, method = RequestMethod.POST)
+	// article add - post
+	@RequestMapping(value = {"notice_add", "event_add", "faq_add" ,"review_add"}, method = RequestMethod.POST)
 	public String noticeAdd(@ModelAttribute AdminArticleVo bean, MultipartFile file ,HttpServletRequest req) throws IOException, Exception {
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
-		
-		// File Upload
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
-		
-		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
-			bean.setArticle_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
-			bean.setArticle_thumb(File.separator+"imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
-		} else {
-			fileName = File.separator + "images" + File.separator + "none.png";
-			bean.setArticle_image(fileName);
-			bean.setArticle_thumb(fileName);
+		if (board_id == 0 || board_id==1) {
+			// File Upload
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = null;
+			
+			if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+				bean.setArticle_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
+				bean.setArticle_thumb(File.separator+"imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
+			} else {
+				fileName = File.separator + "images" + File.separator + "none.png";
+				bean.setArticle_image(fileName);
+				bean.setArticle_thumb(fileName);
+			}
 		}
 		
 		adminNoticeService.insert(bean, board_id);
@@ -129,7 +136,7 @@ public class AdminArticleController {
 		return "redirect:"+board_name+"_list";
 	}
 	
-	// notice ckeditor - post
+	// article ckeditor - post
 	@RequestMapping(value = "ckUpload", method = RequestMethod.POST)
 	public void ckUpload(HttpServletRequest req,HttpServletResponse res,@RequestParam MultipartFile upload) throws Exception {
 		logger.info("post CKEditor img upload");
@@ -220,8 +227,8 @@ public class AdminArticleController {
         }
     }
 	
-	// notice edit - get
-	@RequestMapping(value = {"notice_edit", "event_edit"}, method = RequestMethod.GET)
+	// article edit - get
+	@RequestMapping(value = {"notice_edit", "event_edit", "faq_edit" ,"review_edit"}, method = RequestMethod.GET)
 	public String noticeEdit(Model model, @ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
 		
 		// board_id 
@@ -233,8 +240,8 @@ public class AdminArticleController {
 		return "admin/"+board_name+"_edit";
 	}
 	
-	// notice edit - post
-	@RequestMapping(value = {"notice_edit", "event_edit"}, method = RequestMethod.POST)
+	// article edit - post
+	@RequestMapping(value = {"notice_edit", "event_edit", "faq_edit" ,"review_edit"}, method = RequestMethod.POST)
 	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @RequestParam int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
@@ -264,8 +271,8 @@ public class AdminArticleController {
 		logger.info("post "+board_name+" edit");
 		return "redirect:/admin/"+board_name+"_detail?article_id="+bean.getArticle_id();
 	}
-	// notice delete - post
-	@RequestMapping(value = {"notice_delete", "event_delete"}, method = RequestMethod.POST)
+	// article delete - post
+	@RequestMapping(value = {"notice_delete", "event_delete", "faq_delete" ,"review_delete"}, method = RequestMethod.POST)
 	public String noticeDelete(@ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
@@ -273,6 +280,7 @@ public class AdminArticleController {
 		
 		adminNoticeService.delete(bean, board_id);
 		logger.info("post "+board_name+" delete");
+		
 		return "redirect:/admin/"+board_name+"_list";
 	}
 }

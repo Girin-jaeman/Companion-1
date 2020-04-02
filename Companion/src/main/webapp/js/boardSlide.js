@@ -12,7 +12,7 @@
 		
 		opt = $.extend({
 			speed : 400,
-			btn : $this.children('.tit'),
+			btn : $this.children('.click'),
 			current : 0,
 			openType : true,
 			ease : 'linear'
