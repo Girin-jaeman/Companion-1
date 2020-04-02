@@ -67,6 +67,11 @@
 				<h1>[Admin] 이벤트 수정</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+			<!-- 페이지 유지를 위한 정보 -->
+			<input type="hidden" name="page" value="${search.page }"/>
+			<input type="hidden" name="range" value="${search.range }"/>
+			<input type="hidden" name="searchType" value="${search.searchType }"/>
+			<input type="hidden" name="keyword" value="${search.keyword }"/>
 			<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 			<!-- table start-->
 			<table>
@@ -139,7 +144,7 @@
 				</table>
 				<!-- table end -->
 				<div class="btn__group">
-					<button type="submit"class="btn">입력</button>
+					<button type="submit"class="btn">수정</button>
 					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
 			</form>
@@ -176,7 +181,13 @@ $('#article_image').change(function(){
 
 // 취소 버튼
 $("#back_Btn").click(function(){
-	history.back();
+	/* history.back(); */
+	event.preventDefault();
+	location.href = ${root}+"/admin/event_detail?article_id=${adminArticleOne.article_id}"
+		+"&page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
 });
 </script>
 

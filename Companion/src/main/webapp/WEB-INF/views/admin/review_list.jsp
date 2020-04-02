@@ -62,7 +62,9 @@
 				<h1>[Admin] 후기 목록</h1>
 			</div>
 			<div class="sub-group clearfix">
-			
+				<div class="total-count float--left">
+					<h4>총 ${total } 건</h4>
+				</div>
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
@@ -98,18 +100,20 @@
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean">
+			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
 			<tr>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_id }</a></td>
+			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
 			<td>
-				<a href="${root }admin/review_detail?article_id=${bean.article_id }">
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
-				</a>
 			</td>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
+			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }&
+					page=${search.page}&
+					range=${search.range}&
+					searchType=${search.searchType}&
+					keyword=${search.keyword}">${bean.article_title }</a></td>
+			<td>${bean.member_id }</td>
+			<td>${bean.article_date }</td>
+			<td>${bean.article_count }</td>
 			</tr>
 			</c:forEach>
 			</tbody>
