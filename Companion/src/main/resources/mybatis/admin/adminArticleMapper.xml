@@ -6,7 +6,7 @@
 <mapper namespace="adminArticle">
 
 	<!-- article list -->
-	<select id="selectAll" parameterType="int" resultType="adminArticleBean">
+	<select id="selectAll" resultType="adminArticleBean">
 		SELECT 
 			*
 				FROM `ARTICLE` 
