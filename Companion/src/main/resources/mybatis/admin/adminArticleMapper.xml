@@ -8,11 +8,9 @@
 	<!-- article list -->
 	<select id="selectAll" parameterType="int" resultType="adminArticleBean">
 		SELECT 
-			@rownum:=@rownum+1 AS no,
-			A.* 
-				FROM `ARTICLE` A 
-					WHERE (@rownum:=0)=0
-					<trim prefix="AND">
+			*
+				FROM `ARTICLE` 
+					<trim prefix="WHERE">
 						<if test="board_id==0">
 							board_id=0
 						</if>
@@ -42,7 +40,7 @@
 							member_id LIKE CONCAT('%', #{keyword}, '%')
 						</if>
 					</trim>
-					 ORDER BY A.article_id DESC LIMIT #{startList}, #{listSize}
+					 ORDER BY article_id DESC LIMIT #{startList}, #{listSize}
 	</select>
 	
 	<!-- article detail -->
