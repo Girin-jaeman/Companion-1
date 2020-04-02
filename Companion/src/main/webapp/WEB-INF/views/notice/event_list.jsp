@@ -51,7 +51,7 @@
 			                <a class="nav-link" href="${root }notice/">공지사항</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="${root }event/">이벤트</a>
+			                <a class="nav-link active" href="${root }event/">이벤트</a>
 			            </li>
 			            <li class="nav-item">
 			                <a class="nav-link" href="${root}faq/">FAQ</a>

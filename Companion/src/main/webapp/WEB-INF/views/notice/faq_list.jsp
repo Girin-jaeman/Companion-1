@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
-    <link rel="stylesheet" href="${root }css/home.css">
     <link rel="stylesheet" href="${root }css/notice/main.css">
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -53,13 +52,28 @@
 								<a class="nav-link" href="${root }event/">이벤트</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="${root}faq/">FAQ</a>
+								<a class="nav-link active" href="${root}faq/">FAQ</a>
 							</li>
 						</ul>
 			        </div>
 			    </div>
 			</nav>
+			<div class="categories">
+			<a href="#homeSubmenu">
+            	<i class="fas fa-home"></i>
+                알림
+            </a>
+            <span>></span>
+            <a href="#">
+            	<i class="fas fa-home"></i>
+                FAQ
+            </a>
+            <hr class="mb-4">
+        	</div>
 			<div class="faq_group">
+				<div class="main--title">
+				<h1>- F A Q -</h1>
+				</div>
 				<ul class="faq_list board_slide">
 				   <c:forEach items="${list }" var="bean" varStatus="status">
 					   <li class="item">
