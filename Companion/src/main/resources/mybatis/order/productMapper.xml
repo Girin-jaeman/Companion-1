@@ -32,8 +32,15 @@
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
   	</select> 
+  	<!-- 페이징 -->
 	<select id="ProductPaging" resultType="productBean" parameterType="int">
 		select count(*) as AllProductNum,* from product where category_id=#{value};
 	</select>
+	<!--  이용후기 -->
+	<select id="ProductReview" resultType="productBean">
+		select * from `article` where board_id=3;	
+	</select>
+	
+	
 </mapper>
   
