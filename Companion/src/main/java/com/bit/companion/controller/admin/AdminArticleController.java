@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bit.companion.common.Search;
 import com.bit.companion.model.entity.admin.AdminArticleVo;
@@ -76,8 +77,6 @@ public class AdminArticleController {
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
-		System.out.println(board_id);
-		System.out.println(board_name);
 		adminNoticeService.list(model, page, range, searchType, keyword, search, board_id);
 		logger.info("get "+board_name+" list");
 		return "admin/"+board_name+"_list";
@@ -85,13 +84,13 @@ public class AdminArticleController {
 	
 	// article detail - get
 	@RequestMapping(value = {"notice_detail", "event_detail", "faq_detail" ,"review_detail"}, method = RequestMethod.GET)
-	public String noticeDetail(Model model, @ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
+	public String noticeDetail(Model model, @ModelAttribute AdminArticleVo bean, @ModelAttribute("search") Search search, HttpServletRequest req) {
 		
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
-		adminNoticeService.detail(model, bean, board_id);
+		adminNoticeService.detail(model, bean, board_id, search);
 		logger.info("get "+board_name+" detail");
 		return "admin/"+board_name+"_detail";
 	}
@@ -229,20 +228,21 @@ public class AdminArticleController {
 	
 	// article edit - get
 	@RequestMapping(value = {"notice_edit", "event_edit", "faq_edit" ,"review_edit"}, method = RequestMethod.GET)
-	public String noticeEdit(Model model, @ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
+	public String noticeEdit(Model model, @ModelAttribute AdminArticleVo bean, @ModelAttribute("search") Search search, HttpServletRequest req) {
 		
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
-		adminNoticeService.detail(model, bean, board_id);
+		adminNoticeService.detail(model, bean, board_id, search);
 		logger.info("get "+board_name+" edit");
 		return "admin/"+board_name+"_edit";
 	}
 	
 	// article edit - post
 	@RequestMapping(value = {"notice_edit", "event_edit", "faq_edit" ,"review_edit"}, method = RequestMethod.POST)
-	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @RequestParam int article_id,MultipartFile file, HttpServletRequest req) throws IOException, Exception {
+	public String noticeEdit(@ModelAttribute AdminArticleVo bean, @RequestParam int article_id,MultipartFile file, HttpServletRequest req
+			, @ModelAttribute("search") Search search, RedirectAttributes rttr) throws IOException, Exception {
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
@@ -266,19 +266,19 @@ public class AdminArticleController {
 		  bean.setArticle_image(req.getParameter("article_image"));
 		  bean.setArticle_thumb(req.getParameter("article_thumb"));
 		 }
-		
-		adminNoticeService.update(bean, board_id);
+		 
+		adminNoticeService.update(bean, board_id, search, rttr);
 		logger.info("post "+board_name+" edit");
 		return "redirect:/admin/"+board_name+"_detail?article_id="+bean.getArticle_id();
 	}
 	// article delete - post
 	@RequestMapping(value = {"notice_delete", "event_delete", "faq_delete" ,"review_delete"}, method = RequestMethod.POST)
-	public String noticeDelete(@ModelAttribute AdminArticleVo bean, HttpServletRequest req) {
+	public String noticeDelete(@ModelAttribute AdminArticleVo bean, HttpServletRequest req,
+			@ModelAttribute("search") Search search, RedirectAttributes rttr) {
 		// board_id 
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
-		
-		adminNoticeService.delete(bean, board_id);
+		adminNoticeService.delete(bean, board_id, search, rttr);
 		logger.info("post "+board_name+" delete");
 		
 		return "redirect:/admin/"+board_name+"_list";

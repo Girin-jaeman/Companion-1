@@ -66,12 +66,17 @@
 			<div class="main--title">
 				<h1>[Admin] 이벤트 상세</h1>
 			</div>
+			<!-- 페이지 유지를 위한 정보 -->
+			<form role="form" method="post" autocomplete="off" action="${root}admin/event_delete">
+			    <input type="hidden" name="page" value="${search.page }"/>
+			    <input type="hidden" name="range" value="${search.range }"/>
+			    <input type="hidden" name="searchType" value="${search.searchType }"/>
+			    <input type="hidden" name="keyword" value="${search.keyword }"/>
 				<div class="btn__group">
 					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-					<button type="button" id="back_Btn" class="btn btn-back">뒤로</button>
+				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
-			<form role="form" method="post" autocomplete="off" action="${root}admin/event_delete">
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<table class="table">
 				<thead>
@@ -113,7 +118,6 @@
 				</tbody>
 				</table>
 			</form>
-	
 		</section>
 		<!-- section [end] -->
 	</div>
@@ -135,12 +139,20 @@
 <script type="text/javascript">
 // 수정 버튼
 $("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/event_edit?article_id=" + ${adminArticleOne.article_id};
+	location.href = ${root}+"admin/event_edit?article_id=${adminArticleOne.article_id}"
+		+"&page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
 });  
-		 
-// 취소 버튼
-$("#back_Btn").click(function(){
-	history.back();
+
+// 목록버튼
+$("#list_Btn").click(function(){
+/* 	history.back(); */
+	location.href = ${root}+"/admin/event_list?page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
 });
 		 
 // 삭제 버튼

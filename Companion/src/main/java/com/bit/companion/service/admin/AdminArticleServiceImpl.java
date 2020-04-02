@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bit.companion.common.Search;
 import com.bit.companion.model.admin.AdminArticleDao;
@@ -46,11 +47,17 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 
 	// article detail - selectOne
 	@Override
-	public void detail(Model model, AdminArticleVo bean, int board_id) {
+	public void detail(Model model, AdminArticleVo bean, int board_id, Search search) {
 		try {
 			// board_id
 			bean.setBoard_id(board_id);
 			
+			System.out.println(search.getPage());
+			System.out.println(search.getRange());
+			System.out.println(search.getSearchType());
+			System.out.println(search.getKeyword());
+			
+			model.addAttribute("search",search);
 			model.addAttribute("adminArticleOne", adminArticleDao.selectOne(bean));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,10 +79,16 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 
 	// article edit - updateOne
 	@Override
-	public void update(AdminArticleVo bean, int board_id) {
+	public void update(AdminArticleVo bean, int board_id, Search search, RedirectAttributes rttr) {
 		try {
 			// board_id
 			bean.setBoard_id(board_id);
+			
+			//검색 유지
+			rttr.addAttribute("page", search.getPage());
+			rttr.addAttribute("range", search.getRange());
+			rttr.addAttribute("searchType", search.getSearchType());
+			rttr.addAttribute("keyword", search.getKeyword());
 			
 			adminArticleDao.updateOne(bean);
 		} catch (SQLException e) {
@@ -85,10 +98,16 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 
 	// article delete - deleteOne
 	@Override
-	public void delete(AdminArticleVo bean, int board_id) {
+	public void delete(AdminArticleVo bean, int board_id, Search search, RedirectAttributes rttr) {
 		try {
 			// board_id
 			bean.setBoard_id(board_id);
+			
+			// 검색 유지
+			rttr.addAttribute("page", search.getPage());
+			rttr.addAttribute("range", search.getRange());
+			rttr.addAttribute("searchType", search.getSearchType());
+			rttr.addAttribute("keyword", search.getKeyword());
 			
 			adminArticleDao.deleteOne(bean);
 		} catch (SQLException e) {
