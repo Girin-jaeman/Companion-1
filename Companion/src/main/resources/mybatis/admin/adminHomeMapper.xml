@@ -5,10 +5,35 @@
 
 <mapper namespace="adminHome">
 
-	<!-- notice list -->
-	<select id="selectAll" resultType="adminHomeBean">
-		select * from `payment`;
+	<!-- daily sum -->
+	<select id="selectToday" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today},'%')
 	</select>
+	<select id="selectToday_1" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_1},'%')
+	</select>
+	<select id="selectToday_2" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_2},'%')
+	</select>
+	<select id="selectToday_3" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_3},'%')
+	</select>
+	<select id="selectToday_4" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_4},'%')
+	</select>
+	<select id="selectToday_5" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_5},'%')
+	</select>
+	<select id="selectToday_6" resultType="PaymentBean">
+		select sum(payment_amount) as daily_sum from `payment` where payment_date like CONCAT(#{today_6},'%')
+	</select>
+	
+	<!-- monthly sum -->
+	<!--
+	<select id="selectMonthlySum" resultType="adminHomeBean">
+		select sum(payment_amount) as monthly_sum from `payment` where payment_date like '2020-02%'
+	</select>
+	-->
 	
 	
 </mapper>

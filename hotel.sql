@@ -24,7 +24,11 @@ select * from `payment`;
 select * from `payment_state`;
 select * from `order`;
 
-select sum(payment_amount) from `payment` where payment_date like '2020-03-26%';
+select sum(payment_amount) as `daily_sum` from `payment` where payment_date like CONCAT('2020-04-02','%');
+select sum(payment_amount) as daily_sum from `payment`;
+
+select sum(payment_amount) as daily_sum from `payment` where payment_date like '2020-03-30%';
+select sum(payment_amount) as monthly_sum from `payment` where payment_date like '2020-02%';
 
 insert into payment values (null,1,'회원1',now(),100,0);
 insert into payment values (null,2,'회원1',now(),200,0);
@@ -58,3 +62,8 @@ insert into payment values (null,27,'회원1',now(),2700,0);
 insert into payment values (null,28,'회원1',now(),2800,0);
 insert into payment values (null,29,'회원1',now(),2900,0);
 insert into payment values (null,30,'회원1',now(),3000,0);
+
+insert into payment values (null,30,'회원1',now(),3000,0);
+insert into payment values (null,30,'회원1',now(),3000,0);
+
+commit;

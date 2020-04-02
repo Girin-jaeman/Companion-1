@@ -22,7 +22,7 @@
   		<typeAlias alias="adminProductBean" type="com.bit.companion.model.entity.admin.AdminProductVo"/>
   		<typeAlias alias="adminProductViewBean" type="com.bit.companion.model.entity.admin.AdminProductViewVo"/>
   		<typeAlias alias="adminMemberViewBean" type="com.bit.companion.model.entity.admin.AdminMemberViewVo"/>
-  		<typeAlias alias="adminHomeBean" type="com.bit.companion.model.entity.admin.AdminHomeVo"/>
+  		<typeAlias alias="PaymentBean" type="com.bit.companion.model.entity.admin.PaymentVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>

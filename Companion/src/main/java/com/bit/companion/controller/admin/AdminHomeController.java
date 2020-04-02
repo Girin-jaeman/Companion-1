@@ -12,15 +12,15 @@ import com.bit.companion.service.admin.AdminHomeService;
 
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminController {
+public class AdminHomeController {
 	@Autowired
 	AdminHomeService adminHomeService;
 
-	private static final Logger log=LoggerFactory.getLogger(AdminArticleController.class);
+	private static final Logger log=LoggerFactory.getLogger(AdminHomeController.class);
 	
 	@RequestMapping(value = {"admin_home","/",""}, method = RequestMethod.GET)
 	public String adminHome(Model model) {
-		log.info("get admin home");
+		log.info("run:controller:adminHome");
 		
 		adminHomeService.list(model);
 		
