@@ -67,7 +67,9 @@
 			<div class="sub-group clearfix">
 			<!-- 공지 등록 -->
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/faq_add">글 등록</a>
-			
+				<div class="total-count float--left">
+					<h4>총 ${total } 건</h4>
+				</div>
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
@@ -103,9 +105,9 @@
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean">
+			<c:forEach items="${adminArticleList }" var="bean"  varStatus="status">
 			<tr>
-			<td>${bean.article_id }</td>
+			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
 			<td>
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 			</td>
