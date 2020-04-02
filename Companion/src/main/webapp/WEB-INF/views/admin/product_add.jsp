@@ -89,10 +89,6 @@
 			    <th>상품수량</th>
 			    <td colspan="3">작성란</td>
 			  </tr>
-			  <tr height="300px">
-			    <th>상품소개</th>
-			    <td colspan="5">작성란</td>
-			  </tr>
 			  <tr>
 			    <th>옵션1</th>
 			    <td>작성란</td>
@@ -107,6 +103,11 @@
 			     <th>옵션5</th>
 			    <td>작성란</td>
 			  </tr>
+			  <tr height="300px">
+			    <th>상품소개</th>
+			    <td colspan="5">작성란</td>
+			  </tr>
+			  
 			  <tr height="150px">
 			    <th>파일첨부</th>
 			    <td colspan="5">첨부버튼및 나오는곳</td>

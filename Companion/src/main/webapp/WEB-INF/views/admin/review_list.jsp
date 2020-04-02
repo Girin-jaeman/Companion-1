@@ -69,6 +69,7 @@
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
 						<option value="all">전체</option>
+						<option value="product">상품</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="member">작성자</option>
@@ -86,11 +87,13 @@
         		<col class="col4">
         		<col class="col5">
         		<col class="col6"> 
+        		<col class="col7"> 
         		
     		</colgroup>
 			<thead>
 				<tr>
 					<th scope="row">글번호</th>
+					<th scope="row">상품명</th>
 					<th scope="row">썸네일</th>
 					<th scope="row">제목</th>
 					<th scope="row">작성자</th>
@@ -103,6 +106,7 @@
 			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
 			<tr>
 			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
+			<td>${bean.product_id } </td>
 			<td>
 				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 			</td>
