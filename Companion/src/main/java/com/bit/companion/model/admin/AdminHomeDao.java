@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.bit.companion.common.ChartDate;
 import com.bit.companion.model.entity.admin.PaymentVo;
+import com.bit.companion.model.entity.order.ProductVo;
 
 public interface AdminHomeDao {
 
+	List<ProductVo> selectProduct() throws SQLException;
 	PaymentVo selectToday(ChartDate chartDate) throws SQLException;
 	PaymentVo selectToday_1(ChartDate chartDate) throws SQLException;
 	PaymentVo selectToday_2(ChartDate chartDate) throws SQLException;
