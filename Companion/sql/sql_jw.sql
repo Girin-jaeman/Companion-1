@@ -127,3 +127,8 @@ insert into `question` values(null,5,8,15,'admin',now(),now(),'제목','내용',
 
 select q.*, t.question_type_name, st.question_state_name, se.question_secret_name FROM `QUESTION` q, `question_type` t, `question_state` st, `question_secret` se WHERE q.question_state_id=1 and
 	q.question_type_id=t.question_type_id and q.question_state_id=st.question_state_id and q.question_secret_id=se.question_secret_id
+
+
+select p.product_name, p.product_price, p.product_stock, o_d.order_detail_quantity from `product` p, `order_detail` o_d where p.product_id=o_d.product_id
+
+SELECT a.*, (select product_name from `product` p where p.product_id=a.product_id) as product_name FROM `ARTICLE` a WHERE board_id=3

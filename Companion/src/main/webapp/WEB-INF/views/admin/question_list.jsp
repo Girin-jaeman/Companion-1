@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/question_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +62,6 @@
 			</div>
 			
 			<div class="sub-group clearfix">
-				<h3>답변대기</h3>
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
@@ -76,61 +74,9 @@
 					<button name="search_Btn" id="search_Btn">검색</button>
 				</div>
 			</div>
-			
-			<table class="table table_layout">
-			<colgroup>
-        		<col class="col1">
-        		<col class="col2">
-        		<col class="col3">
-        		<col class="col4">
-        		<col class="col5">
-        		<col class="col6"> 
-        		
-    		</colgroup>
-			<thead>
-				<tr>
-					<th scope="row">글번호</th>
-					<th scope="row">문의유형</th>
-					<th scope="row">문의상태</th>
-					<th scope="row">제목</th>
-					<th scope="row">작성자</th>
-					<th scope="row">문의일</th>
-					<th scope="row">답변일</th>
-				</tr>
-			</thead>
-			<tbody>
-			<!-- forEach start -->
-			<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
-			<tr>
-			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
-			<td>${bean.question_type_name }</td>
-			<td>${bean.question_state_name }</td>
-			<td><a href="${root }admin/question_detail?article_id=${bean.question_id }&
-					page=${search.page}&
-					range=${search.range}&
-					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.question_title }</a></td>
-			<td>${bean.member_id }</td>
-			<td>${bean.question_date }</td>
-			<td>${bean.question_answerdate }</td>
-			</tr>
-			</c:forEach>
-			</tbody>
-			</table>
-		
-			<!-- pagination [start] -->
-			<jsp:include page="../common/pagination.jsp">
-				<jsp:param value="${search.prev }" name="prev"/>
-				<jsp:param value="${search.next }" name="next"/>
-				<jsp:param value="${search.page }" name="page"/>
-				<jsp:param value="${search.range }" name="range"/>
-				<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-				<jsp:param value="${search.startPage }" name="startPage"/>
-				<jsp:param value="${search.endPage }" name="endPage"/>
-			</jsp:include>
-			<!-- pagination [end] -->
-			
-			<iframe src="${root }admin/answer_list" style="width:100%; height:700px; border:none; "></iframe>
+
+			<iframe src="${root }admin/question_question" style="width:100%; height:350px; border:none; "></iframe>
+			<iframe src="${root }admin/question_answer" style="width:100%; height:700px; border:none; "></iframe>
 			
 		</section>
 		<!-- section [end] -->
@@ -159,6 +105,8 @@ $("#search_Btn").click(function(e){
 	location.href = url;
 	console.log(url);
 });
+
+window.scrollTo(0,0);
 </script>
 </body>
 </html>

@@ -50,4 +50,9 @@
 	<select id="selectMonth_6" resultType="PaymentBean">
 		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_6},'%')
 	</select>
+	
+	<!-- Data Table -->
+	<select id="selectProduct" resultType="adminDataTableBean">
+		select product_id, product_name, product_price, product_stock, (select sum(order_detail_quantity) from `order_detail` o_d where o_d.product_id=p.product_id ) as total_cumulative_sales, (select sum(order_detail_quantity) from `order_detail` o_d, `order` o where o_d.product_id=p.product_id AND o_d.order_id=o.order_id AND o.order_date like CONCAT(#{month},'%')) as month_cumulative_sales from `product` p;
+	</select>
 </mapper>

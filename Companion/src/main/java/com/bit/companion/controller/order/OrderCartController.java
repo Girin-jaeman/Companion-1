@@ -35,15 +35,24 @@ public class OrderCartController {
 	 @RequestMapping(value ="/order/orderCart",method=RequestMethod.POST)
 	 public String orderCartAdd(Model model,HttpSession session,OrderVo orderVo,HttpServletRequest request) throws SQLException{
 	 		MemberVo member = (MemberVo)session.getAttribute("memberVo");
+	 		orderVo.setMember_id(member.getMember_id());
+		/*
+		 * orderVo.setCart_option((String)request.getAttribute("selectbox"));
+		 * orderVo.setCart_quantity((int)request.getAttribute("cart_quantity"));
+		 */
+	 		
+	 		logger.debug("cart_option 확인");
+	 		logger.debug(orderVo.getCart_option());
+
 		logger.debug("member_id 확인");
 		logger.debug(member.getMember_name());
 		logger.debug("옵션 수량 확인. 확인");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
 		logger.debug("product_ id 확인");
 		logger.debug((Integer.toString(orderVo.getProduct_id())));
+		logger.debug("cart_quantity 확인");
+		logger.debug((Integer.toString(orderVo.getCart_quantity())));
 		
-		orderVo.setMember_id(member.getMember_id());
-		String referer = (String)request.getHeader("REFERER");
 		
 		orderService.insertCart(model,orderVo);
 		

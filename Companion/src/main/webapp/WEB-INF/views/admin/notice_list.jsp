@@ -67,9 +67,7 @@
 				
 			<div class="sub-group clearfix">
 			<!-- 예약자 총 건수 -->
-				<div class="total-count float--left">
-					<h4>총 ${total } 건</h4>
-				</div>
+				<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">

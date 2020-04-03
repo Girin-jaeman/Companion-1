@@ -102,6 +102,12 @@
 					</tr>
 					<tr>
 						<td>
+								<label>[상품명]&nbsp;</label>
+								<span>${adminArticleOne.product_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
 						<div>
 						<label for="content">content</label>
 						<span>${adminArticleOne.article_content }</span>
@@ -159,6 +165,8 @@ $("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
 		formObj.submit();
+	}else{
+		return false;
 	}
 });
 </script>

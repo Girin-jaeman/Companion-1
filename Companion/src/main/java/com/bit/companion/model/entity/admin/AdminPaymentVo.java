@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class PaymentVo {
+public class AdminPaymentVo {
 	private int payment_id;
 	private int order_id;
 	private String member_id;
@@ -14,10 +14,10 @@ public class PaymentVo {
 	private int daily_sum;
 	private int monthly_sum;
 
-	public PaymentVo() {
+	public AdminPaymentVo() {
 	}
 
-	public PaymentVo(int payment_id, int order_id, String member_id, Date payment_date, int payment_amount,
+	public AdminPaymentVo(int payment_id, int order_id, String member_id, Date payment_date, int payment_amount,
 			int payment_state_id, int daily_sum, int monthly_sum) {
 		super();
 		this.payment_id = payment_id;

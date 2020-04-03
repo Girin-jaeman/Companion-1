@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.service.admin.AdminReservationService;
@@ -19,13 +20,16 @@ public class AdminReservationController {
 	@Autowired
 	AdminReservationService adminReservationService;
 	
+	// reservation list
 	@RequestMapping(value="reservation_list")
 	public String reservationList(Model model) {
 		log.info("get reservation list");
 		adminReservationService.list(model);
 		return "admin/reservation_list";
 	}
-	@RequestMapping(value="reservation_detail")
+	
+	// reservation detail
+	@RequestMapping(value="reservation_detail", method = RequestMethod.GET)
 	public String reservationDetail(Model model, @RequestParam String member_id) {
 		log.info("get reservation detail");
 		

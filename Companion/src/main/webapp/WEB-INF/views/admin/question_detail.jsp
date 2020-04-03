@@ -74,17 +74,13 @@
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
-				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
+				<input type="hidden" name="article_id" id="article_id" value="${adminQuestionOne.question_id }">
 				<table class="table">
 				<thead>
 					<tr>
 						<th class="clearfix">
 						<div class="float--left">
-							<label for="title">[제목]&nbsp;</label><span>${adminArticleOne.article_title }</span>
-						</div>
-						<div class="thumb float--right">
-							<label for="img">[썸네일]&nbsp;</label>
-							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminArticleOne.article_thumb }'/>"/>
+							<label for="title">[제목]&nbsp;</label><span>${adminQuestionOne.question_title }</span>
 						</div>
 						</th>
 					</tr>
@@ -92,24 +88,74 @@
 				<tbody>
 					<tr>
 						<td>
-						<label for="date">[작성일]&nbsp;</label>
-						<span>${adminArticleOne.article_date }</span>
+							<label>[문의유형]&nbsp;</label>
+							<span>${adminQuestionOne.question_type_name }</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
-						<div>
-						<label for="content">content</label>
-						<span>${adminArticleOne.article_content }</span>
-						</div>
-						<div>
-						<label for="img">원본이미지</label>
-						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-						</div>
+							<label>[주문ID]&nbsp;</label>
+							<span>${adminQuestionOne.order_id }</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
+							<label>[상품명]&nbsp;</label>
+							<span>${adminQuestionOne.product_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[회원ID]&nbsp;</label>
+							<span>${adminQuestionOne.member_id }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[비밀글여부]&nbsp;</label>
+							<span>${adminQuestionOne.question_secret_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[문의상태]&nbsp;</label>
+							<span>${adminQuestionOne.question_state_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="date">[작성일]&nbsp;</label>
+							<span>${adminQuestionOne.question_date }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="date">[답변일]&nbsp;</label>
+							<span>${adminQuestionOne.question_answerdate }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+								<label for="content">content</label>
+								<span>${adminQuestionOne.question_content }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+								<label for="img">첨부이미지</label>
+								<img alt="원본이미지" src="<spring:url value='${adminQuestionOne.question_image }'/>"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div>
+								<label for="content">답변</label>
+								<span>${adminQuestionOne.question_answer }</span>
+							</div>
 						</td>
 					</tr>
 				</tbody>
@@ -158,6 +204,8 @@ $("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
 		formObj.submit();
+	}else{
+		return false;
 	}
 });
 </script>
