@@ -2,7 +2,7 @@ package com.bit.companion.common;
 
 //[source]https://freehoon.tistory.com/112
 public class Pagination {
-	private int listSize = 20;                //	Number of posts per page
+	private int listSize = 15;                //	Number of posts per page
 	private int rangeSize = 5;            // Number of pages per range
 	private int page;
 	private int range;

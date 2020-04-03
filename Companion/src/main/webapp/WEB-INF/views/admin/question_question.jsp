@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/question_answer"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/question_question"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,8 @@
 	<title>Companion::Q&A 목록</title>
 </head>
 <body>
-
-			<h3>답변완료</h3>
+			
+			<h3>답변대기</h3>
 			<table class="table table_layout">
 			<colgroup>
         		<col class="col1">
@@ -46,7 +46,7 @@
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminAnswerList }" var="bean" varStatus="status">
+			<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
 			<tr>
 			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
 			<td>${bean.question_type_name }</td>
@@ -86,6 +86,10 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+
+<script type="text/javascript">
+
+</script>
 
 </body>
 </html>

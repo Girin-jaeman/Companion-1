@@ -106,19 +106,6 @@
 				    	</div>
 				    </td>
 				  </tr>
-				  <tr>
-				    <th>
-				    	<div>
-						<label for="article_image">파일 첨부</label>
-						</div>
-					</th>
-				    <td>
-				    	<div class="file-add">
-				    	<input type="file" name="file" id="article_image">
-				 		<div class="select_img"><img src=""/></div>
-				    	</div>
-				    </td>
-				  </tr>
 				</tbody>
 				</table>
 
