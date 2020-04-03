@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/productA.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -71,65 +72,111 @@
 				<h1>[Admin] 상품정보 수정</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<label>1차 분류</label>
-				<select class="category1">
-					<option value="">전체</option>
-				</select>
-				<label>2차 분류</label>
-				<select class="category2" name="category_id">
-					<option value="">전체</option>
-				</select>
 				<input type="hidden" name="product_id" value="${adminProductOne.product_id }"/>
-				 
-				<div class="inputArea">
-					<label for="product_price">상품가격</label>
-					<input type="text" id="product_price" name="product_price" value="${adminProductOne.product_price }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_stock">상품수량</label>
-					<input type="text" id="product_stock" name="product_stock" value="${adminProductOne.product_stock }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_name">상품명</label>
-					<input type="text" id="product_name" name="product_name" value="${adminProductOne.product_name }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_content">상품소개</label>
-					<textarea rows="5" cols="50" id="product_content" name="product_content">${adminProductOne.product_content }</textarea>
-				</div>
-				<div class="inputArea">
-					<label for="product_option1">상품옵션1</label>
-					<input type="text" id="product_option1" name="product_option1" value="${adminProductOne.product_option1 }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_option2">상품옵션2</label>
-					<input type="text" id="product_option2" name="product_option2" value="${adminProductOne.product_option2 }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_option3">상품옵션3</label>
-					<input type="text" id="product_option3" name="product_option3" value="${adminProductOne.product_option3 }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_option4">상품옵션4</label>
-					<input type="text" id="product_option4" name="product_option4" value="${adminProductOne.product_option4 }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_option5">상품옵션5</label>
-					<input type="text" id="product_option5" name="product_option5" value="${adminProductOne.product_option5 }"/>
-				</div>
-				<div class="inputArea">
-					<label for="product_image">이미지</label>
-					<input type="file" id="product_image" name="file" />
-					<div class="select_img">
-						<img src="<spring:url value='${adminProductOne.product_image }'/>" />
-						<input type="hidden" name="product_image" value="${adminProductOne.product_image}" />
-						<input type="hidden" name="product_thumb" value="${adminProductOne.product_thumb}" /> 
-					</div>
-				</div>
-				<div class="inputArea">
-					<button type="submit" id="update_Btn" class="btn btn-primary">수정</button>
-					<button type="button" id="back_Btn" class="btn btn-warning">취소</button>
-				</div>
+				<table>
+				<thead>
+				</thead>
+				<tbody>
+				  <tr>
+				  	<th><label for="product_name">상품명</label></th>
+				  	<td colspan="3">
+						<div class="inputAreaName">
+						<input type="text" id="product_name" name="product_name"  value="${adminProductOne.product_name }"/>
+						</div>
+					</td>
+				  </tr>
+				  <tr>
+				    <th><label>1차 분류</label></th>
+				    <td>
+				    <select class="category1">
+					<option value="">전체</option>
+					</select>
+				    </td>
+				    <th><label>2차 분류</label></th>
+				    <td>
+				    <select class="category2" name="category_id">
+					<option value="">전체</option>
+					</select>
+					</td>
+				  </tr>
+				  <tr>
+				    <th><label for="product_price">상품가격</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_price" name="product_price" value="${adminProductOne.product_price }" />
+						</div>
+				    </td>
+				    <th><label for="product_stock">상품수량</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_stock" name="product_stock" value="${adminProductOne.product_stock }" />
+						</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <th><label for="product_option1">상품옵션1</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_option1" name="product_option1" value="${adminProductOne.product_option1 }"/>
+						</div>
+				    </td>
+				    <th><label for="product_option2">상품옵션2</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_option2" name="product_option2" value="${adminProductOne.product_option2 }"/>
+						</div>
+				    </td>
+				    <th><label for="product_option3">상품옵션3</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_option3" name="product_option3" value="${adminProductOne.product_option3 }"/>
+						</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <th><label for="product_option4">상품옵션4</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_option4" name="product_option4" value="${adminProductOne.product_option4 }"/>
+						</div>
+				    </td>
+				    <th><label for="product_option5">상품옵션5</label></th>
+				    <td>
+					    <div class="inputArea">
+						<input type="text" id="product_option5" name="product_option5" value="${adminProductOne.product_option5 }"/>
+						</div>
+				    </td>
+				  </tr>
+				  <tr class="detailContent">
+				    <th><label for="product_content">상품소개</label></th>
+				    <td colspan="5">
+						<div class="inputArea">
+						<textarea rows="5" cols="50" id="product_content" name="product_content">${adminProductOne.product_content }</textarea>
+						</div>
+					</td>
+				  </tr>
+				  
+				  <tr class="detailImg">
+				    <th><label for="file">이미지첨부</label></th>
+				    <td colspan="5">
+						<div class="inputArea">
+							<input type="file" id="product_image" name="file" />
+							<div class="select_img">
+								<img src="<spring:url value='${adminProductOne.product_image }'/>" />
+								<input type="hidden" name="product_image" value="${adminProductOne.product_image}" />
+								<input type="hidden" name="product_thumb" value="${adminProductOne.product_thumb}" /> 
+							</div>
+						</div>
+					</td>
+				  </tr>
+				</tbody>
+			</table>
+			
+			<div class="btn__group">
+				<button type="submit" id="update_Btn" class="btn">수정</button>
+				<button type="button" id="back_Btn" class="btn">취소</button>
+			</div>
+			
 			</form>
 		</section>
 	</div><!-- #content [end] -->

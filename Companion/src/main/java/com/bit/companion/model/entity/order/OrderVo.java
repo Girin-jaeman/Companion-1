@@ -41,6 +41,7 @@ public class OrderVo {
 	private int cart_quantity;
 	private int delivery_state_id;
 	private String delivery_state_name;
+	private String cart_option;
 	
 	public OrderVo() {
 	}
@@ -309,6 +310,14 @@ public class OrderVo {
 		this.delivery_state_name = delivery_state_name;
 	}
 
+	public String getCart_option() {
+		return cart_option;
+	}
+
+	public void setCart_option(String cart_option) {
+		this.cart_option = cart_option;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderVo [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date
@@ -323,7 +332,8 @@ public class OrderVo {
 				+ product_option4 + ", product_option5=" + product_option5 + ", product_name=" + product_name
 				+ ", product_content=" + product_content + ", order_detail_price=" + order_detail_price
 				+ ", order_detail_quantity=" + order_detail_quantity + ", cart_quantity=" + cart_quantity
-				+ ", delivery_state_id=" + delivery_state_id + ", delivery_state_name=" + delivery_state_name + "]";
+				+ ", delivery_state_id=" + delivery_state_id + ", delivery_state_name=" + delivery_state_name
+				+ ", cart_option=" + cart_option + "]";
 	}
 
 	public OrderVo(int order_id, String member_id, Date order_date, int order_amount, String order_name,
@@ -333,7 +343,7 @@ public class OrderVo {
 			String product_thumb, String product_option1, String product_option2, String product_option3,
 			String product_option4, String product_option5, String product_name, String product_content,
 			int order_detail_price, int order_detail_quantity, int cart_quantity, int delivery_state_id,
-			String delivery_state_name) {
+			String delivery_state_name, String cart_option) {
 		super();
 		this.order_id = order_id;
 		this.member_id = member_id;
@@ -368,8 +378,9 @@ public class OrderVo {
 		this.cart_quantity = cart_quantity;
 		this.delivery_state_id = delivery_state_id;
 		this.delivery_state_name = delivery_state_name;
+		this.cart_option = cart_option;
 	}
-	
+
 }
 
 

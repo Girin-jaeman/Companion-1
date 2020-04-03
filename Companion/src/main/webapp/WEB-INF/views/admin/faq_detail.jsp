@@ -106,10 +106,6 @@
 						<label for="content">content</label>
 						<span>${adminArticleOne.article_content }</span>
 						</div>
-						<div>
-						<label for="img">원본이미지</label>
-						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-						</div>
 						</td>
 					</tr>
 				</tbody>
@@ -159,6 +155,8 @@ $("#delete_Btn").click(function(){
 	var con = confirm("정말로 삭제하시겠습니까?");
 	if(con) {      
 		formObj.submit();
+	}else{
+		return false;
 	}
 });
 </script>

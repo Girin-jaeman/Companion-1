@@ -13,36 +13,6 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-clipboard-list"></i>
-                        게시판 관리
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="${root }admin/notice_list">
-                            	<i class="fas fa-angle-right"></i>
-                            	공지사항
-                            </a>
-                            <a href="${root }admin/event_list">
-                            	<i class="fas fa-angle-right"></i>
-                            	이벤트
-                            </a>
-                            <a href="${root }admin/faq_list">
-                            	<i class="fas fa-angle-right"></i>
-                            	FAQ
-                            </a>
-                            <a href="${root }admin/review_list">
-                            	<i class="fas fa-angle-right"></i>
-                            	후기
-                            </a>
-                            <a href="${root }admin/question_list">
-                            	<i class="fas fa-angle-right"></i>
-                            	Q&A
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
                     <a href="#shopSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-shopping-cart"></i>
                         쇼핑몰 관리
@@ -65,7 +35,7 @@
                  <li>
                     <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
 						<i class="fas fa-building"></i>
-                       호텔관리
+                       호텔 관리
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
@@ -92,6 +62,36 @@
                             <a href="${root }admin/member_list">
                             	<i class="fas fa-angle-right"></i>
                             	회원목록
+                            </a>
+							<a href="${root }admin/review_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	후기
+                            </a>
+                            <a href="${root }admin/question_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	Q&A
+                            </a>                        
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-clipboard-list"></i>
+                        게시판 관리
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="${root }admin/notice_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	공지사항
+                            </a>
+                            <a href="${root }admin/event_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	이벤트
+                            </a>
+                            <a href="${root }admin/faq_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	FAQ
                             </a>
                         </li>
                     </ul>

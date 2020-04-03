@@ -163,6 +163,8 @@
                             <!-- 옵션 값  -->
                             <% String select1= request.getParameter("selectBox");
                             out.println(select1);
+                            request.setAttribute("cart_option",request.getParameter("selectBox"));
+                            out.println(request.getAttribute("cart_option")+"request.getAttb 확인");
                             %>
 	                        </td>
                             <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 

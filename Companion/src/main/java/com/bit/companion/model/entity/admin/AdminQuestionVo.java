@@ -19,6 +19,7 @@ public class AdminQuestionVo {
 	private String question_type_name;
 	private String question_state_name;
 	private String question_secret_name;
+	private String product_name;
 	
 	public AdminQuestionVo() {
 	}
@@ -26,7 +27,7 @@ public class AdminQuestionVo {
 	public AdminQuestionVo(int question_id, int question_type_id, int order_id, int product_id, String member_id,
 			Date question_date, Date question_answerdate, String question_title, String question_content,
 			String question_image, String question_answer, int question_secret_id, int question_state_id,
-			String question_type_name, String question_state_name, String question_secret_name) {
+			String question_type_name, String question_state_name, String question_secret_name, String product_name) {
 		super();
 		this.question_id = question_id;
 		this.question_type_id = question_type_id;
@@ -44,6 +45,7 @@ public class AdminQuestionVo {
 		this.question_type_name = question_type_name;
 		this.question_state_name = question_state_name;
 		this.question_secret_name = question_secret_name;
+		this.product_name = product_name;
 	}
 
 	public int getQuestion_id() {
@@ -174,6 +176,14 @@ public class AdminQuestionVo {
 		this.question_secret_name = question_secret_name;
 	}
 
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminQuestionVo [question_id=" + question_id + ", question_type_id=" + question_type_id + ", order_id="
@@ -182,7 +192,8 @@ public class AdminQuestionVo {
 				+ ", question_content=" + question_content + ", question_image=" + question_image + ", question_answer="
 				+ question_answer + ", question_secret_id=" + question_secret_id + ", question_state_id="
 				+ question_state_id + ", question_type_name=" + question_type_name + ", question_state_name="
-				+ question_state_name + ", question_secret_name=" + question_secret_name + "]";
+				+ question_state_name + ", question_secret_name=" + question_secret_name + ", product_name="
+				+ product_name + "]";
 	}
 	
 }
