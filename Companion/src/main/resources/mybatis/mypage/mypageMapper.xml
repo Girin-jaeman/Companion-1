@@ -28,6 +28,9 @@
   	<select id="productName" parameterType="String" resultType="String">
   		select product_name from product where product_id=#{product_id}
   	</select>
+  	<select id="productPrice" parameterType="String" resultType="String">
+  		select product_price from product where product_id=#{product_id}
+  	</select>
   	<select id="reserveList" parameterType="String" resultType="mypageReserveBean">
   		select * from reserve where member_id=#{member_id} order by reserve_date desc
   	</select>

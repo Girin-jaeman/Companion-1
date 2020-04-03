@@ -18,7 +18,7 @@ public class AdminHomeController {
 
 	private static final Logger log=LoggerFactory.getLogger(AdminHomeController.class);
 	
-	@RequestMapping(value = {"admin_home","/",""}, method = RequestMethod.GET)
+	@RequestMapping(value = {"admin_home","/",""})
 	public String adminHome(Model model) {
 		log.info("run:controller:adminHome");
 		

@@ -108,11 +108,19 @@ public class MypageDaoImpl implements MypageDao {
 	@Override
 	public List<MypageCartVo> cartList(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
-		MypageCartVo bean2=new MypageCartVo();
 		String member_id=bean.getMember_id();
 		List<MypageCartVo> list=sqlSession.selectList("mypage.cartList",member_id);
+		MypageCartVo bean2=new MypageCartVo();
+		String product_id="";
+		String product_name="";
+		String product_price="";
 		for(int i=0; i<list.size();i++) {
 			bean2=list.get(i);
+			product_id=bean2.getProduct_id();
+			product_name=sqlSession.selectOne("mypage.productName",product_id);
+			product_price=sqlSession.selectOne("mypage.productPrice",product_id);
+			bean2.setProduct_name(product_name);
+			bean2.setProduct_price(product_price);
 			System.out.println(bean2.toString());
 		}
 		return list;

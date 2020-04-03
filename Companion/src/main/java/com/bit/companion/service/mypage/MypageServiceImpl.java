@@ -59,7 +59,6 @@ public class MypageServiceImpl implements MypageService {
 	public void cartList(HttpSession session) {
 		List<MypageCartVo> cartList=mypageDao.cartList(session);
 		session.setAttribute("cartList", cartList);
-		
 	}
 
 }
