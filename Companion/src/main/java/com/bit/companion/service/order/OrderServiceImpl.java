@@ -1,19 +1,15 @@
 package com.bit.companion.service.order;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.model.entity.order.OrderVo;
 import com.bit.companion.model.order.OrderDao;
-
-import net.sf.json.JSONArray;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -52,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 //  장바구니에 상품 담기.
 	@Override
 	public void insertCart(Model model, OrderVo orderVo) {
- 
+		
 		try {
 			orderDao.OrderCartAdd(orderVo);
 		} catch (SQLException e) {

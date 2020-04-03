@@ -53,6 +53,14 @@ public class OrderDaoImpl implements OrderDao {
 // 장바구니에 담기
 	@Override
 	public void OrderCartAdd(OrderVo orderVo) throws SQLException {
+		
+		System.out.println("OrderCartAdd 실행중...");
+		
+		System.out.println(orderVo.getCart_option());
+		System.out.println(orderVo.getCart_quantity());
+		System.out.println(orderVo.getMember_id());
+		System.out.println(orderVo.getProduct_id());
+		
 		//cart table에 
 		sqlSession.insert("order.OrderCartAdd",orderVo);
 		
