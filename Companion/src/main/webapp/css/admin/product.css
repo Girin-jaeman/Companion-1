@@ -1,14 +1,14 @@
 /* TABLE_LAYOUT STYLE */
 .table_layout { margin:0px; table-layout:fixed; }
-.table_layout .col1 { width: 120px; } /* 카테고리 */ 
-.table_layout .col2 { width: 100px; } /* 이미지 */
-.table_layout .col3 { width: 200px; } /* 이름 */
-.table_layout .col4 { width: 120px; } /* 가격 */
+.table_layout .col1 { width: 110px; } /* 카테고리 */ 
+.table_layout .col2 { width: 80px; } /* 이미지 */
+.table_layout .col3 { width: 180px; } /* 이름 */
+.table_layout .col4 { width: 100px; } /* 가격 */
 .table_layout .col5 { width: 80px; } /* 수량 */
-.table_layout .col6 { width: 150px; } /* 등록날짜 */
+.table_layout .col6 { width: 110px; } /* 등록날짜 */
 .table_layout .col7 { width: 80px; } /* 좋아요 */
-.table_layout .col8 { width: 160px; } /* 옵션1 */
-.table_layout .col9 { width: 160px; } /* 옵션2 */
+.table_layout .col8 { width: 120px; } /* 옵션1 */
+.table_layout .col9 { width: 120px; } /* 옵션2 */
 .table_layout .col10 { width: auto } /* 옵션etc */
 
 .search-group{

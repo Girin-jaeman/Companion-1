@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `companion`.`article` (
   `article_count` INT(11) NOT NULL COMMENT '게시글조회수',
   `article_image` VARCHAR(200) NULL DEFAULT NULL COMMENT '게시글이미지',
   `article_thumb` VARCHAR(200) NULL DEFAULT NULL COMMENT '게시글썸네일',
+  `product_id` VARCHAR(200) NULL DEFAULT NULL COMMENT '상품ID',  
   PRIMARY KEY (`article_id`, `board_id`, `member_id`),
   INDEX `FK_board_article_1` (`board_id` ASC) ,
   INDEX `FK_member_article_2` (`member_id` ASC) ,

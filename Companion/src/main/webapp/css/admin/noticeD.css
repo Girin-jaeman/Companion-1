@@ -4,6 +4,8 @@
 }
 .btn-back{
 	border:1px solid gray;
+	margin:5px;
+	float:right;
 }
 
 .table{
@@ -25,7 +27,7 @@
     height: 50px;
     font-size: 20px;
 }
-.table .thumb{
+.table .rightt{
 	display:flex;
 }
 .table tbody{
@@ -38,6 +40,10 @@
 
 }
 .table tbody tr td{
+	text-align:center;
+}
+.table tbody tr td:first-child{
+	width: 1100px;
 	text-align:center;
 }
 .table tbody tr td div:first-child{

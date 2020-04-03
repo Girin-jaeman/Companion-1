@@ -6,7 +6,7 @@
 <mapper namespace="adminArticle">
 
 	<!-- article list -->
-	<select id="selectAll" parameterType="int" resultType="adminArticleBean">
+	<select id="selectAll" resultType="adminArticleBean">
 		SELECT 
 			*
 				FROM `ARTICLE` 
@@ -50,6 +50,7 @@
 	<select id="selectOne" resultType="adminArticleBean" parameterType="int">
 		SELECT 
 			article_id,
+			member_id,
 			article_title,
 			article_content,
 			article_date,

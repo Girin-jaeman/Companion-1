@@ -35,6 +35,10 @@
                             	<i class="fas fa-angle-right"></i>
                             	후기
                             </a>
+                            <a href="${root }admin/question_list">
+                            	<i class="fas fa-angle-right"></i>
+                            	Q&A
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -71,7 +75,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/reservation_list">
                             	<i class="fas fa-angle-right"></i>
                             	예약관리
                             </a>

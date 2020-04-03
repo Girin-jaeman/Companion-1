@@ -64,9 +64,9 @@
 			<div class="main--title">
 				<h1>[Admin] 공지사항 목록</h1>
 			</div>
+				
 			<div class="sub-group clearfix">
-			<!-- 공지 등록 -->
-			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
+			<!-- 예약자 총 건수 -->
 				<div class="total-count float--left">
 					<h4>총 ${total } 건</h4>
 				</div>
@@ -90,13 +90,10 @@
         		<col class="col3">
         		<col class="col4">
         		<col class="col5">
-        		<col class="col6"> 
-        		
     		</colgroup>
 			<thead>
 				<tr>
 					<th scope="row">글번호</th>
-					<th scope="row">썸네일</th>
 					<th scope="row">제목</th>
 					<th scope="row">작성자</th>
 					<th scope="row">날짜</th>
@@ -108,9 +105,6 @@
 			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
 			<tr>
 			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
-			<td>
-				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
-			</td>
 			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }&
 					page=${search.page}&
 					range=${search.range}&

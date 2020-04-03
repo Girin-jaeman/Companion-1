@@ -1,11 +1,10 @@
 /* TABLE_LAYOUT STYLE */
 .table_layout { margin:0px; table-layout:fixed; }
-.table_layout .col1 { width: 120px; } /* 글번호 */ 
-.table_layout .col2 { width: 120px; } /* 썸네일 */
-.table_layout .col3 { width: auto } /* 제목 */
-.table_layout .col4 { width: 200px; } /* 작성자 */
-.table_layout .col5 { width: 200px; } /* 날짜 */
-.table_layout .col6 { width: 120px; } /* 조회수 */
+.table_layout .col1 { width: 150px; } /* 글번호 */ 
+.table_layout .col2 { width: auto } /* 제목 */
+.table_layout .col3 { width: 200px; } /* 작성자 */
+.table_layout .col4 { width: 200px; } /* 날짜 */
+.table_layout .col5 { width: 150px; } /* 조회수 */
 
 
 .insertbtn{
@@ -49,10 +48,11 @@
 	text-align:center;
 .table tbody{}
 .table tbody tr{
-	height:50px;
-	max-height:50px;
+	height:40px;
+	max-height:40px;
 }
 .table tbody tr td{
+	padding:5px;
 	text-align:center;
 	overflow:hidden;
 }

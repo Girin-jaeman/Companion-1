@@ -18,16 +18,28 @@ public class ProductDaoImpl implements ProductDao{
 	@Autowired
 	SqlSession sqlSession;
 	
+	
+	//프로덕트 페이지 목록 출력이지만 지금 안쓰고 있음.
 	@Override
 	public List<ProductVo> ProductSelectAll() throws SQLException {
 		return sqlSession.selectList("product.ProductSelectAll");
 	}
  
+	
+	//프로덕트 상세페이지
 	@Override
 	public ProductVo ProductDetailOne(int product_id) throws SQLException {
 		return sqlSession.selectOne("product.ProductDetailOne",product_id);
 	}
+	
+	//이용후기 목록 출력
+	@Override
+	public List<ProductVo> productReview(int product_id) throws SQLException {
+		System.out.println("product_Dao 실행 중...");
+		return sqlSession.selectList("product.ProductReview",product_id);
+	}
 
+	//상품 카테고리 목록별 출력.
 	@Override
 	public List<ProductVo> ProductCategorySelect(int category_id) throws SQLException {
 		return sqlSession.selectList("product.ProductCategorySelect",category_id);
