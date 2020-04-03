@@ -17,7 +17,7 @@
 	
 		<!-- 장바구니에 상품 등록  -->
 	<insert id="OrderCartAdd" parameterType="orderBean">
-		insert into `cart` values ((select truncate(rand()*10000000,0)),#{member_id},#{product_id},#{order_detail_quantity});
+		insert into `cart` values ((select truncate(rand()*10000000,0)),#{member_id},#{product_id},#{cart_quantity},#{cart_option});
 	</insert>
 
 
