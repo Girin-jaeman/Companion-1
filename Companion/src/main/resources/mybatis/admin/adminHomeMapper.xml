@@ -50,4 +50,9 @@
 	<select id="selectMonth_6" resultType="PaymentBean">
 		select sum(payment_amount) as monthly_sum from `payment` where payment_date like CONCAT(#{month_6},'%')
 	</select>
+	
+	<!-- Data Table -->
+	<select id="selectProduct" resultType="productBean">
+		select * from `product`;
+	</select>
 </mapper>

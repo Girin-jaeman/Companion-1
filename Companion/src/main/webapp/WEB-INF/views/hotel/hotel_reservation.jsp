@@ -26,11 +26,9 @@
 		    -webkit-transition: opacity .3s linear;
 		    transition: opacity .3s linear;
 		  }
-		  
 		.msg.err {
 		  color: #ff0000;
 		}
-		
 		.msg.ok {
 		  color: #08a600;
 		}

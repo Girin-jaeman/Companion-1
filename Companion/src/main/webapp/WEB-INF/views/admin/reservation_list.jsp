@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/notice_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/reservation_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +14,17 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/notice.css">
+    <link rel="stylesheet" href="${root }css/admin/reserv.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<title>Companion::공지사항 목록</title>
+	<title>Companion::호텔예약자 목록</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
 <div class="wrapper">
-	<!-- Sidebar -->
-	<jsp:include page="../common/admin_sidebar.jsp"/>
+	<!-- sidebar -->
+	<jsp:include page="../common/admin_sidebar.jsp"></jsp:include>
 	<!-- #content [start] -->
 	<div id="content">
 		<!-- nav [start] -->
@@ -46,10 +46,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/notice_list">공지사항 목록</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/notice_add">공지사항 등록</a>
+			                <a class="nav-link active" href="${root }admin/reservation_list">예약관리 목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -62,12 +59,11 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 공지사항 목록</h1>
+				<h1>[Admin] 예약관리 목록</h1>
 			</div>
 				
 			<div class="sub-group clearfix">
-			<!-- 예약자 총 건수 -->
-				<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/notice_add">글 등록</a>
+			<!-- 공지 등록 -->
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
@@ -88,30 +84,59 @@
         		<col class="col3">
         		<col class="col4">
         		<col class="col5">
+        		<col class="col6">
+        		<col class="col7">
     		</colgroup>
 			<thead>
 				<tr>
-					<th scope="row">글번호</th>
-					<th scope="row">제목</th>
-					<th scope="row">작성자</th>
-					<th scope="row">날짜</th>
-					<th scope="row">조회수</th>
+					<th scope="row">서비스</th>
+					<th scope="row">회원이름</th>
+					<th scope="row">체크인 날짜</th>
+					<th scope="row">체크아웃 날짜</th>
+					<th scope="row">품종</th>
+					<th scope="row">나이</th>
+					<th scope="row">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
-			<tr>
-			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
-			<td><a href="${root }admin/notice_detail?article_id=${bean.article_id }&
-					page=${search.page}&
-					range=${search.range}&
-					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.article_title }</a></td>
-			<td>${bean.member_id }</td>
-			<td>${bean.article_date }</td>
-			<td>${bean.article_count }</td>
-			</tr>
+			<c:forEach items="${adminReservationList }" var="bean">
+				<tr>
+					<td>
+						<c:choose>
+							<c:when test="${bean.service_id =='0' }">
+							<div>호텔&데이케어</div>
+							</c:when>
+							<c:when test="${bean.service_id =='1' }">
+							<div>유치원</div>
+							</c:when>
+							<c:when test="${bean.service_id =='2' }">
+							<div>독파크</div>
+							</c:when>
+							<c:when test="${bean.service_id =='3' }">
+							<div>아카데미</div>
+							</c:when>
+							<c:when test="${bean.service_id =='4' }">
+							<div>그루밍&스파</div>
+							</c:when>
+							<c:when test="${bean.service_id =='5' }">
+							<div>스튜디오</div>
+							</c:when>
+							<c:when test="${bean.service_id =='6' }">
+							<div>메디컬센터</div>
+							</c:when>
+							<c:when test="${bean.service_id =='7' }">
+							<div>스페셜케어</div>
+							</c:when>
+						</c:choose>
+					</td>
+					<td>${bean.member_id }</td>
+					<td>${bean.reserve_checkin }</td>
+					<td>${bean.reserve_checkout }</td>
+					<td>${bean.reserve_dogtype }</td>
+					<td>${bean.reserve_dogage }</td>
+					<td>${bean.reserve_date }</td>
+				</tr>
+				
 			</c:forEach>
 			</tbody>
 			</table>
@@ -133,27 +158,21 @@
 	<!-- #content [end] -->
 </div>
 <!-- .wrapper [end] -->
-
-
-
 <!-- jQuery -->
 <script src="${root }js/jquery-1.12.4.js"></script>
 <!-- Popper.JS -->
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
-<!-- MAIN JS -->
-<script src="${root }js/main.js"></script>
+
 <script type="text/javascript">
-//검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
-});
+	// 메뉴 토글 버튼
+	$(document).ready(function () {
+	    $('#sidebarCollapse').on('click', function () {
+	        $('#sidebar').toggleClass('active');
+	    });
+	});
+
 </script>
 </body>
 </html>

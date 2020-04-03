@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/reservation_list">
                             	<i class="fas fa-angle-right"></i>
                             	예약관리
                             </a>
