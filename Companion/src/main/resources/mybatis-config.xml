@@ -23,8 +23,9 @@
   		<typeAlias alias="adminProductViewBean" type="com.bit.companion.model.entity.admin.AdminProductViewVo"/>
   		<typeAlias alias="adminMemberViewBean" type="com.bit.companion.model.entity.admin.AdminMemberViewVo"/>
   		<typeAlias alias="adminReservationBean" type="com.bit.companion.model.entity.admin.AdminReservationVo"/>
-  		<typeAlias alias="PaymentBean" type="com.bit.companion.model.entity.admin.PaymentVo"/>
+  		<typeAlias alias="PaymentBean" type="com.bit.companion.model.entity.admin.AdminPaymentVo"/>
   		<typeAlias alias="adminQuestionBean" type="com.bit.companion.model.entity.admin.AdminQuestionVo"/>
+  		<typeAlias alias="adminDataTableBean" type="com.bit.companion.model.entity.admin.AdminDataTableVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>

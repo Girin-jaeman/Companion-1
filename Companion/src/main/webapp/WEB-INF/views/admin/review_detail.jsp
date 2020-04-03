@@ -102,6 +102,12 @@
 					</tr>
 					<tr>
 						<td>
+								<label>[상품명]&nbsp;</label>
+								<span>${adminArticleOne.product_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
 						<div>
 						<label for="content">content</label>
 						<span>${adminArticleOne.article_content }</span>

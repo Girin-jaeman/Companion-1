@@ -69,7 +69,7 @@
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
 						<option value="all">전체</option>
-						<option value="product">상품</option>
+						<option value="product">상품명</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="member">작성자</option>
@@ -106,7 +106,7 @@
 			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
 			<tr>
 			<td><div>${(total-status.index)-(search.page-1)*search.listSize}</div></td>
-			<td><div>${bean.product_id } </div></td>
+			<td><div>${bean.product_name } </div></td>
 			<td>
 				<img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 			</td>
