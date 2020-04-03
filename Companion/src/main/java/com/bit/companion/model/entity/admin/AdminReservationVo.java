@@ -8,6 +8,7 @@ public class AdminReservationVo {
 	private int service_id;
 	private Date reserve_date;
 	private Date reserve_checkin;
+	private Date reserve_checkout;
 	private String reserve_dogtype;
 	private int reserve_dogage;
 	private String reserve_msg;
@@ -16,13 +17,14 @@ public class AdminReservationVo {
 	public AdminReservationVo() {}
 
 	public AdminReservationVo(int reserve_id, String member_id, int service_id, Date reserve_date, Date reserve_checkin,
-			String reserve_dogtype, int reserve_dogage, String reserve_msg, int reserve_state_id) {
+			Date reserve_checkout, String reserve_dogtype, int reserve_dogage, String reserve_msg, int reserve_state_id) {
 		super();
 		this.reserve_id = reserve_id;
 		this.member_id = member_id;
 		this.service_id = service_id;
 		this.reserve_date = reserve_date;
 		this.reserve_checkin = reserve_checkin;
+		this.reserve_checkout = reserve_checkout;
 		this.reserve_dogtype = reserve_dogtype;
 		this.reserve_dogage = reserve_dogage;
 		this.reserve_msg = reserve_msg;
@@ -68,6 +70,13 @@ public class AdminReservationVo {
 	public void setReserve_checkin(Date reserve_checkin) {
 		this.reserve_checkin = reserve_checkin;
 	}
+	public Date getReserve_checkout() {
+		return reserve_checkout;
+	}
+	
+	public void setReserve_checkout(Date reserve_checkout) {
+		this.reserve_checkout = reserve_checkout;
+	}
 
 	public String getReserve_dogtype() {
 		return reserve_dogtype;
@@ -105,9 +114,12 @@ public class AdminReservationVo {
 	public String toString() {
 		return "AdminReservationVo [reserve_id=" + reserve_id + ", member_id=" + member_id + ", service_id="
 				+ service_id + ", reserve_date=" + reserve_date + ", reserve_checkin=" + reserve_checkin
-				+ ", reserve_dogtype=" + reserve_dogtype + ", reserve_dogage=" + reserve_dogage + ", reserve_msg="
-				+ reserve_msg + ", reserve_state_id=" + reserve_state_id + "]";
+				+ ", reserve_checkout=" + reserve_checkout + ", reserve_dogtype=" + reserve_dogtype
+				+ ", reserve_dogage=" + reserve_dogage + ", reserve_msg=" + reserve_msg + ", reserve_state_id="
+				+ reserve_state_id + "]";
 	}
+
+
 	
 	
 }

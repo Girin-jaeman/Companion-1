@@ -19,12 +19,13 @@ public class AdminReservationController {
 	@Autowired
 	AdminReservationService adminReservationService;
 	
+	@RequestMapping(value="reservation_list")
 	public String reservationList(Model model) {
 		log.info("get reservation list");
 		adminReservationService.list(model);
 		return "admin/reservation_list";
 	}
-	@RequestMapping
+	@RequestMapping(value="reservation_detail")
 	public String reservationDetail(Model model, @RequestParam String member_id) {
 		log.info("get reservation detail");
 		
