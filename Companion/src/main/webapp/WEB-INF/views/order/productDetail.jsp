@@ -315,6 +315,10 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${productReviewList }" var="bean" >
+									
+
+									<!--C;FOREACH  -->
 										<tr>
 											<th scope="row" class="border-0">
 												<div class="p-2">
@@ -323,7 +327,7 @@
 													<div class="ml-3 d-inline-block align-middle">
 														<h5 class="mb-0">
 															<a href="#" class="text-dark d-inline-block align-middle">
-																후기글 제목 </a>
+																${bean.article_title } </a>
 														</h5>
 														<span
 															class="text-muted font-weight-normal font-italic d-block">
@@ -332,96 +336,24 @@
 												</div>
 											</th>
 
-											<td class="border-0 align-middle"><strong>[
-													${productDetailOne.product_name } ] 상품 번호
-													${productDetailOne.product_id }</strong></td>
+											<td class="border-0 align-middle"><strong><%-- [${productDetailOne.product_name }] --%> 상품 번호
+													${bean.product_id }</strong></td>
 											<!-- 상품번호 출력 -->
 
-											<td class="border-0 align-middle"><strong>재만123</strong>
+											<td class="border-0 align-middle"><strong>${bean.member_id }</strong>
 											</td>
-											<!-- 후기작성자 아이디 출력 -->
+											<!-- 후기작성자 아이디 출력 --> 
 
 											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">2020.03.24</a></td>
+												class="text-dark">${bean.article_date }</a></td>
 											<!-- 후기작성날짜 출력 -->
 
 											<td class="border-0 align-middle"><a href="#"
 												class="text-dark">★★★★☆</a></td>
 											<!-- 평점별갯수 출력 -->
 										</tr>
-										<!-- 후기한줄 끝 -->
-
-										<tr>
-											<th scope="row" class="border-0">
-												<div class="p-2">
-													<img src="#" alt="이미지90x90" width="90"
-														class="img-fluid rounded shadow-sm">
-													<div class="ml-3 d-inline-block align-middle">
-														<h5 class="mb-0">
-															<a href="#" class="text-dark d-inline-block align-middle">
-																후기글 제목 </a>
-														</h5>
-														<span
-															class="text-muted font-weight-normal font-italic d-block">
-															옵션 (product_option1) </span>
-													</div>
-												</div>
-											</th>
-
-											<td class="border-0 align-middle"><strong>[
-													${productDetailOne.product_name } ] 상품 번호
-													${productDetailOne.product_id }</strong></td>
-											<!-- 상품번호 출력 -->
-
-											<td class="border-0 align-middle"><strong>재만123</strong>
-											</td>
-											<!-- 후기작성자 아이디 출력 -->
-
-											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">2020.03.24</a></td>
-											<!-- 후기작성날짜 출력 -->
-
-											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">★★★★☆</a></td>
-											<!-- 평점별갯수 출력 -->
-										</tr>
-										<!-- 후기한줄 끝 -->
-
-										<tr>
-											<th scope="row" class="border-0">
-												<div class="p-2">
-													<img src="#" alt="이미지90x90" width="90"
-														class="img-fluid rounded shadow-sm">
-													<div class="ml-3 d-inline-block align-middle">
-														<h5 class="mb-0">
-															<a href="#" class="text-dark d-inline-block align-middle">
-																후기글 제목 </a>
-														</h5>
-														<span
-															class="text-muted font-weight-normal font-italic d-block">
-															옵션 (product_option1) </span>
-													</div>
-												</div>
-											</th>
-
-											<td class="border-0 align-middle"><strong>[
-													${productDetailOne.product_name } ] 상품 번호
-													${productDetailOne.product_id }</strong></td>
-											<!-- 상품번호 출력 -->
-
-											<td class="border-0 align-middle"><strong>재만123</strong>
-											</td>
-											<!-- 후기작성자 아이디 출력 -->
-
-											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">2020.03.24</a></td>
-											<!-- 후기작성날짜 출력 -->
-
-											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">★★★★☆</a></td>
-											<!-- 평점별갯수 출력 -->
-										</tr>
-										<!-- 후기한줄 끝 -->
+																			
+									</c:forEach>
 									</tbody>
 								</table>
 								<ul class="pagination my-5">
@@ -632,6 +564,9 @@
 				var member_id=$("#member_id").val();
 				var question_title=$("#question_title").val();
 				var question_content = $("#question_content").val();
+/* 				session.setAttribute("product_id",$("#product_id").val());  */
+				
+				
 				var data = {
 						product_id : product_id,
 						question_title : question_title,

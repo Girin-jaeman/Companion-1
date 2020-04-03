@@ -1,10 +1,13 @@
 package com.bit.companion.controller.order;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,14 +91,13 @@ public class OrderController {
 	// kakao api에서 상품결제가 성공했을 경우에만 order/successOrder page로 넘어가야 함.
 	// orderSuccess controller 에서 상품 등록이 실패한 경우???? 트랜잭션???
 	
+
 	
-	
-//	@RequestMapping(value = "/order/successOrder",method= {RequestMethod.POST,RequestMethod.GET})
+
+	// 다중 insert 
 	@RequestMapping(value = "/order/successOrder",method= RequestMethod.POST)
 	public void orderSuccess(Model model,OrderVo orderVo,HttpSession session) {
 		logger.debug("주문 성공했다면 order table에 인서트 되었는지 확인 해야 합니다.");
-
-		
 		
 		MemberVo member = (MemberVo)session.getAttribute("memberVo");
 		orderVo.setMember_id(member.getMember_id());
@@ -103,30 +105,23 @@ public class OrderController {
 		orderVo.setMember_phone(member.getMember_phone());
 		orderVo.setMember_email(member.getMember_email());
 //		orderVo.setOrder_detail_quantity(request.getAttribute("order_detail_quantity")); 
-		
 //		session.setAttribute("orderVo",orderVo);
+		orderVo.setProduct_id((int)session.getAttribute("product_id"));
 		
 		System.out.println(orderVo.toString());
 		logger.debug(orderVo.getMember_id());
+		logger.debug((Integer.toString(orderVo.getProduct_id())));
 		logger.debug(orderVo.getMember_name());
 		logger.debug(orderVo.getMember_phone());
 		logger.debug(orderVo.getMember_email());
-
-		// 널 나오는게 order에 post로 안들어가는것같음.
-//		logger.debug(orderVo.getOrder_name());
-//		logger.debug(orderVo.getOrder_tell());
-//		logger.debug(orderVo.getOrder_phone());
-//		logger.debug(orderVo.getOrder_addr1());
-//		logger.debug(orderVo.getOrder_addr1());
-//		logger.debug(orderVo.getOrder_addr1());
-//		logger.debug(orderVo.getOrder_msg());
-		
 		logger.debug("1111order_detail_quantity 확인.");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
 		logger.debug("2222order_detail_price확인.");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_price())));
 		logger.debug("3333order_amount 확인");
 		logger.debug((Integer.toString(orderVo.getOrder_amount())));
+		
+	
 		
 		orderService.OrderInfo_Detail(orderVo); 
 		

@@ -41,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+//	프로덕트 목록 출력.
 	@Override
 	public void category(Model model, int category_id) {
 		List<ProductVo> list;
@@ -52,7 +53,24 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	
+	//이용후기 목록 출력.
+	@Override
+	public void productReview(Model model,int product_id) {
+		
+		
+		
+		List<ProductVo> ReviewList;
 
+		System.out.println("service 작동 확인");		
+		System.out.println(product_id);
+		try {
+				ReviewList = productDao.productReview(product_id);
+				model.addAttribute("productReviewList",ReviewList);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
 
 
 

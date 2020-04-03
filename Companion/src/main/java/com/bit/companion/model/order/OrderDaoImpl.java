@@ -2,12 +2,15 @@ package com.bit.companion.model.order;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.order.OrderVo;
+
+import net.sf.json.JSONArray;
 
 @Repository
 public class OrderDaoImpl implements OrderDao {
@@ -18,7 +21,6 @@ public class OrderDaoImpl implements OrderDao {
 //	상품 목록 출력.
 	@Override
 	public List<OrderVo> OrderSelectAll() throws SQLException{
-		
 		return sqlSession.selectList("order.OrderSelectAll");
 		/* return sqlSession.selectList("order.selectAll"); */
 		
@@ -51,16 +53,20 @@ public class OrderDaoImpl implements OrderDao {
 // 장바구니에 담기
 	@Override
 	public void OrderCartAdd(OrderVo orderVo) throws SQLException {
-		
 		//cart table에 
 		sqlSession.insert("order.OrderCartAdd",orderVo);
 		
 	}
 	
-	
-	
-	
-	
-
+//	장바구니 상품 주문 
+	@Override 
+	public int CartOrderPurchase(List<OrderVo> orderVo) throws SQLException {
+		sqlSession.insert("order.CartOrderPurchase",orderVo);
+		sqlSession.insert("order.CartDetailInsert",orderVo);
+		sqlSession.insert("order.CartPaymentInsert",orderVo);
+		return sqlSession.insert("order.CartDeliveryInsert",orderVo);
+		
+		
+	}
 
 }

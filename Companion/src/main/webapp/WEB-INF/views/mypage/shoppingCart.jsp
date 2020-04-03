@@ -151,8 +151,8 @@
                         <button class="">선택 상품 찜</button>
                     </div>
                     <div class="orderP float--right">
-                        <button class="">선택 상품 주문</button>
-                        <button class="btn-order">전체 상품 주문</button>
+                        <button id="choiceProduct" class="">선택 상품 주문</button>
+                        <button id="choiceAllProduct" class="btn-order">전체 상품 주문</button>
                     </div>
                 </div>
                 <!-- 버튼그룹 end-->
@@ -183,7 +183,72 @@
 <script src="${root}js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
-    
+<script type="text/javascript">
+var sybnut_obj=[];
+var checked_ids = [1,2,3,4];
+
+//JSON으로 값을 집어 넣음.
+	$.each(checked_product,function(key,value){
+		submit_obj.push({
+			url:checked_url,
+			urlname : urlName,
+			pid : selected_node_id
+		})
+		
+	});
+	var submit_obj_json = JSON.stringify(submit_obj); //JSON으로 파싱
+	
+	
+	$.ajax({
+		url:"cartInsertURLURL!!",
+		type:"POST",
+		data : {obj : submit_obj_json},
+		success:function(data){
+			
+		}
+		
+	})
+
+</script>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
