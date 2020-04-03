@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/productA.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -68,50 +69,66 @@
 		<section class="section">
 		<div class="main--title">
 				<h1>[Admin] 상품 등록</h1>
-			</div>
-			
-			<table border="2">
-			  <tr>
-			    <th width="120px">1차분류</th>
-			    <td width="200px">선택지</td>
-			    <th width="120px">2차분류</th>
-			    <td width="200px">선택지</td>
-			  </tr>
-			  <tr>
-			  	<th>상품명</th>
-			  	<td colspan="3">작성란</td>
-			  </tr>
-			  <tr>
-			    <th>상품가격</th>
-			    <td colspan="3">작성란</td>
-			  </tr>
-			  <tr>
-			    <th>상품수량</th>
-			    <td colspan="3">작성란</td>
-			  </tr>
-			  <tr>
-			    <th>옵션1</th>
-			    <td>작성란</td>
-			     <th>옵션2</th>
-			    <td>작성란</td>
-			     <th width="120px">옵션3</th>
-			    <td width="200px">작성란</td>
-			  </tr>
-			  <tr>
-			    <th>옵션4</th>
-			    <td>작성란</td>
-			     <th>옵션5</th>
-			    <td>작성란</td>
-			  </tr>
-			  <tr height="300px">
-			    <th>상품소개</th>
-			    <td colspan="5">작성란</td>
-			  </tr>
-			  
-			  <tr height="150px">
-			    <th>파일첨부</th>
-			    <td colspan="5">첨부버튼및 나오는곳</td>
-			  </tr>
+		</div>
+			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+			<table>
+				<thead>
+				</thead>
+				<tbody>
+				  <tr>
+				    <th><label>1차 분류</label></th>
+				    <td>
+				    <select class="category1">
+					<option value="">전체</option>
+					</select>
+				    </td>
+				    <th><label>2차 분류</label></th>
+				    <td>
+				    <select class="category1" name="category_id">
+					<option value="">전체</option>
+					</select>
+					</td>
+				  </tr>
+				  <tr>
+				  	<th><label for="product_name">상품명</label></th>
+				  	<td colspan="3">
+						<div class="inputArea">
+						<input type="text" id="product_name" name="product_name" />
+						</div>
+					</td>
+				  </tr>
+				  <tr>
+				    <th>상품가격</th>
+				    <td colspan="3">작성란</td>
+				  </tr>
+				  <tr>
+				    <th>상품수량</th>
+				    <td colspan="3">작성란</td>
+				  </tr>
+				  <tr>
+				    <th>옵션1</th>
+				    <td>작성란</td>
+				     <th>옵션2</th>
+				    <td>작성란</td>
+				     <th>옵션3</th>
+				    <td>작성란</td>
+				  </tr>
+				  <tr>
+				    <th>옵션4</th>
+				    <td>작성란</td>
+				     <th>옵션5</th>
+				    <td>작성란</td>
+				  </tr>
+				  <tr class="detailContent">
+				    <th>상품소개</th>
+				    <td colspan="5">작성란</td>
+				  </tr>
+				  
+				  <tr class="detailImg">
+				    <th>파일첨부</th>
+				    <td colspan="5">첨부버튼및 나오는곳</td>
+				  </tr>
+				</tbody>
 			  
 			</table>
 
@@ -166,9 +183,9 @@
 					<input type="file" id="product_image" name="file" />
 					<div class="select_img"><img src="" /></div>
 				</div>
-				<div class="inputArea">
-					<button type="submit" id="add_Btn" class="btn btn-primary">등록</button>
-					<button type="button" id="back_Btn" class="btn btn-warning">취소</button>
+				<div class="btn__group">
+					<button type="submit" id="add_Btn" class="btn">등록</button>
+					<button type="button" id="back_Btn" class="btn">취소</button>
 				</div>
 			</form>
 		</section>
