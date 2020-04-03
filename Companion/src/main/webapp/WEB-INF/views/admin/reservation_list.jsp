@@ -129,8 +129,10 @@
 							</c:when>
 						</c:choose>
 					</td>
-					<td>${bean.member_id }</td>
-					<td>${bean.reserve_checkin }</td>
+					<td>
+						<a href="#">${bean.member_id }</a>
+					</td>
+					<td><a href="#">${bean.reserve_checkin }</a></td>
 					<td>${bean.reserve_checkout }</td>
 					<td>${bean.reserve_dogtype }</td>
 					<td>${bean.reserve_dogage }</td>
