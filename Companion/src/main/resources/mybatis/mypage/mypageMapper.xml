@@ -37,4 +37,7 @@
   	<select id="reserveStateName" parameterType="String" resultType="String">
   		select reserve_state_name from reserve_state where reserve_state_id=#{reserve_state_id}
   	</select>
+  	<select id="cartList" parameterType="String" resultType="mypageCartBean">
+  		select * from cart where member_id=#{member_id} order by cart_id
+  	</select>
   </mapper>

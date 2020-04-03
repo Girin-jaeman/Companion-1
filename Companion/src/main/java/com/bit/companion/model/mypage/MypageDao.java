@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 import com.bit.companion.model.entity.mypage.MypageReserveVo;
 
@@ -22,5 +23,7 @@ public interface MypageDao {
 	List<MypageQuestionVo> questionList(HttpSession session);
 
 	List<MypageReserveVo> reserveList(HttpSession session);
+
+	List<MypageCartVo> cartList(HttpSession session);
 	
 }

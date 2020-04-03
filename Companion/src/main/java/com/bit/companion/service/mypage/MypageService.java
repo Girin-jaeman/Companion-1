@@ -18,4 +18,6 @@ public interface MypageService {
 
 	void reserveList(HttpSession session);
 
+	void cartList(HttpSession session);
+
 }

@@ -51,6 +51,16 @@ public class MypageController {
 		mypageService.reserveList(session);
 		return "mypage/mypagereserve";
 	}
+	
+	@RequestMapping(value="/mycart", method=RequestMethod.GET)
+	public String reservation(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "login/login";
+		}
+		mypageService.cartList(session);
+		return "mypage/shoppingCart";
+	}
 
 	@ResponseBody
 	@RequestMapping(value="/mypage/pwchange",method=RequestMethod.POST)
