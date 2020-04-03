@@ -67,17 +67,6 @@
 			<div class="sub-group clearfix">
 			<!-- 공지 등록 -->
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/faq_add">글 등록</a>
-				<!-- 검색창 -->
-				<div class="search-group btn-group float--right">
-					<select name="searchType" id="searchType">
-						<option value="all">전체</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="member">작성자</option>
-					</select>
-					<input type="text" name="keyword" id="keyword">
-					<button name="search_Btn" id="search_Btn">검색</button>
-				</div>
 			</div>
 			
 			<table class="table table_layout">

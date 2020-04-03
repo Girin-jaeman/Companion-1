@@ -1,5 +1,6 @@
 package com.bit.companion.service.admin;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.ui.Model;
 
 import com.bit.companion.common.Search;
 import com.bit.companion.model.admin.AdminQuestionDao;
-import com.bit.companion.model.entity.admin.AdminArticleVo;
+import com.bit.companion.model.entity.admin.AdminQuestionVo;
 
 @Service
 public class AdminQuestionServiceImpl implements AdminQuestionService{
@@ -29,12 +30,12 @@ public class AdminQuestionServiceImpl implements AdminQuestionService{
 			search.setKeyword(keyword);
 			search.pageInfo(page, range, questionListCnt);
 			
-			List<AdminArticleVo> list = adminQuestionDao.selectQuestion(search);
+			List<AdminQuestionVo> list = adminQuestionDao.selectQuestion(search);
 			
 			model.addAttribute("total", questionListCnt);
 			model.addAttribute("search",search);
 			model.addAttribute("adminQuestionList",list);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
 	}
@@ -52,14 +53,24 @@ public class AdminQuestionServiceImpl implements AdminQuestionService{
 			search.setKeyword(keyword);
 			search.pageInfo(page, range, answerListCnt);
 			
-			List<AdminArticleVo> list = adminQuestionDao.selectAnswer(search);
+			List<AdminQuestionVo> list = adminQuestionDao.selectAnswer(search);
 			
 			model.addAttribute("total", answerListCnt);
 			model.addAttribute("search",search);
 			model.addAttribute("adminAnswerList",list);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
+	}
+
+	//question detail
+	@Override
+	public void questionDetail(Model model, AdminQuestionVo bean) {
+		try {
+			model.addAttribute("adminQuestionOne",adminQuestionDao.selectOne(bean));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

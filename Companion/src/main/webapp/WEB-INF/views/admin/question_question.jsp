@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/answer_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/question_question"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,8 @@
 	<title>Companion::Q&A 목록</title>
 </head>
 <body>
-
-			<h3>답변완료</h3>
+			
+			<h3>답변대기</h3>
 			<table class="table table_layout">
 			<colgroup>
         		<col class="col1">
@@ -46,16 +46,16 @@
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminAnswerList }" var="bean" varStatus="status">
+			<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
 			<tr>
 			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
 			<td>${bean.question_type_name }</td>
 			<td>${bean.question_state_name }</td>
-			<td><a href="${root }admin/question_detail?article_id=${bean.question_id }&
+			<td><a href="${root }admin/question_detail?question_id=${bean.question_id }&
 					page=${search.page}&
 					range=${search.range}&
 					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.question_title }</a></td>
+					keyword=${search.keyword}" target="_parent">${bean.question_title }</a></td>
 			<td>${bean.member_id }</td>
 			<td>${bean.question_date }</td>
 			<td>${bean.question_answerdate }</td>
@@ -78,7 +78,6 @@
 
 
 
-
 <!-- jQuery -->
 <script src="${root }js/jquery-1.12.4.js"></script>
 <!-- Popper.JS -->
@@ -87,16 +86,10 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+
 <script type="text/javascript">
-//검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
-});
+
 </script>
+
 </body>
 </html>

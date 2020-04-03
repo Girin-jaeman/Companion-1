@@ -196,7 +196,9 @@ $("#delete_Btn").click(function(){
 var con = confirm("정말로 삭제하시겠습니까?");
 if(con) {      
 	formObj.submit();
-	}
+}else{
+	return false;
+}
 });
 
 	// 취소 버튼
