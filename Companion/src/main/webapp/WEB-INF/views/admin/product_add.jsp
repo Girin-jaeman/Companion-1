@@ -92,7 +92,7 @@
 				    </td>
 				    <th><label>2차 분류</label></th>
 				    <td>
-				    <select class="category1" name="category_id">
+				    <select class="category2" name="category_id">
 					<option value="">전체</option>
 					</select>
 					</td>
