@@ -67,7 +67,6 @@
 			<div class="sub-group clearfix">
 			<!-- 공지 등록 -->
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/faq_add">글 등록</a>
-			
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
@@ -87,28 +86,20 @@
         		<col class="col2">
         		<col class="col3">
         		<col class="col4">
-        		<col class="col5">
-        		<col class="col6"> 
-        		
     		</colgroup>
 			<thead>
 				<tr>
 					<th scope="row">글번호</th>
-					<th scope="row">썸네일</th>
 					<th scope="row">제목</th>
 					<th scope="row">작성자</th>
 					<th scope="row">날짜</th>
-					<th scope="row">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean">
+			<c:forEach items="${adminArticleList }" var="bean"  varStatus="status">
 			<tr>
-			<td>${bean.article_id }</td>
-			<td>
-				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
-			</td>
+			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
 			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }&
 					page=${search.page}&
 					range=${search.range}&
@@ -116,7 +107,6 @@
 					keyword=${search.keyword}">${bean.article_title }</a></td>
 			<td>${bean.member_id }</td>
 			<td>${bean.article_date }</td>
-			<td>${bean.article_count }</td>
 			</tr>
 			</c:forEach>
 			</tbody>

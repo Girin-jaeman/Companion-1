@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -12,14 +13,14 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/noticeA.css">
+    <link rel="stylesheet" href="${root }css/admin/noticeE.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 	<!-- CKEditor JS -->
- 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+	<script src="${root }resources/ckeditor/ckeditor.js"></script>
 
-	<title>Companion::FAQ 입력</title>
+	<title>Companion::Q&A 수정</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -47,10 +48,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/faq_list">FAQ 목록</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/faq_add">FAQ 등록</a>
+			                <a class="nav-link" href="${root }admin/question_list">Q&A 목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -63,11 +61,16 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] FAQ 등록</h1>
+				<h1>[Admin] Q&A 수정</h1>
 			</div>
-			
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-			<!-- tapflksjdfos -->
+				<!-- 페이지 유지를 위한 정보 -->
+				<input type="hidden" name="page" value="${search.page }"/>
+				<input type="hidden" name="range" value="${search.range }"/>
+				<input type="hidden" name="searchType" value="${search.searchType }"/>
+				<input type="hidden" name="keyword" value="${search.keyword }"/>
+				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
+				<!-- table에 잡아넣기시작 -->
 				<table>
 				<thead>
 				</thead>
@@ -76,32 +79,43 @@
 				    <th>
 				    	<div>
 				    	<label for="title">글 제목</label>
-				    	
 				    	</div>
 				    </th>
 				    <td>
 				    	<div>
-				    	<input class="input--text" type="text" name="article_title" id="article_title" placeholder="제목을 입력하세요" required="required"/>
+				    	<input class="input--text" type="text" name="article_title" id="article_title" value="${adminArticleOne.article_title }"/>
 				    	</div>
 				    </td>	
 				  </tr>
 				  <tr>
 				    <th>
 				    	<div>
-						<label for="content">글 내용</label>
+				    	<label for="date">작성일</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+				    	<input class="input--text"  type="text" name="article_date" id="article_date" value="${adminArticleOne.article_date }"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+						<label for="content">게시글 내용</label>
 						</div>
 					</th>
 				    <td>
 				    	<div>
-				    	<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
+				    	<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
 						<script>
-		 				var ckeditor_config = {
-								resize_enable : false,
-								enterMode : CKEDITOR.ENTER_BR,
-								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
-						};
-						CKEDITOR.replace('article_content', ckeditor_config);
+			 				var ckeditor_config = {
+									resize_enable : false,
+									enterMode : CKEDITOR.ENTER_BR,
+									shiftEnterMode : CKEDITOR.ENTER_P,
+									filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
+							};
+							CKEDITOR.replace('article_content', ckeditor_config);
 						</script>
 				    	</div>
 				    </td>
@@ -114,30 +128,33 @@
 					</th>
 				    <td>
 				    	<div class="file-add">
-				    	<input type="file" name="file" id="article_image">
-				 		<div class="select_img"><img src=""/></div>
-				    	</div>
+				    	<input type="file" name="file" id="article_image"/>
+						<div class="select_img">
+							<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
+							<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
+							<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
+						</div>
+					</div>
 				    </td>
 				  </tr>
 				</tbody>
 				</table>
-
-				
+				<!-- table에 잡아넣기끝 -->
 				<div class="btn__group">
-					<button type="submit"class="btn">입력</button>
+					<button type="submit"class="btn">수정</button>
 					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
 			</form>
-	
+			
 		</section>
 		<!-- section [end] -->
 	</div>
 	<!-- #content [end] -->
 </div>
 <!-- .wrapper [end] -->
-
-
 	
+	
+
 <!-- jQuery -->
 <script src="${root }js/jquery-1.12.4.js"></script>
 <!-- Popper.JS -->
@@ -147,7 +164,7 @@
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
 
-<script>
+<script type="text/javascript">
 <!-- 이미지 등록시 출력 -->	
 $('#article_image').change(function(){
 	if(this.files&&this.files[0]){
@@ -161,9 +178,15 @@ $('#article_image').change(function(){
 
 // 취소 버튼
 $("#back_Btn").click(function(){
-	history.back();
+	/* history.back(); */
+	event.preventDefault();
+	location.href = ${root}+"/admin/question_detail?article_id=${adminArticleOne.article_id}"
+		+"&page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
 });
 </script>
- 	
+
 </body>
 </html>

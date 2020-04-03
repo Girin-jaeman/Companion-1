@@ -38,6 +38,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 			
 			List<AdminArticleVo> list = adminArticleDao.selectAll(search);
 			
+			model.addAttribute("total", listCnt);
 			model.addAttribute("search",search);
 			model.addAttribute("adminArticleList",list);
 		} catch (SQLException e) {

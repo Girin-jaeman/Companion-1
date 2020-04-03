@@ -25,7 +25,8 @@ update article set board_id=3 where article_id>700;
 commit;
 
 select * from member order by member_id desc;
-select * from article where board_id=0;
+select * from article where board_id=2 order by article_id desc;
+INSERT INTO article VALUES(2,null,'admin',concat('제목999'),concat('내용888'),now(),0,null,null);
 select article_title, article_content, article_date, article_image from article where article_id=2;
 
 select * from category;
@@ -108,3 +109,21 @@ update product set category_id=701 where product_id>360;
 update product set category_id=600 where product_id>460;
 update product set category_id=703 where product_id>485;
 select * from product order by product_id desc;
+
+select * from `member` where member_id='1111';
+
+SELECT * FROM `ARTICLE` WHERE board_id=1 and (article_title LIKE CONCAT('%', 23, '%') OR
+					article_content LIKE CONCAT('%', 23, '%') OR
+					member_id LIKE CONCAT('%', 23, '%'))
+
+select * from `question` where question_state_id=1;
+insert into `question` values(null,0,5,30,'admin',now(),now(),'제목','내용',null,'답변내용',0,1);
+insert into `question` values(null,2,10,15,'admin',now(),now(),'제목','내용',null,'답변내용',0,1); 
+insert into `question` values(null,3,11,1,'admin',now(),now(),'제목','내용',null,'답변내용',0,1);
+insert into `question` values(null,2,6,13,'admin',now(),now(),'제목','내용',null,'답변내용',0,1);
+insert into `question` values(null,5,8,15,'admin',now(),now(),'제목','내용',null,'답변내용',0,1);
+insert into `question` values(null,5,8,15,'admin',now(),now(),'제목','내용',null,'답변내용',0,1);
+
+
+select q.*, t.question_type_name, st.question_state_name, se.question_secret_name FROM `QUESTION` q, `question_type` t, `question_state` st, `question_secret` se WHERE q.question_state_id=1 and
+	q.question_type_id=t.question_type_id and q.question_state_id=st.question_state_id and q.question_secret_id=se.question_secret_id

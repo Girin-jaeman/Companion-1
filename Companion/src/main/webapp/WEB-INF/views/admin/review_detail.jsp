@@ -70,9 +70,7 @@
 			    <input type="hidden" name="searchType" value="${search.searchType }"/>
 			    <input type="hidden" name="keyword" value="${search.keyword }"/>
 				<div class="btn__group">
-					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
 				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<table class="table">
@@ -91,9 +89,15 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>
-						<label for="date">[작성일]&nbsp;</label>
-						<span>${adminArticleOne.article_date }</span>
+						<td class="clearfix">
+							<div class="float--left">
+								<label for="date">[작성일]&nbsp;</label>
+								<span>${adminArticleOne.article_date }</span>
+							</div>
+							<div class="rightt float--right">
+								<label for="member_id">[작성자]&nbsp;</label>
+								<span>${adminArticleOne.member_id }</span>
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -108,12 +112,9 @@
 						</div>
 						</td>
 					</tr>
-					<tr>
-						<td>
-						</td>
-					</tr>
 				</tbody>
 				</table>
+				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 			</form>
 	
 		</section>

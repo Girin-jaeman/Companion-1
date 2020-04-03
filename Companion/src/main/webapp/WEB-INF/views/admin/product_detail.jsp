@@ -78,6 +78,10 @@
 			
 			<input type="hidden" name="product_id" value="${adminProductOne.product_id }"/>
 		 		<div class="clearfix"> 
+				<div class="inputArea float--left">
+					<label for="img"></label>
+					<img alt="썸네일" width="45px" height="45px" src="<spring:url value='${adminProductOne.product_thumb }'/>">
+				</div>
 				<div class="inputArea tit float--left">
 					<label for="product_name">상품번호</label>
 					<span>${adminProductOne.product_id }</span>
@@ -152,11 +156,6 @@
 			<div class="inputArea">
 					<label for="product_content">상품소개</label>
 					<div class="inputAreaC">${adminProductOne.product_content }</div>
-				</div>
-				<div class="inputArea">
-					<label for="img">썸네일</label>
-					<div class="inputAreaC"><img alt="썸네일" src="<spring:url value='${adminProductOne.product_thumb }'/>">
-					</div>
 				</div>
 				<div class="inputArea float--right">
 					<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>

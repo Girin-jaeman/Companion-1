@@ -9,31 +9,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.bit.companion.controller.admin.AdminArticleController;
+import com.bit.companion.common.ChartDate;
+import com.bit.companion.controller.admin.AdminHomeController;
 import com.bit.companion.model.admin.AdminHomeDao;
-import com.bit.companion.model.entity.admin.AdminHomeVo;
+import com.bit.companion.model.entity.admin.PaymentVo;
 
 @Service
 public class AdminHomeServiceImpl implements AdminHomeService {
-	private static final Logger log=LoggerFactory.getLogger(AdminArticleController.class);
+	private static final Logger log=LoggerFactory.getLogger(AdminHomeController.class);
 
 	@Autowired
 	AdminHomeDao adminHomeDao;
 	
 	@Override
 	public void list(Model model) {
-		AdminHomeVo adminHomeVo = new AdminHomeVo();
+		// 날짜 객체
+		ChartDate chartDate = new ChartDate();
+		chartDate.chartDate();
+		model.addAttribute("chartDate", chartDate);
 		
-		// List
 		try {
-			List<AdminHomeVo> list = adminHomeDao.selectAll(adminHomeVo);
-			adminHomeVo.chartDate();
-			String today = adminHomeVo.getToday();
 			
-			log.info("오늘:"+today);
+			// 일별 매출
+			PaymentVo todaySum = adminHomeDao.selectToday(chartDate);
+			PaymentVo today_1Sum = adminHomeDao.selectToday_1(chartDate);
+			PaymentVo today_2Sum = adminHomeDao.selectToday_2(chartDate);
+			PaymentVo today_3Sum = adminHomeDao.selectToday_3(chartDate);
+			PaymentVo today_4Sum = adminHomeDao.selectToday_4(chartDate);
+			PaymentVo today_5Sum = adminHomeDao.selectToday_5(chartDate);
+			PaymentVo today_6Sum = adminHomeDao.selectToday_6(chartDate);
+			model.addAttribute("todaySum",todaySum);
+			model.addAttribute("today_1Sum",today_1Sum);
+			model.addAttribute("today_2Sum",today_2Sum);
+			model.addAttribute("today_3Sum",today_3Sum);
+			model.addAttribute("today_4Sum",today_4Sum);
+			model.addAttribute("today_5Sum",today_5Sum);
+			model.addAttribute("today_6Sum",today_6Sum);
 			
-			model.addAttribute("list",list);
-			model.addAttribute("adminHomeVo",adminHomeVo);
+			// 월별 매출
+			PaymentVo monthSum = adminHomeDao.selectMonth(chartDate);
+			PaymentVo month_1Sum = adminHomeDao.selectMonth_1(chartDate);
+			PaymentVo month_2Sum = adminHomeDao.selectMonth_2(chartDate);
+			PaymentVo month_3Sum = adminHomeDao.selectMonth_3(chartDate);
+			PaymentVo month_4Sum = adminHomeDao.selectMonth_4(chartDate);
+			PaymentVo month_5Sum = adminHomeDao.selectMonth_5(chartDate);
+			PaymentVo month_6Sum = adminHomeDao.selectMonth_6(chartDate);
+			model.addAttribute("monthSum", monthSum);
+			model.addAttribute("month_1Sum", month_1Sum);
+			model.addAttribute("month_2Sum", month_2Sum);
+			model.addAttribute("month_3Sum", month_3Sum);
+			model.addAttribute("month_4Sum", month_4Sum);
+			model.addAttribute("month_5Sum", month_5Sum);
+			model.addAttribute("month_6Sum", month_6Sum);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

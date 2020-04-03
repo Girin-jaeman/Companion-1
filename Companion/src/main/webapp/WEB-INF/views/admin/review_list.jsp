@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/event_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url var="getList" value="/admin/review_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/notice.css">
+    <link rel="stylesheet" href="${root }css/admin/review.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -62,11 +62,14 @@
 				<h1>[Admin] 후기 목록</h1>
 			</div>
 			<div class="sub-group clearfix">
-			
+				<div class="total-count float--left">
+					<h4>총 ${total } 건</h4>
+				</div>
 				<!-- 검색창 -->
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
 						<option value="all">전체</option>
+						<option value="product">상품</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 						<option value="member">작성자</option>
@@ -84,11 +87,13 @@
         		<col class="col4">
         		<col class="col5">
         		<col class="col6"> 
+        		<col class="col7"> 
         		
     		</colgroup>
 			<thead>
 				<tr>
 					<th scope="row">글번호</th>
+					<th scope="row">상품명</th>
 					<th scope="row">썸네일</th>
 					<th scope="row">제목</th>
 					<th scope="row">작성자</th>
@@ -98,20 +103,21 @@
 			</thead>
 			<tbody>
 			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean">
+			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
 			<tr>
-			<td>${bean.article_id }</td>
+			<td><div>${(total-status.index)-(search.page-1)*search.listSize}</div></td>
+			<td><div>${bean.product_id } </div></td>
 			<td>
-				<img width=40px height=40px alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
+				<img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
 			</td>
-			<td><a href="${root }admin/review_detail?article_id=${bean.article_id }&
+			<td><div><a href="${root }admin/review_detail?article_id=${bean.article_id }&
 					page=${search.page}&
 					range=${search.range}&
 					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.article_title }</a></td>
-			<td>${bean.member_id }</td>
-			<td>${bean.article_date }</td>
-			<td>${bean.article_count }</td>
+					keyword=${search.keyword}">${bean.article_title }</a></div></td>
+			<td><div>${bean.member_id }</div></td>
+			<td><div>${bean.article_date }</div></td>
+			<td><div>${bean.article_count }</div></td>
 			</tr>
 			</c:forEach>
 			</tbody>
