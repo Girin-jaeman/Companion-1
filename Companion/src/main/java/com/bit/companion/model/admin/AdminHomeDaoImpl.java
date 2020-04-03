@@ -1,6 +1,7 @@
 package com.bit.companion.model.admin;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.bit.companion.common.ChartDate;
 import com.bit.companion.controller.admin.AdminHomeController;
 import com.bit.companion.model.entity.admin.PaymentVo;
+import com.bit.companion.model.entity.order.ProductVo;
 
 @Repository
 public class AdminHomeDaoImpl implements AdminHomeDao {
@@ -88,6 +90,11 @@ public class AdminHomeDaoImpl implements AdminHomeDao {
 	@Override
 	public PaymentVo selectMonth_6(ChartDate chartDate) throws SQLException {
 		return sqlSession.selectOne("adminHome.selectMonth_6",chartDate);
+	}
+
+	@Override
+	public List<ProductVo> selectProduct() throws SQLException {
+		return sqlSession.selectList("adminHome.selectProduct");
 	}
 
 }

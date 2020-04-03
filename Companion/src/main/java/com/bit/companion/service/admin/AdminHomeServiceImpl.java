@@ -13,6 +13,7 @@ import com.bit.companion.common.ChartDate;
 import com.bit.companion.controller.admin.AdminHomeController;
 import com.bit.companion.model.admin.AdminHomeDao;
 import com.bit.companion.model.entity.admin.PaymentVo;
+import com.bit.companion.model.entity.order.ProductVo;
 
 @Service
 public class AdminHomeServiceImpl implements AdminHomeService {
@@ -29,6 +30,9 @@ public class AdminHomeServiceImpl implements AdminHomeService {
 		model.addAttribute("chartDate", chartDate);
 		
 		try {
+			// DataTable
+			List<ProductVo> list = adminHomeDao.selectProduct();
+			model.addAttribute("list", list);
 			
 			// 일별 매출
 			PaymentVo todaySum = adminHomeDao.selectToday(chartDate);

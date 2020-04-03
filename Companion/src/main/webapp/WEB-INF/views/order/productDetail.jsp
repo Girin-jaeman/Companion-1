@@ -111,16 +111,18 @@
 							<div class="col-sm-4 title">옵션</div>
 							<div class="col-sm-8">
 							
-								<select name="selectBox" class="form-control col-sm-8" onchange="getSelectValue(this.form);">
+								<select name="selectBox" id="selectBox" class="form-control col-sm-8" onchange="getSelectValue(this.form);">
 								<!-- 옵션이랑 수량 어떻게 처리???  -->
-									<option value="옵션1">옵션1</option>
-									<option value="옵션2">옵션2</option>
-									<option value="옵션3">옵션3</option>
-									<option value="옵션4">옵션4</option>
-									<option value="옵션5">옵션5</option>
+									<option value="옵션 1">옵션1</option>
+									<option value="옵션 2">옵션2</option>
+									<option value="옵션 3">옵션3</option>
+									<option value="옵션 4">옵션4</option>
+									<option value="옵션 5">옵션5</option>
 								</select>
 								<input type="hidden" name="product_option">
 								<input type="hidden" name="optionValue">
+								
+		
 								
 							</div>
 							<!-- 수량도 받아서 처리해야함.  -->
@@ -200,6 +202,10 @@
                        <!-- 좋아요... 만들기 시러... -->
                        
 <!-- 로그인 안하면 그냥 모달폼 넘길것.  -->                       
+
+
+<input type="hidden" name="cart_quantity" id= "cart_quantity" value=""/>
+<input type="hidden" name="cart_option" id="cart_option" value=""/>
                     <c:choose>
 						<c:when test="${memberVo.member_id!=null }">
 							<button id="like_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
@@ -418,8 +424,6 @@
 											 <form role="form" method="post" autocomplete="off"> 
 											<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
 										 	<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
-										
-										
 											<div class="input_area"><!--null 값 validation 처리 할 것!!!!!!!!!!!!!!!!  -->
 													<label for="question_title" id="question_label">문의 제목</label>
 												<textarea name="question_title" id="question_title">문의 제목</textarea>
@@ -496,8 +500,6 @@
 	<script src="${root }js/main.js"></script>
 	<!-- productDetail JS -->
 	<script src="${root}js/order/productDetail.js"></script>
-
-	<script type="text/javascript">
 		<script src="${root}js/order/productDetail.js"></script>
 	<script type="text/javascript">
 			$(function(){ 
@@ -520,15 +522,46 @@
 			frm.textValue.value=frm.selectBox.options[frm.selectBox.selectedIndex].text;
 			frm.optionValue.value=frm.selectBox.options[frm.selectBox.selectedIndex].value;
 		}
+		 
+		$("#cartBtn").click(function(){
+			 /* selectBox test */
+			console.log("장바구니 버튼 클릭");
+			 
+			var cart_quantity = $("#order_detail_quantity").val();
+			var selectbox = $("#selectBox option:selected").text(); 
+			
+			 $("#selectBox option:selected").text();
+			 console.log($("#selectBox option:selected").text());
+			 console.log(cart_quantity);
+			 console.log("아니 왜 여기까지만 나오는데 대체");
+			 
+			 document.getElementById("cart_quantity").value=cart_quantity;
+			 document.getElementById("cart_option").value=selectbox;
+			 
+			 console.log(document.getElementById("cart_option"));
+	/* 		 
+			 document.getElementById("cart_option").innerHTML=cart_quantity;
+			  */
+			 /* 이거 안먹음 지금  */
+	/* 		 request.setAttribute("selectbox",selectbox); 
+			 request.setAttribute("cart_quantity",$("#order_detail_quantity").val());  */
+			 /* 이거도 안먹음. */
+/* 			console.log(request.getAttribute("selecbox"));
+			console.log(request.getAttribute("cart_quantity")); */
+		});
+		
+		
+		
 		</script>
 		<!--  form 다중 액션 처리 -->
 		<script type="text/javascript">
 		var modal = document.getElementById("");
 		
 		 function goForm(){
-			 console.log("장바구니 버튼 클릭");
 			 document.formName.action="${root}order/orderCart";
 		 	 modal.style.display = "block";
+		
+			
 		 };
 		</script>
 		
