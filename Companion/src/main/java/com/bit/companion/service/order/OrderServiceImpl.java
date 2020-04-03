@@ -1,7 +1,10 @@
 package com.bit.companion.service.order;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,8 @@ import org.springframework.ui.Model;
 
 import com.bit.companion.model.entity.order.OrderVo;
 import com.bit.companion.model.order.OrderDao;
+
+import net.sf.json.JSONArray;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -38,7 +43,6 @@ public class OrderServiceImpl implements OrderService {
 
 		try {
 			orderDao.OrderInfo_Details(orderVo);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -55,10 +59,11 @@ public class OrderServiceImpl implements OrderService {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
+
+
+	@Override
+	public int insert_test(List<OrderVo> orderVo) throws SQLException {
+		
+		return orderDao.CartOrderPurchase(orderVo);
+	}
 }

@@ -31,10 +31,16 @@ public class ProductController {
 	OrderQuestionService orderQuestionService;
 	
 	OrderQuestionVo orderQuestionVo;
+	
+	
+	
+	
 
 	// param version test  ajax 실패하면 이거 살릴것.
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
 	public String productDetail(Model model,@RequestParam("idx") int product_id) throws SQLException {
+		
+		productService.productReview(model, product_id);
 		productService.detail(model, product_id);	
 		return "order/productDetail";
 	}

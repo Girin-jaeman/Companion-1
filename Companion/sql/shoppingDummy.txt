@@ -303,3 +303,27 @@ END$$
 DELIMITER $$
 CALL member;
 commit;
+
+
+
+//이용후기 게시판 용
+DELIMITER $$
+DROP PROCEDURE IF EXISTS orderArticle$$
+CREATE PROCEDURE orderArticle()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 70 DO
+        INSERT INTO article 
+          VALUES (3,default, concat('회원이름',i),concat('이용후기',i),concat('이용후기의 내용',i),now(),0,null,null);
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
+CALL orderArticle;
+commit;
+
+
+
+
+
+
