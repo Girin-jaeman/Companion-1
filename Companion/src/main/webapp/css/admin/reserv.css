@@ -2,11 +2,12 @@
 .table_layout { margin:0px; table-layout:fixed; }
 .table_layout .col1 { width: 150px; } /* 서비스 */ 
 .table_layout .col2 { width: auto } /* 회원이름 */
-.table_layout .col3 { width: 200px; } /* 체크인 */
-.table_layout .col4 { width: 200px; } /* 체크아웃 */
+.table_layout .col3 { width: 150px; } /* 체크인 */
+.table_layout .col4 { width: 150px; } /* 체크아웃 */
 .table_layout .col5 { width: 150px; } /* 품종 */
-.table_layout .col6 { width: 150px; } /* 나이 */
+.table_layout .col6 { width: 100px; } /* 나이 */
 .table_layout .col7 { width: 150px; } /* 작성일 */
+.table_layout .col8 { width: 150px; } /* 예약상태 */
 
 
 .insertbtn{

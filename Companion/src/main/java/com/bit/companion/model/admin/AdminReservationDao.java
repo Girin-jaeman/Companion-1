@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.bit.companion.common.Search;
+import com.bit.companion.model.entity.admin.AdminHotelServiceVo;
 import com.bit.companion.model.entity.admin.AdminReservationVo;
 
 public interface AdminReservationDao {
@@ -11,6 +12,10 @@ public interface AdminReservationDao {
 	// reservation list
 	List<AdminReservationVo> selectAll() throws SQLException;
 	
+	// hotelService list
+	List<AdminHotelServiceVo> selectService() throws SQLException;
+
 	// reservation detail
-	AdminReservationVo selectOne(String member_id) throws SQLException;
+	AdminReservationVo selectOne(int reserve_id) throws SQLException;
+	
 }

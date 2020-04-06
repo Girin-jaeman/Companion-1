@@ -9,9 +9,14 @@
 		select * from `reserve` order by reserve_id;
 	</select>
 	
+	<!-- hotelService list -->
+	<select id="selectService" resultType="adminHotelServiceBean">
+		select * from `service`
+	</select>
+	
 	<!-- reservation detail -->
-	<select id="selectOne" parameterType="String" resultType="adminReservationBean">
-		select * from `reserve` where member_id=#{value}
+	<select id="selectOne" parameterType="int" resultType="adminReservationBean">
+		select * from `reserve` where reserve_id=#{value}
 	</select>
 
 </mapper> 
