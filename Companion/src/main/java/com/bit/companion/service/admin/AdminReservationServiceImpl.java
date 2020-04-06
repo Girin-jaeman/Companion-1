@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.bit.companion.model.admin.AdminReservationDao;
+import com.bit.companion.model.entity.admin.AdminHotelServiceVo;
 import com.bit.companion.model.entity.admin.AdminReservationVo;
+
+import net.sf.json.JSONArray;
 
 @Service
 public class AdminReservationServiceImpl implements AdminReservationService {
@@ -19,6 +22,7 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 	@Autowired
 	AdminReservationDao adminReservationDao;
 
+	//reservation list
 	@Override
 	public void list(Model model) {
 		try {
@@ -29,17 +33,31 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 		}
 		
 	}
-
+	//hotelservice list - selectHotelService
 	@Override
-	public void detail(Model model, String member_id) {
+	public void service(Model model) {
 		try {
-			model.addAttribute("adminReservationOne", adminReservationDao.selectOne(member_id));
-			System.out.println(adminReservationDao.selectOne(member_id));
+			List<AdminHotelServiceVo> service= adminReservationDao.selectService();
+			model.addAttribute("adminHotelService", JSONArray.fromObject(service));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	// reservation detail
+	@Override
+	public void detail(Model model, int reserve_id) {
+		try {
+			model.addAttribute("adminReservationOne", adminReservationDao.selectOne(reserve_id));
+			System.out.println(adminReservationDao.selectOne(reserve_id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 	}
+
 
 
 }

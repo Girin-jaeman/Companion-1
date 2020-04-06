@@ -64,7 +64,42 @@
 			<div class="main--title">
 				<h1>[Admin] 예약자 상세</h1>
 			</div>
-	
+			<%-- <div class="inputArea">
+				<label for="reserve_id">예약번호</label>
+				<span>${adminReservationOne.reserve_id }</span>
+			</div> --%>
+			<div class="inputArea">
+				<label for="member_id">아이디</label>
+				<span>${adminReservationOne.member_id }</span>
+			</div>
+			<div class="inputArea">
+				<label for="service_id">서비스</label>
+				<span>${adminReservationOne.service_id }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_checkin">체크인날짜</label>
+				<span>${adminReservationOne.reserve_checkin }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_checkout">체크아웃 날짜</label>
+				<span>${adminReservationOne.reserve_checkout }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_dogtype">견종</label>
+				<span>${adminReservationOne.reserve_dogtype }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_dogage">반려견 나이</label>
+				<span>${adminReservationOne.reserve_dogage }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_msg">특이사항</label>
+				<span>${adminReservationOne.reserve_msg }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_state_id">예약상태</label>
+				<span>${adminReservationOne.reserve_state_id }</span>
+			</div>
 		</section>
 		<!-- section [end] -->
 	</div>
