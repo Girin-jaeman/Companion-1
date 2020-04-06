@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.bit.companion.common.Search;
 import com.bit.companion.model.admin.AdminQuestionDao;
 import com.bit.companion.model.entity.admin.AdminQuestionVo;
+
+import net.sf.json.JSONArray;
 
 @Service
 public class AdminQuestionServiceImpl implements AdminQuestionService{
@@ -19,55 +20,56 @@ public class AdminQuestionServiceImpl implements AdminQuestionService{
 
 	// question list
 	@Override
-	public void questionList(Model model, int page, int range, String searchType, String keyword, Search search) {
+	public void list(Model model) {
 		try {
 			// Total list Count
-			search.setListSize(5);
-			int questionListCnt = adminQuestionDao.questionTotal(search);
+			int listCnt = adminQuestionDao.selectTotal();
 			
-			// Pagination
-			search.setSearchType(searchType);
-			search.setKeyword(keyword);
-			search.pageInfo(page, range, questionListCnt);
+			List<AdminQuestionVo> list = adminQuestionDao.selectAll();
 			
-			List<AdminQuestionVo> list = adminQuestionDao.selectQuestion(search);
-			
-			model.addAttribute("total", questionListCnt);
-			model.addAttribute("search",search);
+			model.addAttribute("total", listCnt);
 			model.addAttribute("adminQuestionList",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
 	}
-	
-	// answer list
-	@Override
-	public void answerList(Model model, int page, int range, String searchType, String keyword, Search search) {
-		try {
-			// Total list Count
-			search.setListSize(10);
-			int answerListCnt = adminQuestionDao.answerTotal(search);
-			
-			// Pagination
-			search.setSearchType(searchType);
-			search.setKeyword(keyword);
-			search.pageInfo(page, range, answerListCnt);
-			
-			List<AdminQuestionVo> list = adminQuestionDao.selectAnswer(search);
-			
-			model.addAttribute("total", answerListCnt);
-			model.addAttribute("search",search);
-			model.addAttribute("adminAnswerList",list);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-	}
 
-	//question detail
+	// question detail
 	@Override
-	public void questionDetail(Model model, AdminQuestionVo bean) {
+	public void detail(Model model, AdminQuestionVo bean) {
 		try {
 			model.addAttribute("adminQuestionOne",adminQuestionDao.selectOne(bean));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// question type
+	@Override
+	public void type(Model model) {
+		try {
+			List<AdminQuestionVo> type=adminQuestionDao.selectType();
+			model.addAttribute("adminQuestionType",JSONArray.fromObject(type));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// question edit
+	@Override
+	public void update(AdminQuestionVo bean) {
+		try {
+			adminQuestionDao.updateOne(bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// question delete
+	@Override
+	public void delete(AdminQuestionVo bean) {
+		try {
+			adminQuestionDao.deleteOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

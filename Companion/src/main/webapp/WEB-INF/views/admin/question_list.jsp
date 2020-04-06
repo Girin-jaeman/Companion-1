@@ -11,9 +11,10 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/notice.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -61,22 +62,32 @@
 				<h1>[Admin] Q&A 목록</h1>
 			</div>
 			
-			<div class="sub-group clearfix">
-				<!-- 검색창 -->
-				<div class="search-group btn-group float--right">
-					<select name="searchType" id="searchType">
-						<option value="all">전체</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="member">작성자</option>
-					</select>
-					<input type="text" name="keyword" id="keyword">
-					<button name="search_Btn" id="search_Btn">검색</button>
-				</div>
-			</div>
-
-			<iframe src="${root }admin/question_question" style="width:100%; height:350px; border:none; "></iframe>
-			<iframe src="${root }admin/question_answer" style="width:100%; height:700px; border:none; "></iframe>
+			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th>글번호</th>
+						<th>문의유형</th>
+						<th>문의상태</th>
+						<th>문의제목</th>
+						<th>작성자</th>
+						<th>문의일</th>
+						<th>답변일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
+						<tr>
+							<td>${bean.question_id }</td>
+							<td>${bean.question_type_name }</td>
+							<td>${bean.question_state_name }</td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_title }</a></td>
+							<td>${bean.member_id }</td>
+							<td>${bean.question_date }</td>
+							<td>${bean.question_answerdate }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 			
 		</section>
 		<!-- section [end] -->
@@ -93,20 +104,46 @@
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+<!-- Data Table JS -->
+<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+
 <script type="text/javascript">
-//검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
+// 데이터 테이블 초기화
+	$(document).ready(function() {
+	$('#dataTable').DataTable(
+	);
 });
 
-window.scrollTo(0,0);
+// 데이터 테이블 언어
+var table = $('#dataTable').DataTable({
+	"language": {
+		"emptyTable": "데이터가 없습니다.",
+		"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+		"info": "현재 _START_ - _END_ / _TOTAL_건",
+		"infoEmpty": "데이터 없음",
+		"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+		"search": "검색: ",
+		"zeroRecords": "일치하는 데이터가 없습니다.",
+		"loadingRecords": "로딩중...",
+		"processing":     "잠시만 기다려 주세요...",
+		"paginate": {
+			"next": "다음",
+			"previous": "이전"
+		}
+	},
+	"columns" : [ 
+		{ "width" : "30px" }, 
+		{ "width" : "30px" },
+		{ "width" : "30px" }, 
+		{ "width" : "40px" }, 
+		{ "width" : "30px" },
+		{ "width" : "30px" },
+		{ "width" : "30px" }
+	]
+});
+
 </script>
 </body>
 </html>

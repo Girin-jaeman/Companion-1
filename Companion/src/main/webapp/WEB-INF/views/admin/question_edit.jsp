@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/noticeE.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -61,53 +60,152 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] Q&A 수정</h1>
+				<h1>[Admin] Q&A 답변</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
-				<!-- 페이지 유지를 위한 정보 -->
-				<input type="hidden" name="page" value="${search.page }"/>
-				<input type="hidden" name="range" value="${search.range }"/>
-				<input type="hidden" name="searchType" value="${search.searchType }"/>
-				<input type="hidden" name="keyword" value="${search.keyword }"/>
-				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
 				<!-- table에 잡아넣기시작 -->
 				<table>
 				<thead>
 				</thead>
 				<tbody>
 				  <tr>
+				    <th><label>문의유형</label></th>
+				    <td>
+				    <select class="type" name="question_type_id">
+					<option value="">전체</option>
+					</select>
+				    </td>	
+				  </tr>
+				  <tr>
 				    <th>
 				    	<div>
-				    	<label for="title">글 제목</label>
+				    	<label for="title">문의상태</label>
 				    	</div>
 				    </th>
 				    <td>
 				    	<div>
-				    	<input class="input--text" type="text" name="article_title" id="article_title" value="${adminArticleOne.article_title }"/>
+				    	<label>${adminQuestionOne.question_state_name }</label>
+				    	<input type="hidden" name="question_state_name" id="question_state_name" value="${adminQuestionOne.question_state_name }"/>
 				    	</div>
 				    </td>	
 				  </tr>
 				  <tr>
 				    <th>
 				    	<div>
-				    	<label for="date">작성일</label>
+				    	<label for="title">비밀글여부</label>
 				    	</div>
 				    </th>
 				    <td>
 				    	<div>
-				    	<input class="input--text"  type="text" name="article_date" id="article_date" value="${adminArticleOne.article_date }"/>
+				    	<label>${adminQuestionOne.question_secret_name }</label>
+				    	<input type="hidden" name="question_secret_name" id="question_secret_name" value="${adminQuestionOne.question_secret_name }"/>
 				    	</div>
 				    </td>	
 				  </tr>
 				  <tr>
 				    <th>
 				    	<div>
-						<label for="content">게시글 내용</label>
+				    	<label for="title">주문ID</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+	  					<label>${adminQuestionOne.order_id }</label>
+				    	<input type="hidden" name="order_id" id="order_id" value="${adminQuestionOne.order_id }" />
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="title">상품명</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+	  					<label>${adminQuestionOne.product_name }</label>
+				    	<input type="hidden" name="product_name" id="product_name" value="${adminQuestionOne.product_name }"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="title">회원ID</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+  					    	<label>${adminQuestionOne.member_id }</label>
+				    	<input type="hidden" name="member_id" id="member_id" value="${adminQuestionOne.member_id }"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="date">문의일</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+				    	<label>${adminQuestionOne.question_date }</label>
+				    	<input type="hidden" name="question_date" id="question_date" value="${adminQuestionOne.question_date }"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="date">답변일</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+				    	<c:if test="${adminQuestionOne.question_answerdate == null }">
+				    	</c:if>
+				    	<c:if test="${adminQuestionOne.question_answerdate != null }">
+			    			<label>${adminQuestionOne.question_answerdate }</label>
+				    	</c:if>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+				    	<label for="title">제목</label>
+				    	</div>
+				    </th>
+				    <td>
+				    	<div>
+				    	<label>${adminQuestionOne.question_title }</label>
+				    	<input type="hidden" name="question_title" id="question_title" value="${adminQuestionOne.question_title }"/>
+				    	</div>
+				    </td>	
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+						<label for="content">내용</label>
 						</div>
 					</th>
 				    <td>
 				    	<div>
-				    	<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
+				    	<label>${adminQuestionOne.question_content }</label>
+				    	<input type="hidden" name="question_content" id="question_content" value="${adminQuestionOne.question_content }"/>
+				    	</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <th>
+				    	<div>
+						<label for="content">답변</label>
+						</div>
+					</th>
+				    <td>
+				    	<div>
+				    	<textarea name="question_answer" id="question_answer" rows="10" cols="80">${adminQuestionOne.question_answer }</textarea>
 						<script>
 			 				var ckeditor_config = {
 									resize_enable : false,
@@ -115,7 +213,7 @@
 									shiftEnterMode : CKEDITOR.ENTER_P,
 									filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
 							};
-							CKEDITOR.replace('article_content', ckeditor_config);
+							CKEDITOR.replace('question_answer', ckeditor_config);
 						</script>
 				    	</div>
 				    </td>
@@ -128,11 +226,10 @@
 					</th>
 				    <td>
 				    	<div class="file-add">
-				    	<input type="file" name="file" id="article_image"/>
+				    	<input type="file" name="file" id="question_image"/>
 						<div class="select_img">
-							<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
-							<input type="hidden" name="article_image" value="${adminArticleOne.article_image }"/>
-							<input type="hidden" name="article_thumb" value="${adminArticleOne.article_thumb }"/>
+							<img alt="원본이미지" src="<spring:url value='${adminQuestionOne.question_image }'/>"/>
+							<input type="hidden" name="question_image" value="${adminQuestionOne.question_image }"/>
 						</div>
 					</div>
 				    </td>
@@ -178,14 +275,36 @@ $('#article_image').change(function(){
 
 // 취소 버튼
 $("#back_Btn").click(function(){
-	/* history.back(); */
-	event.preventDefault();
-	location.href = ${root}+"/admin/question_detail?article_id=${adminArticleOne.article_id}"
-		+"&page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
+	history.back();
 });
+
+/* 카테고리 불러오기 시작*/
+//컨트롤러에서 데이터 받기
+var jsonData = JSON.parse('${adminQuestionType}');
+var typeArr = new Array();
+var typeObj = new Object();
+
+//1차 분류 셀렉트 박스에 삽입할 데이터 준비
+for(var i = 0; i < jsonData.length; i++) {
+	typeObj = new Object();  //초기화
+	console.log(1);
+	typeObj.question_type_id = jsonData[i].question_type_id;
+	typeObj.question_type_name = jsonData[i].question_type_name;
+	console.log(2);
+	typeArr.push(typeObj);
+}
+
+//1차 분류 셀렉트 박스에 데이터 삽입
+var typeSelect = $("select.type");
+
+for(var i = 0; i < typeArr.length; i++) {
+	typeSelect.append("<option value='" + typeArr[i].question_type_id + "'>"
+		+ typeArr[i].question_type_name + "</option>"); 
+}
+
+var select_type_id = '${adminQuestionOne.question_type_id}';
+var select_type_name = '${adminQuestionOne.question_type_name}';
+$(".type").val(select_type_id);
 </script>
 
 </body>
