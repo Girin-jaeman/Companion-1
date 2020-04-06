@@ -8,8 +8,9 @@
 	<!-- article list -->
 	<select id="selectAll" resultType="adminArticleBean">
 		SELECT 
-			*
-				FROM `ARTICLE` 
+			a.*,
+			(SELECT product_name FROM `PRODUCT` p WHERE p.product_id=a.product_id) as product_name
+				FROM `ARTICLE` a
 					<trim prefix="WHERE">
 						<if test="board_id==0">
 							board_id=0
@@ -49,29 +50,24 @@
 	<!-- article detail -->
 	<select id="selectOne" resultType="adminArticleBean" parameterType="int">
 		SELECT 
-			article_id,
-			member_id,
-			article_title,
-			article_content,
-			article_date,
-			article_image,
-			article_thumb
-				FROM `ARTICLE` 
-					WHERE article_id=#{article_id}
-					<trim prefix="AND">
-						<if test="board_id==0">
-							board_id=0
-						</if>
-						<if test="board_id==1">
-							board_id=1
-						</if>
-						<if test="board_id==2">
-							board_id=2
-						</if>
-						<if test="board_id==3">
-							board_id=3
-						</if>
-					</trim>
+			a.*,
+			(SELECT product_name FROM `PRODUCT` p WHERE p.product_id=a.product_id) as product_name
+			FROM `ARTICLE` a
+				WHERE article_id=#{article_id}
+				<trim prefix="AND">
+					<if test="board_id==0">
+						board_id=0
+					</if>
+					<if test="board_id==1">
+						board_id=1
+					</if>
+					<if test="board_id==2">
+						board_id=2
+					</if>
+					<if test="board_id==3">
+						board_id=3
+					</if>
+				</trim>
 	</select>
 	
 	<!-- article add -->

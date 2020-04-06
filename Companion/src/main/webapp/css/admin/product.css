@@ -11,6 +11,11 @@
 .table_layout .col9 { width: 120px; } /* 옵션2 */
 .table_layout .col10 { width: auto } /* 옵션etc */
 
+.insertbtn{
+	margin:5px;
+	width: 80px;
+}	
+
 .search-group{
 	float:right;
 	margin:5px;

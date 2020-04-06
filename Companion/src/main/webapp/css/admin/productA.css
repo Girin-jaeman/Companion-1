@@ -24,11 +24,6 @@ input{
 .btn-back{
 	border:1px solid gray;
 }
-.section #detail{
-	width:950px;
-	margin: 0 auto;
-	border:5px double gray;
-}
 .tit{
 	width:160px;
 	border-bottom: 1px double gray;
@@ -37,28 +32,12 @@ input{
 	text-align:center;
 	padding:5px;
 }
-.rightd{
-	width:200px;
-	font-size:16px;
-	margin-bottom:10px;
-	text-align:center;
-	padding:5px;
-}
-.imgB{
-	background:burlywood;
-	width:350px;
-	height:350px;
-	margin-left:10px;
-	margin-bottom: 10px;
-	border:1px solid gray;
-}
-.imgB img{
-	
-	width:348px;
-	height:348px;
-	
-}
 .category1{
+	width:200px;
+	height:30px;
+	padding-left:5px;
+}
+.category2{
 	width:200px;
 	height:30px;
 	padding-left:5px;
@@ -66,7 +45,6 @@ input{
 table{
 	width:100%;
 }
-table tbody{}
 table tbody tr{
 	height:40px;
 }
@@ -93,14 +71,4 @@ table tbody tr td{
 }
 .inputAreaName input{
 	width:100%;
-}
-.inputArea .inputAreaC{
-	
-}
-.product-o{
-	display:flex;
-	
-}
-.product-o .inputArea-o{
-	margin-right:15px;
 }

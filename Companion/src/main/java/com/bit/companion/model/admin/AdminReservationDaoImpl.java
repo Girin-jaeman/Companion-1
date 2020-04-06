@@ -26,7 +26,7 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	// reservation - detail
 	@Override
 	public AdminReservationVo selectOne(String member_id) throws SQLException {
-		// TODO Auto-generated method stub
+		System.out.println(member_id);
 		return sqlsession.selectOne("adminReservation.selectOne", member_id);
 	}
 

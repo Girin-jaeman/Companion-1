@@ -52,7 +52,7 @@
 	</select>
 	
 	<!-- Data Table -->
-	<select id="selectProduct" resultType="productBean">
-		select * from `product`;
+	<select id="selectProduct" resultType="adminDataTableBean">
+		select product_id, product_name, product_price, product_stock, (select sum(order_detail_quantity) from `order_detail` o_d where o_d.product_id=p.product_id ) as total_cumulative_sales, (select sum(order_detail_quantity) from `order_detail` o_d, `order` o where o_d.product_id=p.product_id AND o_d.order_id=o.order_id AND o.order_date like CONCAT(#{month},'%')) as month_cumulative_sales from `product` p;
 	</select>
 </mapper>
