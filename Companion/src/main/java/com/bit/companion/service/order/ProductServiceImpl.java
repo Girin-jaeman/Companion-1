@@ -18,7 +18,6 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void list(Model model) {
-		
 		List<ProductVo> list;
 		try {
 			list = productDao.ProductSelectAll();
@@ -26,7 +25,6 @@ public class ProductServiceImpl implements ProductService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	@Override
@@ -37,11 +35,80 @@ public class ProductServiceImpl implements ProductService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//추천순 정렬 나머지 조건도 채울 것.
+	@Override
+	public void Alignment(Model model,int category_id) {
+		List<ProductVo> list;
+		try {
+			list=productDao.productAlignmentByLike(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	//판매량순 정렬
+	@Override
+	public void AlignmentOrderBySelling(Model model, int category_id) {
+		List<ProductVo> list;
+		try {
+			list=productDao.productAlignmentBySellingOrder(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	//낮은 가격 순 정렬
+	@Override
+	public void AlignmentOrderByLowPrice(Model model, int category_id) {
+		List<ProductVo> list;
+		
+		try {
+			list=productDao.productAlignmentByLowPrice(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	//높은 가격 순
+	@Override
+	public void AlignmentOrderByHighPrice(Model model, int category_id) {
+		List<ProductVo> list;
+		
+		try {
+			list=productDao.productAlignmentByHighPrice(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	//등록일 순
+	@Override
+	public void AlignmentOrderByDate(Model model, int category_id) {
+		List<ProductVo> list;
+		
+		try {
+			list=productDao.productAlignmentByDate(category_id);
+			model.addAttribute("productCategory",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}
 
-//	프로덕트 목록 출력.
+	
+	
+	
+	
+	
+	
+	//	프로덕트 목록 출력.
 	@Override
 	public void category(Model model, int category_id) {
 		List<ProductVo> list;
@@ -57,11 +124,7 @@ public class ProductServiceImpl implements ProductService {
 	//이용후기 목록 출력.
 	@Override
 	public void productReview(Model model,int product_id) {
-		
-		
-		
 		List<ProductVo> ReviewList;
-
 		System.out.println("service 작동 확인");		
 		System.out.println(product_id);
 		try {
@@ -71,6 +134,7 @@ public class ProductServiceImpl implements ProductService {
 				e.printStackTrace();
 			}
 	}
+
 
 
 

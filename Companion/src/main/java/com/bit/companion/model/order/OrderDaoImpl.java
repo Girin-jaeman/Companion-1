@@ -36,15 +36,12 @@ public class OrderDaoImpl implements OrderDao {
 		System.out.println(orderVo.getCart_quantity());
 		
 		
-		/*
-		 * // order table에 sqlSession.insert("order.OrderProductPurchase",orderVo);
-		 * 
-		 * //order_detail table에 sqlSession.insert("order.OrderDetailInsert",orderVo);
-		 * 
-		 * //payment table에 sqlSession.insert("order.OrderPaymentInsert",orderVo);
-		 * 
-		 * //delivery table에 sqlSession.insert("order.OrderDeliveryInsert",orderVo);
-		 */
+		
+		sqlSession.insert("order.OrderProductPurchase",orderVo);
+		sqlSession.insert("order.OrderDetailInsert",orderVo);
+		sqlSession.insert("order.OrderPaymentInsert",orderVo);
+		sqlSession.insert("order.OrderDeliveryInsert",orderVo);
+		
 	}
 
 
@@ -59,7 +56,6 @@ public class OrderDaoImpl implements OrderDao {
 	public void OrderCartAdd(OrderVo orderVo) throws SQLException {
 		
 		System.out.println("OrderCartAdd 실행중...");
-		
 		System.out.println(orderVo.getCart_option());
 		System.out.println(orderVo.getCart_quantity());
 		System.out.println(orderVo.getMember_id());
