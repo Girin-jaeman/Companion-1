@@ -204,8 +204,10 @@
 <!-- 로그인 안하면 그냥 모달폼 넘길것.  -->                       
 
 
-<input type="hidden" name="cart_quantity" id= "cart_quantity" value=""/>
-<input type="hidden" name="cart_option" id="cart_option" value=""/>
+<!-- <input type="hidden" name="order_detail_quantity" id="order_detail_quantity" value="1"/> -->
+<input type="hidden" name="cart_quantity" id="cart_quantity" value="1"/>
+<input type="hidden" name="cart_option" id="cart_option" value="1"/> 
+<input type="hidden" name="order_detail_option" id="order_detail_option" value="1"/>
                     <c:choose>
 						<c:when test="${memberVo.member_id!=null }">
 							<button id="like_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
@@ -537,6 +539,8 @@
 			 
 			 document.getElementById("cart_quantity").value=cart_quantity;
 			 document.getElementById("cart_option").value=selectbox;
+			 document.getElementById("order_detail_quantity").value=cart_quantity;
+			 document.getElementById("order_detail_option").value=selectbox;
 			 
 			 console.log(document.getElementById("cart_option"));
 	/* 		 
@@ -557,10 +561,15 @@
 		<script type="text/javascript">
 		var modal = document.getElementById("");
 		
+		var cart_quantity = $("#order_detail_quantity").val();
+		var selectbox = $("#selectBox option:selected").text(); 
+		
 		 function goForm(){
 			 document.formName.action="${root}order/orderCart";
 		 	 modal.style.display = "block";
-		
+		 	 
+			 document.getElementById("cart_quantity").value=cart_quantity;
+			 document.getElementById("cart_option").value=selectbox;
 			
 		 };
 		</script>
