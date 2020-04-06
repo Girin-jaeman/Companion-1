@@ -543,15 +543,6 @@
 			 document.getElementById("order_detail_option").value=selectbox;
 			 
 			 console.log(document.getElementById("cart_option"));
-	/* 		 
-			 document.getElementById("cart_option").innerHTML=cart_quantity;
-			  */
-			 /* 이거 안먹음 지금  */
-	/* 		 request.setAttribute("selectbox",selectbox); 
-			 request.setAttribute("cart_quantity",$("#order_detail_quantity").val());  */
-			 /* 이거도 안먹음. */
-/* 			console.log(request.getAttribute("selecbox"));
-			console.log(request.getAttribute("cart_quantity")); */
 		});
 		
 		

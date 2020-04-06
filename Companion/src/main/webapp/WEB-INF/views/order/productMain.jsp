@@ -79,7 +79,27 @@
                 <span>></span>
                 <a href="#">
                     <i class="fas fa-home"></i>
-                    사료
+                    
+                    <%if(request.getQueryString()=="c=100"){
+                    	out.println("사료");
+                    }else if(request.getQueryString()=="c=200"){
+                    	out.println("간식");
+                    }else if(request.getQueryString()=="c=300"){
+                    	out.println("장난감");
+                    }else if(request.getQueryString()=="c=400"){
+                    	out.println("미용용품");
+                    }else if(request.getQueryString()=="c=500"){
+                    	out.println("목욕용품");
+                    }else if(request.getQueryString()=="c=600"){
+                    	out.println("위생용품");
+                    }else if(request.getQueryString()=="c=700"){	
+                    	out.println("산책용품");
+                    }
+                    out.println(request.getQueryString());
+                    out.println("이거 아닌가?");
+                    
+                    %>
+                    아니 왜 사료만 쳐나와??
                 </a>
                 <hr class="mb-4">
             </div>
@@ -97,12 +117,12 @@
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByLowPrice?<%=request.getQueryString() %>">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByHighPrice?<%=request.getQueryString() %>">높은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByDate?<%=request.getQueryString() %>">등록일순</a></li>
-                        <div class="navbar navbar-dark bg-primary"> 
-	                        <form class="form-inline">
+                    <!--     <div class="navbar navbar-dark bg-primary"> 
+	                     검색기능 미완성임.    <form class="form-inline">
 						    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색기능 넣을까말까</button>
 							</form>
-						</div>
+						</div> -->
                     </ol>
                 </nav>
 			   <div class="row">
