@@ -107,14 +107,20 @@ public class OrderController {
 	public void orderSuccess(Model model,OrderVo orderVo,HttpSession session,HttpServletRequest request) {
 		logger.debug("주문 성공했다면 order table에 인서트 되었는지 확인 해야 합니다.");
 		
-		MemberVo member = (MemberVo)session.getAttribute("memberVo");
-		orderVo.setMember_id(member.getMember_id());
-		orderVo.setMember_name(member.getMember_name());
-		orderVo.setMember_phone(member.getMember_phone());
-		orderVo.setMember_email(member.getMember_email());
+		
+		
+		
+		  MemberVo member = (MemberVo)session.getAttribute("memberVo");
+		  orderVo.setMember_id(member.getMember_id());
+		  orderVo.setMember_name(member.getMember_name());
+		  orderVo.setMember_phone(member.getMember_phone());
+		  orderVo.setMember_email(member.getMember_email());
+		  
+		  
+		 
 //		orderVo.setOrder_detail_quantity(request.getAttribute("order_detail_quantity")); 
 //		session.setAttribute("orderVo",orderVo);
-		orderVo.setProduct_id((int)session.getAttribute("product_id"));
+//		orderVo.setProduct_id((int)session.getAttribute("product_id"));
 		/*
 		 * orderVo.setCart_option((String)request.getAttribute("cart_option"));
 		 * orderVo.setCart_quantity((int)request.getAttribute("order_detail_quantity"));

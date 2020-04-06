@@ -13,7 +13,7 @@ public class OrderVo {
 	private Date order_date;
 	private int order_amount;
 	private String order_name;
-	private String order_tell;
+	private String order_tel;
 	private String order_phone;
 	private String order_addr1;
 	private String order_addr2;
@@ -89,12 +89,12 @@ public class OrderVo {
 		this.order_name = order_name;
 	}
 
-	public String getOrder_tell() {
-		return order_tell;
+	public String getorder_tel() {
+		return order_tel;
 	}
 
-	public void setOrder_tell(String order_tell) {
-		this.order_tell = order_tell;
+	public void setorder_tel(String order_tel) {
+		this.order_tel = order_tel;
 	}
 
 	public String getOrder_phone() {
@@ -332,7 +332,7 @@ public class OrderVo {
 	@Override
 	public String toString() {
 		return "OrderVo [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date
-				+ ", order_amount=" + order_amount + ", order_name=" + order_name + ", order_tell=" + order_tell
+				+ ", order_amount=" + order_amount + ", order_name=" + order_name + ", order_tel=" + order_tel
 				+ ", order_phone=" + order_phone + ", order_addr1=" + order_addr1 + ", order_addr2=" + order_addr2
 				+ ", order_addr3=" + order_addr3 + ", order_msg=" + order_msg + ", member_name=" + member_name
 				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", order_state_id="
@@ -348,7 +348,7 @@ public class OrderVo {
 	}
 
 	public OrderVo(int order_id, String member_id, Date order_date, int order_amount, String order_name,
-			String order_tell, String order_phone, String order_addr1, String order_addr2, String order_addr3,
+			String order_tel, String order_phone, String order_addr1, String order_addr2, String order_addr3,
 			String order_msg, String member_name, String member_phone, String member_email, int order_state_id,
 			int product_id, int product_price, int product_stock, Date product_date, String product_image,
 			String product_thumb, String product_option1, String product_option2, String product_option3,
@@ -361,7 +361,7 @@ public class OrderVo {
 		this.order_date = order_date;
 		this.order_amount = order_amount;
 		this.order_name = order_name;
-		this.order_tell = order_tell;
+		this.order_tel = order_tel;
 		this.order_phone = order_phone;
 		this.order_addr1 = order_addr1;
 		this.order_addr2 = order_addr2;

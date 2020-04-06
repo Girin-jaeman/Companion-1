@@ -44,20 +44,13 @@
 	
 		<style type="text/css">
 			.purchase{
-			
 			}
 			.btn-order{
 			float:right;
 			display:block;
-			
 			}
-		
 		</style>
-		
-	
-	
 	</head>
-	
 	<body>
 	<div class="wrapper">
 	
@@ -166,24 +159,20 @@
                             request.setAttribute("cart_option",request.getParameter("selectBox"));
                             out.println(request.getAttribute("cart_option")+"request.getAttb 확인");
                             %>
-                             <input type="hidden" class="form-control" name="cart_option" id="cart_option" value="<%=request.getParameter("selectBox") %>"/>
-                             <input type="hidden" class="form-control" name="Order_detail_option" id="Order_detail_option" value="<%=request.getParameter("selectBox") %>"/>
+<                            <input type="hidden" class="form-control" name="order_detail_option" id="order_detail_option" value="<%=request.getParameter("selectBox") %>"/> 
 	                        </td>
                             <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 
                             out.println(order_detail_quantity);%>
                             <%
                              request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
                             %>   
-                             <input type="hidden" class="form-control" name="Order_detail_quantity" id="Order_detail_quantity" value="<%=request.getParameter("order_detail_quantity") %>"> 
-                             <input type="hidden" class="form-control" name="cart_quantity" id="cart_quantity" value="<%=request.getParameter("order_detail_quantity") %>"/>
-                            
-                            
+                              <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=request.getParameter("order_detail_quantity") %>"/>  
                             <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
                             </td>
                             <td>2,500원</td>
                             <td>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}</td>
                             
-                        </tr>d
+                        </tr>
                     </tbody>
                 </table>
                   <a href="#"><span> << 쇼핑계속하기</span></a>
@@ -205,7 +194,10 @@
 	                        </tr>
 	                        <tr>
 	                            <th>휴대폰 번호</th>
-	                            <td><input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly></td>
+	                            <td><input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly>
+	                           		  <input type="hidden" class="form-control" name="order_tel" id="order_tel" value="${orderVo.member_phone }" />
+	                            </td>
+	                           
 	                        </tr>
 	                        <tr>
 	                            <th>이메일</th>
@@ -264,7 +256,7 @@
                 </div>
                 <div class="purchase">
                         <button type="button" class="btn-order" id="payApi" role="button"> 결제하기 </button> 
-                        <button type="button" class="btn-order" id="" role="button"> 정기결제 </button> 
+                        <button type="button" class="btn-order" id="Periodicpayment" role="button"> 정기결제 </button> 
                 </div>
        		</form>
        	</section>  
@@ -272,9 +264,9 @@
         <!-- Footer  -->
 			<jsp:include page="../common/footer.jsp"/>
 		<!-- Footer end -->
-       </div>        
-     </div>        
+</div>        
 <!-- content 끝나는 곳. -->
+     </div> <!--Wrapper 끝나는 곳.  -->       
 		<!-- jQuery CDN - Slim version (=without AJAX) -->
 	 	<script src="${root}js/jquery-1.12.4.js"></script> 
 		<!-- Popper.JS -->
@@ -282,11 +274,18 @@
 		<!-- Bootstrap JS -->
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 		<!-- MAIN JS -->
-   		<script src="${root }js/main.js"></script>		
+   		<script src="${root }js/main.js"></script>			
 			<!--PayApi 스크립트 시작  -->
 			<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 			<script>
 				$(document).on('click','#payApi',function(){
+		   			var order_detail_option = $('#order_detail_option').val();
+		   			var order_detail_quantity = $('#order_detail_quantity').val();
+		   			$("#order_detail_option").val(order_detail_option);
+		   			$("#order_detail_quantity").val(order_detail_quantity);
+		   			console.log(order_detail_option);
+		   			console.log(order_detail_quantity);
+		   			
 					var payButton = $("#payApi");
 		   			var order_name = $("#order_name").val();
 		   			var sample6_postcode = $("#sample6_postcode").val();
@@ -374,7 +373,7 @@
 					                msg = '결제에 실패하였습니다.';
 					                msg += '에러내용 : ' + rsp.error_msg;
 					                //실패시 이동할 페이지
-					                location.href="<%=request.getContextPath()%>/order/orderPurchase?idx="+'${orderProductPurchaseOne.product_id }';
+					                location.href="<%=request.getContextPath()%>/order/productDetail?idx="+'${orderProductPurchaseOne.product_id }';
 					                alert(msg);
 					            }
 					        });
@@ -451,6 +450,7 @@
 		   					/* f.order_name.value = f.${memberVo.member_id}.value; */
 		   					document.getElementById("order_name").value="${memberVo.member_name}";
 		   					document.getElementById("order_phone").value="${orderVo.member_phone }";
+		   					document.getElementById("order_tel").value="${orderVo.member_phone }";
 		   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
 		   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
 		   					document.getElementById("sample6_detailAddress").value="${memberVo.member_addr3}";

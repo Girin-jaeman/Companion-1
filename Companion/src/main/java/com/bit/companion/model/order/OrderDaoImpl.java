@@ -36,17 +36,15 @@ public class OrderDaoImpl implements OrderDao {
 		System.out.println(orderVo.getCart_quantity());
 		
 		
-		// order table에 
-		sqlSession.insert("order.OrderProductPurchase",orderVo);
-
-		//order_detail table에
-		sqlSession.insert("order.OrderDetailInsert",orderVo);
-		
-		//payment table에
-		sqlSession.insert("order.OrderPaymentInsert",orderVo);
-
-		//delivery table에
-		sqlSession.insert("order.OrderDeliveryInsert",orderVo);
+		/*
+		 * // order table에 sqlSession.insert("order.OrderProductPurchase",orderVo);
+		 * 
+		 * //order_detail table에 sqlSession.insert("order.OrderDetailInsert",orderVo);
+		 * 
+		 * //payment table에 sqlSession.insert("order.OrderPaymentInsert",orderVo);
+		 * 
+		 * //delivery table에 sqlSession.insert("order.OrderDeliveryInsert",orderVo);
+		 */
 	}
 
 
