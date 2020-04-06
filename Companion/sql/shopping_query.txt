@@ -172,10 +172,12 @@ insert into `cart` values (null,) where product_id=#{product_id};
 select * from `order` where member_id=#{value}   ---->>> 장바구니에 필요한 쿼리.
 select * from `product` where product_id=#{value}
 /////////////////
-
-
-
-
+/////%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%프로덕트 페이지 정렬;
+select product.*,(select count(*) from `like` as l  where product.product_id =l.product_id) as like_id from product inner join `like` on product.product_id = `like`.product_id where category_id=#{category_id} order by `like_id` desc;
+///%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%추천 순으로 정렬하기.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%판매량 순으로 정렬하기
+select * from product left join order_detail on product.product_id=order_detail.product_id where product.category_id=100 order by order_detail.order_detail_quantity desc; 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%판매량 순으로 정렬하기
 
 
 

@@ -44,6 +44,42 @@ public class ProductDaoImpl implements ProductDao{
 	public List<ProductVo> ProductCategorySelect(int category_id) throws SQLException {
 		return sqlSession.selectList("product.ProductCategorySelect",category_id);
 	}
+	
+	//정렬 목록 출력.
+	@Override
+	public List<ProductVo> productAlignmentByLike(int category_id) throws SQLException{
+		
+		return sqlSession.selectList("product.productOrderByProductLike",category_id);
+	}
+
+
+	@Override
+	public List<ProductVo> productAlignmentBySellingOrder(int category_id) throws SQLException {
+		
+		return sqlSession.selectList("product.productOrderBySellingOrder",category_id);
+	}
+
+
+	@Override
+	public List<ProductVo> productAlignmentByLowPrice(int category_id) throws SQLException {
+		
+		return sqlSession.selectList("productOrderByLowPrice",category_id);
+	}
+
+
+	@Override
+	public List<ProductVo> productAlignmentByHighPrice(int category_id) throws SQLException {
+		
+		return sqlSession.selectList("productOrderByHighPrice",category_id);
+	}
+
+
+	@Override
+	public List<ProductVo> productAlignmentByDate(int category_id) throws SQLException {
+		
+		return sqlSession.selectList("productOrderByDate",category_id);
+	}
+
 
 
 	/*

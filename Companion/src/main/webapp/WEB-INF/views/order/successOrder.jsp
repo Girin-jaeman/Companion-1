@@ -27,8 +27,6 @@
 		<!-- Bootstrap CSS CDN -->
 		<link rel="stylesheet" href="${root}css/bootstrap/bootstrap.css">
 		<!-- Our Custom CSS -->
-		<link rel="stylesheet" href="${root}css/home.css">
-		<!-- Our Custom CSS -->
 		<link rel="stylesheet" href="${root}css/main.css">
 		<link rel="stylesheet" href="${root}css/mypage/successOrder.css">
 		<!-- Font Awesome JS -->
@@ -126,7 +124,7 @@
                 </div><!-- .title-group end-->
 
 				<div class="success">
-					<h1>주문이 완료되었습니다!</h1>
+					<h2>주문이 완료되었습니다!</h2>
 					<a href="${root }" class="btn btn--primary" id="payApi"
 						role="button"> 메인페이지로 돌아가기. </a>
 					<!-- 	<button onclick="window.open='../order/payApi'">결제하기</button> -->

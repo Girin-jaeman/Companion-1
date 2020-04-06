@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 import com.bit.companion.model.entity.mypage.MypageReserveVo;
 import com.bit.companion.model.mypage.MypageDao;
@@ -52,6 +53,12 @@ public class MypageServiceImpl implements MypageService {
 	public void reserveList(HttpSession session) {
 		List<MypageReserveVo> reserveList = mypageDao.reserveList(session);
 		session.setAttribute("reserveList", reserveList);
+	}
+
+	@Override
+	public void cartList(HttpSession session) {
+		List<MypageCartVo> cartList=mypageDao.cartList(session);
+		session.setAttribute("cartList", cartList);
 	}
 
 }

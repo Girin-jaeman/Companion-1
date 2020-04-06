@@ -13,7 +13,7 @@ public class OrderVo {
 	private Date order_date;
 	private int order_amount;
 	private String order_name;
-	private String order_tell;
+	private String order_tel;
 	private String order_phone;
 	private String order_addr1;
 	private String order_addr2;
@@ -37,11 +37,14 @@ public class OrderVo {
 	private String product_name;
 	private String product_content;
 	private int order_detail_price;
-	private int order_detail_quantity;
-	private int cart_quantity;
 	private int delivery_state_id;
 	private String delivery_state_name;
+
+	private int cart_quantity;
 	private String cart_option;
+
+	private int order_detail_quantity;
+	private String order_detail_option;
 	
 	public OrderVo() {
 	}
@@ -86,12 +89,12 @@ public class OrderVo {
 		this.order_name = order_name;
 	}
 
-	public String getOrder_tell() {
-		return order_tell;
+	public String getorder_tel() {
+		return order_tel;
 	}
 
-	public void setOrder_tell(String order_tell) {
-		this.order_tell = order_tell;
+	public void setorder_tel(String order_tel) {
+		this.order_tel = order_tel;
 	}
 
 	public String getOrder_phone() {
@@ -286,6 +289,14 @@ public class OrderVo {
 		this.order_detail_quantity = order_detail_quantity;
 	}
 
+	public String getOrder_detail_option() {
+		return order_detail_option;
+	}
+
+	public void setOrder_detail_option(String order_detail_option) {
+		this.order_detail_option = order_detail_option;
+	}
+
 	public int getCart_quantity() {
 		return cart_quantity;
 	}
@@ -321,7 +332,7 @@ public class OrderVo {
 	@Override
 	public String toString() {
 		return "OrderVo [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date
-				+ ", order_amount=" + order_amount + ", order_name=" + order_name + ", order_tell=" + order_tell
+				+ ", order_amount=" + order_amount + ", order_name=" + order_name + ", order_tel=" + order_tel
 				+ ", order_phone=" + order_phone + ", order_addr1=" + order_addr1 + ", order_addr2=" + order_addr2
 				+ ", order_addr3=" + order_addr3 + ", order_msg=" + order_msg + ", member_name=" + member_name
 				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", order_state_id="
@@ -331,26 +342,26 @@ public class OrderVo {
 				+ ", product_option2=" + product_option2 + ", product_option3=" + product_option3 + ", product_option4="
 				+ product_option4 + ", product_option5=" + product_option5 + ", product_name=" + product_name
 				+ ", product_content=" + product_content + ", order_detail_price=" + order_detail_price
-				+ ", order_detail_quantity=" + order_detail_quantity + ", cart_quantity=" + cart_quantity
-				+ ", delivery_state_id=" + delivery_state_id + ", delivery_state_name=" + delivery_state_name
-				+ ", cart_option=" + cart_option + "]";
+				+ ", order_detail_quantity=" + order_detail_quantity + ", order_detail_option=" + order_detail_option
+				+ ", cart_quantity=" + cart_quantity + ", delivery_state_id=" + delivery_state_id
+				+ ", delivery_state_name=" + delivery_state_name + ", cart_option=" + cart_option + "]";
 	}
 
 	public OrderVo(int order_id, String member_id, Date order_date, int order_amount, String order_name,
-			String order_tell, String order_phone, String order_addr1, String order_addr2, String order_addr3,
+			String order_tel, String order_phone, String order_addr1, String order_addr2, String order_addr3,
 			String order_msg, String member_name, String member_phone, String member_email, int order_state_id,
 			int product_id, int product_price, int product_stock, Date product_date, String product_image,
 			String product_thumb, String product_option1, String product_option2, String product_option3,
 			String product_option4, String product_option5, String product_name, String product_content,
-			int order_detail_price, int order_detail_quantity, int cart_quantity, int delivery_state_id,
-			String delivery_state_name, String cart_option) {
+			int order_detail_price, int order_detail_quantity, String order_detail_option, int cart_quantity,
+			int delivery_state_id, String delivery_state_name, String cart_option) {
 		super();
 		this.order_id = order_id;
 		this.member_id = member_id;
 		this.order_date = order_date;
 		this.order_amount = order_amount;
 		this.order_name = order_name;
-		this.order_tell = order_tell;
+		this.order_tel = order_tel;
 		this.order_phone = order_phone;
 		this.order_addr1 = order_addr1;
 		this.order_addr2 = order_addr2;
@@ -375,12 +386,17 @@ public class OrderVo {
 		this.product_content = product_content;
 		this.order_detail_price = order_detail_price;
 		this.order_detail_quantity = order_detail_quantity;
+		this.order_detail_option = order_detail_option;
 		this.cart_quantity = cart_quantity;
 		this.delivery_state_id = delivery_state_id;
 		this.delivery_state_name = delivery_state_name;
 		this.cart_option = cart_option;
 	}
+	
 
+	
+	
+	
 }
 
 

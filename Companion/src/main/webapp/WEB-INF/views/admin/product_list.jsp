@@ -73,14 +73,16 @@
 			<div class="main--title">
 				<h1>[Admin] 상품 목록</h1>
 			</div>
-
+			<div class="sub-group clearfix">
+			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/product_add">글 등록</a>
 			<!-- 검색창 -->
-			<div class="search-group btn-group">
+			<div class="search-group btn-group float--right">
 				<input type="hidden" name="searchType" id="searchType" value="product">
 				<input type="text" name="keyword" id="keyword">
 				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-				<table class="table table_layout">
+			</div>
+				<table class="table table_layout table-hover">
 				<colgroup>
         		<col class="col1">
         		<col class="col2">

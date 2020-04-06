@@ -66,7 +66,7 @@
 	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link active" href="${root }mypage/mycart">장바구니</a>
+	                                        <a class="nav-link active" href="${root }mycart">장바구니</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
@@ -113,22 +113,26 @@
                 <!-- 장바구니 담긴 상품 테이블 -->
                 <table class="table">
                     <tr>
-                        <th><input type="checkbox" name="chk" value="product"></th>
+                        <th><input type="checkbox" name="chk" value="product" id="checkall"></th>
                         <th>상품/옵션 정보</th>
                         <th>수량</th>
                         <th>상품금액</th>
                         <th>합계금액</th>
-                        <th>배송비</th>
                     </tr>
+<%
+int i=0;
+%>
+<c:forEach items="${cartList }" var="bean">
+<%i+=1; %>
                     <tr>
                         <td><input type="checkbox" name="chk" value="product"></td>
-                        <td>집에갈수있는휴가권</td>
-                        <td><span>1개</span>
+                        <td>${bean.product_name }</br>${bean.cart_option }</td>
+                        <td>${bean.cart_quantity }</br>
                             <a class="btn"href="#" role="button">옵션/수량변경</a>
                         </td>
-                        <td>2,000원</td>
-                        <td>2,000원</td>
-                        <td>기본배송비<br/>2,500원</td>
+                        <td>${bean.product_price }</td>
+                        <td>${bean.product_price*bean.cart_quantity }</td>
+</c:forEach>
                     </tr>
                 </table>
                 <!-- table end -->
@@ -136,7 +140,7 @@
                 <!-- 주문금액 합계 start -->
                 <div class="coast clearfix">
                     <ul class="coast-group float--right">
-                        <li>총1개의 상품금액<br/>2,000원</li>
+                        <li>총<%=i %>개의 상품금액<br/>234332원</li>
                         <li><i class="fas fa-plus"></i></li>
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
@@ -148,7 +152,6 @@
                 <div class="btn--group clearfix">
                     <div class="selectP float--left">
                         <button class="">선택 상품 삭제</button>
-                        <button class="">선택 상품 찜</button>
                     </div>
                     <div class="orderP float--right">
                         <button id="choiceProduct" class="">선택 상품 주문</button>
@@ -208,17 +211,8 @@ var checked_ids = [1,2,3,4];
 		}
 		
 	})
-
+	
 </script>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			
-			<table class="table table_layout">
+			<table class="table table_layout table-hover">
 			<colgroup>
         		<col class="col1">
         		<col class="col2">
@@ -86,6 +86,7 @@
         		<col class="col5">
         		<col class="col6">
         		<col class="col7">
+        		<col class="col8">
     		</colgroup>
 			<thead>
 				<tr>
@@ -95,7 +96,8 @@
 					<th scope="row">체크아웃 날짜</th>
 					<th scope="row">품종</th>
 					<th scope="row">나이</th>
-					<th scope="row">작성일</th>
+					<th scope="row">신청일</th>
+					<th scope="row">예약상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -129,12 +131,30 @@
 							</c:when>
 						</c:choose>
 					</td>
-					<td>${bean.member_id }</td>
-					<td>${bean.reserve_checkin }</td>
-					<td>${bean.reserve_checkout }</td>
+					<td>
+						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.member_id }</a>
+					</td>
+					<td><a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.reserve_checkin }</a></td>
+					<td><a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.reserve_checkout }</a></td>
 					<td>${bean.reserve_dogtype }</td>
 					<td>${bean.reserve_dogage }</td>
 					<td>${bean.reserve_date }</td>
+					<td>
+					<c:choose>
+						<c:when test="${bean.reserve_state_id =='0' }">
+						<div>신청완료</div>
+						</c:when>
+						<c:when test="${bean.reserve_state_id =='1' }">
+						<div>예약완료</div>
+						</c:when>
+						<c:when test="${bean.reserve_state_id =='2' }">
+						<div>이용중</div>
+						</c:when>
+						<c:when test="${bean.reserve_state_id =='3' }">
+						<div>이용완료</div>
+						</c:when>
+					</c:choose>
+					</td>
 				</tr>
 				
 			</c:forEach>

@@ -32,9 +32,9 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginChk(@ModelAttribute LoginVo bean, HttpSession session) {
 		
-		String result = "home";
+		String result = "redirect:/";
 		if(session.getAttribute("memberVo")!=null) {
-			return "home";
+			return result;
 		}
 		boolean loginChk = loginService.loginChk(bean, session);
 		if (loginChk) {

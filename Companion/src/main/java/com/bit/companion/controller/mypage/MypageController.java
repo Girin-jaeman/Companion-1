@@ -18,17 +18,29 @@ public class MypageController {
 	MypageService mypageService;
 
 	@RequestMapping("/mypagechk")
-	public String mypageChk() {
+	public String mypageChk(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "redirect:/login";
+		}
 		return "mypage/mypagechk";
 	}
 	
 	@RequestMapping(value="/mypagechk",method=RequestMethod.POST)
 	public String loginChk(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "redirect:/login";
+		}
 		return "mypage/mypage";
 	}
 	
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "redirect:/login";
+		}
 		return "mypage/mypage";
 	}
 	
@@ -36,7 +48,7 @@ public class MypageController {
 	public String mypagequestion(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
 		if(bean==null) {
-			return "login/login";
+			return "redirect:/login";
 		}
 		mypageService.questionList(session);
 		return "mypage/mypagequestion";
@@ -46,10 +58,20 @@ public class MypageController {
 	public String mypagereserve(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
 		if(bean==null) {
-			return "login/login";
+			return "redirect:/login";
 		}
 		mypageService.reserveList(session);
 		return "mypage/mypagereserve";
+	}
+	
+	@RequestMapping(value="/mycart")
+	public String mypagecart(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "redirect:/login";
+		}
+		mypageService.cartList(session);
+		return "mypage/shoppingCart";
 	}
 
 	@ResponseBody

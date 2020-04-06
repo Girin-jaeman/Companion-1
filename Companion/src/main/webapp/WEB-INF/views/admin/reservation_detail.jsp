@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/faq_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
+<c:url value="/" var="root"></c:url>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +13,21 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/notice.css">
+    <link rel="stylesheet" href="${root }css/admin/noticeD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-	<title>Companion::FAQ 목록</title>
+	<!-- CKEditor JS -->
+ 	<script src="${root }resources/ckeditor/ckeditor.js"></script>
+
+	<title>Companion::예약상세</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
 <div class="wrapper">
-	<!-- Sidebar -->
-	<jsp:include page="../common/admin_sidebar.jsp"/>
+	<!-- sidebar -->
+	<jsp:include page="../common/admin_sidebar.jsp"></jsp:include>
+	
 	<!-- #content [start] -->
 	<div id="content">
 		<!-- nav [start] -->
@@ -46,10 +49,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link active" href="${root }admin/faq_list">FAQ 목록</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="${root }admin/faq_add">FAQ 등록</a>
+			                <a class="nav-link" href="${root }admin/reservation_list">예약관리 목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -62,65 +62,51 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] FAQ 목록</h1>
+				<h1>[Admin] 예약자 상세</h1>
 			</div>
-			<div class="sub-group clearfix">
-			<!-- 공지 등록 -->
-			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/faq_add">글 등록</a>
+			<%-- <div class="inputArea">
+				<label for="reserve_id">예약번호</label>
+				<span>${adminReservationOne.reserve_id }</span>
+			</div> --%>
+			<div class="inputArea">
+				<label for="member_id">아이디</label>
+				<span>${adminReservationOne.member_id }</span>
 			</div>
-			
-			<table class="table table_layout table-hover">
-			<colgroup>
-        		<col class="col1">
-        		<col class="col2">
-        		<col class="col3">
-        		<col class="col4">
-    		</colgroup>
-			<thead>
-				<tr>
-					<th scope="row">글번호</th>
-					<th scope="row">제목</th>
-					<th scope="row">작성자</th>
-					<th scope="row">날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean"  varStatus="status">
-			<tr>
-			<td>${(total-status.index)-(search.page-1)*search.listSize}</td>
-			<td><a href="${root }admin/faq_detail?article_id=${bean.article_id }&
-					page=${search.page}&
-					range=${search.range}&
-					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.article_title }</a></td>
-			<td>${bean.member_id }</td>
-			<td>${bean.article_date }</td>
-			</tr>
-			</c:forEach>
-			</tbody>
-			</table>
+			<div class="inputArea">
+				<label for="service_id">서비스</label>
+				<span>${adminReservationOne.service_id }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_checkin">체크인날짜</label>
+				<span>${adminReservationOne.reserve_checkin }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_checkout">체크아웃 날짜</label>
+				<span>${adminReservationOne.reserve_checkout }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_dogtype">견종</label>
+				<span>${adminReservationOne.reserve_dogtype }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_dogage">반려견 나이</label>
+				<span>${adminReservationOne.reserve_dogage }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_msg">특이사항</label>
+				<span>${adminReservationOne.reserve_msg }</span>
+			</div>
+			<div class="inputArea">
+				<label for="reserve_state_id">예약상태</label>
+				<span>${adminReservationOne.reserve_state_id }</span>
+			</div>
 		</section>
 		<!-- section [end] -->
-		
-		<!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
 	</div>
 	<!-- #content [end] -->
+	
 </div>
 <!-- .wrapper [end] -->
-
-
-
 <!-- jQuery -->
 <script src="${root }js/jquery-1.12.4.js"></script>
 <!-- Popper.JS -->
@@ -129,15 +115,34 @@
 <script src="${root }js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+  
 <script type="text/javascript">
-//검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
+//수정 버튼
+$("#modify_Btn").click(function(){
+	location.href = ${root}+"admin/question_edit?article_id=${adminArticleOne.article_id}"
+		+"&page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
+});  
+
+// 목록버튼
+$("#list_Btn").click(function(){
+	location.href = ${root}+"/admin/question_list?page=${search.page}"
+		+"&range=${search.range}"
+		+"&searchType=${search.searchType}"
+		+"&keyword=${search.keyword}"; 
+});
+		 
+// 삭제 버튼
+var formObj = $("form[role='form']");
+$("#delete_Btn").click(function(){
+	var con = confirm("정말로 삭제하시겠습니까?");
+	if(con) {      
+		formObj.submit();
+	}else{
+		return false;
+	}
 });
 </script>
 </body>

@@ -58,32 +58,23 @@
 	 		(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
  		 </foreach>
 	</insert>
-	
-	
-	
-	
 	<!-- 장바구니용  -->
 	
 	
 	
-	
+	<!-- 상품 구매. -->
 	<insert id="OrderProductPurchase" parameterType="orderBean">
 	 	insert into 
 		`order` values
-		 (null,#{member_id},now(),${order_amount},#{order_name},#{order_tell},#{order_phone},
+		 (null,#{member_id},now(),${order_amount},#{order_name},#{order_tel},#{order_phone},
 			 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},1);
-	<!-- <foreach collection="list" item="item" separator=",">
-			 (null,#{member_id},now(),${order_amount},#{order_name},#{order_tell},#{order_phone},
-			 #{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},1);
-		 </foreach> -->
-		 <!-- "${}",와 같은 형식으로 해야하는 경우도 있음. -->
 	</insert> 
 <!-- order_quantity 어떡할래 개 -->
 	<insert id="OrderDetailInsert" parameterType="orderBean">
 		insert into `order_detail`
 		 values 
 		 (default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})), 
-		 #{product_id},#{order_detail_price},#{order_detail_quantity});
+		 #{product_id},#{order_detail_price},#{order_detail_quantity},#{order_detail_option});
 	</insert>
 
 <!-- 결제수단 결제 그 API에서 받아 올 수 있는지 확인 할 것.  -->
