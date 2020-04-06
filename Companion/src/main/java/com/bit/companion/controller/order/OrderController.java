@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -73,9 +74,16 @@ public class OrderController {
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
 		logger.debug("product_ id 확인");
 		logger.debug((Integer.toString(orderVo.getProduct_id())));
-//		logger.debug(orderVo.getMember_email());
-//		logger.debug(orderVo.getMember_email());
+		
+		logger.debug("cart_quantity 확인");
+		logger.debug((Integer.toString(orderVo.getCart_quantity())));
 
+		logger.debug("Order_detail_quantity 갯수 확인");
+		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
+		logger.debug("Order_detail_option 갯수 확인");
+		logger.debug(orderVo.getOrder_detail_option());
+//		logger.debug(orderVo.getMember_email());
+//		logger.debug(orderVo.getMember_email());
 		
 		return "order/orderPurchase";
 	}
@@ -96,7 +104,7 @@ public class OrderController {
 
 	// 다중 insert 
 	@RequestMapping(value = "/order/successOrder",method= RequestMethod.POST)
-	public void orderSuccess(Model model,OrderVo orderVo,HttpSession session) {
+	public void orderSuccess(Model model,OrderVo orderVo,HttpSession session,HttpServletRequest request) {
 		logger.debug("주문 성공했다면 order table에 인서트 되었는지 확인 해야 합니다.");
 		
 		MemberVo member = (MemberVo)session.getAttribute("memberVo");
@@ -107,6 +115,14 @@ public class OrderController {
 //		orderVo.setOrder_detail_quantity(request.getAttribute("order_detail_quantity")); 
 //		session.setAttribute("orderVo",orderVo);
 		orderVo.setProduct_id((int)session.getAttribute("product_id"));
+		/*
+		 * orderVo.setCart_option((String)request.getAttribute("cart_option"));
+		 * orderVo.setCart_quantity((int)request.getAttribute("order_detail_quantity"));
+		 */
+		logger.debug(orderVo.getCart_option());
+		
+		logger.debug((Integer.toString(orderVo.getCart_quantity())));
+		
 		
 		System.out.println(orderVo.toString());
 		logger.debug(orderVo.getMember_id());

@@ -37,11 +37,14 @@ public class OrderVo {
 	private String product_name;
 	private String product_content;
 	private int order_detail_price;
-	private int order_detail_quantity;
-	private int cart_quantity;
 	private int delivery_state_id;
 	private String delivery_state_name;
+
+	private int cart_quantity;
 	private String cart_option;
+
+	private int order_detail_quantity;
+	private String order_detail_option;
 	
 	public OrderVo() {
 	}
@@ -286,6 +289,14 @@ public class OrderVo {
 		this.order_detail_quantity = order_detail_quantity;
 	}
 
+	public String getOrder_detail_option() {
+		return order_detail_option;
+	}
+
+	public void setOrder_detail_option(String order_detail_option) {
+		this.order_detail_option = order_detail_option;
+	}
+
 	public int getCart_quantity() {
 		return cart_quantity;
 	}
@@ -331,9 +342,9 @@ public class OrderVo {
 				+ ", product_option2=" + product_option2 + ", product_option3=" + product_option3 + ", product_option4="
 				+ product_option4 + ", product_option5=" + product_option5 + ", product_name=" + product_name
 				+ ", product_content=" + product_content + ", order_detail_price=" + order_detail_price
-				+ ", order_detail_quantity=" + order_detail_quantity + ", cart_quantity=" + cart_quantity
-				+ ", delivery_state_id=" + delivery_state_id + ", delivery_state_name=" + delivery_state_name
-				+ ", cart_option=" + cart_option + "]";
+				+ ", order_detail_quantity=" + order_detail_quantity + ", order_detail_option=" + order_detail_option
+				+ ", cart_quantity=" + cart_quantity + ", delivery_state_id=" + delivery_state_id
+				+ ", delivery_state_name=" + delivery_state_name + ", cart_option=" + cart_option + "]";
 	}
 
 	public OrderVo(int order_id, String member_id, Date order_date, int order_amount, String order_name,
@@ -342,8 +353,8 @@ public class OrderVo {
 			int product_id, int product_price, int product_stock, Date product_date, String product_image,
 			String product_thumb, String product_option1, String product_option2, String product_option3,
 			String product_option4, String product_option5, String product_name, String product_content,
-			int order_detail_price, int order_detail_quantity, int cart_quantity, int delivery_state_id,
-			String delivery_state_name, String cart_option) {
+			int order_detail_price, int order_detail_quantity, String order_detail_option, int cart_quantity,
+			int delivery_state_id, String delivery_state_name, String cart_option) {
 		super();
 		this.order_id = order_id;
 		this.member_id = member_id;
@@ -375,12 +386,17 @@ public class OrderVo {
 		this.product_content = product_content;
 		this.order_detail_price = order_detail_price;
 		this.order_detail_quantity = order_detail_quantity;
+		this.order_detail_option = order_detail_option;
 		this.cart_quantity = cart_quantity;
 		this.delivery_state_id = delivery_state_id;
 		this.delivery_state_name = delivery_state_name;
 		this.cart_option = cart_option;
 	}
+	
 
+	
+	
+	
 }
 
 

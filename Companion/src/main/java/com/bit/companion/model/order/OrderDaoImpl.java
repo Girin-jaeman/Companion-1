@@ -30,6 +30,12 @@ public class OrderDaoImpl implements OrderDao {
 //	상품 주문 하기. 테이블 
 	@Override
 	public void OrderInfo_Details(OrderVo orderVo) throws SQLException {
+		System.out.println("카트 옵션");
+		System.out.println(orderVo.getCart_option());
+		System.out.println("카트 갯수");
+		System.out.println(orderVo.getCart_quantity());
+		
+		
 		// order table에 
 		sqlSession.insert("order.OrderProductPurchase",orderVo);
 
