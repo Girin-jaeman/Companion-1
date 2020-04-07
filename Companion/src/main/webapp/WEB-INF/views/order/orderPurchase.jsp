@@ -287,6 +287,12 @@
 		   			console.log(order_detail_option);
 		   			console.log(order_detail_quantity);
 		   			
+			   		var product_stock = $('#product_stock').val();
+					var order_detail_quantity = $('#order_detail_quantity').val();
+					if(product_stock - order_detail_quantity<0){
+					 alert("상품 재고보다 구매 수량이 많습니다. 다시 확인 해 주세요.");
+					 return;
+					}
 					var payButton = $("#payApi");
 		   			var order_name = $("#order_name").val();
 		   			var sample6_postcode = $("#sample6_postcode").val();
