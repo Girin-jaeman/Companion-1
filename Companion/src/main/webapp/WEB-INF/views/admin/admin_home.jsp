@@ -130,10 +130,10 @@
                                                     	<c:forEach items="${list }" var="bean">
 	                                                        <tr role="row" class="odd">
 	                                                            <td class="sorting_1">${bean.product_name }</td>
-	                                                            <td>${bean.product_price }</td>
-	                                                            <td>${bean.product_stock }</td>
-	                                                            <td>${bean.month_cumulative_sales }</td>
-	                                                            <td>${bean.total_cumulative_sales }</td>
+	                                                            <td><fmt:formatNumber value="${bean.product_price }" pattern="###,###,###"/></td>
+	                                                            <td><fmt:formatNumber value="${bean.product_stock }" pattern="###,###,###"/></td>
+	                                                            <td><fmt:formatNumber value="${bean.month_cumulative_sales }" pattern="###,###,###"/></td>
+	                                                            <td><fmt:formatNumber value="${bean.total_cumulative_sales }" pattern="###,###,###"/></td>
 	                                                        </tr>
                                                     	</c:forEach>
                                                     </tbody>
@@ -209,7 +209,7 @@
 	          yAxes: [{
 	            ticks: {
 	              min: 0,
-	              max: 50000000,
+	              max: 70000000,
 	              maxTicksLimit: 10,
 	              beginAtZero:true,
 	              userCallback: function(value, index, values) {
@@ -275,7 +275,7 @@
 	          yAxes: [{
 	            ticks: {
 	              min: 0,
-	              max: 50000000,
+	              max: 100000000,
 	              maxTicksLimit: 10,
 	              beginAtZero:true,
 	              userCallback: function(value, index, values) {
