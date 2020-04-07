@@ -205,7 +205,7 @@ public class AdminProductController {
 	@RequestMapping(value = "product_edit", method = RequestMethod.POST)
 	public String productEdit(@ModelAttribute AdminProductVo bean, @RequestParam int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post product edit");
-		System.out.println(bean.toString());
+		
 		// new file upload check
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			// old file delete

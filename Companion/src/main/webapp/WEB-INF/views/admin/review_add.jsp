@@ -69,16 +69,7 @@
 				</div>
 				<div>
 					<label for="content">content</label>
-					<textarea name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
-					<script>
-		 				var ckeditor_config = {
-								resize_enable : false,
-								enterMode : CKEDITOR.ENTER_BR,
-								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
-						};
-						CKEDITOR.replace('article_content', ckeditor_config);
-					</script>
+					<textarea class="ckeditor" name="article_content" id="article_content" placeholder="내용을 입력하세요" required="required" rows="50" cols="80"></textarea>
 				</div>
 				<div>
 					<label for="article_image">img</label>
