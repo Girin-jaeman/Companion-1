@@ -134,13 +134,22 @@ var table = $('#dataTable').DataTable({
 		}
 	},
 	"columns" : [ 
-		{ "width" : "30px" }, 
-		{ "width" : "30px" },
-		{ "width" : "30px" }, 
-		{ "width" : "40px" }, 
-		{ "width" : "30px" },
-		{ "width" : "30px" },
-		{ "width" : "30px" }
+		{ "width" : "25px" }, 
+		{ "width" : "25px" },
+		{ "width" : "25px" }, 
+		{ "width" : "200px" }, 
+		{ "width" : "25px" },
+		{ "width" : "25px" },
+		{ "width" : "25px" }
+	],
+	"order" : [
+		[2,"asc"],[0,"desc"]
+	],
+	"lengthMenu" : [
+		10,20,30,40,50
+	],
+	"displayLength" : [
+		20
 	]
 });
 
