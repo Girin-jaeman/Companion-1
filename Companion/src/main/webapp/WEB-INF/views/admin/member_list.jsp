@@ -149,11 +149,20 @@
 			}
 		},
 		"columns" : [ 
-			{ "width" : "30px" }, 
+			{ "width" : "20px" }, 
 			{ "width" : "30px" },
 			{ "width" : "30px" }, 
 			{ "width" : "40px" }, 
 			{ "width" : "30px" }
+		],
+		"order" : [
+			[0,"asc"]
+		],
+		"lengthMenu" : [
+			10,20,30,40,50
+		],
+		"displayLength" : [
+			20
 		]
 	});
 	
