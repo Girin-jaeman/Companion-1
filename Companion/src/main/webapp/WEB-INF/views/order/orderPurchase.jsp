@@ -327,7 +327,6 @@
 		   				alert("요청사항을 입력해주세요.");
 		   				return;
 		   			}
-/*}  */
 		   			
 			/* 		alert("유효성 검사 끝나고 카카오 페이로 들어감."); */
 					 $(function(){
@@ -339,9 +338,11 @@
 					            pay_method : 'card',
 					            merchant_uid : 'merchant_' + new Date().getTime(),
 					            name : '${orderProductPurchaseOne.product_name }',
+								/* 테스트해야하므로 임시로 백원 입력하겠습니다.*/
 					            amount :100,
-								/* 테스트해야하므로 임시로 백원 입력하겠습니다.
-								amount : '${orderProductPurchaseOne.product_price }', */
+								/* 
+								amount : '${orderProductPurchaseOne.product_price }',
+								*/
 					            buyer_email : '${orderVo.member_email}',
 					            buyer_name : '${orderVo.member_name}',
 					            buyer_tel : 'order_phone',
@@ -378,7 +379,7 @@
 					                
 					            } else {
 					                msg = '결제에 실패하였습니다.';
-					                msg += '에러내용 : ' + rsp.error_msg;
+					                msg += ' 에러내용 : ' + rsp.error_msg;
 					                //실패시 이동할 페이지
 					                location.href="<%=request.getContextPath()%>/order/productDetail?idx="+'${orderProductPurchaseOne.product_id }';
 					                alert(msg);

@@ -504,7 +504,7 @@
 	<!-- productDetail JS -->
 	<script src="${root}js/order/productDetail.js"></script>
 		<script src="${root}js/order/productDetail.js"></script>
-	<script type="text/javascript">
+		<script type="text/javascript">
 			$(function(){ 
 			$('.bt_up').click(function(){ 
 				var n = $('.bt_up').index(this);
