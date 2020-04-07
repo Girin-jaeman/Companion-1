@@ -183,7 +183,10 @@
                         <li><i class="fas fa-plus"></i></li>
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
-                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}<input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"></li> 
+                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}
+                        <input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}">
+                        <input type="hidden" class="form-control" name="order_amount" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"/>
+                        </li> 
                     </ul>
                 </div>
 				<div class="order_info"><h2>주문자 정보</h2>

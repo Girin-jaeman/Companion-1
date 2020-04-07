@@ -29,8 +29,6 @@ public class OrderServiceImpl implements OrderService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	
