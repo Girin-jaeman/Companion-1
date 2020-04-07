@@ -44,6 +44,7 @@ public class ProductController {
 		
 		productService.productReview(model, product_id);
 		productService.detail(model, product_id);	
+		productService.productRecommend(model, product_id);
 		return "order/productDetail";
 	}
 	
