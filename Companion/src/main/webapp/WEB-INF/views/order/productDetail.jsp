@@ -109,6 +109,7 @@
 							<div class="col-sm-8">2,500원 (5만원이상 구매 시 무료)</div>
 							<div class="col-sm-4 title">재 고</div>
 							<div class="col-sm-8">${productDetailOne.product_stock }</div>
+							<input type="hidden" name="product_stock" value="${productDetailOne.product_stock }"/>
 							<div class="col-sm-4 title">옵션</div>
 							<div class="col-sm-8">
 							

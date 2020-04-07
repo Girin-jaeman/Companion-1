@@ -167,6 +167,7 @@
                              request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
                             %>   
                               <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=request.getParameter("order_detail_quantity") %>"/>  
+                         	  <input type="hidden" class="form-control" name="product_stock" id="product_stock" value="${orderProductPurchaseOne.product_stock }"/>
                             <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
                             </td>
                             <td>2,500원</td>

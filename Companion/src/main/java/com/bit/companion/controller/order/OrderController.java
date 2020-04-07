@@ -78,10 +78,12 @@ public class OrderController {
 		logger.debug("cart_quantity 확인");
 		logger.debug((Integer.toString(orderVo.getCart_quantity())));
 
-		logger.debug("Order_detail_quantity 갯수 확인");
+		logger.debug("Order_detail_quantity 개수 확인");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
-		logger.debug("Order_detail_option 갯수 확인");
+		logger.debug("Order_detail_option 개수 확인");
 		logger.debug(orderVo.getOrder_detail_option());
+		logger.debug("Product_stock (재고) 개수 확인");
+		logger.debug((Integer.toString(orderVo.getProduct_stock())));
 //		logger.debug(orderVo.getMember_email());
 //		logger.debug(orderVo.getMember_email());
 		
@@ -94,13 +96,6 @@ public class OrderController {
 		logger.debug("payAPI controller start");
 		return "order/payApi";
 	}
-	
-	//주문 성공 페이지에서 insert를 실행해야 order table 에 등록, 즉 상품 주문이 완료되었다는 이야기임. 
-	// kakao api에서 상품결제가 성공했을 경우에만 order/successOrder page로 넘어가야 함.
-	// orderSuccess controller 에서 상품 등록이 실패한 경우???? 트랜잭션???
-	
-
-	
 
 	// 다중 insert 
 	@RequestMapping(value = "/order/successOrder",method= RequestMethod.POST)
@@ -138,6 +133,8 @@ public class OrderController {
 		logger.debug(orderVo.getMember_email());
 		logger.debug("1111order_detail_quantity 확인.");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_quantity())));
+		logger.debug("TESTETSETproduct_stock 개수 ( 재고) 확인.");
+		logger.debug((Integer.toString(orderVo.getProduct_stock())));
 		logger.debug("2222order_detail_price확인.");
 		logger.debug((Integer.toString(orderVo.getOrder_detail_price())));
 		logger.debug("3333order_amount 확인");

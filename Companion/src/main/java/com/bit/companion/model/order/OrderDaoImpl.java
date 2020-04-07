@@ -52,7 +52,17 @@ public class OrderDaoImpl implements OrderDao {
 		sqlSession.insert("order.OrderDetailInsert",orderVo);
 		sqlSession.insert("order.OrderPaymentInsert",orderVo);
 		sqlSession.insert("order.OrderDeliveryInsert",orderVo);
-		sqlSession.update("order.OrderUpdateProductStock",orderVo);
+		
+		if((orderVo.getProduct_stock())-(orderVo.getOrder_detail_quantity())<0) {
+			System.out.println("상품 재고가 구입하려는 상품 수량보다 부족합니다.");
+			
+		}else {
+			sqlSession.update("order.OrderUpdateProductStock",orderVo);
+			System.out.println("정상 출고 처리.");
+		}
+		// product.product_stock 이 order.order_detail_quantity 보다 작을 경우
+		// update 불가능 해야 함. 
+		// int 타입이라 마이너스 방지 해야 함.
 		System.out.println("transaction 처리");
 		}catch (Exception e) {
 			System.out.println("SQL EXCEPTION 발생!!!!!!!!!");
