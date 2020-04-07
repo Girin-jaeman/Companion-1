@@ -19,6 +19,7 @@
 	<resources mapping="/fonts/**" location="/fonts/" />
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/assets/**" location="/assets/" />
+	<resources mapping="/DataTables/**" location="/DataTables/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -9,6 +9,8 @@
 	<meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <!-- Font Awesome JS -->
@@ -73,86 +75,47 @@
 			<div class="main--title">
 				<h1>[Admin] 회원 목록</h1>
 			</div>
-			<!-- 검색창 -->
-			<!-- <div>
-				<input type="hidden" name="searchType" id="searchType" value="product">
-				<input type="text" name="keyword" id="keyword">
-				<button name="search_Btn" id="search_Btn">검색</button>
-			</div> -->
-				<h2>회원 목록</h2>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>회원구분</th>
-							<th>이름</th>
-							<th>아이디</th>
-							<th>일반전화</th>
-							<th>휴대전화</th>
-							<th>이메일</th>
-							<th>우편번호</th>
-							<th>기본주소</th>
-							<th>상세주소</th>
-						</tr>
-					</thead>
-				<tbody>
-				<c:forEach items="${adminMemberList}" var="bean">
+			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+				<thead>
 					<tr>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_grade }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_tel }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr1 }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr2 }</a>
-						</td>
-						<td>
-							<a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_addr3 }</a>
-						</td>
-					</tr>   
-				</c:forEach>
+						<th>구분</th>
+						<th>이름</th>
+						<th>아이디</th>
+						<th>휴대전화</th>
+						<th>이메일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${adminMemberList }" var="bean">
+						<tr>
+							<td>
+								<c:set var="grade" value="${bean.member_grade }" />
+								<c:if test="${grade == 0}">최고관리자</c:if>
+								<c:if test="${grade == 1}">관리자</c:if>
+								<c:if test="${grade == 2}">회원</c:if>
+							</td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a></td>
+							<td>${bean.member_id }</td>
+							<td>${bean.member_phone }</td>
+							<td>${bean.member_email }</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-		</section>
-		<!-- section [end] -->
 		
-		<!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
-		
+		</section><!-- section [end] -->
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->
 		
 		
 <!-- jQuery -->
-<script src="${root }js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${root }DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
 <!-- Popper.JS -->
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+<!-- Data Table JS -->
+<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
 
 <script type="text/javascript">
 	// 메뉴 토글 버튼
@@ -161,6 +124,39 @@
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
+
+	// 데이터 테이블 초기화
+ 	$(document).ready(function() {
+		$('#dataTable').DataTable(
+		);
+	});
+	
+	// 데이터 테이블 언어
+	var table = $('#dataTable').DataTable({
+		"language": {
+			"emptyTable": "데이터가 없습니다.",
+			"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+			"info": "현재 _START_ - _END_ / _TOTAL_건",
+			"infoEmpty": "데이터 없음",
+			"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+			"search": "검색: ",
+			"zeroRecords": "일치하는 데이터가 없습니다.",
+			"loadingRecords": "로딩중...",
+			"processing":     "잠시만 기다려 주세요...",
+			"paginate": {
+				"next": "다음",
+				"previous": "이전"
+			}
+		},
+		"columns" : [ 
+			{ "width" : "30px" }, 
+			{ "width" : "30px" },
+			{ "width" : "30px" }, 
+			{ "width" : "40px" }, 
+			{ "width" : "30px" }
+		]
+	});
+	
 
 </script>
 </body>

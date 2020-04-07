@@ -35,7 +35,6 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 	public void detail(Model model, String member_id) {
 		try {
 			model.addAttribute("adminMemberOne", adminMemberDao.selectOne(member_id));
-			System.out.println(adminMemberDao.selectOne(member_id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

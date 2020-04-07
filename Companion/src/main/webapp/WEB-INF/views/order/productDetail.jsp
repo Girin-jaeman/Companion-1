@@ -100,6 +100,7 @@
 						<h4>[ 카테고리NUM=${productDetailOne.category_id } ]</h4>
 						<p class="goos-text">상품 설명 ${productDetailOne.product_content }
 						</p>
+						
 			 <!-- 셀렉트박스 옵션 값 가져오기.  -->
 	
 	<form name="formName" id="formId" method="POST" action="${root }order/orderPurchase?idx=${productDetailOne.product_id }" role="form">
@@ -276,7 +277,6 @@
 						<div class="row">
 							<h5>${productDetailOne.product_content }</h5>
 						</div>
-
 					
 					</div>	<!-- 상품설명   end -->
 					

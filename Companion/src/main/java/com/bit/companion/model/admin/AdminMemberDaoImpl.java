@@ -27,7 +27,6 @@ public class AdminMemberDaoImpl implements AdminMemberDao{
 	// member detail
 	@Override
 	public AdminMemberViewVo selectOne(String member_id) throws SQLException {
-		System.out.println(member_id);
 		return sqlsession.selectOne("adminMember.selectOne", member_id);
 	}
 	

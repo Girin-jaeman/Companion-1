@@ -6,7 +6,17 @@
 <mapper namespace="adminReservation" >
 	<!-- reservation list -->
 	<select id="selectAll" resultType="adminReservationBean">
-		select * from `reserve` order by reserve_id;
+		SELECT 
+			r.reserve_id, 
+		    r.member_id,
+		    s.service_name,
+		    r.reserve_checkin,
+		    r.reserve_checkout,
+		    r.reserve_dogtype,
+		    r.reserve_dogage,
+		    r.reserve_date,
+		    r.reserve_state_id
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id;
 	</select>
 	
 	<!-- hotelService list -->
@@ -16,7 +26,17 @@
 	
 	<!-- reservation detail -->
 	<select id="selectOne" parameterType="int" resultType="adminReservationBean">
-		select * from `reserve` where reserve_id=#{value}
+		SELECT 
+			r.reserve_id, 
+		    r.member_id,
+		    s.service_name,
+		    r.reserve_checkin,
+		    r.reserve_checkout,
+		    r.reserve_dogtype,
+		    r.reserve_dogage,
+		    r.reserve_date,
+		    r.reserve_state_id
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id AND r.reserve_id=#{value};
 	</select>
 
 </mapper> 

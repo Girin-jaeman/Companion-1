@@ -132,3 +132,18 @@ select q.*, t.question_type_name, st.question_state_name, se.question_secret_nam
 select p.product_name, p.product_price, p.product_stock, o_d.order_detail_quantity from `product` p, `order_detail` o_d where p.product_id=o_d.product_id
 
 SELECT a.*, (select product_name from `product` p where p.product_id=a.product_id) as product_name FROM `ARTICLE` a WHERE board_id=3
+
+UPDATE `PRODUCT` SET 
+			category_id =100,
+         	product_name = '상품이름',
+	        product_content = '상품내용',
+	        product_price = 123,
+	        product_stock = 456,
+	        product_image = null,
+	        product_thumb = null,
+	        product_option1 = null,
+	        product_option2 = null,
+	        product_option3 = null,
+	        product_option4 = null,
+	        product_option5 = null
+    			WHERE product_id = 1

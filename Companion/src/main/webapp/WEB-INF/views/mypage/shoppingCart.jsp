@@ -113,7 +113,7 @@
                 <!-- 장바구니 담긴 상품 테이블 -->
                 <table class="table">
                     <tr>
-                        <th><input type="checkbox" name="chk" value="product"></th>
+                        <th><input type="checkbox" name="chk" value="product" id="checkall"></th>
                         <th>상품/옵션 정보</th>
                         <th>수량</th>
                         <th>상품금액</th>
@@ -211,17 +211,8 @@ var checked_ids = [1,2,3,4];
 		}
 		
 	})
-
+	
 </script>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
