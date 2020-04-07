@@ -9,9 +9,6 @@
 ///insert into `cart` values (랜덤상수,#{member_id},#{product_id},#{cart_quantity});
 
 
-
-
-
 select level, cateName, cateCode, cateCodeRef from goods_category
     start with cateCodeRef is null connect by prior cateCode = cateCodeRef;
 
@@ -34,6 +31,7 @@ select a.product_id, a.product_name, a.product_price, a.product_image, a.product
 ------------상품 좋아요 start
 
 ///상품/ id 당 1회 만 추천 가능하도록 중복검사
+
 select count(*) from ex_rec where board_no = #{no} and rec_id = #{id}
 ..like table에 회원 id / 상품 id 가 존재하는 지 여부를 찾아야 함. 
 경우의 수는 2가지임 0인 경우 추천 x 1인 경우 추천 o   따라서, 테이블 데이터가 있느냐?
@@ -45,36 +43,32 @@ if(return 값이 1일 경우.){
 	동일 아이디에 동일 상품 추천을 누른 상황임. 따라서 추천수 증가 X	
 
 }else(return 값이 0일 경우. {
-
 	insert query문 실행.	
 	insert into `like` (null, member_id, product_id) values (null,#{member_id}, #{product_id});
 }
 ///////
 
-///상품 좋아요 등록
+------------상품 좋아요 등록
 	insert into `like` (null, member_id, product_id) values (null,#{member_id}, #{product_id});
 
 insert into `like` values(default,#{member_id},#{product_id});
 
-★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+
 update `like` set like_id = like_id+1 where product_id=1 and member_id='회원9';
+
 회원 아이디 체크 반드시 해야함 
+
 상품 아이디는 여러개인데 멤버 아이디만 다른 경우에는 
+
 상품ID에 해당하는 모든 상품의 추천 개수가 증가하기 때문.
-★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
-///////
+delete from `like` where member_id=#{member_id} and product_id=#{product_id};
 
-///상품 좋아요 취소
-	delete from `like` where member_id=#{member_id} and product_id=#{product_id};
-///////
-
-///상품 추천수 조회
 select count(*) from `like` where product_id=#{상품번호}  상품번호에 따른 추천수 조회  --> 메인페이지에서 상품 목록에 상품 추천 수 표시하기 위함.
-//////
-
-
 ------------상품 좋아요 end
+
+
+
 /////메인 페이지 --> 추천 // 비추천으로 구분
 높은 추천 수 조회 페이지 --> 현재 추천 수량을 표시. & 추천 높은 순으로 정렬.
 
@@ -108,15 +102,12 @@ select a.category_id, a.product_id, a.product_name, a.product_content, a.product
 		 a.product_id, (select count(*) from `like` l where b.product_id = l.product_id) as `like_id`, a.member_id from `like` as a  left join `product` as b on 		 				 a.product_id=b.product_id 
 		 where b.category_id=#{value}; 
 ///////////////////// b. category_id 에는 mybatis #{value} 로 처리해야함
+
 ------------------------페이징용----Product-------------------------------
 select count(*) as AllProductNum,product.* from product where category_id=#{category_id};
 ------------------------페이징용----Product-------------------------------
 
-
-
-
-
-----------------------------product_detail_page 답글 기능 -----------------
+----------------------------product_detail_page 답글 기능 start --------------
 <!-- 답글 입력 -->
 
 insert into `question` values (default,100,null,#{product_id},#{member_id},now(),null,#{question_title},#{question_content},null,null,default,default);
@@ -124,7 +115,7 @@ insert into `question` values (default,100,null,#{product_id},#{member_id},now()
 <!-- 답글 조회 -->
 select * from `question` where product_id=#{value}
 
-----------------------------product_detail_page 답글 기능 -----------------
+----------------------------product_detail_page 답글 기능 end -----------------
 
 ////////////////주문 결제 버튼 누를 시 
 
@@ -151,9 +142,6 @@ update product set product_stock=(product_stock-#{order_detail_quantity}) where 
 
 //////////////////////////////
 
-
-
-
 //////delivery 입력-----------------------------------
 		(서브 쿼리문 )select truncate(rand()*100000000000000,0);-->random 난수 생성 + 소수점 삭제.
 insert into delivery 
@@ -172,8 +160,6 @@ values
 	  member_Vo 에서      product_price,  memeber_name				우편번호       아파트              동/호수    배송메세지.
 //////////////////////////
 ////////////////////주문 결제 창에 필요한 쿼리문.
-
-
 
 ///////// 장바구니 담기
 
@@ -195,5 +181,41 @@ select * from product left join order_detail on product.product_id=order_detail.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%판매량 순으로 정렬하기
 select product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id from product left join`like` on product.product_id=`like`.like_id where product.category_id=100;
 
+--------------------추천상품 목록 셀렉트합시다.
 
+내가 좋아요를 누른 상품을 구매한 사람이 추천한 목록을 보여주는 것.
+
+//프로덕트 아이디를 좋아요 누른 사람들.
+select (select * from `like` where product_id=#{product_id}
+
+
+//상품을 좋아요 누른 사람의 member_id 조회
+select member_id from `like` where product_id=#{product_id};
+ 
+//order_detail 페이지와 연동하기 위한 order_id 조회
+select order_id from order where member_id=#{member_id};
+
+select product_id from order_detail where order_id=#{order_id};
+
+앞서 네개의 쿼리를 조합해야 합니다.
+
+-> 좋아요를 누른 member 모두 불러왔어 일단은...
+select * from `order` where member_id in (select member_id from `like` where product_id=111);
+
+특정 상위 데이터 5개만 랜덤으로 출력.
+select distinct * from `order` where member_id in (select member_id from `like` where product_id=1) order by rand() limit 5;
+
+MYSQL 에서는 subquery에 in 조건이 붙는 것을 허용하지 않음.
+select product_id,order_id from `order_detail` where order_id = (select distinct order_id from `order` where member_id in (select member_id from `like` where product_id=1) order by rand() limit 5);
+
+드디어 해냄 . 내가 해냄. 감사합니다.
+select product_id,order_id,order_detail_id from `order_detail`
+ where order_id = (select order_id from `order` where member_id in (select member_id from `like` where product_id=#{product_id}) is not null limit 1) is not null
+ group by product_id order by rand() limit 3;
+
+
+<-
+
+
+--------------------추천 상품 목록 셀렉트.
 
