@@ -94,7 +94,6 @@
 	<update id="updateOne" parameterType="adminProductBean">
 		UPDATE `PRODUCT` SET 
 			category_id = #{category_id}, 
-        	product_id = #{product_id},
          	product_name = #{product_name},
 	        product_content = #{product_content},
 	        product_price = #{product_price},
@@ -106,7 +105,7 @@
 	        product_option3 = #{product_option3},
 	        product_option4 = #{product_option4},
 	        product_option5 = #{product_option5}
-    			WHERE product_id = ${product_id}
+    			WHERE product_id = #{product_id}
 	</update>
 	
 	<!-- product delete -->

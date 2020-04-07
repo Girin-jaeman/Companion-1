@@ -24,16 +24,19 @@ public class AdminReservationController {
 	@RequestMapping(value="reservation_list")
 	public String reservationList(Model model) {
 		log.info("get reservation list");
+		adminReservationService.service(model);
 		adminReservationService.list(model);
 		return "admin/reservation_list";
 	}
 	
 	// reservation detail
 	@RequestMapping(value="reservation_detail", method = RequestMethod.GET)
-	public String reservationDetail(Model model, @RequestParam String member_id) {
+	public String reservationDetail(Model model, @RequestParam int reserve_id) {
 		log.info("get reservation detail");
 		
-		adminReservationService.detail(model, member_id);
+		adminReservationService.detail(model, reserve_id);
 		return "admin/reservation_detail";
 	}
+	
+	
 }

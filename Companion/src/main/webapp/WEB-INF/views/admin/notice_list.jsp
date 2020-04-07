@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			
-			<table class="table table_layout">
+			<table class="table table_layout table-hover">
 			<colgroup>
         		<col class="col1">
         		<col class="col2">

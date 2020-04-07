@@ -247,6 +247,8 @@ public class AdminArticleController {
 		String board_name=checkBoardName(req.getServletPath());
 		int board_id=checkBoardId(board_name);
 		
+		if(board_id != 2) {
+			
 		// 새로운 파일이 등록되었는지 확인
 		 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 		  // 기존 파일을 삭제
@@ -266,6 +268,7 @@ public class AdminArticleController {
 		  bean.setArticle_image(req.getParameter("article_image"));
 		  bean.setArticle_thumb(req.getParameter("article_thumb"));
 		 }
+		}
 		 
 		adminNoticeService.update(bean, board_id, search, rttr);
 		logger.info("post "+board_name+" edit");

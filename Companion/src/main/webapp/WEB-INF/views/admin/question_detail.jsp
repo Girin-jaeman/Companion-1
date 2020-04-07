@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/noticeD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -64,17 +63,12 @@
 				<h1>[Admin] Q&A 상세</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" action="${root}admin/question_delete">
-				<!-- 페이지 유지를 위한 정보 -->
-			    <input type="hidden" name="page" value="${search.page }"/>
-			    <input type="hidden" name="range" value="${search.range }"/>
-			    <input type="hidden" name="searchType" value="${search.searchType }"/>
-			    <input type="hidden" name="keyword" value="${search.keyword }"/>
 				<div class="btn__group">
-					<button type="button" id="modify_Btn" class="btn btn-warning">수정</button>
+					<button type="button" id="modify_Btn" class="btn btn-warning">답변</button>
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
-				<input type="hidden" name="article_id" id="article_id" value="${adminQuestionOne.question_id }">
+				<input type="hidden" name="question_id" id="question_id" value="${adminQuestionOne.question_id }">
 				<table class="table">
 				<thead>
 					<tr>
@@ -94,6 +88,18 @@
 					</tr>
 					<tr>
 						<td>
+							<label>[문의상태]&nbsp;</label>
+							<span>${adminQuestionOne.question_state_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[비밀글여부]&nbsp;</label>
+							<span>${adminQuestionOne.question_secret_name }</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
 							<label>[주문ID]&nbsp;</label>
 							<span>${adminQuestionOne.order_id }</span>
 						</td>
@@ -108,18 +114,6 @@
 						<td>
 							<label>[회원ID]&nbsp;</label>
 							<span>${adminQuestionOne.member_id }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>[비밀글여부]&nbsp;</label>
-							<span>${adminQuestionOne.question_secret_name }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>[문의상태]&nbsp;</label>
-							<span>${adminQuestionOne.question_state_name }</span>
 						</td>
 					</tr>
 					<tr>
@@ -183,19 +177,12 @@
 <script type="text/javascript">
 //수정 버튼
 $("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/question_edit?article_id=${adminArticleOne.article_id}"
-		+"&page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
+	location.href = ${root}+"admin/question_edit?question_id=${adminQuestionOne.question_id}";
 });  
 
 // 목록버튼
 $("#list_Btn").click(function(){
-	location.href = ${root}+"/admin/question_list?page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
+	location.href = ${root}+"/admin/question_list";
 });
 		 
 // 삭제 버튼

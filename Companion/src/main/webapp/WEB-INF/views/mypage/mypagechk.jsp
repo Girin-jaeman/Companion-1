@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
-    <link rel="stylesheet" href="${root }css/home.css">
+    <link rel="stylesheet" href="${root }css/mypage/mypagechk.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -83,9 +83,33 @@
 	                    </div>
 	                </div>
 	            </nav>
+	            <div class="mytop">
+	            	<div id="icon">
+	            		<i class="fas fa-user fa-9x"></i>
+	            	</div>
+	            	<div class="info">
+	            		<h2>[아이디]</h2>
+	            		<span>dmswjd12</span>
+	            	</div>
+	            	<div class="info-box">
+	            		<i class="fas fa-truck fa-3x"></i>
+	            		<br/><br/>
+	            		<h2>배송조회 ></h2>
+	            	</div>
+	            	<div class="info-box">
+	            		<i class="fas fa-star fa-3x"></i>
+	            		<br/><br/>
+	            		<h2>쿠폰 ></h2>
+	            	</div>
+	            	<div class="info-box">
+	            		<i class="fas fa-edit fa-3x"></i>
+	            		<br/><br/>
+	            		<h2>후기작성 ></h2>
+	            	</div>
+	            </div>
 	            <div class="maincontent">
 	            
-					<h1>비밀번호를 입력해 주세요.</h1>
+					<h1>비밀번호를 입력해주세요</h1>
 					<form name="mypagechk" method="post" autocomplete="off">
 						<label for="member_pw">PW</label>
 						<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>

@@ -94,7 +94,7 @@
 				    </td>
 				    <th><label>2차 분류</label></th>
 				    <td>
-				    <select class="category2" name="category_id">
+				    <select class="category2" id="category_id">
 					<option value="">전체</option>
 					</select>
 					</td>
@@ -291,7 +291,7 @@ if(select_category_refid == '0') {
 	$(".category1").val(select_category_id);
 	$(".category2").children().remove();
 	$(".category2").append("<option value='" + select_category_id + "' selected='selected'>전체</option>");
-	$('.category2').attr('disabled', true);
+	$(".category2").attr('disabled', true);
 }
 else{
 	$(".category1").val(select_category_refid);
@@ -299,7 +299,7 @@ else{
 	$(".category2").children().remove();
 	$(".category2").append("<option value='"
 		+ select_category_id + "'>" + select_category_name + "</option>");
-	$('.category2').attr('disabled', true);
+	$(".category2").attr('disabled', true);
 }
 
 // ckeditor

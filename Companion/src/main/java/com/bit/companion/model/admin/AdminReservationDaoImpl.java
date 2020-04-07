@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bit.companion.model.entity.admin.AdminHotelServiceVo;
 import com.bit.companion.model.entity.admin.AdminReservationVo;
 
 @Repository
@@ -23,11 +24,17 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	public List<AdminReservationVo> selectAll() throws SQLException {
 		return sqlsession.selectList("adminReservation.selectAll");
 	}
+	
+	// hotelService list -selectAll
+	@Override
+	public List<AdminHotelServiceVo> selectService() throws SQLException {
+		return sqlsession.selectList("adminReservation.selectService");
+	}
 	// reservation - detail
 	@Override
-	public AdminReservationVo selectOne(String member_id) throws SQLException {
-		System.out.println(member_id);
-		return sqlsession.selectOne("adminReservation.selectOne", member_id);
+	public AdminReservationVo selectOne(int reserve_id) throws SQLException {
+		System.out.println(reserve_id);
+		return sqlsession.selectOne("adminReservation.selectOne", reserve_id);
 	}
 
 }

@@ -111,15 +111,15 @@
 				    <td>
 				    	<div>
 				    	<textarea name="article_content" id="article_content" rows="10" cols="80">${adminArticleOne.article_content }</textarea>
-					<script>
-		 				var ckeditor_config = {
-								resize_enable : false,
-								enterMode : CKEDITOR.ENTER_BR,
-								shiftEnterMode : CKEDITOR.ENTER_P,
-								filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
-						};
-						CKEDITOR.replace('article_content', ckeditor_config);
-					</script>
+							<script>
+				 				var ckeditor_config = {
+										resize_enable : false,
+										enterMode : CKEDITOR.ENTER_BR,
+										shiftEnterMode : CKEDITOR.ENTER_P,
+										filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/ckUpload"
+								};
+								CKEDITOR.replace('article_content', ckeditor_config);
+							</script>
 				    	</div>
 				    </td>
 				  </tr>
@@ -127,7 +127,7 @@
 				</table>
 				<!-- table end -->
 				<div class="btn__group">
-					<button type="submit"class="btn">수정</button>
+					<button type="submit" class="btn">수정</button>
 					<button type="button" id="back_Btn"class="btn">취소</button>
 				</div>
 			</form>

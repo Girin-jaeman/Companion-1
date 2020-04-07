@@ -79,7 +79,27 @@
                 <span>></span>
                 <a href="#">
                     <i class="fas fa-home"></i>
-                    사료
+                    
+                    <%if(request.getQueryString()=="c=100"){
+                    	out.println("사료");
+                    }else if(request.getQueryString()=="c=200"){
+                    	out.println("간식");
+                    }else if(request.getQueryString()=="c=300"){
+                    	out.println("장난감");
+                    }else if(request.getQueryString()=="c=400"){
+                    	out.println("미용용품");
+                    }else if(request.getQueryString()=="c=500"){
+                    	out.println("목욕용품");
+                    }else if(request.getQueryString()=="c=600"){
+                    	out.println("위생용품");
+                    }else if(request.getQueryString()=="c=700"){	
+                    	out.println("산책용품");
+                    }
+                    out.println(request.getQueryString());
+                    out.println("이거 아닌가?");
+                    
+                    %>
+                    아니 왜 사료만 쳐나와??
                 </a>
                 <hr class="mb-4">
             </div>
@@ -91,17 +111,18 @@
 		<div class="maincontent">
 				<nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">추천순</li>
-                        <li class="breadcrumb-item"><a href="#">판매인기순</a></li>
-                        <li class="breadcrumb-item"><a href="#">낮은가격순</a></li>
-                        <li class="breadcrumb-item"><a href="#">높은가격순</a></li>
-                        <li class="breadcrumb-item"><a href="#">등록일순</a></li>
-                        <div class="navbar navbar-dark bg-primary"> 
-	                        <form class="form-inline">
+                    <!-- sideBar에서 클릭하면 category_id를 넘겨야 함.  -->
+                        <li class="breadcrumb-item active" aria-current="page"><a href="${root }order/productMain/orderByLike?<%=request.getQueryString() %>">추천순</a></li>
+                        <li class="breadcrumb-item"><a href="${root }order/productMain/orderBySelling?<%=request.getQueryString() %>">판매인기순</a></li>
+                        <li class="breadcrumb-item"><a href="${root }order/productMain/orderByLowPrice?<%=request.getQueryString() %>">낮은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="${root }order/productMain/orderByHighPrice?<%=request.getQueryString() %>">높은가격순</a></li>
+                        <li class="breadcrumb-item"><a href="${root }order/productMain/orderByDate?<%=request.getQueryString() %>">등록일순</a></li>
+                    <!--     <div class="navbar navbar-dark bg-primary"> 
+	                     검색기능 미완성임.    <form class="form-inline">
 						    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색기능 넣을까말까</button>
 							</form>
-						</div>
+						</div> -->
                     </ol>
                 </nav>
 			   <div class="row">
@@ -110,7 +131,7 @@
 			        <div class="col-md-3 col-sm-6"> 
 			            <div class="product-grid productbox">
 			                <div class="product-image">
-			                    <a href="productDetail?idx=${bean.product_id }">
+			                    <a href="${root }order/productDetail?idx=${bean.product_id }">
 						            <c:set var = "name" value="${bean.category_id }"/>        
 										<c:choose >
 											<c:when test="${name eq '100' }">		             
@@ -148,15 +169,15 @@
 			                    <li class="fa fa-star"></li>
 			                </ul>
 			                <div class="product-content">
-			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.product_thumb } // ${bean.category_id }</a></h3>
-			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.category_name }</a></h3> 
+			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.product_thumb } // ${bean.category_id }</a></h3>
+			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.category_name }</a></h3> 
 			              
 			                <!-- 상품 추천 수 받아올 것. -->
 			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
 <%-- 			                    <%request.setAttribute("like_id",${bean.like_id}); %> --%>
 			                <!-- 상품 추천 수 받아올 것. -->
 	
-			                    <h3 class="title"><a href="productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>
+			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>
 			             
 			             <!-- 따봉 로그인 세션 검사  -->
 			             <c:set var = "memberID" value="${memberVo.member_id }"/>         
