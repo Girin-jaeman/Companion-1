@@ -26,7 +26,7 @@
 	
 	
 	
-	<!-- 장바구니용. -->
+	<!-- 장바구니 결제 용 . -->
 	<insert id="CartOrderPurchase" parameterType="java.util.Map">
 		insert into `order` values 
 		<foreach separator="," item="orderVo" collection="list">
@@ -58,11 +58,12 @@
 	 		(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
  		 </foreach>
 	</insert>
-	<!-- 장바구니용  -->
+	<!-- update 재고 관리 필요 -->
+	<!-- 장바구니 결제 용  -->
 	
 	
 	
-	<!-- 상품 구매. -->
+	<!-- 단일 상품 구매. -->
 	<insert id="OrderProductPurchase" parameterType="orderBean">
 	 	insert into 
 		`order` values
@@ -89,6 +90,10 @@
  	values 
  	(default,(select order_id from `order` where order_date = (select max(order_date) from `order` where member_id=#{member_id})),#{member_id},'비트택배',(select truncate(rand()*100000000000000,0)),0);
 	</insert>
+	<!-- 재고 수량 UPDATE  -->
+	<update id="OrderUpdateProductStock">
+		update product set product_stock=(product_stock-#{order_detail_quantity}) where product_id=#{product_id};
+	</update>
 	
 	
 	<!-- 상품 주문 시  -->
