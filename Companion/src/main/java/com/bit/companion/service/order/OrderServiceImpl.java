@@ -18,7 +18,8 @@ public class OrderServiceImpl implements OrderService {
 	OrderDao orderDao;
 
 	
-	//단일 상품 구매 할 때.
+	//단일 상품 구매 할 때. 상품 구매페이지에 필요한 정보 부르
+	//는 메서드
 	@Override
 	public void list(Model model,int product_id) {
 
@@ -28,12 +29,12 @@ public class OrderServiceImpl implements OrderService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	
-//	상품 구매 
+	//	상품 구매 
+	//	실제 orderSuccess 페이지에서 4개 insert 
+	//	DAO에서 트랜잭션 처리. or service에서 처리.
 	@Override
 	public void OrderInfo_Detail(OrderVo orderVo) {
 

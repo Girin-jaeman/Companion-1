@@ -167,6 +167,7 @@
                              request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
                             %>   
                               <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=request.getParameter("order_detail_quantity") %>"/>  
+                         	  <input type="hidden" class="form-control" name="product_stock" id="product_stock" value="${orderProductPurchaseOne.product_stock }"/>
                             <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
                             </td>
                             <td>2,500원</td>
@@ -182,7 +183,10 @@
                         <li><i class="fas fa-plus"></i></li>
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
-                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}<input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"></li> 
+                        <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}
+                        <input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}">
+                        <input type="hidden" class="form-control" name="order_amount" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"/>
+                        </li> 
                     </ul>
                 </div>
 				<div class="order_info"><h2>주문자 정보</h2>
@@ -286,6 +290,12 @@
 		   			console.log(order_detail_option);
 		   			console.log(order_detail_quantity);
 		   			
+			   		var product_stock = $('#product_stock').val();
+					var order_detail_quantity = $('#order_detail_quantity').val();
+					if(product_stock - order_detail_quantity<0){
+					 alert("상품 재고보다 구매 수량이 많습니다. 다시 확인 해 주세요.");
+					 return;
+					}
 					var payButton = $("#payApi");
 		   			var order_name = $("#order_name").val();
 		   			var sample6_postcode = $("#sample6_postcode").val();
@@ -320,7 +330,6 @@
 		   				alert("요청사항을 입력해주세요.");
 		   				return;
 		   			}
-/*}  */
 		   			
 			/* 		alert("유효성 검사 끝나고 카카오 페이로 들어감."); */
 					 $(function(){
@@ -332,9 +341,11 @@
 					            pay_method : 'card',
 					            merchant_uid : 'merchant_' + new Date().getTime(),
 					            name : '${orderProductPurchaseOne.product_name }',
+								/* 테스트해야하므로 임시로 백원 입력하겠습니다.*/
 					            amount :100,
-								/* 테스트해야하므로 임시로 백원 입력하겠습니다.
-								amount : '${orderProductPurchaseOne.product_price }', */
+								/* 
+								amount : '${orderProductPurchaseOne.product_price }',
+								*/
 					            buyer_email : '${orderVo.member_email}',
 					            buyer_name : '${orderVo.member_name}',
 					            buyer_tel : 'order_phone',
@@ -371,7 +382,7 @@
 					                
 					            } else {
 					                msg = '결제에 실패하였습니다.';
-					                msg += '에러내용 : ' + rsp.error_msg;
+					                msg += ' 에러내용 : ' + rsp.error_msg;
 					                //실패시 이동할 페이지
 					                location.href="<%=request.getContextPath()%>/order/productDetail?idx="+'${orderProductPurchaseOne.product_id }';
 					                alert(msg);
