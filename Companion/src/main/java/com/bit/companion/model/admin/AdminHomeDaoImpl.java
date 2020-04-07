@@ -94,7 +94,7 @@ public class AdminHomeDaoImpl implements AdminHomeDao {
 
 	@Override
 	public List<ProductVo> selectProduct(ChartDate chartDate) throws SQLException {
-		return sqlSession.selectList("adminHome.selectProduct");
+		return sqlSession.selectList("adminHome.selectProduct",chartDate);
 	}
 
 }
