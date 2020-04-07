@@ -1,11 +1,14 @@
 package com.bit.companion.controller.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.companion.model.entity.login.MemberVo;
@@ -131,4 +134,39 @@ public class MypageController {
 		return mypageService.addrChange(addr1_change,addr2_change,addr3_change,id_chk);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/mypage/selectDeleteCart",method=RequestMethod.POST)
+	public int selectDeleteCart(HttpSession session,@RequestParam(value="check[]") List<String> checkList) {
+		System.out.println(checkList.toString());
+		MemberVo member=(MemberVo)session.getAttribute("memberVo");
+		String member_id=member.getMember_id();
+		String cart_id="";
+		int result=0;
+		for(int i=0; i<checkList.size(); i++) {
+			cart_id=checkList.get(i);
+			result+=mypageService.selectDeleteCart(cart_id,member_id);
+		}
+		
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/cartChangeOption",method=RequestMethod.POST)
+	public int changeOptionCart(HttpSession session,String change_option,String product_id) {
+		MemberVo member=(MemberVo)session.getAttribute("memberVo");
+		String member_id=member.getMember_id();
+		int result=0;
+		result=mypageService.changeOptionCart(change_option,product_id,member_id);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/cartChangeQuantity",method=RequestMethod.POST)
+	public int changeQuantityCart(HttpSession session,String change_quantity,String product_id) {
+		MemberVo member=(MemberVo)session.getAttribute("memberVo");
+		String member_id=member.getMember_id();
+		int result=0;
+		result=mypageService.changeQuantityCart(change_quantity,product_id,member_id);
+		return result;
+	}
 }
