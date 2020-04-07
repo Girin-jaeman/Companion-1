@@ -62,7 +62,7 @@
 	<!-- 장바구니 결제 용  -->
 	
 	
-	
+	<!-- order_amount 입력 안되는 에러가 있음. 0원으로 들어감...ㅠㅠㅠㅠㅠㅠㅠㅠ  -->
 	<!-- 단일 상품 구매. -->
 	<insert id="OrderProductPurchase" parameterType="orderBean">
 	 	insert into 
@@ -94,7 +94,6 @@
 	<update id="OrderUpdateProductStock">
 		update product set product_stock=(product_stock-#{order_detail_quantity}) where product_id=#{product_id};
 	</update>
-	
 	
 	<!-- 상품 주문 시  -->
   </mapper>
