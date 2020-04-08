@@ -43,4 +43,28 @@
   	<select id="cartList" parameterType="String" resultType="mypageCartBean">
   		select * from cart where member_id=#{member_id} order by cart_id
   	</select>
+  	<delete id="selectDeleteCart" parameterType="hashmap">
+  		delete from cart where cart_id=#{cart_id} and member_id=#{member_id}
+  	</delete>
+  	<select id="productOption1" parameterType="String" resultType="String">
+  		select product_option1 from product where product_id=#{product_id}
+  	</select>
+  	<select id="productOption2" parameterType="String" resultType="String">
+  		select product_option2 from product where product_id=#{product_id}
+  	</select>
+  	<select id="productOption3" parameterType="String" resultType="String">
+  		select product_option3 from product where product_id=#{product_id}
+  	</select>
+  	<select id="productOption4" parameterType="String" resultType="String">
+  		select product_option4 from product where product_id=#{product_id}
+  	</select>
+  	<select id="productOption5" parameterType="String" resultType="String">
+  		select product_option5 from product where product_id=#{product_id}
+  	</select>
+  	<update id="changeOptionCart" parameterType="hashmap">
+  		update cart set cart_option=#{change_option} where member_id=#{member_id} and product_id=#{product_id}
+  	</update>
+  	<update id="changeQuantityCart" parameterType="hashmap">
+  		update cart set cart_quantity=#{change_quantity} where member_id=#{member_id} and product_id=#{product_id}
+  	</update>
   </mapper>

@@ -61,4 +61,19 @@ public class MypageServiceImpl implements MypageService {
 		session.setAttribute("cartList", cartList);
 	}
 
+	@Override
+	public int selectDeleteCart(String cart_id, String member_id) {
+		return mypageDao.selectDeleteCart(cart_id,member_id);
+	}
+
+	@Override
+	public int changeOptionCart(String change_option, String product_id, String member_id) {
+		return mypageDao.changeOptionCart(change_option,product_id,member_id);
+	}
+
+	@Override
+	public int changeQuantityCart(String change_quantity, String product_id, String member_id) {
+		return mypageDao.changeQuantityCart(change_quantity,product_id,member_id);
+	}
+
 }
