@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
-    <link rel="stylesheet" href="${root }css/home.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -141,9 +140,9 @@
 						<tr>
 							<td>주소</td>
 							<td>
-								우편번호 ${sessionScope.memberVo.member_addr1 }</br>
-								주소 ${sessionScope.memberVo.member_addr2 }</br>
-								상세주소 ${sessionScope.memberVo.member_addr3 }</br>
+								우편번호 ${sessionScope.memberVo.member_addr1 }<br/>
+								주소 ${sessionScope.memberVo.member_addr2 }<br/>
+								상세주소 ${sessionScope.memberVo.member_addr3 }<br/>
 								
 								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly">
 								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
@@ -331,7 +330,7 @@
 				var addr2_change=$("#addr2_change").val();
 				var addr3_change=$("#addr3_change").val();
 				var addrData={"addr1_change" : addr1_change, "addr2_change" : addr2_change, "addr3_change" : addr3_change, "id_chk" : id_chk};
-				if(addr1_change=="" || addr2_change=="" || addr3_change) {
+				if(addr1_change=="" || addr2_change=="" || addr3_change=="") {
 					alert("입력된 주소가 없습니다.");
 					return;
 				}

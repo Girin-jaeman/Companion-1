@@ -104,32 +104,7 @@
 			<c:forEach items="${adminReservationList }" var="bean">
 				<tr>
 					<td>
-						<c:choose>
-							<c:when test="${bean.service_id =='0' }">
-							<div>호텔&데이케어</div>
-							</c:when>
-							<c:when test="${bean.service_id =='1' }">
-							<div>유치원</div>
-							</c:when>
-							<c:when test="${bean.service_id =='2' }">
-							<div>독파크</div>
-							</c:when>
-							<c:when test="${bean.service_id =='3' }">
-							<div>아카데미</div>
-							</c:when>
-							<c:when test="${bean.service_id =='4' }">
-							<div>그루밍&스파</div>
-							</c:when>
-							<c:when test="${bean.service_id =='5' }">
-							<div>스튜디오</div>
-							</c:when>
-							<c:when test="${bean.service_id =='6' }">
-							<div>메디컬센터</div>
-							</c:when>
-							<c:when test="${bean.service_id =='7' }">
-							<div>스페셜케어</div>
-							</c:when>
-						</c:choose>
+						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.service_name }</a>
 					</td>
 					<td>
 						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.member_id }</a>
