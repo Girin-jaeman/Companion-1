@@ -181,6 +181,34 @@
 				<div class="maincontent">
 					<div class="empty">
 						<h2>최근 구매 내역</h2>
+						<table class="table table-striped table-bordered" style="width:100%">
+							<thead>
+								<tr>
+									<th>이미지</th>
+									<th>상품이름</th>
+									<th>구매수량</th>
+									<th>구매날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>그림2</td>
+									<td>옥수수먹고싶다</td>
+									<td>1</td>
+									<td>2020-04-08</td>
+								</tr>
+								<tr>
+									<td>그림1</td>
+									<td>옥수수먹고싶다</td>
+									<td>1</td>
+									<td>2020-04-08</td>
+								</tr>
+								<tr>
+									<td colspan="4" style="text-align:center">구매내역 자세히>></td>
+								</tr>
+							</tbody>
+						</table>
+						
 					</div>
 				</div>
 				<!-- .maincontent [end] -->
