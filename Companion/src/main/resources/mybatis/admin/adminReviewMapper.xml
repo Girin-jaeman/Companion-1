@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="adminReview">
+
+	<!-- member list -->
+	<select id="selectAll" resultType="adminArticleBean">
+		SELECT 
+			a.*,
+			(SELECT product_name FROM `PRODUCT` p WHERE p.product_id=a.product_id) as product_name
+				FROM `ARTICLE` a WHERE board_id=3 ORDER BY article_id DESC
+	</select>
+	
+	<!-- member detail -->
+	<select id="selectOne" parameterType="int" resultType="adminArticleBean">
+		SELECT 
+			a.*,
+			(SELECT product_name FROM `PRODUCT` p WHERE p.product_id=a.product_id) as product_name
+			FROM `ARTICLE` a
+				WHERE article_id=#{article_id} AND board_id=3
+	</select>
+</mapper>

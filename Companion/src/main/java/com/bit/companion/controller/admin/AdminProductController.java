@@ -94,7 +94,7 @@ public class AdminProductController {
 			bean.setProduct_image(File.separator+"imgUpload"+ymdPath+File.separator+fileName);
 			bean.setProduct_thumb(File.separator + "imgUpload"+ymdPath+File.separator+"s"+File.separator+"s_"+fileName);
 		} else {
-			fileName = File.separator + "images" + File.separator + "none.png";
+			fileName = "/images/none.png";
 			bean.setProduct_image(fileName);
 			bean.setProduct_thumb(fileName);
 		}
@@ -102,94 +102,6 @@ public class AdminProductController {
 		adminProductService.insert(bean);
 		return "redirect:product_list";
 	}
-	
-	// product add - ckeditor file upload
-	@RequestMapping(value = "product_ckUpload", method = RequestMethod.POST)
-	public void ckUpload(HttpServletRequest req, HttpServletResponse res,
-	         @RequestParam MultipartFile upload) throws Exception {
-		logger.info("post product CKEditor img upload");
-	 
-		// random character create
-		UUID uid = UUID.randomUUID();
-	 
-		OutputStream out = null;
-		PrintWriter printWriter = null;
-		
-		res.setCharacterEncoding("utf-8");
-		res.setContentType("text/html;charset=utf-8");
-		try {
-			String fileName = upload.getOriginalFilename(); // get file name
-			byte[] bytes = upload.getBytes();
-	  
-			// upload path
-			String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
-			
-			out = new FileOutputStream(new File(ckUploadPath));
-			out.write(bytes);
-			out.flush();  // init
-			  
-			printWriter = res.getWriter();
-			String fileUrl = "product_ckSubmit?uid="+uid+"&fileName="+fileName;
-			
-			printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
-			printWriter.flush();
-	  
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(out != null) { out.close(); }
-				if(printWriter != null) { printWriter.close(); }
-			} catch(IOException e) { e.printStackTrace(); }
-		}
-		return; 
-	}
-	
-	// ckeditor file loading
-	@RequestMapping(value = "product_ckSubmit", method = RequestMethod.GET)
-    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName
-                            , HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		logger.info("get product CKEditor img submit");
-		
-        //서버에 저장된 이미지 경로
-        String ckUploadPath = uploadPath + "ckUpload" +File.separator;
-        String Path = ckUploadPath + uid + "_" + fileName;
-        File imgFile = new File(File.separator+Path);
-        	
-        //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다.
-        if(imgFile.isFile()){
-            byte[] buf = new byte[1024];
-            int readByte = 0;
-            int length = 0;
-            byte[] imgBuf = null;
-            
-            FileInputStream fileInputStream = null;
-            ByteArrayOutputStream outputStream = null;
-            ServletOutputStream out = null;
-            
-            try{
-                fileInputStream = new FileInputStream(imgFile);
-                outputStream = new ByteArrayOutputStream();
-                out = response.getOutputStream();
-                
-                while((readByte = fileInputStream.read(buf)) != -1){
-                    outputStream.write(buf, 0, readByte);
-                }
-                
-                imgBuf = outputStream.toByteArray();
-                length = imgBuf.length;
-                out.write(imgBuf, 0, length);
-                out.flush();
-                
-            }catch(IOException e){
-                e.printStackTrace();
-            }finally {
-                outputStream.close();
-                fileInputStream.close();
-                out.close();
-            }
-        }
-    }
 	
 	// product edit page category list - get
 	@RequestMapping(value = "product_edit", method = RequestMethod.GET)
@@ -205,7 +117,7 @@ public class AdminProductController {
 	@RequestMapping(value = "product_edit", method = RequestMethod.POST)
 	public String productEdit(@ModelAttribute AdminProductVo bean, @RequestParam int product_id, MultipartFile file, HttpServletRequest req) throws IOException, Exception {
 		logger.info("post product edit");
-		System.out.println(bean.toString());
+		
 		// new file upload check
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			// old file delete
@@ -238,4 +150,69 @@ public class AdminProductController {
 		adminProductService.delete(product_id);
 		return "redirect:/admin/product_list";
 	}
+	/*
+	 * // product add - ckeditor file upload
+	 * 
+	 * @RequestMapping(value = "product_ckUpload", method = RequestMethod.POST)
+	 * public void ckUpload(HttpServletRequest req, HttpServletResponse res,
+	 * 
+	 * @RequestParam MultipartFile upload) throws Exception {
+	 * logger.info("post product CKEditor img upload");
+	 * 
+	 * // random character create UUID uid = UUID.randomUUID();
+	 * 
+	 * OutputStream out = null; PrintWriter printWriter = null;
+	 * 
+	 * res.setCharacterEncoding("utf-8");
+	 * res.setContentType("text/html;charset=utf-8"); try { String fileName =
+	 * upload.getOriginalFilename(); // get file name byte[] bytes =
+	 * upload.getBytes();
+	 * 
+	 * // upload path String ckUploadPath = uploadPath + File.separator + "ckUpload"
+	 * + File.separator + uid + "_" + fileName;
+	 * 
+	 * out = new FileOutputStream(new File(ckUploadPath)); out.write(bytes);
+	 * out.flush(); // init
+	 * 
+	 * printWriter = res.getWriter(); String fileUrl =
+	 * "product_ckSubmit?uid="+uid+"&fileName="+fileName;
+	 * 
+	 * printWriter.println("{\"filename\" : \""
+	 * +fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
+	 * printWriter.flush();
+	 * 
+	 * } catch (IOException e) { e.printStackTrace(); } finally { try { if(out !=
+	 * null) { out.close(); } if(printWriter != null) { printWriter.close(); } }
+	 * catch(IOException e) { e.printStackTrace(); } } return; }
+	 * 
+	 * // ckeditor file loading
+	 * 
+	 * @RequestMapping(value = "product_ckSubmit", method = RequestMethod.GET)
+	 * public void ckSubmit(@RequestParam(value="uid") String
+	 * uid, @RequestParam(value="fileName") String fileName , HttpServletRequest
+	 * request, HttpServletResponse response) throws ServletException, IOException{
+	 * logger.info("get product CKEditor img submit");
+	 * 
+	 * //서버에 저장된 이미지 경로 String ckUploadPath = uploadPath + "ckUpload"
+	 * +File.separator; String Path = ckUploadPath + uid + "_" + fileName; File
+	 * imgFile = new File(File.separator+Path);
+	 * 
+	 * //사진 이미지 찾지 못하는 경우 예외처리로 빈 이미지 파일을 설정한다. if(imgFile.isFile()){ byte[] buf =
+	 * new byte[1024]; int readByte = 0; int length = 0; byte[] imgBuf = null;
+	 * 
+	 * FileInputStream fileInputStream = null; ByteArrayOutputStream outputStream =
+	 * null; ServletOutputStream out = null;
+	 * 
+	 * try{ fileInputStream = new FileInputStream(imgFile); outputStream = new
+	 * ByteArrayOutputStream(); out = response.getOutputStream();
+	 * 
+	 * while((readByte = fileInputStream.read(buf)) != -1){ outputStream.write(buf,
+	 * 0, readByte); }
+	 * 
+	 * imgBuf = outputStream.toByteArray(); length = imgBuf.length;
+	 * out.write(imgBuf, 0, length); out.flush();
+	 * 
+	 * }catch(IOException e){ e.printStackTrace(); }finally { outputStream.close();
+	 * fileInputStream.close(); out.close(); } } }
+	 */
 }

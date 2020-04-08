@@ -146,4 +146,9 @@ UPDATE `PRODUCT` SET
 	        product_option3 = null,
 	        product_option4 = null,
 	        product_option5 = null
-    			WHERE product_id = 1
+    			WHERE product_id = 1;
+                
+                
+                
+                
+select * from `order`

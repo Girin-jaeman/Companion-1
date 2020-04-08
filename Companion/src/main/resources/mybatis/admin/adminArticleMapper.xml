@@ -21,9 +21,6 @@
 						<if test="board_id==2">
 							board_id=2
 						</if>
-						<if test="board_id==3">
-							board_id=3
-						</if>
 					</trim>
 					<trim prefix="AND">
 						<if test="searchType=='all' and keyword != null and keyword != '' ">
@@ -63,9 +60,6 @@
 					</if>
 					<if test="board_id==2">
 						board_id=2
-					</if>
-					<if test="board_id==3">
-						board_id=3
 					</if>
 				</trim>
 	</select>
@@ -113,9 +107,6 @@
 						<if test="board_id==2">
 							board_id=2
 						</if>
-						<if test="board_id==3">
-							board_id=3
-						</if>
 					</trim>
 	</update>
 	
@@ -132,9 +123,6 @@
 			<if test="board_id==2">
 				board_id=2
 			</if>
-			<if test="board_id==3">
-				board_id=3
-			</if>
 		</trim>
 	</delete>
 	
@@ -150,9 +138,6 @@
 			</if>
 			<if test="board_id==2">
 				board_id=2
-			</if>
-			<if test="board_id==3">
-				board_id=3
 			</if>
   		</trim>
   		<trim prefix="AND">

@@ -72,17 +72,17 @@
 				<div class="btn__group">
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
 				</div>
-				<input type="hidden" name="article_id" id="article_id" value="${adminArticleOne.article_id }">
+				<input type="hidden" name="article_id" id="article_id" value="${adminReviewOne.article_id }">
 				<table class="table">
 				<thead>
 					<tr>
 						<th class="clearfix">
 						<div class="float--left">
-							<label for="title">[제목]&nbsp;</label><span>${adminArticleOne.article_title }</span>
+							<label for="title">[제목]&nbsp;</label><span>${adminReviewOne.article_title }</span>
 						</div>
 						<div class="thumb float--right">
 							<label for="img">[썸네일]&nbsp;</label>
-							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminArticleOne.article_thumb }'/>"/>
+							<img width=40px height=40px alt="thumb" src="<spring:url value='${adminReviewOne.article_thumb }'/>"/>
 						</div>
 						</th>
 					</tr>
@@ -92,29 +92,29 @@
 						<td class="clearfix">
 							<div class="float--left">
 								<label for="date">[작성일]&nbsp;</label>
-								<span>${adminArticleOne.article_date }</span>
+								<span>${adminReviewOne.article_date }</span>
 							</div>
 							<div class="rightt float--right">
 								<label for="member_id">[작성자]&nbsp;</label>
-								<span>${adminArticleOne.member_id }</span>
+								<span>${adminReviewOne.member_id }</span>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 								<label>[상품명]&nbsp;</label>
-								<span>${adminArticleOne.product_name }</span>
+								<span>${adminReviewOne.product_name }</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
 						<div>
 						<label for="content">content</label>
-						<span>${adminArticleOne.article_content }</span>
+						<span>${adminReviewOne.article_content }</span>
 						</div>
 						<div>
 						<label for="img">원본이미지</label>
-						<img alt="원본이미지" src="<spring:url value='${adminArticleOne.article_image }'/>"/>
+						<img alt="원본이미지" src="<spring:url value='${adminReviewOne.article_image }'/>"/>
 						</div>
 						</td>
 					</tr>
@@ -142,21 +142,9 @@
 <script src="${root }js/main.js"></script>
   
 <script type="text/javascript">
-//수정 버튼
-$("#modify_Btn").click(function(){
-	location.href = ${root}+"admin/review_edit?article_id=${adminArticleOne.article_id}"
-		+"&page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
-});  
-
 // 목록버튼
 $("#list_Btn").click(function(){
-	location.href = ${root}+"/admin/review_list?page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
+	location.href = ${root}+"admin/review_list";
 });
 		 
 // 삭제 버튼

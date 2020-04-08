@@ -93,9 +93,7 @@
 	<!-- product edit -->
 	<update id="updateOne" parameterType="adminProductBean">
 		UPDATE `PRODUCT` SET 
-			<if test="category_id != null">
-				category_id = #{category_id}, 
-			</if>
+			category_id = #{category_id}, 
          	product_name = #{product_name},
 	        product_content = #{product_content},
 	        product_price = #{product_price},

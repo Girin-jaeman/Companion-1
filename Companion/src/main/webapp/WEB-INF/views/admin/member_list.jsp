@@ -52,13 +52,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">공지사항</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">이벤트</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">FAQ</a>
+			                <a class="nav-link" href="${root }admin/member_list">회원목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -124,49 +118,42 @@
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
-
+	
 	// 데이터 테이블 초기화
  	$(document).ready(function() {
-		$('#dataTable').DataTable(
-		);
+		$('#dataTable').DataTable({
+			"language": {
+				"emptyTable": "데이터가 없습니다.",
+				"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+				"info": "현재 _START_ - _END_ / _TOTAL_건",
+				"infoEmpty": "데이터 없음",
+				"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+				"search": "검색: ",
+				"zeroRecords": "일치하는 데이터가 없습니다.",
+				"loadingRecords": "로딩중...",
+				"processing":     "잠시만 기다려 주세요...",
+				"paginate": {
+					"next": "다음",
+					"previous": "이전"
+				}
+			},
+			"columns" : [ 
+				{ "width" : "20px" }, 
+				{ "width" : "30px" },
+				{ "width" : "30px" }, 
+				{ "width" : "40px" }, 
+				{ "width" : "30px" }
+			],
+			"order" : [
+				[0,"asc"]
+			],
+			"lengthMenu" : [
+				10,20,30,40,50
+			],
+			"pageLength" : 20,
+			"stateSave" : true
+		});
 	});
-	
-	// 데이터 테이블 언어
-	var table = $('#dataTable').DataTable({
-		"language": {
-			"emptyTable": "데이터가 없습니다.",
-			"lengthMenu": "페이지당 _MENU_ 개씩 보기",
-			"info": "현재 _START_ - _END_ / _TOTAL_건",
-			"infoEmpty": "데이터 없음",
-			"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
-			"search": "검색: ",
-			"zeroRecords": "일치하는 데이터가 없습니다.",
-			"loadingRecords": "로딩중...",
-			"processing":     "잠시만 기다려 주세요...",
-			"paginate": {
-				"next": "다음",
-				"previous": "이전"
-			}
-		},
-		"columns" : [ 
-			{ "width" : "20px" }, 
-			{ "width" : "30px" },
-			{ "width" : "30px" }, 
-			{ "width" : "40px" }, 
-			{ "width" : "30px" }
-		],
-		"order" : [
-			[0,"asc"]
-		],
-		"lengthMenu" : [
-			10,20,30,40,50
-		],
-		"displayLength" : [
-			20
-		]
-	});
-	
-
 </script>
 </body>
 </html>
