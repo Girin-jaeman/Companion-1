@@ -134,7 +134,7 @@
                         	${bean.product_name }
 	                    </td>
 	                    <td>${bean.cart_option }</br>
-	                    	<select style="width:150px;float:left;" name="selectOption" id="selectOption${bean.product_id }" class="form-control" onchange="changeOption(${bean.product_id })">
+	                    	<select style="width:150px;float:left;" name="selectOption" id="selectOption${bean.cart_id }" class="form-control" onchange="changeOption(${bean.cart_id })">
 	                    		<option value="" selected disabled>옵션을 선택</option>
 	                    		<option value="${bean.product_option1 }">${bean.product_option1 }</option>
 	                    		<option value="${bean.product_option2 }">${bean.product_option2 }</option>
@@ -142,12 +142,12 @@
 	                    		<option value="${bean.product_option4 }">${bean.product_option4 }</option>
 	                    		<option value="${bean.product_option5 }">${bean.product_option5 }</option>
 	                    	</select>
-	                    	<input type="hidden" id="originalOption${bean.product_id }" value="${bean.cart_option }">
-	                    	<input type="hidden" id="updateOption${bean.product_id }" value="">
-	                    	<button type="button" class="btn" onclick="updateOption(${bean.product_id })">변경</button>
+	                    	<input type="hidden" id="originalOption${bean.cart_id }" value="${bean.cart_option }">
+	                    	<input type="hidden" id="updateOption${bean.cart_id }" value="">
+	                    	<button type="button" class="btn" onclick="updateOption(${bean.cart_id })">변경</button>
 	                    </td>
                         <td>${bean.cart_quantity }</br>
-                        	<select style="width:80px;float:left;" name="selectQuantity" id="selectQuantity${bean.product_id }" class="form-control" onchange="changeQuantity(${bean.product_id })">
+                        	<select style="width:80px;float:left;" name="selectQuantity" id="selectQuantity${bean.cart_id }" class="form-control" onchange="changeQuantity(${bean.cart_id })">
                         		<option value="" select disabled>수량을 선택</option>
                         		<option value="1">1</option>
                         		<option value="2">2</option>
@@ -160,9 +160,9 @@
                         		<option value="9">9</option>
                         		<option value="10">10</option>
                         	</select>
-                        	<button type="button" class="btn" onclick="updateQuantity(${bean.product_id })">변경</td>
-                        	<input type="hidden" id="originalQuantity${bean.product_id }" value="${bean.cart_quantity }">
-                        	<input type="hidden" id="updateQuantity${bean.product_id }" value="">
+                        	<button type="button" class="btn" onclick="updateQuantity(${bean.cart_id })">변경</td>
+                        	<input type="hidden" id="originalQuantity${bean.cart_id }" value="${bean.cart_quantity }">
+                        	<input type="hidden" id="updateQuantity${bean.cart_id }" value="">
                         <td>${bean.product_price }원</td>
                         <td>${bean.product_price*bean.cart_quantity }원</td>
 </c:forEach>
@@ -320,17 +320,17 @@
 		}
 	
 		/* 옵션 선택 */
-		function changeOption(product_id){
-			var changeOptionValue=document.getElementById("selectOption"+product_id);
+		function changeOption(cart_id){
+			var changeOptionValue=document.getElementById("selectOption"+cart_id);
 			
 			var selectValue=changeOptionValue.options[changeOptionValue.selectedIndex].text;
-			document.getElementById("updateOption"+product_id).value=selectValue;
+			document.getElementById("updateOption"+cart_id).value=selectValue;
 		}
 		
 		/* 변경 옵션 저장 */
-		function updateOption(product_id){
-			var updateOptionValue=document.getElementById("updateOption"+product_id).value;
-			var originalOptionValue=document.getElementById("originalOption"+product_id).value;
+		function updateOption(cart_id){
+			var updateOptionValue=document.getElementById("updateOption"+cart_id).value;
+			var originalOptionValue=document.getElementById("originalOption"+cart_id).value;
 			if(updateOptionValue==""){
 				alert("선택된 옵션이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
 				return;
@@ -342,14 +342,14 @@
 			$.ajax({
 				type : "POST",
 				url : "/companion/mypage/cartChangeOption",
-				data : {change_option : updateOptionValue,product_id : product_id},
+				data : {change_option : updateOptionValue,cart_id : cart_id},
 				success : function(result){
 					if(result!=1){
 						alert("변경실패");
 						return;
 					}else{
 						alert("변경성공");
-						document.getElementById("originalOption"+product_id).value=updateOptionValue;
+						document.getElementById("originalOption"+cart_id).value=updateOptionValue;
 						location.reload();
 					}
 				}
@@ -357,16 +357,16 @@
 		}
 		
 		/* 수량 선택 */
-		function changeQuantity(product_id){
-			var updateQuantity=document.getElementById("selectQuantity"+product_id);
+		function changeQuantity(cart_id){
+			var updateQuantity=document.getElementById("selectQuantity"+cart_id);
 			var selectValue=updateQuantity.options[updateQuantity.selectedIndex].text;
-			document.getElementById("updateQuantity"+product_id).value=selectValue;
+			document.getElementById("updateQuantity"+cart_id).value=selectValue;
 		}
 		
 		/* 변경 수량 저장 */
-		function updateQuantity(product_id){
-			var updateQuantityValue=document.getElementById("updateQuantity"+product_id).value;
-			var originalQuantityValue=document.getElementById("originalQuantity"+product_id).value;
+		function updateQuantity(cart_id){
+			var updateQuantityValue=document.getElementById("updateQuantity"+cart_id).value;
+			var originalQuantityValue=document.getElementById("originalQuantity"+cart_id).value;
 			if(updateQuantityValue==""){
 				alert("선택된 수량이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
 				return;
@@ -378,14 +378,14 @@
 			$.ajax({
 				type : "POST",
 				url : "/companion/mypage/cartChangeQuantity",
-				data : {change_quantity : updateQuantityValue,product_id : product_id},
+				data : {change_quantity : updateQuantityValue,cart_id : cart_id},
 				success : function(result){
-					if(result!=1){
+					if(result==0){
 						alert("변경실패");
 						return;
 					}else{
 						alert("변경성공");
-						document.getElementById("originalQuantity"+product_id).value=updateQuantityValue;
+						document.getElementById("originalQuantity"+cart_id).value=updateQuantityValue;
 						location.reload();
 					}
 				}
