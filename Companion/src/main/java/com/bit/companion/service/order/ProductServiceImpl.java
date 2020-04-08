@@ -37,6 +37,21 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 	
+	//상품 추천 목록
+	@Override
+	public void productRecommend(Model model, int product_id) {
+		List<ProductVo> list;
+		try {
+			list= productDao.productRecommendList(product_id);
+			model.addAttribute("productRecommendList",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
 	//추천순 정렬 나머지 조건도 채울 것.
 	@Override
 	public void Alignment(Model model,int category_id) {
@@ -134,6 +149,8 @@ public class ProductServiceImpl implements ProductService {
 				e.printStackTrace();
 			}
 	}
+
+
 
 
 

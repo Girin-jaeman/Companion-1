@@ -3,9 +3,11 @@ package com.bit.companion.model.entity.admin;
 import java.sql.Date;
 
 public class AdminReservationVo {
+	private int service_id;
+	private String service_name;
+	
 	private int reserve_id;
 	private String member_id;
-	private int service_id;
 	private Date reserve_date;
 	private Date reserve_checkin;
 	private Date reserve_checkout;
@@ -16,12 +18,13 @@ public class AdminReservationVo {
 	
 	public AdminReservationVo() {}
 
-	public AdminReservationVo(int reserve_id, String member_id, int service_id, Date reserve_date, Date reserve_checkin,
+	public AdminReservationVo(String service_name, int reserve_id, String member_id, int service_id, Date reserve_date, Date reserve_checkin,
 			Date reserve_checkout, String reserve_dogtype, int reserve_dogage, String reserve_msg, int reserve_state_id) {
 		super();
 		this.reserve_id = reserve_id;
 		this.member_id = member_id;
 		this.service_id = service_id;
+		this.service_name = service_name;
 		this.reserve_date = reserve_date;
 		this.reserve_checkin = reserve_checkin;
 		this.reserve_checkout = reserve_checkout;
@@ -53,6 +56,13 @@ public class AdminReservationVo {
 
 	public void setService_id(int service_id) {
 		this.service_id = service_id;
+	}
+	public String getService_name() {
+		return service_name;
+	}
+	
+	public void setService_name(String service_name) {
+		this.service_name = service_name;
 	}
 
 	public Date getReserve_date() {
@@ -112,12 +122,13 @@ public class AdminReservationVo {
 
 	@Override
 	public String toString() {
-		return "AdminReservationVo [reserve_id=" + reserve_id + ", member_id=" + member_id + ", service_id="
-				+ service_id + ", reserve_date=" + reserve_date + ", reserve_checkin=" + reserve_checkin
-				+ ", reserve_checkout=" + reserve_checkout + ", reserve_dogtype=" + reserve_dogtype
+		return "AdminReservationVo [service_id=" + service_id + ", service_name=" + service_name + ", reserve_id="
+				+ reserve_id + ", member_id=" + member_id + ", reserve_date=" + reserve_date + ", reserve_checkin="
+				+ reserve_checkin + ", reserve_checkout=" + reserve_checkout + ", reserve_dogtype=" + reserve_dogtype
 				+ ", reserve_dogage=" + reserve_dogage + ", reserve_msg=" + reserve_msg + ", reserve_state_id="
 				+ reserve_state_id + "]";
 	}
+
 
 
 	

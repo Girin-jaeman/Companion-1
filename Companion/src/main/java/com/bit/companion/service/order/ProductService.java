@@ -7,6 +7,9 @@ public interface ProductService {
 	void list(Model model);
 	void category(Model model,int category_id);
 	void detail(Model model,int product_id);
+	
+	void productRecommend(Model model,int product_id);
+
 	void productReview(Model model, int product_id);
 	void Alignment(Model model,int category_id);
 	void AlignmentOrderBySelling(Model model,int category_id);

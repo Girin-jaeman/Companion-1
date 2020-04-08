@@ -304,7 +304,7 @@
 		   			var order_phone = $("#order_phone").val(); 
 		   			var order_msg = $("#order_msg").val(); 
 		   			var phonenum = $('#order_phone').val();
- 			   		var regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g; 
+ 			   		var regPhone = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g; 
 	
 			   		 if(!regPhone.test(phonenum)){
 			   		  alert('잘못된 휴대폰 번호입니다.');

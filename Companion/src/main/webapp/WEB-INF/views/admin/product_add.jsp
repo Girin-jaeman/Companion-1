@@ -149,7 +149,7 @@
 				    <th><label for="product_content">상품소개</label></th>
 				    <td colspan="5">
 						<div class="inputArea">
-						<textarea rows="5" cols="50" id="product_content" name="product_content"></textarea>
+						<textarea class="ckeditor" rows="5" cols="50" id="product_content" name="product_content"></textarea>
 						</div>
 					</td>
 				  </tr>
@@ -261,15 +261,6 @@ $(document).on("change", "select.category1", function(){
 	});
 });
 /* 카테고리 불러오기 끝*/
-
-// ckeditor
-var ckeditor_config = {
-	resize_enable : false,
-	enterMode : CKEDITOR.ENTER_BR,
-	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl :"${pageContext.request.contextPath}/admin/product_ckUpload"
-};
-CKEDITOR.replace( 'product_content', ckeditor_config );
 
 // 이미지 미리보기
 $("#product_image").change(function(){

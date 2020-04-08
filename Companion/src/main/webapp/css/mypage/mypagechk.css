@@ -33,6 +33,24 @@
 	color: #0F4C81;
 	padding:10px;
 }
+.info ul{
+	padding-left:0px;
+}
+.info ul li{
+	display:flex;	
+}
+.info ul li h3{
+	margin-right:15px;
+}
+.info ul li span{
+	font-size:20px;
+}
+.editbox{
+	margin-left:30px;
+}
+.editbox button{
+	margin-right:0;
+}
 .info-box{
 	margin: auto;
 	border: 10px solid white;
@@ -45,4 +63,7 @@
 	padding-right:10px;
 	padding-left:10px;
 	text-align:center;
+}
+.empty{
+	height:210px;
 }

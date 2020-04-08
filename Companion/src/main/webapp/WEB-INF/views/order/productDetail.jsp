@@ -203,13 +203,12 @@
 						<!-- modal-(장바구니) end -->
                        <!-- 좋아요... 만들기 시러... -->
                        
-<!-- 로그인 안하면 그냥 모달폼 넘길것.  -->                       
-
-
-<!-- <input type="hidden" name="order_detail_quantity" id="order_detail_quantity" value="1"/> -->
-<input type="hidden" name="cart_quantity" id="cart_quantity" value="1"/>
-<input type="hidden" name="cart_option" id="cart_option" value="1"/> 
-<input type="hidden" name="order_detail_option" id="order_detail_option" value="1"/>
+								<!-- 장바구니 버튼 눌렀을 때 넘어가야 하는 것들 -->
+							<input type="hidden" name="cart_quantity" id="cart_quantity" value="1"/>
+							<input type="hidden" name="cart_option" id="cart_option" value="1"/> 
+							<input type="hidden" name="order_detail_option" id="order_detail_option" value="1"/>
+								<!-- 장바구니 버튼 눌렀을 때 넘어가야 하는 것들 end -->
+						<!--로그인 검사  -->
                     <c:choose>
 						<c:when test="${memberVo.member_id!=null }">
 							<button id="like_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
@@ -218,14 +217,35 @@
 							<button id="noneLgnLike_btn" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">좋아요! ( ${productDetailOne.like_id } )</button>
 						</c:when>
 					</c:choose>	
-                       <!-- 좋아요... 만들기 시러... -->
-                        
                         </div>	<!-- btn group end-->
+						<!-- 상품 추천 목록.  -->
+						<!--상품 추천 목록.  -->
 					
 	</form>
 						</div>
+						<!-- product Detail 페이지로 넘어올 떄 추천 상품 목록을 가지고 넘어와야 함. 해당 상품에 대해서! 로그인 안해도! -->
+	
 					</div>
 				</div>
+       					<table>
+							<thead>
+								<tr>
+									<td>ID</td>
+									<td>ID</td>
+									<td>ID</td>
+									<td>ID</td>
+									<td>ID</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<!-- 상품 추천 목록 LIST UPDATE  -->
+							<c:forEach items="${productRecommendList }" var="bean" >
+									<td>${bean.product_id }</td>
+							</c:forEach>
+								</tr>
+							</tbody>
+						</table>					
 
 			<div class="p-12 rounded mb-5">
 				<!-- Lined tabs-->

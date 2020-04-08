@@ -94,7 +94,7 @@
 				    </td>
 				    <th><label>2차 분류</label></th>
 				    <td>
-				    <select class="category2" id="category_id">
+				    <select class="category2" name="category_id">
 					<option value="">전체</option>
 					</select>
 					</td>
@@ -151,7 +151,7 @@
 				    <th><label for="product_content">상품소개</label></th>
 				    <td colspan="5">
 						<div class="inputArea">
-						<textarea rows="5" cols="50" id="product_content" name="product_content">${adminProductOne.product_content }</textarea>
+						<textarea class="ckeditor" rows="5" cols="50" id="product_content" name="product_content">${adminProductOne.product_content }</textarea>
 						</div>
 					</td>
 				  </tr>
@@ -173,7 +173,7 @@
 			</table>
 			
 			<div class="btn__group">
-				<button type="submit" id="update_Btn" class="btn">수정</button>
+				<button type="button" id="update_Btn" class="btn">수정</button>
 				<button type="button" id="back_Btn" class="btn">취소</button>
 			</div>
 			
@@ -201,11 +201,17 @@ $(document).ready(function () {
 	});
 });
 
+//수정 버튼
+var formObj = $("form[role='form']");
+$("#update_Btn").click(function(){
+	$(".category2").attr('disabled', false);
+	formObj.submit();
+});
+
 // 취소 버튼
 $("#back_Btn").click(function(){
 	history.back();
 });
-
 
 //이미지 미리보기
 $("#product_image").change(function(){
@@ -256,7 +262,6 @@ for(var i = 0; i < cate1Arr.length; i++) {
 $(document).on("change", "select.category1", function(){
 	var cate2Arr = new Array();
 	var cate2Obj = new Object();
-	$('.category2').attr('disabled', false);
 	// 2차 분류 셀렉트 박스에 삽입할 데이터 준비
 	for(var i = 0; i < jsonData.length; i++) {
 		if(jsonData[i].category_refid != "0") {
@@ -268,6 +273,7 @@ $(document).on("change", "select.category1", function(){
 		}
 	}
 	var cate2Select = $("select.category2");
+	$(".category2").attr('disabled', false);
 	cate2Select.children().remove();
 	$("option:selected", this).each(function(){
 		var selectVal = $(this).val();  
@@ -301,15 +307,6 @@ else{
 		+ select_category_id + "'>" + select_category_name + "</option>");
 	$(".category2").attr('disabled', true);
 }
-
-// ckeditor
-var ckeditor_config = {
-	resize_enable : false,
-	enterMode : CKEDITOR.ENTER_BR,
-	shiftEnterMode : CKEDITOR.ENTER_P,
-	filebrowserUploadUrl : "${pageContext.request.contextPath}/admin/product_ckUpload"
-};
-CKEDITOR.replace('product_content', ckeditor_config);
 
 </script>
 

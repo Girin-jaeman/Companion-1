@@ -27,119 +27,173 @@
 </head>
 <body>
 	<div class="wrapper">
-        
-        <!-- Sidebar  -->
-		<jsp:include page="../common/sidebar.jsp"/>
 
-        <!-- Page Content  -->
-        <div id="content">
-            <div id="container">
+		<!-- Sidebar  -->
+		<jsp:include page="../common/sidebar.jsp" />
 
-	            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	                <div class="container-fluid">
-	
-	                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-	                        <i class="fas fa-align-left"></i>
-	                        <span>메뉴</span>
-	                    </button>
-	                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-	                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-	                        aria-expanded="false" aria-label="Toggle navigation">
-	                        <i class="fas fa-align-justify"></i>
-	                    </button>
-	                    
-	                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	                        <c:choose>
-	                            <c:when test="${sessionScope.memberVo.member_id==null }">
-	                                <script>
+		<!-- Page Content  -->
+		<div id="content">
+			<div id="container">
+
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+
+						<button type="button" id="sidebarCollapse" class="btn btn-info">
+							<i class="fas fa-align-left"></i> <span>메뉴</span>
+						</button>
+						<button class="btn btn-dark d-inline-block d-lg-none ml-auto"
+							type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent"
+							aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fas fa-align-justify"></i>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<c:choose>
+								<c:when test="${sessionScope.memberVo.member_id==null }">
+									<script>
 	                                	window.location.href="login";
 	                                </script>
-	                            </c:when>
-	                            <c:otherwise>
-	                                <ul class="nav navbar-nav ml-auto">
-	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">주문내역</a>
-	                                    </li>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
-	                                    </li>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mycart">장바구니</a>
-	                                    </li>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
-	                                    </li>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
-	                                    </li>
-	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }logout">로그아웃</a>
-	                                    </li>
-	                                </ul>
-	                            </c:otherwise>
-	                            
-	                        </c:choose>
-	                    </div>
-	                </div>
-	            </nav>
-	            <div class="mytop">
-	            	<div id="icon">
-	            		<i class="fas fa-user fa-9x"></i>
-	            	</div>
-	            	<div class="info">
-	            		<h2>[아이디]</h2>
-	            		<span>dmswjd12</span>
-	            	</div>
-	            	<div class="info-box">
-	            		<i class="fas fa-truck fa-3x"></i>
-	            		<br/><br/>
-	            		<h2>배송조회 ></h2>
-	            	</div>
-	            	<div class="info-box">
-	            		<i class="fas fa-star fa-3x"></i>
-	            		<br/><br/>
-	            		<h2>쿠폰 ></h2>
-	            	</div>
-	            	<div class="info-box">
-	            		<i class="fas fa-edit fa-3x"></i>
-	            		<br/><br/>
-	            		<h2>후기작성 ></h2>
-	            	</div>
-	            </div>
-	            <div class="maincontent">
-	            
-					<h1>비밀번호를 입력해주세요</h1>
-					<form name="mypagechk" method="post" autocomplete="off">
-						<label for="member_pw">PW</label>
-						<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>
-						<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
-						
-						<button type="button" id="mypagechk_btn">확인</button>
-						<button type="button" onclick="history.back();">뒤로</button>	</br>
-					</form>
-					
-	            </div>
+								</c:when>
+								<c:otherwise>
+									<ul class="nav navbar-nav ml-auto">
+										<p>${sessionScope.memberVo.member_name }님이로그인 중입니다.</p>
+										<li class="nav-item"><a class="nav-link" href="#">주문내역</a>
+										</li>
+										<li class="nav-item"><a class="nav-link"
+											href="${root }mypagereserve">예약조회</a></li>
+										<li class="nav-item"><a class="nav-link"
+											href="${root }mycart">장바구니</a></li>
+										<li class="nav-item"><a class="nav-link"
+											href="${root }mypagequestion">문의조회</a></li>
+										<li class="nav-item"><a class="nav-link"
+											href="${root }mypagechk">나의정보</a></li>
+										<li class="nav-item"><a class="nav-link"
+											href="${root }logout">로그아웃</a></li>
+									</ul>
+								</c:otherwise>
+
+							</c:choose>
+						</div>
+					</div>
+				</nav>
+				<div class="mytop">
+					<!-- 유지정보 -->
+					<input type="hidden" name="id_chk" id="id_chk"
+						value="${sessionScope.memberVo.member_id }"> <input
+						type="hidden" name="pw_chk" id="pw_chk"
+						value="${sessionScope.memberVo.member_pw }"> <input
+						type="hidden" name="tel_chk" id="tel_chk"
+						value="${sessionScope.memberVo.member_tel }"> <input
+						type="hidden" name="phone_chk" id="phone_chk"
+						value="${sessionScope.memberVo.member_phone }"> <input
+						type="hidden" name="email_chk" id="email_chk"
+						value="${sessionScope.memberVo.member_email }"> <input
+						type="hidden" name="addr1_chk" id="addr1_chk"
+						value="${sessionScope.memberVo.member_addr1 }"> <input
+						type="hidden" name="addr2_chk" id="addr2_chk"
+						value="${sessionScope.memberVo.member_addr2 }"> <input
+						type="hidden" name="addr3_chk" id="addr3_chk"
+						value="${sessionScope.memberVo.member_addr3 }">
+					<!-- 유지정보 -->
+
+					<div id="icon">
+						<i class="fas fa-user fa-9x"></i>
+					</div>
+					<div class="info">
+						<ul>
+							<li>
+								<h3>이름</h3> <span>${sessionScope.memberVo.member_name }</span>
+							</li>
+							<li>
+								<h3>휴대전화</h3> <span>${sessionScope.memberVo.member_phone }</span>
+							</li>
+							<li>
+								<h3>주소</h3> <span>우편번호
+									${sessionScope.memberVo.member_addr1 }<br />
+									${sessionScope.memberVo.member_addr2 } &nbsp;
+									${sessionScope.memberVo.member_addr3 }
+							</span>
+							</li>
+						</ul>
+						<div class="editbox">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#exampleModal">정보 변경</button>
+						</div>
+					</div>
+					<!-- 개인정보 변경 확인 비밀번호 창 Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">개인정보 변경을 위해
+										비밀번호를 입력해 주세요:)</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+
+									<form name="mypagechk" method="post" autocomplete="off">
+										<label for="member_pw">Password</label>
+										<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>
+										<input type="hidden" name="pw_chk" id="pw_chk"
+											value="${sessionScope.memberVo.member_pw }">
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">취소</button>
+									<button type="button" class="btn btn-primary"
+										id="mypagechk_btn">확인</button>
+								</div>
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="info-box">
+						<a href="#"> <i class="fas fa-truck fa-3x"></i> <br />
+						<br />
+							<h2>배송조회 ></h2>
+						</a>
+					</div>
+					<div class="info-box">
+						<a href="#"> <i class="fas fa-clipboard fa-3x"></i> <br />
+						<br />
+							<h2>예약조회 ></h2>
+						</a>
+					</div>
+					<div class="info-box">
+						<a href="#"> <i class="fas fa-edit fa-3x"></i> <br />
+						<br />
+							<h2>후기작성 ></h2>
+						</a>
+					</div>
+				</div>
+				<!-- .mytop [end] -->
+				<div class="maincontent">
+					<div class="empty">
+						<h2>여기에 뭘넣지</h2>
+					</div>
+				</div>
+				<!-- .maincontent [end] -->
 			</div>
-			
-        <div id="footer">
-            <!-- test main content end-->
-            <hr class="mb-2">
-            <footer class="companion-footer">
-                    <div class="paragraph-group">
-                        <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
-                        <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
-                        <p>호스팅제공자:(주)Companion</p>
-                        <br/>
-                        <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
-                        <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
-                    </div>
-            </footer>
-        </div>
+			<!-- #container [end] -->
+			<!-- Footer  -->
+			<jsp:include page="../common/footer.jsp" />
+			<!-- Footer end -->
 
 		</div>
+		<!-- #content end -->
 	</div>
-	
+	<!-- .wrapper end  -->	
 	
 	<!-- script start -->
 	<!-- jQuery -->

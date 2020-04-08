@@ -105,11 +105,11 @@
 	            <tbody>
 	            <c:forEach items="${list }" var="bean" varStatus="status">
 	                <tr>
-	                    <td><a href="detail/${bean.article_id}">${(total-status.index)-(pagination.page-1)*pagination.listSize}</a></td> <!-- 글번호 (총 게시물 수 - status.index(반복문 인덱스))-((현재 페이지번호-1)*한페이지에 나오는 게시글 갯수)  -->
-	                    <td><a href="detail/${bean.article_id}">${bean.article_title }</a></td>
-	                    <td><a href="detail/${bean.article_id}">${bean.article_date }</a></td>
-	                    <td><a href="detail/${bean.article_id}">${bean.member_id }</a></td>
-	                    <td><a href="detail/${bean.article_id}">${bean.article_count }</a></td>
+	                    <td><a href="${root }notice/detail?article_id=${bean.article_id}">${(total-status.index)-(pagination.page-1)*pagination.listSize}</a></td> <!-- 글번호 (총 게시물 수 - status.index(반복문 인덱스))-((현재 페이지번호-1)*한페이지에 나오는 게시글 갯수)  -->
+	                    <td><a href="${root }notice/detail?article_id=${bean.article_id}">${bean.article_title }</a></td>
+	                    <td><a href="${root }notice/detail?article_id=${bean.article_id}">${bean.article_date }</a></td>
+	                    <td><a href="${root }notice/detail?article_id=${bean.article_id}">${bean.member_id }</a></td>
+	                    <td><a href="${root }notice/detail?article_id=${bean.article_id}">${bean.article_count }</a></td>
 	                </tr>
 	            </c:forEach>
 	            </tbody>
