@@ -121,9 +121,14 @@
                         <th>상품금액</th>
                         <th>합계금액</th>
                     </tr>
+                   <form name="cartOrder" method="post" autocomplete="off" modelAttribute="cartOrderList">
+<%int i=0; %>
 <c:forEach items="${cartList }" var="bean">
                     <tr>
-                        <td><input type="checkbox" name="oneCheck" class="oneCheck" data-cartNum="${bean.cart_id }" value="${bean.product_price*bean.cart_quantity }" onclick="checkSum()"></td>
+                        <td><input type="checkbox" name="list[<%=i %>]" class="oneCheck" data-cartNum="${bean.cart_id }" value="${bean.cart_id }" onclick="checkSum()"></td>
+						<input type="hidden" id="price${bean.cart_id }" value="${bean.product_price }">
+						<input type="hidden" id="quantity${bean.cart_id }" value="${bean.cart_quantity }">
+                       	<% i+=1; %>
                         <td>${bean.product_thumb }</td>
                         <td>
                         	${bean.product_name }
@@ -161,6 +166,7 @@
                         <td>${bean.product_price }원</td>
                         <td>${bean.product_price*bean.cart_quantity }원</td>
 </c:forEach>
+                   </form>
                     </tr>
                 </table>
                 <!-- table end -->
@@ -235,8 +241,14 @@
 			}
 			
 			var checkArr=new Array();
+			var cart_id="";
+			var price="";
+			var quantity="";
 			$("input[class='oneCheck']:checked").each(function(){
-				checkArr.push($(this).attr("value"));
+				cart_id=$(this).attr("value");
+				price=$("#price"+cart_id).val();
+				quantity=$("#quantity"+cart_id).val();
+				checkArr.push(parseInt(price)*parseInt(quantity));
 			});
 			var sum=0;
 			var count=checkArr.length;
@@ -288,8 +300,14 @@
 		/* 선택 금액 합계 표시  & 개수 표시*/
 		function checkSum(){
 			var checkArr=new Array();
+			var cart_id="";
+			var price="";
+			var quantity="";
 			$("input[class='oneCheck']:checked").each(function(){
-				checkArr.push($(this).attr("value"));
+				cart_id=$(this).attr("value");
+				price=$("#price"+cart_id).val();
+				quantity=$("#quantity"+cart_id).val();
+				checkArr.push(parseInt(price)*parseInt(quantity));
 			});
 			var sum=0;
 			var count=checkArr.length;
@@ -306,7 +324,6 @@
 			var changeOptionValue=document.getElementById("selectOption"+product_id);
 			
 			var selectValue=changeOptionValue.options[changeOptionValue.selectedIndex].text;
-			console.log(selectValue);
 			document.getElementById("updateOption"+product_id).value=selectValue;
 		}
 		
@@ -342,7 +359,6 @@
 		/* 수량 선택 */
 		function changeQuantity(product_id){
 			var updateQuantity=document.getElementById("selectQuantity"+product_id);
-			
 			var selectValue=updateQuantity.options[updateQuantity.selectedIndex].text;
 			document.getElementById("updateQuantity"+product_id).value=selectValue;
 		}
@@ -375,6 +391,25 @@
 				}
 			});d
 		}
+		
+		/* 선택 사항 결제 */
+		$("#choiceProduct").click(function(){
+			if($("#selectCheckNum").html()==0){
+				alert("선택한 상품이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			document.cartOrder.submit();
+		});
+		
+		/* 전체 결제 */
+		$("#choiceAllProduct").click(function(){
+			if($("#selectCheckNum").html()==0){
+				alert("선택한 상품이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			$(".oneCheck").prop("checked",true);
+			document.cartOrder.submit();			
+		});
 </script>
 </body>
 </html>

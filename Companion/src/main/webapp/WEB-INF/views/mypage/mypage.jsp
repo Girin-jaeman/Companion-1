@@ -331,7 +331,7 @@
 				var addr2_change=$("#addr2_change").val();
 				var addr3_change=$("#addr3_change").val();
 				var addrData={"addr1_change" : addr1_change, "addr2_change" : addr2_change, "addr3_change" : addr3_change, "id_chk" : id_chk};
-				if(addr1_change=="" || addr2_change=="" || addr3_change) {
+				if(addr1_change=="" || addr2_change=="" || addr3_change=="") {
 					alert("입력된 주소가 없습니다.");
 					return;
 				}

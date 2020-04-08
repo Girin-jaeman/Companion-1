@@ -20,7 +20,6 @@ public class MypageQuestionVo {
 	private String product_name;
 	
 	public MypageQuestionVo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getQuestion_id() {

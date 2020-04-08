@@ -17,7 +17,6 @@ public class MypageCartVo {
 	private String product_option5;
 	
 	public MypageCartVo() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public String getCart_id() {
