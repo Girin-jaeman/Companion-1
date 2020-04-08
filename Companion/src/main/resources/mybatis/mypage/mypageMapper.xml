@@ -62,9 +62,9 @@
   		select product_option5 from product where product_id=#{product_id}
   	</select>
   	<update id="changeOptionCart" parameterType="hashmap">
-  		update cart set cart_option=#{change_option} where member_id=#{member_id} and product_id=#{product_id}
+  		update cart set cart_option=#{change_option} where member_id=#{member_id} and cart_id=#{cart_id}
   	</update>
   	<update id="changeQuantityCart" parameterType="hashmap">
-  		update cart set cart_quantity=#{change_quantity} where member_id=#{member_id} and product_id=#{product_id}
+  		update cart set cart_quantity=#{change_quantity} where member_id=#{member_id} and cart_id=#{cart_id}
   	</update>
   </mapper>

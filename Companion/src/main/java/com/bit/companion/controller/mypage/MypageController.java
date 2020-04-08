@@ -191,21 +191,21 @@ public class MypageController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mypage/cartChangeOption",method=RequestMethod.POST)
-	public int changeOptionCart(HttpSession session,String change_option,String product_id) {
+	public int changeOptionCart(HttpSession session,String change_option,String cart_id) {
 		MemberVo member=(MemberVo)session.getAttribute("memberVo");
 		String member_id=member.getMember_id();
 		int result=0;
-		result=mypageService.changeOptionCart(change_option,product_id,member_id);
+		result=mypageService.changeOptionCart(change_option,cart_id,member_id);
 		return result;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/mypage/cartChangeQuantity",method=RequestMethod.POST)
-	public int changeQuantityCart(HttpSession session,String change_quantity,String product_id) {
+	public int changeQuantityCart(HttpSession session,String change_quantity,String cart_id) {
 		MemberVo member=(MemberVo)session.getAttribute("memberVo");
 		String member_id=member.getMember_id();
 		int result=0;
-		result=mypageService.changeQuantityCart(change_quantity,product_id,member_id);
+		result=mypageService.changeQuantityCart(change_quantity,cart_id,member_id);
 		return result;
 	}
 }

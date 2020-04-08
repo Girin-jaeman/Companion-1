@@ -67,13 +67,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public int changeOptionCart(String change_option, String product_id, String member_id) {
-		return mypageDao.changeOptionCart(change_option,product_id,member_id);
+	public int changeOptionCart(String change_option, String cart_id, String member_id) {
+		return mypageDao.changeOptionCart(change_option,cart_id,member_id);
 	}
 
 	@Override
-	public int changeQuantityCart(String change_quantity, String product_id, String member_id) {
-		return mypageDao.changeQuantityCart(change_quantity,product_id,member_id);
+	public int changeQuantityCart(String change_quantity, String cart_id, String member_id) {
+		return mypageDao.changeQuantityCart(change_quantity,cart_id,member_id);
 	}
 
 }

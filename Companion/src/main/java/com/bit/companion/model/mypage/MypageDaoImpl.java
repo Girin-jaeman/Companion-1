@@ -153,19 +153,19 @@ public class MypageDaoImpl implements MypageDao {
 	}
 
 	@Override
-	public int changeOptionCart(String change_option, String product_id, String member_id) {
+	public int changeOptionCart(String change_option, String cart_id, String member_id) {
 		HashMap<String,String> cartInfo=new HashMap<>();
 		cartInfo.put("change_option",change_option);
-		cartInfo.put("product_id", product_id);
+		cartInfo.put("cart_id", cart_id);
 		cartInfo.put("member_id", member_id);
 		return sqlSession.update("mypage.changeOptionCart",cartInfo);
 	}
 
 	@Override
-	public int changeQuantityCart(String change_quantity, String product_id, String member_id) {
+	public int changeQuantityCart(String change_quantity, String cart_id, String member_id) {
 		HashMap<String,String> cartInfo=new HashMap<>();
 		cartInfo.put("change_quantity", change_quantity);
-		cartInfo.put("product_id", product_id);
+		cartInfo.put("cart_id", cart_id);
 		cartInfo.put("member_id", member_id);
 		return sqlSession.update("mypage.changeQuantityCart",cartInfo);
 	}
