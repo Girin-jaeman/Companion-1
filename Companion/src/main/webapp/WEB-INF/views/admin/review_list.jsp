@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/review_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +11,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+       <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <link rel="stylesheet" href="${root }css/admin/review.css">
@@ -61,81 +62,34 @@
 			<div class="main--title">
 				<h1>[Admin] 후기 목록</h1>
 			</div>
-			<div class="sub-group clearfix">
-				<div class="total-count float--left">
-					<h4>총 ${total } 건</h4>
-				</div>
-				<!-- 검색창 -->
-				<div class="search-group btn-group float--right">
-					<select name="searchType" id="searchType">
-						<option value="all">전체</option>
-						<option value="product">상품명</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="member">작성자</option>
-					</select>
-					<input type="text" name="keyword" id="keyword">
-					<button name="search_Btn" id="search_Btn">검색</button>
-				</div>
-			</div>
 			
-			<table class="table table_layout">
-			<colgroup>
-        		<col class="col1">
-        		<col class="col2">
-        		<col class="col3">
-        		<col class="col4">
-        		<col class="col5">
-        		<col class="col6"> 
-        		<col class="col7"> 
-        		
-    		</colgroup>
-			<thead>
-				<tr>
-					<th scope="row">글번호</th>
-					<th scope="row">상품명</th>
-					<th scope="row">썸네일</th>
-					<th scope="row">제목</th>
-					<th scope="row">작성자</th>
-					<th scope="row">날짜</th>
-					<th scope="row">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-			<!-- forEach start -->
-			<c:forEach items="${adminArticleList }" var="bean" varStatus="status">
-			<tr>
-			<td><div>${(total-status.index)-(search.page-1)*search.listSize}</div></td>
-			<td><div>${bean.product_name } </div></td>
-			<td>
-				<img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/>
-			</td>
-			<td><div><a href="${root }admin/review_detail?article_id=${bean.article_id }&
-					page=${search.page}&
-					range=${search.range}&
-					searchType=${search.searchType}&
-					keyword=${search.keyword}">${bean.article_title }</a></div></td>
-			<td><div>${bean.member_id }</div></td>
-			<td><div>${bean.article_date }</div></td>
-			<td><div>${bean.article_count }</div></td>
-			</tr>
-			</c:forEach>
-			</tbody>
+			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th>상품명</th>
+						<th>썸네일</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>날짜</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${adminReviewList }" var="bean" varStatus="status">
+						<tr>
+							<td>${bean.product_name }</td>
+							<td><img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/></td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
+							<td>${bean.member_id }</td>
+							<td>${bean.article_date }</td>
+							<td>${bean.article_count }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</section>
 		<!-- section [end] -->
 		
-		<!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
 	</div>
 	<!-- #content [end] -->
 </div>
@@ -149,18 +103,46 @@
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+<!-- Data Table JS -->
+<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+
 <script type="text/javascript">
-//검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
-});
+// 데이터 테이블 초기화
+	$(document).ready(function() {
+		$('#dataTable').DataTable({
+			"language": {
+				"emptyTable": "데이터가 없습니다.",
+				"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+				"info": "현재 _START_ - _END_ / _TOTAL_건",
+				"infoEmpty": "데이터 없음",
+				"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+				"search": "검색: ",
+				"zeroRecords": "일치하는 데이터가 없습니다.",
+				"loadingRecords": "로딩중...",
+				"processing":     "잠시만 기다려 주세요...",
+				"paginate": {
+					"next": "다음",
+					"previous": "이전"
+				}
+			},
+			"columns" : [ 
+				{ "width" : "25px" },
+				{ "width" : "25px" }, 
+				{ "width" : "200px" }, 
+				{ "width" : "25px" },
+				{ "width" : "25px" },
+				{ "width" : "25px" }
+			],
+			"lengthMenu" : [
+				10,20,30,40,50
+			],
+			"pageLength" : 10,
+			"stateSave" : true
+		});
+	});
 </script>
+
 </body>
 </html>
