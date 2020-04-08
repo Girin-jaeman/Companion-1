@@ -180,7 +180,7 @@
 				<!-- .mytop [end] -->
 				<div class="maincontent">
 					<div class="empty">
-						<h2>여기에 뭘넣지</h2>
+						<h2>최근 구매 내역</h2>
 					</div>
 				</div>
 				<!-- .maincontent [end] -->
