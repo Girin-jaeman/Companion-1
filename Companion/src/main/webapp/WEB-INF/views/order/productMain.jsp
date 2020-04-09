@@ -194,45 +194,20 @@
        		 </c:forEach>
 		<%-- 	        <% } %> --%>
     </div>
-    <ul>
-    	<li>
-    			<a href="${root }order/productMain?<%=request.getQueryString() %>&paging?num=1">글 목록(페이징)</a>
-    	</li>
-    	<li>
-    		<a>글 페이징</a>
-    	</li>
-    	<li>
-    		<a>글 작성 일단 하라느 ㄴ대로 해봄</a>
-    	</li>
-    </ul>
     
-					      <!-- pagination [start] -->
-    			<p>아 왜 안나와 이친구들??</p>
-			   		<c:forEach begin="1" end="${pageNum }" var="num">
-						<span>
-							<a href="${root }order/productMain?<%=request.getQueryString() %>?num=${num}">${num }</a>
-						</span>
-					</c:forEach>
-    
-    
-    
-				
-	<%-- 				      
-				<jsp:include page="../common/pagination.jsp">
-					<jsp:param value="${pagination.prev }" name="prev"/>
-					<jsp:param value="${pagination.next }" name="next"/>
-					<jsp:param value="${pagination.page }" name="page"/>
-					<jsp:param value="${pagination.range }" name="range"/>
-					<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-					<jsp:param value="${pagination.startPage }" name="startPage"/>
-					<jsp:param value="${pagination.endPage }" name="endPage"/>
-				</jsp:include> --%>
-			
-		    
-					      
-					      
-				<!-- pagination [end] -->		
-		</div><!-- container end  -->
+    <!-- pagination [start] -->
+   		<c:forEach begin="1" end="${pageNum }" var="num">
+			<span>
+			<%
+				String str = request.getQueryString();
+				String result = str.substring(0,5);
+			%>
+				<a href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
+			</span>
+		</c:forEach>	      
+	<!-- pagination [end] -->		
+	
+		</div><!-- container end  --> 
 		<!-- Footer  -->
 			<jsp:include page="../common/footer.jsp"/>
 		<!-- Footer end -->
