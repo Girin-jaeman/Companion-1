@@ -69,7 +69,7 @@
 			<table class="table table-bordered dataTable" id="dataTable">
 				<thead>
 					<tr>
-						<th><input type="checkbox" id="check-all"></th>
+						<th></th>
 						<th>주문번호</th>
 						<th>주문상태</th>
 						<th>금액</th>
@@ -82,7 +82,7 @@
 				<tbody>
 				<c:forEach items="${list }" var="bean">
 					<tr>
-						<td><input type="checkbox" name="chk" class="chk"></td>
+						<td></td>
 						<td>${bean.order_id }</td>
 						<td>
 							<c:choose>
@@ -149,12 +149,44 @@
     <script src="${root }js/main.js"></script>
     <!-- Data Table JS -->
 	<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
+	<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
     <!-- Checkbox -->
     <script type="text/javascript">
     	$(document).ready(function(){
     		// DataTable
-    		$('#dataTable').DataTable();
-    		// 체크박스 전체선택, 전체해제
+    		var chkbox = $('#dataTable').DataTable({
+    			searching:false,
+    			columnDefs:[{
+    				orderable: false,
+    				className: 'select-checkbox',
+    				targets: 0
+    			}],
+    			select:{
+    				style:'multi',
+    				selector:'td:first-child'
+    			},
+    			order:[[1,'asc']]
+    		});
+			chkbox.on('click','th.select-checkbox',function(){
+    			if($('th.select-checkbox').hasClass('selected')){
+    				chkbox.rows().deselect();
+    				$('th.select-checkbox').removeClass('selected');
+    			} else {
+    				chkbox.rows().select();
+    				$('th.select-checkbox').addClass('selected');
+    			}
+    		}).on('select deselect',function(){
+    			('Some selection or deselection going on')
+    			if(chkbox.rows({
+    				selected:true
+    			}).count() !== chkbox.rows().count()){
+    				$('th.select-checkbox').removeClass('selected');
+    			} else {
+    				$('th.select-checkbox').addClass('selected');
+    			}
+    		});
+			/*
+     		// 체크박스 전체선택, 전체해제
     		$('#check-all').click(function(){
     			if($('#check-all').is(":checked")){
 	    			$('.chk').prop('checked',true);
@@ -164,12 +196,13 @@
     		});
     		// 한개의 체크박스 선택 해제 시 전체선택 체크박스도 해제
     		$('.chk').click(function(){
-    			if($('input[name="chk"]:checked').length == 167){ /* '167' 자리에 현재 페이지 게시물 수 넣어야함 */
+    			if($('input[name="chk"]:checked').length == 167){  '167' 자리에 현재 페이지 게시물 수 넣어야함
     				$('#check-all').prop('checked',true);
     			}else{
     				$('#check-all').prop('checked',false);
     			}
     		});
+    		*/
     	});
     </script>
 </body>
