@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <link rel="stylesheet" href="${root }css/admin/home.css">
@@ -64,32 +66,68 @@
 			<h1>주문 내역</h1>
 			<button>주문취소</button>
 			<button>출고요청</button>
-			<table class="table">
+			<table class="table table-bordered dataTable" id="dataTable">
 				<thead>
 					<tr>
-						<th>체크박스(전체선택)</th>
+						<th><input type="checkbox" id="check-all"></th>
 						<th>주문번호</th>
 						<th>주문상태</th>
-						<th>상품이름</th>
 						<th>금액</th>
-						<th>주문수량</th>
 						<th>주문자(아이디)</th>
 						<th>수령인</th>
+						<th>수령인 연락처</th>
 						<th>주문일</th>
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach items="${list }" var="bean">
 					<tr>
-						<td>체크박스</td>
-						<td>1</td>
-						<td>결제완료</td>
-						<td>유기농 사료(중형견)</td>
-						<td>238,000</td>
-						<td>1</td>
-						<td>이진규(jklee)</td>
-						<td>박경희</td>
-						<td>2020-04-09</td>
+						<td><input type="checkbox" name="chk" class="chk"></td>
+						<td>${bean.order_id }</td>
+						<td>
+							<c:choose>
+								<c:when test="${bean.order_state_id eq 0 }">
+									결제대기
+								</c:when>
+								<c:when test="${bean.order_state_id eq 1 }">
+									결제완료
+								</c:when>
+								<c:when test="${bean.order_state_id eq 2 }">
+									배송준비중
+								</c:when>
+								<c:when test="${bean.order_state_id eq 3 }">
+									출고요청
+								</c:when>
+								<c:when test="${bean.order_state_id eq 4 }">
+									출고처리중
+								</c:when>
+								<c:when test="${bean.order_state_id eq 5 }">
+									배송중/출고완료
+								</c:when>
+								<c:when test="${bean.order_state_id eq 6 }">
+									배송완료
+								</c:when>
+								<c:when test="${bean.order_state_id eq 7 }">
+									구매확정
+								</c:when>
+								<c:when test="${bean.order_state_id eq 8 }">
+									교환
+								</c:when>
+								<c:when test="${bean.order_state_id eq 9 }">
+									반품
+								</c:when>
+								<c:otherwise>
+									주문취소
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td><fmt:formatNumber value="${bean.order_amount }" pattern="###,###,###"/></td>
+						<td>${bean.member_name }(${bean.member_id })</td>
+						<td>${bean.order_name }</td>
+						<td>${bean.order_phone }</td>
+						<td>${bean.order_date }</td>
 					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -109,5 +147,30 @@
     <script src="${root }js/bootstrap/bootstrap.js"></script>
     <!-- MAIN JS -->
     <script src="${root }js/main.js"></script>
+    <!-- Data Table JS -->
+	<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
+    <!-- Checkbox -->
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		// DataTable
+    		$('#dataTable').DataTable();
+    		// 체크박스 전체선택, 전체해제
+    		$('#check-all').click(function(){
+    			if($('#check-all').is(":checked")){
+	    			$('.chk').prop('checked',true);
+    			}else{
+    				$('.chk').prop('checked',false);
+    			}
+    		});
+    		// 한개의 체크박스 선택 해제 시 전체선택 체크박스도 해제
+    		$('.chk').click(function(){
+    			if($('input[name="chk"]:checked').length == 167){ /* '167' 자리에 현재 페이지 게시물 수 넣어야함 */
+    				$('#check-all').prop('checked',true);
+    			}else{
+    				$('#check-all').prop('checked',false);
+    			}
+    		});
+    	});
+    </script>
 </body>
 </html>
