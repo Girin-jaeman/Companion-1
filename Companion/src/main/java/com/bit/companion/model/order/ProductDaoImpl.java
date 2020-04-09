@@ -1,6 +1,7 @@
 package com.bit.companion.model.order;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -88,13 +89,33 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 
-	//이거 kuzuro꺼 페이징 좀 이상하다.
 	//countPage
 	//int AllProductNum 으로 List 내의 컬럼으로 받아오겠습니다.(총 상품 목록 카테고리별로 분류해서요!)
 	@Override
-	public List<ProductVo> countPage(int category_id) throws SQLException {
+	public List<ProductVo> countPage(int category_id,int displayPost,int postNum) throws SQLException {
 
 		return sqlSession.selectList("ProductPaging",category_id);
+	}
+
+	
+	//countList
+	//게시물 총 갯수
+	@Override
+	public int count(int category_id) throws Exception {
+
+		return sqlSession.selectOne("count",category_id);
+	}
+
+	//게시물 목록 + 페이징
+	@Override
+	public List<ProductVo> listPage(int displayPost, int postNum,int category_id) throws Exception {
+		
+		HashMap data = new HashMap();
+		
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("product.ListPage",data);
 	}
 	
 }
