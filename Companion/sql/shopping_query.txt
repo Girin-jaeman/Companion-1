@@ -218,6 +218,7 @@ select product_id,order_id,order_detail_id from `order_detail`
 select (select count(*) from product where category_id=#{category_id}) as AllProductNum,product.*
 from product where category_id=#{category_id};
 -------------------------페이징
+select * from product order by product_id limit #{startNum}, #{endNum};???????????아 이거 뭔데
 
 kuzuro 방식 --?> 리스트 따로 페이징 개수 따로 받아옴 매퍼 두개로 받음.
 지금 우리 쇼핑몰은 카테고리별로 수량 구해서 각각 페이징을 해야 함.

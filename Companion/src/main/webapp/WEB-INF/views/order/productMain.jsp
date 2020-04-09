@@ -63,10 +63,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/companion/order/productMain?c=700">산책용품</a>
                             </li>
-                      
-                            
-                            
-                            
                         </ul>
 						</div>
 					</div>
@@ -117,17 +113,14 @@
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByLowPrice?<%=request.getQueryString() %>">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByHighPrice?<%=request.getQueryString() %>">높은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByDate?<%=request.getQueryString() %>">등록일순</a></li>
-                    <!--     <div class="navbar navbar-dark bg-primary"> 
-	                     검색기능 미완성임.    <form class="form-inline">
-						    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-						    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색기능 넣을까말까</button>
-							</form>
-						</div> -->
+       
                     </ol>
+                    
                 </nav>
 			   <div class="row">
 			        <%--    <% for(int i=0;i<20;i++){ %>  --%>
-			<c:forEach items="${productCategory }" var="bean"> 
+<!-- ${listPage}에서 받아와야 함 .기존에 받던거 다  다시 받아야함...?! 으아아아아ㅏ아!!!!!! -->
+			<c:forEach items="${listPage }" var="bean"> 
 			        <div class="col-md-3 col-sm-6"> 
 			            <div class="product-grid productbox">
 			                <div class="product-image">
@@ -187,7 +180,6 @@
 					               </c:when>  
 									<c:when test="${memberVo.member_id!=null }">	
 					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
-					                    <%System.out.println("따봉 클릭!할때만 작동하라고..."); %>
 					               </c:when>  
  			                </c:choose>       
 					 
@@ -201,11 +193,31 @@
 			        </div>
        		 </c:forEach>
 		<%-- 	        <% } %> --%>
-	
-  
     </div>
-			  <!-- 썸네일 쇼쇼핑멀 끝 -->
+    <ul>
+    	<li>
+    			<a href="${root }order/productMain?<%=request.getQueryString() %>&paging?num=1">글 목록(페이징)</a>
+    	</li>
+    	<li>
+    		<a>글 페이징</a>
+    	</li>
+    	<li>
+    		<a>글 작성 일단 하라느 ㄴ대로 해봄</a>
+    	</li>
+    </ul>
+    
 					      <!-- pagination [start] -->
+    			<p>아 왜 안나와 이친구들??</p>
+			   		<c:forEach begin="1" end="${pageNum }" var="num">
+						<span>
+							<a href="${root }order/productMain?<%=request.getQueryString() %>?num=${num}">${num }</a>
+						</span>
+					</c:forEach>
+    
+    
+    
+				
+	<%-- 				      
 				<jsp:include page="../common/pagination.jsp">
 					<jsp:param value="${pagination.prev }" name="prev"/>
 					<jsp:param value="${pagination.next }" name="next"/>
@@ -214,7 +226,11 @@
 					<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
 					<jsp:param value="${pagination.startPage }" name="startPage"/>
 					<jsp:param value="${pagination.endPage }" name="endPage"/>
-				</jsp:include>
+				</jsp:include> --%>
+			
+		    
+					      
+					      
 				<!-- pagination [end] -->		
 		</div><!-- container end  -->
 		<!-- Footer  -->
