@@ -209,9 +209,16 @@
 	   		</li>
 	   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
 				<span>
-				<li class="page-item">
-					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
-				</li>	
+					<c:if test="${select != num}">
+						<li class="page-item">
+							<a class="page-link" href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
+						</li>	
+				  	</c:if>  
+				 	<c:if test="${select == num}">
+						<li class="page-item">
+							<a class="page-link bg-info text-white" href="#" >${num }</a>	
+						</li>	
+				 	</c:if>		
 				</span>
 			</c:forEach>
 			<li class="page-item">
