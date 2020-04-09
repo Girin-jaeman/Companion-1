@@ -73,8 +73,12 @@
 				<span>${adminReservationOne.member_id }</span>
 			</div>
 			<div class="inputArea">
+				<label for="member_id">예약신청날짜</label>
+				<span>${adminReservationOne.reserve_date }</span>
+			</div>
+			<div class="inputArea">
 				<label for="service_id">서비스</label>
-				<span>${adminReservationOne.service_id }</span>
+				<span>${adminReservationOne.service_name }</span>
 			</div>
 			<div class="inputArea">
 				<label for="reserve_checkin">체크인날짜</label>

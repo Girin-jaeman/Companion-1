@@ -16,7 +16,7 @@
 		    r.reserve_dogage,
 		    r.reserve_date,
 		    r.reserve_state_id
-    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id;
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id ORDER BY r.reserve_date DESC;
 	</select>
 	
 	<!-- hotelService list -->
@@ -35,6 +35,7 @@
 		    r.reserve_dogtype,
 		    r.reserve_dogage,
 		    r.reserve_date,
+		    r.reserve_msg,
 		    r.reserve_state_id
     	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id AND r.reserve_id=#{value};
 	</select>

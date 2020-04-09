@@ -30,6 +30,7 @@ public class HotelDaoImpl implements HotelDao {
 
 	@Override
 	public void insertOne(HotelVo bean)  throws SQLException {
+		System.out.println("hotel 예약 진행중");
 		sqlSession.insert("hotel.insertOne",bean);
 	}
 
