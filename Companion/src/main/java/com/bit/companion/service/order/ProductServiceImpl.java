@@ -116,12 +116,6 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 	}
-
-	
-	
-	
-	
-	
 	
 	//	프로덕트 목록 출력.
 	@Override
@@ -135,23 +129,6 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
-	//paging 
-	@Override
-	public void countPage(Model model, int category_id,int displayPost,int postNum) {
-
-		List<ProductVo> list;
-		System.out.println("count Page service 작동 확인");
-		System.out.println(category_id);
-		System.out.println(displayPost);
-		System.out.println(postNum);
-		try {
-			list= productDao.countPage(category_id,displayPost,postNum);
-			model.addAttribute("listPage",list);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-			
-	}
 	
 	//이용후기 목록 출력.
 	@Override
@@ -167,12 +144,26 @@ public class ProductServiceImpl implements ProductService {
 			}
 	}
 
-
+	//paging 
+	@Override
+	public void countPage(Model model, int category_id,int displayPost,int postNum) {
+		List<ProductVo> list;
+		System.out.println("count Page service 작동 확인");
+		System.out.println(category_id);
+		System.out.println(displayPost);
+		System.out.println(postNum);
+		try {
+			list= productDao.countPage(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	//상품 총 개수
 	@Override
 	public int count(Model model, int category_id) throws Exception {
-
 		return productDao.count(category_id);
 	}
 
@@ -186,9 +177,6 @@ public class ProductServiceImpl implements ProductService {
 			model.addAttribute("listPage",list);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		for(int i=0;i<list.size();i++) {
-			System.out.println(list.get(i));;
 		}
 		return list;
 	}
