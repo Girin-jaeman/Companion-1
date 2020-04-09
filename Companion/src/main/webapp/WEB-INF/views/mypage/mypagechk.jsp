@@ -58,7 +58,6 @@
 								</c:when>
 								<c:otherwise>
 									<ul class="nav navbar-nav ml-auto">
-										<p>${sessionScope.memberVo.member_name }님이로그인 중입니다.</p>
 										<li class="nav-item"><a class="nav-link" href="#">주문내역</a>
 										</li>
 										<li class="nav-item"><a class="nav-link"
@@ -102,6 +101,7 @@
 						<i class="fas fa-user fa-9x"></i>
 					</div>
 					<div class="info">
+						<div id="myinfo">
 						<ul>
 							<li>
 								<h3>이름</h3> <span>${sessionScope.memberVo.member_name }</span>
@@ -117,6 +117,7 @@
 							</span>
 							</li>
 						</ul>
+						</div>
 						<div class="editbox">
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -181,30 +182,36 @@
 				<div class="maincontent">
 					<div class="empty">
 						<h2>최근 구매 내역</h2>
-						<table class="table table-striped table-bordered" style="width:100%">
+						<table class="table table-bordered table_layout table-hover" style="width:100%">
+						<colgroup>
+							<col class="col1">
+							<col class="col2">
+							<col class="col3">
+							<col class="col4">
+						</colgroup>
 							<thead>
 								<tr>
-									<th>이미지</th>
-									<th>상품이름</th>
-									<th>구매수량</th>
-									<th>구매날짜</th>
+									<th scope="row">이미지</th>
+									<th scope="row">상품이름</th>
+									<th scope="row">구매수량</th>
+									<th scope="row">구매날짜</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>그림2</td>
-									<td>옥수수먹고싶다</td>
-									<td>1</td>
-									<td>2020-04-08</td>
+									<td class="imgbox"><a href="#"><img src="${root }imgs/infochk.png" alt="80x80"></a></td>
+									<td><a href="#"><span>옥수수먹고싶다</span></a></td>
+									<td><a href="#"><span>1</span></a></td>
+									<td><a href="#"><span>2020-04-08</span></a></td>
 								</tr>
 								<tr>
-									<td>그림1</td>
-									<td>옥수수먹고싶다</td>
-									<td>1</td>
-									<td>2020-04-08</td>
+									<td class="imgbox"><a href="#"><img src="${root }imgs/infochk.png" alt="80x80"></a></td>
+									<td><a href="#"><span>옥수수먹고싶다</span></a></td>
+									<td><a href="#"><span>1</span></a></td>
+									<td><a href="#"><span>2020-04-08</span></a></td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align:center">구매내역 자세히>></td>
+									<td colspan="4" style="text-align:center"><a href="#">구매내역 자세히>></a></td>
 								</tr>
 							</tbody>
 						</table>

@@ -10,6 +10,6 @@
 	
 	<!-- 임시 'test01'->회원아이디로 수정 필요 -->
 	<insert id="insertOne" parameterType="hotelBean">
-		insert into `reserve` values (null,'test01',#{service_id},now(),#{reserve_checkin},#{reserve_checkout},#{reserve_dogtype},#{reserve_dogage},#{reserve_msg},DEFAULT);
+		insert into `reserve` values (null,#{member_id},#{service_id},now(),#{reserve_checkin},#{reserve_checkout},#{reserve_dogtype},#{reserve_dogage},#{reserve_msg},DEFAULT);
 	</insert>
 </mapper>
