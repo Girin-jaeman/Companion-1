@@ -1,5 +1,7 @@
 package com.bit.companion.service.order;
 
+import java.sql.SQLException;
+
 import org.springframework.ui.Model;
 
 public interface ProductService {
@@ -16,4 +18,7 @@ public interface ProductService {
 	void AlignmentOrderByLowPrice(Model model,int category_id);
 	void AlignmentOrderByHighPrice(Model model,int category_id);
 	void AlignmentOrderByDate(Model model,int category_id);
+	
+	//countPage
+	void countPage(Model model,int category_id) throws SQLException;
 }

@@ -150,10 +150,28 @@ public class ProductServiceImpl implements ProductService {
 			}
 	}
 
+	//paging 
+	@Override
+	public void countPage(Model model, int category_id) {
 
-
-
-
-
+		List<ProductVo> list;
+		System.out.println("service 작동 확인");
+		System.out.println(category_id);
+		try {
+			list= productDao.countPage(category_id);
+			model.addAttribute("productListWithPageNum",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+	}
 
 }
+
+
+
+
+
+
+
+

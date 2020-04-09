@@ -88,12 +88,13 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 
+	//이거 kuzuro꺼 페이징 좀 이상하다.
+	//countPage
+	//int AllProductNum 으로 List 내의 컬럼으로 받아오겠습니다.(총 상품 목록 카테고리별로 분류해서요!)
+	@Override
+	public List<ProductVo> countPage(int category_id) throws SQLException {
 
-	/*
-	 * @Override public List<ProductVo> ProductCategorySelect(int category_id)
-	 * throws SQLException { return
-	 * sqlSession.selectList("product.ProductCategorySelect",category_id); }
-	 */
-
-
+		return sqlSession.selectList("ProductPaging",category_id);
+	}
+	
 }

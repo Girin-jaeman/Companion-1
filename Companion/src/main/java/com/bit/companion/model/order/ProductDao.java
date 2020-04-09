@@ -19,5 +19,8 @@ public interface ProductDao {
 	List<ProductVo> productAlignmentByHighPrice(int category_id) throws SQLException;
 	List<ProductVo> productAlignmentByDate(int category_id) throws SQLException;
 	List<ProductVo> productRecommendList(int product_id) throws SQLException;
+	
+	//페이징용
+	List<ProductVo> countPage(int category_id) throws SQLException;
 }
 

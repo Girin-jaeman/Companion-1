@@ -33,54 +33,41 @@ public class ProductController {
 	
 	String CategoryNUM;
 	
-	
-	
-
 	// param version test  ajax 실패하면 이거 살릴것.
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
 	public String productDetail(Model model,@RequestParam("idx") int product_id) throws SQLException {
 
-		
-		
 		productService.productReview(model, product_id);
 		productService.detail(model, product_id);	
 		productService.productRecommend(model, product_id);
 		return "order/productDetail";
 	}
 	
-
-	
-	
-
-	
-	//페이징 할 것.
+	//페이징 할 것. 페이징과 동시에 리스트도 받아오게 됨.
 	//product 목록 출력용.
-	@RequestMapping(value = "/order/productMain/paging",method = RequestMethod.POST)
-	public String productListPaging(Model model,@RequestParam("c") int category_id,
-			@RequestParam(defaultValue="1") int curPage,HttpServletRequest request) {
-		productService.category(model,category_id);
+	@RequestMapping(value = "/order/productMain/paging",method = RequestMethod.GET)
+	public String productListPaging(Model model,@RequestParam("c") int category_id,HttpServletRequest request) throws SQLException {
+	
+		productService.countPage(model, category_id);
 		return "order/productMain";
 	}
 
+	
 	//URL주소 받아와서 정렬 할 것.
-	 //목록 출력 원본....... 페이징 해야하니까 기록해 놓겠습니다.
+	 //목록 출력 원본
 	  @RequestMapping(value = "/order/productMain",method = RequestMethod.GET)
 	  public String productcategory(Model model,@RequestParam("c") int category_id,HttpServletRequest request){
 
 		  productService.category(model,category_id);
 		  return "order/productMain";
 	  }
-
 	  
 	///추천순 정렬
 	@RequestMapping(value = "/order/productMain/orderByLike",method=RequestMethod.GET)
 	public String productOrderByProductLike(Model model,@RequestParam("c") int category_id,HttpServletRequest request) throws SQLException {
 		logger.debug("상품 정렬(추천순) 컨트롤러 작동 확인");
 		logger.debug("카테고리 아이디 : "+Integer.toString(category_id) );
-		
 		productService.Alignment(model, category_id);
-		 
-		
 		return "order/productMain";
 	}
 	
@@ -90,7 +77,6 @@ public class ProductController {
 		logger.debug("상품 정렬(판매량순) 컨트롤러 작동 확인");
 		logger.debug("카테고리 아이디 : "+Integer.toString(category_id) );
 		productService.AlignmentOrderBySelling(model, category_id);
-		
 		return "order/productMain";
 	}
 	//낮은 가격 순 정렬
@@ -98,9 +84,7 @@ public class ProductController {
 	public String productOrderByLowPrice(Model model,@RequestParam("c") int category_id,HttpServletRequest request) throws SQLException {
 		logger.debug("상품 정렬(낮은 가격 순) 컨트롤러 작동 확인");
 		logger.debug("카테고리 아이디 : "+Integer.toString(category_id) );
-		
 		productService.AlignmentOrderByLowPrice(model, category_id);
-		
 		return "order/productMain";
 	}
 	
@@ -110,7 +94,6 @@ public class ProductController {
 		logger.debug("상품 정렬(높은 가격 순) 컨트롤러 작동 확인");
 		logger.debug("카테고리 아이디 : "+Integer.toString(category_id) );
 		productService.AlignmentOrderByHighPrice(model, category_id);
-		
 		return "order/productMain";
 	}
 	
@@ -119,16 +102,9 @@ public class ProductController {
 	public String productOrderByDate(Model model,@RequestParam("c") int category_id,HttpServletRequest request) throws SQLException {
 		logger.debug("상품 정렬(등록일 순) 컨트롤러 작동 확인");
 		logger.debug("카테고리 아이디 : "+Integer.toString(category_id) );
-		
 		productService.AlignmentOrderByDate(model, category_id);
 		return "order/productMain";
 	}
-	
-	
-	
-	
-	
-	
 	
 	/* 답글 입력용 */
 	@RequestMapping(value = "/order/productDetail/orderQuestion")
