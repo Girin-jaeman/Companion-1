@@ -58,7 +58,6 @@
 	                            </c:when>
 	                            <c:otherwise>
 	                                <ul class="nav navbar-nav ml-auto">
-	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
@@ -113,26 +112,61 @@
                 <!-- 장바구니 담긴 상품 테이블 -->
                 <table class="table">
                     <tr>
-                        <th><input type="checkbox" name="chk" value="product" id="checkall"></th>
-                        <th>상품/옵션 정보</th>
+                        <th><input type="checkbox" name="allCheck" id="allCheck"/>
+                        	<label for="allCheck">모두선택</label>
+                        </th>
+                        <th colspan='2'>상품 이름</th>
+                        <th>옵션</th>
                         <th>수량</th>
                         <th>상품금액</th>
                         <th>합계금액</th>
                     </tr>
-<%
-int i=0;
-%>
+                   <form name="cartOrder" method="post" autocomplete="off" modelAttribute="cartOrderList">
+<%int i=0; %>
 <c:forEach items="${cartList }" var="bean">
-<%i+=1; %>
                     <tr>
-                        <td><input type="checkbox" name="chk" value="product"></td>
-                        <td>${bean.product_name }</br>${bean.cart_option }</td>
+                        <td><input type="checkbox" name="list[<%=i %>]" class="oneCheck" data-cartNum="${bean.cart_id }" value="${bean.cart_id }" onclick="checkSum()"></td>
+						<input type="hidden" id="price${bean.cart_id }" value="${bean.product_price }">
+						<input type="hidden" id="quantity${bean.cart_id }" value="${bean.cart_quantity }">
+                       	<% i+=1; %>
+                        <td>${bean.product_thumb }</td>
+                        <td>
+                        	${bean.product_name }
+	                    </td>
+	                    <td>${bean.cart_option }</br>
+	                    	<select style="width:150px;float:left;" name="selectOption" id="selectOption${bean.cart_id }" class="form-control" onchange="changeOption(${bean.cart_id })">
+	                    		<option value="" selected disabled>옵션을 선택</option>
+	                    		<option value="${bean.product_option1 }">${bean.product_option1 }</option>
+	                    		<option value="${bean.product_option2 }">${bean.product_option2 }</option>
+	                    		<option value="${bean.product_option3 }">${bean.product_option3 }</option>
+	                    		<option value="${bean.product_option4 }">${bean.product_option4 }</option>
+	                    		<option value="${bean.product_option5 }">${bean.product_option5 }</option>
+	                    	</select>
+	                    	<input type="hidden" id="originalOption${bean.cart_id }" value="${bean.cart_option }">
+	                    	<input type="hidden" id="updateOption${bean.cart_id }" value="">
+	                    	<button type="button" class="btn" onclick="updateOption(${bean.cart_id })">변경</button>
+	                    </td>
                         <td>${bean.cart_quantity }</br>
-                            <a class="btn"href="#" role="button">옵션/수량변경</a>
-                        </td>
-                        <td>${bean.product_price }</td>
-                        <td>${bean.product_price*bean.cart_quantity }</td>
+                        	<select style="width:80px;float:left;" name="selectQuantity" id="selectQuantity${bean.cart_id }" class="form-control" onchange="changeQuantity(${bean.cart_id })">
+                        		<option value="" select disabled>수량을 선택</option>
+                        		<option value="1">1</option>
+                        		<option value="2">2</option>
+                        		<option value="3">3</option>
+                        		<option value="4">4</option>
+                        		<option value="5">5</option>
+                        		<option value="6">6</option>
+                        		<option value="7">7</option>
+                        		<option value="8">8</option>
+                        		<option value="9">9</option>
+                        		<option value="10">10</option>
+                        	</select>
+                        	<button type="button" class="btn" onclick="updateQuantity(${bean.cart_id })">변경</td>
+                        	<input type="hidden" id="originalQuantity${bean.cart_id }" value="${bean.cart_quantity }">
+                        	<input type="hidden" id="updateQuantity${bean.cart_id }" value="">
+                        <td>${bean.product_price }원</td>
+                        <td>${bean.product_price*bean.cart_quantity }원</td>
 </c:forEach>
+                   </form>
                     </tr>
                 </table>
                 <!-- table end -->
@@ -140,18 +174,21 @@ int i=0;
                 <!-- 주문금액 합계 start -->
                 <div class="coast clearfix">
                     <ul class="coast-group float--right">
-                        <li>총<%=i %>개의 상품금액<br/>234332원</li>
+                        <li>총<strong><span id="selectCheckNum"></span></strong>개의 상품금액<br/>
+                        	<strong><span id="selectCheckPrice"></span></strong>원
+                        </li>
                         <li><i class="fas fa-plus"></i></li>
-                        <li>배송비<br/>2,500원</li>
+                        <li>배송비<br/><strong>2,500원</strong></li>
                         <li><i class="fas fa-equals"></i></li>
-                        <li>합계<br/>4,500원</li>
+                        <li>합계<br/><strong><span id="totalPrice"></span></strong>원</li>
                     </ul>
                 </div>
                 <!-- 주문금액 합계 end-->
                 <!-- 버튼그룹 start-->
                 <div class="btn--group clearfix">
                     <div class="selectP float--left">
-                        <button class="">선택 상품 삭제</button>
+                        <button type="button" id="selectDelete_btn">선택 상품 삭제</button>
+                        <button type="button" id="allDelete_btn">전체 상품 삭제</button>
                     </div>
                     <div class="orderP float--right">
                         <button id="choiceProduct" class="">선택 상품 주문</button>
@@ -187,33 +224,193 @@ int i=0;
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
 <script type="text/javascript">
-var sybnut_obj=[];
-var checked_ids = [1,2,3,4];
+	$(document).ready(function () {
+		
+		/* 초기화면. 가격 및 개수 표시 */
+		$("#selectCheckNum").html(0);
+		$("#selectCheckPrice").html(0);
+		$("#totalPrice").html(2500);
+		
+		/* 전체선택 */
+		$("#allCheck").click(function(){
+			var chk=$("#allCheck").prop("checked");
+			if(chk){
+				$(".oneCheck").prop("checked",true);
+			}else{
+				$(".oneCheck").prop("checked",false);
+			}
+			
+			var checkArr=new Array();
+			var cart_id="";
+			var price="";
+			var quantity="";
+			$("input[class='oneCheck']:checked").each(function(){
+				cart_id=$(this).attr("value");
+				price=$("#price"+cart_id).val();
+				quantity=$("#quantity"+cart_id).val();
+				checkArr.push(parseInt(price)*parseInt(quantity));
+			});
+			var sum=0;
+			var count=checkArr.length;
+			for(var i=0; i<count; i++){
+				sum+=parseInt(checkArr[i]);
+			}
+			$("#selectCheckNum").html(count);
+			$("#selectCheckPrice").html(sum);
+			$("#totalPrice").html(sum+2500);
+		});
 
-//JSON으로 값을 집어 넣음.
-	$.each(checked_product,function(key,value){
-		submit_obj.push({
-			url:checked_url,
-			urlname : urlName,
-			pid : selected_node_id
-		})
+		/* 개별선택시 전체선택 해제 */
+		$(".oneCheck").click(function(){
+			$("#allCheck").prop("checked",false);
+		});
+
+		/* 선택 상품 삭제 */
+		$("#selectDelete_btn").click(function(){
+			var confirm_val=confirm("정말 삭제하시겠습니까??");
+			
+			if(confirm_val){
+				var checkArr=new Array();
+				$("input[class='oneCheck']:checked").each(function(){
+					checkArr.push($(this).attr("data-cartNum"));
+				});
+				if(checkArr.length==0){
+					alert("선택된 상품이 없습니다. 확인 후 다시 실행해 주시기 바랍니다.");
+				}
+				$.ajax({
+					type : "POST",
+					url : "/companion/mypage/selectDeleteCart",
+					data : {check : checkArr},
+					success : function(result){
+						if(result==0){
+							alert("삭제실패");
+						}else{
+							alert("삭제완료");
+							location.reload();
+						}
+					}
+				});
+			}
+		});
+		
+		
 		
 	});
-	var submit_obj_json = JSON.stringify(submit_obj); //JSON으로 파싱
 	
+		/* 선택 금액 합계 표시  & 개수 표시*/
+		function checkSum(){
+			var checkArr=new Array();
+			var cart_id="";
+			var price="";
+			var quantity="";
+			$("input[class='oneCheck']:checked").each(function(){
+				cart_id=$(this).attr("value");
+				price=$("#price"+cart_id).val();
+				quantity=$("#quantity"+cart_id).val();
+				checkArr.push(parseInt(price)*parseInt(quantity));
+			});
+			var sum=0;
+			var count=checkArr.length;
+			for(var i=0; i<count; i++){
+				sum+=parseInt(checkArr[i]);
+			}
+			$("#selectCheckNum").html(count);
+			$("#selectCheckPrice").html(sum);
+			$("#totalPrice").html(sum+2500);
+		}
 	
-	$.ajax({
-		url:"cartInsertURLURL!!",
-		type:"POST",
-		data : {obj : submit_obj_json},
-		success:function(data){
+		/* 옵션 선택 */
+		function changeOption(cart_id){
+			var changeOptionValue=document.getElementById("selectOption"+cart_id);
 			
+			var selectValue=changeOptionValue.options[changeOptionValue.selectedIndex].text;
+			document.getElementById("updateOption"+cart_id).value=selectValue;
 		}
 		
-	})
-	
+		/* 변경 옵션 저장 */
+		function updateOption(cart_id){
+			var updateOptionValue=document.getElementById("updateOption"+cart_id).value;
+			var originalOptionValue=document.getElementById("originalOption"+cart_id).value;
+			if(updateOptionValue==""){
+				alert("선택된 옵션이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			if(updateOptionValue==originalOptionValue){
+				alert("변경된 사항이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			$.ajax({
+				type : "POST",
+				url : "/companion/mypage/cartChangeOption",
+				data : {change_option : updateOptionValue,cart_id : cart_id},
+				success : function(result){
+					if(result==0){
+						alert("변경실패");
+						return;
+					}else{
+						alert("변경성공");
+						document.getElementById("originalOption"+cart_id).value=updateOptionValue;
+						location.reload();
+					}
+				}
+			});
+		}
+		
+		/* 수량 선택 */
+		function changeQuantity(cart_id){
+			var updateQuantity=document.getElementById("selectQuantity"+cart_id);
+			var selectValue=updateQuantity.options[updateQuantity.selectedIndex].text;
+			document.getElementById("updateQuantity"+cart_id).value=selectValue;
+		}
+		
+		/* 변경 수량 저장 */
+		function updateQuantity(cart_id){
+			var updateQuantityValue=document.getElementById("updateQuantity"+cart_id).value;
+			var originalQuantityValue=document.getElementById("originalQuantity"+cart_id).value;
+			if(updateQuantityValue==""){
+				alert("선택된 수량이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			if(updateQuantityValue==originalQuantityValue){
+				alert("변경된 사항이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			$.ajax({
+				type : "POST",
+				url : "/companion/mypage/cartChangeQuantity",
+				data : {change_quantity : updateQuantityValue,cart_id : cart_id},
+				success : function(result){
+					if(result==0){
+						alert("변경실패");
+						return;
+					}else{
+						alert("변경성공");
+						document.getElementById("originalQuantity"+cart_id).value=updateQuantityValue;
+						location.reload();
+					}
+				}
+			});d
+		}
+		
+		/* 선택 사항 결제 */
+		$("#choiceProduct").click(function(){
+			if($("#selectCheckNum").html()==0){
+				alert("선택한 상품이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			document.cartOrder.submit();
+		});
+		
+		/* 전체 결제 */
+		$("#choiceAllProduct").click(function(){
+			if($("#selectCheckNum").html()==0){
+				alert("선택한 상품이 없습니다.\n확인 후 다시 시도해 주시기 바랍니다.");
+				return;
+			}
+			$(".oneCheck").prop("checked",true);
+			document.cartOrder.submit();			
+		});
 </script>
-
 </body>
 </html>
 

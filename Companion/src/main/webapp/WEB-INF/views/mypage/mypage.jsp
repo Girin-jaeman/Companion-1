@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
-    <link rel="stylesheet" href="${root }css/home.css">
+    <link rel="stylesheet" href="${root }css/mypage/mypage.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -94,91 +94,83 @@
 								<input type="hidden" name="addr1_chk" id="addr1_chk" value="${sessionScope.memberVo.member_addr1 }">
 								<input type="hidden" name="addr2_chk" id="addr2_chk" value="${sessionScope.memberVo.member_addr2 }">
 								<input type="hidden" name="addr3_chk" id="addr3_chk" value="${sessionScope.memberVo.member_addr3 }">
-					<table>
+					<table border=1>
+						<thead></thead>
+						<tbody>
 						<tr>
-							<td>이름</td>
+							<th>이름</th>
 							<td>${sessionScope.memberVo.member_name }</td>
 						</tr>
 						<tr>
-							<td>비밀번호 변경</td>
+							<th>비밀번호</th>
 							<td>
 								<label for="member_pw">현재비밀번호</label>
-								<input type="password" name="member_pw" id="member_pw"></br>
+								<input type="password" name="member_pw" id="member_pw" class="input--text"></br>
 								
 								<label for="pw_change">변경비밀번호</label>
-								<input type="password" name="pw_change" id="pw_change"></br>
+								<input type="password" name="pw_change" id="pw_change" class="input--text"></br>
 								
 								<label for="pw_change_chk">변경비밀번호 확인</label>
-								<input type="password" name="pw_change_chk" id="pw_change_chk">
+								<input type="password" name="pw_change_chk" id="pw_change_chk" class="input--text">
 								
-								<button type="button" id="pw_change_btn">변경</button>
+								<button type="button" id="pw_change_btn" class="btn">변경</button>
 							</td>
 						</tr>
 						<tr>
-							<td>일반전화</td>
+							<th>일반전화</th>
 							<td>
 								${sessionScope.memberVo.member_tel }</br>
-								<input type="text" name="tel_change" id="tel_change">
-								<button type="button" id="tel_change_btn">일반전화 변경</button>
+								<input type="text" name="tel_change" id="tel_change" class="input--text">
+								<button type="button" id="tel_change_btn" class="btn">일반전화 변경</button>
 							</td>
 						</tr>
 						<tr>
-							<td>휴대전화</td>
+							<th>휴대전화</th>
 							<td>
 								${sessionScope.memberVo.member_phone }
-								<input type="text" name="phone_change" id="phone_change">
-								<button type="button" id="phone_change_btn">휴대전화 변경</button>
+								<input type="text" name="phone_change" id="phone_change" class="input--text">
+								<button type="button" id="phone_change_btn" class="btn">휴대전화 변경</button>
 							</td>
 						</tr>
 						<tr>
-							<td>이메일</td>
+							<th>이메일</th>
 							<td>
 								${sessionScope.memberVo.member_email }
-								<input type="email" name="email_change" id="email_change">
-								<button type="button" id="email_change_btn">이메일 변경</button>
+								<input type="email" name="email_change" id="email_change" class="input--text">
+								<button type="button" id="email_change_btn" class="btn">이메일 변경</button>
 							</td>
 						</tr>
 						<tr>
-							<td>주소</td>
+							<th>주소</th>
 							<td>
-								우편번호 ${sessionScope.memberVo.member_addr1 }</br>
-								주소 ${sessionScope.memberVo.member_addr2 }</br>
-								상세주소 ${sessionScope.memberVo.member_addr3 }</br>
+								우편번호 ${sessionScope.memberVo.member_addr1 }<br/>
+								주소 ${sessionScope.memberVo.member_addr2 }<br/>
+								상세주소 ${sessionScope.memberVo.member_addr3 }<br/>
 								
-								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly">
-								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
+								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly" class="input--text">
+								<input type="button" onclick="sample2_execDaumPostcode()" class="btn" value="우편번호 찾기"></br>
 								
-								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly"></br>
+								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly" class="input--text"></br>
 								
-								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소"></br></br>
+								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소" class="input--text"></br></br>
 								
 								<input type="hidden" id="sample2_extraAddress" placeholder="참고항목"></br></br>
 								
 								<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 									<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 								</div>
-									<button type="button" id="address_change_btn">주소 변경</button>
+									<button type="button" id="address_change_btn" class="btn">주소 변경</button>
 							</td>
 						</tr>
+						</tbody>
 					</table>
 	            
 	            </div>
 			</div>
 			
-        <div id="footer">
-            <!-- test main content end-->
-            <hr class="mb-2">
-            <footer class="companion-footer">
-                    <div class="paragraph-group">
-                        <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
-                        <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
-                        <p>호스팅제공자:(주)Companion</p>
-                        <br/>
-                        <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
-                        <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
-                    </div>
-            </footer>
-        </div>
+        <!-- Footer  -->
+			<jsp:include page="../common/footer.jsp" />
+			<!-- Footer end -->
 
 		</div>
 	</div>
@@ -331,7 +323,7 @@
 				var addr2_change=$("#addr2_change").val();
 				var addr3_change=$("#addr3_change").val();
 				var addrData={"addr1_change" : addr1_change, "addr2_change" : addr2_change, "addr3_change" : addr3_change, "id_chk" : id_chk};
-				if(addr1_change=="" || addr2_change=="" || addr3_change) {
+				if(addr1_change=="" || addr2_change=="" || addr3_change=="") {
 					alert("입력된 주소가 없습니다.");
 					return;
 				}

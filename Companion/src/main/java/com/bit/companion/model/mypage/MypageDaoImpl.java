@@ -114,16 +114,60 @@ public class MypageDaoImpl implements MypageDao {
 		String product_id="";
 		String product_name="";
 		String product_price="";
+		String product_thumb="";
+		String product_option1="";
+		String product_option2="";
+		String product_option3="";
+		String product_option4="";
+		String product_option5="";
 		for(int i=0; i<list.size();i++) {
 			bean2=list.get(i);
 			product_id=bean2.getProduct_id();
 			product_name=sqlSession.selectOne("mypage.productName",product_id);
 			product_price=sqlSession.selectOne("mypage.productPrice",product_id);
+			product_thumb=sqlSession.selectOne("mypage.productThumb",product_id);
+			product_option1=sqlSession.selectOne("mypage.productOption1",product_id);
+			product_option2=sqlSession.selectOne("mypage.productOption2",product_id);
+			product_option3=sqlSession.selectOne("mypage.productOption3",product_id);
+			product_option4=sqlSession.selectOne("mypage.productOption4",product_id);
+			product_option5=sqlSession.selectOne("mypage.productOption5",product_id);
 			bean2.setProduct_name(product_name);
 			bean2.setProduct_price(product_price);
+			bean2.setProduct_thumb(product_thumb);
+			bean2.setProduct_option1(product_option1);
+			bean2.setProduct_option2(product_option2);
+			bean2.setProduct_option3(product_option3);
+			bean2.setProduct_option4(product_option4);
+			bean2.setProduct_option5(product_option5);
 			System.out.println(bean2.toString());
 		}
 		return list;
+	}
+
+	@Override
+	public int selectDeleteCart(String cart_id, String member_id) {
+		HashMap<String,String> cartInfo=new HashMap<>();
+		cartInfo.put("cart_id", cart_id);
+		cartInfo.put("member_id",member_id);
+		return sqlSession.delete("mypage.selectDeleteCart",cartInfo);
+	}
+
+	@Override
+	public int changeOptionCart(String change_option, String cart_id, String member_id) {
+		HashMap<String,String> cartInfo=new HashMap<>();
+		cartInfo.put("change_option",change_option);
+		cartInfo.put("cart_id", cart_id);
+		cartInfo.put("member_id", member_id);
+		return sqlSession.update("mypage.changeOptionCart",cartInfo);
+	}
+
+	@Override
+	public int changeQuantityCart(String change_quantity, String cart_id, String member_id) {
+		HashMap<String,String> cartInfo=new HashMap<>();
+		cartInfo.put("change_quantity", change_quantity);
+		cartInfo.put("cart_id", cart_id);
+		cartInfo.put("member_id", member_id);
+		return sqlSession.update("mypage.changeQuantityCart",cartInfo);
 	}
 	
 

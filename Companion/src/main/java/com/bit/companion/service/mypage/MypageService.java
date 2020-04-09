@@ -20,4 +20,10 @@ public interface MypageService {
 
 	void cartList(HttpSession session);
 
+	int selectDeleteCart(String cart_id, String member_id);
+
+	int changeOptionCart(String change_option, String cart_id, String member_id);
+
+	int changeQuantityCart(String change_quantity, String cart_id, String member_id);
+
 }
