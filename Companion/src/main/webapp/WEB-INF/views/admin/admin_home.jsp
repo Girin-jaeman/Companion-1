@@ -147,6 +147,8 @@
 			</div>
 		</div>
 		<!-- .container-fluid [end] -->
+		<!-- Footer  -->
+		<jsp:include page="../common/footer.jsp"/>
 	</div>
 	<!-- #content [end] -->
 </div>
