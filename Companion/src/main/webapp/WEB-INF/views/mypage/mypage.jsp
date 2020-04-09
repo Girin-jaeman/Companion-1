@@ -151,9 +151,9 @@
 								
 								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly" class="input--text"></br>
 								
-								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소" class="input--text"></br></br>
+								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소" class="input--text">
 								
-								<input type="hidden" id="sample2_extraAddress" placeholder="참고항목"></br></br>
+								<input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
 								
 								<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 									<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">

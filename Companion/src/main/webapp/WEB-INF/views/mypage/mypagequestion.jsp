@@ -57,7 +57,6 @@
 	                            </c:when>
 	                            <c:otherwise>
 	                                <ul class="nav navbar-nav ml-auto">
-	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
@@ -68,7 +67,7 @@
 	                                        <a class="nav-link" href="${root }mycart">장바구니</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagequestion">문의조회</a>
+	                                        <a class="nav-link active" href="${root }mypagequestion">문의조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagechk">나의정보</a>
@@ -83,6 +82,15 @@
 	                    </div>
 	                </div>
 	            </nav>
+	            <!-- .categories start -->
+	            <div class="categories">
+                <a href="#homeSubmenu">
+                	<i class="fas fa-clipboard"></i>
+                    문의조회
+                </a>
+                <hr class="mb-4">
+            	</div>
+            	<!-- .categories start -->
 	            <div class="maincontent">
 	            	<ul class="list-unstyled components">
 						<c:forEach items="${questionList }" var="bean">

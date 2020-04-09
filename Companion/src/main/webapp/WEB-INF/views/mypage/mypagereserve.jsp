@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
-    <link rel="stylesheet" href="${root }css/home.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -57,12 +56,11 @@
 	                            </c:when>
 	                            <c:otherwise>
 	                                <ul class="nav navbar-nav ml-auto">
-	                                    <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="#">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
+	                                        <a class="nav-link active" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mycart">장바구니</a>
@@ -83,18 +81,32 @@
 	                    </div>
 	                </div>
 	            </nav>
-	            <div class="maincontent">
+	            <!-- .categories start -->
+	            <div class="categories">
+                <a href="#homeSubmenu">
+                	<i class="fas fa-clipboard"></i>
+                    예약조회
+                </a>
+                <hr class="mb-4">
+            	</div>
+            	<!-- .categories start -->
+	            <!-- section start -->
+				<section class="section">
+		            <!-- main title -->
+					<div class="main--title">
+							<h1>나의 예약현황</h1>
+	                </div>
 	            	<ul class="list-group list-unstyled components">
 						<c:forEach items="${reserveList }" var="bean">
 							<ul>
-								<li class="list-group-item list-group-item-primary">
+								<li class="list-group-item list-group-item">
 									<div class="row">
 										<div class="col-2">${bean.service_name }</div>
-										<div class="col-7">${bean.reserve_state_name }</div>
+										<div class="col-6">${bean.reserve_state_name }</div>
 										<div class="col-2">예약일 : ${bean.reserve_date }</div>
-										<div class="col-1">
-											<button class="btn btn-primary" onclick="toggleReserve(${bean.reserve_id })" id="reserveBtn_${bean.reserve_id }">
-												열기
+										<div class="col-2">
+											<button class="btn btn-primary" style="width:130px;" onclick="toggleReserve(${bean.reserve_id })" id="reserveBtn_${bean.reserve_id }">
+												내역 상세보기
 											</button>
 										</div>
 									</div>
@@ -117,23 +129,12 @@
 							</ul>
 						</c:forEach>	            
 	            	</ul>
-	            </div>
+	            </section>
 			</div>
 			
-        <div id="footer">
-            <!-- test main content end-->
-            <hr class="mb-2">
-            <footer class="companion-footer">
-                    <div class="paragraph-group">
-                        <p>상호:COMPANION | 대표 : 최길동 | 개인정보보호관리책임자 : 최길동 | 전화 : 02-000-000 ㅣ 이메일 : <a href="mailto:companion@companion.com" target="_top">companion@companion.com</a></p>
-                        <p>주소:서울특별시 서초구 강남대로 459 (서초동, 백암빌딩) 3층 | 사업자등록번호 : 000-00-00000 | 통신판매 : 2020-서울강남-0000</p>
-                        <p>호스팅제공자:(주)Companion</p>
-                        <br/>
-                        <a href="#">[홈페이지 이용약관]</a> <a href="#">[개인정보취급방침]</a><br/>
-                        <p>Copyright ⓒ 2020 COMPANION All rights reserved.</p>
-                    </div>
-            </footer>
-        </div>
+        <!-- Footer  -->
+			<jsp:include page="../common/footer.jsp" />
+		<!-- Footer end -->
 
 		</div>
 	</div>
@@ -160,7 +161,7 @@
         		$('#reserveBtn_'+reserve_id).text("닫기");
         	}else{
         		$('#'+reserve_id).hide();
-        		$('#reserveBtn_'+reserve_id).text("열기");
+        		$('#reserveBtn_'+reserve_id).text("내역 상세보기");
         	}
         }
     </script>
