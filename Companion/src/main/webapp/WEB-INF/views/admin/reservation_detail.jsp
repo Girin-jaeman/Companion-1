@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/noticeD.css">
+    <link rel="stylesheet" href="${root }css/admin/reservD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -64,46 +64,92 @@
 			<div class="main--title">
 				<h1>[Admin] 예약자 상세</h1>
 			</div>
-			<%-- <div class="inputArea">
-				<label for="reserve_id">예약번호</label>
-				<span>${adminReservationOne.reserve_id }</span>
-			</div> --%>
-			<div class="inputArea">
-				<label for="member_id">아이디</label>
-				<span>${adminReservationOne.member_id }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_id">예약신청날짜</label>
-				<span>${adminReservationOne.reserve_date }</span>
-			</div>
-			<div class="inputArea">
-				<label for="service_id">서비스</label>
-				<span>${adminReservationOne.service_name }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_checkin">체크인날짜</label>
-				<span>${adminReservationOne.reserve_checkin }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_checkout">체크아웃 날짜</label>
-				<span>${adminReservationOne.reserve_checkout }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_dogtype">견종</label>
-				<span>${adminReservationOne.reserve_dogtype }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_dogage">반려견 나이</label>
-				<span>${adminReservationOne.reserve_dogage }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_msg">특이사항</label>
-				<span>${adminReservationOne.reserve_msg }</span>
-			</div>
-			<div class="inputArea">
-				<label for="reserve_state_id">예약상태</label>
-				<span>${adminReservationOne.reserve_state_id }</span>
-			</div>
+			<table class="reserv_d">
+				<thead></thead>
+				<tbody>
+					<tr>
+						<th><label for="member_id">아이디</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.member_id }</span>
+							</div>
+						</td>
+						<th><label for="member_id">예약신청날짜</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_date }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="member_name">이름</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.member_name }</span>
+							</div>
+						</td>
+						<th><label for="member_name">연락처</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.member_phone }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="service_id">서비스</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminReservationOne.service_name }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="reserve_checkin">체크인날짜</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_checkin }</span>
+							</div>
+						</td>
+						<th><label for="reserve_checkout">체크아웃 날짜</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_checkout }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="reserve_dogtype">견종</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_dogtype }</span>
+							</div>
+						</td>
+						<th><label for="reserve_dogage">반려견 나이</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_dogage }</span>
+							</div>
+						</td>
+					</tr>
+					<tr class="reserv_msg">
+						<th><label for="reserve_msg">특이사항</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_msg }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="reserve_state_id">예약상태</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminReservationOne.reserve_state_id }</span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="button" id="list_Btn" class="btn btn-back">목록</button>
 		</section>
 		<!-- section [end] -->
 	</div>
@@ -132,10 +178,7 @@ $("#modify_Btn").click(function(){
 
 // 목록버튼
 $("#list_Btn").click(function(){
-	location.href = ${root}+"/admin/question_list?page=${search.page}"
-		+"&range=${search.range}"
-		+"&searchType=${search.searchType}"
-		+"&keyword=${search.keyword}"; 
+	location.href = ${root}+"/admin/reservation_list"
 });
 		 
 // 삭제 버튼

@@ -16,15 +16,17 @@ public class AdminReservationVo {
 	private String reserve_msg;
 	private int reserve_state_id;
 	
+	private String member_name;
+	private String member_phone;
 	public AdminReservationVo() {}
-
-	public AdminReservationVo(String service_name, int reserve_id, String member_id, int service_id, Date reserve_date, Date reserve_checkin,
-			Date reserve_checkout, String reserve_dogtype, int reserve_dogage, String reserve_msg, int reserve_state_id) {
+	public AdminReservationVo(int service_id, String service_name, int reserve_id, String member_id, Date reserve_date,
+			Date reserve_checkin, Date reserve_checkout, String reserve_dogtype, int reserve_dogage, String reserve_msg,
+			int reserve_state_id, String member_name, String member_phone) {
 		super();
-		this.reserve_id = reserve_id;
-		this.member_id = member_id;
 		this.service_id = service_id;
 		this.service_name = service_name;
+		this.reserve_id = reserve_id;
+		this.member_id = member_id;
 		this.reserve_date = reserve_date;
 		this.reserve_checkin = reserve_checkin;
 		this.reserve_checkout = reserve_checkout;
@@ -32,105 +34,95 @@ public class AdminReservationVo {
 		this.reserve_dogage = reserve_dogage;
 		this.reserve_msg = reserve_msg;
 		this.reserve_state_id = reserve_state_id;
+		this.member_name = member_name;
+		this.member_phone = member_phone;
 	}
-
-	public int getReserve_id() {
-		return reserve_id;
-	}
-
-	public void setReserve_id(int reserve_id) {
-		this.reserve_id = reserve_id;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-
 	public int getService_id() {
 		return service_id;
 	}
-
 	public void setService_id(int service_id) {
 		this.service_id = service_id;
 	}
 	public String getService_name() {
 		return service_name;
 	}
-	
 	public void setService_name(String service_name) {
 		this.service_name = service_name;
 	}
-
+	public int getReserve_id() {
+		return reserve_id;
+	}
+	public void setReserve_id(int reserve_id) {
+		this.reserve_id = reserve_id;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 	public Date getReserve_date() {
 		return reserve_date;
 	}
-
 	public void setReserve_date(Date reserve_date) {
 		this.reserve_date = reserve_date;
 	}
-
 	public Date getReserve_checkin() {
 		return reserve_checkin;
 	}
-
 	public void setReserve_checkin(Date reserve_checkin) {
 		this.reserve_checkin = reserve_checkin;
 	}
 	public Date getReserve_checkout() {
 		return reserve_checkout;
 	}
-	
 	public void setReserve_checkout(Date reserve_checkout) {
 		this.reserve_checkout = reserve_checkout;
 	}
-
 	public String getReserve_dogtype() {
 		return reserve_dogtype;
 	}
-
 	public void setReserve_dogtype(String reserve_dogtype) {
 		this.reserve_dogtype = reserve_dogtype;
 	}
-
 	public int getReserve_dogage() {
 		return reserve_dogage;
 	}
-
 	public void setReserve_dogage(int reserve_dogage) {
 		this.reserve_dogage = reserve_dogage;
 	}
-
 	public String getReserve_msg() {
 		return reserve_msg;
 	}
-
 	public void setReserve_msg(String reserve_msg) {
 		this.reserve_msg = reserve_msg;
 	}
-
 	public int getReserve_state_id() {
 		return reserve_state_id;
 	}
-
 	public void setReserve_state_id(int reserve_state_id) {
 		this.reserve_state_id = reserve_state_id;
 	}
-
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+	public String getMember_phone() {
+		return member_phone;
+	}
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
+	}
 	@Override
 	public String toString() {
 		return "AdminReservationVo [service_id=" + service_id + ", service_name=" + service_name + ", reserve_id="
 				+ reserve_id + ", member_id=" + member_id + ", reserve_date=" + reserve_date + ", reserve_checkin="
 				+ reserve_checkin + ", reserve_checkout=" + reserve_checkout + ", reserve_dogtype=" + reserve_dogtype
 				+ ", reserve_dogage=" + reserve_dogage + ", reserve_msg=" + reserve_msg + ", reserve_state_id="
-				+ reserve_state_id + "]";
+				+ reserve_state_id + ", member_name=" + member_name + ", member_phone=" + member_phone + "]";
 	}
 
-
-
-	
 	
 }
