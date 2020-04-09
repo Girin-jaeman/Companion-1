@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="${root }admin/order_list">
                             	<i class="fas fa-angle-right"></i>
                             	주문관리
                             </a>
