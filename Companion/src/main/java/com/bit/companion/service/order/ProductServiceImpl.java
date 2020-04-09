@@ -135,12 +135,29 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
+	//paging 
+	@Override
+	public void countPage(Model model, int category_id,int displayPost,int postNum) {
+
+		List<ProductVo> list;
+		System.out.println("count Page service 작동 확인");
+		System.out.println(category_id);
+		System.out.println(displayPost);
+		System.out.println(postNum);
+		try {
+			list= productDao.countPage(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+	}
 	
 	//이용후기 목록 출력.
 	@Override
 	public void productReview(Model model,int product_id) {
 		List<ProductVo> ReviewList;
-		System.out.println("service 작동 확인");		
+		System.out.println("productReview service 작동 확인");		
 		System.out.println(product_id);
 		try {
 				ReviewList = productDao.productReview(product_id);
@@ -150,20 +167,30 @@ public class ProductServiceImpl implements ProductService {
 			}
 	}
 
-	//paging 
-	@Override
-	public void countPage(Model model, int category_id) {
 
-		List<ProductVo> list;
-		System.out.println("service 작동 확인");
-		System.out.println(category_id);
+
+	//상품 총 개수
+	@Override
+	public int count(Model model, int category_id) throws Exception {
+
+		return productDao.count(category_id);
+	}
+
+	//게시물 목록 + 페이징
+	@Override
+	public List listPage(Model model,int displayPost, int postNum,int category_id){
+		List<ProductVo> list=null;
+		System.out.println("LISTPAGE써삐쓰 뜰리나 홖인?");
 		try {
-			list= productDao.countPage(category_id);
-			model.addAttribute("productListWithPageNum",list);
-		} catch (SQLException e) {
+			list=productDao.listPage(displayPost, postNum,category_id);
+			model.addAttribute("listPage",list);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+		for(int i=0;i<list.size();i++) {
+			System.out.println(list.get(i));;
+		}
+		return list;
 	}
 
 }

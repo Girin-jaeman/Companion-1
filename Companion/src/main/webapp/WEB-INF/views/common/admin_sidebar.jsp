@@ -39,12 +39,6 @@
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
-                            <a href="${root }admin/hotelInfoadd">
-                            	<i class="fas fa-angle-right"></i>
-                            	게시글등록
-                            </a>
-                        </li>
-                        <li>
                             <a href="${root }admin/reservation_list">
                             	<i class="fas fa-angle-right"></i>
                             	예약관리

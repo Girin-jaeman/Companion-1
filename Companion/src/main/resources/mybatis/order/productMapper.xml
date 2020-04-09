@@ -61,13 +61,28 @@
 	  	select distinct product.*,(select count(*) from 
 	  	`like` where product.product_id=`like`.product_id) as like_id from product left join`like` 
 	  	on product.product_id=`like`.product_id where product.category_id=#{category_id};
-  	</select> 
-  	<!-- 페이징 -->
+  	</select> <!-- listpage도 그대로 가져와야함. -->
+  	
+<!-- 페이징 START -->
 	<select id="ProductPaging" resultType="productBean" parameterType="int">
 		select (select count(*) from product where category_id=#{category_id}) as AllProductNum,product.*
-from product where category_id=#{category_id};
+		from product where category_id=#{category_id} order by product_id limit #{listNum},#{postNum};
 	</select>
-
+	
+	<!-- 상품 총 개수 -->
+	<select id="count" resultType="int" parameterType="int">
+		select count(*) from product where category_id=#{category_id};
+	</select>
+	
+	<!-- 게시물을 10개씩 출력하는 쿼리.  -->
+	<!-- HashMap TEST  -->
+	<select id="ListPage" resultType="productBean" parameterType="hashMap" >
+	select distinct product.*,(select count(*) from 
+	  	`like` where product.product_id=`like`.product_id) as like_id from product left join`like` 
+	  	on product.product_id=`like`.product_id where product.category_id=#{category_id} order by product_id limit #{displayPost},#{postNum};
+	</select>
+<!-- 페이징 END -->
+	
 	<!--  이용후기 -->
 	<select id="ProductReview" resultType="productBean" parameterType="int">
 		select * from `article` where board_id=3 and product_id=#{value};	
