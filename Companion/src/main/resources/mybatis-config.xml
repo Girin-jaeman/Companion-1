@@ -28,6 +28,7 @@
   		<typeAlias alias="PaymentBean" type="com.bit.companion.model.entity.admin.AdminPaymentVo"/>
   		<typeAlias alias="adminQuestionBean" type="com.bit.companion.model.entity.admin.AdminQuestionVo"/>
   		<typeAlias alias="adminDataTableBean" type="com.bit.companion.model.entity.admin.AdminDataTableVo"/>
+  		<typeAlias alias="adminOrderBean" type="com.bit.companion.model.entity.admin.AdminOrderVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>
@@ -57,6 +58,7 @@
   		<mapper resource="mybatis/admin/adminReservationMapper.xml"/>
   		<mapper resource="mybatis/admin/adminQuestionMapper.xml"/>
   		<mapper resource="mybatis/admin/adminReviewMapper.xml"/>
+  		<mapper resource="mybatis/admin/adminOrderMapper.xml"/>
   		
   		<!-- order -->
   		<mapper resource="mybatis/order/orderMapper.xml"/>
