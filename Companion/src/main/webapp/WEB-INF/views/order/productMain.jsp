@@ -196,15 +196,31 @@
     </div>
     
     <!-- pagination [start] -->
-   		<c:forEach begin="1" end="${pageNum }" var="num">
-			<span>
-			<%
-				String str = request.getQueryString();
-				String result = str.substring(0,5);
-			%>
-				<a href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
-			</span>
-		</c:forEach>	      
+	    <nav aria-label="Page navigation example">
+				<%
+					String str = request.getQueryString();
+					String result = str.substring(0,5);
+				%>
+	  	   <ul class="pagination">
+	  	     <li class="page-item">
+		    <a class="page-link" href="${root }order/productMain?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+	   		</li>
+	   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+				<span>
+				<li class="page-item">
+					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
+				</li>	
+				</span>
+			</c:forEach>
+			<li class="page-item">
+			<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>	      
+	      </li>
+	      </ul>
+		</nav>
 	<!-- pagination [end] -->		
 	
 		</div><!-- container end  --> 
