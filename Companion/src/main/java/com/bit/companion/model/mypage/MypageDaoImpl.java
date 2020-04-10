@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bit.companion.model.entity.login.MemberVo;
+import com.bit.companion.model.entity.mypage.MyCartOrderVo;
 import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 import com.bit.companion.model.entity.mypage.MypageReserveVo;
@@ -139,7 +140,6 @@ public class MypageDaoImpl implements MypageDao {
 			bean2.setProduct_option3(product_option3);
 			bean2.setProduct_option4(product_option4);
 			bean2.setProduct_option5(product_option5);
-			System.out.println(bean2.toString());
 		}
 		return list;
 	}
@@ -168,6 +168,43 @@ public class MypageDaoImpl implements MypageDao {
 		cartInfo.put("cart_id", cart_id);
 		cartInfo.put("member_id", member_id);
 		return sqlSession.update("mypage.changeQuantityCart",cartInfo);
+	}
+
+	@Override
+	public void insertOrder(MyCartOrderVo bean) {
+		/* insert into order table */
+		sqlSession.insert("mypage.insertOrder", bean);
+	}
+
+	@Override
+	public int checkDeliveryNumber(String delivery_number) {
+		return sqlSession.selectOne("mypage.countDeliveryNumber", delivery_number);
+	}
+
+	@Override
+	public String findOrder_id(MyCartOrderVo bean) {
+		HashMap<String,String> orderInfo=new HashMap<>();
+		orderInfo.put("member_id", bean.getMember_id());
+		orderInfo.put("order_date", bean.getOrder_date());
+		orderInfo.put("order_amount", bean.getOrder_amount());
+		orderInfo.put("order_name", bean.getOrder_name());
+		return sqlSession.selectOne("mypage.findOrder_id",orderInfo);
+	}
+
+	@Override
+	public void insertOrders(MyCartOrderVo bean) {
+		/* insert into order_detail table */
+		sqlSession.insert("mypage.insertOrder_detail",bean);
+		/* insert into delivery table */
+		sqlSession.insert("mypage.insertDelivery",bean);
+		/* insert into payment table */
+		sqlSession.insert("mypage.insertPayment",bean);
+		/* delete from cart */
+		HashMap<String,String> cartInfo=new HashMap<>();
+		cartInfo.put("member_id", bean.getMember_id());
+		cartInfo.put("product_id",bean.getProduct_id());
+		cartInfo.put("cart_id", bean.getCart_id());
+		sqlSession.delete("mypage.deleteCart", cartInfo);
 	}
 	
 

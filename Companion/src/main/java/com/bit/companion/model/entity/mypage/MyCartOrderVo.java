@@ -3,10 +3,11 @@ package com.bit.companion.model.entity.mypage;
 import java.sql.Date;
 
 public class MyCartOrderVo {
+	private String cart_id;
 	/* order table */
 	private String order_id;
 	private String member_id;
-	private Date order_date;
+	private String order_date;
 	private String order_amount;
 	private String order_name;
 	private String order_tel;
@@ -29,13 +30,24 @@ public class MyCartOrderVo {
 	private String delivery_state_id;
 	/* payment table */
 	private String payment_id;
-	private Date payment_date;
+	private String payment_date;
 	private String payment_amount;
 	private String payment_state_id;
 	
 	public MyCartOrderVo() {
 	}
 	
+	
+	public String getCart_id() {
+		return cart_id;
+	}
+
+
+	public void setCart_id(String cart_id) {
+		this.cart_id = cart_id;
+	}
+
+
 	public String getOrder_id() {
 		return order_id;
 	}
@@ -48,10 +60,10 @@ public class MyCartOrderVo {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public Date getOrder_date() {
+	public String getOrder_date() {
 		return order_date;
 	}
-	public void setOrder_date(Date order_date) {
+	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
 	public String getOrder_amount() {
@@ -168,10 +180,10 @@ public class MyCartOrderVo {
 	public void setPayment_id(String payment_id) {
 		this.payment_id = payment_id;
 	}
-	public Date getPayment_date() {
+	public String getPayment_date() {
 		return payment_date;
 	}
-	public void setPayment_date(Date payment_date) {
+	public void setPayment_date(String payment_date) {
 		this.payment_date = payment_date;
 	}
 	public String getPayment_amount() {
@@ -186,18 +198,20 @@ public class MyCartOrderVo {
 	public void setPayment_state_id(String payment_state_id) {
 		this.payment_state_id = payment_state_id;
 	}
+
+
 	@Override
 	public String toString() {
-		return "MyCartOrderVo [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date
-				+ ", order_amount=" + order_amount + ", order_name=" + order_name + ", order_tel=" + order_tel
-				+ ", order_phone=" + order_phone + ", order_addr1=" + order_addr1 + ", order_addr2=" + order_addr2
-				+ ", order_addr3=" + order_addr3 + ", order_msg=" + order_msg + ", order_state_id=" + order_state_id
-				+ ", order_detail_id=" + order_detail_id + ", product_id=" + product_id + ", order_detail_price="
-				+ order_detail_price + ", order_detail_quantity=" + order_detail_quantity + ", order_detail_option="
-				+ order_detail_option + ", delivery_id=" + delivery_id + ", delivery_company=" + delivery_company
-				+ ", delivery_number=" + delivery_number + ", delivery_state_id=" + delivery_state_id + ", payment_id="
-				+ payment_id + ", payment_date=" + payment_date + ", payment_amount=" + payment_amount
-				+ ", payment_state_id=" + payment_state_id + "]";
+		return "MyCartOrderVo [cart_id=" + cart_id + ", order_id=" + order_id + ", member_id=" + member_id
+				+ ", order_date=" + order_date + ", order_amount=" + order_amount + ", order_name=" + order_name
+				+ ", order_tel=" + order_tel + ", order_phone=" + order_phone + ", order_addr1=" + order_addr1
+				+ ", order_addr2=" + order_addr2 + ", order_addr3=" + order_addr3 + ", order_msg=" + order_msg
+				+ ", order_state_id=" + order_state_id + ", order_detail_id=" + order_detail_id + ", product_id="
+				+ product_id + ", order_detail_price=" + order_detail_price + ", order_detail_quantity="
+				+ order_detail_quantity + ", order_detail_option=" + order_detail_option + ", delivery_id="
+				+ delivery_id + ", delivery_company=" + delivery_company + ", delivery_number=" + delivery_number
+				+ ", delivery_state_id=" + delivery_state_id + ", payment_id=" + payment_id + ", payment_date="
+				+ payment_date + ", payment_amount=" + payment_amount + ", payment_state_id=" + payment_state_id + "]";
 	}
 	
 	

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bit.companion.model.entity.mypage.MyCartOrderVo;
 import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 import com.bit.companion.model.entity.mypage.MypageReserveVo;
@@ -75,5 +76,26 @@ public class MypageServiceImpl implements MypageService {
 	public int changeQuantityCart(String change_quantity, String cart_id, String member_id) {
 		return mypageDao.changeQuantityCart(change_quantity,cart_id,member_id);
 	}
+
+	@Override
+	public void insertOrder(MyCartOrderVo bean) {
+		mypageDao.insertOrder(bean);
+	}
+
+	@Override
+	public int checkDeliveryNumber(String delivery_number) {
+		return mypageDao.checkDeliveryNumber(delivery_number);
+	}
+
+	@Override
+	public String findOrder_id(MyCartOrderVo bean) {
+		return mypageDao.findOrder_id(bean);
+	}
+
+	@Override
+	public void insertOrders(MyCartOrderVo bean) {
+		mypageDao.insertOrders(bean);
+	}
+
 
 }

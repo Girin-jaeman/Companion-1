@@ -1,5 +1,7 @@
 package com.bit.companion.controller.mypage;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.model.entity.mypage.MyCartOrderList;
+import com.bit.companion.model.entity.mypage.MyCartOrderVo;
 import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.service.mypage.MypageService;
 
@@ -97,14 +100,13 @@ public class MypageController {
 			cart_id=cartOrderList.getList().get(i);
 			for(int j=0; j<cartList.size();j++) {
 				MypageCartVo bean2=(MypageCartVo) cartList.get(j);
-				System.out.println("원래대상 cart_id : "+cart_id+"/ 비교대상 cart_id : "+bean2.getCart_id());
 				if(cart_id.equals(bean2.getCart_id())) {
 					orderList.add(bean2);
 				}
 			}
 		}
-		System.out.println(orderList.toString());
-		return "mypage/cartPurchase";
+		session.setAttribute("cartOrderList", orderList);
+		return "redirect:/cartPurchase";
 	}
 	
 	@RequestMapping(value="/mycartorder")
@@ -114,6 +116,97 @@ public class MypageController {
 			return "redirect:/login";
 		}
 		return "mypage/cartPurchase";
+	}
+	
+	@RequestMapping(value="/cartPurchase")
+	public String myCartOrderList(HttpSession session) {
+		List<MypageCartVo> orderList=(List) session.getAttribute("cartOrderList");
+		MypageCartVo bean=new MypageCartVo();
+		int sum=0;
+		for(int i=0; i<orderList.size();i++) {
+			bean=orderList.get(i);
+			sum+=Integer.parseInt(bean.getCart_quantity())*Integer.parseInt(bean.getProduct_price());
+		}
+		session.setAttribute("cartOrderPrice", sum);
+		return "mypage/cartPurchase";
+	}
+	
+	@RequestMapping(value="/cartPurchase",method=RequestMethod.POST)
+	public String myCartOrderPurchase(String order_name,String order_phone,String order_addr1,String order_addr2,String order_addr3,String order_msg,HttpSession session) {
+		List<MypageCartVo> orderList=(List) session.getAttribute("cartOrderList");
+		MypageCartVo bean=new MypageCartVo();
+		List<MyCartOrderVo> orderSuccessList=new ArrayList<>();
+		int sum=(int)session.getAttribute("cartOrderPrice");
+		sum+=2500;
+		for(int i=0; i<orderList.size();i++) {
+			MyCartOrderVo bean2=new MyCartOrderVo();
+			bean=orderList.get(i);
+			
+			bean2.setCart_id(bean.getCart_id());
+			bean2.setMember_id(bean.getMember_id());
+			bean2.setProduct_id(bean.getProduct_id());
+			bean2.setOrder_detail_quantity(bean.getCart_quantity());
+			bean2.setOrder_detail_option(bean.getCart_option());
+			bean2.setOrder_detail_price(bean.getProduct_price());
+			bean2.setOrder_name(order_name);
+			bean2.setOrder_phone(order_phone);
+			bean2.setOrder_addr1(order_addr1);
+			bean2.setOrder_addr2(order_addr2);
+			bean2.setOrder_addr3(order_addr3);
+			bean2.setOrder_msg(order_msg);
+			bean2.setOrder_amount(""+sum);
+			bean2.setOrder_state_id("1");
+			bean2.setPayment_amount(""+sum);
+			bean2.setPayment_state_id("0");
+			bean2.setDelivery_company("비트택배");
+			bean2.setDelivery_state_id("0");
+			
+			orderSuccessList.add(bean2);
+		}
+		session.setAttribute("cartOrderSuccessList", orderSuccessList);
+		return "redirect:/cartOrderSuccess";
+	}
+	
+	@RequestMapping(value="/cartOrderSuccess")
+	public String myCartOrderSuccess(HttpSession session) {
+		List<MyCartOrderVo> orderSuccessList=(List)session.getAttribute("cartOrderSuccessList");
+		/* 결제 및 주문시간 */
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date time=new Date();
+		String order_date=sdf.format(time);
+		String payment_date=sdf.format(time);
+		/* 송장번호 */
+		int delivery_number_check=1;
+		String delivery_number="";
+		while(delivery_number_check==1) {
+			String delivery_number_checking="";
+			for(int i=0; i<14; i++) {
+				int r=(int)(Math.random()*9+1);
+				delivery_number_checking+=r;
+			}
+			delivery_number=delivery_number_checking;
+			delivery_number_check=mypageService.checkDeliveryNumber(delivery_number);
+		}
+		/* 대표 order처리 */
+		MyCartOrderVo bean=orderSuccessList.get(0);
+		bean.setOrder_date(order_date);
+		bean.setPayment_date(payment_date);
+		bean.setDelivery_number(delivery_number);
+		mypageService.insertOrder(bean);
+		/* order_id 찾기 */
+		String order_id=mypageService.findOrder_id(bean);
+		/* 각상품별로 sql작업 */
+		for(int i=0; i<orderSuccessList.size();i++) {
+			bean=orderSuccessList.get(i);
+			bean.setOrder_date(order_date);
+			bean.setPayment_date(payment_date);
+			bean.setDelivery_number(delivery_number);
+			bean.setOrder_id(order_id);
+			mypageService.insertOrders(bean);
+			System.out.println(i+"번쨰order_id : "+bean.getOrder_id());
+		}
+		
+		return "mypage/cartOrderSuccess";
 	}
 
 	@ResponseBody

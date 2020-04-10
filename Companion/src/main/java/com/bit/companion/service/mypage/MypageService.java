@@ -2,6 +2,8 @@ package com.bit.companion.service.mypage;
 
 import javax.servlet.http.HttpSession;
 
+import com.bit.companion.model.entity.mypage.MyCartOrderVo;
+
 public interface MypageService {
 
 	int pwChange(String pw_change,String id_chk);
@@ -25,5 +27,13 @@ public interface MypageService {
 	int changeOptionCart(String change_option, String cart_id, String member_id);
 
 	int changeQuantityCart(String change_quantity, String cart_id, String member_id);
+
+	void insertOrder(MyCartOrderVo bean);
+
+	int checkDeliveryNumber(String delivery_number);
+
+	String findOrder_id(MyCartOrderVo bean);
+
+	void insertOrders(MyCartOrderVo bean);
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.bit.companion.model.entity.mypage.MyCartOrderVo;
 import com.bit.companion.model.entity.mypage.MypageCartVo;
 import com.bit.companion.model.entity.mypage.MypageQuestionVo;
 import com.bit.companion.model.entity.mypage.MypageReserveVo;
@@ -31,5 +32,13 @@ public interface MypageDao {
 	int changeOptionCart(String change_option, String cart_id, String member_id);
 
 	int changeQuantityCart(String change_quantity, String cart_id, String member_id);
+
+	void insertOrder(MyCartOrderVo bean);
+
+	int checkDeliveryNumber(String delivery_number);
+
+	String findOrder_id(MyCartOrderVo bean);
+
+	void insertOrders(MyCartOrderVo bean);
 	
 }

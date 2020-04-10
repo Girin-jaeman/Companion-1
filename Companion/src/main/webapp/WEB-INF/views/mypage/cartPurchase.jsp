@@ -20,10 +20,10 @@
 	<link rel="stylesheet" href="${root}css/main.css"> --%>
 	
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/mypage/orderPurchase.css">
+    <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/mypage/orderPurchase.css">
 
 	<!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@
 	</style>
 </head>
 <body>
-<%-- <div class="wrapper">
+<div class="wrapper">
 
 		 <!-- Sidebar  -->
  	<jsp:include page="../common/sidebar.jsp"/> 
@@ -69,7 +69,6 @@
                               </c:when>
                               <c:otherwise>
                                   <ul class="nav navbar-nav ml-auto">
-                                      <p>${sessionScope.memberVo.member_name }님이 로그인 중입니다.</p>
                                       <li class="nav-item">
                                           <a class="nav-link" href="#">주문내역</a>
                                       </li>
@@ -105,7 +104,6 @@
 				</div>
 	<!-- .title-group start-->
   <section class="section">
- 	 <form action="${root }order/successOrder" role="form" method="post" autocomplete="off" id="payForm">  
  
                <div class="title-group clearfix">
                    <h1 class="main--title float--left">주문서작성/결제</h1>
@@ -127,52 +125,59 @@
                <table class="table">
                    <thead>
                        <tr>
-                           <th>상품 이미지</th>
-                           <th>상품/옵션 정보</th>
-                           <th>수량</th>
-                           <th>상품금액</th>
-                           <th>배송비</th>
-                           <th>합계금액</th>
+	                       <th colspan='2'>상품 이름</th>
+	                       <th>옵션</th>
+	                       <th>수량</th>
+	                       <th>상품금액</th>
+	                       <th>합계금액</th>
                        </tr>
                    </thead>
                    <tbody>
+<%
+int i=0;
+%>
+<c:forEach items="${cartOrderList }" var="bean">
                        <tr>
-                           <td><img src="${root }imgs/shopping/dogGum.jpg" class="img-fluid" alt="Responsive image"></td>
-                           <td><input type="hidden" class="form-control" name="product_id" value="${orderProductPurchaseOne.product_id }">
-                           이름:${orderProductPurchaseOne.product_name } / 
-                           <!-- 옵션 값  -->
-                            <% String select1= request.getParameter("selectBox");
-                           out.println(select1);
-                           request.setAttribute("cart_option",request.getParameter("selectBox"));
-                           out.println(request.getAttribute("cart_option")+"request.getAttb 확인");
-                           %>
-<                            <input type="hidden" class="form-control" name="order_detail_option" id="order_detail_option" value="<%=request.getParameter("selectBox") %>"/> 
-                        </td>
-                           <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 
-                           out.println(order_detail_quantity);%>
-                           <%
-                            request.setAttribute("order_detail_quantity",request.getParameter("order_detail_quantity"));
-                           %>   
-                             <input type="hidden" class="form-control" name="order_detail_quantity" id="order_detail_quantity" value="<%=request.getParameter("order_detail_quantity") %>"/>  
-                        	  <input type="hidden" class="form-control" name="product_stock" id="product_stock" value="${orderProductPurchaseOne.product_stock }"/>
-                           <td>${orderProductPurchaseOne.product_price * order_detail_quantity}
+                           <td>
+                           		<!-- 썸네일 -->
+                           		${bean.product_thumb }
                            </td>
-                           <td>2,500원</td>
-                           <td>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}</td>
-                           
+                           <td>
+                           		<!-- 상품이름 --> 
+                           		${bean.product_name }
+                           		<input type="hidden" name="product_name<%=i %>" id="product_name<%=i %>" value="${bean.product_name }">
+                     	   </td>
+                           <td>
+                           		<!-- 옵션 -->   
+                           		${bean.cart_option }
+                           </td>
+                           <td>
+                           		<!-- 수량 -->
+                           		${bean.cart_quantity }
+                           </td>
+                           <td>
+                           		<!-- 금액 -->
+                           		${bean.product_price }
+                           </td>
+                           <td>
+                           		<!-- 합계 -->
+                           		${bean.product_price*bean.cart_quantity }
+                           </td>
                        </tr>
+<%
+i+=1;
+%>
+</c:forEach>
                    </tbody>
                </table>
-                 <a href="#"><span> << 쇼핑계속하기</span></a>
+ 	 <form method="post" autocomplete="off" id="payForm">  
                  <div class="coast clearfix">
                    <ul class="coast-group float--right">
-                       <li>총 <%=order_detail_quantity %>  개의 상품금액<br/>${orderProductPurchaseOne.product_price * order_detail_quantity }원</li>
+                       <li>총 <strong><%=i %></strong>개의 상품금액<br/><strong>${sessionScope.cartOrderPrice }</strong>원</li>
                        <li><i class="fas fa-plus"></i></li>
                        <li>배송비<br/>2,500원</li>
                        <li><i class="fas fa-equals"></i></li>
-                       <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}
-                       <input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}">
-                       <input type="hidden" class="form-control" name="order_amount" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"/>
+                       <li>합계<br/><strong>${sessionScope.cartOrderPrice+2500 }</strong>원
                        </li> 
                    </ul>
                </div>
@@ -181,18 +186,21 @@
                     <tbody>
                         <tr>
                             <th class="label"><span>주문하시는 분</span></th>
-                            <td><input type="text" class="form-control" name="member_id" id="member_id" value="${orderVo.member_name}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
+                            <td><input type="text" class="form-control" name="member_name" id="member_name" value="${sessionScope.memberVo.member_name}" aria-label="Username" aria-describedby="basic-addon1" readonly></td>
                         </tr>
                         <tr>
                             <th>휴대폰 번호</th>
-                            <td><input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly>
-                           		  <input type="hidden" class="form-control" name="order_tel" id="order_tel" value="${orderVo.member_phone }" />
+                            <td><input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${sessionScope.memberVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly>
                             </td>
                            
                         </tr>
                         <tr>
-                            <th>이메일</th>
-                            <td><input type="text" class="form-control" placeholder="${orderVo.member_email}" aria-label="email" aria-describedby="basic-addon1" readonly></td>
+                            <th>주소</th>
+                            <td>
+                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr1 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr2 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr3 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            </td>
                         </tr>
                     </tbody>
          			     </table>
@@ -203,9 +211,8 @@
 					<tbody>
 						<tr>
 							<th class="label"><span>배송지 확인</span></th>
-							<td><label class="form-check-label" for="defaultCheck1">
-									주문자 정보와 동일 </label> <input class="form-check-input" type="checkbox"
-								value="" id="defaultCheck1" name="defaultCheck1"></td>
+							<td><label class="form-check-label" for="defaultCheck1">주문자 정보와 동일 </label>
+							<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="defaultCheck1"></td>
 						</tr>
 						<tr>
 							<th class="label"><span>받으실 분</span></th>
@@ -214,27 +221,26 @@
 								aria-label="Username" aria-describedby="basic-addon1"></td>
 						</tr>
 						<tr>
-							<th>받으실 곳</th>
-							<td><input type="text" class="input--text" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
-								<button type="button" id="postSearch">우편 검색</button> <br /> 
-								<input type="text" class="input--text" name="order_addr2" id="sample6_address" placeholder="주소"> 
-								<input type="text" class="input--text" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소"></td>
-						</tr>
-						<tr>
 							<th>휴대폰 번호</th>
 							<td>
-							
 							<input type="text" class="form-control"
 								name="order_phone" id="order_phone" placeholder="번호만 입력해주세요."
 								aria-label="Username" aria-describedby="basic-addon1">
 								
-								</td>
+							</td>
+						</tr>
+						<tr>
+							<th>받으실 곳</th>
+							<td><input type="text" class="input--text" name="order_addr1" id="sample6_postcode" placeholder="우편번호">
+								<button type="button" id="postSearch">우편 검색</button> </br> 
+								<input type="text" class="input--text" name="order_addr2" id="sample6_address" placeholder="주소"> 
+								<input type="text" class="input--text" name="order_addr3" id="sample6_detailAddress" placeholder="상세주소"></td>
 						</tr>
 						<tr>
 							<th>요청사항</th>
-							<td><input type="text" class="form-control"
-								name="order_msg" id="order_msg" placeholder="40자 내로 써주세요"
-								aria-label="Username" aria-describedby="basic-addon1"></td>
+							<td><textarea cols="65" rows="4" maxlength="40" form="payForm" 
+								name="order_msg" id="order_msg" placeholder="40자 내로 써주세요."
+								aria-label="Username" aria-describedby="basic-addon1"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
@@ -242,12 +248,11 @@
                <div class="coast clearfix">
                    <ul class="coast-group float--right">
                        <li class="total__title">최종 결제 금액</li>
-                       <li class="total">${orderProductPurchaseOne.product_price +2500}</li>
+                       <li class="total"><strong>${sessionScope.cartOrderPrice+2500 }</strong>원</li>
                    </ul>
                </div>
                <div class="purchase">
-                       <button type="button" class="btn-order" id="payApi" role="button"> 결제하기 </button> 
-                       <button type="button" class="btn-order" id="Periodicpayment" role="button"> 정기결제 </button> 
+                       <button type="button" class="btn-order" id="payApi" role="button">결제하기</button> 
                </div>
       		</form>
       	</section>  
@@ -270,19 +275,7 @@
 		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 		<script>
 				$(document).on('click','#payApi',function(){
-		   			var order_detail_option = $('#order_detail_option').val();
-		   			var order_detail_quantity = $('#order_detail_quantity').val();
-		   			$("#order_detail_option").val(order_detail_option);
-		   			$("#order_detail_quantity").val(order_detail_quantity);
-		   			console.log(order_detail_option);
-		   			console.log(order_detail_quantity);
-		   			
-			   		var product_stock = $('#product_stock').val();
-					var order_detail_quantity = $('#order_detail_quantity').val();
-					if(product_stock - order_detail_quantity<0){
-					 alert("상품 재고보다 구매 수량이 많습니다. 다시 확인 해 주세요.");
-					 return;
-					}
+		  			
 					var payButton = $("#payApi");
 		   			var order_name = $("#order_name").val();
 		   			var sample6_postcode = $("#sample6_postcode").val();
@@ -290,17 +283,15 @@
 		   			var sample6_detailAddress = $("#sample6_detailAddress").val();
 		   			var order_phone = $("#order_phone").val(); 
 		   			var order_msg = $("#order_msg").val(); 
-		   			var phonenum = $('#order_phone').val();
- 			   		var regPhone = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g; 
+ 			   		var regPhone = /(01[0|1|6|9|7])(\d{3}|\d{4})(\d{4}$)/g; 
 	
-			   		 if(!regPhone.test(phonenum)){
+			   		 if(!regPhone.test(order_phone)){
 			   		  alert('잘못된 휴대폰 번호입니다.');
 			   		  $('#phone').focus();
 			   		  return false;    
 			   		 }
 		   
 		   			
-/* 		   			if(order_name==null||order_name==""||order_addr1==""||order_addr1==null||order_addr2==""||order_addr2==null||order_addr3==""||order_addr3==null||order_phone==""||order_phone==null){ */
 		   			if(order_name==null||order_name==""){
 		   				alert("받으실 분 이름을 입력해주세요.");
 		   				return;
@@ -320,6 +311,8 @@
 		   			
 			/* 		alert("유효성 검사 끝나고 카카오 페이로 들어감."); */
 					 $(function(){
+						 	var name=$("#product_name0").val();
+						 
 					        var IMP = window.IMP; // 생략가능
 					        IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 					        var msg;
@@ -327,17 +320,17 @@
 					            pg : 'kakaopay',
 					            pay_method : 'card',
 					            merchant_uid : 'merchant_' + new Date().getTime(),
-					            name : '${orderProductPurchaseOne.product_name }',
+					            name : name+' 및 '+<%=i%>+'개',
 								/* 테스트해야하므로 임시로 백원 입력하겠습니다.*/
 					            amount :100,
 								/* 
 								amount : '${orderProductPurchaseOne.product_price }',
 								*/
-					            buyer_email : '${orderVo.member_email}',
-					            buyer_name : '${orderVo.member_name}',
-					            buyer_tel : 'order_phone',
-					            buyer_addr : 'order_addr2'+'order_addr3',
-					            buyer_postcode : 'order_addr1',
+					            buyer_email : '${memberVo.member_email}',
+					            buyer_name : '${memberVo.member_name}',
+					            buyer_tel : order_phone,
+					            buyer_addr : sample6_address+sample6_detailAddress,
+					            buyer_postcode : sample6_postcode,
 					            //m_redirect_url : 'http://www.naver.com'
 					        }, function(rsp) {
 					            if ( rsp.success ) {
@@ -371,7 +364,6 @@
 					                msg = '결제에 실패하였습니다.';
 					                msg += ' 에러내용 : ' + rsp.error_msg;
 					                //실패시 이동할 페이지
-					                location.href="<%=request.getContextPath()%>/order/productDetail?idx="+'${orderProductPurchaseOne.product_id }';
 				                alert(msg);
 				            }
 				        });
@@ -447,8 +439,7 @@
 	   				if(checked == true){
 	   					/* f.order_name.value = f.${memberVo.member_id}.value; */
 	   					document.getElementById("order_name").value="${memberVo.member_name}";
-	   					document.getElementById("order_phone").value="${orderVo.member_phone }";
-	   					document.getElementById("order_tel").value="${orderVo.member_phone }";
+	   					document.getElementById("order_phone").value="${memberVo.member_phone }";
 	   					document.getElementById("sample6_postcode").value="${memberVo.member_addr1}";
 	   					document.getElementById("sample6_address").value="${memberVo.member_addr2}";
 	   					document.getElementById("sample6_detailAddress").value="${memberVo.member_addr3}";
@@ -460,9 +451,10 @@
 	   					document.getElementById("sample6_detailAddress").value="";
 	   				}
 	   			}
-	   		</script><!-- 주문자 정보와 동일 체크박스 end  --> 
+	   		</script>
+	   		<!-- 주문자 정보와 동일 체크박스 end  --> 
 	
- --%>
+
 </body>
 
 </html>
