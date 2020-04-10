@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.service.admin.AdminOrderService;
 
@@ -22,5 +23,13 @@ public class AdminOrderController {
 	public String orderList(Model model) {
 		adminOrderService.list(model);
 		return "admin/order_list";
+	}
+	
+	@RequestMapping(value = "order_detail", method = RequestMethod.GET)
+	public String memberDetail(Model model, @RequestParam int order_id ) {
+		log.info("get member datail");
+		
+		adminOrderService.detail(model, order_id);
+		return "admin/order_detail";
 	}
 }

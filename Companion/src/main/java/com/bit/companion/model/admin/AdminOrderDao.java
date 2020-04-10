@@ -10,4 +10,6 @@ public interface AdminOrderDao {
 	//Admin Order List
 	List<AdminOrderVo> selectAll() throws SQLException;
 
+	AdminOrderVo selectOne(int order_id) throws SQLException;
+
 }

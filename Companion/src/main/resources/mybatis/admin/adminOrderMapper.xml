@@ -5,6 +5,17 @@
 
 <mapper namespace="adminOrder">
 	<select id="selectAll" resultType="adminOrderBean">
-		select o.order_id,o.order_state_id,o.order_amount,o.member_id,(select m.member_name from `member` m where o.member_id=m.member_id) as member_name, o.order_name, o.order_phone, o.order_date from `order` o;
+		select o.order_id,o.order_state_id,o.order_amount,o.member_id,(select m.member_name from `member` m where o.member_id=m.member_id) as member_name, o.order_name, o.order_phone, o.order_date from `order` o order by o.order_id desc;
+	</select>
+	<select id="selectOne">
+		SELECT 
+			o.order_id,
+			o.member_id,
+		    (SELECT m.member_name from `member` m where o.member_id=m.member_id  and o.order_id=1) as member_name,
+		    (SELECT o_s.order_state_admin from `order_state`o_s, `order` o where o.order_state_id=o_s.order_state_id  and o.order_id=1) as order_state_admin,
+		    o.order_date,
+		    o.order_phone,
+		    (SELECT m.member_email from `member` m where o.member_id=m.member_id and o.order_id=1) as member_email
+		    from `order` o where o.order_id=1;
 	</select>
 </mapper>

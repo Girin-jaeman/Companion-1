@@ -14,16 +14,29 @@ import com.bit.companion.model.entity.admin.AdminOrderVo;
 public class AdminOrderServiceImpl implements AdminOrderService {
 	@Autowired
 	AdminOrderDao adminOrderDao;
-
 	
 	@Override
 	public void list(Model model) {
+		List<AdminOrderVo> list;
 		try {
-			List<AdminOrderVo> list = adminOrderDao.selectAll();
+			list = adminOrderDao.selectAll();
 			model.addAttribute("list",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	public void detail(Model model, int order_id) {
+		AdminOrderVo bean;
+		try {
+			bean = adminOrderDao.selectOne(order_id);
+			model.addAttribute("bean",bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
