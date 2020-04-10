@@ -29,16 +29,16 @@
     GOODSDETAIL STYLE
 ----------------------------------------------------- */
 .goodsImg{
-  width: 350px;
-  height: 500px;
+  width: 380px;
+  height: 440px;
   border: solid;
   padding: 10px;
 }
 .goodsImg>img{
-  min-width: 325px;
-  max-width: 325px;
-  min-height: 460px;
-  max-height: 460px;
+  min-width: 355px;
+  max-width: 355px;
+  min-height: 415px;
+  max-height: 415px;
 }
 
 #descrip{
@@ -79,6 +79,9 @@
   float: left;
 }
 
+.pagination{
+    padding-bottom:0;
+}
 /*
 *
 * ==========================================
@@ -176,4 +179,21 @@
 	font-size:18px;
 }
 
-
+.recomB{
+	width:100%;
+}
+.recomB thead{
+	font-size:22px;
+	text-align:center;
+}
+.recomB tbody tr{
+	border:2px solid gray;
+}
+.recomB tbody tr td img{
+	padding-top:10px;
+	margin:auto;
+	
+}
+.recomB tbody tr td p{
+	font-weight:500;
+}

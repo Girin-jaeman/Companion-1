@@ -50,19 +50,19 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
 							<li class="nav-item"><a class="nav-link active"
-								href="/companion/order/productMain?c=100">사료</a></li>
+								href="/companion/order/productMain?c=100&num=1">사료</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=200">간식</a></li>
+								href="/companion/order/productMain?c=200&num=1">간식</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=300">장난감</a></li>
+								href="/companion/order/productMain?c=300&num=1">장난감</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=400">미용용품</a></li>
+								href="/companion/order/productMain?c=400&num=1">미용용품</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=500">목욕용품</a></li>
+								href="/companion/order/productMain?c=500&num=1">목욕용품</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=600">위생용품</a></li>
+								href="/companion/order/productMain?c=600&num=1">위생용품</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/companion/order/productMain?c=700">산책용품</a></li>
+								href="/companion/order/productMain?c=700&num=1">산책용품</a></li>
 						</ul>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 				<div class="row">
 					<div class="col-md-5" id="imgbox">
 						<div class="goodsImg">
-							<!-- lay 350x500, imgsize 330x480 -->
+							<!-- lay 380x440, imgsize 355x415 -->
 							<!-- 이미지 반 글 반 먹고 나머지는 밑에 푸터처럼. -->
 							<img src="${root }imgs/shopping/dogTestImage.jpg"
 								class="img-fluid" alt="Responsive image">
@@ -227,35 +227,6 @@
 	
 					</div>
 				</div>
-       					<table>
-       					<div>이 상품을 추천/구매한 사람들이 구입한 상품 </div>
-							<thead>
-								<tr>
-									<!-- <td>thumb</td>
-									<td>thumb</td>
-									<td>thumb</td>
-									<td>thumb</td>
-									<td>ID</td>
-									<td>thumb</td> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-								<!-- 상품 추천 목록 LIST UPDATE  -->
-							<c:forEach items="${productRecommendList }" var="bean" >
-									<td>
-									<a href="${root }order/productDetail?idx=${bean.product_id}"><img src="http://placehold.it/50x60&text=recmdThumb" 
-									width="50" height="60"
-									class="img-fluid" alt="Responsive image"  style="display:block;"><p style="text-align:center;">${bean.product_name }</p></a></td>
-<%-- 									<td><img src="${root}${bean.product_thumb }></td> --%>
-<!-- 이런 방식으로 처리 해야 함. -->
-<%-- <img src = "${root}${bean.product_thumb}.jpg"/></td> --%>
-						
-
-							</c:forEach>
-								</tr>
-							</tbody>
-						</table>					
 
 			<div class="p-12 rounded mb-5">
 				<!-- Lined tabs-->
@@ -395,7 +366,7 @@
 									</c:forEach>
 									</tbody>
 								</table>
-								<ul class="pagination my-5">
+								<ul class="pagination">
 									<li class="page-item"><a class="page-link" href="#"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									</a></li>
@@ -508,6 +479,48 @@
 						</div>	<!-- 문의 엔드 -->
 					</div>
 					<!-- End lined tabs -->
+					
+					<!-- 위치테스트여 -->
+					<table class="recomB">
+							<thead>
+								<tr>
+									<!-- <td>thumb</td>
+									<td>thumb</td>
+									<td>thumb</td>
+									<td>thumb</td>
+									<td>ID</td>
+									<td>thumb</td> -->
+								</tr>
+								<tr>
+									<th colspan="5">다른 고객이 함께 본 상품</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<!-- 상품 추천 목록 LIST UPDATE  -->
+							<c:forEach items="${productRecommendList }" var="bean" >
+									<td>
+									<a href="${root }order/productDetail?idx=${bean.product_id}">
+										<img src="http://placehold.it/50x60&text=recmdThumb" width="180" height="60"
+										class="img-fluid" alt="Responsive image"  style="display:block;">
+										<p style="text-align:center;">${bean.product_name }</p>
+									</a>
+									</td>
+<%-- 									<td><img src="${root}${bean.product_thumb }></td> --%>
+<!-- 이런 방식으로 처리 해야 함. -->
+<%-- <img src = "${root}${bean.product_thumb}.jpg"/></td> --%>
+						
+
+							</c:forEach>
+								</tr>
+							</tbody>
+						</table>									
+					
+					
+					
+					
+					<!-- 위치테스트여 -->
+					
 				</div>
 				<!-- #myTab2Content end-->
 			</div><!--main content END  -->
