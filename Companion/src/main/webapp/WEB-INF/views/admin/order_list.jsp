@@ -18,7 +18,7 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    <title>Companion::관리자::대시보드</title>
+    <title>Companion::관리자::주문내역</title>
 </head>
 <body>
 <!-- .wrapper [start] -->
@@ -63,7 +63,7 @@
 		<!-- nav [end] -->
 		<!-- .container-fluid [start] -->
 		<div class="container-fluid">
-			<h1>주문 내역</h1>
+			<h1>주문내역</h1>
 			<button>주문취소</button>
 			<button>출고요청</button>
 			<table class="table table-bordered dataTable" id="dataTable">
@@ -165,7 +165,7 @@
     				style:'multi',
     				selector:'td:first-child'
     			},
-    			order:[[1,'asc']]
+    			order:[[1,'desc']]
     		});
 			chkbox.on('click','th.select-checkbox',function(){
     			if($('th.select-checkbox').hasClass('selected')){
@@ -176,7 +176,6 @@
     				$('th.select-checkbox').addClass('selected');
     			}
     		}).on('select deselect',function(){
-    			('Some selection or deselection going on')
     			if(chkbox.rows({
     				selected:true
     			}).count() !== chkbox.rows().count()){

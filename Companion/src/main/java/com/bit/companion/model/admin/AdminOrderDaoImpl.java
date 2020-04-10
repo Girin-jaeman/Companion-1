@@ -23,4 +23,9 @@ public class AdminOrderDaoImpl implements AdminOrderDao {
 		return sqlSession.selectList("adminOrder.selectAll");
 	}
 
+	@Override
+	public AdminOrderVo selectOne(int order_id) throws SQLException {
+		return sqlSession.selectOne("adminOrder.selectOne",order_id);
+	}
+
 }
