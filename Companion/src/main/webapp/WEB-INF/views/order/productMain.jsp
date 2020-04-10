@@ -200,10 +200,11 @@
 				<%
 					String str = request.getQueryString();
 					String result = str.substring(0,5);
+					String REALURL = (String)request.getAttribute("trueUrl");
 				%>
 	  	   <ul class="pagination">
 	  	     <li class="page-item">
-		    <a class="page-link" href="${root }order/productMain?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
+		    <a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 	   		</li>
@@ -211,7 +212,7 @@
 				<span>
 					<c:if test="${select != num}">
 						<li class="page-item">
-							<a class="page-link" href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
+							<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${num }">${num }</a>
 						</li>	
 				  	</c:if>  
 				 	<c:if test="${select == num}">
@@ -248,11 +249,64 @@
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 	    <!-- MAIN JS -->
     	<script src="${root }js/main.js"></script>
-		<!-- 추천수 script start -->
+      	<!-- 페이징용  URL 획득   -->
 		<script type="text/javascript">
-	
+		
+		$(document).ready(function(){
+			var link = document.location.href;
+			/* console.log(link); */
+			var linkSplit = link.split('/');
+			/* console.log(linkSplit); */
+			var linkNum6 = linkSplit[6];
+			
+				if(linkNum6==null){
+					console.log("바보야");
+					var trueUrl = "";	
+					console.log(trueUrl);
+				}else if(linkNum6!=null){
+					var ThisIsNeedUrl = linkNum6.split('?');
+					console.log(ThisIsNeedUrl);
+					var trueUrl = ThisIsNeedUrl[0];
+		 			 console.log(trueUrl); 
+				}
+				request.setAttribute("trueUrl",trueUrl);
+			
+	/*		var splitPara = link.split('/');
+			console.log(splitPara[6]);
+			var urlAddrTrue = splitPara[6].split('?');
+			console.log(urlAddrTrue[0]); */
+			
+			/* alert(para); */
+		})
+		
+		
+		$(document).on("click","#getURL",function(){
+			var link = document.location.href;
+			/* console.log(link); */
+			var linkSplit = link.split('/');
+			/* console.log(linkSplit); */
+			var linkNum6 = linkSplit[6];
+			
+				if(linkNum6==null){
+					console.log("바보야");
+					var trueUrl = "";	
+					console.log(trueUrl);
+				}else if(linkNum6!=null){
+					var ThisIsNeedUrl = linkNum6.split('?');
+					console.log(ThisIsNeedUrl);
+					var trueUrl = ThisIsNeedUrl[0];
+		 			 console.log(trueUrl); 
+				}
+			
+			
+	/*		var splitPara = link.split('/');
+			console.log(splitPara[6]);
+			var urlAddrTrue = splitPara[6].split('?');
+			console.log(urlAddrTrue[0]); */
+			
+			/* alert(para); */
+		})
 		</script>
-		<!-- 추천수 script end -->
 	</body>
 	
 	</html>
