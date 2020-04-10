@@ -23,9 +23,6 @@ import com.bit.companion.service.order.ProductService;
 public class ProductController {
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
-	
-	
-	
 	@Autowired
 	ProductService productService;
 	

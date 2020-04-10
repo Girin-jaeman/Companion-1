@@ -88,7 +88,7 @@
 	<!-- 선택 상품의 추천수가 0일 경우 랜덤 상품이 추천 됨.  -->
 	<!-- 추천상품목록 구현  -->
 	<select id="ProductRecommendList" resultType="productBean" parameterType="int">
-		select product_id,order_id from `order_detail` 
+		select product_id,order_id,(select product_thumb from product where product_id=#{product_id}) from `order_detail` 
 		where order_id = (select order_id from `order` where member_id 
 		in (select member_id from `like` where product_id=#{product_id}) is not null limit 1) 
 		is not null group by product_id order by rand() limit 5;
