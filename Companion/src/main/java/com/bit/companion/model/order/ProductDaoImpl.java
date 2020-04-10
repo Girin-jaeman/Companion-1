@@ -88,21 +88,21 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.selectList("ProductRecommendList",product_id);
 	}
 
-
-	//countPage
-	//int AllProductNum 으로 List 내의 컬럼으로 받아오겠습니다.(총 상품 목록 카테고리별로 분류해서요!)
-	@Override
-	public List<ProductVo> countPage(int category_id,int displayPost,int postNum) throws SQLException {
-
-		return sqlSession.selectList("ProductPaging",category_id);
-	}
+//
+//	//countPage
+//	//int AllProductNum 으로 List 내의 컬럼으로 받아오겠습니다.(총 상품 목록 카테고리별로 분류해서요!)
+//	@Override
+//	public List<ProductVo> countPage(int category_id,int displayPost,int postNum) throws SQLException {
+//
+//		return sqlSession.selectList("ProductPaging",category_id);
+//	}
 
 	
+	//4.10
 	//countList
-	//게시물 총 갯수
+	//상품 총 갯수
 	@Override
 	public int count(int category_id) throws Exception {
-
 		return sqlSession.selectOne("count",category_id);
 	}
 
