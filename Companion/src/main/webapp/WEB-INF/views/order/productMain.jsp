@@ -43,25 +43,25 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
 								<li class="nav-item">
-                                <a class="nav-link active" href="/companion/order/productMain?c=100">사료</a>
+                                <a class="nav-link active" href="/companion/order/productMain?c=100&num=1">사료</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=200">간식</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=200&num=1">간식</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=300">장난감</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=300&num=1">장난감</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=400">미용용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=400&num=1">미용용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=500">목욕용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=500&num=1">목욕용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=600">위생용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=600&num=1">위생용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=700">산책용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=700&num=1">산책용품</a>
                             </li>
                         </ul>
 						</div>
@@ -200,33 +200,40 @@
 				<%
 					String str = request.getQueryString();
 					String result = str.substring(0,5);
+					String REALURL = (String)request.getAttribute("trueUrl");
+					if(REALURL==null){
+						REALURL="";
+					}
 				%>
-	  	   <ul class="pagination">
-	  	     <li class="page-item">
-		    <a class="page-link" href="${root }order/productMain?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-	   		</li>
-	   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
-				<span>
-					<c:if test="${select != num}">
-						<li class="page-item">
-							<a class="page-link" href="${root }order/productMain?<%=result %>&num=${num }">${num }</a>
-						</li>	
-				  	</c:if>  
-				 	<c:if test="${select == num}">
-						<li class="page-item">
-							<a class="page-link bg-info text-white" href="#" >${num }</a>	
-						</li>	
-				 	</c:if>		
-				</span>
-			</c:forEach>
-			<li class="page-item">
-			<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
-	        <span aria-hidden="true">&raquo;</span>
-	        <a></a>
-	      </a>	      
-	      </li>
+	 	   <ul class="pagination">
+			<c:if test="${prev }">
+		  	     <li class="page-item">
+		    	   	<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				    </a>
+		   		</li>
+			</c:if>
+		   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+					<span>
+						<c:if test="${select != num}">
+							<li class="page-item">
+								<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${num }">${num }</a>
+							</li>	
+					  	</c:if>  
+					 	<c:if test="${select == num}">
+							<li class="page-item">
+								<a class="page-link bg-info text-white" href="#" >${num }</a>	
+							</li>	
+					 	</c:if>		
+					</span>
+				</c:forEach>
+			<c:if test="${next }">
+				<li class="page-item">
+					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
+		     		   <span aria-hidden="true">&raquo;</span>
+		   			</a>	      
+		      </li>
+	      	</c:if>
 	      </ul>
 		</nav>
 	<!-- pagination [end] -->		
@@ -248,11 +255,6 @@
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 	    <!-- MAIN JS -->
     	<script src="${root }js/main.js"></script>
-		<!-- 추천수 script start -->
-		<script type="text/javascript">
-	
-		</script>
-		<!-- 추천수 script end -->
 	</body>
 	
 	</html>

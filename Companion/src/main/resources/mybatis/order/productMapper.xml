@@ -11,36 +11,36 @@
 	</select>
 	
 	<!--상품 추천순 정렬-->
-	<select id="productOrderByProductLike" resultType="productBean">
+	<select id="productOrderByProductLike" resultType="productBean" parameterType="hashMap">
 		 select distinct product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id
 		  from product left join `like` on product.product_id=`like`.product_id 
-		  where product.category_id=#{category_id} order by like_id desc;
+		  where product.category_id=#{category_id} order by like_id desc limit #{displayPost},#{postNum};
 	</select>
 	
 	<!-- 상품 판매인기순 -->
-	<select id="productOrderBySellingOrder" resultType="productBean">
+	<select id="productOrderBySellingOrder" resultType="productBean" parameterType="hashMap">
 		select * from product 
 		left join order_detail 
 		on
 		 product.product_id=order_detail.product_id where product.category_id=#{category_id}
-		  order by order_detail.order_detail_quantity desc; 
+		  order by order_detail.order_detail_quantity desc limit #{displayPost},#{postNum}; 
 	</select>
 	
 <!-- 	상품 낮은 가격순 -->
-	<select id="productOrderByLowPrice" resultType="productBean">
-		select * from product where category_id=#{category_id} order by product_price;
+	<select id="productOrderByLowPrice" resultType="productBean" parameterType="hashMap">
+		select * from product where category_id=#{category_id} order by product_price limit #{displayPost},#{postNum};
 	</select>
 	
 	<!-- 상품 높은 가격순 -->
-	<select id="productOrderByHighPrice" resultType="productBean">
-		select * from product where category_id=#{category_id} order by product_price desc;
+	<select id="productOrderByHighPrice" resultType="productBean" parameterType="hashMap">
+		select * from product where category_id=#{category_id} order by product_price desc limit #{displayPost},#{postNum};
 	</select>
 	<!-- 상품 등록일 순 -->
-	<select id="productOrderByDate" resultType="productBean">
-		select * from product where category_id=#{category_id} order by product_date desc;
+	<select id="productOrderByDate" resultType="productBean" parameterType="hashMap">
+		select * from product where category_id=#{category_id} order by product_date desc limit #{displayPost},#{postNum};
 	</select>
 	
-	<!-- 잠시 대기  -->
+	 <!-- 모든 상품 목록 데이터 가져오는 곳.   -->
   	<select id="ProductSelectAll" resultType="productBean">
 	  	select (a.category_id, a.product_id, a.product_name, a.product_content, a.product_price, a.product_stock, a.product_date, 
 	  	a.product_image, a.product_thumb, a.product_option1, a.product_option2, a.product_option3, a.product_option4, 
@@ -48,7 +48,7 @@
 	  	union select (a.like_id, a.member_id, a.product_id,b.category_id, b.product_id, b.product_name, b.product_content, b.product_price, 
 	  	b.product_stock, b.product_date, b.product_image, b.product_thumb, b.product_option1, b.product_option2, b.product_option3, 
 	  	b.product_option4, b.product_option5 from `like` as a left join `product` as b on a.product_id=b.product_id);
-  	</select>
+  	</select> 
   	
   	<!-- 상세 페이지  -->
   	<select id="ProductDetailOne" resultType="productBean" parameterType="int">
@@ -88,7 +88,7 @@
 	<!-- 선택 상품의 추천수가 0일 경우 랜덤 상품이 추천 됨.  -->
 	<!-- 추천상품목록 구현  -->
 	<select id="ProductRecommendList" resultType="productBean" parameterType="int">
-		select product_id,order_id from `order_detail` 
+		select product_id,order_id,(select product_name from product where product_id=#{product_id}) as product_name from `order_detail` 
 		where order_id = (select order_id from `order` where member_id 
 		in (select member_id from `like` where product_id=#{product_id}) is not null limit 1) 
 		is not null group by product_id order by rand() limit 5;

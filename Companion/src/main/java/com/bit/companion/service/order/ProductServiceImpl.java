@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.bit.companion.controller.order.OrderPagenation;
 import com.bit.companion.model.entity.order.ProductVo;
 import com.bit.companion.model.order.ProductDao;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+	OrderPagenation page = new OrderPagenation();
+	int num=1;
+	
 	
 	@Autowired
 	ProductDao productDao;
@@ -54,22 +58,26 @@ public class ProductServiceImpl implements ProductService {
 	
 	//추천순 정렬 나머지 조건도 채울 것.
 	@Override
-	public void Alignment(Model model,int category_id) {
-		List<ProductVo> list;
+	public void Alignment(Model model,int category_id,int displayPost,int postNum) {
+		List<ProductVo> list = null;
 		try {
-			list=productDao.productAlignmentByLike(category_id);
-			model.addAttribute("productCategory",list);
+			list=productDao.productAlignmentByLike(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
+
+		
 	}
 	//판매량순 정렬
 	@Override
-	public void AlignmentOrderBySelling(Model model, int category_id) {
+	public void AlignmentOrderBySelling(Model model, int category_id,int displayPost,int postNum) {
 		List<ProductVo> list;
 		try {
-			list=productDao.productAlignmentBySellingOrder(category_id);
-			model.addAttribute("productCategory",list);
+			list=productDao.productAlignmentBySellingOrder(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -78,12 +86,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 	//낮은 가격 순 정렬
 	@Override
-	public void AlignmentOrderByLowPrice(Model model, int category_id) {
+	public void AlignmentOrderByLowPrice(Model model, int category_id,int displayPost,int postNum) {
 		List<ProductVo> list;
 		
 		try {
-			list=productDao.productAlignmentByLowPrice(category_id);
-			model.addAttribute("productCategory",list);
+			list=productDao.productAlignmentByLowPrice(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -91,12 +99,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 	//높은 가격 순
 	@Override
-	public void AlignmentOrderByHighPrice(Model model, int category_id) {
+	public void AlignmentOrderByHighPrice(Model model, int category_id,int displayPost,int postNum) {
 		List<ProductVo> list;
 		
 		try {
-			list=productDao.productAlignmentByHighPrice(category_id);
-			model.addAttribute("productCategory",list);
+			list=productDao.productAlignmentByHighPrice(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -104,12 +112,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 	//등록일 순
 	@Override
-	public void AlignmentOrderByDate(Model model, int category_id) {
+	public void AlignmentOrderByDate(Model model, int category_id,int displayPost,int postNum) {
 		List<ProductVo> list;
 		
 		try {
-			list=productDao.productAlignmentByDate(category_id);
-			model.addAttribute("productCategory",list);
+			list=productDao.productAlignmentByDate(category_id,displayPost,postNum);
+			model.addAttribute("listPage",list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -143,23 +151,6 @@ public class ProductServiceImpl implements ProductService {
 				e.printStackTrace();
 			}
 	}
-
-	//paging 
-//	@Override
-//	public void countPage(Model model, int category_id,int displayPost,int postNum) {
-//		List<ProductVo> list;
-//		System.out.println("count Page service 작동 확인");
-//		System.out.println(category_id);
-//		System.out.println(displayPost);
-//		System.out.println(postNum);
-//		try {
-//			list= productDao.countPage(category_id,displayPost,postNum);
-////			model.addAttribute("listPage",list);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	}
 
 	//4.10
 	//상품 총 개수
