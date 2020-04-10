@@ -201,33 +201,39 @@
 					String str = request.getQueryString();
 					String result = str.substring(0,5);
 					String REALURL = (String)request.getAttribute("trueUrl");
+					if(REALURL==null){
+						REALURL="";
+					}
 				%>
-	  	   <ul class="pagination">
-	  	     <li class="page-item">
-		    <a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-	   		</li>
-	   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
-				<span>
-					<c:if test="${select != num}">
-						<li class="page-item">
-							<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${num }">${num }</a>
-						</li>	
-				  	</c:if>  
-				 	<c:if test="${select == num}">
-						<li class="page-item">
-							<a class="page-link bg-info text-white" href="#" >${num }</a>	
-						</li>	
-				 	</c:if>		
-				</span>
-			</c:forEach>
-			<li class="page-item">
-			<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
-	        <span aria-hidden="true">&raquo;</span>
-	        <a></a>
-	      </a>	      
-	      </li>
+	 	   <ul class="pagination">
+			<c:if test="${prev }">
+		  	     <li class="page-item">
+		    	   	<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				    </a>
+		   		</li>
+			</c:if>
+		   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+					<span>
+						<c:if test="${select != num}">
+							<li class="page-item">
+								<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${num }">${num }</a>
+							</li>	
+					  	</c:if>  
+					 	<c:if test="${select == num}">
+							<li class="page-item">
+								<a class="page-link bg-info text-white" href="#" >${num }</a>	
+							</li>	
+					 	</c:if>		
+					</span>
+				</c:forEach>
+			<c:if test="${next }">
+				<li class="page-item">
+					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
+		     		   <span aria-hidden="true">&raquo;</span>
+		   			</a>	      
+		      </li>
+	      	</c:if>
 	      </ul>
 		</nav>
 	<!-- pagination [end] -->		
@@ -250,13 +256,10 @@
 	    <!-- MAIN JS -->
     	<script src="${root }js/main.js"></script>
       	<!-- 페이징용  URL 획득   -->
-		<script type="text/javascript">
-		
-		$(document).ready(function(){
-			var link = document.location.href;
-			/* console.log(link); */
+		<!-- <script type="text/javascript">
+
 			var linkSplit = link.split('/');
-			/* console.log(linkSplit); */
+		
 			var linkNum6 = linkSplit[6];
 			
 				if(linkNum6==null){
@@ -270,13 +273,6 @@
 		 			 console.log(trueUrl); 
 				}
 				request.setAttribute("trueUrl",trueUrl);
-			
-	/*		var splitPara = link.split('/');
-			console.log(splitPara[6]);
-			var urlAddrTrue = splitPara[6].split('?');
-			console.log(urlAddrTrue[0]); */
-			
-			/* alert(para); */
 		})
 		
 		
@@ -299,13 +295,8 @@
 				}
 			
 			
-	/*		var splitPara = link.split('/');
-			console.log(splitPara[6]);
-			var urlAddrTrue = splitPara[6].split('?');
-			console.log(urlAddrTrue[0]); */
-			
-			/* alert(para); */
-		})
+
+		})  -->
 		</script>
 	</body>
 	

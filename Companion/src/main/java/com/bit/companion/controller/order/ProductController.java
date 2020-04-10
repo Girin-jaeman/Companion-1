@@ -41,14 +41,8 @@ public class ProductController {
 		String url = request.getRequestURI();
 		String[] url2 = url.split("/");
 		request.setAttribute("trueUrl",url2[4]);
+		System.out.println(url2[4]);
 	}
-
-	//필터나 AOP로 처리 될거같은데 아니면 INTERCEPTOR??? 
-	public void pagingController(Model model,@RequestParam("c") int category_id, @RequestParam("num") int num,HttpServletRequest request) throws Exception{
-		OrderPagenation page = new OrderPagenation();
-	}
-	
-	
 	
 	//DETAIL PAGE
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
@@ -74,8 +68,9 @@ public class ProductController {
 		model.addAttribute("prev",page.getPrev());
 		model.addAttribute("next",page.getNext());
 		model.addAttribute("select",num);
-
-		productService.listPage(model, page.getDisplayPost(), page.getPostNum(), category_id);
+		/*
+		 * urlPattern(request);
+		 */		productService.listPage(model, page.getDisplayPost(), page.getPostNum(), category_id);
 		
 		return "order/productMain";
 	}
@@ -126,6 +121,7 @@ public class ProductController {
 
 		urlPattern(request);
 		productService.AlignmentOrderBySelling(model, category_id,page.getDisplayPost(),page.getPostNum());
+		
 		return "order/productMain";
 	}
 	//낮은 가격 순 정렬
