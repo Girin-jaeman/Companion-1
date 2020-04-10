@@ -142,8 +142,12 @@
 					<tr>
 						<th><label for="reserve_state_id">예약상태</label></th>
 						<td colspan="3">
-							<div class="inputArea">
-								<span>${adminReservationOne.reserve_state_id }</span>
+							<div class="reserve-box">
+								<input type="hidden" value="${adminReservationOne.reserve_state_id }">
+								<input type="radio" name="reserve_state_id" value="0"/>예약대기
+								<input type="radio" name="reserve_state_id" value="1"/>예약완료
+								<input type="radio" name="reserve_state_id" value="2"/>이용중
+								<input type="radio" name="reserve_state_id" value="3"/>이용완료
 							</div>
 						</td>
 					</tr>
@@ -167,6 +171,13 @@
 <script src="${root }js/main.js"></script>
   
 <script type="text/javascript">
+
+$(document).ready(function(){
+	$("input[name='reserve_state_id']").each(function(){
+		var thisVal = $(this).val();
+		console.log(thisVal);
+	});
+})
 //수정 버튼
 $("#modify_Btn").click(function(){
 	location.href = ${root}+"admin/question_edit?article_id=${adminArticleOne.article_id}"

@@ -68,9 +68,9 @@
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
 						<option value="all">전체</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="member">작성자</option>
+						<option value="service">서비스</option>
+						<option value="member">아이디</option>
+						<option value="reserve_date">신청일</option>
 					</select>
 					<input type="text" name="keyword" id="keyword">
 					<button name="search_Btn" id="search_Btn">검색</button>
@@ -91,7 +91,7 @@
 			<thead>
 				<tr>
 					<th scope="row">서비스</th>
-					<th scope="row">회원이름</th>
+					<th scope="row">아이디</th>
 					<th scope="row">체크인 날짜</th>
 					<th scope="row">체크아웃 날짜</th>
 					<th scope="row">품종</th>
@@ -198,6 +198,17 @@
 	    });
 	});
 
+	// 검색 버튼
+	// 검색 버튼
+	$("#search_Btn").click(function(e){
+		e.preventDefault();
+		var url = "${getList}";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
+	
 </script>
 </body>
 </html>

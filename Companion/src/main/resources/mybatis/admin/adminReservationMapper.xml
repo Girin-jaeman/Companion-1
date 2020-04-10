@@ -16,7 +16,24 @@
 		    r.reserve_dogage,
 		    r.reserve_date,
 		    r.reserve_state_id
-    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id ORDER BY r.reserve_date DESC;
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id
+    		<trim prefix="AND">
+    					<if test="searchType=='all' and keyword != null and keyword != '' ">
+							(service_name LIKE CONCAT('%', #{keyword}, '%') OR
+							reserve_date LIKE CONCAT('%', #{keyword}, '%') OR
+							member_id LIKE CONCAT('%', #{keyword}, '%'))
+						</if>
+						<if test="searchType=='service' and keyword != null and keyword != '' ">
+							service_name LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='reserve_date' and keyword != null and keyword != '' ">
+							reserve_date LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+						<if test="searchType=='member' and keyword != null and keyword != '' ">
+							member_id LIKE CONCAT('%', #{keyword}, '%')
+						</if>
+					</trim>
+    	 			ORDER BY r.reserve_date DESC LIMIT #{startList}, #{listSize};
 	</select>
 	
 	<!-- hotelService list -->
@@ -40,6 +57,30 @@
             m.member_name,
             m.member_phone
     	FROM `RESERVE` r, `SERVICE` s, `member` m WHERE r.service_id=s.service_id AND r.member_id=m.member_id AND r.reserve_id=#{value};
+	</select>
+	
+	<!-- reservation total -->
+	<select id="selectTotal" resultType="int">
+	 SELECT count(*) AS listCnt FROM `RESERVE`
+	 	<trim prefix="WHERE">
+	 		<if test="keyword != null and keyword != '' ">
+	 			<if test="searchType == 'all'">
+					(service_name LIKE CONCAT('%', #{keyword}, '%') OR
+					reserve_date LIKE CONCAT('%', #{keyword}, '%') OR
+					member_id LIKE CONCAT('%', #{keyword}, '%'))
+				</if>
+				<if test="searchType == 'service'">
+					service_name LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'reserve_date'">
+					reserve_date LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType == 'member'">
+					member_id LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+	 		</if>
+	 	</trim>
+		
 	</select>
 
 </mapper> 

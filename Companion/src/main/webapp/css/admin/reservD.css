@@ -53,3 +53,15 @@ table tbody tr td{
 .inputAreaName input{
 	width:100%;
 }
+.reserve-box{
+	display:flex;
+}
+.reserve-box input{
+	width:50px;
+	margin:auto 0;
+	
+}
+.reserve-box button{
+	margin:0;
+	float:right;
+}
