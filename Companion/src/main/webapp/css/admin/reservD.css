@@ -24,11 +24,11 @@ input{
 .btn-back{
 	border:1px solid gray;
 	margin-top:15px;
-	margin-right:100px;
+	margin-right:150px;
 	float:right;
 }
 .reserv_d{
-	width: 900px;
+	width: 800px;
 	margin: 0 auto;
 }
 .reserv_d tbody tr{
@@ -40,8 +40,7 @@ input{
 }
 table tbody tr th{
 	text-align:center;
-	padding-right:15px;
-	width:100px;
+	width:120px;
 }
 table tbody tr td{
 	width:200px;
