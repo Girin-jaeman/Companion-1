@@ -64,16 +64,13 @@
   	</select> <!-- listpage도 그대로 가져와야함. -->
   	
 <!-- 페이징 START -->
-	<select id="ProductPaging" resultType="productBean" parameterType="int">
-		select (select count(*) from product where category_id=#{category_id}) as AllProductNum,product.*
-		from product where category_id=#{category_id} order by product_id limit #{listNum},#{postNum};
-	</select>
 	
 	<!-- 상품 총 개수 -->
 	<select id="count" resultType="int" parameterType="int">
 		select count(*) from product where category_id=#{category_id};
 	</select>
 	
+	<!-- 4.10  -->
 	<!-- 게시물을 10개씩 출력하는 쿼리.  -->
 	<!-- HashMap TEST  -->
 	<select id="ListPage" resultType="productBean" parameterType="hashMap" >

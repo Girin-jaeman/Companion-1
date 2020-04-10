@@ -24,7 +24,6 @@ public interface ProductDao {
 	//상품 총 개수
 	int count(int category_id) throws Exception;
 
-	List<ProductVo> countPage(int category_id,int displayPost,int postNum) throws SQLException;
 	
 	//게시물 목록 + 페이징
 	List<ProductVo> listPage(int displayPost,int postNum,int category_id) throws Exception;

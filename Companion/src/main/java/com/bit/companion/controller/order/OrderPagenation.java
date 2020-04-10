@@ -5,7 +5,9 @@ public class OrderPagenation {
 	// 현재 페이지 번호
 	private int num;
 	// 게시물 총 갯수
+	//page.setCount(productService.count(model, category_id));
 	private int count;
+	
 	// 한 페이지에 출력할 게시물 갯수
 	private int postNum = 12;
 	// 하단 페이징 번호 ([ 게시물 총 갯수 ÷ 한 페이지에 출력할 갯수 ]의 올림)
@@ -21,6 +23,28 @@ public class OrderPagenation {
 	// 다음/이전 표시 여부
 	private boolean prev;
 	private boolean next;
+	
+	
+	private void dataCalc() {
+		
+		//마지막 번호
+		endPageNum = (int)(Math.ceil((double)num/(double)pageNumCnt) * pageNumCnt);
+		
+		System.out.println(endPageNum);
+		//시작 번호
+		startPageNum = endPageNum - (pageNumCnt-1);
+		
+		//마지막 번호 재계산
+		int endPageNum_tmp = (int)(Math.ceil((double)count/(double)pageNumCnt));
+		
+		if(endPageNum > endPageNum_tmp) {
+			endPageNum = endPageNum_tmp;
+		}
+		 prev = startPageNum == 1 ? false : true;
+		 next = endPageNum * pageNumCnt >= count ? false : true;
+		 
+		 displayPost = (num - 1) * postNum;
+	}
 	
 	public OrderPagenation() {
 	}
@@ -39,6 +63,7 @@ public class OrderPagenation {
 
 	public void setCount(int count) {
 		this.count = count;
+		dataCalc();
 	}
 
 	public int getPostNum() {
@@ -89,7 +114,7 @@ public class OrderPagenation {
 		this.startPageNum = startPageNum;
 	}
 
-	public boolean isPrev() {
+	public boolean getPrev() {
 		return prev;
 	}
 
@@ -97,7 +122,7 @@ public class OrderPagenation {
 		this.prev = prev;
 	}
 
-	public boolean isNext() {
+	public boolean getNext() {
 		return next;
 	}
 
@@ -105,27 +130,7 @@ public class OrderPagenation {
 		this.next = next;
 	}
 
-	private void dataCalc() {
-		
-		//마지막 번호
-		endPageNum = (int)(Math.ceil((double)num/(double)pageNumCnt) * pageNumCnt);
-		
-		System.out.println(endPageNum);
-		//시작 번호
-		startPageNum = endPageNum - (pageNumCnt-1);
-		
-		//마지막 번호 재계산
-		int endPageNum_tmp = (int)(Math.ceil((double)count/(double)pageNumCnt));
-		
-		if(endPageNum > endPageNum_tmp) {
-			endPageNum = endPageNum_tmp;
-		}
-		 prev = startPageNum == 1 ? false : true;
-		 next = endPageNum * pageNumCnt >= count ? false : true;
-		 
-		 displayPost = (num - 1) * postNum;
-	}
-	
+
 	
 	
 	

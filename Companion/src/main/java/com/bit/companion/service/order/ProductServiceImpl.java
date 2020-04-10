@@ -145,22 +145,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	//paging 
-	@Override
-	public void countPage(Model model, int category_id,int displayPost,int postNum) {
-		List<ProductVo> list;
-		System.out.println("count Page service 작동 확인");
-		System.out.println(category_id);
-		System.out.println(displayPost);
-		System.out.println(postNum);
-		try {
-			list= productDao.countPage(category_id,displayPost,postNum);
-			model.addAttribute("listPage",list);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
+//	@Override
+//	public void countPage(Model model, int category_id,int displayPost,int postNum) {
+//		List<ProductVo> list;
+//		System.out.println("count Page service 작동 확인");
+//		System.out.println(category_id);
+//		System.out.println(displayPost);
+//		System.out.println(postNum);
+//		try {
+//			list= productDao.countPage(category_id,displayPost,postNum);
+////			model.addAttribute("listPage",list);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
+	//4.10
 	//상품 총 개수
 	@Override
 	public int count(Model model, int category_id) throws Exception {
@@ -169,7 +170,7 @@ public class ProductServiceImpl implements ProductService {
 
 	//게시물 목록 + 페이징
 	@Override
-	public List listPage(Model model,int displayPost, int postNum,int category_id){
+	public List<ProductVo> listPage(Model model,int displayPost, int postNum,int category_id){
 		List<ProductVo> list=null;
 		System.out.println("LISTPAGE써삐쓰 뜰리나 홖인?");
 		try {
