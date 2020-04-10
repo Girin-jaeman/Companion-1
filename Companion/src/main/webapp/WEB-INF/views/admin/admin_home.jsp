@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <link rel="stylesheet" href="${root }css/admin/home.css">
@@ -147,6 +149,8 @@
 			</div>
 		</div>
 		<!-- .container-fluid [end] -->
+		<!-- Footer  -->
+		<jsp:include page="../common/footer.jsp"/>
 	</div>
 	<!-- #content [end] -->
 </div>
@@ -163,9 +167,8 @@
     
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <!-- Data Table -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <!-- Data Table JS -->
+	<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
     
     <!-- AreaChart -->
     <script type="text/javascript">
@@ -310,7 +313,7 @@
  	
  	$(document).ready(function() {
  		  $('#dataTable').DataTable();
- 		});
+	});
     
     areaChart();
     barChart();

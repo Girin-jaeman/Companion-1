@@ -58,19 +58,24 @@
 								</c:when>
 								<c:otherwise>
 									<ul class="nav navbar-nav ml-auto">
-										<p>${sessionScope.memberVo.member_name }님이로그인 중입니다.</p>
-										<li class="nav-item"><a class="nav-link" href="#">주문내역</a>
+										<li class="nav-item">
+											<a class="nav-link" href="#">주문내역</a>
 										</li>
-										<li class="nav-item"><a class="nav-link"
-											href="${root }mypagereserve">예약조회</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="${root }mycart">장바구니</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="${root }mypagequestion">문의조회</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="${root }mypagechk">나의정보</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="${root }logout">로그아웃</a></li>
+										<li class="nav-item">
+											<a class="nav-link" href="${root }mypagereserve">예약조회</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="${root }mycart">장바구니</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="${root }mypagequestion">문의조회</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link active" href="${root }mypagechk">나의정보</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="${root }logout">로그아웃</a>
+										</li>
 									</ul>
 								</c:otherwise>
 
@@ -80,28 +85,21 @@
 				</nav>
 				<div class="mytop">
 					<!-- 유지정보 -->
-					<input type="hidden" name="id_chk" id="id_chk"
-						value="${sessionScope.memberVo.member_id }"> <input
-						type="hidden" name="pw_chk" id="pw_chk"
-						value="${sessionScope.memberVo.member_pw }"> <input
-						type="hidden" name="tel_chk" id="tel_chk"
-						value="${sessionScope.memberVo.member_tel }"> <input
-						type="hidden" name="phone_chk" id="phone_chk"
-						value="${sessionScope.memberVo.member_phone }"> <input
-						type="hidden" name="email_chk" id="email_chk"
-						value="${sessionScope.memberVo.member_email }"> <input
-						type="hidden" name="addr1_chk" id="addr1_chk"
-						value="${sessionScope.memberVo.member_addr1 }"> <input
-						type="hidden" name="addr2_chk" id="addr2_chk"
-						value="${sessionScope.memberVo.member_addr2 }"> <input
-						type="hidden" name="addr3_chk" id="addr3_chk"
-						value="${sessionScope.memberVo.member_addr3 }">
+					<input type="hidden" name="id_chk" id="id_chk" value="${sessionScope.memberVo.member_id }">
+					<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
+					<input type="hidden" name="tel_chk" id="tel_chk" value="${sessionScope.memberVo.member_tel }"> 
+					<input type="hidden" name="phone_chk" id="phone_chk" value="${sessionScope.memberVo.member_phone }">
+					<input type="hidden" name="email_chk" id="email_chk" value="${sessionScope.memberVo.member_email }">
+					<input type="hidden" name="addr1_chk" id="addr1_chk" value="${sessionScope.memberVo.member_addr1 }">
+					<input type="hidden" name="addr2_chk" id="addr2_chk" value="${sessionScope.memberVo.member_addr2 }">
+					<input type="hidden" name="addr3_chk" id="addr3_chk" value="${sessionScope.memberVo.member_addr3 }">
 					<!-- 유지정보 -->
 
 					<div id="icon">
 						<i class="fas fa-user fa-9x"></i>
 					</div>
 					<div class="info">
+						<div id="myinfo">
 						<ul>
 							<li>
 								<h3>이름</h3> <span>${sessionScope.memberVo.member_name }</span>
@@ -117,6 +115,7 @@
 							</span>
 							</li>
 						</ul>
+						</div>
 						<div class="editbox">
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -165,7 +164,7 @@
 						</a>
 					</div>
 					<div class="info-box">
-						<a href="#"> <i class="fas fa-clipboard fa-3x"></i> <br />
+						<a href="${root }mypagereserve"> <i class="fas fa-clipboard fa-3x"></i> <br />
 						<br />
 							<h2>예약조회 ></h2>
 						</a>
@@ -180,7 +179,41 @@
 				<!-- .mytop [end] -->
 				<div class="maincontent">
 					<div class="empty">
-						<h2>여기에 뭘넣지</h2>
+						<h2>최근 구매 내역</h2>
+						<table class="table table-bordered table_layout table-hover" style="width:100%">
+						<colgroup>
+							<col class="col1">
+							<col class="col2">
+							<col class="col3">
+							<col class="col4">
+						</colgroup>
+							<thead>
+								<tr>
+									<th scope="row">이미지</th>
+									<th scope="row">상품이름</th>
+									<th scope="row">구매수량</th>
+									<th scope="row">구매날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="imgbox"><a href="#"><img src="${root }imgs/infochk.png" alt="80x80"></a></td>
+									<td><a href="#"><span>옥수수먹고싶다</span></a></td>
+									<td><a href="#"><span>1</span></a></td>
+									<td><a href="#"><span>2020-04-08</span></a></td>
+								</tr>
+								<tr>
+									<td class="imgbox"><a href="#"><img src="${root }imgs/infochk.png" alt="80x80"></a></td>
+									<td><a href="#"><span>옥수수먹고싶다</span></a></td>
+									<td><a href="#"><span>1</span></a></td>
+									<td><a href="#"><span>2020-04-08</span></a></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="text-align:center"><a href="#">구매내역 자세히>></a></td>
+								</tr>
+							</tbody>
+						</table>
+						
 					</div>
 				</div>
 				<!-- .maincontent [end] -->

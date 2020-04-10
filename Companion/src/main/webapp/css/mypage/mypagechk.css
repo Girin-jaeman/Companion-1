@@ -45,25 +45,55 @@
 .info ul li span{
 	font-size:20px;
 }
-.editbox{
-	margin-left:30px;
-}
-.editbox button{
-	margin-right:0;
+#myinfo {
+	width:420px;
 }
 .info-box{
 	margin: auto;
-	border: 10px solid white;
-	border-radius:5px;
-	background:#fff;
+	background:#0F4C81;
 	width:200px;
 	height:180px;
-	color: #0F4C81;
-	padding-top:40px;
+	color: #fff;
+	padding-top:60px;
 	padding-right:10px;
 	padding-left:10px;
 	text-align:center;
 }
 .empty{
-	height:210px;
+	margin-top:20px;
+	height:350px;
+}
+/* TABLE_LAYOUT STYLE */
+.table_layout{ margin:0px; table-layout:fixed; }
+.table_layout .col1 { width: 180px; } /* 이미지 */ 
+.table_layout .col2 { width: auto } /* 상품이름 */
+.table_layout .col3 { width: 150px; } /* 수매수량 */
+.table_layout .col4 { width: 200px; } /* 구매날짜 */
+
+.table{
+	text-align:center;
+	font-size:20px;
+	margin:0;
+}
+.table thead{
+	background: rgba(181, 209, 250, 0.5);
+}
+.table th{
+	padding:5px;
+}
+.table tbody tr{
+	height:80px;
+}
+.table tbody tr:nth-child(3){
+	height:55px;
+}
+.table tbody tr td span{
+	margin-top:10px;
+}
+.table .imgbox{
+	padding:4px;
+}
+.table tbody tr td img{
+	width:70px;
+	height:70px;
 }

@@ -1,0 +1,67 @@
+label{
+	margin-bottom:0;
+}
+input{
+	padding-left:10px;
+	width:200px;
+}
+.btn__group{
+	width:240px;
+	margin: 0 auto;
+}
+.btn{
+	margin-right:10px;
+	height:40px;
+	width:80px;
+	border: 1px solid #a1a0a0;
+	border-radius:5px;
+	background: #eee linear-gradient(to botton, #fcfcfc, #eee );
+}
+.btn:hover{
+    border: 1px solid gray;
+    background: rgba(0, 0, 0, 0.15);
+} 
+.btn-back{
+	border:1px solid gray;
+	margin-top:15px;
+	margin-right:150px;
+	float:right;
+}
+.reserv_d{
+	width: 800px;
+	margin: 0 auto;
+}
+.reserv_d tbody tr{
+	height:45px;
+	border-bottom: 1px solid #a1a0a0;
+}
+.reserv_d .reserv_msg{
+	height:200px;
+}
+table tbody tr th{
+	text-align:center;
+	width:120px;
+}
+table tbody tr td{
+	width:200px;
+	padding-left:10px;
+}
+
+.inputAreaName{
+	width:355px;
+}
+.inputAreaName input{
+	width:100%;
+}
+.reserve-box{
+	display:flex;
+}
+.reserve-box input{
+	width:50px;
+	margin:auto 0;
+	
+}
+.reserve-box button{
+	margin:0;
+	float:right;
+}

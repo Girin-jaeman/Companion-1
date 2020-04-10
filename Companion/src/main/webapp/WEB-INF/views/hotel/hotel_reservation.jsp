@@ -188,7 +188,16 @@
 							<!-- 예약상담신청 버튼 -->
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-11">
-									<button id="btn_submit" type="submit" class="btn btn-success btn-lg btn-block">예약상담신청</button>
+								<!-- 로그인 세션 검사 -->
+								<c:choose>
+									<c:when test="${memberVo.member_id==null}">
+										<a class="btn btn-success btn-lg btn-block" href="${root }login" role="button" id="noneLogin_btn" aria-pressed="true">예약상담신청</a>
+									</c:when>
+									<c:when test="${memberVo.member_id!=null}">
+										<button class="btn btn-success btn-lg btn-block" id="btn_submit" type="submit">예약상담신청</button>
+									</c:when>
+								</c:choose>
+								<!-- 로그인 세션 검사 -->
 								</div>
 							</div>
 						</form>
@@ -220,7 +229,17 @@
 <!-- user add JS -->
 <script type="text/javascript" src="${root }js/site.js"></script>
 <script type="text/javascript">
-	validation();
+
+/*   로그인 여부 체크  */
+$("#noneLogin_btn").click(function(){
+	alert('로그인이 필요합니다.');
+})
+
+$("#btn_submit").click(function(){
+	alert('예약상담 신청이 완료되었습니다.');
+})
+
+
 </script>
 </body>
 </html>

@@ -344,7 +344,7 @@
 				url : "/companion/mypage/cartChangeOption",
 				data : {change_option : updateOptionValue,cart_id : cart_id},
 				success : function(result){
-					if(result!=1){
+					if(result==0){
 						alert("변경실패");
 						return;
 					}else{

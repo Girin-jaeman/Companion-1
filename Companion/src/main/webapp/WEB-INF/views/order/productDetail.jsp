@@ -228,20 +228,30 @@
 					</div>
 				</div>
        					<table>
+       					<div>이 상품을 추천/구매한 사람들이 구입한 상품 </div>
 							<thead>
 								<tr>
+									<!-- <td>thumb</td>
+									<td>thumb</td>
+									<td>thumb</td>
+									<td>thumb</td>
 									<td>ID</td>
-									<td>ID</td>
-									<td>ID</td>
-									<td>ID</td>
-									<td>ID</td>
+									<td>thumb</td> -->
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 								<!-- 상품 추천 목록 LIST UPDATE  -->
 							<c:forEach items="${productRecommendList }" var="bean" >
-									<td>${bean.product_id }</td>
+									<td>
+									<a href="${root }order/productDetail?idx=${bean.product_id}"><img src="http://placehold.it/50x60&text=recmdThumb" 
+									width="50" height="60"
+									class="img-fluid" alt="Responsive image"  style="display:block;"><p style="text-align:center;">${bean.product_name }</p></a></td>
+<%-- 									<td><img src="${root}${bean.product_thumb }></td> --%>
+<!-- 이런 방식으로 처리 해야 함. -->
+<%-- <img src = "${root}${bean.product_thumb}.jpg"/></td> --%>
+						
+
 							</c:forEach>
 								</tr>
 							</tbody>

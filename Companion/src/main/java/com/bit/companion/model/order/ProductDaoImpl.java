@@ -1,6 +1,7 @@
 package com.bit.companion.model.order;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -45,39 +46,54 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.selectList("product.ProductCategorySelect",category_id);
 	}
 	
-	//정렬 목록 출력.
+	//정렬 추천순 출력.
 	@Override
-	public List<ProductVo> productAlignmentByLike(int category_id) throws SQLException{
-		
-		return sqlSession.selectList("product.productOrderByProductLike",category_id);
+	public List<ProductVo> productAlignmentByLike(int category_id,int displayPost,int postNum) throws SQLException{
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("product.productOrderByProductLike",data);
 	}
 
-//정렬 판매량 순
+//정렬 판매량 순 
 	@Override
-	public List<ProductVo> productAlignmentBySellingOrder(int category_id) throws SQLException {
-		
-		return sqlSession.selectList("product.productOrderBySellingOrder",category_id);
+	public List<ProductVo> productAlignmentBySellingOrder(int category_id,int displayPost,int postNum) throws SQLException {
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("product.productOrderBySellingOrder",data);
 	}
 
 //정렬 낮은 가격 순
 	@Override
-	public List<ProductVo> productAlignmentByLowPrice(int category_id) throws SQLException {
-		
-		return sqlSession.selectList("productOrderByLowPrice",category_id);
+	public List<ProductVo> productAlignmentByLowPrice(int category_id,int displayPost,int postNum) throws SQLException {
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("productOrderByLowPrice",data);
 	}
 
 // 정렬 높은 가격 순
 	@Override
-	public List<ProductVo> productAlignmentByHighPrice(int category_id) throws SQLException {
-		
-		return sqlSession.selectList("productOrderByHighPrice",category_id);
+	public List<ProductVo> productAlignmentByHighPrice(int category_id,int displayPost,int postNum) throws SQLException {
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("productOrderByHighPrice",data);
 	}
 
 // 정렬 등록일 순
 	@Override
-	public List<ProductVo> productAlignmentByDate(int category_id) throws SQLException {
-		
-		return sqlSession.selectList("productOrderByDate",category_id);
+	public List<ProductVo> productAlignmentByDate(int category_id,int displayPost,int postNum) throws SQLException {
+		HashMap data = new HashMap();
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("productOrderByDate",data);
 	}
 
 
@@ -86,14 +102,25 @@ public class ProductDaoImpl implements ProductDao{
 	public List<ProductVo> productRecommendList(int product_id) throws SQLException {
 		return sqlSession.selectList("ProductRecommendList",product_id);
 	}
+	
+	//4.10
+	//countList
+	//상품 총 갯수
+	@Override
+	public int count(int category_id) throws Exception {
+		return sqlSession.selectOne("count",category_id);
+	}
 
-
-
-	/*
-	 * @Override public List<ProductVo> ProductCategorySelect(int category_id)
-	 * throws SQLException { return
-	 * sqlSession.selectList("product.ProductCategorySelect",category_id); }
-	 */
-
-
+	//게시물 목록 + 페이징
+	@Override
+	public List<ProductVo> listPage(int displayPost, int postNum,int category_id) throws Exception {
+		
+		HashMap data = new HashMap();
+		
+		data.put("displayPost",displayPost);
+		data.put("postNum", postNum);
+		data.put("category_id",category_id);
+		return sqlSession.selectList("product.ListPage",data);
+	}
+	
 }

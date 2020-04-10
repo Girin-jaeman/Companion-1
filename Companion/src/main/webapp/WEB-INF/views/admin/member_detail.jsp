@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/reservD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -49,13 +50,7 @@
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link" href="#">공지사항</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">이벤트</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">FAQ</a>
+			                <a class="nav-link" href="${root }admin/member_list">회원 목록</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -69,45 +64,83 @@
 		
 		<!-- section [start] -->
 		<section class="section">
-		<h1>관리자 페이지</h1>
-			<h2>회원 상세</h2>
-			
-			<div class="inputArea">
-				<label for="member_grade">회원구분</label>
-				<span>${adminMemberOne.member_grade }</span>
+			<div class="main--title">
+				<h1>[Admin] 회원 상세</h1>
 			</div>
-			<div class="inputArea">
-				<label for="member_name">이름</label>
-				<span>${adminMemberOne.member_name }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_id">아이디</label>
-				<span>${adminMemberOne.member_id }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_tel">일반전화</label>
-				<span>${adminMemberOne.member_tel }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_phone">휴대전화</label>
-				<span>${adminMemberOne.member_phone }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_email">이메일</label>
-				<span>${adminMemberOne.member_email }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_addr1">우편번호</label>
-				<span>${adminMemberOne.member_addr1 }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_addr2">기본주소</label>
-				<span>${adminMemberOne.member_addr2 }</span>
-			</div>
-			<div class="inputArea">
-				<label for="member_addr3">상세주소</label>
-				<span>${adminMemberOne.member_addr3 }</span>
-			</div>
+			<table class="reserv_d">
+				<thead></thead>
+				<tbody>
+					<tr>
+						<th><label for="member_grade">회원구분</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminMemberOne.member_grade }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="member_name">이름</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminMemberOne.member_name }</span>
+							</div>
+						</td>
+						<th><label for="member_id">아이디</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminMemberOne.member_id }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="member_tel">일반전화</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminMemberOne.member_tel }</span>
+							</div>
+						</td>
+						<th><label for="member_phone">휴대전화</label></th>
+						<td>
+							<div class="inputArea">
+								<span>${adminMemberOne.member_phone }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="member_email">이메일</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminMemberOne.member_email }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th><label for="member_addr1">우편번호</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminMemberOne.member_addr1 }</span>
+							</div>
+						</td>
+					</tr>	
+					<tr>	
+						<th><label for="member_addr2">기본주소</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminMemberOne.member_addr2 }</span>
+							</div>
+						</td>
+					</tr>
+					<tr>	
+						<th><label for="member_addr3">상세주소</label></th>
+						<td colspan="3">
+							<div class="inputArea">
+								<span>${adminMemberOne.member_addr3 }</span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="button" id="list_Btn" class="btn btn-back">목록</button>
 		</section>
 		<!-- section [end] -->
 		
@@ -130,6 +163,11 @@
 	    });
 	});
 
+	
+	// 목록버튼
+	$("#list_Btn").click(function(){
+		location.href = ${root}+"/admin/member_list"
+	});
 </script>
 </body>
 </html>

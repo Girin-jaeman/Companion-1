@@ -311,7 +311,6 @@
 			   		  $('#phone').focus();
 			   		  return false;    
 			   		 }
-		   
 		   			
 /* 		   			if(order_name==null||order_name==""||order_addr1==""||order_addr1==null||order_addr2==""||order_addr2==null||order_addr3==""||order_addr3==null||order_phone==""||order_phone==null){ */
 		   			if(order_name==null||order_name==""){

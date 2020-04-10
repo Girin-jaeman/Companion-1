@@ -216,15 +216,15 @@
                 <!-- address -->
                 <div class="mb-3">
                     <label for="address">주소</label>
-                    <input type="text" class="form-control" id="address" placeholder="주소API 사용예정" disabled>
+                    <div class="address-box clear-fix">
+                        <input type="text" class="form-control" id="address" placeholder="주소API 사용예정" disabled>
+                        <input type="button" class="adressbtn" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"></br>
+                    </div>
+                    <input type="text" class="form-control" id="address2" placeholder="주소API 사용예정">
+                    <input type="text" class="form-control" id="address3" placeholder="주소API 사용예정">
                     <div class="invalid-feedback">
                         Please enter your shipping address.
                     </div>
-                </div>
-                <!-- address2 -->
-                <div class="mb-3">
-                    <label for="address2">주소2 or 상세주소 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="주소API 사용예정">
                 </div>
             
                 <!-- 약관동의 체크박스 -->

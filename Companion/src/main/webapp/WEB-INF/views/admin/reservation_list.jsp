@@ -68,9 +68,9 @@
 				<div class="search-group btn-group float--right">
 					<select name="searchType" id="searchType">
 						<option value="all">전체</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="member">작성자</option>
+						<option value="service">서비스</option>
+						<option value="member">아이디</option>
+						<option value="reserve_date">신청일</option>
 					</select>
 					<input type="text" name="keyword" id="keyword">
 					<button name="search_Btn" id="search_Btn">검색</button>
@@ -91,7 +91,7 @@
 			<thead>
 				<tr>
 					<th scope="row">서비스</th>
-					<th scope="row">회원이름</th>
+					<th scope="row">아이디</th>
 					<th scope="row">체크인 날짜</th>
 					<th scope="row">체크아웃 날짜</th>
 					<th scope="row">품종</th>
@@ -104,8 +104,11 @@
 			<c:forEach items="${adminReservationList }" var="bean">
 				<tr>
 					<td>
-						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.service_name }</a>
+						<a href="#reservationDetail" data-toggle="modal">${bean.service_name }</a>
 					</td>
+<%-- 				<td>
+						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.service_name }</a>
+					</td> --%>
 					<td>
 						<a href="${root }admin/reservation_detail?reserve_id=${bean.reserve_id}">${bean.member_id }</a>
 					</td>
@@ -137,7 +140,34 @@
 			</table>
 		</section>
 		<!-- section [end] -->
+		<!-- 테스트해보자 모달창 -->
 		
+		<!-- Modal -->
+		<div class="modal fade" id="reservationDetail" tabindex="-1" role="dialog" aria-labelledby="reservationDetailTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="reservationDetailTitle">예약 상세정보</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+				<div class="inputArea">
+		       		<label for="member_name">이름</label>
+					<span>${adminReservationOne.member_name }</span>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-primary">예약취소</button>
+		        <button type="button" class="btn btn-primary">예약확정</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- 테스트해보자 모달창 -->
 		<!-- pagination [start] -->
 		<jsp:include page="../common/pagination.jsp">
 			<jsp:param value="${search.prev }" name="prev"/>
@@ -168,6 +198,17 @@
 	    });
 	});
 
+	// 검색 버튼
+	// 검색 버튼
+	$("#search_Btn").click(function(e){
+		e.preventDefault();
+		var url = "${getList}";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
+	
 </script>
 </body>
 </html>

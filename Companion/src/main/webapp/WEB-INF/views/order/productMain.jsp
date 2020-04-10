@@ -43,30 +43,26 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
 								<li class="nav-item">
-                                <a class="nav-link active" href="/companion/order/productMain?c=100">사료</a>
+                                <a class="nav-link active" href="/companion/order/productMain?c=100&num=1">사료</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=200">간식</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=200&num=1">간식</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=300">장난감</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=300&num=1">장난감</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=400">미용용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=400&num=1">미용용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=500">목욕용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=500&num=1">목욕용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=600">위생용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=600&num=1">위생용품</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/companion/order/productMain?c=700">산책용품</a>
+                                <a class="nav-link" href="/companion/order/productMain?c=700&num=1">산책용품</a>
                             </li>
-                      
-                            
-                            
-                            
                         </ul>
 						</div>
 					</div>
@@ -117,17 +113,14 @@
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByLowPrice?<%=request.getQueryString() %>">낮은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByHighPrice?<%=request.getQueryString() %>">높은가격순</a></li>
                         <li class="breadcrumb-item"><a href="${root }order/productMain/orderByDate?<%=request.getQueryString() %>">등록일순</a></li>
-                    <!--     <div class="navbar navbar-dark bg-primary"> 
-	                     검색기능 미완성임.    <form class="form-inline">
-						    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-						    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색기능 넣을까말까</button>
-							</form>
-						</div> -->
+       
                     </ol>
+                    
                 </nav>
 			   <div class="row">
 			        <%--    <% for(int i=0;i<20;i++){ %>  --%>
-			<c:forEach items="${productCategory }" var="bean"> 
+<!-- ${listPage}에서 받아와야 함 .기존에 받던거 다  다시 받아야함...?! 으아아아아ㅏ아!!!!!! -->
+			<c:forEach items="${listPage }" var="bean"> 
 			        <div class="col-md-3 col-sm-6"> 
 			            <div class="product-grid productbox">
 			                <div class="product-image">
@@ -187,7 +180,6 @@
 					               </c:when>  
 									<c:when test="${memberVo.member_id!=null }">	
 					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
-					                    <%System.out.println("따봉 클릭!할때만 작동하라고..."); %>
 					               </c:when>  
  			                </c:choose>       
 					 
@@ -201,22 +193,52 @@
 			        </div>
        		 </c:forEach>
 		<%-- 	        <% } %> --%>
-	
-  
     </div>
-			  <!-- 썸네일 쇼쇼핑멀 끝 -->
-					      <!-- pagination [start] -->
-				<jsp:include page="../common/pagination.jsp">
-					<jsp:param value="${pagination.prev }" name="prev"/>
-					<jsp:param value="${pagination.next }" name="next"/>
-					<jsp:param value="${pagination.page }" name="page"/>
-					<jsp:param value="${pagination.range }" name="range"/>
-					<jsp:param value="${pagination.rangeSize }" name="rangeSize"/>
-					<jsp:param value="${pagination.startPage }" name="startPage"/>
-					<jsp:param value="${pagination.endPage }" name="endPage"/>
-				</jsp:include>
-				<!-- pagination [end] -->		
-		</div><!-- container end  -->
+    
+    <!-- pagination [start] -->
+	    <nav aria-label="Page navigation example">
+				<%
+					String str = request.getQueryString();
+					String result = str.substring(0,5);
+					String REALURL = (String)request.getAttribute("trueUrl");
+					if(REALURL==null){
+						REALURL="";
+					}
+				%>
+	 	   <ul class="pagination">
+			<c:if test="${prev }">
+		  	     <li class="page-item">
+		    	   	<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${startPageNum - 1 }" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				    </a>
+		   		</li>
+			</c:if>
+		   		<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+					<span>
+						<c:if test="${select != num}">
+							<li class="page-item">
+								<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${num }">${num }</a>
+							</li>	
+					  	</c:if>  
+					 	<c:if test="${select == num}">
+							<li class="page-item">
+								<a class="page-link bg-info text-white" href="#" >${num }</a>	
+							</li>	
+					 	</c:if>		
+					</span>
+				</c:forEach>
+			<c:if test="${next }">
+				<li class="page-item">
+					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
+		     		   <span aria-hidden="true">&raquo;</span>
+		   			</a>	      
+		      </li>
+	      	</c:if>
+	      </ul>
+		</nav>
+	<!-- pagination [end] -->		
+	
+		</div><!-- container end  --> 
 		<!-- Footer  -->
 			<jsp:include page="../common/footer.jsp"/>
 		<!-- Footer end -->
@@ -233,11 +255,6 @@
 		<script src="${root}js/bootstrap/bootstrap.js"></script>
 	    <!-- MAIN JS -->
     	<script src="${root }js/main.js"></script>
-		<!-- 추천수 script start -->
-		<script type="text/javascript">
-	
-		</script>
-		<!-- 추천수 script end -->
 	</body>
 	
 	</html>
