@@ -1,3 +1,14 @@
+/* TABLE_LAYOUT STYLE */
+.table_layout { margin:0px; table-layout:fixed; }
+.table_layout .col1 { width: 120px; } /* 체크박스 */ 
+.table_layout .col2 { width: 90px; } /* 이미지 */
+.table_layout .col3 { width: 180px; } /* 상품이름 */
+.table_layout .col4 { width: 200px; } /* 옵션 */
+.table_layout .col5 { width: 150px; } /* 수량 */
+.table_layout .col6 { width: 150px; } /* 상품금액 */
+.table_layout .col7 { width: auto } /* 합계금액 */
+
+
 ul{
     list-style: none;
 }
@@ -133,6 +144,7 @@ ul{
 }
 .table th{
     text-align: center;
+    padding-bottom:5px;
 }
 .table tr{
 
@@ -219,4 +231,13 @@ ul{
 .section .chk-non{
     margin-bottom: 100px;
     text-align: right;
+}
+.opBox{
+	display:flex;
+	margin-left:15px;
+	margin-top:5px;
+}
+.opBox2{
+	display:flex;
+	margin-top:5px;
 }

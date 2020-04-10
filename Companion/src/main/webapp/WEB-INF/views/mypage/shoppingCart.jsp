@@ -110,16 +110,26 @@
                     </ul>
                 </div><!-- .title-group end-->
                 <!-- 장바구니 담긴 상품 테이블 -->
-                <table class="table">
+                <table class="table table_layout">
+                <colgroup>
+        		<col class="col1">
+        		<col class="col2">
+        		<col class="col3">
+        		<col class="col4">
+        		<col class="col5">
+        		<col class="col6">
+        		<col class="col7">
+    			</colgroup>
                     <tr>
-                        <th><input type="checkbox" name="allCheck" id="allCheck"/>
+                        <th scope="row"><input type="checkbox" name="allCheck" id="allCheck"/>
                         	<label for="allCheck">모두선택</label>
                         </th>
-                        <th colspan='2'>상품 이름</th>
-                        <th>옵션</th>
-                        <th>수량</th>
-                        <th>상품금액</th>
-                        <th>합계금액</th>
+                        <th scope="row">이미지</th>
+                        <th scope="row">상품 이름</th>
+                        <th scope="row">옵션</th>
+                        <th scope="row">수량</th>
+                        <th scope="row">상품금액</th>
+                        <th scope="row">합계금액</th>
                     </tr>
                    <form name="cartOrder" method="post" autocomplete="off" modelAttribute="cartOrderList">
 <%int i=0; %>
@@ -130,12 +140,11 @@
 						<input type="hidden" id="quantity${bean.cart_id }" value="${bean.cart_quantity }">
                        	<% i+=1; %>
                         <td>${bean.product_thumb }</td>
-                        <td>
-                        	${bean.product_name }
-	                    </td>
+                        <td>${bean.product_name }</td>
 	                    <td>${bean.cart_option }</br>
-	                    	<select style="width:150px;float:left;" name="selectOption" id="selectOption${bean.cart_id }" class="form-control" onchange="changeOption(${bean.cart_id })">
-	                    		<option value="" selected disabled>옵션을 선택</option>
+	                    	<div class="opBox">
+	                    	<select style="width:100px; height:34px;" name="selectOption" id="selectOption${bean.cart_id }" class="form-control" onchange="changeOption(${bean.cart_id })">
+	                    		<option value="" selected disabled>옵션변경</option>
 	                    		<option value="${bean.product_option1 }">${bean.product_option1 }</option>
 	                    		<option value="${bean.product_option2 }">${bean.product_option2 }</option>
 	                    		<option value="${bean.product_option3 }">${bean.product_option3 }</option>
@@ -145,9 +154,11 @@
 	                    	<input type="hidden" id="originalOption${bean.cart_id }" value="${bean.cart_option }">
 	                    	<input type="hidden" id="updateOption${bean.cart_id }" value="">
 	                    	<button type="button" class="btn" onclick="updateOption(${bean.cart_id })">변경</button>
+	                    	</div>
 	                    </td>
                         <td>${bean.cart_quantity }</br>
-                        	<select style="width:80px;float:left;" name="selectQuantity" id="selectQuantity${bean.cart_id }" class="form-control" onchange="changeQuantity(${bean.cart_id })">
+                        	<div class="opBox2">
+                        	<select style="width:70px;height:34px;" name="selectQuantity" id="selectQuantity${bean.cart_id }" class="form-control" onchange="changeQuantity(${bean.cart_id })">
                         		<option value="" select disabled>수량을 선택</option>
                         		<option value="1">1</option>
                         		<option value="2">2</option>
@@ -163,6 +174,7 @@
                         	<button type="button" class="btn" onclick="updateQuantity(${bean.cart_id })">변경</td>
                         	<input type="hidden" id="originalQuantity${bean.cart_id }" value="${bean.cart_quantity }">
                         	<input type="hidden" id="updateQuantity${bean.cart_id }" value="">
+                        	</div>
                         <td>${bean.product_price }원</td>
                         <td>${bean.product_price*bean.cart_quantity }원</td>
 </c:forEach>
