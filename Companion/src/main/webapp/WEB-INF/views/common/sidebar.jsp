@@ -14,68 +14,68 @@
             <ul class="list-unstyled components">
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-shopping-cart"></i>
                         쇼핑하기
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/companion/order/productMain?c=100&num=1">사료</a>
+                            <a href="/companion/order/productMain?c=100&num=1"><i class="fas fa-angle-right"></i> 사료</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=200&num=1">간식</a>
+                            <a href="/companion/order/productMain?c=200&num=1"><i class="fas fa-angle-right"></i> 간식</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=300&num=1">장난감</a>
+                            <a href="/companion/order/productMain?c=300&num=1"><i class="fas fa-angle-right"></i> 장난감</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=400&num=1">미용용품</a>
+                            <a href="/companion/order/productMain?c=400&num=1"><i class="fas fa-angle-right"></i> 미용용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=500&num=1">목욕용품</a>
+                            <a href="/companion/order/productMain?c=500&num=1"><i class="fas fa-angle-right"></i> 목욕용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=600&num=1">위생용품</a>
+                            <a href="/companion/order/productMain?c=600&num=1"><i class="fas fa-angle-right"></i> 위생용품</a>
                         </li>
                         <li>
-                            <a href="/companion/order/productMain?c=700&&num=1">산책용품</a>
+                            <a href="/companion/order/productMain?c=700&&num=1"><i class="fas fa-angle-right"></i> 산책용품</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#hotelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-copy"></i>
+                        <i class="fas fa-building"></i>
                         호텔서비스
                     </a>
                     <ul class="collapse list-unstyled" id="hotelSubmenu">
                         <li>
-                            <a href="/companion/hotel/infouse">이용안내</a>
+                            <a href="/companion/hotel/infouse"><i class="fas fa-angle-right"></i> 이용안내</a>
                         </li>
                         <li>
-                            <a href="/companion/hotel/reservation">예약하기</a>
+                            <a href="/companion/hotel/reservation"><i class="fas fa-angle-right"></i> 예약하기</a>
                         </li>
                         <li>
-                            <a href="/companion/hotel/preroom">룸미리보기</a>
+                            <a href="/companion/hotel/preroom"><i class="fas fa-angle-right"></i> 룸미리보기</a>
                         </li>
                         <li>
-                            <a href="/companion/hotel/infocare">돌보미정보</a>
+                            <a href="/companion/hotel/infocare"><i class="fas fa-angle-right"></i> 돌보미정보</a>
                         </li>
                         <li>
-                            <a href="/companion/hotel/infoloc">위치정보</a>
+                            <a href="/companion/hotel/infoloc"><i class="fas fa-angle-right"></i> 위치정보</a>
                         </li>
                     </ul>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-copy"></i>
+                         <i class="fas fa-clipboard-list"></i>
                         알림
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/companion/notice/">공지사항</a>
+                            <a href="/companion/notice/"><i class="fas fa-angle-right"></i> 공지사항</a>
                         </li>
                         <li>
-                            <a href="/companion/event/">이벤트</a>
+                            <a href="/companion/event/"><i class="fas fa-angle-right"></i> 이벤트</a>
                         </li>
                         <li>
-                            <a href="/companion/faq/">FAQ</a>
+                            <a href="/companion/faq/"><i class="fas fa-angle-right"></i> FAQ</a>
                         </li>
                     </ul>
                 </li>

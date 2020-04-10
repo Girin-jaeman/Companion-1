@@ -69,6 +69,8 @@ a:focus {
     border-radius: 0;
     margin-bottom: 20px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight:600;
 }
 
 .navbar-btn {
@@ -190,13 +192,14 @@ span {
 #sidebar.active ul li a {
     padding: 20px 10px;
     text-align: center;
-    font-size: 0.85em;
+    font-size: 16px;
+    
 }
 
 #sidebar.active ul li a i {
     margin-right: 0;
     display: block;
-    font-size: 1.8em;
+    font-size: 10px;
     margin-bottom: 5px;
 }
 
@@ -216,11 +219,12 @@ span {
 #sidebar .sidebar-header {
     padding: 20px;
     background:#0F4C81;
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 #sidebar .sidebar-header strong {
     display: none;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 #sidebar ul.components {
@@ -230,7 +234,7 @@ span {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.2em;
+    font-size: 20px;
     display: block;
 }
 
@@ -265,7 +269,7 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
+    font-size: 1em !important;
     padding-left: 30px !important;
     background:  rgb(11, 61, 105);
 }
@@ -329,6 +333,7 @@ a.join:hover {
     width: 100%;
     max-width: 1000px;
     margin: auto;
+    min-height:335px;
 }
 
 /* ---------------------------------------------------

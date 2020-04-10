@@ -179,7 +179,7 @@
 				<!-- .mytop [end] -->
 				<div class="maincontent">
 					<div class="empty">
-						<h2>최근 구매 내역</h2>
+						<h2>최근 주문 내역</h2>
 						<table class="table table-bordered table_layout table-hover" style="width:100%">
 						<colgroup>
 							<col class="col1">
@@ -209,7 +209,7 @@
 									<td><a href="#"><span>2020-04-08</span></a></td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align:center"><a href="#">구매내역 자세히>></a></td>
+									<td colspan="4" style="text-align:center"><a href="#">주문내역 자세히>></a></td>
 								</tr>
 							</tbody>
 						</table>

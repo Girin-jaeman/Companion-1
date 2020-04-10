@@ -77,7 +77,7 @@
                 </a>
                 <span>></span>
                 <a href="#">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-user-md"></i>
                     돌보미정보
                 </a>
                 <hr class="mb-4">
@@ -165,6 +165,7 @@
 <script src="${root}js/bootstrap/bootstrap.js"></script>
 <!-- MAIN JS -->
 <script src="${root }js/main.js"></script>
+
 
 </body>
 </html>
