@@ -23,6 +23,7 @@ select * from `reserve`;
 select * from `payment`;
 select * from `payment_state`;
 select * from `order`;
+select * from `service`;
 
 select sum(payment_amount) as `daily_sum` from `payment` where payment_date like CONCAT('2020-04-02','%');
 select sum(payment_amount) as daily_sum from `payment`;
@@ -67,5 +68,45 @@ insert into payment values (null,30,'회원1',now(),3000,0);
 insert into payment values (null,30,'회원1','2019-10-01',47540000,0);
 delete from payment where payment_date = '2019-12-01 00:00:00';
 
+SELECT 
+			r.reserve_id, 
+		    r.member_id,
+		    s.service_name,
+		    r.reserve_checkin,
+		    r.reserve_checkout,
+		    r.reserve_dogtype,
+		    r.reserve_dogage,
+		    r.reserve_date,
+		    r.reserve_state_id
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id and service_name LIKE CONCAT('%', '독파크', '%');
+SELECT 
+			r.reserve_id, 
+		    r.member_id,
+		    s.service_name,
+		    r.reserve_checkin,
+		    r.reserve_checkout,
+		    r.reserve_dogtype,
+		    r.reserve_dogage,
+		    r.reserve_date,
+		    r.reserve_state_id
+    	FROM `RESERVE` r, `SERVICE` s WHERE r.service_id=s.service_id and (service_name LIKE CONCAT('%', '독파크', '%') OR
+							reserve_date LIKE CONCAT('%', '독파크', '%') OR
+							member_id LIKE CONCAT('%', '독파크', '%'));
+                            
+select 
+	o.order_id,
+	o.member_id,
+    (select m.member_name from `member` m where o.member_id=m.member_id  and o.order_id=1) as member_name,
+    (select o_s.order_state_admin from `order_state`o_s, `order` o where o.order_state_id=o_s.order_state_id  and o.order_id=1) as order_state_admin,
+    o.order_date,
+    o.order_phone,
+    (select m.member_email from `member` m where o.member_id=m.member_id and o.order_id=1) as member_email
+    from `order` o where o.order_id=1;
 
+
+
+select o_s.order_state_admin from `order_state`o_s, `order` o where o.order_state_id=o_s.order_state_id;
+select m.member_email from `member` m, `order` o where o.member_id=m.member_id and o.order_id=1;
+select * from `order_state`;
+select * from `member`;
 commit;
