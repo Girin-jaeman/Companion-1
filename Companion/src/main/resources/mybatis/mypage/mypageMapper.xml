@@ -67,4 +67,25 @@
   	<update id="changeQuantityCart" parameterType="hashmap">
   		update cart set cart_quantity=#{change_quantity} where member_id=#{member_id} and cart_id=#{cart_id}
   	</update>
+  	<insert id="insertOrder" parameterType="myCartOrderBean">
+  		insert into `order` values (default,#{member_id},#{order_date},#{order_amount},#{order_name},null,#{order_phone},#{order_addr1},#{order_addr2},#{order_addr3},#{order_msg},#{order_state_id})
+  	</insert>
+  	<insert id="insertOrder_detail" parameterType="myCartOrderBean">
+  		insert into order_detail values (default,#{order_id},#{product_id},#{order_detail_price},#{order_detail_quantity},#{order_detail_option})
+  	</insert>
+  	<insert id="insertDelivery" parameterType="myCartOrderBean">
+  		insert into delivery values (default,#{order_id},#{member_id},#{delivery_company},#{delivery_number},#{delivery_state_id})
+  	</insert>
+  	<insert id="insertPayment" parameterType="myCartOrderBean">
+  		insert into payment values (default,#{order_id},#{member_id},#{payment_date},#{payment_amount},#{payment_state_id})
+  	</insert>
+  	<delete id="deleteCart" parameterType="hashmap">
+  		delete from cart where cart_id=#{cart_id} and member_id=#{member_id} and product_id=#{product_id}
+  	</delete>
+  	<select id="countDeliveryNumber" parameterType="String" resultType="int">
+  		select count(*) from delivery where delivery_number=#{delivery_number}
+  	</select>
+  	<select id="findOrder_id" parameterType="hashmap" resultType="String">
+  		select order_id from `order` where member_id=#{member_id} and order_date=#{order_date} and order_amount=#{order_amount} and order_name=#{order_name}
+  	</select>
   </mapper>
