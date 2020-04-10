@@ -10,12 +10,15 @@ import com.bit.companion.model.entity.admin.AdminReservationVo;
 public interface AdminReservationDao {
 
 	// reservation list
-	List<AdminReservationVo> selectAll() throws SQLException;
+	List<AdminReservationVo> selectAll(Search search) throws SQLException;
 	
 	// hotelService list
 	List<AdminHotelServiceVo> selectService() throws SQLException;
 
 	// reservation detail
 	AdminReservationVo selectOne(int reserve_id) throws SQLException;
+	
+	// reservation total
+	int selectTotal(Search search) throws SQLException;
 	
 }

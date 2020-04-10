@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.bit.companion.common.Search;
 import com.bit.companion.model.admin.AdminReservationDao;
 import com.bit.companion.model.entity.admin.AdminHotelServiceVo;
 import com.bit.companion.model.entity.admin.AdminReservationVo;
@@ -24,9 +25,20 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 
 	//reservation list
 	@Override
-	public void list(Model model) {
+	public void list(Model model, int page, int range, String searchType, String keyword, Search search) {
 		try {
-			List<AdminReservationVo> list=adminReservationDao.selectAll();
+			// Total list Count
+			search.setListSize(15);
+			int listCnt = adminReservationDao.selectTotal(search);
+			
+			// Pagination + Search
+			search.setSearchType(searchType);
+			search.setKeyword(keyword);
+			search.pageInfo(page, range, listCnt);
+			
+			List<AdminReservationVo> list=adminReservationDao.selectAll(search);
+			
+			model.addAttribute("search", search);
 			model.addAttribute("adminReservationList", list);
 		} catch (SQLException e) {
 			e.printStackTrace();
