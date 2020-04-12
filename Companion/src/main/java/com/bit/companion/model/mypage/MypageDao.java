@@ -40,5 +40,7 @@ public interface MypageDao {
 	String findOrder_id(MyCartOrderVo bean);
 
 	void insertOrders(MyCartOrderVo bean);
+
+	int deleteOneQuestion(String member_id, String question_id);
 	
 }

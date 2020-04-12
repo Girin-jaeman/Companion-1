@@ -72,64 +72,18 @@
 	            </nav>
 	            <div class="maincontent">
 	            	
-	            	<form class="form-signin" name="login" method="post" autocomplete="off">
+	            	<form class="form-signin" name="idCheck" method="post" autocomplete="off">
 		                <h1 class="h3 mb-3 font-weight-normal">로그인</h1>
-		                <label for="member_id" class="sr-only">ID</label>
-		                <input type="text" id="member_id" name="member_id" class="form-control" placeholder="아이디를 입력해주세요" required autofocus>
-		                <label for="member_pw" class="sr-only">PW</label>
-		                <input type="password" name="member_pw"  id="member_pw" class="form-control" placeholder="패스워드를 입력해주세요" required>
-		                <div class="checkbox mb-3">
-		                  <label>
-		                    <input type="checkbox" value="remember-me"> 아이디 저장
-		                  </label>
-		                  <c:if test="${loginChk==false }">
-							<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-							</c:if>
-		                </div>
-		                <button class="btn btn-lg btn-primary btn-block" type="submit" id="login_btn">로그인</button>
-		                <div class="search">
-		                    <a href="${root }login/findID">아이디찾기</a>
-		                    <a href="${root }login/findPW">비밀번호찾기</a>
-		                </div>
-		                <!-- Divider Text -->
-		                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-3">
-		                    <div class="border-bottom w-100 ml-6"></div>
-		                    <span class="px-3 font-weight-bold text-muted">OR</span>
-		                    <div class="border-bottom w-100 mr-6"></div>
+		                <label for="name_check" class="sr-only">이름</label>
+		                <input type="text" id="name_check" name="name_check" class="form-control" placeholder="이름를 입력해주세요." required autofocus>
+		                <label for="phone_check" class="sr-only">핸드폰 번호</label>
+		                <input type="text" name="phone_check"  id="phone_check" class="form-control" placeholder="-없이 숫자만 입력해 주세요." required>
+		                </br>
+		                <div class="float-right">
+			                <button class="btn btn-primary btn-lg" type="submit" id="check_btn">확인</button>
+			                <button class="btn btn-light btn-lg" onclick="history.back();">뒤로</button>
 		                </div>
 		            </form>
-		            
-		             	<div id="kakao_id_login">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">
-							<button class="btn btn-lg btn-warning btn-block kakaoBtn">
-		                    <i class="fas fa-comment"></i>&nbsp;&nbsp;&nbsp;카카오톡 로그인
-		                	</button>
-						</a>
-						</div>
-		                
-	            	
-	            	
-	            	
-	            	
-					<%-- <h1>로그인창</h1>
-					<form name="login" method="post" autocomplete="off">
-						<label for="member_id">ID</label>
-						<input type="text" name="member_id" id="member_id" placeholder="아이디 입력"></br>
-						
-						<label for="member_pw">PW</label>
-						<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>
-						
-						<button type="button" id="login_btn">로그인</button>
-						<button type="button" onclick="history.back();">뒤로</button>	</br>
-						<c:if test="${loginChk==false }">
-							<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-						</c:if>
-					</form> --%>
-					<!-- <div id="kakao_id_login">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">
-							<button>카카오 로그인</button>
-						</a>
-					</div> -->
 		
 	            </div>
 			</div>
@@ -148,18 +102,18 @@
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#login_btn").click(function(){
-				var member_id=$("#member_id").val();
-				var member_pw=$("#member_pw").val();
-				if(member_id==""){
-					alert("아이디를 입력해 주세요.");
+			$("#check_btn").click(function(){
+				var name_check=$("#name_check").val();
+				var phone_check=$("#phone_check").val();
+				if(name_check==""){
+					alert("이름를 입력해 주세요.");
 					return;
 				}
-				if(member_pw==""){
-					alert("비밀번호를 입력해 주세요.");
+				if(phone_check==""){
+					alert("핸드폰 번호를 입력해 주세요.");
 					return;
 				}
-				document.login.submit();
+				document.idCheck.submit();
 			});
 		});
 	</script>

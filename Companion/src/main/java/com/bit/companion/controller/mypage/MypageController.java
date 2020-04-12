@@ -205,9 +205,14 @@ public class MypageController {
 			mypageService.insertOrders(bean);
 			System.out.println(i+"번쨰order_id : "+bean.getOrder_id());
 		}
-		
+		session.removeAttribute("cartList");
+		session.removeAttribute("cartOrderList");
+		session.removeAttribute("cartOrderPrice");
+		session.removeAttribute("cartOrderSuccessList");
 		return "mypage/cartOrderSuccess";
 	}
+	
+	
 
 	@ResponseBody
 	@RequestMapping(value="/mypage/pwchange",method=RequestMethod.POST)
@@ -299,6 +304,16 @@ public class MypageController {
 		String member_id=member.getMember_id();
 		int result=0;
 		result=mypageService.changeQuantityCart(change_quantity,cart_id,member_id);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mypage/deleteOneQuestion",method=RequestMethod.POST)
+	public int deleteOneQuestion(HttpSession session,String question_id) {
+		MemberVo member=(MemberVo)session.getAttribute("memberVo");
+		String member_id=member.getMember_id();
+		int result=0;
+		result=mypageService.deleteOneQuestion(member_id,question_id);
 		return result;
 	}
 }

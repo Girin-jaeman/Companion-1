@@ -10,5 +10,11 @@
 	<select id="loginInfo" resultType="memberBean">
 		select * from member where member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
+	<select id="findIDCheck" parameterType="hashmap" resultType="int">
+		select count(*) from member where member_name=#{name_check} and member_phone=#{phone_check}
+	</select>
+	<select id="findID" parameterType="hashmap" resultType="String">
+		select member_id from member where member_name=#{name_check} and member_phone=#{phone_check}
+	</select>
 </mapper>
   

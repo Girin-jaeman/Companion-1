@@ -120,16 +120,22 @@
 <c:when test="${bean.question_answer != null }">
 									<li class="row">
 			                           	<div class="col-1">A.</div>
-			                           	<div class="col-11">
+			                           	<div class="col-10">
 			                           		${bean.question_answer }
+			                           	</div>
+			                           	<div class="col-1">
+			                           		<button onclick="deleteQuestion(${bean.question_id})">삭제</button>
 			                           	</div>
 									</li>
 </c:when>
 <c:otherwise>
 									<li class="row">
 			                           	<div class="col-1">A.</div>
-			                           	<div class="col-11">
+			                           	<div class="col-10">
 			                           		답변 대기중입니다. 신속히 답변드릴 수 있도록 하겠습니다.
+			                           	</div>
+			                           	<div class="col-1">
+			                           		<button onclick="deleteQuestion(${bean.question_id})">삭제</button>
 			                           	</div>
 									</li>
 </c:otherwise>
@@ -184,6 +190,26 @@
         	}else{
         		$('#'+question_id).hide();
         		$('#questionBtn_'+question_id).text("열기");
+        	}
+        }
+        
+        function deleteQuestion(question_id){
+        	var confirm_val=confirm("정말 삭제하시겠습니까??");
+        	
+        	if(confirm_val){
+        		$.ajax({
+        			type : "POST",
+        			url : "/companion/mypage/deleteOneQuestion",
+        			data : {question_id : question_id},
+        			success : function(result){
+        				if(result==0){
+        					alert("삭제실패");
+        				}else{
+        					alert("삭제완료");
+        					location.reload();
+        				}
+        			}
+        		});
         	}
         }
     </script>

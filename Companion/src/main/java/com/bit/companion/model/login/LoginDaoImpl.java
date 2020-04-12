@@ -1,5 +1,7 @@
 package com.bit.companion.model.login;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,23 +17,39 @@ public class LoginDaoImpl implements LoginDao {
 	@Autowired
 	SqlSession sqlSession;
 
-//	·Î±×ÀÎÃ¼Å©
+//	ï¿½Î±ï¿½ï¿½ï¿½Ã¼Å©
 	@Override
 	public boolean loginChk(LoginVo bean) {
 		String name=sqlSession.selectOne("login.loginChk",bean);
 		return (name==null) ? false : true;
 	}
 
-//	·Î±×ÀÎ Á¤º¸
+//	ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public MemberVo infoLogin(LoginVo bean) {
 		return sqlSession.selectOne("login.loginInfo",bean);
 	}
 
-//	·Î±×¾Æ¿ô
+//	ï¿½Î±×¾Æ¿ï¿½
 	@Override
 	public void logout(HttpSession session) {
 		
+	}
+
+	@Override
+	public int findIDCheck(String name_check, String phone_check) {
+		HashMap<String,String> idInfo=new HashMap<>();
+		idInfo.put("name_check", name_check);
+		idInfo.put("phone_check", phone_check);
+		return sqlSession.selectOne("login.findIDCheck",idInfo);
+	}
+
+	@Override
+	public String findIDresult(String name_check, String phone_check) {
+		HashMap<String,String> idInfo=new HashMap<>();
+		idInfo.put("name_check", name_check);
+		idInfo.put("phone_check", phone_check);
+		return sqlSession.selectOne("login.findID",idInfo);
 	}
 
 }

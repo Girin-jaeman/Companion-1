@@ -20,4 +20,10 @@ public interface LoginService {
 	/* 카카오 로그아웃 */
 	void kakaoLogout(String access_Token);
 
+	/* id찾기중 일치하는 것이 있는지 확인 */
+	int findIDCheck(String name_check, String phone_check);
+
+	/* id찾기 */
+	String findIDresult(String name_check, String phone_check);
+
 }

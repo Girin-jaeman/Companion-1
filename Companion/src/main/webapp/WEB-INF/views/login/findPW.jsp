@@ -88,8 +88,8 @@
 		                </div>
 		                <button class="btn btn-lg btn-primary btn-block" type="submit" id="login_btn">로그인</button>
 		                <div class="search">
-		                    <a href="${root }login/findID">아이디찾기</a>
-		                    <a href="${root }login/findPW">비밀번호찾기</a>
+		                    <a href="#">아이디찾기</a>
+		                    <a href="#">비밀번호찾기</a>
 		                </div>
 		                <!-- Divider Text -->
 		                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-3">
@@ -111,25 +111,6 @@
 	            	
 	            	
 	            	
-					<%-- <h1>로그인창</h1>
-					<form name="login" method="post" autocomplete="off">
-						<label for="member_id">ID</label>
-						<input type="text" name="member_id" id="member_id" placeholder="아이디 입력"></br>
-						
-						<label for="member_pw">PW</label>
-						<input type="password" name="member_pw" id="member_pw" placeholder="비밀번호 입력"></br>
-						
-						<button type="button" id="login_btn">로그인</button>
-						<button type="button" onclick="history.back();">뒤로</button>	</br>
-						<c:if test="${loginChk==false }">
-							<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-						</c:if>
-					</form> --%>
-					<!-- <div id="kakao_id_login">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">
-							<button>카카오 로그인</button>
-						</a>
-					</div> -->
 		
 	            </div>
 			</div>
@@ -148,19 +129,7 @@
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#login_btn").click(function(){
-				var member_id=$("#member_id").val();
-				var member_pw=$("#member_pw").val();
-				if(member_id==""){
-					alert("아이디를 입력해 주세요.");
-					return;
-				}
-				if(member_pw==""){
-					alert("비밀번호를 입력해 주세요.");
-					return;
-				}
-				document.login.submit();
-			});
+			
 		});
 	</script>
 	

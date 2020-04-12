@@ -10,4 +10,6 @@ public interface LoginDao {
 	public boolean loginChk(LoginVo bean);
 	public MemberVo infoLogin(LoginVo bean);
 	public void logout(HttpSession session);
+	public int findIDCheck(String name_check, String phone_check);
+	public String findIDresult(String name_check, String phone_check);
 }

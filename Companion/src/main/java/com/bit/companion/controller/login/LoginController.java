@@ -1,5 +1,6 @@
 package com.bit.companion.controller.login;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.companion.model.entity.login.LoginVo;
+import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.service.login.LoginService;
 import com.bit.companion.service.login.MemberService;
 
@@ -94,6 +96,62 @@ public class LoginController {
 		} 
 		return "redirect:/";
 		 
+	}
+	
+	@RequestMapping(value="/login/findID")
+	public String findID(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean!=null) {
+			return "redirect:/";
+		}
+		return "login/findID";
+	}
+	
+	@RequestMapping(value="/login/findID")
+	public String findIDCheck(HttpSession session,String name_check,String phone_check) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean!=null) {
+			return "redirect:/";
+		}
+		int idResult=loginService.findIDCheck(name_check,phone_check);
+		if(idResult==0) {
+			session.setAttribute("findIDResult", null);
+		}else {
+			String findID=loginService.findIDresult(name_check,phone_check);
+			char[] findIDresult=findID.toCharArray();
+			for(int i=0; i<findIDresult.length;i++) {
+				if(i<(findIDresult.length-3)) {
+					continue;
+				}
+				findIDresult[i]='*';
+			}
+			System.out.println("findID 확인 : "+findID);
+			findID="";
+			for(int i=0;i<findIDresult.length;i++) {
+				findID+=findIDresult[i];
+			}
+			System.out.println("findID 수정 : "+findID);
+			session.setAttribute("findIDResult", findID);
+		}
+		return "login/findIDresult";
+	}
+	
+	@RequestMapping(value="/login/findIDresult")
+	public String findIDresult(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean!=null) {
+			return "redirect:/";
+		}
+		return "login/findIDresult";
+	}
+	
+	@RequestMapping(value="/login/findPW")
+	public String findPW(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean!=null) {
+			return "redirect:/";
+		}
+		return "login/findPW";
 	}
 
 }

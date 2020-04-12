@@ -97,5 +97,10 @@ public class MypageServiceImpl implements MypageService {
 		mypageDao.insertOrders(bean);
 	}
 
+	@Override
+	public int deleteOneQuestion(String member_id, String question_id) {
+		return mypageDao.deleteOneQuestion(member_id,question_id);
+	}
+
 
 }

@@ -175,4 +175,14 @@ public class LoginServiceImpl implements LoginService {
 		}
 	}
 
+	@Override
+	public int findIDCheck(String name_check, String phone_check) {
+		return loginDao.findIDCheck(name_check,phone_check);
+	}
+
+	@Override
+	public String findIDresult(String name_check, String phone_check) {
+		return loginDao.findIDresult(name_check,phone_check);
+	}
+
 }

@@ -36,4 +36,6 @@ public interface MypageService {
 
 	void insertOrders(MyCartOrderVo bean);
 
+	int deleteOneQuestion(String member_id, String question_id);
+
 }

@@ -88,4 +88,7 @@
   	<select id="findOrder_id" parameterType="hashmap" resultType="String">
   		select order_id from `order` where member_id=#{member_id} and order_date=#{order_date} and order_amount=#{order_amount} and order_name=#{order_name}
   	</select>
+  	<delete id="deleteOneQuestion" parameterType="hashmap">
+  		delete from question where member_id=#{member_id} and question_id=#{question_id}
+  	</delete>
   </mapper>

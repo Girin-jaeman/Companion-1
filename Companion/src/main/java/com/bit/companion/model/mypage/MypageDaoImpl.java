@@ -206,6 +206,14 @@ public class MypageDaoImpl implements MypageDao {
 		cartInfo.put("cart_id", bean.getCart_id());
 		sqlSession.delete("mypage.deleteCart", cartInfo);
 	}
+
+	@Override
+	public int deleteOneQuestion(String member_id, String question_id) {
+		HashMap<String,String> questionInfo=new HashMap<>();
+		questionInfo.put("member_id", member_id);
+		questionInfo.put("question_id", question_id);
+		return sqlSession.delete("mypage.deleteOneQuestion", questionInfo);
+	}
 	
 
 }
