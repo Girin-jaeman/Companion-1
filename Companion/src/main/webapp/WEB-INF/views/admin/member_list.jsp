@@ -136,13 +136,6 @@
 					"previous": "이전"
 				}
 			},
-			"columns" : [ 
-				{ "width" : "20px" }, 
-				{ "width" : "30px" },
-				{ "width" : "30px" }, 
-				{ "width" : "40px" }, 
-				{ "width" : "30px" }
-			],
 			"order" : [
 				[0,"asc"]
 			],
