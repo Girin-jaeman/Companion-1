@@ -229,7 +229,7 @@
 				</c:forEach>
 			<c:if test="${next }">
 				<li class="page-item">
-					<a class="page-link" href="${root }order/productMain?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
+					<a class="page-link" href="${root }order/productMain/<%=REALURL %>?<%=result %>&num=${endPageNum + 1 }" aria-label="Next">
 		     		   <span aria-hidden="true">&raquo;</span>
 		   			</a>	      
 		      </li>
