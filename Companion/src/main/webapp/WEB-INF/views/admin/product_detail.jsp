@@ -119,14 +119,14 @@
 			  <tr>
 			  	<th><label for="product_name">상품번호</label></th>
 			    <td><span>${adminProductOne.product_id }</span></td>
+			  </tr>
+			   <tr>
 			  	<th><label for="product_name">상품명</label></th>
-			    <td><span>${adminProductOne.product_name }</span></td>
+			    <td colspan="3"><span>${adminProductOne.product_name }</span></td>
 			  </tr>
 			   <tr>
 			  	<th><label for="product_price">상품가격</label></th>
 			    <td><span><fmt:formatNumber value="${adminProductOne.product_price}" pattern="###,###,###"/></span></td>
-			  </tr>
-			   <tr>
 			  	<th><label for="product_stock">상품수량</label></th>
 			    <td><span>${adminProductOne.product_stock }</span></td>
 			  </tr>

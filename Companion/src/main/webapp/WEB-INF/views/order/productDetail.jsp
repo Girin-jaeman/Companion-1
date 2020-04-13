@@ -69,11 +69,12 @@
 			</nav>
 			<div class="categories">
 				<a href="/companion/order/productMain?c=100">
-					<i class="fas fa-home"></i>쇼핑하기
+					<i class="fas fa-shopping-cart"></i>
+                    쇼핑하기
 				</a>
 				<span>></span>
 				<a href="/companion/order/productMain?c=100">
-					<i class="fas fa-home"></i>사료
+					사료
 				</a>
 				<hr class="mb-4">
 			</div>
@@ -371,21 +372,37 @@
 							<div class="col-lg-12"  id="inquiry">
 		<!-- 테이블로 넣자  -->
 							<div class="row">
-								<div class="col-sm-9">
+								<div class="col-sm-6">
 									<h4>문의하기</h4>
 								</div>
-								<div class="col-sm-3">
-									<!-- <button>내가 쓴 글 보기(스위치)</button> -->
-								</div>
-							
-							</div>
 							<div class="col-sm-6">구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의 해 주세요</div>
-							<div class="col-sm-6"></div>
+				
+							</div>
 
 								
 								<div id="reply">
 									<c:if test="${memberVo.member_id==null}">
-										<p>소감을 남기려면 로그인 해주세요!</p>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">문의하기</button>		
+										<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel">문의글 작성</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+												<p>소감을 남기려면 로그인 해주세요!</p>
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+										        <button type="button" class="btn btn-primary" onclick= "location.href= '${root}login'">로그인하기</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+									
 										<section class="replyList">
 											<p>문의글 리스트 왜 안나오는데??? </p>
 											<!-- null 값이어도 값이 들어가야함. -->
@@ -400,7 +417,47 @@
 										</section>
 									</c:if>
 									<c:if test="${memberVo.member_id!=null}">
-										<section class="replyForm">
+									
+							
+							
+						
+<!-- 문의하기 창 생셩 modal test -->		
+	
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">문의하기</button>					
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">문의글 작성</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="replyForm">
+	<form role="form" method="post" autocomplete="off"> 
+      <div class="modal-body">
+		<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
+		<input type="hidden" name="member_id" id="member_id" value="${memberVo.member_id }"/>
+          <div class="form-group input_area">
+            <label for="question_title" id="question_label" class="col-form-label">문의제목</label>
+            <input type="text" name="question_title" class="form-control" id="question_title">
+            <textarea name="question_content" class="form-control" id="question_content" placeholder="문의하실 내용을 입력해주세요."></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" id="reply_btn">문의글 달기</button>
+      </div>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>					
+							
+<!-- 문의하기 창 생셩 modal test -->								
+									
+									
+										<%-- <section class="replyForm">
 
 											 <form role="form" method="post" autocomplete="off"> 
 											<input type="hidden" name="product_id" id="product_id" value="${productDetailOne.product_id}"/>
@@ -412,7 +469,7 @@
 											</div>
 													<button type="button" id="reply_btn">문의글 달기</button>
 											</form>
-										</section>
+										</section>  --%>
 									</c:if>
 
 									<!-- 여기에 문의글 ajax 들어감 -->
@@ -636,7 +693,9 @@
 						$("#question_content").val("");
 						$("#question_title").val("");
 						alert('문의 글이 정상 등록되었습니다.');
+						$('#modal').modal('hide');
 					}
+					
 				});
 				console.log(data);	
 			});
