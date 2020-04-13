@@ -12,6 +12,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <link rel="stylesheet" href="${root }css/admin/reserv.css">
@@ -62,42 +64,17 @@
 				<h1>[Admin] 예약관리 목록</h1>
 			</div>
 				
-			<div class="sub-group clearfix">
-			<!-- 공지 등록 -->
-				<!-- 검색창 -->
-				<div class="search-group btn-group float--right">
-					<select name="searchType" id="searchType">
-						<option value="all">전체</option>
-						<option value="service">서비스</option>
-						<option value="member">아이디</option>
-						<option value="reserve_date">신청일</option>
-					</select>
-					<input type="text" name="keyword" id="keyword">
-					<button name="search_Btn" id="search_Btn">검색</button>
-				</div>
-			</div>
-			
-			<table class="table table_layout table-hover">
-			<colgroup>
-        		<col class="col1">
-        		<col class="col2">
-        		<col class="col3">
-        		<col class="col4">
-        		<col class="col5">
-        		<col class="col6">
-        		<col class="col7">
-        		<col class="col8">
-    		</colgroup>
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 			<thead>
 				<tr>
-					<th scope="row">서비스</th>
-					<th scope="row">아이디</th>
-					<th scope="row">체크인 날짜</th>
-					<th scope="row">체크아웃 날짜</th>
-					<th scope="row">품종</th>
-					<th scope="row">나이</th>
-					<th scope="row">신청일</th>
-					<th scope="row">예약상태</th>
+					<th>서비스</th>
+					<th>아이디</th>
+					<th>체크인 날짜</th>
+					<th>체크아웃 날짜</th>
+					<th>품종</th>
+					<th>나이</th>
+					<th>신청일</th>
+					<th>예약상태</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -118,20 +95,11 @@
 					<td>${bean.reserve_dogage }</td>
 					<td>${bean.reserve_date }</td>
 					<td>
-					<c:choose>
-						<c:when test="${bean.reserve_state_id =='0' }">
-						<div>신청완료</div>
-						</c:when>
-						<c:when test="${bean.reserve_state_id =='1' }">
-						<div>예약완료</div>
-						</c:when>
-						<c:when test="${bean.reserve_state_id =='2' }">
-						<div>이용중</div>
-						</c:when>
-						<c:when test="${bean.reserve_state_id =='3' }">
-						<div>이용완료</div>
-						</c:when>
-					</c:choose>
+					<c:set var="state" value="${bean.reserve_state_id }"/>
+						<c:if test="${state == 0}">신청완료</c:if>
+						<c:if test="${state == 1}">예약완료</c:if>
+						<c:if test="${state == 2}">이용중</c:if>
+						<c:if test="${state == 3}">이용완료</c:if>
 					</td>
 				</tr>
 				
@@ -168,17 +136,6 @@
 		</div>
 
 		<!-- 테스트해보자 모달창 -->
-		<!-- pagination [start] -->
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		<!-- pagination [end] -->
 	</div>
 	<!-- #content [end] -->
 </div>
@@ -189,6 +146,8 @@
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+<!-- Data Table JS -->
+<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
 
 <script type="text/javascript">
 	// 메뉴 토글 버튼
@@ -198,16 +157,45 @@
 	    });
 	});
 
-	// 검색 버튼
-	// 검색 버튼
-	$("#search_Btn").click(function(e){
-		e.preventDefault();
-		var url = "${getList}";
-		url = url + "?searchType=" + $('#searchType').val();
-		url = url + "&keyword=" + $('#keyword').val();
-		location.href = url;
-		console.log(url);
+	// 데이터 테이블 초기화
+ 	$(document).ready(function() {
+		$('#dataTable').DataTable({
+			"language": {
+				"emptyTable": "데이터가 없습니다.",
+				"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+				"info": "현재 _START_ - _END_ / _TOTAL_건",
+				"infoEmpty": "데이터 없음",
+				"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+				"search": "검색: ",
+				"zeroRecords": "일치하는 데이터가 없습니다.",
+				"loadingRecords": "로딩중...",
+				"processing":     "잠시만 기다려 주세요...",
+				"paginate": {
+					"next": "다음",
+					"previous": "이전"
+				}
+			},
+			"columns" : [ 
+				{ "width" : "100px" }, 	//서비스
+				{ "width" : "100px" },	//회원이름
+				{ "width" : "120px" }, 	//체크인
+				{ "width" : "120px" }, 	//체크아웃
+				{ "width" : "100px" }, 	//품종
+				{ "width" : "60px" }, 	//나이
+				{ "width" : "100px" }, 	//작성일
+				{ "width" : "100px" }	//예약상태
+			],
+			"order" : [
+				[0,"asc"]
+			],
+			"lengthMenu" : [
+				10,20,30,40,50
+			],
+			"pageLength" : 10,
+			"stateSave" : true
+		});
 	});
+	
 	
 </script>
 </body>

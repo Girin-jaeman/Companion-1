@@ -24,15 +24,10 @@ public class AdminReservationController {
 	
 	// reservation list
 	@RequestMapping(value="reservation_list", method=RequestMethod.GET)
-	public String reservationList(Model model
-			, @RequestParam(required=false, defaultValue = "1") int page
-			, @RequestParam(required = false, defaultValue = "1") int range
-			, @RequestParam(required = false, defaultValue = "all") String searchType
-			, @RequestParam(required = false) String keyword
-			, @ModelAttribute("search") Search search) {
+	public String reservationList(Model model) {
 		log.info("get reservation list");
-		adminReservationService.service(model);
-		adminReservationService.list(model, page, range, searchType, keyword, search);
+		
+		adminReservationService.list(model);
 		return "admin/reservation_list";
 	}
 	

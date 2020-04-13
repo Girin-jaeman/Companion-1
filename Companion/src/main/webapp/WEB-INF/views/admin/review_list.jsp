@@ -63,7 +63,7 @@
 				<h1>[Admin] 후기 목록</h1>
 			</div>
 			
-			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>상품명</th>

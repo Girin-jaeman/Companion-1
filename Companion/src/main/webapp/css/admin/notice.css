@@ -39,13 +39,9 @@
 }
 .table thead{}
 
-.table thead tr{
-	background:#5f4b8b80;
-}
 .table thead tr th{
 	text-align:center;
 }
-	text-align:center;
 .table tbody{}
 .table tbody tr{
 	height:40px;
