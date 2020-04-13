@@ -69,7 +69,7 @@
 			<div class="main--title">
 				<h1>[Admin] 회원 목록</h1>
 			</div>
-			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>구분</th>
