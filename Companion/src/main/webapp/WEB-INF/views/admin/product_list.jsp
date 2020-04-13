@@ -75,7 +75,7 @@
 			<div class="sub-group clearfix">
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/product_add">상품등록</a>
 			</div>
-				<table id="dataTable" class="table table_layout table-hover table-bordered table-striped">
+				<table id="dataTable" class="table table-hover table-bordered">
 					<thead>
 						<tr>
 							<th>카테고리</th>
@@ -186,18 +186,6 @@ $(document).ready(function() {
 				"previous": "이전"
 			}
 		},
-		"columns" : [ 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "10px" }, 
-			{ "width" : "10px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "10px" },
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }
-		],
 		"order" : [
 			[5,"desc"]
 		],
