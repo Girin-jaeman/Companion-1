@@ -32,9 +32,19 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 	
 	// member detail
 	@Override
-	public void detail(Model model, String member_id) {
+	public void detail(Model model, AdminMemberViewVo bean) {
 		try {
-			model.addAttribute("adminMemberOne", adminMemberDao.selectOne(member_id));
+			model.addAttribute("adminMemberOne", adminMemberDao.selectOne(bean));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// member update
+	@Override
+	public void update(AdminMemberViewVo bean) {
+		try {
+			adminMemberDao.updateOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
