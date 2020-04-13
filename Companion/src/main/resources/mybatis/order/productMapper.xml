@@ -86,12 +86,15 @@
 	</select>
 	
 	<!-- 선택 상품의 추천수가 0일 경우 랜덤 상품이 추천 됨.  -->
+	<!-- Product_name이 동일함 ㅠ -->
 	<!-- 추천상품목록 구현  -->
 	<select id="ProductRecommendList" resultType="productBean" parameterType="int">
-		select product_id,order_id,(select product_name from product where product_id=#{product_id}) as product_name from `order_detail` 
-		where order_id = (select order_id from `order` where member_id 
-		in (select member_id from `like` where product_id=#{product_id}) is not null limit 1) 
-		is not null group by product_id order by rand() limit 5;
+		(select distinct order_detail.product_id,product.product_name from `order_detail`,product
+ 			where product.product_id = order_detail.product_id
+ 			and
+			order_id=(select order_id from `order`
+ 			where member_id=(select member_id from `like` where product_id=#{product_id} is not null limit 1))
+ 			 is not null order by rand() limit 5);
 	</select>
 	
 	
