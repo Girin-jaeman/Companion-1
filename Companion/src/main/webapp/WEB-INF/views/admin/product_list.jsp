@@ -93,7 +93,6 @@
         		<col class="col7">
         		<col class="col8">
         		<col class="col9">
-        		<col class="col10">
     			</colgroup>
 					<thead>
 						<tr>
@@ -103,7 +102,6 @@
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
-							<th>좋아요</th>
 							<th>옵션1</th>
 							<th>옵션2</th>
 							<th>옵션etc</th>
@@ -151,11 +149,6 @@
 							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
-							</div>
-						</td>
-						<td>
-							<div>
-							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.like_sum }</a>
 							</div>
 						</td>
 						<td>
