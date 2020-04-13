@@ -19,7 +19,7 @@
 	
 	<!-- 상품 판매인기순 -->
 	<select id="productOrderBySellingOrder" resultType="productBean" parameterType="hashMap">
-		select * from product 
+		select product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id from product 
 		left join order_detail 
 		on
 		 product.product_id=order_detail.product_id where product.category_id=#{category_id}
@@ -28,16 +28,16 @@
 	
 <!-- 	상품 낮은 가격순 -->
 	<select id="productOrderByLowPrice" resultType="productBean" parameterType="hashMap">
-		select * from product where category_id=#{category_id} order by product_price limit #{displayPost},#{postNum};
+		select product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id from product where category_id=#{category_id} order by product_price limit #{displayPost},#{postNum};
 	</select>
 	
 	<!-- 상품 높은 가격순 -->
 	<select id="productOrderByHighPrice" resultType="productBean" parameterType="hashMap">
-		select * from product where category_id=#{category_id} order by product_price desc limit #{displayPost},#{postNum};
+		select product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id from product where category_id=#{category_id} order by product_price desc limit #{displayPost},#{postNum};
 	</select>
 	<!-- 상품 등록일 순 -->
 	<select id="productOrderByDate" resultType="productBean" parameterType="hashMap">
-		select * from product where category_id=#{category_id} order by product_date desc limit #{displayPost},#{postNum};
+		select product.*,(select count(*) from `like` where product.product_id=`like`.product_id) as like_id from product where category_id=#{category_id} order by product_date desc limit #{displayPost},#{postNum};
 	</select>
 	
 	 <!-- 모든 상품 목록 데이터 가져오는 곳.   -->
