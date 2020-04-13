@@ -124,32 +124,9 @@
 			            <div class="product-grid productbox">
 			                <div class="product-image">
 			                    <a href="${root }order/productDetail?idx=${bean.product_id }">
-						          <%--   <c:set var = "name" value="${bean.category_id }"/>        
-										<c:choose >
-											<c:when test="${name eq '100' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/사료.jpg">
-			         <!--    마우스오버 사진변경<img class="pic-2" src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-4.jpg"> -->
-						                	</c:when>
-					                		<c:when test="${name eq '200' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/간식.jpg">
-						                	</c:when>
-					                		<c:when test="${name eq '300' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/장난감.jpg">
-						                	</c:when>
-					                		<c:when test="${name eq '400' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/미용용품.jpg">
-						                	</c:when>
-					                		<c:when test="${name eq '500' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/목욕용품.jpg">
-						                	</c:when>
-					                		<c:when test="${name eq '600' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/위생용품.jpg">
-						                	</c:when>
-					                		<c:when test="${name eq '700' }">		             
-						                        <img class="pic-1" src="${root }imgs/shopping/산책용품.jpg">
-						                	</c:when>
-						                </c:choose> --%>
+						          
 						                <img class="pic-1" src="${bean.product_image }"/>
+						                <img class="pic-2" src="${bean.product_thumb }"/>
 						                
 			                    </a>
 
