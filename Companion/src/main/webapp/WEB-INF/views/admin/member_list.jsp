@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/member_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,8 +149,7 @@
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" : 20,
-			"stateSave" : true
+			"pageLength" : 20
 		});
 	});
 </script>

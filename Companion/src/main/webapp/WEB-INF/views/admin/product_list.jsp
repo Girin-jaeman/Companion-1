@@ -4,13 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/product_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
+    <!-- DateTables CSS -->
+    <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
     <link rel="stylesheet" href="${root }css/admin/product.css">
@@ -61,10 +62,8 @@
 			        </ul>
 			    </div>
 			    <!-- top menu bar [end] -->
-			    
 			</div>
 			<!-- .container-fluid [end] -->
-			
 		</nav>
 		<!-- nav [end] -->
 		
@@ -75,26 +74,8 @@
 			</div>
 			<div class="sub-group clearfix">
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/product_add">상품등록</a>
-			<!-- 검색창 -->
-			<div class="search-group btn-group float--right">
-				<input type="hidden" name="searchType" id="searchType" value="product">
-				<input type="text" name="keyword" id="keyword">
-				<button name="search_Btn" id="search_Btn">검색</button>
 			</div>
-			</div>
-				<table class="table table_layout table-hover">
-				<colgroup>
-        		<col class="col1">
-        		<col class="col2">
-        		<col class="col3">
-        		<col class="col4">
-        		<col class="col5">
-        		<col class="col6">
-        		<col class="col7">
-        		<col class="col8">
-        		<col class="col9">
-        		<col class="col10">
-    			</colgroup>
+				<table id="dataTable" class="table table_layout table-hover table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>카테고리</th>
@@ -179,50 +160,67 @@
 				</tbody>
 			</table>
 		</section>
-		<!-- pagination [start] -->
-		<div id="pagination">
-		<jsp:include page="../common/pagination.jsp">
-			<jsp:param value="${search.prev }" name="prev"/>
-			<jsp:param value="${search.next }" name="next"/>
-			<jsp:param value="${search.page }" name="page"/>
-			<jsp:param value="${search.range }" name="range"/>
-			<jsp:param value="${search.rangeSize }" name="rangeSize"/>
-			<jsp:param value="${search.startPage }" name="startPage"/>
-			<jsp:param value="${search.endPage }" name="endPage"/>
-		</jsp:include>
-		</div>
-		<!-- pagination [end] -->
 		
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->
 
- <!-- ㅇㅇ-->
-
 <!-- jQuery -->
-<script src="${root }js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${root }DataTables/jQuery-3.3.1/jquery-3.3.1.js"></script>
 <!-- Popper.JS -->
 <script src="${root }js/bootstrap/popper.js"></script>
 <!-- Bootstrap JS -->
 <script src="${root }js/bootstrap/bootstrap.js"></script>
+<!-- Data Table JS -->
+<script type="text/javascript" src="${root }DataTables/datatables.min.js"></script>
 
 <script type="text/javascript">
-// 메뉴 토글 버튼
+// 데이터 테이블 초기화
+$(document).ready(function() {
+	$('#dataTable').DataTable({
+		"language": {
+			"emptyTable": "데이터가 없습니다.",
+			"lengthMenu": "페이지당 _MENU_ 개씩 보기",
+			"info": "현재 _START_ - _END_ / _TOTAL_건",
+			"infoEmpty": "데이터 없음",
+			"infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+			"search": "검색: ",
+			"zeroRecords": "일치하는 데이터가 없습니다.",
+			"loadingRecords": "로딩중...",
+			"processing":     "잠시만 기다려 주세요...",
+			"paginate": {
+				"next": "다음",
+				"previous": "이전"
+			}
+		},
+		"columns" : [ 
+			{ "width" : "20px" }, 
+			{ "width" : "20px" }, 
+			{ "width" : "20px" }, 
+			{ "width" : "10px" }, 
+			{ "width" : "10px" }, 
+			{ "width" : "20px" }, 
+			{ "width" : "10px" },
+			{ "width" : "20px" }, 
+			{ "width" : "20px" }, 
+			{ "width" : "20px" }
+		],
+		"order" : [
+			[5,"desc"]
+		],
+		"lengthMenu" : [
+			10,20,30,40,50
+		],
+		"pageLength" : 20,
+		"columnDefs" : { "orderable" : false, "targets" : 1}
+	});
+});
+
+//메뉴 토글 버튼
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
 });
-
-// 검색 버튼
-$("#search_Btn").click(function(e){
-	e.preventDefault();
-	var url = "${getList}";
-	url = url + "?searchType=" + $('#searchType').val();
-	url = url + "&keyword=" + $('#keyword').val();
-	location.href = url;
-	console.log(url);
-});
-
 </script>
 	
 </body>

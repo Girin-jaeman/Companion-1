@@ -97,16 +97,12 @@ public class LoginController {
 		return "redirect:/";
 		 
 	}
-	
-	@RequestMapping(value="/login/findID")
-	public String findID(HttpSession session) {
-		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
-		if(bean!=null) {
-			return "redirect:/";
-		}
-		return "login/findID";
-	}
-	
+
+	/*
+	 * @RequestMapping(value="/login/findID") public String findID(HttpSession
+	 * session) { MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+	 * if(bean!=null) { return "redirect:/"; } return "login/findID"; }
+	 */
 	@RequestMapping(value="/login/findID")
 	public String findIDCheck(HttpSession session,String name_check,String phone_check) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");

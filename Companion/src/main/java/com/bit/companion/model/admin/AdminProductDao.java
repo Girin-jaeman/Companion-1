@@ -14,7 +14,7 @@ public interface AdminProductDao {
 	List<AdminCategoryVo> selectCategory() throws SQLException;
 	
 	// product list
-	List<AdminProductViewVo> selectAll(Search search) throws SQLException;
+	List<AdminProductViewVo> selectAll() throws SQLException;
 	
 	// product detail
 	AdminProductViewVo selectOne(int product_id) throws SQLException;
