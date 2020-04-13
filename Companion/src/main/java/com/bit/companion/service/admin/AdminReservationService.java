@@ -7,7 +7,7 @@ import com.bit.companion.common.Search;
 public interface AdminReservationService {
 
 	//reservation list
-	void list(Model model, int page, int range, String searchType, String keyword, Search search);
+	void list(Model model);
 	
 	//hotelservice list
 	void service(Model model);

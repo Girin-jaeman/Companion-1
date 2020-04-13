@@ -22,8 +22,8 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	
 	// reservation list - selectAll
 	@Override
-	public List<AdminReservationVo> selectAll(Search search) throws SQLException {
-		return sqlsession.selectList("adminReservation.selectAll",search);
+	public List<AdminReservationVo> selectAll() throws SQLException {
+		return sqlsession.selectList("adminReservation.selectAll");
 	}
 	
 	// hotelService list -selectAll
@@ -36,12 +36,6 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	public AdminReservationVo selectOne(int reserve_id) throws SQLException {
 		System.out.println(reserve_id);
 		return sqlsession.selectOne("adminReservation.selectOne", reserve_id);
-	}
-
-	// reservation total - selectTotal
-	@Override
-	public int selectTotal(Search search) throws SQLException {
-		return sqlsession.selectOne("adminReservation.selectTotal",search);
 	}
 
 	

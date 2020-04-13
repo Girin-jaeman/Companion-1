@@ -25,20 +25,11 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 
 	//reservation list
 	@Override
-	public void list(Model model, int page, int range, String searchType, String keyword, Search search) {
+	public void list(Model model) {
 		try {
-			// Total list Count
-			search.setListSize(15);
-			int listCnt = adminReservationDao.selectTotal(search);
 			
-			// Pagination + Search
-			search.setSearchType(searchType);
-			search.setKeyword(keyword);
-			search.pageInfo(page, range, listCnt);
+			List<AdminReservationVo> list=adminReservationDao.selectAll();
 			
-			List<AdminReservationVo> list=adminReservationDao.selectAll(search);
-			
-			model.addAttribute("search", search);
 			model.addAttribute("adminReservationList", list);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,7 +43,6 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 			List<AdminHotelServiceVo> service= adminReservationDao.selectService();
 			model.addAttribute("adminHotelService", JSONArray.fromObject(service));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
