@@ -88,8 +88,10 @@
 						<div class="goodsImg">
 							<!-- lay 380x440, imgsize 355x415 -->
 							<!-- 이미지 반 글 반 먹고 나머지는 밑에 푸터처럼. -->
-							<img src="${root }imgs/shopping/dogTestImage.jpg"
-								class="img-fluid" alt="Responsive image">
+						<%-- 	<img src="${root }imgs/shopping/dogTestImage.jpg"
+								class="img-fluid" alt="Responsive image"> --%>
+						<%-- 		<p><img src="${productDetailOne.product_thumb }" class="img-fluid" alt=""/></p> --%>
+								<p><img src="${productDetailOne.product_image }" class="img-fluid" alt="왜안돼?"/></p>
 								<!-- 이미지는 DB에 이미지 경로를 넣어야 함.  -->
 						</div>
 					</div>
@@ -98,8 +100,7 @@
 						<h2 class="goods-title">[ ${productDetailOne.product_name } ]
 							상품 번호 ${productDetailOne.product_id }</h2>
 						<h4>[ 카테고리NUM=${productDetailOne.category_id } ]</h4>
-						<p class="goos-text">상품 설명 ${productDetailOne.product_content }
-						</p>
+						<p class="goos-text">상품 설명은 하단에 있습니다.	</p>
 						
 			 <!-- 셀렉트박스 옵션 값 가져오기.  -->
 	
@@ -277,7 +278,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<h5>${productDetailOne.product_content }</h5>
+							<h5 width="max">${productDetailOne.product_content }</h5>
 						</div>
 					
 					</div>	<!-- 상품설명   end -->

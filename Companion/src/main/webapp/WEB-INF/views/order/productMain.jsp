@@ -76,26 +76,25 @@
                 <a href="#">
                     <i class="fas fa-home"></i>
                     
-                    <%if(request.getQueryString()=="c=100"){
+                    <%
+                    String categoryFind = (String)request.getQueryString().substring(0,5);
+                    if("c=100".equals(categoryFind)){
                     	out.println("사료");
-                    }else if(request.getQueryString()=="c=200"){
+                    }else if("c=200".equals(categoryFind)){
                     	out.println("간식");
-                    }else if(request.getQueryString()=="c=300"){
+                    }else if("c=300".equals(categoryFind)){
                     	out.println("장난감");
-                    }else if(request.getQueryString()=="c=400"){
+                    }else if("c=400".equals(categoryFind)){
                     	out.println("미용용품");
-                    }else if(request.getQueryString()=="c=500"){
+                    }else if("c=500".equals(categoryFind)){
                     	out.println("목욕용품");
-                    }else if(request.getQueryString()=="c=600"){
+                    }else if("c=600".equals(categoryFind)){
                     	out.println("위생용품");
-                    }else if(request.getQueryString()=="c=700"){	
+                    }else if("c=700".equals(categoryFind)){	
                     	out.println("산책용품");
                     }
-                    out.println(request.getQueryString());
-                    out.println("이거 아닌가?");
-                    
                     %>
-                    아니 왜 사료만 쳐나와??
+
                 </a>
                 <hr class="mb-4">
             </div>
@@ -125,7 +124,7 @@
 			            <div class="product-grid productbox">
 			                <div class="product-image">
 			                    <a href="${root }order/productDetail?idx=${bean.product_id }">
-						            <c:set var = "name" value="${bean.category_id }"/>        
+						          <%--   <c:set var = "name" value="${bean.category_id }"/>        
 										<c:choose >
 											<c:when test="${name eq '100' }">		             
 						                        <img class="pic-1" src="${root }imgs/shopping/사료.jpg">
@@ -149,7 +148,9 @@
 					                		<c:when test="${name eq '700' }">		             
 						                        <img class="pic-1" src="${root }imgs/shopping/산책용품.jpg">
 						                	</c:when>
-						                </c:choose>
+						                </c:choose> --%>
+						                <img class="pic-1" src="${bean.product_image }"/>
+						                
 			                    </a>
 
 			                </div>
@@ -162,13 +163,8 @@
 			                    <li class="fa fa-star"></li>
 			                </ul>
 			                <div class="product-content">
-			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.product_thumb } // ${bean.category_id }</a></h3>
 			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.category_name }</a></h3> 
 			              
-			                <!-- 상품 추천 수 받아올 것. -->
-			                    <h3 id="DDaBong"class="title">상품 추천 수: ${bean.like_id }</h3>  
-<%-- 			                    <%request.setAttribute("like_id",${bean.like_id}); %> --%>
-			                <!-- 상품 추천 수 받아올 것. -->
 	
 			                    <h3 class="title"><a href="${root }order/productDetail?idx=${bean.product_id }"> ${bean.product_name }</a>
 			             
@@ -176,10 +172,10 @@
 			             <c:set var = "memberID" value="${memberVo.member_id }"/>         
 			               <c:choose>
 									<c:when test="${memberVo.member_id==null}">	
-					                    <a id=btn href="${root }login"><img  src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href="${root }login"><img  src="${root }imgs/shopping/빈따봉1.jpg"></a><span class="badge badge-pill badge-danger">${bean.like_id }</span></h3>
 					               </c:when>  
 									<c:when test="${memberVo.member_id!=null }">	
-					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><%-- <img src="${root }imgs/shopping/찬따봉.jpg"> --%></h3>
+					                    <a id=btn href='javascript:like_func();'><img id="like_img" src="${root }imgs/shopping/빈따봉1.jpg"></a><span class="badge badge-pill badge-danger">${bean.like_id }</span></h3>
 					               </c:when>  
  			                </c:choose>       
 					 
