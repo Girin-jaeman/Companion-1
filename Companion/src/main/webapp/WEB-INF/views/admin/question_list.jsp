@@ -143,8 +143,7 @@
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" :20,
-			"stateSave" : true
+			"pageLength" :20
 		});
 	});
 

@@ -29,8 +29,8 @@ public class AdminProductDaoImpl implements AdminProductDao{
 	
 	// product list - selectAll
 	@Override
-	public List<AdminProductViewVo> selectAll(Search search) throws SQLException {
-		return sqlsession.selectList("adminProduct.selectAll",search);
+	public List<AdminProductViewVo> selectAll() throws SQLException {
+		return sqlsession.selectList("adminProduct.selectAll");
 	}
 	
 	// product detail - selectOne
