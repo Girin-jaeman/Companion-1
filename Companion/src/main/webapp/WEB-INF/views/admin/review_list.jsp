@@ -138,8 +138,7 @@
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" : 10,
-			"stateSave" : true
+			"pageLength" : 10
 		});
 	});
 </script>

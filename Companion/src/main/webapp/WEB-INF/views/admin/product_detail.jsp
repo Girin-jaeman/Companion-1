@@ -160,7 +160,7 @@
 				<div class="inputArea float--right">
 					<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>
 					<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-					<button type="button" id="back_Btn" class="btn btn-warning">취소</button>
+					<button type="button" id="back_Btn" class="btn btn-warning">목록</button>
 				</div>
 			</form>
 			</div> <!-- #detail [end] -->
@@ -185,38 +185,27 @@ $(document).ready(function () {
 	});
 });
 
-	// 수정 버튼
+// 수정 버튼
 $("#edit_Btn").click(function(){
 	location.href = ${root}+"admin/product_edit?product_id=" + ${adminProductOne.product_id};
 });
 
-	// 삭제 버튼
-	var formObj = $("form[role='form']");
-	$("#delete_Btn").click(function(){
-	var con = confirm("정말로 삭제하시겠습니까?");
-		if(con) {      
-			formObj.submit();
-		}else{
-			return false;
-		}
-	});
+// 삭제 버튼
+var formObj = $("form[role='form']");
+$("#delete_Btn").click(function(){
+var con = confirm("정말로 삭제하시겠습니까?");
+	if(con) {      
+		formObj.submit();
+	}else{
+		return false;
+	}
+});
 
-	// 취소 버튼
+// 목록 버튼
 $("#back_Btn").click(function(){
-	history.back();
+	location.href = ${root}+"admin/product_list";
 });
 
-	// 이전목록 버튼
-	var url = "${getList}";
- 		url = url + "?page=" + "${pagination.page}";
-	url = url + "&range=" + "${pagination.pagerange}";
-	url = url + "&searchType=" + "${search.searchType}";
-	url = url + "&keyword=" + "${search.keyword}";
-	console.log(url);
-$("#list_Btn").click(function(){
-	location.href = url;	
-
-});
 </script>
 
 </body>

@@ -272,8 +272,24 @@ a.join:hover {
 	
 }
 
-.table thead tr{
+table thead tr{
 	background:#5f4b8b80;
+}
+
+.table{
+	margin: 0 auto;
+}
+.table thead tr th{
+	text-align:center;
+}
+.table tbody tr{
+	height:40px;
+	max-height:40px;
+}
+.table tbody tr td{
+	padding:5px;
+	text-align:center;
+	overflow:hidden;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
