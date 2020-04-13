@@ -91,7 +91,7 @@
 						<%-- 	<img src="${root }imgs/shopping/dogTestImage.jpg"
 								class="img-fluid" alt="Responsive image"> --%>
 						<%-- 		<p><img src="${productDetailOne.product_thumb }" class="img-fluid" alt=""/></p> --%>
-								<p><img src="${productDetailOne.product_image }" class="img-fluid" alt="왜안돼?"/></p>
+								<img src="${productDetailOne.product_image }" alt="왜안돼?"/>
 								<!-- 이미지는 DB에 이미지 경로를 넣어야 함.  -->
 						</div>
 					</div>
@@ -251,34 +251,10 @@
 				</ul>
 				<div id="myTab2Content" class="tab-content">
 					<div id="product-info" role="tabpanel" aria-labelledby="home-tab"
-						class="tab-pane fade px-4 py-5 show active"><!-- 상품설명 start   -->
+						class="tab-pane fade py-5 show active"><!-- 상품설명 start   -->
 						<!-- 상품설명 -->
-						<div class="row">
-							<!-- 테이블로 넣자  -->
-							<div class="col-sm-2">
-								<h3>상품설명</h3>
-							</div>
-						</div>
-						<div class="row">
-							<!-- 테이블로 넣자  -->
-							<div class="col-sm-3">
-								<h5>상품상태</h5>
-							</div>
-							<div class="col-sm-2">
-								<h5>상품번호</h5>
-							</div>
-							<div class="col-sm-2">
-								<h5>제조사</h5>
-							</div>
-							<div class="col-sm-3">
-								<h5>원산지</h5>
-							</div>
-							<div class="col-sm-2">
-								<h5>주원료</h5>
-							</div>
-						</div>
-						<div class="row">
-							<h5 width="max">${productDetailOne.product_content }</h5>
+						<div class="inputAreaC">
+							${productDetailOne.product_content }
 						</div>
 					
 					</div>	<!-- 상품설명   end -->
