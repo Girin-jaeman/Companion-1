@@ -68,7 +68,6 @@
 			<table class="table table-bordered dataTable" id="dataTable">
 				<thead>
 					<tr>
-						<th></th>
 						<th>주문번호</th>
 						<th>주문상태</th>
 						<th>금액</th>
@@ -81,7 +80,6 @@
 				<tbody>
 				<c:forEach items="${list }" var="bean">
 					<tr>
-						<td></td>
 						<td><a href="${root }admin/order_detail?order_id=${bean.order_id}">${bean.order_id }</a></td>
 						<td>
 							<c:choose>
@@ -153,39 +151,12 @@
     <!-- Checkbox -->
     <script type="text/javascript">
     	$(document).ready(function(){
-			/*
+			
     		// DataTable
     		var chkbox = $('#dataTable').DataTable({
-    			searching:false,
-    			columnDefs:[{
-    				orderable: false,
-    				className: 'select-checkbox',
-    				targets: 0
-    			}],
-    			select:{
-    				style:'multi',
-    				selector:'td:first-child'
-    			},
-    			order:[[1,'desc']]
+    			searching:false
     		});
-			chkbox.on('click','th.select-checkbox',function(){
-    			if($('th.select-checkbox').hasClass('selected')){
-    				chkbox.rows().deselect();
-    				$('th.select-checkbox').removeClass('selected');
-    			} else {
-    				chkbox.rows().select();
-    				$('th.select-checkbox').addClass('selected');
-    			}
-    		}).on('select deselect',function(){
-    			if(chkbox.rows({
-    				selected:true
-    			}).count() !== chkbox.rows().count()){
-    				$('th.select-checkbox').removeClass('selected');
-    			} else {
-    				$('th.select-checkbox').addClass('selected');
-    			}
-    		});
-
+			/*
      		// 체크박스 전체선택, 전체해제
     		$('#check-all').click(function(){
     			if($('#check-all').is(":checked")){

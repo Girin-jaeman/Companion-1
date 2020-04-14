@@ -30,6 +30,7 @@
   		<typeAlias alias="adminQuestionBean" type="com.bit.companion.model.entity.admin.AdminQuestionVo"/>
   		<typeAlias alias="adminDataTableBean" type="com.bit.companion.model.entity.admin.AdminDataTableVo"/>
   		<typeAlias alias="adminOrderBean" type="com.bit.companion.model.entity.admin.AdminOrderVo"/>
+  		<typeAlias alias="adminOrderDetailBean" type="com.bit.companion.model.entity.admin.AdminOrderDetailVo"/>
   		
 		<!-- order -->
    		<typeAlias alias="orderBean" type="com.bit.companion.model.entity.order.OrderVo"/>

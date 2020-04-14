@@ -62,6 +62,9 @@
 		<!-- .container-fluid [start] -->
 		<div class="container-fluid">
 			<h1>주문 내역 상세보기</h1>
+			<div>
+				
+			</div>
 			<h2>주문자 정보</h2>
 			<table class="table">
 				<tbody>
@@ -76,7 +79,7 @@
 					<tr>
 						<th>주문상태</th>
 						<td>${bean.order_state_admin }</td>
-						<th colspan="3">주문시간</th>
+						<th colspan="3">주문일자</th>
 						<td>${bean.order_date }</td>
 					</tr>
 					<tr>
@@ -106,15 +109,88 @@
 					</tr>
 					<tr>
 						<th>택배사</th>
-						<td>${bean.delivery_company }</td>
+						<td>
+						<c:choose>
+							<c:when test="${bean.delivery_company eq null }">
+								출고요청 전
+							</c:when>
+							<c:otherwise>
+								${bean.delivery_company }
+							</c:otherwise>
+						</c:choose>
+						</td>
 						<th>송장번호</th>
-						<td>${bean.delivery_number }</td>
+						<td>
+						<c:choose>
+							<c:when test="${bean.delivery_number eq null }">
+								출고요청 전
+							</c:when>
+							<c:otherwise>
+								${bean.delivery_number }
+							</c:otherwise>
+						</c:choose>
+						</td>
 						<th>배송상태</th>
-						<td>${bean.delivery_state_name }</td>
+						<td>
+						<c:choose>
+							<c:when test="${bean.delivery_state_name eq null }">
+								출고요청 전
+							</c:when>
+							<c:otherwise>
+								${bean.delivery_state_name }
+							</c:otherwise>
+						</c:choose>
+						</td>
 					</tr>
 					<tr>
 						<th>배송 시<br/>요청사항</th>
 						<td colspan="5">${bean.order_msg }</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3>주문 상품 정보</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>상품 이름</th>
+						<th>상품 옵션</th>
+						<th>상품 단가</th>
+						<th>상품 수량</th>
+						<th>소 계</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="${list }" var="product">
+					<tr>
+						<td>${product.product_name }</td>
+						<td>${product.order_detail_option }</td>
+						<td>${product.product_price }</td>
+						<td>${product.order_detail_quantity }</td>
+						<td>${product.order_detail_price }</td>
+					</tr>
+				</c:forEach>
+				<tr>
+					<th>택배비</th>
+					<td>2,500</td>
+					<th>총 계</th>
+					<td>${bean.order_amount }</td>
+				</tr>
+				</tbody>
+			</table>
+			<h3>결제 정보</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>결제상태</th>
+						<th>결제일</th>
+						<th>결제금액</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>${bean.payment_state_name }</td>
+						<td>${bean.payment_date }</td>
+						<td>${bean.payment_amount }</td>
 					</tr>
 				</tbody>
 			</table>
