@@ -25,16 +25,16 @@ body {
     /* font-family: 'Poppins', sans-serif; */
     /* font-family: 'Nanum Myeongjo', serif; */
     /* font-family: 'Nanum Pen Script', cursive; */
-    /* font-family: 'Do Hyeon', sans-serif; */
+    font-family: 'Do Hyeon', sans-serif;
     /* font-family: 'Jua', sans-serif; */
     /* font-family: 'Gaegu', cursive; */
-    font-family: 'Gamja Flower', cursive;
+    /* font-family: 'Gamja Flower', cursive; */
     color: #333;
     font-weight: 500;
 
 }
 p {
-	font-family: 'Gaegu', cursive;
+	font-family: 'Do Hyeon', sans-serif;
     font-size: 1.1em;
     font-weight: 500;
     line-height: 1.7em;
@@ -219,7 +219,7 @@ span {
 #sidebar .sidebar-header {
     padding: 20px;
     background:#0F4C81;
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 #sidebar .sidebar-header strong {
