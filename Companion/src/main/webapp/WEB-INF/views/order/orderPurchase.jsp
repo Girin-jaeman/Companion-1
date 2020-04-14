@@ -184,7 +184,7 @@
                         <li>배송비<br/>2,500원</li>
                         <li><i class="fas fa-equals"></i></li>
                         <li>합계<br/>${orderProductPurchaseOne.product_price * order_detail_quantity +2500}
-                        <input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}">
+                        <input type="hidden" class="form-control" name="order_detail_price" value="${orderProductPurchaseOne.product_price * order_detail_quantity}">
                         <input type="hidden" class="form-control" name="order_amount" value="${orderProductPurchaseOne.product_price * order_detail_quantity +2500}"/>
                         </li> 
                     </ul>
@@ -199,7 +199,8 @@
 	                        <tr>
 	                            <th>휴대폰 번호</th>
 	                            <td><input type="text" class="form-control" name="member_phone" id="member_phone" placeholder="${orderVo.member_phone }" aria-label="phone" aria-describedby="basic-addon1" readonly>
-	                           		  <input type="hidden" class="form-control" name="order_tel" id="order_tel" value="${orderVo.member_phone }" />
+	                           		  <input type="hidden" class="form-control" name="order_tel" id="order_tel" placeholder="${orderVo.member_phone }" />
+<%-- 	                           		  <input type="hidden" class="form-control" name="order_tel" id="order_tel" value="${orderVo.member_phone }" /> --%>
 	                            </td>
 	                           
 	                        </tr>
@@ -255,7 +256,7 @@
                 <div class="coast clearfix">
                     <ul class="coast-group float--right">
                         <li class="total__title">최종 결제 금액</li>
-                        <li class="total">${orderProductPurchaseOne.product_price +2500}</li>
+                        <li class="total">${orderProductPurchaseOne.product_price * order_detail_quantity +2500}</li>
                     </ul>
                 </div>
                 <div class="purchase">

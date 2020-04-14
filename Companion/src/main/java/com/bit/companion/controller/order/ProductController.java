@@ -49,6 +49,8 @@ public class ProductController {
 	//DETAIL PAGE
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
 	public String productDetail(Model model,@RequestParam("idx") int product_id,HttpSession session) throws SQLException {
+
+		
 		MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
 		
 	if(memberVo==null) {
@@ -64,10 +66,13 @@ public class ProductController {
 		//문의글 리스트 조회.
 		/* orderQuestionService.replyList(product_id); */
 		System.out.println("내가볼땐 여기임!?");
-		
+		//이용 후기 리스트 출력
 		orderReviewService.orderReviewList(model, product_id);
+		//상품 상세 페이지 정보 출력.
 		productService.detail(model, product_id);	
+		//상품 추천
 		productService.productRecommend(model, product_id);
+		
 		return "order/productDetail";
 	}
 	

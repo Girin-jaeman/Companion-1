@@ -44,12 +44,15 @@ public class OrderDaoImpl implements OrderDao {
 		System.out.println(orderVo.getCart_option());
 		System.out.println("카트 갯수");
 		System.out.println(orderVo.getCart_quantity());
+		
 		if((orderVo.getProduct_stock())-(orderVo.getOrder_detail_quantity())<0) {
 			System.out.println("상품 재고가 구입하려는 상품 수량보다 부족합니다.");
 		}else {
 			try {
 				sqlSession.insert("order.OrderProductPurchase",orderVo);
+				
 				sqlSession.insert("order.OrderDetailInsert",orderVo);
+				
 				sqlSession.insert("order.OrderPaymentInsert",orderVo);
 				sqlSession.insert("order.OrderDeliveryInsert",orderVo);
 				sqlSession.update("order.OrderUpdateProductStock",orderVo);
