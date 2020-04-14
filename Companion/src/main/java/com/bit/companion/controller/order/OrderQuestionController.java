@@ -26,7 +26,7 @@ public class OrderQuestionController {
 	@Autowired
 	OrderQuestionService orderQuestionService;
 	
-	//상품 조회 댓글 작성.
+	//문의하기 댓글 작성.
 	@RequestMapping(value="order/productDetail/question", method=RequestMethod.POST)
 	public String registReply(OrderQuestionVo orderQuestionVo,HttpSession session) throws SQLException {
 		logger.debug("OrderQuestion Controller 동작중!!!!");
@@ -38,11 +38,14 @@ public class OrderQuestionController {
 		orderQuestionService.registReply(orderQuestionVo);
 		return "order/productDetail";
 	}
-	// 상품소감 댓글 목록 불러오기. get 방식
+	
+	//문의하기
 	@ResponseBody
 	@RequestMapping(value="order/productDetail/registReply",method = RequestMethod.GET)
 	public List<OrderQuestionVo> getReplyList(@RequestParam("idx") int product_id) throws SQLException{
 		logger.debug("GET replyList call...");
+		logger.debug("왜 특정 데이터만 실행?");
+		logger.info("GET replyList call...info!!" );
 		
 		List<OrderQuestionVo> reply = orderQuestionService.replyList(product_id);
 		

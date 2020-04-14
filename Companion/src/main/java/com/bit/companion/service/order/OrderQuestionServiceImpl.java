@@ -14,16 +14,17 @@ public class OrderQuestionServiceImpl implements OrderQuestionService {
 
 		@Autowired
 		QuestionDao questionDao;
-	
+	//문의글 등록.
 	@Override
 	public void registReply(OrderQuestionVo orderQuestionVo) throws SQLException {
-		
+		System.out.println("문의글 등록/  OrderQuestionService");
 		questionDao.registReply(orderQuestionVo);
 			
 	}
-
+	//문의글 목록.
 	@Override
 	public List<OrderQuestionVo> replyList(int product_id) throws SQLException {
+		System.out.println("문의글 목록/  replyList");
 		
 		return questionDao.replyList(product_id); 
 	}
