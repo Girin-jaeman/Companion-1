@@ -26,7 +26,6 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		}
 	}
 
-
 	@Override
 	public void detail(Model model, int order_id) {
 		AdminOrderVo bean;
@@ -36,7 +35,6 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }

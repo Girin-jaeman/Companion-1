@@ -26,7 +26,6 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<OrderVo> OrderSelectAll() throws SQLException{
 		return sqlSession.selectList("order.OrderSelectAll");
-		/* return sqlSession.selectList("order.selectAll"); */
 		
 	}
 

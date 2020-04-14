@@ -1,10 +1,10 @@
 package com.bit.companion.controller.order;
 
 import java.sql.SQLException;
-import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.Document;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bit.companion.model.entity.login.MemberVo;
 import com.bit.companion.model.entity.order.OrderQuestionVo;
-import com.bit.companion.model.entity.order.ProductVo;
 import com.bit.companion.service.order.OrderQuestionService;
+import com.bit.companion.service.order.OrderReviewService;
 import com.bit.companion.service.order.ProductService;
 @Controller
 public class ProductController {
@@ -25,6 +26,10 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	OrderReviewService orderReviewService;
+	
 	
 	@Autowired
 	OrderQuestionService orderQuestionService;
@@ -43,12 +48,34 @@ public class ProductController {
 	
 	//DETAIL PAGE
 	@RequestMapping(value = "/order/productDetail",method=RequestMethod.GET)
-	public String productDetail(Model model,@RequestParam("idx") int product_id) throws SQLException {
+	public String productDetail(Model model,@RequestParam("idx") int product_id,HttpSession session) throws SQLException {
+		MemberVo memberVo=(MemberVo)session.getAttribute("memberVo");
+		
+	if(memberVo==null) {
+		
+	}else {
+		memberVo.setMember_id((memberVo.getMember_id()));
+	}
 
-		productService.productReview(model, product_id);
+		
+		//		session.setAttribute("ProductMemberVo", memberVo);
+//		productService.productReview(model, product_id);
+	System.out.println("어디가 에러?");
+		//문의글 리스트 조회.
+		/* orderQuestionService.replyList(product_id); */
+		System.out.println("내가볼땐 여기임!?");
+		
+		orderReviewService.orderReviewList(model, product_id);
 		productService.detail(model, product_id);	
 		productService.productRecommend(model, product_id);
 		return "order/productDetail";
+	}
+	
+	/* 답글 입력용 */
+	@RequestMapping(value = "/order/productDetail/orderQuestion")
+	public String orderQuestion(Model model) {
+		System.out.println("답글 입력 메서드 실행.");
+		return "order/orderQuestion";
 	}
 	
 	//페이지 개수용.
@@ -178,10 +205,6 @@ public class ProductController {
 		return "order/productMain";
 	}
 	
-	/* 답글 입력용 */
-	@RequestMapping(value = "/order/productDetail/orderQuestion")
-	public String orderQuestion(Model model) {
-		return "order/orderQuestion";
-	}
+
 
 }

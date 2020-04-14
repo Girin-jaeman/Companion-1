@@ -82,7 +82,7 @@
 				<c:forEach items="${list }" var="bean">
 					<tr>
 						<td></td>
-						<td>${bean.order_id }</td>
+						<td><a href="${root }admin/order_detail?order_id=${bean.order_id}">${bean.order_id }</a></td>
 						<td>
 							<c:choose>
 								<c:when test="${bean.order_state_id eq 0 }">
@@ -153,6 +153,7 @@
     <!-- Checkbox -->
     <script type="text/javascript">
     	$(document).ready(function(){
+			/*
     		// DataTable
     		var chkbox = $('#dataTable').DataTable({
     			searching:false,
@@ -184,7 +185,7 @@
     				$('th.select-checkbox').addClass('selected');
     			}
     		});
-			/*
+
      		// 체크박스 전체선택, 전체해제
     		$('#check-all').click(function(){
     			if($('#check-all').is(":checked")){
