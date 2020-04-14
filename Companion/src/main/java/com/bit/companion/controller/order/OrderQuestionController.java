@@ -31,21 +31,21 @@ public class OrderQuestionController {
 	public String registReply(OrderQuestionVo orderQuestionVo,HttpSession session) throws SQLException {
 		logger.debug("OrderQuestion Controller 동작중!!!!");
 		System.out.println("컨트롤러 동작하는거 맞냐..");
-		
 		MemberVo member = (MemberVo)session.getAttribute("memberVo");
 		orderQuestionVo.setMember_id(member.getMember_id());
-
+		System.out.println(member.getMember_id());
+		//question table insert = 문의글 작성.
 		orderQuestionService.registReply(orderQuestionVo);
 		return "order/productDetail";
 	}
 	
-	//문의하기
+	//문의하기 목록 출력.
+	//ajax에서 getJson 방식으로 매핑 주소 에서 return 하는 값을 받아 옴.
 	@ResponseBody
-	@RequestMapping(value="order/productDetail/registReply",method = RequestMethod.GET)
+	@RequestMapping(value="order/productDetail/ReplyList",method = RequestMethod.GET)
 	public List<OrderQuestionVo> getReplyList(@RequestParam("idx") int product_id) throws SQLException{
 		logger.debug("GET replyList call...");
 		logger.debug("왜 특정 데이터만 실행?");
-		logger.info("GET replyList call...info!!" );
 		
 		List<OrderQuestionVo> reply = orderQuestionService.replyList(product_id);
 		
