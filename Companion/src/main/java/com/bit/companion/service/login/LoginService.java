@@ -25,5 +25,11 @@ public interface LoginService {
 
 	/* id찾기 */
 	String findIDresult(String name_check, String phone_check);
+	
+	/* pw찾기중 일치하는 것이 있는지 확인 */
+	int findPWCheck(String name_check, String id_check, String email_check);
+
+	/* 생성한 임시 비번으로 비번 바꾸기 */
+	void updateRandomPW(String name_check, String id_check, String email_check, String randomPW);
 
 }

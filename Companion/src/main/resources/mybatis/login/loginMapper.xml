@@ -16,5 +16,11 @@
 	<select id="findID" parameterType="hashmap" resultType="String">
 		select member_id from member where member_name=#{name_check} and member_phone=#{phone_check}
 	</select>
+	<select id="findPWCheck" parameterType="hashmap" resultType="int">
+		select count(*) from member where member_name=#{name_check} and member_id=#{id_check} and member_email=#{email_check}
+	</select>
+	<update id="updateRandomPW" parameterType="hashmap">
+  		update member set member_pw=#{randomPW} where member_name=#{name_check} and member_id=#{id_check} and member_email=#{email_check}
+  	</update>
 </mapper>
   

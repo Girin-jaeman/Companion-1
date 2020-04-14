@@ -71,20 +71,26 @@
 	                </div>
 	            </nav>
 	            <div class="maincontent">
-	            	
-	            	<form class="form-signin" name="idCheck" method="post" autocomplete="off">
-		                <h1 class="h3 mb-3 font-weight-normal">아이디 찾기</h1>
-		                <label for="name_check" class="sr-only">이름</label>
-		                <input type="text" id="name_check" name="name_check" class="form-control" placeholder="이름를 입력해주세요." required autofocus>
-		                <label for="phone_check" class="sr-only">핸드폰 번호</label>
-		                <input type="text" name="phone_check"  id="phone_check" class="form-control" placeholder="-없이 숫자만 입력해 주세요." required>
-		                </br>
-		                <div class="float-right">
-			                <button class="btn btn-primary btn-lg" type="submit" id="check_btn">확인</button>
-			                <button class="btn btn-light btn-lg" onclick="history.back();">뒤로</button>
-		                </div>
-		            </form>
-		
+            		<c:choose>
+	            		<c:when test="${sessionScope.findPWResult==null }">
+	            			입력하신 정보와 일치하는 정보가 없습니다.</br>
+	            			확인 후 다시 시도해 주시기 바랍니다.
+	            			<a href="${root }login/findPW">
+	            				<button class="btn btn-primary btn-lg">비밀번호 찾기</button>
+	            			</a>
+	            			<button class="btn btn-light btn-lg" onclick="history.back();">뒤로</button>
+	            		</c:when>
+	            		<c:when test="${sessionScope.findPWResult!=null }">
+							<div>
+								임시 비밀번호를 설정하여</br>
+								회원님의 이메일로 보내드렸습니다.</br>
+								해당 비밀번호를 확인 후 다시 로그인 해 주시기 바랍니다.
+							</div>	            	
+	            			<a class="nav-link active" href="${root }login">
+	            				<button class="btn btn-primary btn-lg">로그인</button>
+	            			</a>
+	            		</c:when>
+	            	</c:choose>
 	            </div>
 			</div>
 			
@@ -101,21 +107,6 @@
 	<!-- jQuery -->
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#check_btn").click(function(){
-				var name_check=$("#name_check").val();
-				var phone_check=$("#phone_check").val();
-				if(name_check==""){
-					alert("이름를 입력해 주세요.");
-					return;
-				}
-				if(phone_check==""){
-					alert("핸드폰 번호를 입력해 주세요.");
-					return;
-				}
-				document.idCheck.submit();
-			});
-		});
 	</script>
 	
     <!-- Popper.JS -->
