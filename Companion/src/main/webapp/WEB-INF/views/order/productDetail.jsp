@@ -596,7 +596,7 @@ console.log("어디가 오류일까?? 222222");
 										
 										</div>
 	
-    <iframe name="test" src="${root }order/productDetail/ReplyList?idx=${productDetailOne.product_id}" width="1000px" height="300px"  frameborder="0" scrolling="no"></iframe>
+    <iframe name="question.jsp" id="question.jsp" src="${root }order/productDetail/ReplyList?idx=${productDetailOne.product_id}" width="1000px" height="300px"  frameborder="0" scrolling="no"></iframe>
 								<p>여기 아닌가요?</p>
 									
 									<!-- 	<script>
@@ -680,6 +680,16 @@ console.log("어디가 오류일까?? 222222");
 	<script src="${root}js/order/productDetail.js"></script>
 	<script src="${root}js/order/productDetail.js"></script>
 	<script type="text/javascript">
+	
+	/* iframe reload */
+			$(document).on('click','#reply_btn',function(){
+				var url = '${root }order/productDetail/ReplyList?idx=${productDetailOne.product_id}';
+				
+				$('#question.jsp').attr('src',url);
+			});
+
+			
+			
 		$(function() {
 			$('.bt_up').click(function() {
 				var n = $('.bt_up').index(this);
@@ -780,9 +790,7 @@ console.log("어디가 오류일까?? 222222");
 				
 				console.log("어디가 오류일까?? 222222"); */
 		/* ajax 문의 글 입력 할 때 */
-		$("#reply_btn")
-				.click(
-						function() {
+		$("#reply_btn").click(function() {
 							console.log("어디가 오류일까?? 버튼이녀석이니??");
 							var formObj = $(".replyForm form[role='form']");
 							var product_id = $("#product_id").val();
@@ -813,12 +821,20 @@ console.log("어디가 오류일까?? 222222");
 											$("#question_title").val("");
 											alert('문의 글이 정상 등록되었습니다.');
 											$('#questionModal').modal('hide');
+											var url = '${root }order/productDetail/ReplyList?idx=${productDetailOne.product_id}';
+											
+											$('#question.jsp').attr('src',url);
 										}
 
-									});
+									})
+									
 							console.log(data);
 
-						})
+							})
+									
+									
+									
+
 		/* ajax end  */
 
 	</script>

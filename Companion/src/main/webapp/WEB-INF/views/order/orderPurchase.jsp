@@ -150,16 +150,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><img src="${root }imgs/shopping/dogGum.jpg" class="img-fluid" alt="Responsive image"></td>
+                            <td><img src="${orderProductPurchaseOne.product_image }" class="img-fluid" alt="더미에 이미지가 없어 ㅠ"></td>
                             <td><input type="hidden" class="form-control" name="product_id" value="${orderProductPurchaseOne.product_id }">
                             이름:${orderProductPurchaseOne.product_name } / 
                             <!-- 옵션 값  -->
                              <% String select1= request.getParameter("selectBox");
                             out.println(select1);
                             request.setAttribute("cart_option",request.getParameter("selectBox"));
-                            out.println(request.getAttribute("cart_option")+"request.getAttb 확인");
                             %>
-<                            <input type="hidden" class="form-control" name="order_detail_option" id="order_detail_option" value="<%=request.getParameter("selectBox") %>"/> 
+                          <input type="hidden" class="form-control" name="order_detail_option" id="order_detail_option" value="<%=request.getParameter("selectBox") %>"/> 
 	                        </td>
                             <td><%int order_detail_quantity= Integer.parseInt(request.getParameter("order_detail_quantity")); 
                             out.println(order_detail_quantity);%>
@@ -283,6 +282,7 @@
 			<!--PayApi 스크립트 시작  -->
 			<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 			<script>
+
 				$(document).on('click','#payApi',function(){
 		   			var order_detail_option = $('#order_detail_option').val();
 		   			var order_detail_quantity = $('#order_detail_quantity').val();

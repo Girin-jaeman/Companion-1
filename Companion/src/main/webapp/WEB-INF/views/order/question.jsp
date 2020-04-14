@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url value="/" var="root"></c:url>
 <!DOCTYPE html>
 <html>
@@ -77,7 +78,8 @@
 					<td>${bean.member_id }</td>
 					<td>${bean.question_title }</td>
 					<td>${bean.question_content }</td>
-					<td id="question_date">${bean.question_date }</td>
+				<td><fmt:formatDate value="${bean.question_date}" pattern="yyyy-MM-dd"/></td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -85,10 +87,6 @@
 
 </body>
 <script>
-var question_date = $("#question_date").val();
-		question_date = new Date(this.question_date);
-		question_date = question_date.toLocaleDateString("ko-US");
-	console.log(question_date);
 </script>
 
 
