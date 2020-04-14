@@ -71,7 +71,7 @@
 		    <!-- nav end -->
 		    <div class="categories">
                 <a href="#homeSubmenu">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-building"></i>
                     호텔서비스
                 </a>
                 <span>></span>

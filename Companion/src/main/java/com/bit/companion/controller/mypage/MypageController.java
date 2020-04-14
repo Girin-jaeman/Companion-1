@@ -36,6 +36,15 @@ public class MypageController {
 		return "mypage/mypagechk";
 	}
 	
+	@RequestMapping(value="/mypurchaselist")
+	public String myPurchaseList(HttpSession session) {
+		MemberVo bean=(MemberVo) session.getAttribute("memberVo");
+		if(bean==null) {
+			return "redirect:/login";
+		}
+		return "mypage/myPurchaseList";
+	}
+	
 	@RequestMapping(value="/mypagechk",method=RequestMethod.POST)
 	public String loginChk(HttpSession session) {
 		MemberVo bean=(MemberVo) session.getAttribute("memberVo");

@@ -158,8 +158,9 @@
 	width:420px;
 }
 #question_content{
-	width:500px;
-	height:60px
+	margin-top:10px;
+	width:420px;
+	height:100px;
 }
 
 .replyList h4{

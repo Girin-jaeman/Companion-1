@@ -72,12 +72,12 @@
 		    <!-- nav end -->
 		    <div class="categories">
                 <a href="#homeSubmenu">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-building"></i>
                     호텔서비스
                 </a>
                 <span>></span>
                 <a href="#">
-                    <i class="fas fa-home"></i>
+                   <i class="fas fa-map-marker-alt"></i>
                     위치정보
                 </a>
                 <hr class="mb-4">

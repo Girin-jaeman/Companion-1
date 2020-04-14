@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
+    <link rel="stylesheet" href="${root }css/admin/questionD.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -66,7 +67,6 @@
 				<div class="btn__group">
 					<button type="button" id="modify_Btn" class="btn btn-warning">답변</button>
 				 	<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-				    <button type="button" id="list_Btn" class="btn btn-back">목록</button>
 				</div>
 				<input type="hidden" name="question_id" id="question_id" value="${adminQuestionOne.question_id }">
 				<table class="table">
@@ -76,84 +76,66 @@
 						<div class="float--left">
 							<label for="title">[제목]&nbsp;</label><span>${adminQuestionOne.question_title }</span>
 						</div>
+						<div class="float--right">
+							<label for="date">[작성일]&nbsp;</label><span>${adminQuestionOne.question_date }</span>
+						</div>
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>
-							<label>[문의유형]&nbsp;</label>
-							<span>${adminQuestionOne.question_type_name }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>[문의상태]&nbsp;</label>
-							<span>${adminQuestionOne.question_state_name }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
+						<td class="clearfix">
+						<div class="float--left">
+							<label>[문의유형]&nbsp;</label><span>${adminQuestionOne.question_type_name }</span>&nbsp;&nbsp;
+							<label>[문의상태]&nbsp;</label><span>${adminQuestionOne.question_state_name }</span>&nbsp;&nbsp;
+						</div>
+						<div class="float--right">
 							<label>[비밀글여부]&nbsp;</label>
 							<span>${adminQuestionOne.question_secret_name }</span>
+						</div>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<label>[주문ID]&nbsp;</label>
-							<span>${adminQuestionOne.order_id }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>[상품명]&nbsp;</label>
-							<span>${adminQuestionOne.product_name }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>[회원ID]&nbsp;</label>
-							<span>${adminQuestionOne.member_id }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="date">[작성일]&nbsp;</label>
-							<span>${adminQuestionOne.question_date }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="date">[답변일]&nbsp;</label>
-							<span>${adminQuestionOne.question_answerdate }</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
+				</tbody>
+				</table>
+					<div class="contentB">
+						<div class="imgBox">
+							<img alt="원본이미지" src="<spring:url value='${adminQuestionOne.question_image }'/>"/>
+						</div>
+						<div class="textB">
 							<div>
-								<label for="content">content</label>
-								<span>${adminQuestionOne.question_content }</span>
+								<label>[주문ID]&nbsp;</label><span>${adminQuestionOne.order_id }</span>
 							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
 							<div>
-								<label for="img">첨부이미지</label>
-								<img alt="원본이미지" src="<spring:url value='${adminQuestionOne.question_image }'/>"/>
+								<label>[회원ID]&nbsp;</label><span>${adminQuestionOne.member_id }</span>
 							</div>
+							<div>
+								<label>[상품명]&nbsp;</label><span>${adminQuestionOne.product_name }</span>
+							</div>
+						</div>
+					</div>
+					<div class="contentB">
+					<label for="content">content</label><span>${adminQuestionOne.question_content }</span>
+					</div>
+					<table class="table">
+					<tbody>
+					<tr>
+						<td class="clearfix">
+						<div class="float--left">
+							<label for="date">[답변일]&nbsp;</label><span>${adminQuestionOne.question_answerdate }</span>
+						</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div>
-								<label for="content">답변</label>
+								<label for="content">[답변]</label>
 								<span>${adminQuestionOne.question_answer }</span>
 							</div>
 						</td>
 					</tr>
 				</tbody>
 				</table>
+				<button type="button" id="list_Btn" class="btn btn-back">목록</button>
 			</form>
 	
 		</section>

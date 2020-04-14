@@ -1,10 +1,18 @@
+.btn__group{
+	margin-left:885px;
+}
+.btn-back{
+	border:1px solid gray;
+	margin:5px;
+	float:right;
+}
+
 label{
 	margin-bottom:0;
 }
 .section #detail{
 	width:950px;
-	margin: 0 auto;
-	border:5px double gray;
+	margin: 20px auto;
 }
 .tit{
 	width:160px;
@@ -45,6 +53,7 @@ table tr{
 
 }
 table thead{
+	color:white;
 	border-bottom:1px solid gray;
 }
 table thead th{
