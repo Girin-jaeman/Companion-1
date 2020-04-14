@@ -83,14 +83,14 @@
 						<tr>
 							<td>
 								<c:set var="grade" value="${bean.member_grade }" />
-								<c:if test="${grade == 0}">최고관리자</c:if>
-								<c:if test="${grade == 1}">관리자</c:if>
+								<c:if test="${grade == 0}">관리자</c:if>
+								<c:if test="${grade == 1}">운영자</c:if>
 								<c:if test="${grade == 2}">회원</c:if>
 							</td>
 							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.member_phone }</td>
-							<td>${bean.member_email }</td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -136,13 +136,6 @@
 					"previous": "이전"
 				}
 			},
-			"columns" : [ 
-				{ "width" : "20px" }, 
-				{ "width" : "30px" },
-				{ "width" : "30px" }, 
-				{ "width" : "40px" }, 
-				{ "width" : "30px" }
-			],
 			"order" : [
 				[0,"asc"]
 			],

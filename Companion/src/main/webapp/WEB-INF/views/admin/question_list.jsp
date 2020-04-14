@@ -78,12 +78,12 @@
 					<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
 						<tr>
 							<td>${bean.question_id }</td>
-							<td>${bean.question_type_name }</td>
-							<td>${bean.question_state_name }</td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_type_name }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_state_name }</a></td>
 							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_title }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.question_date }</td>
-							<td>${bean.question_answerdate }</td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.member_id }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_date }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_answerdate }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

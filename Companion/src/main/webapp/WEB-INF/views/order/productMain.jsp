@@ -69,12 +69,11 @@
 				</nav>
 				<div class="categories">
                 <a href="#homeSubmenu">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-shopping-cart"></i>
                     쇼핑하기
                 </a>
                 <span>></span>
                 <a href="#">
-                    <i class="fas fa-home"></i>
                     
                     <%
                     String categoryFind = (String)request.getQueryString().substring(0,5);
@@ -233,6 +232,8 @@
 		</script>
 		<!-- 추천수 script end -->
 		<script type="text/javascript">
+		
+			
 		
 		</script>
 		

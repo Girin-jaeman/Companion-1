@@ -168,6 +168,13 @@
 <script src="${root }js/main.js"></script>
 
 <script type="text/javascript">
+//.input--text text 전체선택
+$(document).ready(function(){
+	$(".input--text").on("click", function(){
+		$(this).select();
+	});
+});	
+
 <!-- 이미지 등록시 출력 -->	
 $('#article_image').change(function(){
 	if(this.files&&this.files[0]){

@@ -11,6 +11,9 @@ public interface AdminMemberDao {
 	List<AdminMemberViewVo> selectAll() throws SQLException;
 	
 	// member detail
-	AdminMemberViewVo selectOne(String member_id) throws SQLException;
+	AdminMemberViewVo selectOne(AdminMemberViewVo bean) throws SQLException;
+
+	// member update
+	int updateOne(AdminMemberViewVo bean) throws SQLException;
 	
 }

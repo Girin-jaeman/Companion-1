@@ -72,45 +72,20 @@
 	            </nav>
 	            <div class="maincontent">
 	            	
-	            	<form class="form-signin" name="login" method="post" autocomplete="off">
-		                <h1 class="h3 mb-3 font-weight-normal">로그인</h1>
-		                <label for="member_id" class="sr-only">ID</label>
-		                <input type="text" id="member_id" name="member_id" class="form-control" placeholder="아이디를 입력해주세요" required autofocus>
-		                <label for="member_pw" class="sr-only">PW</label>
-		                <input type="password" name="member_pw"  id="member_pw" class="form-control" placeholder="패스워드를 입력해주세요" required>
-		                <div class="checkbox mb-3">
-		                  <label>
-		                    <input type="checkbox" value="remember-me"> 아이디 저장
-		                  </label>
-		                  <c:if test="${loginChk==false }">
-							<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-							</c:if>
-		                </div>
-		                <button class="btn btn-lg btn-primary btn-block" type="submit" id="login_btn">로그인</button>
-		                <div class="search">
-		                    <a href="#">아이디찾기</a>
-		                    <a href="#">비밀번호찾기</a>
-		                </div>
-		                <!-- Divider Text -->
-		                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-3">
-		                    <div class="border-bottom w-100 ml-6"></div>
-		                    <span class="px-3 font-weight-bold text-muted">OR</span>
-		                    <div class="border-bottom w-100 mr-6"></div>
+	            	<form class="form-signin" name="idCheck" method="post" autocomplete="off">
+		                <h1 class="h3 mb-3 font-weight-normal">비밀번호 찾기</h1>
+		                <label for="name_check" class="sr-only">이름</label>
+		                <input type="text" id="name_check" name="name_check" class="form-control" placeholder="이름를 입력해주세요." required autofocus>
+		                <label for="id_check" class="sr-only">아이디</label>
+		                <input type="text" id="id_check" name="id_check" class="form-control" placeholder="아이디를 입력해주세요." required>
+		                <label for="email_check" class="sr-only">이메일</label>
+		                <input type="text" name="email_check"  id="email_check" class="form-control" placeholder="이메일 주소를 입력해 주세요." required>
+		                </br>
+		                <div class="float-right">
+			                <button class="btn btn-primary btn-lg" type="submit" id="check_btn">확인</button>
+			                <button class="btn btn-light btn-lg" onclick="history.back();">뒤로</button>
 		                </div>
 		            </form>
-		            
-		             	<div id="kakao_id_login">
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=17cc56e13f55ba11cdff275d3f1990c3&redirect_uri=http://localhost:8080/companion/login/kakaologin&response_type=code">
-							<button class="btn btn-lg btn-warning btn-block kakaoBtn">
-		                    <i class="fas fa-comment"></i>&nbsp;&nbsp;&nbsp;카카오톡 로그인
-		                	</button>
-						</a>
-						</div>
-		                
-	            	
-	            	
-	            	
-	            	
 		
 	            </div>
 			</div>
@@ -128,8 +103,41 @@
 	<!-- jQuery -->
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
+	
 		$(document).ready(function(){
 			
+			//email validation 처리 함수
+			function verifyEmail(member_email){
+				var regExp=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				
+				if(member_email.match(regExp) != null){
+					return "ok";
+				}else{
+					return "no";
+				}
+			}
+			
+			$("#check_btn").click(function(){
+				var name_check=$("#name_check").val();
+				var id_check=$("#id_check").val();
+				var email_check=$("#email_check").val();
+				if(name_check==""){
+					alert("이름를 입력해 주세요.");
+					return;
+				}
+				if(id_check==""){
+					alert("핸드폰 번호를 입력해 주세요.");
+					return;
+				}
+				if(email_check==""){
+					alert("이베일 주소를 입력해 주세요.");
+					return;
+				}else if(verifyEmail(email_check)=="no"){
+					alert("이메일 양식이 올바르지 않습니다.");
+					return;
+				}
+				document.idCheck.submit();
+			});
 		});
 	</script>
 	

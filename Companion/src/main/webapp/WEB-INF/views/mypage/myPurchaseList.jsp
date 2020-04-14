@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${root }css/bootstrap/bootstrap.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/main.css">
+    <link rel="stylesheet" href="${root }css/mypage/mypage.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -60,7 +61,7 @@
 	                                        <a class="nav-link" href="${root }mypurchaselist">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
-	                                        <a class="nav-link active" href="${root }mypagereserve">예약조회</a>
+	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mycart">장바구니</a>
@@ -81,91 +82,55 @@
 	                    </div>
 	                </div>
 	            </nav>
-	            <!-- .categories start -->
-	            <div class="categories">
-                <a href="#homeSubmenu">
-                	<i class="fas fa-clipboard"></i>
-                    예약조회
-                </a>
-                <hr class="mb-4">
-            	</div>
-            	<!-- .categories start -->
-	            <!-- section start -->
-				<section class="section">
-		            <!-- main title -->
-					<div class="main--title">
-							<h1>나의 예약현황</h1>
-	                </div>
-	            	<ul class="list-group list-unstyled components">
-						<c:forEach items="${reserveList }" var="bean">
-							<ul>
-								<li class="list-group-item list-group-item">
-									<div class="row">
-										<div class="col-2">${bean.service_name }</div>
-										<div class="col-6">${bean.reserve_state_name }</div>
-										<div class="col-2">예약일 : ${bean.reserve_date }</div>
-										<div class="col-2">
-											<button class="btn btn-primary" style="width:130px;" onclick="toggleReserve(${bean.reserve_id })" id="reserveBtn_${bean.reserve_id }">
-												내역 상세보기
-											</button>
-										</div>
-									</div>
-								</li>
-								<ul class="list-group-item list-group-item-secondary list-unstyled" id="${bean.reserve_id }" style="display:none">
-									<li class="row">
-										<div class="col-2">반려견종</div>
-										<div class="col-4">${bean.reserve_dogtype }</div>
-										<div class="col-2">반려견나이</div>
-										<div class="col-4">${bean.reserve_dogage }</div></br>
-										
-										<div class="col-2">체크인</div>
-										<div class="col-4">${bean.reserve_checkin }</div>
-										<div class="col-2">체크아웃</div>
-										<div class="col-4">${bean.reserve_checkout }</div></br>
-										<div class="col-12">기타</div></br>
-										<div class="col-12">${bean.reserve_msg }</div>
-									</li>
-								</ul>
-							</ul>
-						</c:forEach>	            
-	            	</ul>
-	            </section>
+	            <div class="maincontent">
+	            	<div><!-- 1개 아이템의 구역 나중에 foreach로 감싸기-->
+						<div><!-- 머리부분 -->
+							<div>주문일 2020-04-12</div>
+							<div>주문상세보기</div>
+						</div>						
+						<div><!-- 내용부분 -->
+							<table>
+								<td>
+									썸네일	
+								</td>
+								<td>
+									상품이름 : ㅁㄴㅇㄹㅇㄴㅁㄹㄴㅁㅇㄹㄴㅇㄹ </br>
+									옵션 : ㅁㅇㄹㄴㅁㅇㄻㄴㅇㅁㄴ </br>
+									가격 : ㅁㅁㅁㅁ원 / ㅁ개
+								</td>
+								<td>
+									배달상태</br>
+									배송조회</br>
+									문의하기</br>
+									교환신청</br>
+									반품신청</br>
+									구매후기 쓰기</br>
+								</td>
+							</table>
+						</div>
+	            	</div>
+	            </div>
 			</div>
 			
         <!-- Footer  -->
 			<jsp:include page="../common/footer.jsp" />
-		<!-- Footer end -->
+			<!-- Footer end -->
 
 		</div>
 	</div>
-	<!-- content -->
+	
 	
 	<!-- script start -->
-	<!-- jQuery -->
-    <script src="${root }js/jquery-1.12.4.js"></script>
-	<!-- Popper.JS -->
+	<script src="${root }js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+    </script>
+    
+    <!-- Popper.JS -->
     <script src="${root }js/bootstrap/popper.js"></script>
     <!-- Bootstrap JS -->
     <script src="${root }js/bootstrap/bootstrap.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-        
-       function toggleReserve(reserve_id){
-        	if($('#'+reserve_id).css("display")=="none"){
-        		$('#'+reserve_id).show();
-        		$('#reserveBtn_'+reserve_id).text("닫기");
-        	}else{
-        		$('#'+reserve_id).hide();
-        		$('#reserveBtn_'+reserve_id).text("내역 상세보기");
-        	}
-        }
-    </script>
+    <!-- MAIN JS -->
+    <script src="${root }js/main.js"></script>
     <!-- script end -->
-
 </body>
 </html>

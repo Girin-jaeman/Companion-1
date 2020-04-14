@@ -70,7 +70,7 @@
                               <c:otherwise>
                                   <ul class="nav navbar-nav ml-auto">
                                       <li class="nav-item">
-                                          <a class="nav-link" href="#">주문내역</a>
+                                          <a class="nav-link" href="${root }mypurchaselist">주문내역</a>
                                       </li>
                                       <li class="nav-item">
                                           <a class="nav-link" href="${root }mypagereserve">예약조회</a>
@@ -197,9 +197,9 @@ i+=1;
                         <tr>
                             <th>주소</th>
                             <td>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr1 }" aria-label="email" aria-describedby="basic-addon1" readonly>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr2 }" aria-label="email" aria-describedby="basic-addon1" readonly>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr3 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr1 }" aria-label="email" aria-describedby="basic-addon1" readonly> </br> 
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr2 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr3 }" aria-label="email" aria-describedby="basic-addon1" readonly>
                             </td>
                         </tr>
                     </tbody>

@@ -11,7 +11,21 @@
 	</select>
 	
 	<!-- member detail -->
-	<select id="selectOne" parameterType="String" resultType="adminMemberViewBean">
-		select * from `member` where member_id=#{value}
+	<select id="selectOne" parameterType="adminMemberViewBean" resultType="adminMemberViewBean">
+		select * from `member` where member_id=#{member_id}
 	</select>
+	
+	<!-- member update -->
+	<update id="updateOne" parameterType="adminMemberViewBean">
+		update `member` set 
+			member_name = #{member_name},
+			member_tel = #{member_tel},
+			member_email = #{member_email},
+			member_phone = #{member_phone},
+			member_addr1 = #{member_addr1},
+			member_addr2 = #{member_addr2},
+			member_addr3 = #{member_addr3},
+			member_grade = #{member_grade}
+				where member_id = #{member_id}
+	</update>
 </mapper>

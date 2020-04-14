@@ -185,4 +185,14 @@ public class LoginServiceImpl implements LoginService {
 		return loginDao.findIDresult(name_check,phone_check);
 	}
 
+	@Override
+	public int findPWCheck(String name_check, String id_check, String email_check) {
+		return loginDao.findPWCheck(name_check,id_check,email_check);
+	}
+
+	@Override
+	public void updateRandomPW(String name_check, String id_check, String email_check, String randomPW) {
+		loginDao.updateRandomPW(name_check,id_check,email_check,randomPW);
+	}
+
 }

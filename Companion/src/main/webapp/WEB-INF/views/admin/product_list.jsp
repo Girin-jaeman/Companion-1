@@ -75,7 +75,7 @@
 			<div class="sub-group clearfix">
 			<a class="btn btn-dark insertbtn float--left" role="button" href="${root }admin/product_add">상품등록</a>
 			</div>
-				<table id="dataTable" class="table table_layout table-hover table-bordered table-striped">
+				<table id="dataTable" class="table table-hover table-bordered">
 					<thead>
 						<tr>
 							<th>카테고리</th>
@@ -84,7 +84,6 @@
 							<th>가격</th>
 							<th>수량</th>
 							<th>등록날짜</th>
-							<th>좋아요</th>
 							<th>옵션1</th>
 							<th>옵션2</th>
 							<th>옵션etc</th>
@@ -132,11 +131,6 @@
 							<a href="${root }admin/product_detail?product_id=${bean.product_id}">
 							<fmt:formatDate value="${bean.product_date}" pattern="yyy-MM-dd"/>
 							</a>
-							</div>
-						</td>
-						<td>
-							<div>
-							<a href="${root }admin/product_detail?product_id=${bean.product_id}">${bean.like_sum }</a>
 							</div>
 						</td>
 						<td>
@@ -192,18 +186,6 @@ $(document).ready(function() {
 				"previous": "이전"
 			}
 		},
-		"columns" : [ 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "10px" }, 
-			{ "width" : "10px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "10px" },
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }, 
-			{ "width" : "20px" }
-		],
 		"order" : [
 			[5,"desc"]
 		],

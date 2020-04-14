@@ -65,8 +65,9 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 회원 상세</h1>
+				<h1>[Admin] 회원 정보 수정</h1>
 			</div>
+			<form role="form" method="post" autocomplete="off" action="${root}admin/member_edit">
 			<table class="reserv_d">
 				<thead></thead>
 				<tbody>
@@ -74,9 +75,24 @@
 						<th><label for="member_grade">회원구분</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<c:if test="${adminMemberOne.member_grade == 0}">관리자</c:if>
-								<c:if test="${adminMemberOne.member_grade == 1}">운영자</c:if>
-								<c:if test="${adminMemberOne.member_grade == 2}">회원</c:if>
+								<%-- <input type="hidden" id="member_grade" name="member_grade" value="${adminMemberOne.member_grade }"/> --%>
+								
+								<c:if test="${adminMemberOne.member_grade == 0}">
+									<span>관리자</span>
+								</c:if>
+								<c:if test="${adminMemberOne.member_grade == 1}">
+									<label>운영자</label>
+									<input type="radio" name="member_grade" value="1" checked="checked">
+									<label>회원</label>
+									<input type="radio" name="member_grade" value="2">
+								</c:if>
+								<c:if test="${adminMemberOne.member_grade == 2}">
+									<label>관리자</label>
+									<input type="radio" name="member_grade" value="1" >
+									<label>회원</label>
+									<input type="radio" name="member_grade" value="2" checked="checked">
+								</c:if>
+								
 							</div>
 						</td>
 					</tr>
@@ -84,13 +100,13 @@
 						<th><label for="member_name">이름</label></th>
 						<td>
 							<div class="inputArea">
-								<span>${adminMemberOne.member_name }</span>
+								<input type="text" id="member_name" name="member_name" value="${adminMemberOne.member_name }"/>
 							</div>
 						</td>
 						<th><label for="member_id">아이디</label></th>
 						<td>
 							<div class="inputArea">
-							<input type="hidden" name="member_id" value="${adminMemberOne.member_id }">
+								<input type="hidden" id="member_id" name="member_id" value="${adminMemberOne.member_id }"/>
 								<span>${adminMemberOne.member_id }</span>
 							</div>
 						</td>
@@ -99,13 +115,13 @@
 						<th><label for="member_tel">일반전화</label></th>
 						<td>
 							<div class="inputArea">
-								<span>${adminMemberOne.member_tel }</span>
+								<input type="text" id="member_tel" name="member_tel" value="${adminMemberOne.member_tel }"/>
 							</div>
 						</td>
 						<th><label for="member_phone">휴대전화</label></th>
 						<td>
 							<div class="inputArea">
-								<span>${adminMemberOne.member_phone }</span>
+								<input type="text" id="member_phone" name="member_phone" value="${adminMemberOne.member_phone }"/>
 							</div>
 						</td>
 					</tr>
@@ -113,7 +129,7 @@
 						<th><label for="member_email">이메일</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<span>${adminMemberOne.member_email }</span>
+								<input type="text" id="member_email" name="member_email" value="${adminMemberOne.member_email }"/>
 							</div>
 						</td>
 					</tr>
@@ -121,7 +137,7 @@
 						<th><label for="member_addr1">우편번호</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<span>${adminMemberOne.member_addr1 }</span>
+								<input type="text" id="member_addr1" name="member_addr1" value="${adminMemberOne.member_addr1 }"/>
 							</div>
 						</td>
 					</tr>	
@@ -129,7 +145,7 @@
 						<th><label for="member_addr2">기본주소</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<span>${adminMemberOne.member_addr2 }</span>
+								<input type="text" id="member_addr2" name="member_addr2" value="${adminMemberOne.member_addr2 }"/>
 							</div>
 						</td>
 					</tr>
@@ -137,14 +153,15 @@
 						<th><label for="member_addr3">상세주소</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<span>${adminMemberOne.member_addr3 }</span>
+								<input type="text" id="member_addr3" name="member_addr3" value="${adminMemberOne.member_addr3 }"/>
 							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<button type="button" id="modify_Btn" class="btn btn-primary">수정</button>
-			<button type="button" id="list_Btn" class="btn btn-back">목록</button>
+			<button type="submit" id="update_Btn" class="btn">수정</button>
+			<button type="button" id="back_Btn" class="btn">취소</button>
+			</form>
 		</section>
 		<!-- section [end] -->
 		
@@ -167,15 +184,11 @@
 	    });
 	});
 	
-	// 수정 버튼
-	$("#modify_Btn").click(function(){
-		location.href = ${root}+"admin/member_edit?member_id=${adminMemberOne.member_id}";
+ 	// 취소 버튼
+	$("#back_Btn").click(function(){
+		history.back();
 	});
 
-	// 목록버튼
-	$("#list_Btn").click(function(){
-		location.href = ${root}+"admin/member_list";
-	});
 </script>
 </body>
 </html>

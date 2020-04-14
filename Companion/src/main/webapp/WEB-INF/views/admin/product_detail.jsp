@@ -73,9 +73,12 @@
 			<div class="main--title">
 				<h1>[Admin] 상품 상세</h1>
 			</div>
-			<div id="detail">
 			<form role="form" method="post" autocomplete="off" action="${root}admin/product_delete">
-			
+			<div class="btn__group">
+				<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>
+				<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
+			</div>
+			<div id="detail">
 			<input type="hidden" name="product_id" value="${adminProductOne.product_id }"/>
 		 		<div class="clearfix"> 
 				<div class="inputArea float--left">
@@ -119,14 +122,14 @@
 			  <tr>
 			  	<th><label for="product_name">상품번호</label></th>
 			    <td><span>${adminProductOne.product_id }</span></td>
+			  </tr>
+			   <tr>
 			  	<th><label for="product_name">상품명</label></th>
-			    <td><span>${adminProductOne.product_name }</span></td>
+			    <td colspan="3"><span>${adminProductOne.product_name }</span></td>
 			  </tr>
 			   <tr>
 			  	<th><label for="product_price">상품가격</label></th>
 			    <td><span><fmt:formatNumber value="${adminProductOne.product_price}" pattern="###,###,###"/></span></td>
-			  </tr>
-			   <tr>
 			  	<th><label for="product_stock">상품수량</label></th>
 			    <td><span>${adminProductOne.product_stock }</span></td>
 			  </tr>
@@ -154,16 +157,12 @@
 			</table>
 			</div>
 			<div class="inputArea">
-					<label for="product_content">상품소개</label>
-					<div class="inputAreaC">${adminProductOne.product_content }</div>
-				</div>
-				<div class="inputArea float--right">
-					<button type="button" id="edit_Btn" class="btn btn-primary">수정</button>
-					<button type="submit" id="delete_Btn" class="btn btn-danger">삭제</button>
-					<button type="button" id="back_Btn" class="btn btn-warning">목록</button>
-				</div>
+				<label for="product_content">상품소개</label>
+				<div class="inputAreaC">${adminProductOne.product_content }</div>
+			</div>
+					<button type="button" id="back_Btn" class="btn btn-back">목록</button>
+			</div>
 			</form>
-			</div> <!-- #detail [end] -->
 		</section>
 	</div><!-- #content [end] -->
 </div><!-- .wrapper [end] -->

@@ -10,14 +10,14 @@ public class AdminMemberViewVo {
 	private String member_addr1;
 	private String member_addr2;
 	private String member_addr3;
-	private String member_grade;
+	private int member_grade;
 	
 	public AdminMemberViewVo() {
 	}
 
 	public AdminMemberViewVo(String member_id, String member_pw, String member_name, String member_tel,
 			String member_phone, String member_email, String member_addr1, String member_addr2, String member_addr3,
-			String member_grade) {
+			int member_grade) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -103,11 +103,11 @@ public class AdminMemberViewVo {
 		this.member_addr3 = member_addr3;
 	}
 
-	public String getMember_grade() {
+	public int getMember_grade() {
 		return member_grade;
 	}
 
-	public void setMember_grade(String member_grade) {
+	public void setMember_grade(int member_grade) {
 		this.member_grade = member_grade;
 	}
 
@@ -118,5 +118,5 @@ public class AdminMemberViewVo {
 				+ ", member_addr1=" + member_addr1 + ", member_addr2=" + member_addr2 + ", member_addr3=" + member_addr3
 				+ ", member_grade=" + member_grade + "]";
 	}
-	
+
 }

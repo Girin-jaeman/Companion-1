@@ -58,7 +58,7 @@
 	                            <c:otherwise>
 	                                <ul class="nav navbar-nav ml-auto">
 	                                    <li class="nav-item">
-	                                        <a class="nav-link" href="#">주문내역</a>
+	                                        <a class="nav-link" href="${root }mypurchaselist">주문내역</a>
 	                                    </li>
 	                                    <li class="nav-item">
 	                                        <a class="nav-link" href="${root }mypagereserve">예약조회</a>
@@ -84,7 +84,7 @@
 	            </nav>
 	            <div class="maincontent">
 	            
-					<h1>내 정보 조회/수정</h1>
+					<h1>내 정보 수정</h1>
 								<input type="hidden" name="id_chk" id="id_chk" value="${sessionScope.memberVo.member_id }">
 								<input type="hidden" name="pw_chk" id="pw_chk" value="${sessionScope.memberVo.member_pw }">
 								<input type="hidden" name="tel_chk" id="tel_chk" value="${sessionScope.memberVo.member_tel }">
@@ -93,7 +93,7 @@
 								<input type="hidden" name="addr1_chk" id="addr1_chk" value="${sessionScope.memberVo.member_addr1 }">
 								<input type="hidden" name="addr2_chk" id="addr2_chk" value="${sessionScope.memberVo.member_addr2 }">
 								<input type="hidden" name="addr3_chk" id="addr3_chk" value="${sessionScope.memberVo.member_addr3 }">
-					<table border=1>
+					<table>
 						<thead></thead>
 						<tbody>
 						<tr>
@@ -103,67 +103,56 @@
 						<tr>
 							<th>비밀번호</th>
 							<td>
-								<label for="member_pw">현재비밀번호</label>
-								<input type="password" name="member_pw" id="member_pw" class="input--text"></br>
+								<input type="password" name="member_pw" id="member_pw" class="input--text" placeholder="현재 비밀번호 입력"></br>
+								<input type="password" name="pw_change" id="pw_change" class="input--text" placeholder="변경 할 비밀번호 입력">
+								<input type="password" name="pw_change_chk" id="pw_change_chk" class="input--text" placeholder="변경 할 비밀번호 재입력">
 								
-								<label for="pw_change">변경비밀번호</label>
-								<input type="password" name="pw_change" id="pw_change" class="input--text"></br>
-								
-								<label for="pw_change_chk">변경비밀번호 확인</label>
-								<input type="password" name="pw_change_chk" id="pw_change_chk" class="input--text">
-								
-								<button type="button" id="pw_change_btn" class="btn">변경</button>
+								<button type="button" id="pw_change_btn" class="cBtn">변경</button>
 							</td>
 						</tr>
 						<tr>
 							<th>일반전화</th>
 							<td>
-								${sessionScope.memberVo.member_tel }</br>
-								<input type="text" name="tel_change" id="tel_change" class="input--text">
-								<button type="button" id="tel_change_btn" class="btn">일반전화 변경</button>
+								<input type="text" name="tel_change" id="tel_change" class="input--text" value="${sessionScope.memberVo.member_tel }"/>
+								<button type="button" id="tel_change_btn" class="cBtn">일반전화 변경</button>
 							</td>
 						</tr>
 						<tr>
 							<th>휴대전화</th>
 							<td>
-								${sessionScope.memberVo.member_phone }
-								<input type="text" name="phone_change" id="phone_change" class="input--text">
-								<button type="button" id="phone_change_btn" class="btn">휴대전화 변경</button>
+								<input type="text" name="phone_change" id="phone_change" class="input--text" value="${sessionScope.memberVo.member_phone }"/>
+								<button type="button" id="phone_change_btn" class="cBtn">휴대전화 변경</button>
 							</td>
 						</tr>
 						<tr>
 							<th>이메일</th>
 							<td>
-								${sessionScope.memberVo.member_email }
-								<input type="email" name="email_change" id="email_change" class="input--text">
-								<button type="button" id="email_change_btn" class="btn">이메일 변경</button>
+								<input type="email" name="email_change" id="email_change" class="input--text" value="${sessionScope.memberVo.member_email }">
+								<button type="button" id="email_change_btn" class="cBtn">이메일 변경</button>
 							</td>
 						</tr>
 						<tr>
 							<th>주소</th>
 							<td>
-								우편번호 ${sessionScope.memberVo.member_addr1 }<br/>
-								주소 ${sessionScope.memberVo.member_addr2 }<br/>
-								상세주소 ${sessionScope.memberVo.member_addr3 }<br/>
 								
-								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly" class="input--text">
-								<input type="button" onclick="sample2_execDaumPostcode()" class="btn" value="우편번호 찾기"></br>
+								<input type="text" name="addr1_change" id="addr1_change" placeholder="5글자 숫자" readonly="readonly" class="input--text" value="${sessionScope.memberVo.member_addr1 }"/>
+								<input type="button" onclick="sample2_execDaumPostcode()" class="cBtn" value="우편번호 찾기"></br>
 								
-								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly" class="input--text"></br>
+								<input type="text" name="addr2_change" id="addr2_change" placeholder="주소" readonly="readonly" class="input--text" value="${sessionScope.memberVo.member_addr2 }"/>
 								
-								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소" class="input--text">
+								<input type="text" name="addr3_change" id="addr3_change" placeholder="상세주소" class="input--text" value="${sessionScope.memberVo.member_addr3 }"/>
 								
 								<input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
 								
 								<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 									<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 								</div>
-									<button type="button" id="address_change_btn" class="btn">주소 변경</button>
+									<button type="button" id="address_change_btn" class="cBtn">주소 변경</button>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-	            
+	            	<button type="button" id="pw_change_btn" class="cBtn">뒤로</button>
 	            </div>
 			</div>
 			
@@ -179,6 +168,12 @@
 	<script src="${root }js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$(".input--text").on("click", function(){
+				$(this).select();
+			});
+			
+			
+			
 			// 비밀번호 변경기능
 			$("#pw_change_btn").click(function(){
 				var member_pw=$("#member_pw").val();
