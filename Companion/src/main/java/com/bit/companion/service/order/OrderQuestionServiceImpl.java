@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.bit.companion.model.entity.order.OrderQuestionVo;
 import com.bit.companion.model.order.QuestionDao;
@@ -23,9 +24,9 @@ public class OrderQuestionServiceImpl implements OrderQuestionService {
 	}
 	//문의글 목록.
 	@Override
-	public List<OrderQuestionVo> replyList(int product_id) throws SQLException {
+	public List<OrderQuestionVo> replyList(Model model,int product_id) throws SQLException {
 		System.out.println("문의글 목록/  replyList");
-		
+		model.addAttribute("ReplyList",questionDao.replyList(product_id));
 		return questionDao.replyList(product_id); 
 	}
 

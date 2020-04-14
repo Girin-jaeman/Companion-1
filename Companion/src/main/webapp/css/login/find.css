@@ -1,21 +1,21 @@
+
 /* BTN */
-.cBtn{
+.Cbtn{
     height: 34px;
     background: #eee linear-gradient(to botton, #fcfcfc, #eee );
     border: 1px solid #d5d5d5;
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
-    padding: 0 12px;
-    font-size: 16px;
+    padding: 0 10px;
+    font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
     cursor: pointer;
     box-sizing: border-box;
     position: relative;
-    color: #333;
 }
-.cBtn:hover::before{
+.Cbtn:hover::before{
     content: "";
     position: absolute;
     top: 0;
@@ -24,15 +24,9 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.07);
 }
-.btn.btn--primary {
-    border: 1px solid #0F4C81;
-    color: #fff;
-    background: #0F4C81 linear-gradient(rgb(22, 121, 207), #0F4C81);
-  }
 /* INPUT TEXT */
 .input--text{
     height: 34px;
-    width:200px;
     padding: 0 10px;
     border: 1px solid#ddd;
     border-radius: 5px;
@@ -40,7 +34,7 @@
     outline: none;
     /* box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075); */
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-    font-size: 18px;
+    font-size: 16px;
 }
 .input--text:focus{
     border-color: #51a7e8;
@@ -53,43 +47,38 @@
 .input--text::-moz-input-placeholder{color: #cacaca;}
 
 
-table{
-	width:800px;
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  min-height:450px;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 15px;
+  color: rgb(11, 61, 105);
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.box{
+	width:100%;
+	align-items:center;
+}
+.box h4{
+	margin:50px auto;
+	text-align:center;
+}
+.box .btnbox{
+	width:180px;
+	height:40px;
 	margin: 0 auto;
-	margin-bottom:20px;
-}
-table tr{
-	height:45px;
-	border-bottom:1px solid #d5d5d5;
-}
-table tr th{
-	width:150px;
-	text-align:right;
-	padding-right:10px;
-	font-size:20px;
-	
-}
-table tr td{
-	padding-left:10px;
-	font-size:20px;
-	padding-top:15px;
-	padding-bottom:15px;
-}
-table tr td input{
-	margin:5px;
-}
-#pw_change_chk{
-	margin-left:0;
-}
-#addr3_change{
-	margin-left:0;
-	width:250px;
-}
-.btnbox{
-	width:80%;
-	margin:0 auto;
-	height:80px;
-}
-.backBtn{
-	margin-left:720px;
 }

@@ -23,14 +23,17 @@ public class AdminOrderVo {
 	private String delivery_company;
 	private String delivery_number;
 	private String delivery_state_name;
+	private Date payment_date;
+	private int payment_amount;
+	private String payment_state_name;
 	
 	public AdminOrderVo() {}
 
 	public AdminOrderVo(int order_id, int order_state_id, String member_id, String member_name, String member_email,
 			String member_phone, String member_tel, int order_amount, String order_name, String order_phone,
-			String order_tel, Date order_date, String order_msg, String order_state_admin, String delivery_company,
-			String delivery_number, String delivery_state_name, String order_addr1, String order_addr2,
-			String order_addr3) {
+			String order_tel, Date order_date, String order_msg, String order_state_admin, String order_addr1,
+			String order_addr2, String order_addr3, String delivery_company, String delivery_number,
+			String delivery_state_name, Date payment_date, int payment_amount, String payment_state_name) {
 		super();
 		this.order_id = order_id;
 		this.order_state_id = order_state_id;
@@ -46,12 +49,15 @@ public class AdminOrderVo {
 		this.order_date = order_date;
 		this.order_msg = order_msg;
 		this.order_state_admin = order_state_admin;
-		this.delivery_company = delivery_company;
-		this.delivery_number = delivery_number;
-		this.delivery_state_name = delivery_state_name;
 		this.order_addr1 = order_addr1;
 		this.order_addr2 = order_addr2;
 		this.order_addr3 = order_addr3;
+		this.delivery_company = delivery_company;
+		this.delivery_number = delivery_number;
+		this.delivery_state_name = delivery_state_name;
+		this.payment_date = payment_date;
+		this.payment_amount = payment_amount;
+		this.payment_state_name = payment_state_name;
 	}
 
 	public int getOrder_id() {
@@ -166,30 +172,6 @@ public class AdminOrderVo {
 		this.order_state_admin = order_state_admin;
 	}
 
-	public String getDelivery_company() {
-		return delivery_company;
-	}
-
-	public void setDelivery_company(String delivery_company) {
-		this.delivery_company = delivery_company;
-	}
-
-	public String getDelivery_number() {
-		return delivery_number;
-	}
-
-	public void setDelivery_number(String delivery_number) {
-		this.delivery_number = delivery_number;
-	}
-
-	public String getDelivery_state_name() {
-		return delivery_state_name;
-	}
-
-	public void setDelivery_state_name(String delivery_state_name) {
-		this.delivery_state_name = delivery_state_name;
-	}
-
 	public String getOrder_addr1() {
 		return order_addr1;
 	}
@@ -214,16 +196,65 @@ public class AdminOrderVo {
 		this.order_addr3 = order_addr3;
 	}
 
+	public String getDelivery_company() {
+		return delivery_company;
+	}
+
+	public void setDelivery_company(String delivery_company) {
+		this.delivery_company = delivery_company;
+	}
+
+	public String getDelivery_number() {
+		return delivery_number;
+	}
+
+	public void setDelivery_number(String delivery_number) {
+		this.delivery_number = delivery_number;
+	}
+
+	public String getDelivery_state_name() {
+		return delivery_state_name;
+	}
+
+	public void setDelivery_state_name(String delivery_state_name) {
+		this.delivery_state_name = delivery_state_name;
+	}
+
+	public Date getPayment_date() {
+		return payment_date;
+	}
+
+	public void setPayment_date(Date payment_date) {
+		this.payment_date = payment_date;
+	}
+
+	public int getPayment_amount() {
+		return payment_amount;
+	}
+
+	public void setPayment_amount(int payment_amount) {
+		this.payment_amount = payment_amount;
+	}
+
+	public String getPayment_state_name() {
+		return payment_state_name;
+	}
+
+	public void setPayment_state_name(String payment_state_name) {
+		this.payment_state_name = payment_state_name;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminOrderVo [order_id=" + order_id + ", order_state_id=" + order_state_id + ", member_id=" + member_id
 				+ ", member_name=" + member_name + ", member_email=" + member_email + ", member_phone=" + member_phone
 				+ ", member_tel=" + member_tel + ", order_amount=" + order_amount + ", order_name=" + order_name
 				+ ", order_phone=" + order_phone + ", order_tel=" + order_tel + ", order_date=" + order_date
-				+ ", order_msg=" + order_msg + ", order_state_admin=" + order_state_admin + ", delivery_company="
+				+ ", order_msg=" + order_msg + ", order_state_admin=" + order_state_admin + ", order_addr1="
+				+ order_addr1 + ", order_addr2=" + order_addr2 + ", order_addr3=" + order_addr3 + ", delivery_company="
 				+ delivery_company + ", delivery_number=" + delivery_number + ", delivery_state_name="
-				+ delivery_state_name + ", order_addr1=" + order_addr1 + ", order_addr2=" + order_addr2
-				+ ", order_addr3=" + order_addr3 + "]";
+				+ delivery_state_name + ", payment_date=" + payment_date + ", payment_amount=" + payment_amount
+				+ ", payment_state_name=" + payment_state_name + "]";
 	}
 	
 }
