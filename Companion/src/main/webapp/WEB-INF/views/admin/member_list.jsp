@@ -83,8 +83,8 @@
 						<tr>
 							<td>
 								<c:set var="grade" value="${bean.member_grade }" />
-								<c:if test="${grade == 0}">최고관리자</c:if>
-								<c:if test="${grade == 1}">관리자</c:if>
+								<c:if test="${grade == 0}">관리자</c:if>
+								<c:if test="${grade == 1}">운영자</c:if>
 								<c:if test="${grade == 2}">회원</c:if>
 							</td>
 							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a></td>

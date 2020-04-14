@@ -65,7 +65,7 @@
 		<!-- section [start] -->
 		<section class="section">
 			<div class="main--title">
-				<h1>[Admin] 회원 상세</h1>
+				<h1>[Admin] 회원 정보 수정</h1>
 			</div>
 			<form role="form" method="post" autocomplete="off" action="${root}admin/member_edit">
 			<table class="reserv_d">
@@ -75,31 +75,39 @@
 						<th><label for="member_grade">회원구분</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<input type="hidden" id="member_grade" name="member_grade" value="${adminMemberOne.member_grade }"/>
-								<span>${adminMemberOne.member_grade }</span>
+								<%-- <input type="hidden" id="member_grade" name="member_grade" value="${adminMemberOne.member_grade }"/> --%>
+								
+								<c:if test="${adminMemberOne.member_grade == 0}">
+									<span>관리자</span>
+								</c:if>
+								<c:if test="${adminMemberOne.member_grade == 1}">
+									<label>운영자</label>
+									<input type="radio" name="member_grade" value="1" checked="checked">
+									<label>회원</label>
+									<input type="radio" name="member_grade" value="2">
+								</c:if>
+								<c:if test="${adminMemberOne.member_grade == 2}">
+									<label>관리자</label>
+									<input type="radio" name="member_grade" value="1" >
+									<label>회원</label>
+									<input type="radio" name="member_grade" value="2" checked="checked">
+								</c:if>
+								
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<th><label for="member_name">이름</label></th>
-						<td colspan="3">
+						<td>
 							<div class="inputArea">
 								<input type="text" id="member_name" name="member_name" value="${adminMemberOne.member_name }"/>
 							</div>
 						</td>
-					</tr>
-					<tr>
 						<th><label for="member_id">아이디</label></th>
 						<td>
 							<div class="inputArea">
 								<input type="hidden" id="member_id" name="member_id" value="${adminMemberOne.member_id }"/>
 								<span>${adminMemberOne.member_id }</span>
-							</div>
-						</td>
-						<th><label for="member_pw">비밀번호</label></th>
-						<td>
-							<div class="inputArea">
-								<input type="password" id="member_pw" name="member_pw" value="${adminMemberOne.member_pw }"/>
 							</div>
 						</td>
 					</tr>
@@ -178,7 +186,7 @@
 	
  	// 취소 버튼
 	$("#back_Btn").click(function(){
-		location.href = ${root}+"admin/member_list";
+		history.back();
 	});
 
 </script>

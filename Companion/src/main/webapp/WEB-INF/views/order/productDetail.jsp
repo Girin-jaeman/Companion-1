@@ -22,13 +22,82 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
+    <!-- ajax 문의글 리스트 출력. -->
+		<script type="text/javascript">
+				function replyList(){
+					console.log("리플라이리스트 자동실행?");
+					console.log("replyList() function run...");
+								var product_id = ${productDetailOne.product_id};
+								var member_id = ${memberVo.member_id }; 
+								 /* var member_id = ${memberVo.member_id };  */
+								
+					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
+								var str= "";
+						$(data).each(function(){
+							console.log(data);
+							var question_date = new Date(this.question_date);
+							question_date = question_date.toLocaleDateString("ko-US");
+								str += "<tr data-productId='" + this.product_id + "'>"
+							     + "<td class='border-0 align-middle userName'>" + this.member_id + "</td>"
+							     + "<td class='border-0 align-middle replyTitle'>" + this.question_title + "</td>"
+							     + "<td class='border-0 align-middle replyContent'>" + this.question_content + "</td>"
+							     + "<td class='border-0 align-middle date'>" + question_date + "</td>"
+							     + "</tr>"; 
+							     console.log(question_date);
+						});
+		 				  $("table.table--replyList tbody").html(str); 
+					})
+				}
+				console.log("어디가 오류일까?? 1111");
+				console.log(member_id);
+				console.log("어디가 오류일까?? 222222");
+		/* ajax 문의 글 입력 할 때 */
+			$("#reply_btn").click(function(){
+				console.log("어디가 오류일까?? 버튼이녀석이니??");
+				var formObj=$(".replyForm form[role='form']");
+				var product_id=$("#product_id").val();
+				if(member_id==null){
+					var member_id="";
+				}else if(member_id!=null) {
+					var member_id=$("#member_id").val();
+				}
+				var question_title=$("#question_title").val();
+				var question_content = $("#question_content").val();
+/* 				session.setAttribute("product_id",$("#product_id").val());  */
+				 
+				 
+				var data = {
+						product_id : product_id,
+						question_title : question_title,
+						question_content : question_content,
+						member_id : member_id
+				};
+				$.ajax({
+					url : "${root }order/productDetail/question",
+					type : "post",
+					data : data,
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					success : function(){
+						replyList();
+						$("#question_content").val("");
+						$("#question_title").val("");
+						alert('문의 글이 정상 등록되었습니다.');
+					}
+				})
+				console.log(data);	
+			
+			})
+		/* ajax end  */
+		</script>     
+        
+        
 	</head>
 
 <body>
 
 	<div class="wrapper">
 		<!-- Sidebar  -->
-		<jsp:include page="../common/sidebar.jsp" />
+		<jsp:include page="../common/sidebar.jsp"/>
 
 		<!-- Page Content  -->
 		<div id="content">
@@ -265,7 +334,7 @@
 					<div id="post-use" role="tabpanel" aria-labelledby="post-use-tab"
 						class="tab-pane fade px-4 py-5">
 						<nav class="navbar navbar-expand-lg">
-							<h2 class="navbar-brand">이용후기 ooo건</h2>
+							<h2 class="navbar-brand">이용후기 <c:forEach begin="1" end="1" items="${orderReviewList }" var="bean" >${bean.review_count }</c:forEach>건</h2>
 							<div class="collapse navbar-collapse" id="navbarText">
 								<ul class="navbar-nav mr-auto">
 									<li class="nav-item"><a class="nav-link" href="#"></a></li>
@@ -297,15 +366,10 @@
 											<th scope="col" class="border-0 bg-light">
 												<div class="py-2 text-uppercase">날짜 (후기작성date)</div>
 											</th>
-											<th scope="col" class="border-0 bg-light">
-												<div class="py-2 text-uppercase">평점 (별 갯수)</div>
-											</th>
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${productReviewList }" var="bean" >
-									
-
+									<c:forEach items="${orderReviewList }" var="bean" >
 									<!--C;FOREACH  -->
 										<tr>
 											<th scope="row" class="border-0">
@@ -336,12 +400,9 @@
 												class="text-dark">${bean.article_date }</a></td>
 											<!-- 후기작성날짜 출력 -->
 
-											<td class="border-0 align-middle"><a href="#"
-												class="text-dark">★★★★☆</a></td>
-											<!-- 평점별갯수 출력 -->
 										</tr>
 																			
-									</c:forEach>
+									</c:forEach>	<!--C;FOREACH  -->
 									</tbody>
 								</table>
 								<ul class="pagination">
@@ -495,15 +556,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<script>
-											replyList();
-										</script>
+									<!-- function에서 답글 리스트 넣는 위치. -->
+									
 									</tbody>
 									</table>
 									</div>
+								 		<script type="text/javascript">
+											replyList();
+										</script> 
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->
-									
 								</div>
 								<!-- reply end -->
 							</div>
@@ -540,11 +602,6 @@
 										<p style="text-align:center;">${bean.product_name }</p>
 									</a>
 									</td>
-<%-- 									<td><img src="${root}${bean.product_thumb }></td> --%>
-<!-- 이런 방식으로 처리 해야 함. -->
-<%-- <img src = "${root}${bean.product_thumb}.jpg"/></td> --%>
-						
-
 							</c:forEach>
 								</tr>
 							</tbody>
@@ -646,38 +703,55 @@
 		<!-- ajax 문의글 리스트 출력. -->
 		<script type="text/javascript">
 				function replyList(){
+					console.log("리플라이리스트 자동실행?");
 					console.log("replyList() function run...");
 								var product_id = ${productDetailOne.product_id};
-								var member_id = ${memberVo.member_id };
+								
+								if(member_id==null){
+									var member_id="";
+								}else if(member_id!=null) {
+									var member_id = ${memberVo.member_id }; 
+								}
+								
+								
+								 /* var member_id = ${memberVo.member_id };  */
 								
 					 $.getJSON("productDetail/registReply"+"?idx="+product_id,function(data){  
 								var str= "";
 						$(data).each(function(){
 							console.log(data);
 							var question_date = new Date(this.question_date);
-							question_date = question_date.toLocaleDateString("ko-US")
+							question_date = question_date.toLocaleDateString("ko-US");
 								str += "<tr data-productId='" + this.product_id + "'>"
 							     + "<td class='border-0 align-middle userName'>" + this.member_id + "</td>"
 							     + "<td class='border-0 align-middle replyTitle'>" + this.question_title + "</td>"
 							     + "<td class='border-0 align-middle replyContent'>" + this.question_content + "</td>"
 							     + "<td class='border-0 align-middle date'>" + question_date + "</td>"
 							     + "</tr>"; 
+							     console.log(question_date);
 						});
 		 				  $("table.table--replyList tbody").html(str); 
-					});
+					})
 				}
-				replyList();
-		
+				console.log("어디가 오류일까?? 1111");
+				
+				console.log("어디가 오류일까?? 222222");
 		/* ajax 문의 글 입력 할 때 */
 			$("#reply_btn").click(function(){
+				System.out.println("야야야");
+				console.log("어디가 오류일까?? 버튼이녀석이니??");
 				var formObj=$(".replyForm form[role='form']");
 				var product_id=$("#product_id").val();
-				var member_id=$("#member_id").val();
+				if(member_id==null){
+					var member_id="";
+				}else if(member_id!=null) {
+					var member_id=$("#member_id").val();
+				}
 				var question_title=$("#question_title").val();
 				var question_content = $("#question_content").val();
 /* 				session.setAttribute("product_id",$("#product_id").val());  */
-				
-				
+				 
+				 
 				var data = {
 						product_id : product_id,
 						question_title : question_title,
@@ -688,6 +762,7 @@
 					url : "${root }order/productDetail/question",
 					type : "post",
 					data : data,
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					success : function(){
 						replyList();
 						$("#question_content").val("");
@@ -698,7 +773,8 @@
 					
 				});
 				console.log(data);	
-			});
+			
+			})
 		/* ajax end  */
 		</script> 
 		<!-- 그 그 좋아요버튼 AJAX 처리. 아 에이젝스 개빡세네 왤케 많아 근데 미치겠네 진짜 -->
@@ -725,7 +801,7 @@
 							var data= {
 									member_id : member_id,
 									product_id : product_id
-							};
+							}
 							$.ajax({
 								url : "${root}order/likeInsert",
 								type : "post",
