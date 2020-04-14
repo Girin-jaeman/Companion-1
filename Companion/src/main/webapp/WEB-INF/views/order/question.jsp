@@ -22,35 +22,64 @@
 <link rel="stylesheet" href="${root}css/main.css">
 <link rel="stylesheet" href="${root}css/order/goodsdetail.css">
 <title>Insert title here</title>
+
+<style type="text/css">
+.replyList h4{
+	margin-top:20px;
+	
+}
+.table--replyList{
+	text-align: center;
+	width:100%;
+	
+}
+.table--replyList tr{
+	border-bottom: 1px solid #b3b7bb;
+	
+}
+.table--replyList th{
+	width:200px;
+	line-height: 1;
+	font-size:20px;
+}
+.table--replyList td{
+	line-height: 2;
+	font-size:18px;
+}
+
+
+</style>
+
+
+
 </head>
 <body>
-	<table>
-		<thead> 
-		<tr>
-		<td>문의글 목록</td>
-
-
-		<td>아이디</td>
-		<td>문의 제목</td>
-		<td>문의 내용</td>
-		<td>작성 날짜</td>
-		</tr>
-		
-		
+	<table class="table--replyList">
+		<thead>
+			<tr>
+				<th scope="col" class="border-0 bg-light">
+					<div class="p-2 px-3 text-uppercase">아이디</div>
+				</th>
+				<th scope="col" class="border-0 bg-light">
+					<div class="p-2 px-3 text-uppercase">문의 제목</div>
+				</th>
+				<th scope="col" class="border-0 bg-light">
+					<div class="py-2 text-uppercase">문의 내용</div>
+				</th>
+				<th scope="col" class="border-0 bg-light">
+					<div class="p-2 px-3 text-uppercase">작성 날짜</div>
+				</th>
+			</tr>
 		</thead>
 		<tbody>
-		<tr></tr>
-		
-		<tr>
-		<c:forEach items="${ReplyList}" var="bean">
-		<td></td>
-		<td>${bean.member_id }</td>
-		<td>${bean.question_title }</td>
-		<td>${bean.question_content }</td>
-		<td id="question_date">${bean.question_date }</td>
-		</c:forEach>
-		</tr>
-		
+			<c:forEach items="${ReplyList}" var="bean">
+				<tr>
+					<td>${bean.member_id }</td>
+					<td>${bean.question_title }</td>
+					<td>${bean.question_content }</td>
+					<td id="question_date">${bean.question_date }</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 

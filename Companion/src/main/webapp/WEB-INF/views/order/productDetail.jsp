@@ -362,7 +362,7 @@ console.log("어디가 오류일까?? 222222");
 						<div class="row">
 							<!-- 후기글 start -->
 							<div class="col-lg-12">
-								<table class="table">
+								<%-- <table class="table">
 									<thead>
 										<tr>
 											<th scope="col" class="border-0 bg-light">
@@ -401,7 +401,7 @@ console.log("어디가 오류일까?? 222222");
 												</th>
 
 												<td class="border-0 align-middle"><strong>
-														<%-- [${productDetailOne.product_name }] --%> 상품 번호
+														[${productDetailOne.product_name }] 상품 번호
 														${bean.product_id }
 												</strong></td>
 												<!-- 상품번호 출력 -->
@@ -419,7 +419,7 @@ console.log("어디가 오류일까?? 222222");
 										</c:forEach>
 										<!--C;FOREACH  -->
 									</tbody>
-								</table>
+								</table> --%>
 								<ul class="pagination">
 									<li class="page-item"><a class="page-link" href="#"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -502,12 +502,7 @@ console.log("어디가 오류일까?? 222222");
 										</section>
 									</c:if>
 									<c:if test="${memberVo.member_id!=null}">
-
-
-
-
 										<!-- 문의하기 창 생셩 modal test -->
-
 										<button type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#questionModal">문의하기</button>
 										<div class="modal fade" id="questionModal" tabindex="-1"
@@ -574,7 +569,7 @@ console.log("어디가 오류일까?? 222222");
 										<h4>최근 문의글 목록</h4>
 										<div class="col-lg-12">
 
-											<table class="table--replyList">
+							<!-- 				<table class="table--replyList">
 												<thead>
 													<tr>
 														<th scope="col" class="border-0 bg-light">
@@ -592,10 +587,10 @@ console.log("어디가 오류일까?? 222222");
 													</tr>
 												</thead>
 												<tbody>
-													<!-- function에서 답글 리스트 넣는 위치. -->
+													function에서 답글 리스트 넣는 위치.
 
 												</tbody>
-											</table>
+											</table> -->
 										</div>
 										<div id="345">
 										
@@ -719,16 +714,16 @@ console.log("어디가 오류일까?? 222222");
 
 							$("#selectBox option:selected").text();
 							console.log($("#selectBox option:selected").text());
-							console.log(cart_quantity);
-							console.log("아니 왜 여기까지만 나오는데 대체");
-
 							document.getElementById("cart_quantity").value = cart_quantity;
 							document.getElementById("cart_option").value = selectbox;
 							document.getElementById("order_detail_quantity").value = cart_quantity;
 							document.getElementById("order_detail_option").value = selectbox;
-
 							console.log(document.getElementById("cart_option"));
 						});
+		/*
+		상품 재고 보다 구입수량 많으면 막으려고 함. 
+		$("#paybtn")
+		*/
 	</script>
 	<!--  form 다중 액션 처리 -->
 	<script type="text/javascript">
