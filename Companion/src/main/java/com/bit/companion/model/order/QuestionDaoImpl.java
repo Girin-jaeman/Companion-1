@@ -26,6 +26,7 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	public List<OrderQuestionVo> replyList(int product_id) throws SQLException {
 		System.out.println("replyList DAO 실행.");
+		//question table 셀렉트. 문의글 목록 전부 불러오기 실행.
 		return sqlSession.selectList("orderQuestion.OrderQuestionList",product_id);
 	}
 
