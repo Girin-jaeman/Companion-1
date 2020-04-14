@@ -158,20 +158,20 @@
 					</div>
 
 					<div class="info-box">
-						<a href="#"> <i class="fas fa-truck fa-3x"></i> <br />
-						<br />
+						<a href="#"> <i class="fas fa-truck fa-3x"></i> <br/>
+						<br/>
 							<h2>배송조회 ></h2>
 						</a>
 					</div>
 					<div class="info-box">
-						<a href="${root }mypagereserve"> <i class="fas fa-clipboard fa-3x"></i> <br />
+						<a href="${root }mypagereserve"> <i class="fas fa-clipboard fa-3x"></i> <br/>
 						<br />
 							<h2>예약조회 ></h2>
 						</a>
 					</div>
 					<div class="info-box">
-						<a href="#"> <i class="fas fa-edit fa-3x"></i> <br />
-						<br />
+						<a href="#"> <i class="fas fa-edit fa-3x"></i> <br/>
+						<br/>
 							<h2>후기작성 ></h2>
 						</a>
 					</div>
