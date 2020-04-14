@@ -32,17 +32,7 @@
 		 	p.product_option5,
 			(SELECT count(*) FROM `LIKE` l WHERE l.product_id=p.product_id) AS "like_sum" 
 				FROM `PRODUCT` p, `CATEGORY` c 
-					WHERE p.category_id=c.category_id
-					<trim prefix="AND">
-						<if test="searchType=='category' and keyword != null and keyword != '' ">
-							<!-- category_refidname like CONCAT('%', #{keyword}, '%') AND  --> 
-							category_name LIKE CONCAT('%', #{keyword}, '%')
-						</if>
-						<if test="searchType=='product' and keyword != null and keyword != '' ">
-							product_name LIKE CONCAT('%', #{keyword}, '%')
-						</if>
-					</trim>
-					 ORDER BY p.product_id DESC LIMIT #{startList}, #{listSize}
+					WHERE p.category_id=c.category_id ORDER BY p.product_id DESC
 	</select>
 	
 	<!-- product detail -->
@@ -113,20 +103,5 @@
 		DELETE FROM `PRODUCT` WHERE product_id=#{value}
 	</delete>
 	
-	<!-- product total -->
-  	<select id="selectTotal" resultType="int">
-  		SELECT count(*) AS listCnt FROM `PRODUCT`
-   			<trim prefix="WHERE">
-				<if test="keyword != null and keyword != '' ">
-		  			<!-- <if test="searchType == 'categoty'">
-						category_refidname like CONCAT('%', #{keyword}, '%') AND  
-						category_name LIKE CONCAT('%', #{keyword}, '%')
-					</if> -->
-					<if test="searchType == 'product'">
-						product_name LIKE CONCAT('%', #{keyword}, '%')
-					</if>
-	  			</if>
-  			</trim>
-  	</select>
 </mapper>
   

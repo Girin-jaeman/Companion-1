@@ -63,7 +63,7 @@
 				<h1>[Admin] 후기 목록</h1>
 			</div>
 			
-			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>상품명</th>
@@ -77,12 +77,12 @@
 				<tbody>
 					<c:forEach items="${adminReviewList }" var="bean" varStatus="status">
 						<tr>
-							<td>${bean.product_name }</td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.product_name }</a></td>
 							<td><img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/></td>
 							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.article_date }</td>
-							<td>${bean.article_count }</td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -138,8 +138,7 @@
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" : 10,
-			"stateSave" : true
+			"pageLength" : 10
 		});
 	});
 </script>

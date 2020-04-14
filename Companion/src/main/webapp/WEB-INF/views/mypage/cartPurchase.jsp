@@ -197,9 +197,9 @@ i+=1;
                         <tr>
                             <th>주소</th>
                             <td>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr1 }" aria-label="email" aria-describedby="basic-addon1" readonly>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr2 }" aria-label="email" aria-describedby="basic-addon1" readonly>
-                            	<input type="text" class="form-control" placeholder="${sessionScope.memberVo.member_addr3 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr1 }" aria-label="email" aria-describedby="basic-addon1" readonly> </br> 
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr2 }" aria-label="email" aria-describedby="basic-addon1" readonly>
+                            	<input type="text" class="input--text" placeholder="${sessionScope.memberVo.member_addr3 }" aria-label="email" aria-describedby="basic-addon1" readonly>
                             </td>
                         </tr>
                     </tbody>

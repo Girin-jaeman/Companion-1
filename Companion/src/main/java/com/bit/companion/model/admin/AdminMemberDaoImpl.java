@@ -26,8 +26,14 @@ public class AdminMemberDaoImpl implements AdminMemberDao{
 
 	// member detail
 	@Override
-	public AdminMemberViewVo selectOne(String member_id) throws SQLException {
-		return sqlsession.selectOne("adminMember.selectOne", member_id);
+	public AdminMemberViewVo selectOne(AdminMemberViewVo bean) throws SQLException {
+		return sqlsession.selectOne("adminMember.selectOne", bean);
+	}
+
+	// member update
+	@Override
+	public int updateOne(AdminMemberViewVo bean) throws SQLException {
+		return sqlsession.update("adminMember.updateOne", bean);
 	}
 	
 	

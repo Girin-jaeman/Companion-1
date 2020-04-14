@@ -62,7 +62,7 @@
 				<h1>[Admin] Q&A 목록</h1>
 			</div>
 			
-			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>글번호</th>
@@ -78,12 +78,12 @@
 					<c:forEach items="${adminQuestionList }" var="bean" varStatus="status">
 						<tr>
 							<td>${bean.question_id }</td>
-							<td>${bean.question_type_name }</td>
-							<td>${bean.question_state_name }</td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_type_name }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_state_name }</a></td>
 							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_title }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.question_date }</td>
-							<td>${bean.question_answerdate }</td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.member_id }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_date }</a></td>
+							<td><a href="${root }admin/question_detail?question_id=${bean.question_id }">${bean.question_answerdate }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -143,8 +143,7 @@
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" :20,
-			"stateSave" : true
+			"pageLength" :20
 		});
 	});
 

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/" var="root"></c:url>
-<c:url var="getList" value="/admin/member_list"></c:url> <!-- 페이지네이션을위한 현재 페이지경로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +68,7 @@
 			<div class="main--title">
 				<h1>[Admin] 회원 목록</h1>
 			</div>
-			<table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+			<table id="dataTable" class="table table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>구분</th>
@@ -89,9 +88,9 @@
 								<c:if test="${grade == 2}">회원</c:if>
 							</td>
 							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.member_phone }</td>
-							<td>${bean.member_email }</td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -137,21 +136,13 @@
 					"previous": "이전"
 				}
 			},
-			"columns" : [ 
-				{ "width" : "20px" }, 
-				{ "width" : "30px" },
-				{ "width" : "30px" }, 
-				{ "width" : "40px" }, 
-				{ "width" : "30px" }
-			],
 			"order" : [
 				[0,"asc"]
 			],
 			"lengthMenu" : [
 				10,20,30,40,50
 			],
-			"pageLength" : 20,
-			"stateSave" : true
+			"pageLength" : 20
 		});
 	});
 </script>

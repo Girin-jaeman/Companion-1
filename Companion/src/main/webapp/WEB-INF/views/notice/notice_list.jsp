@@ -57,12 +57,11 @@
 		<!-- Navbar [end] -->
 		<div class="categories">
                 <a href="#homeSubmenu">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-clipboard-list"></i>
                     알림
                 </a>
                 <span>></span>
                 <a href="#">
-                    <i class="fas fa-home"></i>
                     공지사항
                 </a>
                 <hr class="mb-4">

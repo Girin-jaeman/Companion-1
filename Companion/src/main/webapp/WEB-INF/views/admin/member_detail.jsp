@@ -88,6 +88,7 @@
 						<th><label for="member_id">아이디</label></th>
 						<td>
 							<div class="inputArea">
+							<input type="hidden" name="member_id" value="${adminMemberOne.member_id }">
 								<span>${adminMemberOne.member_id }</span>
 							</div>
 						</td>
@@ -140,6 +141,7 @@
 					</tr>
 				</tbody>
 			</table>
+			<button type="button" id="modify_Btn" class="btn btn-primary">수정</button>
 			<button type="button" id="list_Btn" class="btn btn-back">목록</button>
 		</section>
 		<!-- section [end] -->
@@ -162,11 +164,15 @@
 	        $('#sidebar').toggleClass('active');
 	    });
 	});
-
 	
+	// 수정 버튼
+	$("#modify_Btn").click(function(){
+		location.href = ${root}+"admin/member_edit?member_id=${adminMemberOne.member_id}";
+	});
+
 	// 목록버튼
 	$("#list_Btn").click(function(){
-		location.href = ${root}+"/admin/member_list"
+		location.href = ${root}+"admin/member_list";
 	});
 </script>
 </body>

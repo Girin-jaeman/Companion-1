@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="${root }DataTables/datatables.min.css"/>
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="${root }css/admin/main.css">
-    <link rel="stylesheet" href="${root }css/admin/home.css">
     <!-- Font Awesome JS -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -45,14 +44,8 @@
 				<!-- top menu bar [start] -->
 			    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			        <ul class="nav navbar-nav ml-auto">
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">아이템1</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">아이템2</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link" href="#">아이템3</a>
+			            <li class="nav-item active">
+			                <a class="nav-link" href="#">주문관리</a>
 			            </li>
 			        </ul>
 			    </div>
@@ -61,11 +54,17 @@
 			<!-- .container-fluid [end] -->
 		</nav>
 		<!-- nav [end] -->
-		<!-- .container-fluid [start] -->
-		<div class="container-fluid">
-			<h1>주문내역</h1>
+		
+		<section class="section">
+			<div class="main--title clearfix">
+				<h1>[Admin] 주문내역</h1>
+			</div>
+			<div class="float-right">		
 			<button>주문취소</button>
 			<button>출고요청</button>
+			</div>
+		<!-- .container-fluid [start] -->
+		<div class="container-fluid">
 			<table class="table table-bordered dataTable" id="dataTable">
 				<thead>
 					<tr>
@@ -132,6 +131,7 @@
 			</table>
 		</div>
 		<!-- .container-fluid [end] -->
+		</section>
 		<!-- Footer  -->
 		<jsp:include page="../common/footer.jsp"/>
 	</div>

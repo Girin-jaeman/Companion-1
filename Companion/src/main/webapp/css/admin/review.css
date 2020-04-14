@@ -1,21 +1,3 @@
-/* TABLE_LAYOUT STYLE */
-.table_layout { margin:0px; table-layout:fixed; }
-.table_layout .col1 { width: 100px; } /* 글번호 */ 
-.table_layout .col2 { width: 200px; } /* 상품명 */
-.table_layout .col3 { width: 100px; } /* 썸네일 */
-.table_layout .col4 { width: auto; } /* 제목 */
-.table_layout .col5 { width: 100px; } /* 작성자 */
-.table_layout .col6 { width: 120px; } /* 날짜 */
-.table_layout .col7 { width: 100px; } /* 조회수 */
-
-.total-count{
-    display: flex;
-	width:105px;
-	margin:5px;
-	border-bottom:2px solid gray;
-    align-items: center;
-    text-align:center;
-}
 
 .search-group{
 	float:right;
@@ -49,11 +31,6 @@
 .table td img{
 	height:80px;
 	width:80px;
-}
-.table thead{}
-
-.table thead tr{
-	background:#5f4b8b80;
 }
 .table thead tr th{
 	text-align:center;

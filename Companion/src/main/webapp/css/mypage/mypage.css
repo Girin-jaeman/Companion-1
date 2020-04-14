@@ -1,5 +1,5 @@
 /* BTN */
-.btn{
+.cBtn{
     height: 34px;
     background: #eee linear-gradient(to botton, #fcfcfc, #eee );
     border: 1px solid #d5d5d5;
@@ -7,7 +7,7 @@
     display: inline-flex;
     align-items: center;
     padding: 0 12px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
     cursor: pointer;
@@ -15,7 +15,7 @@
     position: relative;
     color: #333;
 }
-.btn:hover::before{
+.cBtn:hover::before{
     content: "";
     position: absolute;
     top: 0;
@@ -32,6 +32,7 @@
 /* INPUT TEXT */
 .input--text{
     height: 34px;
+    width:200px;
     padding: 0 10px;
     border: 1px solid#ddd;
     border-radius: 5px;
@@ -39,7 +40,7 @@
     outline: none;
     /* box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075); */
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-    font-size: 16px;
+    font-size: 18px;
 }
 .input--text:focus{
     border-color: #51a7e8;
@@ -53,5 +54,34 @@
 
 
 table{
-	width:100%;
+	width:800px;
+	margin: 0 auto;
+	margin-bottom:100px;
+}
+table tr{
+	height:45px;
+	border-bottom:1px solid #d5d5d5;
+}
+table tr th{
+	width:150px;
+	text-align:right;
+	padding-right:10px;
+	font-size:20px;
+	
+}
+table tr td{
+	padding-left:10px;
+	font-size:20px;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+table tr td input{
+	margin:5px;
+}
+#pw_change_chk{
+	margin-left:0;
+}
+#addr3_change{
+	margin-left:0;
+	width:250px;
 }

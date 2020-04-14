@@ -39,6 +39,7 @@
   		
   		<!-- notice -->
   		<typeAlias alias="articleBean" type="com.bit.companion.model.entity.notice.ArticleVo"/>
+  		
   	</typeAliases>
   	<mappers>
   		<!-- hotel -->
@@ -72,5 +73,6 @@
   		<mapper resource="mybatis/notice/noticeMapper.xml"/>
   		<mapper resource="mybatis/notice/eventMapper.xml"/>
   		<mapper resource="mybatis/notice/faqMapper.xml"/>
+  		
   	</mappers>
   </configuration>  
