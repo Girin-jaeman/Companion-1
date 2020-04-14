@@ -88,9 +88,9 @@
 								<c:if test="${grade == 2}">회원</c:if>
 							</td>
 							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_name }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.member_phone }</td>
-							<td>${bean.member_email }</td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_id }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_phone }</a></td>
+							<td><a href="${root }admin/member_detail?member_id=${bean.member_id}">${bean.member_email }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -77,12 +77,12 @@
 				<tbody>
 					<c:forEach items="${adminReviewList }" var="bean" varStatus="status">
 						<tr>
-							<td>${bean.product_name }</td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.product_name }</a></td>
 							<td><img width="80px" height="80px" alt="썸네일" src="<spring:url value='${bean.article_thumb }'/>"/></td>
 							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_title }</a></td>
-							<td>${bean.member_id }</td>
-							<td>${bean.article_date }</td>
-							<td>${bean.article_count }</td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.member_id }</a></td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_date }</a></td>
+							<td><a href="${root }admin/review_detail?article_id=${bean.article_id }">${bean.article_count }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
