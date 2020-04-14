@@ -62,11 +62,59 @@
 		<!-- .container-fluid [start] -->
 		<div class="container-fluid">
 			<h1>주문 내역 상세보기</h1>
-			<table>
+			<h2>주문자 정보</h2>
+			<table class="table">
 				<tbody>
 					<tr>
-						<td>1</td>
-						<td>2</td>
+						<th>주문번호</th>
+						<td>${bean.order_id }</td>
+						<th>주문자</th>
+						<td>${bean.member_name }</td>
+						<th>아이디</th>
+						<td>${bean.member_id }</td>
+					</tr>
+					<tr>
+						<th>주문상태</th>
+						<td>${bean.order_state_admin }</td>
+						<th colspan="3">주문시간</th>
+						<td>${bean.order_date }</td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td>${bean.member_phone }</td>
+						<th>이메일</th>
+						<td colspan="3">${bean.member_email }</td>
+					</tr>
+				</tbody>
+			</table>
+			<h3>수령인 정보</h3>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>수령인</th>
+						<td>${bean.order_name }</td>
+						<th>연락처1</th>
+						<td>${bean.order_phone }</td>
+						<th>연락처2</th>
+						<td>${bean.order_tel }</td>
+					</tr>
+					<tr>
+						<th>우편번호</th>
+						<td>${bean.order_addr1 }</td>
+						<th>주소</th>
+						<td colspan="3">${bean.order_addr2 } ${bean.order_addr3 }</td>
+					</tr>
+					<tr>
+						<th>택배사</th>
+						<td>${bean.delivery_company }</td>
+						<th>송장번호</th>
+						<td>${bean.delivery_number }</td>
+						<th>배송상태</th>
+						<td>${bean.delivery_state_name }</td>
+					</tr>
+					<tr>
+						<th>배송 시<br/>요청사항</th>
+						<td colspan="5">${bean.order_msg }</td>
 					</tr>
 				</tbody>
 			</table>
