@@ -52,4 +52,23 @@ public class LoginDaoImpl implements LoginDao {
 		return sqlSession.selectOne("login.findID",idInfo);
 	}
 
+	@Override
+	public int findPWCheck(String name_check, String id_check, String email_check) {
+		HashMap<String,String> pwInfo=new HashMap<>();
+		pwInfo.put("name_check", name_check);
+		pwInfo.put("id_check", id_check);
+		pwInfo.put("email_check", email_check);
+		return sqlSession.selectOne("login.findPWCheck",pwInfo);
+	}
+
+	@Override
+	public void updateRandomPW(String name_check, String id_check, String email_check, String randomPW) {
+		HashMap<String,String> pwInfo=new HashMap<>();
+		pwInfo.put("name_check", name_check);
+		pwInfo.put("id_check", id_check);
+		pwInfo.put("email_check", email_check);
+		pwInfo.put("randomPW", randomPW);
+		sqlSession.update("login.updateRandomPW", pwInfo);
+	}
+
 }

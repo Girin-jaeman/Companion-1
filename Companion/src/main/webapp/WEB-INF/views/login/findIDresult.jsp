@@ -74,10 +74,21 @@
 	            	
 	            	<c:choose>
 	            		<c:when test="${sessionScope.findIDResult==null }">
-	            			일치하는 정보가 없습니다.
+	            			입력하신 정보와 일치하는 정보가 없습니다.</br>
+	            			확인 후 다시 시도해 주시기 바랍니다.
+	            			<a href="${root }login/findID">
+	            				<button class="btn btn-primary btn-lg">아이디 찾기</button>
+	            			</a>
+	            			<button class="btn btn-light btn-lg" onclick="history.back();">뒤로</button>
 	            		</c:when>
 	            		<c:when test="${sessionScope.findIDResult!=null }">
 	            			회원님의 아이디는 <strong>${sessionScope.findIDResult }</strong> 입니다.
+	            			<a class="nav-link active" href="${root }login">
+	            				<button class="btn btn-primary btn-lg">로그인</button>
+	            			</a>
+	            			<a href="${root }login/findPW">
+	            				<button class="btn btn-light btn-lg">비밀번호찾기</button>
+	            			</a>
 	            		</c:when>
 	            	</c:choose>
 		
