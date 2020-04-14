@@ -423,12 +423,12 @@
 						
 <!-- 문의하기 창 생셩 modal test -->		
 	
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">문의하기</button>					
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#questionModal">문의하기</button>					
+<div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">문의글 작성</h5>
+        <h5 class="modal-title" id="questionModalLabel">문의글 작성</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -693,7 +693,7 @@
 						$("#question_content").val("");
 						$("#question_title").val("");
 						alert('문의 글이 정상 등록되었습니다.');
-						$('#modal').modal('hide');
+						$('#questionModal').modal('hide');
 					}
 					
 				});
