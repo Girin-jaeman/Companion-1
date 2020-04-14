@@ -600,10 +600,13 @@ console.log("어디가 오류일까?? 222222");
 										<div id="345">
 										
 										</div>
+	
+    <iframe name="test" src="${root }order/productDetail/ReplyList?idx=${productDetailOne.product_id}" width="1000px" height="300px"  frameborder="0" scrolling="no"></iframe>
+								<p>여기 아닌가요?</p>
 									
-										<script>
+									<!-- 	<script>
 												replyList(); 
-										</script>
+										</script> -->
 										 
 									</section>
 									<!-- 여기에 문의글 ajax 들어감. -->

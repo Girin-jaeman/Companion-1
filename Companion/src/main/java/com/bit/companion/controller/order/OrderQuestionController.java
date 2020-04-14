@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,16 +42,29 @@ public class OrderQuestionController {
 	
 	//문의하기 목록 출력.
 	//ajax에서 getJson 방식으로 매핑 주소 에서 return 하는 값을 받아 옴.
-	@ResponseBody
+//	@ResponseBody
+//	@RequestMapping(value="order/productDetail/ReplyList",method = RequestMethod.GET)
+//	public List<OrderQuestionVo> getReplyList(Model model, @RequestParam("idx") int product_id) throws SQLException{
+//		logger.debug("GET replyList call...");
+//		logger.debug("왜 특정 데이터만 실행?");
+//		
+//		List<OrderQuestionVo> reply = orderQuestionService.replyList(model, product_id);
+//		
+//		return reply;
+//	}
+	
+	
 	@RequestMapping(value="order/productDetail/ReplyList",method = RequestMethod.GET)
-	public List<OrderQuestionVo> getReplyList(@RequestParam("idx") int product_id) throws SQLException{
+	public String ReplyList(Model model,@RequestParam("idx") int product_id) throws SQLException{
 		logger.debug("GET replyList call...");
 		logger.debug("왜 특정 데이터만 실행?");
 		
-		List<OrderQuestionVo> reply = orderQuestionService.replyList(product_id);
+		List<OrderQuestionVo> reply = orderQuestionService.replyList(model, product_id);
 		
-		return reply;
+		return "order/question";
 	}
+	
+	
 	
 
 	
