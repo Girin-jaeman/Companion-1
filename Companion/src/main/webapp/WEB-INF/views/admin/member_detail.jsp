@@ -74,7 +74,9 @@
 						<th><label for="member_grade">회원구분</label></th>
 						<td colspan="3">
 							<div class="inputArea">
-								<span>${adminMemberOne.member_grade }</span>
+								<c:if test="${adminMemberOne.member_grade == 0}">관리자</c:if>
+								<c:if test="${adminMemberOne.member_grade == 1}">운영자</c:if>
+								<c:if test="${adminMemberOne.member_grade == 2}">회원</c:if>
 							</div>
 						</td>
 					</tr>
